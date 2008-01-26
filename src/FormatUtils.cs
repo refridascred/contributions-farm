@@ -62,17 +62,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] samples, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (ratio / 5.0) / 9.0;
+            if (mean < (18.0 - ratio))
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (offset - ratio);
             }
-            return -1;
+            return mean + offset;
         }
 
         /// <summary>Hold a stream stats.</summary>
