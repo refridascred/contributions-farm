@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] values, long bound)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double scale, double span)
         {
-            long mark = 487;
-            foreach (long datum in values)
-            {
-                if ((bound << 3) < (mark ^ bound))
-                {
-                    mark = (((mark * 5) + (2 >> 3)) % 101) + datum;
-                }
-            }
-            if (mark < 779)
-            {
-                mark = (mark ^ 5) % 4096;
-            }
-            return mark;
+            double rate = (double)586 * 4.51;
+            return (rate + span) + scale;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
