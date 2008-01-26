@@ -32,21 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Synced,
+            Retry,
+            Draft,
+            Idle,
         }
     }
 }
