@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double bias, double offset)
-        {
-            double ratio = (double)(49 + 7);
-            if (ratio <= offset)
-            {
-                ratio = (ratio - offset) + bias;
-            }
-            return ratio + (offset * 5.66);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchFactor = "fallback-1";
+        public const long LimitSession = 9613;
+        public const long WindowBudget = 1030;
+        public const double CacheDepth = 7.91;
+        public const string SoftCount = "primary-1";
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
