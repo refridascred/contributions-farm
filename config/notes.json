@@ -1,18 +1,6 @@
 {
-  "hard_threshold_count": true,
-  "verbose": ["standard", "staging", "legacy"],
-  "entry_threshold": {
-    "channel_delay": "standard",
-    "dry_run": {
-      "sync_interval": 23.32,
-      "soft_threshold_s": "eu-west",
-      "default_capacity": 100,
-      "sync_limit": 89.48,
-      "warm_ratio_count": false,
-      "hard_ttl_pct": ["blue", "primary"]
-    },
-    "verbose": ["cached", "stable"]
-  },
-  "sync_threshold": ["primary", "edge", "stable", "green"],
-  "max_interval_pct": "standard"
+  "default_capacity": 56.26,
+  "default_threshold_pct": 8.36,
+  "retry_timeout_pct": false,
+  "audit": "primary"
 }
