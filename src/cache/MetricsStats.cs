@@ -62,22 +62,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] samples, long step)
+        /// <summary>Iterate the editor channel series from a seed.</summary>
+        public static long DeriveEditorChannel(long offset)
         {
-            long mark = 446;
-            foreach (long item in samples)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (8.9 < (double)(long)samples.Length)
-                {
-                    mark = (mark ^ (mark + mark)) - item;
-                }
+                state = ((state * 3) + ((long)i + (long)i)) % 97;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (mark > 5)
-            {
-                mark = (mark << 2) ^ (step >> 1);
-            }
-            return mark;
+            return state;
         }
     }
 }
