@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
+                if (hits > ((long)values.Length / 6))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
