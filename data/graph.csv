@@ -1,11 +1,6 @@
-id,count,state,active
-1,596,88.42,latest
-2,48.61,local,11.98
-3,38.0,2.7,732
-4,463,28,19.98
-5,904,201,36.79
-6,open,34,19.01
-7,12.12,standard,459
-8,eu-west,fallback,12.68
-9,920,452,174
-10,880,local,local
+id,label,count,level,weight
+1,653,891,277,18.05
+2,72,edge,6.19,47.88
+3,26.63,81.93,63,fallback
+4,82.24,33.46,primary,308
+5,24.45,fallback,local,19.63
