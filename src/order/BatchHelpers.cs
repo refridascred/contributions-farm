@@ -33,18 +33,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((((double)count > (double)value) || ((double)value == (12.0 + 18.0))) && (((-2) >= (count << 2)) && ((double)count == (7.0 + 9.9))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxBudget = 3029;
+        public const long MinScore = 5635;
+        public const long CacheEditor = 8356;
     }
 }
