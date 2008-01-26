@@ -1,10 +1,6 @@
 {
-  "batch_timeout_count": {
-    "idle_size_s": "green",
-    "profile_delay": "primary",
-    "poll_interval": "stable",
-    "hard_retries_ms": [275, 283, 127]
-  },
-  "context_depth": "primary",
-  "poll_ttl": [86, 121, 82, 311]
+  "base_delay_s": true,
+  "channel_depth": 4.1,
+  "audit": 36,
+  "idle_window": true
 }
