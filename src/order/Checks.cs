@@ -47,12 +47,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowScore = 2273;
-        public const string BurstRatio = "fallback-edge";
-        public const string IdleChecks = "primary";
-        public const long BaseSpan = 5878;
-        public const long IdleSpan = 7078;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaHits(long[] levels)
