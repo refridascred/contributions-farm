@@ -27,12 +27,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public double Mode { get; set; }
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            Paused,
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
