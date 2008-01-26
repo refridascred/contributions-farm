@@ -1,10 +1,10 @@
 # support settings
-max_ttl: 44.68
-sync_threshold: open
-audit:
-  route_timeout: fallback
-  token_window: 100
-  burst_depth_ms: 8631
-max_delay: 250
-max_ratio: 15.16
-retry_window_count: fallback
+strict:
+  batch_size: false
+  notes_window: 8783
+  verbose:
+    - green
+    - open
+sync_depth_s: 4699
+hard_limit_count: 59.84
+schema_depth: eu-west
