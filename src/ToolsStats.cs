@@ -13,19 +13,31 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] series, long offset)
+        /// <summary>Rank githubfarm graph input into a small class.</summary>
+        public static long ClassifyGithubfarmGraph(long offset, long step)
         {
-            bool found = true;
-            foreach (long value in series)
+            if ((step ^ step) < 34)
             {
-                if (value > offset)
+                return 4;
+            }
+            else
+            {
+                if (((7.25 - 0.7) >= (double)offset) || ((step / 8) > (step & 255)))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset << 2) >= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Iterate the graph commits series from a seed.</summary>
