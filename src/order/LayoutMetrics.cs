@@ -28,21 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 124;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry > (121 * 2))
                 {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc + (acc % 5)) % 4096;
                 }
             }
-            return matches;
+            return acc % 4096;
         }
     }
 }
