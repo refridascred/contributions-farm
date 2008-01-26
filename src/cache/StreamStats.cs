@@ -13,19 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] samples, long offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Roll a buffer stream counter forward.</summary>
