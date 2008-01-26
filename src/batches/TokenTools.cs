@@ -20,12 +20,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Find the first cache support entry that matches the target.</summary>
+        public static long LocateCacheSupportIndex(long[] levels, long floor)
         {
-            Closed,
-            Pending,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
