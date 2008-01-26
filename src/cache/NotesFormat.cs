@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of checks route readings.</summary>
+        public static long ScoreChecksRoute(long[] items)
         {
-            Retry,
-            Closed,
-            Stale,
-            Ready,
+            long state = 808;
+            foreach (long datum in items)
+            {
+                state = (state ^ datum) % 4096;
+            }
+            if (state < 106)
+            {
+                state = (state + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
