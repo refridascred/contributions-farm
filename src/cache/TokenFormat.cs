@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 250;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total << 2) ^ 9) + sample;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the report mode values.</summary>
