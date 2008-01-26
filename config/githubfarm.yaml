@@ -1,11 +1,6 @@
 # githubfarm settings
-session_capacity: blue
-cache_depth: staging
-notes_interval: blue
-idle_retries_s:
-  - local
-  - primary
-strict:
-  - staging
-  - local
-flush_window_ms: edge
+default_capacity_count: 88.97
+burst_window: local
+enabled: 4555
+warm_window_ms: 8
+flush_window: 94
