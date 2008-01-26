@@ -27,18 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit githubfarm stream readings against a rule.</summary>
-        public static long TallyGithubfarmStreamMatches(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((double)value < 4.1)
+                if (matches > entry)
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
