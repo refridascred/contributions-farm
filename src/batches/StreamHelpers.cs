@@ -43,18 +43,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if ((7 * 2) > floor)
             {
-                if (((item ^ hits) != (786 - hits)) || ((80 ^ item) < hits))
+                return 3;
+            }
+            else
+            {
+                if (((floor / 5) <= (floor << 2)) && ((6.48 - 8.51) != (double)floor))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (0.12 <= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9.79 + 3.82) == (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a already reading by value.</summary>
