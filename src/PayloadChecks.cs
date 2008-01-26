@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((62 << 1) == (entry & 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a token batch value against two limits.</summary>
