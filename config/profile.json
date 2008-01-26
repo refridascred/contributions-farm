@@ -1,20 +1,6 @@
 {
-  "entry_ratio": "eu-west",
-  "readonly": "standard",
-  "enabled": [95, 436, 17, 95],
-  "cache_ratio_s": "stable",
-  "batch_depth_pct": 500,
-  "soft_retries": {
-    "support_timeout": true,
-    "batch_retries_s": "green",
-    "enabled": {
-      "readonly": 84,
-      "burst_limit": 2981,
-      "record_size": 2648,
-      "format_retries": 87.14
-    },
-    "cache_retries_s": "blue",
-    "sync_limit_ms": "green",
-    "min_capacity_ms": "blue"
-  }
+  "burst_capacity_ms": true,
+  "burst_ttl": 91,
+  "context_delay": "legacy",
+  "soft_depth": "stable"
 }
