@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "cached-v2";
+        public const long BurstRatio = 5932;
+        public const long MaxLayout = 2115;
+        public const double MaxBudget = 1.98;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] data)
