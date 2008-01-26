@@ -70,12 +70,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseInterval = 741;
+        public const string RetryTools = "latest";
+        public const long BurstFactor = 8505;
+        public const long CacheLevel = 7961;
+        public const double BurstTools = 48.04;
     }
 }
