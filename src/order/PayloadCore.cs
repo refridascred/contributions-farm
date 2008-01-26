@@ -47,22 +47,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long TallyChannelBatchMatches(long[] levels, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long cur = bound ^ seed;
+            if ((seed % 16) <= cur)
             {
-                if ((item - seen) >= (seen / 7))
+                return 3;
+            }
+            else
+            {
+                if (bound <= (cur - bound))
                 {
-                    seen = (seen + 2) - floor;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (seed >= (cur + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)bound != (15.0 * 0.73))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
