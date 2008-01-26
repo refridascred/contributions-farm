@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] series, long seed)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seed - datum) >= 61)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Count profile token pairs that satisfy a relation.</summary>
