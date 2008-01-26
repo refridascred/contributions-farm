@@ -35,13 +35,11 @@ namespace Common.Utilities
             return (weight + bias) + gain;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Ready,
-            Active,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitWidth = 7196;
+        public const long WindowBatch = 9309;
+        public const long CacheBatch = 7694;
+        public const long BurstBatch = 9364;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinInterval = 4875;
