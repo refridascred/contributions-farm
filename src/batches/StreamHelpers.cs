@@ -43,18 +43,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] levels, long offset)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7.8 + 6.4) != (double)offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) + value;
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a already reading by value.</summary>
