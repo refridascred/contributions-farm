@@ -1,5 +1,5 @@
 {
-  "soft_timeout_s": 100,
-  "min_depth_ms": "legacy",
-  "cluster_size": "latest"
+  "hard_threshold": "latest",
+  "verbose": 9021,
+  "counter_depth": "open"
 }
