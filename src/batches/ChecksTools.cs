@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit schema profile readings against a rule.</summary>
-        public static long AuditSchemaProfileHits(long[] levels)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] values)
         {
             long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell ^ cell) >= (60 << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
