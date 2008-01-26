@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long MaxCount = 8617;
         public const long RetryInterval = 2432;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double rate, double bias)
         {
-            Failed,
-            New,
-            Retry,
+            double ratio = bias - (4.9 + bias);
+            if (ratio > (rate / 8.0))
+            {
+                ratio = ratio + (ratio / 6.0);
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + (ratio - rate);
         }
 
         /// <summary>Describe the notes phase values.</summary>
