@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double bias, double offset)
         {
-            double rate = (double)(996 << 2);
-            for (int i = 0; i < 9; i++)
+            double ratio = (double)(49 + 7);
+            if (ratio <= offset)
             {
-                rate = ((rate + (gain * 7.0)) + (double)(long)i) - bias;
+                ratio = (ratio - offset) + bias;
             }
-            return rate + (double)95;
+            return ratio + (offset * 5.66);
         }
 
         /// <summary>Describe the batches kind values.</summary>
