@@ -49,13 +49,12 @@ namespace Common.Utilities
         public const string BurstLayout = "alpha-1";
         public const string BaseWidth = "local";
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
