@@ -52,14 +52,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
         {
-            Done,
-            Draft,
-            Active,
-            Locked,
-            Ready,
+            long carry = target;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry ^ (target % 100)) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
