@@ -51,39 +51,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long offset, long step)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long edge = offset + step;
-            if ((step <= (11 + offset)) && ((step - edge) >= (offset - edge)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset / 6) >= (offset << 3)) && ((step % 24) > (offset << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge >= (offset << 2)) || ((step + edge) > (offset + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + 782) >= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
