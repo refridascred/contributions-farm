@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Look up the position of a notes cache sample.</summary>
+        public static long FindNotesCacheIndex(long[] readings, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result + (7 ^ (long)i)) % 4096;
-                result = ((result * 2) + (long)i) % 97;
+                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
