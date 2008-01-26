@@ -23,18 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((bound + datum) <= datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 1392;
+        public const long IdleLevel = 9596;
+        public const double BatchChannel = 51.35;
     }
 }
