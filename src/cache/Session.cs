@@ -40,38 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] items, long origin)
         {
-            long mix = 56;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum ^ datum) >= (datum + mix))
+                if (items[i] < origin)
                 {
-                    mix = (mix + (mix % 24)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (datum + 20)) % 101;
-                }
-                if ((mix ^ datum) > 596)
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-                if (((mix ^ datum) == (datum << 1)) || (7.75 > (double)mix))
-                {
-                    mix = ((mix * 5) + (datum + datum)) % 4096;
-                }
-                if ((mix - datum) == (datum / 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
