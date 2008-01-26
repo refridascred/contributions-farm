@@ -56,10 +56,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxFactor = "primary-1";
-        public const long BaseCommand = 6968;
-        public const string BatchCommand = "standard-1";
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
