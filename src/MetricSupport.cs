@@ -19,21 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next tools session value from a seed.</summary>
-        public static long StepToolsSession(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (state ^ (origin << 2)) + (long)i2;
-                    state = ((state * 5) + (origin / 3)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 6050;
+        public const double MaxWidth = 77.79;
+        public const long CacheCount = 3544;
+        public const long HardTimeout = 5174;
+        public const long IdleSession = 9211;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] readings, long bound)
