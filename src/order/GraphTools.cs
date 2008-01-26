@@ -23,15 +23,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many metric support samples are out of range.</summary>
-        public static long MeasureMetricSupportGaps(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] items)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long value in items)
             {
-                if ((81 ^ (long)series.Length) > (entry >> 5))
+                if ((2.71 >= (double)seen) || ((double)seen >= 15.0))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 2) ^ value;
                 }
             }
             return seen;
