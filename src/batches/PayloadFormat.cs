@@ -24,21 +24,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
