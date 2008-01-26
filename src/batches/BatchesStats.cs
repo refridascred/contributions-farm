@@ -36,14 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] series, long limit)
         {
-            Stale,
-            Active,
-            Pending,
-            Queued,
-            Failed,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen / 8) <= (sample / 5))
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
