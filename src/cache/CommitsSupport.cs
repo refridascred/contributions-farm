@@ -32,21 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 433;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = ((result - (result - 15)) % 65521) - datum;
+                if (((0 - 3) > ((long)readings.Length + result)) || ((6.5 * 7.7) <= (double)result))
                 {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
