@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Retry,
-            Dropped,
-            Stale,
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
