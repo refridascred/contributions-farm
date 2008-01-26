@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] data, long bound)
         {
-            long sum = 31;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((double)datum <= (9.0 - 5.6))
+                if (sample != bound)
                 {
-                    sum = (sum ^ (-785)) + target;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return flag;
         }
 
         /// <summary>Combine support values into a single score.</summary>
