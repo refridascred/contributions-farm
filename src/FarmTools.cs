@@ -27,18 +27,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] values, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((target + datum) <= (count << 1)) || ((target < count) || ((double)datum > (1.6 * 1.2))))
-                {
-                    count = count + 3;
-                }
+                total = total - ((long)i ^ 38);
+                total = ((total * 3) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
     }
 }
