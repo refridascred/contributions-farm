@@ -78,39 +78,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm buffer input into a small class.</summary>
-        public static long BucketGithubfarmBuffer(long bound, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] samples, long limit)
         {
-            long edge = bound ^ target;
-            if (!((target + bound) < target))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound <= (target / 8)) || ((double)edge >= (8.8 / 9.0)))
+                if ((limit >> 1) < (matches + matches))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound < (bound - edge)) || ((edge - 97) == ((-3) + edge)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound <= 3.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 1) + cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
