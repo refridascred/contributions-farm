@@ -41,22 +41,22 @@ namespace Common.Utilities
         public const string IdleBuffer = "strict-1";
         public const string MinBuffer = "local";
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long mark = 9;
-            foreach (long datum in samples)
+            long acc = 3;
+            foreach (long value in readings)
             {
-                if ((2.0 <= (double)mark) && ((mark & 63) >= (mark + mark)))
+                if ((6 & 63) != (value + value))
                 {
-                    mark = (((mark << 2) ^ mark) % 255) ^ datum;
+                    acc = (acc - (acc & 3)) % 1000;
                 }
                 else
                 {
-                    mark = mark ^ (mark * 3);
+                    acc = (acc * 3) + acc;
                 }
             }
-            return mark % 65521;
+            return acc % 4096;
         }
     }
 }
