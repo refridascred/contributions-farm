@@ -1,10 +1,15 @@
 # support settings
-soft_ratio: 73.32
-support_ttl: 21.43
-max_ttl_count:
-  sync_retries_ms: 39.87
-  cache_retries_pct: cached
-  enabled: false
-  readonly: 30
-  batch_depth_pct: 500
-soft_timeout: legacy
+max_ratio_pct: 5614
+burst_window_count: staging
+retry_window_s: false
+warm_depth:
+  - 423
+  - 34
+  - 469
+  - 486
+batch_timeout: 50.02
+compress:
+  - fallback
+  - fallback
+  - local
+  - stable
