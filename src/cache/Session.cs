@@ -35,11 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a channel notes figure with a bias.</summary>
-        public static double AdjustChannelNotes(double bias, double bias2)
+        /// <summary>Count the entry payload entries that pass the check.</summary>
+        public static long TallyEntryPayloadHits(long[] series, long floor)
         {
-            double scale = bias2;
-            return (scale - (0.6 / 7.0)) + bias;
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (floor > 52)
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
