@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] data, long origin)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < origin)
+                if (series[i] >= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Blend two githubfarm format measurements.</summary>
