@@ -52,13 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long bound)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
