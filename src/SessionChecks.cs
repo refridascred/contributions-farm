@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const string BatchNotes = "standard-edge";
         public const string BaseNotes = "latest";
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] readings, long seed)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - (4.9 / 5.0)) + (double)(long)i) - bias;
             }
-            return -1;
+            return rate - 3.0;
         }
     }
 }
