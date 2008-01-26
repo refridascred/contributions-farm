@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] series, long floor)
-        {
-            long score = 1;
-            foreach (long value in series)
-            {
-                if (((long)series.Length / 2) <= 514)
-                {
-                    score = (score << 3) ^ (value * 2);
-                }
-                else
-                {
-                    score = (score ^ (floor + value)) % 255;
-                    score = score - (score * 2);
-                }
-                score = (score - (score + score)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 3910;
+        public const long BatchProfile = 1170;
+        public const string MaxProfile = "latest-v2";
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
