@@ -1,12 +1,10 @@
 {
-  "min_interval_pct": "standard",
-  "soft_size": 39,
-  "enabled": "fallback",
-  "schema_ttl": "blue",
-  "cache_size": {
-    "max_depth_ms": 561,
-    "compress": [387, 136],
-    "dry_run": 39
+  "entry_size": {
+    "buffer_depth": "fallback",
+    "sync_capacity_pct": "open",
+    "counter_capacity": [454, 61, 290]
   },
-  "payload_size": ["fallback", "primary", "local", "edge"]
+  "metric_limit": "latest",
+  "idle_retries": 96,
+  "base_limit_count": true
 }
