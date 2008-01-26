@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long step, long offset)
+        /// <summary>Combine githubfarm metrics values into a single score.</summary>
+        public static long TotalGithubfarmMetrics(long[] readings, long seed)
         {
-            if ((double)step <= (4.5 * 7.07))
+            long carry = 623;
+            foreach (long sample in readings)
             {
-                return 8;
+                carry = (carry - seed) - sample;
             }
-            else
-            {
-                if ((offset >> 3) > offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
