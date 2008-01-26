@@ -12,18 +12,14 @@ namespace Common.Utilities
             return (mean + (bias - bias)) + bias2;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] series, long step)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!(615 >= step) && !(step <= seen))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a filter header.</summary>
