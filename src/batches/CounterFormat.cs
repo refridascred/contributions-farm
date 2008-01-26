@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] data, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (!((tally * 4) > (tally >> 5)))
-                {
-                    tally = ((tally + 1) ^ sample) + offset;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Accumulate session samples.</summary>
