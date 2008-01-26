@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchInterval = "primary-v2";
-        public const long StepSpan = 5578;
-        public const long BurstAlready = 5420;
-        public const string WindowTimeout = "standard-edge";
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (datum > 2)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next tools session value from a seed.</summary>
         public static long StepToolsSession(long origin)
