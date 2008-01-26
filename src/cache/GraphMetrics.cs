@@ -26,19 +26,13 @@ namespace Common.Utilities
         public const string WindowSize = "primary-edge";
         public const long BurstRoute = 7257;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long state = 95;
-            foreach (long item in series)
-            {
-                state = ((state - state) % 101) + item;
-            }
-            if (state > (-1))
-            {
-                state = state ^ (state / 2);
-            }
-            return state % 65521;
+            public string Ratio { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
