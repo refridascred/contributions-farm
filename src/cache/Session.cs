@@ -52,27 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] data, long target)
         {
-            long acc = 995;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                long seen = datum / 5;
-                for (int i = 0; i < 12; i++)
+                if (data[i] == target)
                 {
-                    acc = ((acc ^ (datum + seen)) % 4096) ^ (long)i;
-                }
-                if (((datum + acc) <= datum) && ((datum << 1) <= datum))
-                {
-                    acc = (acc * 5) + (datum - datum);
+                    return (long)i;
                 }
             }
-            if (acc < 3)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            return -1;
         }
     }
 }
