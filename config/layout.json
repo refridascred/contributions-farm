@@ -1,7 +1,8 @@
 {
-  "warm_timeout_s": ["latest", "green"],
-  "poll_delay_pct": 7736,
-  "persist": "primary",
-  "channel_window": "primary",
-  "compress": true
+  "base_threshold_pct": "stable",
+  "metric_retries": ["green", "latest", "fallback"],
+  "hard_ttl": 30,
+  "min_threshold": 36.78,
+  "flush_capacity": ["cached", "open", "staging", "stable"],
+  "hard_retries": "cached"
 }
