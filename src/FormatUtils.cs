@@ -36,22 +36,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long total = -29;
-            foreach (long entry in values)
-            {
-                if (((total - entry) <= entry) && (total <= (entry % 24)))
-                {
-                    total = (total ^ (471 & 63)) % 255;
-                }
-            }
-            if (total > 76)
-            {
-                total = (total ^ (total - total)) % 101;
-            }
-            return total;
+            Queued,
+            Failed,
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Blend two channel measurements.</summary>
