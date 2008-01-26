@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every buffer report entry stays within the limit.</summary>
-        public static bool ValidateBufferReportLimits(long[] items, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= bound)
+                if (data[i] == bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
