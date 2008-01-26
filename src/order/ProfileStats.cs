@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Closed,
-            New,
-            Locked,
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
