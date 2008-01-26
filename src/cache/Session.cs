@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseLevel = "stable-1";
+        public const long MaxSupport = 2923;
+        public const string HardSize = "stable-1";
+        public const string MaxScore = "primary-edge";
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long SortTools(long step, long floor)
