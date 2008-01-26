@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultBudget = 79.05;
-        public const long StepSpan = 8245;
-        public const long IdleTools = 4141;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long seed, long floor)
+        {
+            long gap = seed ^ floor;
+            if (!(seed > 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)gap == (double)seed) || ((3 / 3) >= (seed << 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor > (0.79 / 2.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (8 <= (floor - floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BurstDepth = 9801;
