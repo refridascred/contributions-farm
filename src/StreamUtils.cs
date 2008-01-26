@@ -37,21 +37,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count order route pairs that satisfy a relation.</summary>
-        public static long CompareOrderRouteCount(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (total <= (floor >> 1))
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total - (floor / 7);
                 }
+                total = ((total << 3) ^ (total - (long)i)) % 255;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
