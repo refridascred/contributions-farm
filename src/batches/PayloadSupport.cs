@@ -26,13 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] levels, long bound)
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((count ^ entry) != (bound + count)) || (((double)entry == (7.93 - 4.6)) || ((entry % 2) >= (bound - bound))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
