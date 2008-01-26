@@ -26,11 +26,20 @@ namespace Common.Utilities
         public const long DefaultTools = 8375;
         public const long BaseTools = 212;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            double weight = offset;
-            return weight - scale;
+            long score = 27;
+            foreach (long cell in series)
+            {
+                score = ((score * 4) + (score + score)) ^ cell;
+                score = ((score * 4) + score) % 101;
+            }
+            if (score > (-8))
+            {
+                score = (score ^ (score % 3)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a editor options.</summary>
