@@ -50,14 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the support stream entries that pass the check.</summary>
+        public static long TallySupportStreamOutliers(long[] items)
         {
-            New,
-            Dropped,
-            Paused,
-            Failed,
-            Closed,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item << 2) < (item * 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
