@@ -1,25 +1,4 @@
 # support settings
-min_capacity_count: 48.62
-burst_delay: true
-sync_timeout_s:
-  batch_retries: 3930
-  persist:
-    base_limit:
-      - standard
-      - standard
-    warm_depth_s: latest
-    base_ratio_ms: 66.24
-    counter_delay: 11.65
-    editor_depth: true
-  enabled:
-    - standard
-    - latest
-    - local
-  sync_threshold_pct: false
-  cluster_ttl: 14.57
-  soft_window:
-    - eu-west
-    - latest
-    - standard
-    - open
-audit: 32.16
+dry_run: 85.46
+tools_limit: 50.46
+persist: 0.39
