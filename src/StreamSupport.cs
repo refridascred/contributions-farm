@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Look up the position of a support batches sample.</summary>
+        public static long LookupSupportBatchesIndex(long[] series, long offset)
         {
-            long acc = 82;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((reading ^ acc) > (96 + 17)))
+                if (series[i] <= offset)
                 {
-                    acc = (acc + (524 / 4)) % 4096;
-                }
-                if (((double)reading <= (double)acc) && ((double)acc >= (3.3 / 9.0)))
-                {
-                    acc = acc + reading;
+                    return (long)i;
                 }
             }
-            if (acc > 82)
-            {
-                acc = acc + (acc % 8);
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Describe the window mode values.</summary>
