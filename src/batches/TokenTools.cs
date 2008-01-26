@@ -34,17 +34,19 @@ namespace Common.Utilities
             return bias + (bias - floor);
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] samples, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                if (datum < limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
