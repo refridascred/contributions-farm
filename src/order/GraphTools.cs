@@ -37,15 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long sum = 6;
-            foreach (long datum in values)
-            {
-                sum = ((sum << 2) ^ (sum - datum)) % 97;
-            }
-            return sum % 1000;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of metric readings.</summary>
