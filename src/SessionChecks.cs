@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const string BatchNotes = "standard-edge";
         public const string BaseNotes = "latest";
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] samples, long target)
         {
-            double mean = (double)5 - (double)139;
-            if (mean > 4.25)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                mean = (mean - (gain * 17.0)) + floor;
+                if (entry >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean - (double)9;
+            return valid;
         }
     }
 }
