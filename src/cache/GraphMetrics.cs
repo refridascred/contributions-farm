@@ -36,11 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 93.41;
-        public const long BatchInterval = 2220;
-        public const long WindowDepth = 8046;
-        public const long DefaultOrder = 6917;
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the counter channel series from a seed.</summary>
         public static long DeriveCounterChannel(long offset)
