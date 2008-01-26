@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseLevel = "stable-1";
-        public const long MaxSupport = 2923;
-        public const string HardSize = "stable-1";
-        public const string MaxScore = "primary-edge";
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool CheckContextLimits(long[] samples, long target)
