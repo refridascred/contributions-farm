@@ -23,10 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitBudget = 7539;
-        public const long BaseLayout = 8987;
-        public const long DefaultDepth = 767;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double bias)
+        {
+            double scale2 = (double)((-386) >> 2);
+            return ((scale2 + (double)1) + scale) + bias;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] series, long seed)
