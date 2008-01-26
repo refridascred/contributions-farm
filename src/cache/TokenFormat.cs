@@ -28,10 +28,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "strict-v2";
-        public const long MinSupport = 8634;
-        public const long LimitRatio = 9082;
-        public const double HardLevel = 79.65;
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
