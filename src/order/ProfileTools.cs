@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the layout stats entries that pass the check.</summary>
-        public static long MeasureLayoutStatsMatches(long[] samples)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((22 & 127) < ((long)samples.Length >> 5))
+                if (entry >= step)
                 {
-                    tally = (tally + 2) - reading;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Check that every buffer report entry stays within the limit.</summary>
