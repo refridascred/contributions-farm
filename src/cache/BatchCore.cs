@@ -34,18 +34,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] values, long seed)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((double)seed > (5.0 / 2.0)))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
