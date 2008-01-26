@@ -26,19 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch checks samples are out of range.</summary>
-        public static long AuditBatchChecksOutliers(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!((tally <= 7) && ((23 << 1) >= (tally * 2))))
-                {
-                    tally = ((tally + 3) - item) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseSpan = 89.96;
+        public const long BatchTimeout = 1980;
+        public const long BurstGithubfarm = 8215;
+        public const long HardTimeout = 2969;
 
         /// <summary>Combine support session values into a single score.</summary>
         public static long FoldSupportSession(long[] samples)
