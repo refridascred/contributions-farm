@@ -55,19 +55,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double gain, double span)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] values, long step)
         {
-            double drift = (double)452;
-            if (drift <= gain)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                drift = drift + span;
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + span) - (double)(long)i;
-            }
-            return drift + (double)9;
+            return ready;
         }
 
         /// <summary>Hold a support info.</summary>
