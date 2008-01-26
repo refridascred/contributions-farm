@@ -70,18 +70,13 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Combine metric layout values into a single score.</summary>
-        public static long DigestMetricLayout(long[] samples, long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long mark = 24;
-            foreach (long cell in samples)
-            {
-                if (!((-90) < limit))
-                {
-                    mark = (((mark * 4) + mark) % 65521) ^ cell;
-                }
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
