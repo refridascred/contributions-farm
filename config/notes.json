@@ -1,8 +1,8 @@
 {
-  "compress": 6.56,
-  "verbose": 2450,
-  "route_delay": 30,
-  "min_limit_ms": false,
-  "min_delay_pct": 68.38,
-  "warm_retries_ms": 9930
+  "already_retries": ["stable", "green"],
+  "soft_threshold_s": 30,
+  "retry_retries_count": 9786,
+  "persist": 41,
+  "sync_interval_ms": 250,
+  "hard_retries_count": "open"
 }
