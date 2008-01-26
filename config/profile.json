@@ -1,12 +1,6 @@
 {
-  "sync_window_pct": [352, 58, 23],
-  "strict": {
-    "already_depth": 40.3,
-    "layout_size": 46.5,
-    "min_timeout": 24,
-    "idle_ratio": 75.88,
-    "tools_limit": 60,
-    "graph_timeout": false
-  },
-  "schema_capacity": 100
+  "persist": 22,
+  "hard_interval_count": 56.32,
+  "retry_limit": 100,
+  "poll_ttl_ms": 44.35
 }
