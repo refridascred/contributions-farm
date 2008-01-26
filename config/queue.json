@@ -1,6 +1,6 @@
 {
-  "order_limit": "standard",
-  "record_delay": false,
-  "dry_run": 1024,
-  "soft_window": "local"
+  "batch_capacity_ms": 30,
+  "warm_window_count": "open",
+  "stream_window": "open",
+  "persist": 60
 }
