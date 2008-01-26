@@ -30,19 +30,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = ((sum << 3) ^ (target << 3)) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Failed,
+            Closed,
+            New,
         }
     }
 }
