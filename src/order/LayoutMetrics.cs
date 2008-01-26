@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 11; i++)
-            {
-                state = state - (target << 1);
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "strict-edge";
+        public const long SoftBudget = 1711;
+        public const long MinMetrics = 4792;
+        public const long SoftScore = 5689;
 
         /// <summary>Hold a command options.</summary>
         public sealed class CommandOptions
