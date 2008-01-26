@@ -16,12 +16,22 @@ namespace Common.Utilities
             return scale2 - (scale - 2.3);
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many buffer stats samples are out of range.</summary>
+        public static long AuditBufferStatsMatches(long[] samples)
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((double)hits >= (double)value) && !((hits ^ (-61)) >= value))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
