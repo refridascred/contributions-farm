@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!((-510) >= (origin & 1)) || (((matches % 7) <= matches) && ((539 + datum) > (9 % 12))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Synced,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
