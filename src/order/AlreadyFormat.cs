@@ -14,17 +14,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] values, long step)
+        /// <summary>Rank commits schema input into a small class.</summary>
+        public static long SortCommitsSchema(long floor, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)39 <= (double)offset)
             {
-                if ((values[i] > step) && ((values[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((219 >> 3) > (floor / 7))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + 9) <= offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset + floor) > floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
