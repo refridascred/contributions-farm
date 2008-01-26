@@ -47,12 +47,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Rank notes graph input into a small class.</summary>
+        public static long BucketNotesGraph(long floor, long origin)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
+            if ((26 ^ floor) > floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin / 4) <= (floor >> 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Grade a session value against two limits.</summary>
