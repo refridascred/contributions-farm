@@ -23,19 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record commits entry stays within the limit.</summary>
-        public static bool GuardRecordCommitsBounds(long[] data, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long bound, long bound2)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long next = bound ^ bound2;
+            if ((bound2 - next) >= (37 - bound2))
             {
-                if (cell != offset)
+                return 5;
+            }
+            else
+            {
+                if ((5 * 5) > (bound2 / 4))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound % 97) == (next - 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
