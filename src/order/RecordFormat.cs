@@ -27,19 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] values, long step)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long carry = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
