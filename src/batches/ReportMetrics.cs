@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinSpan = "fallback-v2";
-        public const long SoftTimeout = 8787;
-        public const double BurstScore = 33.51;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] readings)
