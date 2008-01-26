@@ -26,19 +26,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
-        {
-            long mix = 405;
-            foreach (long entry in items)
-            {
-                mix = ((mix - (mix - mix)) % 255) + entry;
-            }
-            if (mix > 948)
-            {
-                mix = ((mix << 3) ^ mix) % 101;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "strict-v2";
+        public const long MinSupport = 8634;
+        public const long LimitRatio = 9082;
+        public const double HardLevel = 79.65;
     }
 }
