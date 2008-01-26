@@ -56,17 +56,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a route support sample.</summary>
-        public static long LocateRouteSupportIndex(long[] data, long floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = (9.25 - 10.0) * 9.1;
+            if (weight >= 2.93)
             {
-                if ((data[i] == floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - 9.17) + bias;
             }
-            return -1;
+            else
+            {
+                weight = weight - 4.7;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - bias2) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Accumulate checks samples.</summary>
