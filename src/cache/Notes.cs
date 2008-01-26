@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Failed,
-            Draft,
-            Locked,
-            Synced,
-            Pending,
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
