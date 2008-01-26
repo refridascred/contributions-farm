@@ -28,24 +28,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long limit, long limit2)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long floor)
         {
-            if ((limit2 + limit2) == (limit + limit))
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit << 1) == (limit % 97)) || ((double)limit2 < (0.73 / 3.0)))
+                if ((312 + floor) > (floor + floor))
                 {
-                    return 7;
+                    total = ((total << 3) ^ floor) % 255;
                 }
                 else
                 {
-                    return 5;
+                    total = ((total * 4) + (total + floor)) % 4096;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Locate a already reading by value.</summary>
