@@ -34,18 +34,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit session editor readings against a rule.</summary>
-        public static long CountSessionEditorMatches(long[] samples, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((entry * 3) <= (entry << 2)) || ((7 - 338) < seed))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a batches filter counter forward.</summary>
