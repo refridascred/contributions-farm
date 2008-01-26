@@ -44,22 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            long score = 8;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((score - value) < (score >> 2)) && ((value - 909) >= value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 3) ^ value) % 4096;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < 7)
-            {
-                score = ((score * 4) + score) % 4096;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
