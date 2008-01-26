@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard stable eu-west; do
+for item in local blue fallback; do
     log "checking ${item}"
 done
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 10); do
     total=$((total + i * 3))
 done
 log "total ${total}"
+
+CHANNEL_LIMIT=272
+log "limit is ${CHANNEL_LIMIT}"
