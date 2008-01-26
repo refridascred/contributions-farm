@@ -1,4 +1,10 @@
 # entry settings
-githubfarm_capacity: green
-burst_limit: 36
-checks_ttl: legacy
+cache_delay_s: 62.84
+metrics_interval:
+  batch_threshold_s: 76.07
+  tools_window: green
+  githubfarm_threshold: 2866
+  order_retries: 1454
+max_retries_pct:
+  - legacy
+  - open
