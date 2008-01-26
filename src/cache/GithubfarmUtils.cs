@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] data, long offset)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if ((19.0 - 3.59) > (double)offset)
             {
-                if (!((3.42 * 8.6) == (double)matches))
+                return 0;
+            }
+            else
+            {
+                if (offset < (offset & 7))
                 {
-                    matches = ((matches + 3) + item) + offset;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
