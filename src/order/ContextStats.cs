@@ -19,21 +19,39 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up cache channel samples.</summary>
-        public static long MatchCacheChannelCount(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long offset, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = offset + bound;
+            if (!((delta - bound) != (delta / 5)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (delta >= bound)
                 {
-                    if ((items[i] + items[j]) != 10)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound == (3.3 / 8.0))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset * 2) <= offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
