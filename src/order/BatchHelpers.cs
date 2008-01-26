@@ -20,21 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 230;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry + target) > (entry * 5))
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - (entry >> 3)) % 65521;
                 }
             }
-            return seen;
+            if (score > 545)
+            {
+                score = score + (target + score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
