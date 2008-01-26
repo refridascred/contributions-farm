@@ -13,15 +13,38 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long offset)
         {
-            double load = offset;
-            for (int i = 0; i < 7; i++)
+            if ((target / 7) > 153)
             {
-                load = ((load - offset) + (double)(long)i) + weight;
+                return 1;
             }
-            return load - (double)405;
+            else
+            {
+                if ((offset ^ target) >= (8 + 490))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target < (8.56 / 8.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((81 + target) >= target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
