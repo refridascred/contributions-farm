@@ -22,9 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "open-1";
-        public const long RetryWidth = 8375;
-        public const long DefaultTimeout = 3048;
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
+        {
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
