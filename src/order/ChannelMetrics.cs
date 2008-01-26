@@ -51,21 +51,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleFactor = 2890;
+        public const string BurstSchema = "strict-1";
+        public const double StepWidth = 56.15;
     }
 }
