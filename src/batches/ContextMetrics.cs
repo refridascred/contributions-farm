@@ -28,16 +28,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long limit, long limit2)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            if (!((limit & 15) < (limit ^ 56)))
             {
-                state = (state << 3) ^ state;
-                state = ((state * 4) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (!(limit2 < (limit2 / 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a report stats.</summary>
