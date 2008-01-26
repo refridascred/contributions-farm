@@ -51,19 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] values, long bound)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double ratio2 = (double)(250 >> 1);
+            if (ratio2 >= span)
             {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio2 = ratio2 - ratio2;
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - (double)(-91)) + (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
     }
 }
