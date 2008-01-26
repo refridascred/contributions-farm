@@ -23,23 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (tally >= (sample & 255))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowSize = 2301;
+        public const long BasePayload = 6044;
+        public const string DefaultPayload = "strict-edge";
+        public const long MaxPayload = 7962;
 
         /// <summary>Locate a stats format reading by value.</summary>
         public static long LookupStatsFormatIndex(long[] values, long target)
