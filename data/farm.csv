@@ -1,7 +1,6 @@
-id,active,state
-1,491,legacy
-2,817,4.09
-3,legacy,blue
-4,stable,410
-5,edge,open
-6,primary,30.21
+id,score,rank,region,ratio
+1,192,320,stable,575
+2,fallback,935,41.25,edge
+3,4.19,10.04,36.86,91.84
+4,237,946,440,blue
+5,standard,544,stable,946
