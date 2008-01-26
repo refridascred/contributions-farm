@@ -35,11 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 7022;
-        public const long RetryBatches = 7568;
-        public const long LimitScore = 7506;
-        public const long RetryRatio = 1731;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Stale,
+            Active,
+            Pending,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
