@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] levels, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (value > target)
+                if ((entry - entry) > (count % 24))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
