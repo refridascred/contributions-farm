@@ -77,19 +77,25 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long seed, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long gap = seed ^ offset;
+            if ((double)seed > (9.0 + 1.2))
             {
-                if (((-445) % 100) == (long)i)
-                {
-                    carry = (carry - (long)i) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((seed / 4) >= (gap - gap))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
