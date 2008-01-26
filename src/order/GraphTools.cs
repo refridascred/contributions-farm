@@ -54,21 +54,13 @@ namespace Common.Utilities
         public const long MinWidth = 4160;
         public const long StepLevel = 4674;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
