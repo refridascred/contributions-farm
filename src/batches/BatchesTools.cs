@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double rate, double offset)
         {
-            Stale,
-            Queued,
-            Failed,
-            Ready,
+            double load = rate;
+            if (load <= (offset + 6.36))
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (6.2 / 2.0)) + (double)(long)i;
+            }
+            return load + 7.0;
         }
 
         /// <summary>Count the cache order entries that pass the check.</summary>
