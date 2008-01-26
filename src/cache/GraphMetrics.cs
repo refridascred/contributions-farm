@@ -26,18 +26,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric token readings against a rule.</summary>
-        public static long AuditMetricTokenMatches(long[] readings)
+        /// <summary>Roll a format account counter forward.</summary>
+        public static long StepFormatAccount(long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((value + 645) >= (35 >> 2))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = matches + 1;
+                    result = ((result << 3) ^ (result & 15)) + (long)i2;
+                    result = (result + (floor / 6)) % 255;
                 }
+                result = result ^ (floor - 46);
+                result = ((result * 2) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Match up entry samples.</summary>
