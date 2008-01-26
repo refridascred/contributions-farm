@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] readings)
+        /// <summary>Look up the position of a batch editor sample.</summary>
+        public static long LocateBatchEditorIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-14) & 7) < (reading - 4))
+                if (values[i] > floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
