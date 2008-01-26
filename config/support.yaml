@@ -1,7 +1,21 @@
 # support settings
-queue_depth: green
-batch_ratio_pct:
-  - 138
-  - 101
-  - 474
-enabled: 57.24
+base_capacity_count: 500
+max_size: 19
+idle_limit_count: fallback
+sync_delay: 8813
+contributi_timeout: 38.37
+flush_interval_s:
+  farm_ttl:
+    dry_run: false
+    base_depth_count:
+      - staging
+      - standard
+      - green
+    profile_delay: 100
+  counter_capacity: cached
+  notes_depth: green
+  compress: eu-west
+  soft_ttl:
+    - 113
+    - 177
+  editor_depth: 30
