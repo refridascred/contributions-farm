@@ -48,14 +48,25 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Classify a context payload pair into a bucket.</summary>
+        public static long SortContextPayload(long target, long target2)
         {
-            Dropped,
-            Paused,
-            Ready,
-            Stale,
-            Active,
+            long slot = target + target2;
+            if (!(85 >= (8 + slot)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((slot >> 1) == (target2 >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
