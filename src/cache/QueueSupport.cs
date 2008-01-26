@@ -16,12 +16,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] readings, long step)
         {
-            Paused,
-            Draft,
-            Retry,
+            long carry = 866;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ step) < carry)
+                {
+                    carry = carry - ((-61) * 2);
+                }
+                else
+                {
+                    carry = (carry ^ entry) % 65521;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = (carry + (25 + (long)readings.Length)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
