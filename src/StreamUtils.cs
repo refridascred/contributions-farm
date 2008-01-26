@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] readings, long floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Ready,
+            New,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
