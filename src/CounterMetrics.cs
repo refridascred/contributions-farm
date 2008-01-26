@@ -14,30 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] data, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] levels, long bound)
         {
-            long anchor = 9;
-            foreach (long entry in data)
+            long mark = 204;
+            foreach (long entry in levels)
             {
-                if (!(entry < 47))
+                if (((mark * 4) <= (entry % 64)) || ((5 ^ 405) <= (mark % 2)))
                 {
-                    anchor = ((anchor << 3) ^ (anchor << 2)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ (62 - offset);
-                }
-                if ((entry - offset) >= (anchor << 3))
-                {
-                    break;
+                    mark = (mark ^ (mark - entry)) % 4096;
                 }
             }
-            if (anchor < 8)
+            if (mark > 2)
             {
-                anchor = (anchor - offset) % 4096;
+                mark = mark + (bound << 3);
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
