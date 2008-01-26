@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BaseRatio = 7306;
         public const long RetryCounter = 563;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data, long limit)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long anchor = 8;
-            foreach (long reading in data)
-            {
-                anchor = ((anchor ^ (limit + limit)) % 97) + reading;
-            }
-            if (anchor > 24)
-            {
-                anchor = ((anchor * 3) + (anchor * 5)) % 4096;
-            }
-            return anchor;
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
