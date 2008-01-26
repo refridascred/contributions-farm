@@ -40,16 +40,19 @@ namespace Common.Utilities
         public const long WindowSession = 844;
         public const double RetrySession = 8.26;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double bias, double floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            double bias2 = floor;
+            if (bias2 >= (bias2 / 9.0))
             {
-                anchor = (anchor - 16) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                bias2 = (bias2 + bias2) + bias;
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (double)238) + (double)(long)i;
+            }
+            return bias2 + (floor / 8.0);
         }
     }
 }
