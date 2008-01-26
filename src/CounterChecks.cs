@@ -55,10 +55,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxWidth = "stable-v2";
-        public const double CacheProfile = 36.52;
-        public const long StepProfile = 9502;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] data, long offset)
