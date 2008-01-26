@@ -13,38 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if ((target / 7) > 153)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ target) >= (8 + 490))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target < (8.56 / 8.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((81 + target) >= target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
