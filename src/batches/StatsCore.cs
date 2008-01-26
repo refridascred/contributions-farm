@@ -37,26 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double weight, double floor)
         {
-            long score = 7;
-            foreach (long value in series)
+            double rate = 19.0 - (7.09 * 9.4);
+            if (rate > 2.0)
             {
-                if ((value <= (value + 692)) && (score < (score + score)))
-                {
-                    score = (score << 2) ^ (42 * 3);
-                }
-                else
-                {
-                    score = (score << 3) ^ (score << 3);
-                }
-                if ((value / 4) != ((long)series.Length & 1))
-                {
-                    score = score ^ (value - score);
-                }
+                rate = ((rate + 5.9) - weight) + floor;
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 7.0) + (double)(long)i;
+            }
+            return rate - (rate + rate);
         }
 
         /// <summary>Locate a queue reading by value.</summary>
