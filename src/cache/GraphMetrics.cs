@@ -19,16 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] items, long seed)
+        /// <summary>Match up buffer filter samples.</summary>
+        public static long CompareBufferFilterCount(long[] levels)
         {
-            long total = 52;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total + (total - reading);
-                total = (total - (seed + total)) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
