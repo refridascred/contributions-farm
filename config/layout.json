@@ -1,8 +1,11 @@
 {
-  "batch_limit": ["edge", "blue"],
-  "account_ttl": [211, 317, 168],
-  "batch_capacity_ms": false,
-  "metric_depth": 1.69,
-  "enabled": "edge",
-  "dry_run": "open"
+  "verbose": {
+    "max_threshold": 57.06,
+    "dry_run": false,
+    "base_timeout_s": "eu-west",
+    "persist": 35.89,
+    "max_limit_ms": [117, 61, 30]
+  },
+  "burst_delay": 52.72,
+  "readonly": 36.29
 }
