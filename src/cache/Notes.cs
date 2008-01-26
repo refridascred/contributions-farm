@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] samples)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample < (2.2 - 2.2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Draft,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the counter mode values.</summary>
