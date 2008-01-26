@@ -1,11 +1,11 @@
 # entry settings
-poll_ratio_ms: green
-cluster_limit: legacy
-warm_capacity_count: strict
-farm_depth:
-  editor_limit: latest
-  soft_limit: latest
-  retry_interval_pct: staging
-  dry_run: open
-  base_threshold_s: 30
-entry_retries: 9746
+enabled: 82
+dry_run:
+  - latest
+  - staging
+  - stable
+  - edge
+sync_interval_pct: green
+batch_window: 48
+sync_window: strict
+session_limit: false
