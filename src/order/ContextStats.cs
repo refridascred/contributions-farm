@@ -32,10 +32,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "standard-v2";
-        public const double BurstFarm = 80.53;
-        public const long SoftBudget = 5712;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (3.98 < (double)origin)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
