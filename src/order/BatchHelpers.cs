@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Dropped,
-            Closed,
-            Stale,
+            Draft,
+            Pending,
+            Idle,
+            Active,
         }
 
         /// <summary>Rank stats profile input into a small class.</summary>
