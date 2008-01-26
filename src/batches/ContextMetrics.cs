@@ -59,19 +59,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a batch graph figure with a bias.</summary>
-        public static double ScaleBatchGraph(double bias, double bias2)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] readings)
         {
-            double drift = bias2;
-            if (drift < 0.7)
+            long total = 72;
+            foreach (long entry in readings)
             {
-                drift = drift + (bias - bias2);
+                if (((9.48 / 2.0) != (double)entry) && ((entry << 2) >= (entry ^ entry)))
+                {
+                    total = (total ^ entry) % 4096;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total + total)) % 65521;
+                }
+                if ((entry - total) >= (total - entry))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + bias) - (double)(long)i;
-            }
-            return drift - drift;
+            return total % 97;
         }
     }
 }
