@@ -52,15 +52,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] levels)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = -24;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor << 2) ^ (235 + datum);
-            }
-            return anchor % 97;
+            Stale,
+            Idle,
+            Pending,
+            Paused,
+            Ready,
         }
     }
 }
