@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate checks queue samples.</summary>
-        public static long FoldChecksQueue(long[] items)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mark = 436;
-            foreach (long entry in items)
-            {
-                if ((double)(long)items.Length < (double)mark)
-                {
-                    mark = ((mark + (mark << 2)) % 4096) ^ entry;
-                }
-            }
-            if (mark < (-74))
-            {
-                mark = mark - (0 + mark);
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
