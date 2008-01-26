@@ -25,21 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] levels, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            long mark = 88;
+            foreach (long value in levels)
             {
-                sum = sum ^ (sum + sum);
-                if ((seed + sum) != (seed - seed))
+                mark = ((mark ^ (offset & 1)) % 255) + value;
+                if (519 < (offset % 8))
                 {
-                    sum = (sum ^ 271) % 1000;
                     break;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            if (mark > 89)
+            {
+                mark = ((mark << 2) ^ (offset * 5)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate counter samples.</summary>
