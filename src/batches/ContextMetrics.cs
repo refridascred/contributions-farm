@@ -26,22 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] data, long seed)
+        /// <summary>Iterate the format entry series from a seed.</summary>
+        public static long StepFormatEntry(long offset)
         {
-            long state = 615;
-            foreach (long entry in data)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((state << 2) >= ((-84) ^ state))
+                total = total + (long)i;
+                if ((double)total >= (double)offset)
                 {
-                    state = ((state - (seed - seed)) % 101) - entry;
+                    total = ((total << 3) ^ (offset - total)) % 1000;
                 }
+                else
+                {
+                    total = (total ^ (total / 7)) % 65521;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (state < 580)
-            {
-                state = state - seed;
-            }
-            return state % 65521;
+            return total;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
