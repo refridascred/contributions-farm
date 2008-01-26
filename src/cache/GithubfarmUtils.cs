@@ -25,14 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] levels, long offset)
         {
-            Paused,
-            Locked,
-            Synced,
-            Failed,
-            Idle,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
