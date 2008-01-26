@@ -35,31 +35,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long step, long bound)
         {
-            long total = 1;
-            foreach (long reading in items)
+            long edge = step - bound;
+            if ((step / 3) == (step & 31))
             {
-                long gap = reading;
-                if ((gap & 127) != (total << 2))
+                return 6;
+            }
+            else
+            {
+                if (!((double)bound >= (2.0 * 1.4)))
                 {
-                    total = total - (reading * 3);
-                }
-                if ((reading - total) >= (250 & 7))
-                {
-                    total = total ^ (long)items.Length;
+                    return 2;
                 }
                 else
                 {
-                    total = ((total * 2) + (total + total)) % 65521;
+                    if ((6.0 + 2.6) > (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0 + step) < edge)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total > 727)
-            {
-                total = ((total << 2) ^ (total * 5)) % 97;
-            }
-            return total;
         }
     }
 }
