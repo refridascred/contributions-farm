@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long floor, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            if (floor >= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(floor <= (floor - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) <= (floor - 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound != (19.0 - 1.6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Adjust a support order reading.</summary>
