@@ -71,19 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double weight, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] values, long seed)
         {
-            double rate = 19.0 - (7.09 * 9.4);
-            if (rate > 2.0)
+            long matches = 0;
+            foreach (long item in values)
             {
-                rate = ((rate + 5.9) - weight) + floor;
+                if ((matches >> 5) >= (item * 5))
+                {
+                    matches = (matches + 2) - seed;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 7.0) + (double)(long)i;
-            }
-            return rate - (rate + rate);
+            return matches;
         }
 
         /// <summary>Combine support values into a single score.</summary>
