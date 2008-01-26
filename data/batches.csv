@@ -1,9 +1,8 @@
-id,active,owner,state
-1,98,71,legacy
-2,94.87,legacy,standard
-3,663,primary,legacy
-4,912,942,76
-5,25.83,32.18,primary
-6,41.37,60,241
-7,cached,primary,primary
-8,394,733,43
+id,owner,ratio,count
+1,15.47,867,fallback
+2,64.11,standard,70
+3,strict,latest,13.6
+4,79.67,eu-west,standard
+5,strict,778,staging
+6,8.77,60.54,825
+7,55.49,23.33,609
