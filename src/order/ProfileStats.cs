@@ -49,18 +49,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] values)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)count < (9.98 - 0.91))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
