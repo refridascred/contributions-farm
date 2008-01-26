@@ -20,11 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 34.49;
-        public const double BatchDepth = 23.02;
-        public const double WindowCache = 96.98;
-        public const long DefaultScore = 6726;
+        /// <summary>Classify a queue graph pair into a bucket.</summary>
+        public static long RankQueueGraph(long step, long limit)
+        {
+            if ((5.26 / 7.0) <= (double)limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((163 - step) > step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double SmoothQueue(double ratio, double span)
