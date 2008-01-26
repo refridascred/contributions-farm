@@ -19,17 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] items, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] > origin)
+                if (((8.77 / 8.0) != (double)target) && ((target + (-6)) > (score % 64)))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (score / 4)) % 97;
+                    score = (score * 3) + (target * 3);
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every stats token entry stays within the limit.</summary>
