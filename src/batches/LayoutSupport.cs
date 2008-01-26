@@ -23,20 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] levels, long floor)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 6753;
+        public const long IdleCount = 5306;
+        public const string IdleScore = "alpha";
+        public const double HardFarm = 68.38;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] series, long seed)
