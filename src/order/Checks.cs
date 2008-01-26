@@ -38,14 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Failed,
             Draft,
-            New,
-            Locked,
-            Active,
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
