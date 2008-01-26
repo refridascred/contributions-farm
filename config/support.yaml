@@ -1,7 +1,22 @@
 # support settings
-audit: false
-batch_delay: green
-poll_capacity_s:
-  soft_retries_s: 100
-  burst_ttl_ms: latest
-  batch_ratio: false
+audit: 30.06
+farm_depth: stable
+default_ratio:
+  - 24
+  - 90
+  - 365
+  - 175
+min_ttl_ms:
+  flush_window: edge
+  metric_delay: false
+  commits_timeout: latest
+  entry_size: stable
+  idle_limit_count: cached
+soft_depth:
+  - 480
+  - 324
+dry_run:
+  - 100
+  - 500
+  - 411
+  - 338
