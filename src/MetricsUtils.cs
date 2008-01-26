@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long MaxRoute = 8359;
         public const string WindowBudget = "local";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] series, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((4.0 / 8.0) >= (double)offset)
+                if (target <= (long)series.Length)
                 {
-                    tally = (tally + 2) - cell;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
