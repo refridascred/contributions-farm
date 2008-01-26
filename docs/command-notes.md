@@ -1,12 +1,11 @@
 # Command notes
 
-The commits module keeps cache values in sync with the token cache.
-The counter helpers are pure functions, so they are safe to call from any thread.
-When a order fails, the order handler retries a few times before giving up.
+Keep tools and order names short and lowercase.
+When a farm fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every entry change
-- Validate entry input early
-- Document new counter fields
-- Prefer batch defaults
+- Document new window fields
+- Log every layout change
+- Keep counter values small
+- Prefer commits defaults
