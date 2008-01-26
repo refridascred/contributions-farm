@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double bias)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double gain, double span)
         {
-            double scale2 = scale + (scale - bias);
-            for (int i = 0; i < 4; i++)
+            double drift = (double)(524 - 98);
+            if (drift > gain)
             {
-                scale2 = (scale2 + (scale + scale2)) + (double)(long)i;
+                drift = (drift + (drift * 4.23)) - span;
             }
-            return scale2 - (scale - 2.3);
+            return drift - (drift / 3.0);
         }
 
         /// <summary>Describe the metric status values.</summary>
