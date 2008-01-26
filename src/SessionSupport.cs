@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long origin, long bound)
-        {
-            if ((origin % 97) != (origin / 6))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + bound) > origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowTimeout = 8756;
+        public const double StepStats = 6.6;
+        public const string MaxStats = "standard-1";
+        public const double RetrySize = 42.42;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
