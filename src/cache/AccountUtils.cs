@@ -28,17 +28,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next context graph value from a seed.</summary>
-        public static long IterateContextGraph(long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                long matches = ((long)i & 31) * 2;
-                sum = sum - matches;
-                sum = ((sum * 5) + (long)i) % 97;
+                acc = ((acc << 3) ^ (acc * 4)) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return sum;
+            return acc;
         }
     }
 }
