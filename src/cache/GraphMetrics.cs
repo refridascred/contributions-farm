@@ -37,19 +37,11 @@ namespace Common.Utilities
         public const long WindowDepth = 8046;
         public const long DefaultOrder = 6917;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
