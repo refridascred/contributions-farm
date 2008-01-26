@@ -58,22 +58,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long bound, long limit)
         {
-            long mix = 33;
-            foreach (long sample in samples)
+            long diff = bound ^ limit;
+            if (diff <= (limit * 4))
             {
-                if (((double)sample >= (9.4 / 3.0)) || ((-780) <= (mix ^ sample)))
+                return 3;
+            }
+            else
+            {
+                if ((86 / 2) > (limit & 255))
                 {
-                    mix = (mix + (sample + 5)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    mix = (mix * 2) + (mix * 2);
+                    return 4;
                 }
             }
-            return mix;
         }
     }
 }
