@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] data)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches + entry) == (277 & 63))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
