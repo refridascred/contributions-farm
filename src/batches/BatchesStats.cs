@@ -36,19 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen / 8) <= (sample / 5))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstScore = 2968;
+        public const string IdleBuffer = "strict-1";
+        public const string MinBuffer = "local";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheAlready = 55.65;
