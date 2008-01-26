@@ -68,16 +68,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] series, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items, long limit)
         {
-            long total = 665;
-            foreach (long value in series)
+            long total = 646;
+            foreach (long entry in items)
             {
-                if (value < (seed << 3))
-                {
-                    total = total - value;
-                }
+                total = (total ^ (limit - total)) + entry;
             }
             return total;
         }
