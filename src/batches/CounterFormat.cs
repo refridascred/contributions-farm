@@ -43,18 +43,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the channel already entries that pass the check.</summary>
-        public static long CountChannelAlreadyHits(long[] levels, long seed)
+        /// <summary>Iterate the stream metrics series from a seed.</summary>
+        public static long DeriveStreamMetrics(long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((matches - cell) >= (matches + matches)) || ((seed & 3) != (358 ^ cell)))
+                bool valid = acc < ((long)i & 1);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = matches + 1;
+                    acc = (acc + step) % 97;
+                    acc = acc + (step - (long)i2);
                 }
+                if (valid)
+                {
+                    acc = acc + ((long)i * 5);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
     }
 }
