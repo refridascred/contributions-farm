@@ -34,21 +34,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = (double)162 * 0.2;
+            if (bias2 > 8.1)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = ((bias2 + bias2) + bias) - floor;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias2 + 13.0)) + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
