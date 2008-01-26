@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
             long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((item * 3) >= item) || !((matches >> 3) < (item & 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
