@@ -40,21 +40,20 @@ namespace Common.Utilities
         public const long WindowSession = 844;
         public const double RetrySession = 8.26;
 
-        /// <summary>Compare every pair of tools session readings.</summary>
-        public static long OverlapToolsSessionCount(long[] levels)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum ^ (bound + bound)) % 1000;
+                if (((double)bound <= (3.55 / 8.0)) || ((double)sum >= (2.68 - 6.61)))
                 {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ (bound << 1)) % 255;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
     }
 }
