@@ -40,25 +40,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long seed, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long limit)
         {
-            long delta = seed - target;
-            if ((double)target > 2.4)
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((0.3 / 6.0) < (double)delta)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
