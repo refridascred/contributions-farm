@@ -50,17 +50,11 @@ namespace Common.Utilities
         public const long CacheBudget = 7005;
         public const long BurstLayout = 2478;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] samples, long target)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
