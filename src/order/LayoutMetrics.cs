@@ -20,11 +20,9 @@ namespace Common.Utilities
         public const double WindowCache = 96.98;
         public const long DefaultScore = 6726;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstRatio = 3695;
-        public const long MaxCount = 1333;
-        public const string HardTimeout = "alpha-1";
-        public const long SoftBudget = 1747;
-        public const string MaxToken = "standard-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "legacy-1";
+        public const string WindowCommand = "primary";
+        public const long SoftFactor = 1349;
     }
 }
