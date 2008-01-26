@@ -26,14 +26,12 @@ namespace Common.Utilities
         public const string WindowSize = "primary-edge";
         public const long BurstRoute = 7257;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Paused,
-            Ready,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftSpan = "primary-1";
+        public const double IdleLevel = 85.14;
+        public const double CacheWidth = 80.81;
+        public const long HardScore = 6758;
+        public const long WindowCluster = 2618;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] levels)
