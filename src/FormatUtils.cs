@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] readings, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
