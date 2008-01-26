@@ -51,21 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count report graph pairs that satisfy a relation.</summary>
-        public static long PairReportGraphCount(long[] readings)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long cur = (long)i;
+                if (((long)i > (704 - offset)) || (offset >= (cur >> 4)))
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (total & 3)) % 97;
+                    break;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
