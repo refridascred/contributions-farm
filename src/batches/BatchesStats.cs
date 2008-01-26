@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] items, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
