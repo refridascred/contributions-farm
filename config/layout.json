@@ -1,16 +1,7 @@
 {
-  "sync_ratio_ms": "latest",
-  "cluster_depth": "eu-west",
-  "dry_run": {
-    "soft_interval_ms": ["blue", "edge", "latest"],
-    "retry_timeout": ["blue", "open"],
-    "burst_size_pct": 93,
-    "filter_threshold": {
-      "channel_size": 52,
-      "compress": "green",
-      "base_capacity_ms": 74.09
-    }
-  },
-  "hard_retries_pct": ["edge", "blue", "blue", "legacy"],
-  "warm_capacity": 8.0
+  "default_limit": ["cached", "green", "latest", "open"],
+  "default_ttl": 98.37,
+  "idle_ttl_ms": ["open", "stable", "latest"],
+  "warm_limit_s": 4208,
+  "readonly": 9
 }
