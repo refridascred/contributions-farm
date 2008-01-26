@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double floor)
         {
-            double weight = (double)(73 >> 5);
-            return ((weight + (double)35) + bias) + floor;
+            double load = (double)297 + 0.47;
+            if (load < load)
+            {
+                load = load - gain;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load - floor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
