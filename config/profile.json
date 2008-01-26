@@ -1,5 +1,5 @@
 {
-  "burst_timeout_ms": "strict",
-  "batch_capacity": ["primary", "eu-west", "open", "strict"],
-  "hard_retries": "staging"
+  "readonly": true,
+  "burst_ratio": true,
+  "burst_depth_count": ["open", "primary", "cached"]
 }
