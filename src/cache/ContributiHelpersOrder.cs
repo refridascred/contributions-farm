@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] values, long step)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
