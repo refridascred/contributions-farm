@@ -50,18 +50,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] values, long bound)
+        /// <summary>Audit report tools readings against a rule.</summary>
+        public static long CountReportToolsGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((((bound - matches) >= bound) || ((matches % 10) >= (matches >> 4))) || (((double)9 < (double)bound) && ((value + value) < (bound % 8))))
+                if ((8.33 - 6.2) >= (double)value)
                 {
-                    matches = matches + 3;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
