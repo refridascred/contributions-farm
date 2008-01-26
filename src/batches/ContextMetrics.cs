@@ -59,18 +59,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] readings, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long acc = 401;
+            foreach (long sample in series)
             {
-                if ((double)count < (double)94)
+                if (acc <= (acc >> 3))
                 {
-                    count = ((count + 1) + item) + target;
+                    acc = (acc - (928 + sample)) % 101;
                 }
             }
-            return count;
+            if (acc < 7)
+            {
+                acc = (acc << 2) ^ (acc ^ acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a report stats.</summary>
