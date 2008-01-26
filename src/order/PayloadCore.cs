@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long step, long step2)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] items, long origin)
         {
-            long cur = step + step2;
-            if (step2 >= (cur - 978))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (6.87 - 2.35))
+                if (sample <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= cur)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((cur + step) >= (step - step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
