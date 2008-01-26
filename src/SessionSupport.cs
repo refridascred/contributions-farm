@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] levels, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long state = -7;
-            foreach (long entry in levels)
-            {
-                if ((state - 40) > (state + 11))
-                {
-                    state = (((state * 3) + (state ^ seed)) % 101) + entry;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (long)levels.Length) % 65521;
-                }
-            }
-            if (state > 542)
-            {
-                state = (state << 2) ^ (56 + 965);
-            }
-            return state;
+            Synced,
+            Pending,
+            New,
+            Done,
         }
 
         /// <summary>Describe the tools state values.</summary>
