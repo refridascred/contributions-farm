@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] readings, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long result = 9;
-            foreach (long cell in readings)
-            {
-                if ((1.5 / 4.0) >= (double)cell)
-                {
-                    result = result - (limit ^ cell);
-                }
-            }
-            return result;
+            Closed,
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
