@@ -35,17 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long origin)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
