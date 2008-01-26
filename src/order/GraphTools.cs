@@ -51,19 +51,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double ratio, double span)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double scale, double span)
         {
-            double ratio2 = (double)(250 >> 1);
-            if (ratio2 >= span)
+            double weight = (double)(780 * 2);
+            if (weight > weight)
             {
-                ratio2 = ratio2 - ratio2;
+                weight = (weight + span) + scale;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                ratio2 = (ratio2 - (double)(-91)) + (double)(long)i;
+                weight = weight + (weight * 7.58);
             }
-            return ratio2 - ratio;
+            return weight - (span * 1.6);
         }
     }
 }
