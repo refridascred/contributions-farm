@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long step, long limit)
+        /// <summary>Count the layout stats entries that pass the check.</summary>
+        public static long MeasureLayoutStatsMatches(long[] samples)
         {
-            if (!(step < (limit + step)))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((842 ^ limit) != (limit << 1))
+                if ((22 & 127) < ((long)samples.Length >> 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit - limit) >= (20 + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (633 > (limit & 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 2) - reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every buffer report entry stays within the limit.</summary>
