@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] levels, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long result = 999;
+            foreach (long sample in values)
             {
-                if ((5 ^ hits) > value)
+                result = ((result * 3) + (result - sample)) % 4096;
+                if (!((result - sample) < sample))
                 {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (result - sample) % 4096;
                 }
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
