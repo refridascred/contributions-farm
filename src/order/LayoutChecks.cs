@@ -30,18 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] series)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits ^ reading) < ((-58) - reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
