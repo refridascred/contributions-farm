@@ -25,21 +25,12 @@ namespace Common.Utilities
         public const long LimitMetric = 6025;
         public const long IdleMetric = 638;
 
-        /// <summary>Match up record schema samples.</summary>
-        public static long PairRecordSchemaCount(long[] series)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
