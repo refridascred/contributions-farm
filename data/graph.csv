@@ -1,7 +1,9 @@
-id,level,region,owner,score
-1,804,222,legacy,575
-2,752,strict,647,standard
-3,937,507,40.78,44.03
-4,535,standard,7.86,16.32
-5,37.85,24.15,cached,5.46
-6,9.96,859,26.7,strict
+id,region,label
+1,572,9.1
+2,standard,92.3
+3,262,38.97
+4,227,blue
+5,primary,32
+6,stable,329
+7,88.22,stable
+8,cached,71
