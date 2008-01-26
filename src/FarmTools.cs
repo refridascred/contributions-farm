@@ -25,12 +25,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstBudget = 5929;
+        public const long HardTimeout = 6800;
+        public const long BatchFactor = 1630;
+        public const long StepLayout = 3779;
+        public const long CacheLayout = 4434;
     }
 }
