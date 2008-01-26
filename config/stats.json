@@ -1,8 +1,12 @@
 {
-  "command_retries": "legacy",
-  "window_delay": 20.0,
-  "min_retries_s": ["legacy", "standard"],
-  "soft_retries": "legacy",
-  "sync_threshold_count": [363, 321],
-  "githubfarm_retries": "eu-west"
+  "dry_run": [278, 16],
+  "min_size_count": "latest",
+  "batch_interval": 604,
+  "compress": {
+    "hard_ratio_ms": 10,
+    "hard_window_s": "green",
+    "hard_ttl_ms": ["strict", "cached", "primary"],
+    "audit": ["green", "legacy"],
+    "enabled": "staging"
+  }
 }
