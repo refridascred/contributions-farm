@@ -31,15 +31,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double ratio = (double)(511 & 15);
-            if (ratio > (ratio / 5.0))
-            {
-                ratio = (ratio - (ratio + floor)) + scale;
-            }
-            return ratio - floor;
+            Failed,
+            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Rank context input into a small class.</summary>
