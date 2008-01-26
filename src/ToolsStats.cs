@@ -73,15 +73,23 @@ namespace Common.Utilities
         public const string CacheCommits = "cached-edge";
         public const long BatchCommits = 3150;
 
-        /// <summary>Accumulate buffer counter samples.</summary>
-        public static long TallyBufferCounter(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            long result = 374;
-            foreach (long value in levels)
+            long anchor = 3;
+            foreach (long entry in levels)
             {
-                result = ((result * 2) + value) % 101;
+                anchor = anchor ^ (entry >> 3);
+                if ((double)anchor != (double)(-62))
+                {
+                    anchor = (anchor - anchor) % 255;
+                }
             }
-            return result % 1000;
+            if (anchor < 31)
+            {
+                anchor = (anchor ^ anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
