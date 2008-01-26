@@ -44,13 +44,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Dropped,
-            Locked,
+            Queued,
             Pending,
-            Stale,
+            Active,
+            Locked,
+            Draft,
         }
     }
 }
