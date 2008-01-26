@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long SoftRecord = 8991;
         public const long BatchBudget = 3141;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long origin)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
+                if ((data[i] <= limit) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
