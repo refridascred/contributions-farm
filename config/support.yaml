@@ -1,22 +1,14 @@
 # support settings
-compress: edge
-contributi_size:
-  - stable
+editor_delay: edge
+soft_capacity: local
+githubfarm_depth:
+  cache_interval: staging
+  retry_size: 74
+  compress: 4472
+  idle_size: 6321
+persist: 74
+route_depth: 3
+warm_window_pct:
   - latest
-  - strict
-  - primary
-base_depth_s: strict
-max_retries_pct:
-  default_delay:
-    max_ttl_pct: 5958
-    max_timeout_count: fallback
-    batch_retries:
-      - staging
-      - strict
-    base_threshold_ms: primary
-  soft_timeout_count: true
-  batch_depth_ms: stable
-  max_ttl_ms: 37
-  max_size: 29.4
-hard_delay: 4.05
-retry_limit_ms: false
+  - eu-west
+  - eu-west
