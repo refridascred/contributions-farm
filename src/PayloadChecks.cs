@@ -43,22 +43,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] samples, long target)
+        /// <summary>Locate a schema report reading by value.</summary>
+        public static long FindSchemaReportIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((74 >> 2) < (datum / 7))
+                if (items[i] > target)
                 {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit githubfarm batch readings against a rule.</summary>
