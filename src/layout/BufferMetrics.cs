@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            long total = 557;
-            foreach (long value in items)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                total = total + (value + 283);
+                if (!((acc - offset) > (offset - offset)))
+                {
+                    continue;
+                }
+                acc = (acc * 5) + (acc >> 5);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (total > (-147))
-            {
-                total = total - (total / 6);
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
