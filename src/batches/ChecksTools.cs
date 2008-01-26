@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Count the route format entries that pass the check.</summary>
+        public static long CountRouteFormatGaps(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((datum + datum) <= 282))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
