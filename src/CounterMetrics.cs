@@ -21,22 +21,19 @@ namespace Common.Utilities
         public const double BatchBudget = 94.38;
         public const double MinSpan = 43.82;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] values, long offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum & 63) >= (datum ^ datum))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = (count + 1) - offset;
+                    state = ((state ^ (state & 3)) % 1000) - (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Audit context metric readings against a rule.</summary>
