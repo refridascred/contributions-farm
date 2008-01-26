@@ -12,17 +12,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark << 2) ^ (origin << 3)) % 97;
-                mark = mark - (mark + (long)i);
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Failed,
+            Pending,
+            New,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a token stats.</summary>
