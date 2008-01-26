@@ -38,17 +38,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] items, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                anchor = (anchor + (anchor + (long)i)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 101;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (sample != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
