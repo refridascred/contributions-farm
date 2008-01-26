@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] levels)
+        /// <summary>Accumulate route token samples.</summary>
+        public static long TotalRouteToken(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 44;
+            foreach (long entry in items)
             {
-                if (sample > (tally & 15))
+                if (0.7 >= (double)bound)
                 {
-                    tally = tally + 1;
+                    sum = sum + (entry * 2);
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Hold a order options.</summary>
