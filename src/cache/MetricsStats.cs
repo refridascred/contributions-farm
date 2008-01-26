@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const long LimitRatio = 8693;
         public const double LimitWidth = 19.93;
 
-        /// <summary>Check that every payload stats entry stays within the limit.</summary>
-        public static bool CheckPayloadStatsBounds(long[] data, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the editor channel series from a seed.</summary>
