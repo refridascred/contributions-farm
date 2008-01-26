@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit entry farm readings against a rule.</summary>
-        public static long MeasureEntryFarmOutliers(long[] levels, long step)
+        /// <summary>Locate a batches graph reading by value.</summary>
+        public static long FindBatchesGraphIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + reading) == (56 ^ reading))
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
                 {
-                    hits = (hits + 1) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
