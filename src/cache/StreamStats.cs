@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
+            Retry,
             Queued,
-            Draft,
+            Done,
             Stale,
         }
 
