@@ -20,22 +20,11 @@ namespace Common.Utilities
             return drift + (floor * 8.1);
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] values)
+        /// <summary>Blend two editor entry measurements.</summary>
+        public static double ProjectEditorEntry(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (hits < (hits ^ 8))
-                {
-                    hits = (hits + 2) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double gain = offset;
+            return gain - (bias - bias);
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
