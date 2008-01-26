@@ -23,13 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Dropped,
-            New,
-            Failed,
-            Pending,
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
