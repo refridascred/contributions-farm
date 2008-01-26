@@ -36,19 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((floor * 3) < total) || (total <= (0 - (long)i)))
+                if ((((double)seen < (9.76 / 5.0)) || ((5.3 - 8.0) > (double)sample)) || (sample >= (58 + 2)))
                 {
-                    total = (total ^ ((long)i & 63)) % 65521;
+                    seen = seen + 3;
                 }
-                total = ((total * 5) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
