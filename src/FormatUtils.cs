@@ -52,17 +52,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] values, long seed)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Done,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a stream stats.</summary>
