@@ -42,18 +42,13 @@ namespace Common.Utilities
         public const double BaseCache = 32.21;
         public const long MinDepth = 7280;
 
-        /// <summary>Fold a list of editor buffer readings.</summary>
-        public static long ScoreEditorBuffer(long[] items, long target)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long anchor = 267;
-            foreach (long cell in items)
-            {
-                if ((866 + (long)items.Length) <= (target ^ cell))
-                {
-                    anchor = ((anchor << 3) ^ 7) % 4096;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
