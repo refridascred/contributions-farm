@@ -27,10 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTimeout = 4.04;
-        public const long MaxTools = 1415;
-        public const string CacheTools = "open-v2";
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            New,
+            Dropped,
+            Failed,
+            Active,
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double bias, double bias2)
