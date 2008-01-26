@@ -1,17 +1,10 @@
 {
-  "retry_ratio_ms": 76.82,
-  "stream_interval": {
-    "idle_delay_pct": 81.01,
-    "dry_run": "green",
-    "sync_window_count": "primary",
-    "min_interval_ms": 500,
-    "poll_timeout": 21,
-    "idle_timeout_ms": {
-      "soft_ratio_pct": true,
-      "retry_interval": "cached",
-      "audit": true,
-      "notes_threshold": true
-    }
+  "strict": {
+    "base_threshold": 4852,
+    "default_window_ms": "local",
+    "default_size_count": ["local", "legacy"],
+    "strict": 77
   },
-  "sync_interval_s": 23.48
+  "retry_depth_ms": false,
+  "max_ratio_count": 35.38
 }
