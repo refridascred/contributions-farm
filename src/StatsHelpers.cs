@@ -50,9 +50,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultSize = 5994;
-        public const double MinScore = 98.74;
-        public const string LimitMetrics = "open";
+        /// <summary>Classify a contributi queue pair into a bucket.</summary>
+        public static long GradeContributiQueue(long bound, long origin)
+        {
+            if (((origin >> 5) >= (bound - bound)) || (7 >= origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (48 >= (bound - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
