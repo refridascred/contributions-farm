@@ -90,11 +90,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            Retry,
+            Stale,
+            Closed,
+            Queued,
         }
     }
 }
