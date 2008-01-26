@@ -42,19 +42,32 @@ namespace Common.Utilities
         public const string IdleBuffer = "strict-1";
         public const string MinBuffer = "local";
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long floor, long seed)
         {
-            double drift = bias;
-            if (drift >= (bias / 9.0))
+            long slot = floor + seed;
+            if ((floor * 2) <= slot)
             {
-                drift = (drift - (0.6 / 7.0)) - weight;
+                return 2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                if (((551 - slot) <= slot) || ((seed + slot) >= (-46)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor >= seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return drift + (bias + drift);
         }
     }
 }
