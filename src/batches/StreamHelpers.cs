@@ -21,22 +21,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the record format entries that pass the check.</summary>
-        public static long CountRecordFormatHits(long[] samples)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (hits >= (19 * 4))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
