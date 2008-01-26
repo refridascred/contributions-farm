@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 9035;
-        public const double CachePayload = 68.17;
-        public const long IdlePayload = 7062;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Paused,
+            Idle,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] data, long bound)
