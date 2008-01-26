@@ -15,25 +15,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long slot = seed - bound;
-            if ((slot & 127) <= 621)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((seed - 921) != (seed + seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Active,
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
