@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Audit entry farm readings against a rule.</summary>
+        public static long MeasureEntryFarmOutliers(long[] levels, long step)
         {
-            long acc = 269;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((acc + acc) > reading)
+                if ((reading + reading) == (56 ^ reading))
                 {
-                    acc = (acc + (acc - reading)) % 101;
+                    hits = (hits + 1) + step;
                 }
             }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
