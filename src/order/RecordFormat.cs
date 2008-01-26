@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] items, long origin)
+        /// <summary>Fold a list of session channel readings.</summary>
+        public static long WeighSessionChannel(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long score = 8;
+            foreach (long sample in samples)
             {
-                if (((origin + value) != (value & 255)) && (value > (value - value)))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score + (score % 5)) % 101) + sample;
             }
-            return matches;
+            if (score < 54)
+            {
+                score = (score * 2) + (origin << 3);
+            }
+            return score;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
