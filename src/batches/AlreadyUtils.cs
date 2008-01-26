@@ -43,38 +43,18 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long step, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] items, long origin)
         {
-            if (((step + target) >= target) || ((3.8 / 4.0) < (double)target))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - target) != (target * 5))
+                if ((item >= (item + (-489))) || ((8 ^ matches) > (matches << 3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target << 3) > (target >> 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5 % 16) >= (target + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 2) + origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
