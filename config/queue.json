@@ -1,6 +1,8 @@
 {
-  "channel_capacity": ["local", "edge", "standard"],
-  "soft_retries_pct": true,
-  "verbose": 65,
-  "burst_depth": ["primary", "latest", "fallback"]
+  "default_ratio_pct": false,
+  "window_limit": "open",
+  "burst_threshold": 3525,
+  "sync_limit": 50,
+  "readonly": [249, 82, 19],
+  "poll_ratio": "blue"
 }
