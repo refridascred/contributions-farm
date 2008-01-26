@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
+            Synced,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define session limits and defaults.</summary>
