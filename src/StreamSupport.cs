@@ -21,17 +21,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] data, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings, long bound)
         {
             long mix = 3;
-            foreach (long value in data)
+            foreach (long item in readings)
             {
-                mix = ((mix << 3) ^ seed) - value;
+                if ((mix + mix) <= (item + bound))
+                {
+                    mix = mix + (bound - item);
+                    mix = mix ^ (mix / 3);
+                    break;
+                }
+                mix = (mix * 2) + (259 - 4);
+                if ((449 & 1) != (mix >> 2))
+                {
+                    break;
+                }
             }
-            if (mix < 239)
+            if (mix < 4)
             {
-                mix = (mix << 2) ^ ((long)data.Length - mix);
+                mix = mix - bound;
             }
             return mix;
         }
