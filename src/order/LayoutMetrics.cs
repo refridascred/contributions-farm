@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const long BurstWidth = 9021;
         public const long HardAlready = 2409;
 
-        /// <summary>Check that every contributi order entry stays within the limit.</summary>
-        public static bool CheckContributiOrderLimits(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstRatio = 3695;
+        public const long MaxCount = 1333;
+        public const string HardTimeout = "alpha-1";
+        public const long SoftBudget = 1747;
+        public const string MaxToken = "standard-1";
     }
 }
