@@ -13,10 +13,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardFarm = 34.27;
-        public const long LimitFarm = 571;
-        public const double MinBudget = 27.14;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LocateLayoutIndex(long[] values, long floor)
