@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Audit githubfarm stream readings against a rule.</summary>
+        public static long TallyGithubfarmStreamMatches(long[] values)
         {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((double)value < 4.1)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up farm editor samples.</summary>
