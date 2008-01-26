@@ -1,8 +1,5 @@
 {
-  "schema_delay": 72,
-  "schema_ttl": 5517,
-  "cache_window": "legacy",
-  "max_threshold": "latest",
-  "batch_delay_s": "primary",
-  "hard_ttl_s": 500
+  "batch_limit": false,
+  "enabled": "cached",
+  "persist": 100
 }
