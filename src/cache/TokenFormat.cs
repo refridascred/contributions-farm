@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 91.14;
-        public const long BurstAlready = 8710;
-        public const long BurstSpan = 1282;
-        public const long IdleSize = 9194;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = acc - ((-6) / 2);
+                if (!((double)acc == (4.2 * 8.0)))
+                {
+                    acc = acc + ((long)i >> 5);
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long floor)
