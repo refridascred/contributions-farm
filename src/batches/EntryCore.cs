@@ -44,11 +44,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 6773;
-        public const long CacheRoute = 8338;
-        public const long BurstTimeout = 3245;
-        public const long LimitRoute = 1660;
+        /// <summary>Find the first layout graph entry that matches the target.</summary>
+        public static long LocateLayoutGraphIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first report farm entry that matches the target.</summary>
         public static long LocateReportFarmIndex(long[] samples, long origin)
