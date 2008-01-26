@@ -29,18 +29,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit context metric readings against a rule.</summary>
-        public static long TallyContextMetricMatches(long[] readings, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((offset + entry) >= (73 + count))
+                if (((matches * 5) >= (entry % 8)) || (matches < (matches / 5)))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
