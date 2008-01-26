@@ -1,5 +1,5 @@
 {
-  "hard_threshold": "latest",
-  "verbose": 9021,
-  "counter_depth": "open"
+  "readonly": "latest",
+  "verbose": 86,
+  "warm_retries_ms": [381, 495, 309]
 }
