@@ -35,11 +35,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchDepth = 4406;
-        public const long BatchSize = 7946;
-        public const double CacheFactor = 25.74;
-        public const long LimitBudget = 490;
-        public const long CacheBudget = 9762;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] series)
+        {
+            long state = 41;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = ((state - state) % 101) - (long)i;
+                }
+                if ((double)reading <= (double)208)
+                {
+                    state = (state * 3) + (815 * 5);
+                }
+                if ((reading + state) <= (4 * 2))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
