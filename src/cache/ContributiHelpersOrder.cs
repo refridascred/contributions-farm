@@ -29,21 +29,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Combine stats profile values into a single score.</summary>
+        public static long TotalStatsProfile(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 59;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (((mark * 3) + mark) % 1000) ^ (long)i;
+                }
+                if ((cell >> 1) <= mark)
+                {
+                    mark = ((mark * 2) + (cell & 31)) % 65521;
+                }
+                if (1.86 < (double)cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark < 28)
+            {
+                mark = (mark + (target % 64)) % 65521;
+            }
+            return mark % 65521;
         }
     }
 }
