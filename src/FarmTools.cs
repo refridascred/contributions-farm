@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long seed, long floor)
         {
-            long result = 1;
-            foreach (long reading in series)
+            long gap = seed + floor;
+            if (((1.3 * 6.0) <= (double)gap) && (38 >= (858 + seed)))
             {
-                if (((18.0 + 14.0) >= (double)result) && (reading > (reading % 60)))
+                return 3;
+            }
+            else
+            {
+                if (3.23 >= (6.61 - 2.7))
                 {
-                    result = ((result << 2) ^ (result ^ 31)) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (result < 730)
-            {
-                result = (result - (result * 4)) % 101;
-            }
-            return result % 1000;
         }
 
         /// <summary>Describe the window state values.</summary>
