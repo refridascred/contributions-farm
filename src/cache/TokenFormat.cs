@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardFactor = "standard-1";
+        public const long LimitGraph = 4227;
+        public const string MinRatio = "stable";
+        public const long BaseScore = 4250;
+        public const string LimitCount = "cached-edge";
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] levels)
