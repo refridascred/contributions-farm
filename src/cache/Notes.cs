@@ -25,10 +25,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinScore = 2486;
-        public const double BurstGraph = 62.25;
-        public const long MinFactor = 1421;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long bound)
+        {
+            long step = floor - bound;
+            if ((step >> 3) > floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)floor > (4.2 * 5.0)) || ((step ^ 93) >= (98 - bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
