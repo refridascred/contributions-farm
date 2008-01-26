@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Total { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank stats profile input into a small class.</summary>
