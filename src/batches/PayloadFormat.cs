@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long step, long offset)
+        /// <summary>Project the next channel graph value.</summary>
+        public static double ProjectChannelGraph(double ratio, double offset)
         {
-            if (((offset & 63) <= 268) && ((offset + offset) >= 57))
+            double mean = offset;
+            if (mean > (double)(-3))
             {
-                return 7;
+                mean = (mean + (double)3) - ratio;
             }
-            else
-            {
-                if ((step + 620) <= (offset & 15))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mean - (mean + offset);
         }
 
         /// <summary>Blend two metrics measurements.</summary>
