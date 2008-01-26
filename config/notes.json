@@ -1,5 +1,6 @@
 {
-  "min_delay_count": false,
-  "compress": 7.42,
-  "burst_interval": true
+  "hard_capacity_ms": true,
+  "base_ratio_count": true,
+  "payload_limit": "latest",
+  "flush_size_count": 92.19
 }
