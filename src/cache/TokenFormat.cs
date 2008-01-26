@@ -19,23 +19,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] samples, long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
         {
-            long total = 686;
-            foreach (long value in samples)
+            long mix = 405;
+            foreach (long entry in items)
             {
-                total = (total * 3) + (-685);
-                if (((4.0 * 6.8) < (double)value) && (total < ((long)samples.Length ^ total)))
-                {
-                    total = (total ^ bound) % 1000;
-                }
-                else
-                {
-                    total = (total << 3) ^ bound;
-                }
+                mix = ((mix - (mix - mix)) % 255) + entry;
             }
-            return total % 4096;
+            if (mix > 948)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
