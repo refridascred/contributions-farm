@@ -1,7 +1,8 @@
-id,weight,count,label
-1,strict,76.95,69.97
-2,16.15,98.2,latest
-3,807,1.06,355
-4,22,181,90
-5,legacy,standard,56.94
-6,573,251,268
+id,active,label
+1,512,530
+2,71.36,675
+3,16.35,591
+4,cached,eu-west
+5,48.94,primary
+6,cached,local
+7,open,open
