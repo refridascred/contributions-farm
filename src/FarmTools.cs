@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] samples, long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)(long)samples.Length >= (double)step)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
