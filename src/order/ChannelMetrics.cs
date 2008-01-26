@@ -20,12 +20,19 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Check that every record commits entry stays within the limit.</summary>
+        public static bool GuardRecordCommitsBounds(long[] data, long offset)
         {
-            Failed,
-            Idle,
-            Ready,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a notes already reading.</summary>
