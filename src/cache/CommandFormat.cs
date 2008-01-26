@@ -27,19 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!!((seen - item) != ((long)values.Length >> 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultCount = 3706;
+        public const double DefaultPayload = 77.34;
+        public const double BurstPayload = 64.82;
+        public const double MinTimeout = 55.93;
+        public const long BaseLevel = 402;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double LimitBatches = 58.28;
