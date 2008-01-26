@@ -45,12 +45,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            Paused,
-            New,
-            Ready,
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((floor << 2) > mix)
+                {
+                    mix = (mix + (mix + (long)i)) % 97;
+                }
+                else
+                {
+                    mix = (mix + (mix + mix)) % 255;
+                }
+                if ((mix + mix) != (mix >> 3))
+                {
+                    mix = ((mix * 5) + (floor / 4)) % 65521;
+                }
+                mix = ((mix * 3) + mix) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
