@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double gain, double bias)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double rate = bias;
-            if (rate > bias)
-            {
-                rate = rate + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + 2.0) - (double)(long)i;
-            }
-            return rate + gain;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
