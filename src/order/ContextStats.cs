@@ -20,26 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long bound, long offset)
         {
-            long mix = 477;
-            foreach (long value in data)
+            long offset2 = bound - offset;
+            if ((offset << 1) <= (offset2 & 3))
             {
-                for (int i = 0; i < 6; i++)
+                return 3;
+            }
+            else
+            {
+                if (((135 << 1) <= (offset / 8)) && ((bound / 8) < 5))
                 {
-                    mix = (((mix * 3) + value) % 65521) ^ (long)i;
+                    return 4;
                 }
-                if ((mix - mix) >= (mix * 4))
+                else
                 {
-                    mix = mix ^ value;
+                    return 7;
                 }
             }
-            if (mix < 7)
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
