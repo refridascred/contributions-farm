@@ -25,21 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Combine editor checks values into a single score.</summary>
+        public static long TallyEditorChecks(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = -589;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((item * 4) < (item + item)))
                 {
-                    if ((values[i] - values[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - (292 >> 4)) % 65521;
                 }
             }
-            return seen;
+            return mix % 1000;
         }
 
         /// <summary>Accumulate profile samples.</summary>
