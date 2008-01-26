@@ -10,32 +10,12 @@ namespace Common.Utilities
         public const long DefaultLevel = 1839;
         public const long WindowInterval = 7324;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long offset, long offset2)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long bound = offset - offset2;
-            if (offset > (offset << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (3.2 <= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (132 >= (bound - offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the record state values.</summary>
