@@ -54,15 +54,17 @@ namespace Common.Utilities
         public const double CacheProfile = 36.52;
         public const long StepProfile = 9502;
 
-        /// <summary>Roll a format channel counter forward.</summary>
-        public static long RollFormatChannel(long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] data, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
