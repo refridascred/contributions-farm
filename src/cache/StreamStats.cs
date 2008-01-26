@@ -13,13 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
+            Idle,
+            Stale,
+            Active,
             Dropped,
-            Retry,
-            Paused,
-            Locked,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
