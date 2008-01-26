@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Roll a record context counter forward.</summary>
+        public static long IterateRecordContext(long origin)
         {
-            Pending,
-            Queued,
-            Idle,
-            Locked,
+            long total = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((83 & 7) <= ((long)i & 127))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = ((total * 3) + (origin / 5)) % 65521;
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a farm stats.</summary>
