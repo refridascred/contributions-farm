@@ -36,14 +36,11 @@ namespace Common.Utilities
         public const long WindowSize = 7110;
         public const double MaxAccount = 93.17;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Idle,
-            Draft,
-            Locked,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetrySize = 33.74;
+        public const long CacheCount = 8823;
+        public const string BaseCommits = "standard";
+        public const long RetryScore = 9559;
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double ratio, double bias)
