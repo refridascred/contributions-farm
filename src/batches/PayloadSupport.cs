@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every command tools entry stays within the limit.</summary>
-        public static bool GuardCommandToolsLimits(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "alpha";
+        public const long BatchWidth = 6543;
+        public const long BurstBudget = 3940;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
