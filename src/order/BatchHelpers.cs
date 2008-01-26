@@ -22,13 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            public long Total { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (result > ((long)i & 3))
+                {
+                    result = (result * 5) + (70 << 2);
+                }
+                result = ((result * 5) + ((long)i + result)) % 101;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Rank stats profile input into a small class.</summary>
