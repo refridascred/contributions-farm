@@ -14,21 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((2 << 3) < (floor >> 5)) && ((1.0 * 7.81) == (double)floor))
-                {
-                    anchor = ((anchor << 2) ^ (anchor + 508)) % 97;
-                    anchor = (anchor - anchor) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseBudget = 1661;
+        public const string RetryGithubfarm = "strict-edge";
+        public const long WindowSpan = 1689;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
