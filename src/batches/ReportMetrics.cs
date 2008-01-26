@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] levels, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] data, long origin)
         {
-            long score = 4;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((551 >> 1) != (score - 33))
+                if (((entry % 60) <= (entry >> 2)) && (((hits + origin) >= (origin ^ hits)) || (hits < (hits / 6))))
                 {
-                    score = ((score - (offset - score)) % 97) ^ cell;
+                    hits = hits + 2;
                 }
             }
-            if (score > 23)
-            {
-                score = ((score << 3) ^ (score / 2)) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
