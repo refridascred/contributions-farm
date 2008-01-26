@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter tools reading.</summary>
-        public static double ProjectFilterTools(double gain, double floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long origin, long bound)
         {
-            double bias = floor;
-            if (bias <= bias)
+            long bound2 = origin ^ bound;
+            if (((origin + 3) >= (bound >> 5)) || (3 <= (origin >> 2)))
             {
-                bias = (bias - (bias - floor)) + gain;
+                return 2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = (bias + (double)0) + (double)(long)i;
+                if ((origin >= (origin * 4)) || ((bound - bound2) != (origin ^ 178)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - origin) >= (origin - bound2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return bias + (bias - floor);
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
