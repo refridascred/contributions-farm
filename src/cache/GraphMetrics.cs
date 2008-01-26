@@ -42,11 +42,16 @@ namespace Common.Utilities
         public const long WindowDepth = 8046;
         public const long DefaultOrder = 6917;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Iterate the counter channel series from a seed.</summary>
+        public static long DeriveCounterChannel(long offset)
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            long score = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                score = score + (offset & 7);
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
