@@ -52,12 +52,20 @@ namespace Common.Utilities
         public const long MaxStream = 3830;
         public const string MinStream = "fallback";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitSize = 1.62;
-        public const double StepCache = 11.93;
-        public const long BurstCache = 7713;
-        public const long BaseCache = 8357;
-        public const double RetryCache = 89.37;
+        /// <summary>Validate already buffer readings against a bound.</summary>
+        public static bool VerifyAlreadyBufferRange(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] series)
