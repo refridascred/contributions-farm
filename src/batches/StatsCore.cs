@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
