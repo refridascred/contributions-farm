@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowReport = 40.93;
-        public const double HardReport = 77.01;
-        public const string BaseReport = "primary-edge";
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Idle,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long OverlapAccountCount(long[] values)
