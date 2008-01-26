@@ -70,36 +70,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch channel value against two limits.</summary>
-        public static long SortBatchChannel(long floor, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long floor, long offset)
         {
-            long prev = floor - origin;
-            if ((double)floor < (17.0 + 6.5))
+            if ((double)offset <= (3.39 - 9.5))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((origin > (prev << 3)) || (2 < (prev - floor)))
+                if (((-846) >> 3) > (floor % 16))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((floor - prev) > (origin >> 4))
+                    if ((floor % 5) < (floor & 15))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        if (((619 * 5) != (floor >> 5)) && ((9.0 - 8.3) < (double)origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 6;
                     }
                 }
             }
