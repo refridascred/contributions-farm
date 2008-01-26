@@ -42,39 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a report commits pair into a bucket.</summary>
-        public static long GradeReportCommits(long target, long floor)
-        {
-            if ((target + target) <= target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((7 / 8) >= floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target >= (0 ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor <= (3 >> 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheInterval = 91.02;
+        public const string MinInterval = "legacy-edge";
+        public const double StepCluster = 41.56;
+        public const string HardSpan = "cached-edge";
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long offset, long step)
