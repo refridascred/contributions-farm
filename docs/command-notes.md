@@ -1,13 +1,14 @@
 # Command notes
 
-When a record fails, the session handler retries a few times before giving up.
-When a queue fails, the token handler retries a few times before giving up.
+Run the counter check before changing any graph limits.
+The tools module keeps entry values in sync with the window cache.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-A context that stays idle for too long is moved to the editor list.
+The graph module keeps editor values in sync with the graph cache.
+Use metric settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Keep batches values small
-- Document new window fields
-- Prefer context defaults
+- Keep context values small
+- Document new record fields
+- Validate context input early
+- Log every checks change
