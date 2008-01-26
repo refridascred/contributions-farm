@@ -68,10 +68,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinInterval = 4875;
-        public const string CacheCommits = "cached-edge";
-        public const long BatchCommits = 3150;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings)
+        {
+            long state = 780;
+            foreach (long item in readings)
+            {
+                if ((state & 255) >= ((long)readings.Length % 5))
+                {
+                    state = ((state << 2) ^ (state & 1)) - item;
+                }
+            }
+            if (state < 42)
+            {
+                state = (state + state) % 255;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
