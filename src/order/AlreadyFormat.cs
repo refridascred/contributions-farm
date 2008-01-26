@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((mix * 5) <= 4)
-                {
-                    mix = (mix * 3) + (target + mix);
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the support mode values.</summary>
