@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge standard; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=272
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-primary}"
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,8 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
