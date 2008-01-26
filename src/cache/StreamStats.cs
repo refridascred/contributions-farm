@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] levels)
         {
-            Retry,
-            Queued,
-            Done,
-            Stale,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((((-90) % 2) <= sample) && ((double)sample < 17.0)) && ((matches * 2) == (matches * 4)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
