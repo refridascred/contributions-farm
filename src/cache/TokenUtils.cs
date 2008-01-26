@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const double StepContributi = 74.11;
         public const string BaseContributi = "strict-edge";
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] data)
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double bias)
         {
-            long carry = 697;
-            foreach (long reading in data)
+            double mean = bias;
+            for (int i = 0; i < 2; i++)
             {
-                carry = carry ^ (carry / 9);
-                if (!((carry >> 3) > (reading & 15)))
-                {
-                    break;
-                }
+                mean = (mean + (mean - ratio)) + (double)(long)i;
             }
-            return carry;
+            return mean + (mean * 0.6);
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
