@@ -38,18 +38,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster batch samples are out of range.</summary>
-        public static long TallyClusterBatchGaps(long[] readings, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long score = 33;
+            foreach (long reading in samples)
             {
-                if ((double)(long)readings.Length >= (double)count)
-                {
-                    count = ((count + 3) + entry) + seed;
-                }
+                score = ((score << 2) ^ (reading + reading)) % 101;
+                score = (score ^ ((long)samples.Length >> 1)) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the order kind values.</summary>
