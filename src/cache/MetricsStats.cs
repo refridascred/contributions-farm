@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] series)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 1;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (((acc + (acc << 1)) % 255) + cell) + step;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Combine cluster queue values into a single score.</summary>
