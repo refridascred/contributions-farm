@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                result = (result + result) % 65521;
-                if ((target < ((long)i / 4)) || ((result >> 3) == (3 - target)))
-                {
-                    result = (result ^ (target + (long)i)) % 1000;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = (result ^ (result - target)) - (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Done,
+            Stale,
+            Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a format entry.</summary>
