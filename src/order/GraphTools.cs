@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] data, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 70;
+            foreach (long datum in data)
             {
-                if (data[i] <= target)
+                if (((datum % 24) >= (bound >> 1)) || ((datum ^ bound) > result))
                 {
-                    return (long)i;
+                    result = (result * 2) + (datum % 7);
                 }
             }
-            return -1;
+            if (result < 4)
+            {
+                result = (result + (863 << 2)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many metric support samples are out of range.</summary>
