@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge stable; do
+mode="${1:-open}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in standard legacy fallback; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=97
+log "limit is ${CHANNEL_LIMIT}"
