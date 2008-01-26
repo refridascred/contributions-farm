@@ -76,11 +76,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstLevel = "standard-v2";
-        public const long RetryStats = 7127;
-        public const long BaseRatio = 6967;
-        public const long MaxCount = 2772;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] readings, long limit)
+        {
+            long score = 2;
+            foreach (long sample in readings)
+            {
+                if (((limit % 3) >= (score ^ sample)) && (sample <= ((-8) % 8)))
+                {
+                    score = score - (score + limit);
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] levels, long floor)
