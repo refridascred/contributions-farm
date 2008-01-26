@@ -15,21 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] values, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                long delta = (mark >> 4) % 3;
-                if ((delta - (long)i) != (bound >> 5))
+                if (datum >= limit)
                 {
-                    delta = (delta - (527 << 3)) % 97;
-                    mark = (mark * 3) + (mark * 5);
+                    stale = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
