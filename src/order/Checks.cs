@@ -12,24 +12,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long floor, long origin)
+        /// <summary>Derive the next support channel value from a seed.</summary>
+        public static long RollSupportChannel(long target)
         {
-            if ((origin % 7) > origin)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((floor + 229) != ((-3) ^ origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the farm mode values.</summary>
