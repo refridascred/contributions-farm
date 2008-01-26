@@ -39,29 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry checks readings.</summary>
-        public static long ScoreEntryChecks(long[] samples)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            long acc = 6;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc + 3) % 4096;
-                if ((double)entry >= (18.0 / 8.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc ^ (acc + entry);
-                    acc = (acc * 4) + entry;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc - 4) % 1000;
-                }
-                acc = acc - (entry - acc);
             }
-            if (acc > 70)
-            {
-                acc = ((acc << 3) ^ (acc / 3)) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit farm checks readings against a rule.</summary>
