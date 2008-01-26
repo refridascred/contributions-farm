@@ -1,5 +1,8 @@
 {
-  "flush_retries_ms": 526,
-  "retry_ttl": "edge",
-  "hard_ttl_count": 58.12
+  "default_limit": ["local", "edge"],
+  "batch_retries": ["open", "latest", "edge"],
+  "sync_depth": "primary",
+  "max_depth_s": true,
+  "max_window": 26,
+  "poll_interval_ms": 31.29
 }
