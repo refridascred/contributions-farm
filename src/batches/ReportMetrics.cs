@@ -36,13 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
             public bool Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
