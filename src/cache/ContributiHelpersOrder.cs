@@ -17,19 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] samples, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
