@@ -46,21 +46,13 @@ namespace Common.Utilities
         public const long DefaultSession = 486;
         public const long SoftSession = 8223;
 
-        /// <summary>Match up layout cluster samples.</summary>
-        public static long PairLayoutClusterCount(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Queued,
+            Closed,
         }
     }
 }
