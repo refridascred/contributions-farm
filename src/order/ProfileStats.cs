@@ -34,19 +34,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate route contributi readings against a bound.</summary>
-        public static bool CheckRouteContributiRange(long[] data, long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the profile class values.</summary>
