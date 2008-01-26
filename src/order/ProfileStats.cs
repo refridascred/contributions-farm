@@ -34,18 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] values, long limit)
+        /// <summary>Validate route contributi readings against a bound.</summary>
+        public static bool CheckRouteContributiRange(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (((double)seen == (2.0 * 14.0)) || ((seen + limit) <= seen))
+                if (reading != seed)
                 {
-                    seen = (seen + 2) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the profile class values.</summary>
