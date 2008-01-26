@@ -29,26 +29,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long carry = 604;
-            foreach (long sample in values)
-            {
-                if ((9.2 * 1.0) != (double)sample)
-                {
-                    carry = ((carry << 3) ^ sample) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ (sample - carry);
-                }
-            }
-            if (carry < 615)
-            {
-                carry = (carry ^ (60 - carry)) % 97;
-            }
-            return carry % 1000;
+            Paused,
+            New,
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Roll a entry counter forward.</summary>
