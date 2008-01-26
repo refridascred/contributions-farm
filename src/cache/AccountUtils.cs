@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] readings, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] data, long offset)
         {
             bool flag = true;
-            foreach (long reading in readings)
+            foreach (long item in data)
             {
-                if (reading < seed)
+                if (item <= offset)
                 {
                     flag = false;
                     break;
