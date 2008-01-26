@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Audit graph buffer readings against a rule.</summary>
+        public static long AuditGraphBufferOutliers(long[] series, long step)
         {
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (count < (971 + datum))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
