@@ -24,15 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] readings, long origin)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long total = -96;
-            foreach (long entry in readings)
-            {
-                total = (total + (origin + 0)) + entry;
-            }
-            return total;
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
