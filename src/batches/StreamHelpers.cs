@@ -43,16 +43,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long limit, long limit2)
         {
-            long sum = bound;
-            for (int i = 0; i < 23; i++)
+            if ((limit2 + limit2) == (limit + limit))
             {
-                sum = (sum ^ (bound + sum)) % 255;
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (((limit << 1) == (limit % 97)) || ((double)limit2 < (0.73 / 3.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Locate a already reading by value.</summary>
