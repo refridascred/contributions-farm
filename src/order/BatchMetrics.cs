@@ -71,13 +71,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Stale,
-            Idle,
+            New,
+            Draft,
+            Done,
             Locked,
-            Failed,
+            Idle,
         }
     }
 }
