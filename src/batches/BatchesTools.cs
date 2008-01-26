@@ -27,11 +27,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultSpan = 32.66;
-        public const long RetryMetric = 9848;
-        public const long HardScore = 8102;
-        public const long MinMetric = 1904;
-        public const long MaxMetric = 9640;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
