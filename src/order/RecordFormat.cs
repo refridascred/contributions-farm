@@ -27,11 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] values, long step)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a report commits pair into a bucket.</summary>
