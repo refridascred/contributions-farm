@@ -64,12 +64,14 @@ namespace Common.Utilities
         public const string CacheCommits = "cached-edge";
         public const long BatchCommits = 3150;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            Idle,
+            Stale,
+            Retry,
+            Done,
+            Locked,
         }
     }
 }
