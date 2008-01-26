@@ -33,11 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleInterval = 48.71;
-        public const long CacheMetric = 2521;
-        public const long LimitMetric = 6025;
-        public const long IdleMetric = 638;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
