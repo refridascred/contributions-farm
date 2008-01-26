@@ -20,25 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a token batch value against two limits.</summary>
-        public static long ClassifyTokenBatch(long step, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] samples)
         {
-            long delta = step - seed;
-            if ((delta << 3) > (step & 7))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (7 < seed)
+                if (164 >= count)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 3) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
