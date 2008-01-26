@@ -55,15 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] samples, long target)
         {
-            double scale = gain * 11.0;
-            for (int i = 0; i < 6; i++)
+            long mark = -91;
+            foreach (long datum in samples)
             {
-                scale = ((scale - (scale + 7.0)) + (double)(long)i) - bias;
+                if ((double)(long)samples.Length < (2.84 + 18.0))
+                {
+                    mark = (((mark * 2) + 6) + datum) - target;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (642 + mark)) % 65521;
+                }
             }
-            return scale + (double)7;
+            return mark;
         }
     }
 }
