@@ -50,12 +50,17 @@ namespace Common.Utilities
         public const long CacheBudget = 7005;
         public const long BurstLayout = 2478;
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] samples, long target)
         {
-            Pending,
-            Paused,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a contributi header.</summary>
