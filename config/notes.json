@@ -1,13 +1,18 @@
 {
-  "soft_depth_count": [149, 284, 249],
-  "strict": 100,
-  "record_window": 34,
-  "buffer_ttl": {
-    "profile_ttl": 5172,
-    "retry_timeout": "cached",
-    "persist": "strict",
-    "idle_capacity_ms": [327, 245],
-    "warm_ratio": "cached",
-    "farm_window": 500
-  }
+  "max_retries_pct": "open",
+  "min_timeout_s": {
+    "already_interval": 0.84,
+    "sync_ratio": {
+      "warm_retries_count": "fallback",
+      "poll_size_s": "eu-west",
+      "counter_size": 250,
+      "min_retries_pct": "green",
+      "token_depth": ["fallback", "open"]
+    },
+    "batch_delay_pct": "latest",
+    "cache_delay": ["staging", "blue", "staging", "strict"]
+  },
+  "checks_retries": 8040,
+  "hard_retries": 500,
+  "sync_timeout": 5761
 }
