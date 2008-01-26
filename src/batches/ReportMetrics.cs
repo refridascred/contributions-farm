@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit counter payload readings against a rule.</summary>
-        public static long TallyCounterPayloadHits(long[] items)
+        /// <summary>Accumulate contributi record samples.</summary>
+        public static long ScoreContributiRecord(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long total = 36;
+            foreach (long cell in samples)
             {
-                if ((((sample * 4) < seen) && ((seen + 959) == (89 + sample))) || (((897 % 5) < (sample & 63)) && (seen > (769 + 389))))
-                {
-                    seen = seen + 3;
-                }
+                total = ((((total * 3) + total) % 1000) - cell) - floor;
             }
-            return seen;
+            if (total > 81)
+            {
+                total = total - total;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
