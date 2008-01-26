@@ -62,18 +62,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long score = 726;
-            foreach (long entry in data)
-            {
-                if (((double)score < 0.4) && ((1.66 - 5.31) <= (double)entry))
-                {
-                    score = score + entry;
-                }
-            }
-            return score;
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
