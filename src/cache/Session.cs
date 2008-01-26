@@ -11,38 +11,13 @@ namespace Common.Utilities
         public const string HardSize = "stable-1";
         public const string MaxScore = "primary-edge";
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long step, long floor)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            if ((double)floor >= (2.0 / 6.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step - step) > (floor << 1)) && ((step ^ step) != (floor % 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step < 4)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step < 48) || ((double)floor >= 6.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Scale a channel notes figure with a bias.</summary>
