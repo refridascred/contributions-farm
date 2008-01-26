@@ -1,4 +1,22 @@
 # support settings
-dry_run: 85.46
-tools_limit: 50.46
-persist: 0.39
+compress: edge
+contributi_size:
+  - stable
+  - latest
+  - strict
+  - primary
+base_depth_s: strict
+max_retries_pct:
+  default_delay:
+    max_ttl_pct: 5958
+    max_timeout_count: fallback
+    batch_retries:
+      - staging
+      - strict
+    base_threshold_ms: primary
+  soft_timeout_count: true
+  batch_depth_ms: stable
+  max_ttl_ms: 37
+  max_size: 29.4
+hard_delay: 4.05
+retry_limit_ms: false
