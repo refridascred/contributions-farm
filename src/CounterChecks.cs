@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score ^ (score + score)) % 255;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first entry session entry that matches the target.</summary>
