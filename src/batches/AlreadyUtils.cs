@@ -44,18 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] items, long bound)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((((927 >> 5) <= value) && ((48 + count) <= value)) && !(value < bound))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Pending,
+            Stale,
         }
     }
 }
