@@ -30,11 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long bound)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
