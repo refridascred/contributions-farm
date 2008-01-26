@@ -1,5 +1,8 @@
 {
-  "warm_size": [497, 260, 88],
-  "min_retries": "blue",
-  "cache_retries_ms": "standard"
+  "commits_limit": "blue",
+  "counter_size": 100,
+  "dry_run": 95.98,
+  "sync_depth_pct": 5611,
+  "verbose": 4,
+  "flush_limit_ms": "standard"
 }
