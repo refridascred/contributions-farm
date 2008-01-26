@@ -53,18 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm checks readings against a rule.</summary>
-        public static long TallyFarmChecksGaps(long[] data)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double scale2 = scale;
+            if (scale2 <= (scale - scale2))
             {
-                if (0.4 <= (double)(long)data.Length)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
+                scale2 = scale2 + bias;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 - bias) + (double)(long)i;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
