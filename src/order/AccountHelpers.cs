@@ -43,19 +43,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            double mean = (ratio + bias) / 9.0;
-            if (mean > (19.0 * 4.2))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (17.0 - mean);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (ratio / 9.0);
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
