@@ -27,18 +27,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] levels)
+        /// <summary>Audit already cache readings against a rule.</summary>
+        public static long MeasureAlreadyCacheOutliers(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (seen <= (5 << 1))
+                if ((target >> 5) < (target ^ 65))
                 {
-                    seen = (seen + 1) + cell;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
