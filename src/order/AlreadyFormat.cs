@@ -43,21 +43,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up profile metric samples.</summary>
-        public static long OverlapProfileMetricCount(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((item * 2) <= tally) && ((item - item) != (target ^ 5)))
                 {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
