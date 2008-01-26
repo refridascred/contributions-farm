@@ -69,24 +69,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] data, long seed)
         {
-            long state = 9;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                state = (state << 2) ^ 20;
-                if ((688 << 2) == (state ^ state))
+                if (!((seed ^ seed) >= (sample >> 1)))
                 {
-                    state = state - (value * 4);
-                    continue;
-                }
-                if (((double)value == (double)state) && ((value << 1) <= (state - value)))
-                {
-                    state = (state << 3) ^ (46 ^ value);
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count cache profile pairs that satisfy a relation.</summary>
