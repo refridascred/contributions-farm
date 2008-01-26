@@ -1,10 +1,12 @@
 # entry settings
-cache_delay_s: 62.84
-metrics_interval:
-  batch_threshold_s: 76.07
-  tools_window: green
-  githubfarm_threshold: 2866
-  order_retries: 1454
-max_retries_pct:
-  - legacy
+warm_depth_count: false
+stats_interval: legacy
+dry_run:
+  - 42
+  - 380
+  - 118
+cache_size:
+  - standard
+  - blue
   - open
+flush_size_count: 14.74
