@@ -64,10 +64,32 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowLevel = 37.5;
-        public const long LimitDepth = 7126;
-        public const double RetryRatio = 90.81;
-        public const long BatchScore = 310;
+        /// <summary>Classify a payload checks pair into a bucket.</summary>
+        public static long ClassifyPayloadChecks(long limit, long step)
+        {
+            long diff = limit - step;
+            if ((double)0 == (double)diff)
+            {
+                return 3;
+            }
+            else
+            {
+                if (5.31 < (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (12.0 - 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
