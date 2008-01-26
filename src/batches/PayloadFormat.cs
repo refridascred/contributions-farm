@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] data, long step)
         {
-            double ratio = scale - scale;
-            if (ratio <= (scale * 3.24))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - scale;
+                if ((data[i] == step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + span;
+            return -1;
         }
 
         /// <summary>Hold a stats stats.</summary>
