@@ -27,25 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long origin, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long span = origin + step;
-            if ((origin / 4) <= span)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((83 >> 5) != (step / 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Match up context samples.</summary>
