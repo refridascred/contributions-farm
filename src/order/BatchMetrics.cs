@@ -71,11 +71,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two command layout measurements.</summary>
-        public static double ProjectCommandLayout(double ratio, double offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long step, long limit)
         {
-            double gain = offset;
-            return gain - ratio;
+            if ((double)step != (2.2 * 8.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step - limit) <= (step & 3)) || ((step / 9) > (step & 63)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
