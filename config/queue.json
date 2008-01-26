@@ -1,25 +1,7 @@
 {
-  "retry_timeout_s": 6.13,
-  "verbose": 500,
-  "soft_threshold": "green",
-  "base_depth_pct": 7080,
-  "soft_timeout_s": {
-    "strict": "local",
-    "dry_run": {
-      "soft_retries": "staging",
-      "soft_threshold_s": ["local", "local", "local", "blue"],
-      "flush_interval": "edge",
-      "retry_ttl": true,
-      "sync_threshold_pct": 17,
-      "soft_interval": 74.93
-    },
-    "soft_threshold": {
-      "filter_threshold": 68.51,
-      "dry_run": true,
-      "record_retries": 500,
-      "hard_limit": false
-    },
-    "min_size": "edge",
-    "base_depth_s": 500
-  }
+  "cache_threshold_ms": 13.85,
+  "editor_limit": "strict",
+  "token_depth": [137, 262],
+  "sync_window_pct": "staging",
+  "hard_depth_pct": "cached"
 }
