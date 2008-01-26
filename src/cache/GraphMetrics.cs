@@ -26,21 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format account counter forward.</summary>
-        public static long StepFormatAccount(long floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result << 3) ^ (result & 15)) + (long)i2;
-                    result = (result + (floor / 6)) % 255;
-                }
-                result = result ^ (floor - 46);
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public bool Label { get; set; }
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
