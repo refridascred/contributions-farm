@@ -70,21 +70,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] data)
+        /// <summary>Find the first stream contributi entry that matches the target.</summary>
+        public static long LocateStreamContributiIndex(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] < step)
                 {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
