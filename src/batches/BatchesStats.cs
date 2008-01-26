@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] readings, long offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long bound, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if ((308 <= (floor + floor)) && ((bound + bound) != (bound + floor)))
             {
-                if (offset > (sample % 5))
+                return 3;
+            }
+            else
+            {
+                if ((bound - bound) < (bound % 12))
                 {
-                    tally = tally + 3;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)bound <= (0.86 - 7.3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
