@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score << 2) ^ (score * 5)) % 4096;
-                score = ((score * 3) + score) % 4096;
-                score = (score + (step & 7)) % 255;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstLevel = 5833;
+        public const long DefaultRoute = 3234;
+        public const string MinRoute = "staging-v2";
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] samples, long limit)
