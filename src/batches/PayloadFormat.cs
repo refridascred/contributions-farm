@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the session cache entries that pass the check.</summary>
-        public static long MeasureSessionCacheHits(long[] values, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (0 <= (origin + origin))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a support stats.</summary>
