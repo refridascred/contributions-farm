@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings, long offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mix = 880;
-            foreach (long sample in readings)
-            {
-                if (!((65 * 3) != (offset / 5)))
-                {
-                    mix = (mix - (mix + mix)) + sample;
-                }
-                else
-                {
-                    mix = (mix - (mix ^ mix)) % 4096;
-                }
-            }
-            return mix % 1000;
+            Draft,
+            Done,
+            Active,
+            Locked,
         }
 
         /// <summary>Project the next buffer channel value.</summary>
