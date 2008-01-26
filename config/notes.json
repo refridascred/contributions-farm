@@ -1,7 +1,7 @@
 {
-  "max_ratio": "latest",
-  "burst_window_s": true,
-  "default_window_ms": 5276,
-  "flush_delay_ms": "standard",
-  "strict": 19
+  "hard_delay": true,
+  "readonly": 60,
+  "editor_retries": "staging",
+  "max_interval": 60,
+  "flush_interval_pct": true
 }
