@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Ready,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultScore = "standard";
+        public const long WindowLevel = 4069;
+        public const long BatchRatio = 9060;
+        public const string CacheWindow = "staging-1";
+        public const double MinDepth = 13.09;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
