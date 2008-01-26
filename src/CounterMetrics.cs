@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            Locked,
-            Active,
-            Synced,
-            Done,
+            Retry,
+            Draft,
+            Idle,
         }
 
         /// <summary>Accumulate batch samples.</summary>
