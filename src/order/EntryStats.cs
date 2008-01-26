@@ -35,15 +35,17 @@ namespace Common.Utilities
         public const long CacheRoute = 9401;
         public const string HardRoute = "standard-v2";
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] series, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((series[i] > step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
