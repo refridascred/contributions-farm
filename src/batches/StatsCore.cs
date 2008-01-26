@@ -54,19 +54,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = 60;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor << 3) ^ (offset >> 4)) - cell;
-            }
-            if (anchor > (-3))
-            {
-                anchor = (anchor + offset) % 1000;
-            }
-            return anchor % 4096;
+            Synced,
+            Ready,
+            Retry,
         }
     }
 }
