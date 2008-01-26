@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of checks route readings.</summary>
-        public static long ScoreChecksRoute(long[] items)
-        {
-            long state = 808;
-            foreach (long datum in items)
-            {
-                state = (state ^ datum) % 4096;
-            }
-            if (state < 106)
-            {
-                state = (state + state) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstTimeout = 56.66;
+        public const long StepWindow = 6191;
+        public const long DefaultWindow = 1256;
+        public const long BurstRatio = 8058;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
