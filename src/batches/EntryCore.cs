@@ -15,16 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the format stats series from a seed.</summary>
-        public static long IterateFormatStats(long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] samples, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                anchor = (anchor * 4) + (long)i;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((entry & 15) > entry)
+                {
+                    tally = (tally + 1) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a report entry.</summary>
