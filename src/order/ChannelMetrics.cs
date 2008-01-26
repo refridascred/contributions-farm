@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double scale, double offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] items)
         {
-            double load = (scale * 7.0) + (2.29 / 8.0);
-            if (load <= load)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                load = load - (load + offset);
+                if (((cell < (hits - 33)) || ((cell / 2) < (cell * 4))) && (hits >= (hits % 100)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                load = load - (scale * 7.1);
-            }
-            return load + offset;
+            return hits;
         }
 
         /// <summary>Check that every record commits entry stays within the limit.</summary>
