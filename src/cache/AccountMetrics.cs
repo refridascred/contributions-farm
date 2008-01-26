@@ -43,18 +43,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] series)
+        /// <summary>Measure how many queue editor samples are out of range.</summary>
+        public static long AuditQueueEditorHits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((3.0 / 4.0) == (double)count)
+                if (((datum << 3) < (datum ^ 786)) || ((tally ^ target) >= tally))
                 {
-                    count = (count + 3) ^ entry;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every queue editor entry stays within the limit.</summary>
