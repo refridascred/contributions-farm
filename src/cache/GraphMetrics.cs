@@ -26,13 +26,21 @@ namespace Common.Utilities
         public const string WindowSize = "primary-edge";
         public const long BurstRoute = 7257;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
