@@ -49,15 +49,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mark = 7;
-            foreach (long datum in readings)
-            {
-                mark = (mark + (mark * 5)) + datum;
-            }
-            return mark;
+            New,
+            Synced,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
