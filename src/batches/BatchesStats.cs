@@ -22,24 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank layout checks input into a small class.</summary>
-        public static long GradeLayoutChecks(long origin, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] series)
         {
-            if ((offset * 5) < (offset + origin))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)1 >= (double)offset))
+                if ((hits / 3) == (reading + reading))
                 {
-                    return 3;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 8;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
