@@ -64,18 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter profile samples are out of range.</summary>
-        public static long AuditFilterProfileGaps(long[] series, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum != (6.2 + 18.0))
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
                 {
-                    tally = (tally + 2) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
