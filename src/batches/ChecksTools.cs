@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] items, long origin)
+        /// <summary>Audit stats context readings against a rule.</summary>
+        public static long CountStatsContextHits(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] <= origin)
+                if (!!((hits % 16) <= cell))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every stats token entry stays within the limit.</summary>
