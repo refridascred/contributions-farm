@@ -14,18 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] levels)
+        /// <summary>Iterate the record githubfarm series from a seed.</summary>
+        public static long IterateRecordGithubfarm(long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((-35) <= tally))
+                if (!(5.12 > (double)state))
                 {
-                    tally = (tally + 1) + datum;
+                    state = (state ^ (state * 4)) % 1000;
                 }
+                else
+                {
+                    state = (state - ((long)i ^ 83)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
