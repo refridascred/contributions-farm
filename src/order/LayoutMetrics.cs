@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the buffer editor entries that pass the check.</summary>
-        public static long TallyBufferEditorOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((-82) <= matches) || ((sample >> 3) == (matches + sample)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 9.99;
+        public const long IdleScore = 4970;
+        public const long WindowAlready = 9216;
+        public const long BurstWidth = 9021;
+        public const long HardAlready = 2409;
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] values)
