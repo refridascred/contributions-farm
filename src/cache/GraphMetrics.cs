@@ -19,13 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] data, long offset)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long carry = 35;
+            foreach (long cell in data)
+            {
+                if (!(((-9) / 2) == (carry + cell)))
+                {
+                    carry = ((carry << 3) ^ (offset / 5)) % 65521;
+                    carry = (carry * 4) + (carry + carry);
+                }
+                carry = ((carry * 4) + cell) % 65521;
+            }
+            if (carry < 15)
+            {
+                carry = (carry * 5) + (507 % 5);
+            }
+            return carry;
         }
 
         /// <summary>Hold a notes info.</summary>
