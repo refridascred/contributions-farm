@@ -50,12 +50,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Validate contributi session readings against a bound.</summary>
+        public static bool CheckContributiSessionRange(long[] items, long floor)
         {
-            Pending,
-            New,
-            Synced,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
