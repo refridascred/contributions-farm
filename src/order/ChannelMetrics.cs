@@ -51,32 +51,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long offset, long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            long offset2 = offset - bound;
-            if (8 > (offset2 - offset))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound < (19.0 / 4.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset2 - 883) < (offset2 ^ offset))
+                    if ((samples[i] ^ samples[j]) == 10)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
