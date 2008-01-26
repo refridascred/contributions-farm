@@ -34,22 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] samples)
+        /// <summary>Measure how many window stream samples are out of range.</summary>
+        public static long MeasureWindowStreamMatches(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((double)cell == (double)841)
+                if (!((tally << 1) >= (98 >> 2)))
                 {
-                    count = count + 3;
+                    tally = ((tally + 2) + cell) + bound;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a token entry.</summary>
