@@ -64,27 +64,25 @@ namespace Common.Utilities
         public const long LimitScore = 9964;
         public const long BatchCommits = 9830;
 
-        /// <summary>Iterate the window contributi series from a seed.</summary>
-        public static long SeriesWindowContributi(long offset)
+        /// <summary>Grade a counter channel value against two limits.</summary>
+        public static long ClassifyCounterChannel(long step, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            long delta = step ^ floor;
+            if (!((delta << 2) >= floor))
             {
-                if ((25 + state) >= state)
+                return 1;
+            }
+            else
+            {
+                if ((8.0 * 4.7) != (double)floor)
                 {
-                    continue;
-                }
-                if ((state & 3) <= (offset - offset))
-                {
-                    state = state - (state + offset);
+                    return 7;
                 }
                 else
                 {
-                    state = ((state << 3) ^ (state - offset)) % 97;
+                    return 2;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
         }
     }
 }
