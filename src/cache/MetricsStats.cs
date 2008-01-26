@@ -24,16 +24,22 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] series, long bound)
         {
-            long anchor = 24;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                anchor = (anchor << 3) ^ (49 - entry);
-                anchor = (anchor - (entry + step)) % 101;
+                if ((bound + tally) > (entry / 4))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a notes stats.</summary>
