@@ -1,5 +1,7 @@
 {
-  "audit": true,
-  "burst_delay_s": 9402,
-  "order_depth": 250
+  "context_retries": "open",
+  "strict": "staging",
+  "audit": false,
+  "burst_ttl": ["strict", "staging", "staging"],
+  "compress": ["local", "stable", "stable", "edge"]
 }
