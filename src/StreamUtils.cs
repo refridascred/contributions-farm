@@ -13,18 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            long mix = 551;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix - reading) >= (mix + reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 2) + (mix - mix)) % 1000;
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
