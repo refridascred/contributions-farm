@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit buffer batches readings against a rule.</summary>
-        public static long AuditBufferBatchesOutliers(long[] readings, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = 73;
+            foreach (long value in readings)
             {
-                if (!((272 + offset) < offset))
-                {
-                    seen = (seen + 3) - item;
-                }
+                mark = ((mark + (origin - 9)) % 65521) ^ value;
             }
-            return seen;
+            if (mark > 126)
+            {
+                mark = mark + (mark - 3);
+            }
+            return mark;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
