@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy strict primary eu-west; do
+for item in eu-west cached; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+BUFFER_LIMIT=139
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-local}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
