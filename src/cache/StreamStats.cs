@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double SoftStats = 98.94;
         public const double StepTimeout = 50.98;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] data)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((121 >> 2) > value)
+                if (item > offset)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Roll a buffer stream counter forward.</summary>
