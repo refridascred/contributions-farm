@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Scale a context metric figure with a bias.</summary>
+        public static double BlendContextMetric(double rate, double floor)
         {
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            double ratio = floor;
+            if (ratio > (double)0)
+            {
+                ratio = ratio + floor;
+            }
+            else
+            {
+                ratio = ratio - (double)61;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Rank commits schema input into a small class.</summary>
