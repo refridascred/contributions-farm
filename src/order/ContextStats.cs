@@ -76,27 +76,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
-            long sum = 654;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 5; i++)
+                if ((reading & 3) <= (seen + reading))
                 {
-                    sum = (sum ^ 5) ^ (long)i;
+                    seen = seen + 1;
                 }
-                sum = (sum + sum) % 4096;
-                if (((sum ^ sum) < reading) && (188 < (limit + 37)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (sum < 22)
-            {
-                sum = (sum * 2) + (sum >> 1);
-            }
-            return sum;
+            return seen;
         }
     }
 }
