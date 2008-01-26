@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double bias, double bias2)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            double mean = bias;
-            return (mean + (bias - bias)) + bias2;
+            long mix = 675;
+            foreach (long item in readings)
+            {
+                if (item <= ((-572) * 4))
+                {
+                    mix = (mix << 2) ^ (50 ^ 28);
+                }
+                mix = mix - item;
+                if ((mix << 2) <= (mix & 255))
+                {
+                    mix = (mix ^ (mix * 5)) % 1000;
+                }
+                else
+                {
+                    mix = mix - (75 & 15);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the support mode values.</summary>
