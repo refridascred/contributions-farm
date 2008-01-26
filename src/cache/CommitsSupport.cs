@@ -33,19 +33,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
-        public static bool GuardQueueGithubfarmRange(long[] values, long seed)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Failed,
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define token limits and defaults.</summary>
