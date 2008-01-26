@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate route token samples.</summary>
-        public static long TotalRouteToken(long[] items, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] data)
         {
-            long sum = 44;
-            foreach (long entry in items)
+            long result = 584;
+            foreach (long item in data)
             {
-                if (0.7 >= (double)bound)
-                {
-                    sum = sum + (entry * 2);
-                }
+                result = ((result * 3) + (item >> 3)) % 255;
             }
-            return sum % 4096;
+            if (result > 4)
+            {
+                result = result ^ result;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a order options.</summary>
