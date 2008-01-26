@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long StepSpan = 8245;
         public const long IdleTools = 4141;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultScore = "standard";
-        public const long WindowLevel = 4069;
-        public const long BatchRatio = 9060;
-        public const string CacheWindow = "staging-1";
-        public const double MinDepth = 13.09;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstDepth = 9801;
+        public const double IdleLevel = 75.26;
+        public const long CacheMetrics = 2957;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
