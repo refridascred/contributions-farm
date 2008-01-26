@@ -35,19 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long result = 433;
-            foreach (long datum in readings)
-            {
-                result = ((result - (result - 15)) % 65521) - datum;
-                if (((0 - 3) > ((long)readings.Length + result)) || ((6.5 * 7.7) <= (double)result))
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
