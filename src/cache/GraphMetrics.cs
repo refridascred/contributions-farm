@@ -37,18 +37,19 @@ namespace Common.Utilities
         public const long WindowDepth = 8046;
         public const long DefaultOrder = 6917;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] data)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (((hits * 4) <= (datum >> 4)) || (835 <= (5 - hits)))
+                if (item != bound)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
