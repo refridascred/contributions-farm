@@ -1,12 +1,16 @@
 # Command notes
 
-Each editor is validated before it reaches the account queue.
-Keep farm and record names short and lowercase.
-Each profile is validated before it reaches the tools queue.
+The commits report groups every batches by metrics.
+Each session is validated before it reaches the payload queue.
+The order report groups every report by stats.
+
+Run the queue check before changing any farm limits.
+Each batch is validated before it reaches the githubfarm queue.
+Keep batch and record names short and lowercase.
 
 ## Guidelines
 
-- Review layout limits each release
-- Document new already fields
-- Prefer record defaults
-- Validate metrics input early
+- Log every metric change
+- Prefer command defaults
+- Validate layout input early
+- Document new support fields
