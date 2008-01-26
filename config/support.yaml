@@ -1,22 +1,5 @@
 # support settings
-base_threshold: edge
-burst_depth_count:
-  retry_limit_s: false
-  counter_ttl: strict
-  batch_timeout:
-    default_capacity_ms: local
-    batch_ttl:
-      - 387
-      - 40
-      - 344
-    cache_retries_pct:
-      - 13
-      - 226
-    poll_ratio_ms: 500
-    min_limit_count: 96.58
-    soft_ttl_ms:
-      - legacy
-      - cached
-      - standard
-flush_retries_s: 34.17
-idle_limit: true
+dry_run: true
+strict: true
+idle_capacity_ms: true
+enabled: stable
