@@ -17,26 +17,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long acc = 0;
-            foreach (long reading in values)
-            {
-                if (!(reading >= (floor & 31)))
-                {
-                    acc = (acc + (reading >> 3)) % 255;
-                }
-                if (!((floor * 2) >= floor))
-                {
-                    acc = ((acc << 2) ^ (floor << 2)) % 65521;
-                }
-            }
-            if (acc > 363)
-            {
-                acc = ((acc << 2) ^ (floor - floor)) % 101;
-            }
-            return acc % 4096;
+            Ready,
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
