@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 4390;
+        public const long WindowContext = 1544;
+        public const long StepWidth = 1236;
+        public const double RetryContext = 80.04;
+        public const long IdleFactor = 3711;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] levels)
