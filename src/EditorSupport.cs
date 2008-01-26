@@ -57,16 +57,12 @@ namespace Common.Utilities
         public const long MaxStream = 3830;
         public const string MinStream = "fallback";
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowRatio = 1079;
+        public const long BurstDepth = 5138;
+        public const long SoftCount = 9543;
+        public const long MaxBatch = 3917;
+        public const long CacheBatch = 5216;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] series)
