@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long SoftSpan = 5760;
         public const long WindowChannel = 4469;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long step)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of metric filter entries.</summary>
