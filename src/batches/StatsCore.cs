@@ -44,18 +44,14 @@ namespace Common.Utilities
         public const double RetryInterval = 44.73;
         public const long MaxSpan = 3070;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values, long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches >> 5) >= (item * 5))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate batch samples.</summary>
