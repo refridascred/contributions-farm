@@ -75,12 +75,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 6406;
+        public const long BatchTools = 9665;
+        public const long CacheLevel = 8256;
+        public const double CacheTools = 94.05;
+        public const long LimitDepth = 8269;
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double gain, double offset)
