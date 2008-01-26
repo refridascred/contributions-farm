@@ -1,8 +1,6 @@
-id,label,level,weight,score
-1,819,60.8,56.27,538
-2,516,7.18,48.22,72.22
-3,legacy,92.0,10.28,90.75
-4,open,open,75.9,209
-5,40.18,stable,strict,strict
-6,strict,edge,349,eu-west
-7,115,176,49.01,792
+id,count
+1,518
+2,eu-west
+3,211
+4,strict
+5,open
