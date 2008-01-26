@@ -50,31 +50,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] items)
         {
-            if ((400 << 2) > origin)
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit >> 5) > (limit + limit))
+                if (!((count - sample) >= (count % 7)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9 * 4) < origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
