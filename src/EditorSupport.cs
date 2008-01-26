@@ -38,18 +38,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a command token sample.</summary>
-        public static long LocateCommandTokenIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "open-1";
+        public const long HardSpan = 8714;
+        public const string IdleStream = "open-1";
+        public const long MaxStream = 3830;
+        public const string MinStream = "fallback";
 
         /// <summary>Fold a list of account session readings.</summary>
         public static long CombineAccountSession(long[] items)
