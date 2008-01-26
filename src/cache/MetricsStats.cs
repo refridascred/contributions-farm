@@ -38,12 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every payload stats entry stays within the limit.</summary>
