@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] items)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Stale,
-            Closed,
+            long state = 5;
+            foreach (long value in items)
+            {
+                if ((state / 7) > (state + value))
+                {
+                    state = ((state << 3) ^ (state / 8)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the token kind values.</summary>
