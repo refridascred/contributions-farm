@@ -1,8 +1,7 @@
 {
-  "profile_timeout": false,
-  "hard_depth": 2,
-  "order_ttl": false,
-  "base_depth": [358, 21, 26],
-  "flush_retries_count": false,
-  "readonly": "fallback"
+  "cache_timeout_count": "latest",
+  "account_threshold": false,
+  "sync_capacity": true,
+  "default_window_pct": 45.59,
+  "account_ttl": false
 }
