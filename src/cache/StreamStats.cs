@@ -46,11 +46,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetrySize = 2911;
+        public const string MaxLevel = "latest-edge";
+        public const double BaseFormat = 27.12;
+        public const long SoftSize = 6010;
     }
 }
