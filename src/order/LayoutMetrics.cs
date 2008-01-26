@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long bound, long offset)
-        {
-            long delta = bound ^ offset;
-            if (bound > (offset + offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((delta / 9) <= (offset + delta))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "alpha-v2";
+        public const long BurstFactor = 9343;
+        public const string LimitWidth = "alpha-edge";
+        public const long StepTimeout = 9222;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BurstCache = 34.49;
