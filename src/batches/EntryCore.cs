@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] series, long target)
+        /// <summary>Validate account already readings against a bound.</summary>
+        public static bool CheckAccountAlreadyBounds(long[] series, long target)
         {
-            long carry = 359;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                carry = (carry + sample) % 65521;
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (carry < 10)
-            {
-                carry = ((carry * 4) + (target + 85)) % 65521;
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Look up the position of a cluster channel sample.</summary>
