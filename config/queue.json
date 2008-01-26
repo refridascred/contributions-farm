@@ -1,6 +1,6 @@
 {
-  "enabled": "green",
-  "soft_window": 92.73,
-  "dry_run": true,
-  "tools_window": 50.11
+  "soft_delay_count": false,
+  "readonly": ["legacy", "legacy", "edge", "stable"],
+  "support_threshold": "primary",
+  "tools_retries": false
 }
