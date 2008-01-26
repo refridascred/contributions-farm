@@ -1,5 +1,6 @@
 {
-  "batch_capacity_ms": 66.64,
-  "base_threshold": 85.23,
-  "strict": 59.39
+  "warm_window_ms": 30,
+  "sync_timeout_ms": [337, 457],
+  "enabled": 34.29,
+  "hard_timeout": 377
 }
