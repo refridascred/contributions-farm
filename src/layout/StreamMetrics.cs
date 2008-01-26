@@ -14,11 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinOrder = 36.2;
-        public const double WindowOrder = 1.9;
-        public const long IdleOrder = 716;
-        public const long MaxSize = 3925;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading < (2.2 - 3.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportMatches(long[] levels, long limit)
