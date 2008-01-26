@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long score = -435;
-            foreach (long datum in samples)
-            {
-                long span = (datum * 2) - (score * 3);
-                if (score > (long)samples.Length)
-                {
-                    score = (score - datum) % 65521;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (192 + span)) % 255;
-                }
-                score = ((score << 2) ^ 47) % 65521;
-            }
-            return score % 97;
+            Stale,
+            Queued,
+            Dropped,
+            Retry,
+            Locked,
         }
 
         /// <summary>Locate a farm buffer reading by value.</summary>
