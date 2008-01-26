@@ -51,12 +51,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long offset, long bound)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            long offset2 = offset - bound;
+            if (8 > (offset2 - offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound < (19.0 / 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset2 - 883) < (offset2 ^ offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
