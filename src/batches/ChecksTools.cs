@@ -35,19 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stats token entry stays within the limit.</summary>
-        public static bool GuardStatsTokenBounds(long[] series, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (reading <= origin)
+                if (!(seen <= (cell + cell)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the token state values.</summary>
