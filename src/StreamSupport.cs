@@ -22,11 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long seed)
         {
-            double drift = offset;
-            return drift - bias;
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = sum ^ (sum + sum);
+                if ((seed + sum) != (seed - seed))
+                {
+                    sum = (sum ^ 271) % 1000;
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next graph tools value from a seed.</summary>
