@@ -20,39 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long seed, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] data)
         {
-            long gap = seed ^ target;
-            if ((target % 60) < 10)
+            long mix = 477;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-79) < (target + gap))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 0;
+                    mix = (((mix * 3) + value) % 65521) ^ (long)i;
                 }
-                else
+                if ((mix - mix) >= (mix * 4))
                 {
-                    if ((2.5 / 6.0) != (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target / 2) < target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = mix ^ value;
                 }
             }
+            if (mix < 7)
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
