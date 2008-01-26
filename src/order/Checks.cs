@@ -47,13 +47,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            Ready,
+            Dropped,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a batches stats.</summary>
