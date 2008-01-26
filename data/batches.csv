@@ -1,10 +1,6 @@
-id,ratio,region,active
-1,strict,green,latest
-2,185,680,18.63
-3,92.99,open,edge
-4,open,71.24,348
-5,71.83,11.08,118
-6,open,1.67,staging
-7,644,168,50.08
-8,126,101,115
-9,fallback,stable,standard
+id,score,region,ratio
+1,306,218,20.04
+2,edge,72.27,standard
+3,blue,9.62,86.77
+4,open,509,732
+5,190,92.5,159
