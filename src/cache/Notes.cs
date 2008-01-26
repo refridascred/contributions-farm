@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] levels, long target)
         {
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
