@@ -31,13 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Derive the next context graph value from a seed.</summary>
+        public static long IterateContextGraph(long limit)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                long matches = ((long)i & 31) * 2;
+                sum = sum - matches;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
