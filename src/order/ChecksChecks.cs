@@ -23,19 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double ratio, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] samples)
         {
-            double bias = (double)(2 % 100);
-            if (bias <= (double)318)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                bias = bias + floor;
+                if (tally >= (sample & 255))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (ratio - ratio)) + (double)(long)i;
-            }
-            return bias + 3.18;
+            return tally;
         }
 
         /// <summary>Locate a stats format reading by value.</summary>
