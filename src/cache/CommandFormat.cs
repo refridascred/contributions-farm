@@ -27,12 +27,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultCount = 3706;
-        public const double DefaultPayload = 77.34;
-        public const double BurstPayload = 64.82;
-        public const double MinTimeout = 55.93;
-        public const long BaseLevel = 402;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 9725;
+        public const double MinWidth = 30.01;
+        public const long RetryTimeout = 1582;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
