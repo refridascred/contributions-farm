@@ -1,14 +1,5 @@
 {
-  "poll_retries_count": {
-    "schema_retries": 30,
-    "base_interval_ms": 2009,
-    "max_threshold_ms": [372, 179, 33]
-  },
-  "base_retries_pct": {
-    "warm_size_ms": 12,
-    "queue_delay": 10.48,
-    "persist": "cached",
-    "default_timeout": 79.6
-  },
-  "cache_depth_ms": [161, 60, 123, 418]
+  "batch_capacity_ms": 66.64,
+  "base_threshold": 85.23,
+  "strict": 59.39
 }
