@@ -1,6 +1,13 @@
 # entry settings
-burst_ttl_s: 38.61
-strict: 30
-payload_timeout: 46
-hard_depth_count: blue
-compress: false
+retry_size:
+  - 285
+  - 382
+  - 322
+flush_timeout: false
+cache_threshold:
+  - staging
+  - blue
+  - primary
+  - strict
+compress: latest
+retry_depth_s: edge
