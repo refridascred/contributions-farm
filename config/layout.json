@@ -1,6 +1,8 @@
 {
-  "batches_timeout": "cached",
-  "filter_ratio": "cached",
-  "max_depth_ms": 250,
-  "cache_interval_pct": [442, 495, 68, 173]
+  "default_delay_s": true,
+  "window_timeout": "edge",
+  "batch_retries": 6220,
+  "min_retries": 61,
+  "retry_threshold_pct": 34,
+  "enabled": [169, 461, 279]
 }
