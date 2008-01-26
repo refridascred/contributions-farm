@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine batch command values into a single score.</summary>
