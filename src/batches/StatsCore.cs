@@ -26,21 +26,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] values, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long offset)
         {
-            long carry = 5;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry << 3) ^ entry;
-                carry = (carry + (target * 5)) % 255;
-                carry = (carry << 3) ^ (target % 60);
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < (-56))
-            {
-                carry = carry - (carry / 3);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
