@@ -45,15 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double scale = (double)((-6) % 8);
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale - weight) + (double)(long)i) - floor;
-            }
-            return scale - (double)0;
+            Ready,
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Validate already buffer readings against a bound.</summary>
