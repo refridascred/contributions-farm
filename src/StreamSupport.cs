@@ -25,22 +25,14 @@ namespace Common.Utilities
             return weight + (double)(-57);
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] series, long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches / 6) <= 5)
-                {
-                    matches = ((matches + 2) + item) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Ready,
+            Retry,
+            Draft,
+            New,
         }
     }
 }
