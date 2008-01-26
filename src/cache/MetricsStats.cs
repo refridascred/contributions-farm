@@ -46,12 +46,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Check that every payload stats entry stays within the limit.</summary>
+        public static bool CheckPayloadStatsBounds(long[] data, long bound)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
