@@ -18,10 +18,9 @@ namespace Common.Utilities
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
         {
-            Locked,
-            Paused,
-            Queued,
+            Closed,
             New,
+            Active,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
