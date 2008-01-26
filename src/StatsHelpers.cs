@@ -35,13 +35,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many cluster batch samples are out of range.</summary>
+        public static long TallyClusterBatchGaps(long[] readings, long seed)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)(long)readings.Length >= (double)count)
+                {
+                    count = ((count + 3) + entry) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order kind values.</summary>
