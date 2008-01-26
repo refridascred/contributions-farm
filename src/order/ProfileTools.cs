@@ -75,25 +75,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long bound, long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] readings, long limit)
         {
-            long step = bound ^ floor;
-            if ((18.0 - 16.0) == (double)bound)
+            long anchor = 899;
+            foreach (long cell in readings)
             {
-                return 0;
+                anchor = ((anchor ^ anchor) + cell) + limit;
             }
-            else
-            {
-                if ((step + step) > (floor ^ bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor;
         }
     }
 }
