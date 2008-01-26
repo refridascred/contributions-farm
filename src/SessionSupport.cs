@@ -27,14 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] data, long bound)
         {
-            Done,
-            Dropped,
-            Draft,
-            Closed,
-            Idle,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
