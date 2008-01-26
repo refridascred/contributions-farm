@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 6689;
-        public const long BurstStats = 9996;
-        public const string BatchStats = "latest-1";
-        public const double SoftStats = 98.94;
-        public const double StepTimeout = 50.98;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Queued,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiRange(long[] samples, long offset)
