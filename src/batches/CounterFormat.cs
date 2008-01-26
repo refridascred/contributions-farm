@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = ratio;
+            if (rate >= rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - bias;
             }
-            return matches;
+            else
+            {
+                rate = rate - (double)2;
+            }
+            return rate - (double)58;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
