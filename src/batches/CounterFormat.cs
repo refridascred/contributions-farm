@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((19.0 * 5.7) == (double)matches)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cluster class values.</summary>
