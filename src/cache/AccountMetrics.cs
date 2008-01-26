@@ -50,12 +50,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long limit)
         {
-            Locked,
-            Closed,
-            Dropped,
+            if ((400 << 2) > origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit >> 5) > (limit + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((9 * 4) < origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a channel reading by value.</summary>
