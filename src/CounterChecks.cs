@@ -71,18 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token order pairs that satisfy a relation.</summary>
-        public static long MatchTokenOrderCount(long[] items)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] samples)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell / 9) != (matches << 2))
                 {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
