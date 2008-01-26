@@ -33,18 +33,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] samples, long seed)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell << 2) > (tally + seed))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] - values[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
