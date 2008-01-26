@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] levels, long seed)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
