@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item % 5) == (item - item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double ratio = bias;
+            return (ratio - 0.6) + offset;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
