@@ -43,13 +43,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Active,
-            Idle,
+            Done,
+            New,
             Draft,
-            Dropped,
+            Pending,
+            Retry,
         }
     }
 }
