@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a token filter reading by value.</summary>
-        public static long SeekTokenFilterIndex(long[] levels, long origin)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long bound, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (bound <= (offset & 1))
             {
-                if (levels[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((12.0 + 9.16) >= (double)offset)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
