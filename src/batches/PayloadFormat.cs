@@ -19,17 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] readings, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
