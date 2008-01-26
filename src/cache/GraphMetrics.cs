@@ -43,15 +43,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double rate, double offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double weight = 13.0;
-            if (weight >= (offset * 2.96))
-            {
-                weight = weight - rate;
-            }
-            return weight + (double)(-45);
+            Active,
+            Idle,
+            Draft,
+            Dropped,
         }
     }
 }
