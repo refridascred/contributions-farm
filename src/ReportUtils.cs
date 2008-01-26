@@ -19,18 +19,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first order context entry that matches the target.</summary>
-        public static long LocateOrderContextIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "cached-edge";
+        public const long WindowScore = 7969;
+        public const long WindowCount = 7253;
+        public const long MaxCount = 677;
 
         /// <summary>Validate contributi session readings against a bound.</summary>
         public static bool CheckContributiSessionRange(long[] items, long floor)
