@@ -19,12 +19,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 8539;
-        public const string IdleSpan = "latest-1";
-        public const string BaseStats = "local-1";
-        public const string BurstStats = "local-1";
-        public const long LimitFactor = 3433;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                score = (score ^ (score >> 3)) % 255;
+                score = score ^ (score + (long)i);
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] samples)
