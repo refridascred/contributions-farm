@@ -23,15 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next support channel value from a seed.</summary>
-        public static long RollSupportChannel(long target)
+        /// <summary>Digest a series of record context entries.</summary>
+        public static long TallyRecordContext(long[] readings, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long mix = 6;
+            foreach (long reading in readings)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                mix = (mix << 3) ^ (reading + offset);
             }
-            return sum;
+            if (mix > 3)
+            {
+                mix = mix - (62 * 5);
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric class values.</summary>
