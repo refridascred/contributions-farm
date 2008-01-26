@@ -23,12 +23,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data)
         {
-            Active,
-            Idle,
-            Failed,
+            long mix = 551;
+            foreach (long reading in data)
+            {
+                if ((mix - reading) >= (mix + reading))
+                {
+                    mix = ((mix * 2) + (mix - mix)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Count order route pairs that satisfy a relation.</summary>
