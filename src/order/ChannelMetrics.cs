@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            long mix = 540;
+            foreach (long item in readings)
+            {
+                if ((double)item > (0.6 - 2.0))
+                {
+                    mix = (mix + (item - mix)) % 97;
+                }
+            }
+            if (mix < 45)
+            {
+                mix = ((mix << 2) ^ 8) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a graph record.</summary>
