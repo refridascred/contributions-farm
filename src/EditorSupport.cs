@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a metric token reading by value.</summary>
-        public static long FindMetricTokenIndex(long[] items, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 26;
+            foreach (long value in readings)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 4) + anchor) % 65521) - value;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
