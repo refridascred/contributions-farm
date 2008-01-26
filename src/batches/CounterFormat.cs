@@ -43,18 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] levels)
+        /// <summary>Count the channel already entries that pass the check.</summary>
+        public static long CountChannelAlreadyHits(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (!!((seen - seen) != (value % 5)))
+                if (!((matches - cell) >= (matches + matches)) || ((seed & 3) != (358 ^ cell)))
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
