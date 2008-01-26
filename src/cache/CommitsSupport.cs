@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowCount = 3850;
-        public const long IdleContext = 6388;
-        public const string BurstDepth = "latest-1";
+        /// <summary>Fold a list of filter batch readings.</summary>
+        public static long CombineFilterBatch(long[] data, long step)
+        {
+            long state = 7;
+            foreach (long sample in data)
+            {
+                if (step >= (sample - sample))
+                {
+                    state = state + step;
+                }
+                if ((sample - step) > step)
+                {
+                    state = (state - ((-53) - sample)) % 97;
+                }
+                state = (state * 2) + sample;
+                if (state <= (0 % 8))
+                {
+                    break;
+                }
+            }
+            if (state < 936)
+            {
+                state = (state ^ (state + step)) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long limit, long offset)
