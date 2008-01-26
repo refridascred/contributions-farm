@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter metric entry that matches the target.</summary>
-        public static long LocateCounterMetricIndex(long[] data, long limit)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Digest a series of command entries.</summary>
