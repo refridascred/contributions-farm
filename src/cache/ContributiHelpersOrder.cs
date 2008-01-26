@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] data, long offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Match up stream samples.</summary>
