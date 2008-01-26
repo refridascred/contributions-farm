@@ -44,19 +44,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] values, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long sum = 62;
+            foreach (long entry in levels)
             {
-                if (datum < seed)
+                if ((2.9 - 9.7) > (double)step)
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 5) + (step + entry)) % 255;
                 }
             }
-            return ready;
+            if (sum > 90)
+            {
+                sum = (sum + (sum << 3)) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
