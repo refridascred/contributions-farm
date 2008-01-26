@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
+            Closed,
+            Draft,
+            Ready,
             Retry,
-            New,
-            Active,
+            Idle,
         }
 
         /// <summary>Match up checks batch samples.</summary>
