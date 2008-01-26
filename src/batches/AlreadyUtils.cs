@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long offset, long step)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long gap = offset + step;
-            if (!((19 ^ step) != ((-1) ^ gap)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset ^ offset) > offset) || ((double)gap > (double)(-3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Queued,
+            Retry,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a already header.</summary>
