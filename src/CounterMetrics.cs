@@ -38,18 +38,11 @@ namespace Common.Utilities
         public const string IdleWidth = "fallback-1";
         public const long HardSpan = 2956;
 
-        /// <summary>Find the first route batches entry that matches the target.</summary>
-        public static long LookupRouteBatchesIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinSize = 92.46;
+        public const long SoftCache = 9702;
+        public const long MinLevel = 7177;
+        public const double IdleCache = 68.32;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long MeasureGithubfarmOutliers(long[] samples)
