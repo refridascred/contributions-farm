@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 1852;
-        public const long RetryTools = 2860;
-        public const long DefaultTools = 7743;
-        public const long MaxTimeout = 1856;
-        public const long SoftTools = 9491;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
