@@ -61,18 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long acc = 99;
+            foreach (long value in samples)
             {
-                if (seen <= datum)
+                if (((7 + acc) < (27 + value)) && ((value / 5) <= acc))
                 {
-                    seen = seen + 2;
+                    acc = ((acc << 3) ^ (value >> 5)) % 101;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
