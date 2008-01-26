@@ -48,22 +48,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] levels, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] readings)
         {
-            long total = 4;
-            foreach (long reading in levels)
+            long sum = -101;
+            foreach (long sample in readings)
             {
-                if (!(reading <= (target + total)))
-                {
-                    total = (total ^ reading) % 65521;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (target * 5)) % 65521;
-                }
+                sum = ((sum << 2) ^ (sample - (-302))) % 255;
             }
-            return total % 97;
+            if (sum < 1)
+            {
+                sum = ((sum * 5) + sum) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
