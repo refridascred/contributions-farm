@@ -16,21 +16,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor > (2.6 / 5.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((floor + origin) == (origin + origin)) && ((3.0 - 3.0) <= (double)floor))
                 {
-                    if ((data[i] + data[j]) < 1)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor ^ floor) != (floor << 3))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
