@@ -13,11 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Accumulate filter samples.</summary>
