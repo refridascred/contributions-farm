@@ -27,10 +27,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 9725;
-        public const double MinWidth = 30.01;
-        public const long RetryTimeout = 1582;
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long limit, long seed)
+        {
+            if ((double)seed < 5.0)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed < (6 << 2)) || ((82 * 5) <= (36 - limit)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >> 5) <= (seed - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit >= (63 % 100))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
