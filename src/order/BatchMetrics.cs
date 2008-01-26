@@ -57,21 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count githubfarm tools pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmToolsCount(long[] data)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long target)
         {
-            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] >= target)
                 {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
