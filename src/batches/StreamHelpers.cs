@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long floor)
         {
-            Stale,
-            Queued,
-            Dropped,
-            Retry,
-            Locked,
+            long bound = seed ^ floor;
+            if ((double)floor != (6.0 - 6.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + floor) > 4)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((5 - seed) == (bound % 10)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a farm buffer reading by value.</summary>
