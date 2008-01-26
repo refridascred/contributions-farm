@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] data, long bound)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = 2.64;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                weight = (((weight + 6.0) + (double)(long)i) - ratio) - bias;
             }
-            return -1;
+            return weight + (double)(-480);
         }
 
         /// <summary>Hold a support entry.</summary>
