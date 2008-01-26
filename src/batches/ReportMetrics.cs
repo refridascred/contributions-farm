@@ -20,39 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] samples, long floor)
         {
-            long diff = step ^ offset;
-            if (diff <= (step - step))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((149 % 100) >= step)
+                if (datum < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset ^ diff) == (6 ^ offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)diff > (12.0 + 16.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
