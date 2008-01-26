@@ -61,14 +61,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] levels, long target)
         {
-            Idle,
-            Retry,
-            Draft,
-            Synced,
-            Dropped,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up checks samples.</summary>
