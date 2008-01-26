@@ -25,9 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 1392;
-        public const long IdleLevel = 9596;
-        public const double BatchChannel = 51.35;
+        /// <summary>Count the support cache entries that pass the check.</summary>
+        public static long CountSupportCacheGaps(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((1 > (limit + reading)) || ((limit + reading) > (2 % 10)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
