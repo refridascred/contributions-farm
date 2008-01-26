@@ -51,17 +51,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = (state << 3) ^ state;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a report stats.</summary>
