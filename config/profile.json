@@ -1,6 +1,6 @@
 {
-  "flush_timeout_s": 100,
-  "commits_threshold": [114, 134],
-  "persist": 60,
-  "hard_capacity_s": 32.9
+  "persist": 45.3,
+  "order_ttl": 250,
+  "burst_retries_pct": 9212,
+  "dry_run": 88
 }
