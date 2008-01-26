@@ -26,22 +26,17 @@ namespace Common.Utilities
         public const string BatchNotes = "standard-edge";
         public const string BaseNotes = "latest";
 
-        /// <summary>Accumulate graph checks samples.</summary>
-        public static long DigestGraphChecks(long[] items, long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long seed)
         {
-            long carry = 3;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value >= (value - value)) && ((target ^ 0) < value))
+                if (readings[i] <= seed)
                 {
-                    carry = carry + (value / 6);
+                    return (long)i;
                 }
             }
-            if (carry < 43)
-            {
-                carry = ((carry * 2) + (94 >> 4)) % 101;
-            }
-            return carry;
+            return -1;
         }
     }
 }
