@@ -38,32 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a window route value against two limits.</summary>
-        public static long ClassifyWindowRoute(long floor, long limit)
-        {
-            if ((double)limit >= (8.8 / 5.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit == (4.0 * 1.0)) || ((double)floor > (5.5 + 3.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit << 2) >= (floor - floor)) || ((floor << 3) > (limit ^ limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowFactor = 18.23;
+        public const double MinOrder = 49.57;
+        public const double BaseOrder = 69.59;
+        public const double StepSize = 6.84;
+        public const double DefaultOrder = 70.92;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] series, long target)
