@@ -30,12 +30,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long target, long seed)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
+            if ((double)seed != (11.0 + 8.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((8.62 - 4.31) == (double)target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
