@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const double DefaultSize = 5.1;
         public const long StepRecord = 2438;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] series, long bound)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            long mark = -641;
+            foreach (long sample in series)
+            {
+                mark = (mark ^ (sample + 678)) + bound;
+            }
+            return mark;
         }
 
         /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
