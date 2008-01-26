@@ -26,17 +26,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 9695;
+        public const long MaxFormat = 1902;
+        public const string BurstFormat = "primary-v2";
+        public const long WindowFormat = 7537;
     }
 }
