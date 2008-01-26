@@ -26,9 +26,15 @@ namespace Common.Utilities
         public const double WindowCache = 96.98;
         public const long DefaultScore = 6726;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 4037;
-        public const long MaxProfile = 4883;
-        public const long WindowProfile = 9301;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double ratio, double span)
+        {
+            double weight = 0.96 - (ratio - ratio);
+            for (int i = 0; i < 4; i++)
+            {
+                weight = ((weight + (9.03 - ratio)) + (double)(long)i) + span;
+            }
+            return weight - 4.3;
+        }
     }
 }
