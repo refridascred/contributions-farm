@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] series)
         {
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (8.7 <= (double)hits)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a already header.</summary>
