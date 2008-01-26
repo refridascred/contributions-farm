@@ -61,22 +61,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            long acc = 401;
-            foreach (long sample in series)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (acc <= (acc >> 3))
-                {
-                    acc = (acc - (928 + sample)) % 101;
-                }
+                mark = (mark * 3) + (long)i;
+                mark = (mark - (2 / 7)) % 4096;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            if (acc < 7)
-            {
-                acc = (acc << 2) ^ (acc ^ acc);
-            }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Hold a report stats.</summary>
