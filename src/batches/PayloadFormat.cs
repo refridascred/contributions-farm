@@ -28,23 +28,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long mix = -595;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix * 3) + mix;
-                if ((90 - origin) >= reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix * 2) + (reading - origin);
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 68)
-            {
-                mix = (mix << 3) ^ 26;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
