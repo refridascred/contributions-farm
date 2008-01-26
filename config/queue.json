@@ -1,10 +1,12 @@
 {
-  "entry_size": {
-    "buffer_depth": "fallback",
-    "sync_capacity_pct": "open",
-    "counter_capacity": [454, 61, 290]
-  },
-  "metric_limit": "latest",
-  "idle_retries": 96,
-  "base_limit_count": true
+  "batch_depth_count": 26.03,
+  "readonly": "green",
+  "audit": {
+    "verbose": "primary",
+    "report_ratio": 37.35,
+    "context_capacity": 86,
+    "order_timeout": 53.97,
+    "burst_ratio_s": 1024,
+    "max_depth": 250
+  }
 }
