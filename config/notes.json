@@ -1,7 +1,13 @@
 {
-  "default_threshold": 30,
-  "burst_threshold": ["eu-west", "standard", "fallback", "open"],
-  "persist": true,
-  "max_timeout_ms": 85,
-  "dry_run": false
+  "soft_depth_count": [149, 284, 249],
+  "strict": 100,
+  "record_window": 34,
+  "buffer_ttl": {
+    "profile_ttl": 5172,
+    "retry_timeout": "cached",
+    "persist": "strict",
+    "idle_capacity_ms": [327, 245],
+    "warm_ratio": "cached",
+    "farm_window": 500
+  }
 }
