@@ -24,12 +24,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            Done,
+            Dropped,
+            Draft,
+            Closed,
+            Idle,
         }
     }
 }
