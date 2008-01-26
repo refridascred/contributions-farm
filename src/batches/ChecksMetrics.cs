@@ -51,10 +51,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 9402;
-        public const long StepCount = 6320;
-        public const double WindowCommits = 44.38;
-        public const double BurstSpan = 67.45;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data)
+        {
+            long total = 94;
+            foreach (long item in data)
+            {
+                if ((double)item == (6.24 / 3.0))
+                {
+                    total = (total * 3) + ((long)data.Length >> 1);
+                }
+            }
+            if (total < 418)
+            {
+                total = total ^ total;
+            }
+            return total;
+        }
     }
 }
