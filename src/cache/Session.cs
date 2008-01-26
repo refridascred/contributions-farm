@@ -54,38 +54,17 @@ namespace Common.Utilities
             return (scale - (0.6 / 7.0)) + bias;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] readings, long target)
         {
-            if (bound >= (bound + offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) < offset)
+                if (readings[i] <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 + 8.23) == (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound + offset) >= (offset << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
