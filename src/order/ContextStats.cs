@@ -38,38 +38,12 @@ namespace Common.Utilities
         public const double BurstFarm = 80.53;
         public const long SoftBudget = 5712;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long bound, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            if ((bound % 97) > (target % 10))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.9 * 17.0) == (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((15.0 > (double)bound) && ((target / 6) == (target + (-3))))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target + target) <= (bound % 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
