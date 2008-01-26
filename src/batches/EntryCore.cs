@@ -31,27 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] series, long step)
         {
-            long anchor = 6;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + anchor) >= (anchor << 1))
+                if ((series[i] < step) && ((series[i] % 5) != 0))
                 {
-                    anchor = anchor - anchor;
-                    anchor = ((anchor * 5) + (item >> 4)) % 65521;
-                }
-                if ((54 + 3) >= ((long)data.Length ^ 233))
-                {
-                    anchor = anchor - (893 + 0);
-                }
-                if ((466 & 3) != (item % 24))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Hold a session header.</summary>
