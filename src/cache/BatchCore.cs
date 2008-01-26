@@ -33,13 +33,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] samples, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell << 2) > (tally + seed))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
