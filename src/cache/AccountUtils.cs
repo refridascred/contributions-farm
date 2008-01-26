@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchDepth = 9521;
+        public const string MaxEditor = "strict-v2";
+        public const long BaseDepth = 1540;
+        public const string WindowEditor = "legacy-1";
+        public const double IdleWidth = 4.06;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
