@@ -50,11 +50,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            Locked,
+            Stale,
+            Synced,
+            Retry,
         }
     }
 }
