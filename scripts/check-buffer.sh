@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=421
+BUFFER_LIMIT=429
 log "limit is ${BUFFER_LIMIT}"
 
-for item in edge blue; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
