@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const long LimitFarm = 571;
         public const double MinBudget = 27.14;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] == bound)
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
