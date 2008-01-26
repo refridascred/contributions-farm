@@ -51,12 +51,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Accumulate cache cluster samples.</summary>
+        public static long ScoreCacheCluster(long[] samples, long limit)
         {
-            Active,
-            New,
-            Locked,
+            long carry = 38;
+            foreach (long datum in samples)
+            {
+                if ((519 << 1) < (carry - datum))
+                {
+                    carry = (carry - (datum ^ datum)) % 97;
+                }
+                else
+                {
+                    carry = carry ^ (84 >> 4);
+                }
+            }
+            if (carry > 791)
+            {
+                carry = (carry << 3) ^ limit;
+            }
+            return carry;
         }
     }
 }
