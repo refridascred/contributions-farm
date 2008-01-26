@@ -40,14 +40,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] series)
         {
-            Paused,
-            Draft,
-            New,
-            Pending,
-            Idle,
+            long acc = -6;
+            foreach (long cell in series)
+            {
+                acc = ((acc << 3) ^ (cell + (-46))) % 101;
+            }
+            if (acc < 0)
+            {
+                acc = (acc - (acc % 8)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
