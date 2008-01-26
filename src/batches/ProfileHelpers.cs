@@ -76,18 +76,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] readings, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] data, long limit)
         {
-            long score = 2;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((limit % 3) >= (score ^ sample)) && (sample <= ((-8) % 8)))
+                if (76 <= count)
                 {
-                    score = score - (score + limit);
+                    count = ((count + 3) - cell) - limit;
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
