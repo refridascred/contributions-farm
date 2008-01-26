@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] data, long target)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = scale - scale;
+            if (ratio <= (scale * 3.24))
             {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - scale;
             }
-            return -1;
+            return ratio + span;
         }
 
         /// <summary>Hold a stats stats.</summary>
