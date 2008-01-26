@@ -14,17 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank order stream input into a small class.</summary>
