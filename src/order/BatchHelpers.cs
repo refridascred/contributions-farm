@@ -33,15 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((((double)count > (double)value) || ((double)value == (12.0 + 18.0))) && (((-2) >= (count << 2)) && ((double)count == (7.0 + 9.9))))
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
