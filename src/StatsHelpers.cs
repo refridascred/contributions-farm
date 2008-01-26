@@ -39,21 +39,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Look up the position of a tools format sample.</summary>
+        public static long LookupToolsFormatIndex(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
                 {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
