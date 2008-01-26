@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of window tools readings.</summary>
-        public static long TallyWindowTools(long[] items)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] data, long step)
         {
-            long anchor = -8;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell << 2) > (anchor + cell))
+                if (data[i] < step)
                 {
-                    anchor = anchor - cell;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor * 2)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
