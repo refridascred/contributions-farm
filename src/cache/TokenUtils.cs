@@ -30,12 +30,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] series, long step)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
