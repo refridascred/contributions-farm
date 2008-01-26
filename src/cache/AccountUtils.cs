@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] levels)
         {
-            public bool Size { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item >> 2) > seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
