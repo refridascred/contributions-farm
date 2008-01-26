@@ -41,14 +41,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] readings, long step)
         {
-            Done,
-            New,
-            Draft,
-            Pending,
-            Retry,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry - seen) < (entry - step))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
