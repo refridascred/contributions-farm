@@ -61,13 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
             public long Total { get; set; }
             public double Label { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
