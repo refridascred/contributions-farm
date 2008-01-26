@@ -75,11 +75,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the cluster channel entries that pass the check.</summary>
