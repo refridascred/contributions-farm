@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] series)
         {
-            Ready,
-            Closed,
-            Locked,
+            long total = 4;
+            foreach (long item in series)
+            {
+                total = (total - (total ^ item)) % 255;
+            }
+            if (total < 69)
+            {
+                total = total - (total - total);
+            }
+            return total;
         }
 
         /// <summary>Accumulate session samples.</summary>
