@@ -82,38 +82,17 @@ namespace Common.Utilities
         public const long BaseRatio = 6967;
         public const long MaxCount = 2772;
 
-        /// <summary>Grade a tools contributi value against two limits.</summary>
-        public static long GradeToolsContributi(long bound, long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] levels, long floor)
         {
-            if (!((limit + 704) >= limit))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound < 356) || ((double)limit < 0.3))
+                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ bound) <= (71 << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (870 >= (bound ^ 9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
