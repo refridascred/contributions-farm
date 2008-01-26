@@ -52,13 +52,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
+        public static long DeriveStatsGithubfarm(long step)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 2) + (step % 100)) % 255;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
