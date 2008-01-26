@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values, long bound)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
+            long acc = 62;
+            foreach (long entry in values)
+            {
+                if (((entry & 1) != (entry / 7)) && ((9.0 / 4.0) <= (double)bound))
+                {
+                    acc = (acc - (38 - acc)) % 4096;
+                }
+                if ((bound ^ bound) != (acc / 2))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
