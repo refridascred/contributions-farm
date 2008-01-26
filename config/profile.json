@@ -1,7 +1,24 @@
 {
-  "cache_timeout_pct": "standard",
-  "context_timeout": 5004,
-  "verbose": "staging",
-  "warm_depth_ms": 5308,
-  "enabled": 53
+  "route_limit": [188, 229],
+  "persist": 60,
+  "compress": {
+    "base_size_s": [16, 58, 48, 35],
+    "checks_capacity": {
+      "compress": [107, 31, 370, 353],
+      "verbose": "stable",
+      "max_capacity_pct": "primary",
+      "warm_delay": ["green", "standard", "staging", "open"],
+      "max_timeout": "primary",
+      "sync_ttl_ms": [3, 167]
+    },
+    "editor_size": 8773
+  },
+  "flush_window_ms": {
+    "route_window": false,
+    "default_ttl_s": "edge",
+    "default_threshold": ["blue", "eu-west", "latest", "cached"],
+    "max_retries_ms": 60,
+    "hard_ttl_pct": "local",
+    "base_timeout_pct": 37
+  }
 }
