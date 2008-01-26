@@ -1,4 +1,9 @@
 # support settings
-warm_depth_s: primary
-batches_capacity: false
-dry_run: 4
+compress:
+  - 451
+  - 418
+  - 155
+hard_ttl_count:
+  - stable
+  - legacy
+base_window_ms: edge
