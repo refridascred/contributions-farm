@@ -31,16 +31,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long TallyChannelBatchMatches(long[] levels, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                score = score - 2;
-                score = ((score * 4) + (long)i) % 4093;
+                if ((item - seen) >= (seen / 7))
+                {
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
