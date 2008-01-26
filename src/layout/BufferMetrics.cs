@@ -43,23 +43,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the layout order entries that pass the check.</summary>
-        public static long TallyLayoutOrderMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits - entry) > (hits ^ entry))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 6785;
+        public const long HardInterval = 4425;
+        public const string MinSize = "local-edge";
+        public const long BaseCommand = 354;
+        public const string MaxCommand = "cached-1";
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiGaps(long[] data)
