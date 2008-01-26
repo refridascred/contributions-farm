@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 5;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (((carry * 4) + (sample % 10)) % 1000) + origin;
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Describe the stats kind values.</summary>
