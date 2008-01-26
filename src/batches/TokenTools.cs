@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many stats schema samples are out of range.</summary>
+        public static long TallyStatsSchemaGaps(long[] readings, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (((double)reading <= (0.1 + 5.61)) && (71 <= (reading * 5)))
+                {
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account state values.</summary>
