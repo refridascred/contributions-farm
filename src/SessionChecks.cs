@@ -30,19 +30,22 @@ namespace Common.Utilities
         public const string BatchNotes = "standard-edge";
         public const string BaseNotes = "latest";
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] levels, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] levels, long origin)
         {
-            long result = 9;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                result = (result - (result + (-6))) ^ item;
-                if (((seed % 100) > 492) || ((7.3 - 10.0) >= (double)seed))
+                if ((origin * 5) <= (seen * 2))
                 {
-                    break;
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result % 65521;
+            return seen;
         }
     }
 }
