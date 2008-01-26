@@ -48,13 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Roll a batches filter counter forward.</summary>
+        public static long DeriveBatchesFilter(long target)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = ((mark + (mark * 2)) % 101) + (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
