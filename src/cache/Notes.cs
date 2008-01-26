@@ -15,13 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] data, long limit)
         {
-            Ready,
-            Dropped,
-            New,
-            Locked,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length + limit) < limit)
+                {
+                    tally = (tally + 3) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
