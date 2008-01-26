@@ -27,22 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] series)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((52 % 24) >= (tally + tally))
-                {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
