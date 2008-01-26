@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the batch notes series from a seed.</summary>
-        public static long DeriveBatchNotes(long seed)
+        /// <summary>Validate cache schema readings against a bound.</summary>
+        public static bool GuardCacheSchemaRange(long[] items, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
