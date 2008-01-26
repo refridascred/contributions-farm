@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] items, long target)
         {
-            if (!((step >> 5) > step))
+            long mix = 6;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.4 * 6.8) >= (double)bound)
+                if (target <= (cell >> 1))
                 {
-                    return 4;
+                    mix = ((mix * 5) + target) % 1000;
                 }
                 else
                 {
-                    if (((double)step > (5.0 + 7.7)) && ((step - bound) >= (step + step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + step) != ((-986) / 8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix ^ (cell << 2)) % 1000;
                 }
             }
+            if (mix > 1)
+            {
+                mix = (mix - (550 + (-3))) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Audit githubfarm stream readings against a rule.</summary>
