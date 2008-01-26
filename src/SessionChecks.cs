@@ -35,13 +35,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Compare every pair of channel batch readings.</summary>
+        public static long PairChannelBatchCount(long[] values)
         {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
