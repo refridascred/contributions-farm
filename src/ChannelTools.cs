@@ -39,14 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Pending,
-            Ready,
-            New,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 9444;
+        public const string RetryTimeout = "open-v2";
+        public const long StepLevel = 5248;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] levels)
