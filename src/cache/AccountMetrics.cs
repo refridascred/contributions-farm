@@ -41,19 +41,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate entry route readings against a bound.</summary>
-        public static bool VerifyEntryRouteBounds(long[] data, long floor)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
