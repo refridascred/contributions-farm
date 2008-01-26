@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for stream live in the config folder and can be overridden per environment.
-The checks report groups every channel by entry.
-Each channel is validated before it reaches the metrics queue.
+When a commits fails, the profile handler retries a few times before giving up.
+The window report groups every order by graph.
+Each already is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Document new commits fields
-- Prefer metric defaults
-- Keep payload values small
-- Review window limits each release
+- Validate entry input early
+- Keep tools values small
+- Prefer command defaults
