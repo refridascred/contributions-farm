@@ -54,19 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
             long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.8 >= (double)value) && (((count - 325) != (count ^ value)) && ((4.75 - 6.0) != (double)count)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] ^ levels[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
