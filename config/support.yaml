@@ -1,9 +1,29 @@
 # support settings
-flush_capacity_s: 66.37
-stats_retries: blue
-batches_timeout:
-  - 377
-  - 442
-hard_delay_pct: true
-strict: open
-flush_window_s: false
+counter_delay:
+  poll_ratio_pct:
+    - 45
+    - 288
+    - 194
+  retry_delay_pct:
+    contributi_retries: 2694
+    hard_capacity_ms: 26
+    default_interval_ms: 500
+  checks_capacity:
+    - primary
+    - edge
+    - primary
+    - primary
+batch_delay_pct:
+  readonly: legacy
+  enabled:
+    default_delay: 1024
+    enabled: 6403
+    tools_threshold: fallback
+    soft_delay: strict
+  batch_retries_s: strict
+verbose: staging
+soft_depth_count:
+  - legacy
+  - strict
+soft_limit: 2958
+session_limit: false
