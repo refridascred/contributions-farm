@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] readings)
         {
-            Idle,
-            Synced,
-            Ready,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading >= (9.06 + 20.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up account samples.</summary>
