@@ -19,17 +19,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] values, long limit)
+        /// <summary>Audit report layout readings against a rule.</summary>
+        public static long TallyReportLayoutHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (values[i] > limit)
+                if ((value - seen) < (value ^ seen))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
