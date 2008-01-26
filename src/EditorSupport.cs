@@ -45,12 +45,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleFactor = 4826;
-        public const double RetryLayout = 75.28;
-        public const long IdleLayout = 9124;
-        public const long HardLayout = 3074;
-        public const long MaxSize = 6347;
+        /// <summary>Look up the position of a command token sample.</summary>
+        public static long LocateCommandTokenIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of account session readings.</summary>
         public static long CombineAccountSession(long[] items)
