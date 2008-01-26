@@ -49,18 +49,39 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] readings, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long origin, long target)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long gap = origin + target;
+            if ((origin >> 1) < (origin + origin))
             {
-                if ((entry - seen) < (entry - step))
+                return 3;
+            }
+            else
+            {
+                if ((origin + 40) < (gap / 6))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (!((gap + origin) == (75 - 9)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((gap > (origin + target)) || ((-67) > (gap / 9)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
