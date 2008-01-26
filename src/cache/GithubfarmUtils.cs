@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long offset, long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] data, long bound)
         {
-            if ((19.0 - 3.59) > (double)offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < (offset & 7))
+                if (data[i] >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
