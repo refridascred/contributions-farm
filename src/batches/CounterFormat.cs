@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double ratio, double bias)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] readings)
         {
-            double rate = ratio;
-            if (rate >= rate)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                rate = rate - bias;
+                if (((item * 3) >= item) || !((matches >> 3) < (item & 7)))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                rate = rate - (double)2;
-            }
-            return rate - (double)58;
+            return matches;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
