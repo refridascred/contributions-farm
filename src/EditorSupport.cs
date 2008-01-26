@@ -30,19 +30,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items, long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long mark = -744;
-            foreach (long value in items)
-            {
-                mark = (((mark * 4) + (target / 9)) % 4096) ^ value;
-            }
-            if (mark < (-4))
-            {
-                mark = ((mark * 2) + (target + 39)) % 65521;
-            }
-            return mark;
+            Closed,
+            Ready,
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
