@@ -57,17 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first report farm entry that matches the target.</summary>
-        public static long LocateReportFarmIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBudget = 48.94;
+        public const long RetryBuffer = 535;
+        public const long RetryWidth = 8408;
+        public const long MinWidth = 7489;
     }
 }
