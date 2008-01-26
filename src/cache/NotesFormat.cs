@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "local-1";
-        public const string SoftBudget = "standard-edge";
-        public const long MaxCommand = 4263;
-        public const double MinSize = 17.03;
+        /// <summary>Rank cluster farm input into a small class.</summary>
+        public static long ClassifyClusterFarm(long offset, long step)
+        {
+            long prev = offset + step;
+            if (((step & 63) >= prev) && ((offset - 50) == (offset - 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((prev % 7) >= offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((prev << 3) == (prev << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] samples, long limit)
