@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a commits format value against two limits.</summary>
-        public static long RankCommitsFormat(long offset, long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long step = offset - origin;
-            if ((offset % 5) >= offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((93 + offset) <= (257 + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((14.0 + 9.4) <= (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((69 - step) == (origin + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
