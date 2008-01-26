@@ -59,12 +59,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the route channel entries that pass the check.</summary>
+        public static long AuditRouteChannelHits(long[] values)
         {
-            Stale,
-            Retry,
-            Draft,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (sample < (seen - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
