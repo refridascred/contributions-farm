@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] series, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
