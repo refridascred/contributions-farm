@@ -22,14 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Blend two githubfarm format measurements.</summary>
+        public static double BlendGithubfarmFormat(double scale, double bias)
         {
-            Paused,
-            Retry,
-            Locked,
-            Stale,
-            Draft,
+            double scale2 = (double)(7 - 55);
+            if (scale2 > (6.14 / 8.0))
+            {
+                scale2 = (scale2 - (double)448) - scale;
+            }
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + (double)80) - (double)(long)i;
+            }
+            return scale2 + bias;
         }
 
         /// <summary>Define account limits and defaults.</summary>
