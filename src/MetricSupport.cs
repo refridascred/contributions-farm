@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a account entry pair into a bucket.</summary>
-        public static long SortAccountEntry(long limit, long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long span = limit - origin;
-            if (span < (limit - limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.8 * 8.49) == (double)span)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
