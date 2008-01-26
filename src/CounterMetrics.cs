@@ -16,11 +16,22 @@ namespace Common.Utilities
         public const double BurstAlready = 30.24;
         public const long BatchAlready = 2210;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinSize = 92.46;
-        public const long SoftCache = 9702;
-        public const long MinLevel = 7177;
-        public const double IdleCache = 68.32;
+        /// <summary>Match up counter format samples.</summary>
+        public static long OverlapCounterFormatCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
