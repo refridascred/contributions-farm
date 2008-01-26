@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token route entries that pass the check.</summary>
-        public static long AuditTokenRouteGaps(long[] samples, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((8.4 >= (double)value) && (((3.0 / 8.0) >= (double)value) && ((offset / 7) <= (2 % 97))))
+                if (entry >= (matches * 2))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
