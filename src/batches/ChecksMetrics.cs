@@ -83,21 +83,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cache profile pairs that satisfy a relation.</summary>
-        public static long OverlapCacheProfileCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 9402;
+        public const long StepCount = 6320;
+        public const double WindowCommits = 44.38;
+        public const double BurstSpan = 67.45;
     }
 }
