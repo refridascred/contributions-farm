@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] values)
         {
-            Retry,
-            Queued,
-            Locked,
+            long carry = 430;
+            foreach (long value in values)
+            {
+                carry = ((carry ^ 3) % 65521) ^ value;
+            }
+            return carry;
         }
 
         /// <summary>Describe the record status values.</summary>
