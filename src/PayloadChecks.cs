@@ -45,17 +45,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = -102;
+            foreach (long item in values)
             {
-                if (values[i] <= floor)
+                if (item <= ((long)values.Length - 5))
                 {
-                    return (long)i;
+                    result = ((result * 2) + (40 / 6)) % 4096;
+                }
+                else
+                {
+                    result = result - (result ^ item);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
