@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxLevel = 1138;
-        public const long BurstFactor = 3822;
-        public const long StepBudget = 2502;
-        public const long LimitWidth = 299;
-        public const long LimitCount = 9750;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "primary";
+        public const long WindowAlready = 3112;
+        public const string LimitAlready = "stable";
 
         /// <summary>Measure how many session commits samples are out of range.</summary>
         public static long CountSessionCommitsOutliers(long[] data, long floor)
