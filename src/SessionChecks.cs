@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Done,
-            Pending,
+            Ready,
+            Active,
+            Dropped,
+            Idle,
             Stale,
         }
 
