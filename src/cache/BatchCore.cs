@@ -34,21 +34,27 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 424;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total - (total + total)) ^ (long)i;
+                }
+                if (total <= (2 * 4))
+                {
+                    total = (total * 2) + (sample + sample);
+                    break;
+                }
+                if (sample > (sample >> 5))
+                {
+                    total = (total ^ (9 - total)) % 1000;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
