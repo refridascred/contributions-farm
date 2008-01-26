@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] items, long origin)
         {
-            Retry,
-            Failed,
-            Active,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((origin + value) != (value & 255)) && (value > (value - value)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric options.</summary>
