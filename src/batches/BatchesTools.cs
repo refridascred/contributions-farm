@@ -23,15 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two buffer record measurements.</summary>
-        public static double SmoothBufferRecord(double scale, double floor)
+        /// <summary>Check that every farm order entry stays within the limit.</summary>
+        public static bool ValidateFarmOrderLimits(long[] samples, long limit)
         {
-            double scale2 = (double)(5 >> 2);
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                scale2 = ((scale2 + (double)9) - (double)(long)i) - floor;
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale2 - scale;
+            return found;
         }
 
         /// <summary>Fold a list of token readings.</summary>
