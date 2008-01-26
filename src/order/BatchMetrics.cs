@@ -31,11 +31,20 @@ namespace Common.Utilities
         public const long WindowSize = 7110;
         public const double MaxAccount = 93.17;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetrySize = 33.74;
-        public const long CacheCount = 8823;
-        public const string BaseCommits = "standard";
-        public const long RetryScore = 9559;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double ratio, double bias)
