@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseSize = 2461;
-        public const string WindowBudget = "staging-edge";
-        public const long MaxGithubfarm = 5061;
-        public const double BurstSpan = 30.38;
+        /// <summary>Scale a counter command figure with a bias.</summary>
+        public static double AdjustCounterCommand(double weight, double offset)
+        {
+            double bias = offset;
+            if (bias <= (bias * 9.0))
+            {
+                bias = (bias - (bias + bias)) - weight;
+            }
+            else
+            {
+                bias = bias - 3.0;
+            }
+            return bias + 4.0;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long CombineAlready(long[] levels)
