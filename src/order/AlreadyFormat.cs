@@ -41,12 +41,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Combine notes filter values into a single score.</summary>
+        public static long CombineNotesFilter(long[] samples)
         {
-            public bool Region { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
+            long total = 42;
+            foreach (long item in samples)
+            {
+                if (80 < (item % 64))
+                {
+                    total = total - (33 % 7);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the format phase values.</summary>
