@@ -19,15 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] levels, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long target)
         {
-            long acc = 10;
-            foreach (long reading in levels)
+            if (((72 << 1) < target) || ((17.0 + 4.0) > (double)target))
             {
-                acc = ((acc - (target + acc)) % 97) - reading;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (((offset + 98) == (7 ^ target)) || ((3.0 - 5.5) >= (double)target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + target) < (offset % 10)) || ((target - 357) >= (offset + target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile state values.</summary>
