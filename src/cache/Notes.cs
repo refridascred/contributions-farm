@@ -82,22 +82,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] samples, long target)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] data, long step)
         {
-            long mark = -91;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)samples.Length < (2.84 + 18.0))
+                if (data[i] < step)
                 {
-                    mark = (((mark * 2) + 6) + datum) - target;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (642 + mark)) % 65521;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
