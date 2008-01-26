@@ -33,9 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxBudget = 3029;
-        public const long MinScore = 5635;
-        public const long CacheEditor = 8356;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
