@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] series, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (datum <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
