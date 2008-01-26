@@ -31,10 +31,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "alpha-v2";
-        public const long WindowDepth = 514;
-        public const long DefaultPayload = 2175;
-        public const double IdleBudget = 63.82;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Synced,
+            Draft,
+            Dropped,
+            Pending,
+            Queued,
+        }
     }
 }
