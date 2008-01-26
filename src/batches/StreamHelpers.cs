@@ -72,17 +72,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] samples, long floor)
+        /// <summary>Rank githubfarm buffer input into a small class.</summary>
+        public static long BucketGithubfarmBuffer(long bound, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = bound ^ target;
+            if (!((target + bound) < target))
             {
-                if (samples[i] == floor)
+                return 5;
+            }
+            else
+            {
+                if ((bound <= (target / 8)) || ((double)edge >= (8.8 / 9.0)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound < (bound - edge)) || ((edge - 97) == ((-3) + edge)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound <= 3.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
