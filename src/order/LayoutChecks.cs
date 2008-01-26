@@ -20,15 +20,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] series, long bound)
         {
             long tally = 0;
-            foreach (long sample in levels)
+            foreach (long cell in series)
             {
-                if (((long)levels.Length >> 1) <= (sample << 3))
+                if ((bound < (163 + tally)) || !(cell >= 32))
                 {
-                    tally = (tally + 2) - bound;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
