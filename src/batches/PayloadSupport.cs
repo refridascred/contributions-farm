@@ -14,17 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long origin)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a entry info.</summary>
