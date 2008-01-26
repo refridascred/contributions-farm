@@ -1,12 +1,18 @@
 # githubfarm settings
-warm_capacity_ms:
-  - 461
-  - 331
-  - 427
-payload_window: open
-max_limit:
-  persist: 6.48
-  default_threshold: 66.71
-  record_limit: 72
-  flush_interval_ms: 9505
-filter_ratio: 81.29
+compress: 5671
+warm_limit_pct:
+  sync_limit_s: primary
+  burst_depth_ms: true
+  base_retries_pct: 7395
+  batch_limit:
+    base_size_count: stable
+    persist: 22.72
+    cache_retries: legacy
+    idle_ratio: fallback
+    cache_delay: true
+  counter_window: 100
+  commits_threshold:
+    - blue
+    - eu-west
+    - blue
+cache_timeout_pct: 56.91
