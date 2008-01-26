@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first batch payload entry that matches the target.</summary>
-        public static long SeekBatchPayloadIndex(long[] levels, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (levels[i] < bound)
+                if (reading < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a report header.</summary>
