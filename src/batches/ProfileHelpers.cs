@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Find the first batches githubfarm entry that matches the target.</summary>
+        public static long LookupBatchesGithubfarmIndex(long[] values, long limit)
         {
-            Idle,
-            Dropped,
-            Paused,
-            Failed,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
