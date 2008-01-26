@@ -30,11 +30,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardSpan = 62.67;
-        public const string BaseRatio = "stable-v2";
-        public const long CacheDepth = 5547;
-        public const long MaxBudget = 4842;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LookupGraphIndex(long[] readings, long seed)
