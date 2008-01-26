@@ -22,12 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a stats format reading by value.</summary>
-        public static long LookupStatsFormatIndex(long[] values, long target)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] values, long offset)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] > target)
+                if (values[i] >= offset)
                 {
                     return (long)i;
                 }
