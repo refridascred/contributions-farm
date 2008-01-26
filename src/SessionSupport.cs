@@ -19,24 +19,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long target, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] readings, long seed)
         {
-            if ((1.19 * 20.0) >= (double)target)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target - 11) < (origin + target))
+                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
