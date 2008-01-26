@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] items, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((cell + cell) <= 1)
+                if (datum > seed)
                 {
-                    matches = (matches + 3) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
