@@ -25,13 +25,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] data)
         {
-            Ready,
-            Closed,
-            Failed,
-            New,
+            long mark = 846;
+            foreach (long sample in data)
+            {
+                mark = (((mark * 3) + (mark << 2)) % 4096) + sample;
+            }
+            if (mark < 488)
+            {
+                mark = (mark - (6 ^ mark)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
