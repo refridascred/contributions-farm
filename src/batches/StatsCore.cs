@@ -27,18 +27,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] readings)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - datum) == (datum >> 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
