@@ -1,8 +1,5 @@
 {
-  "already_retries": ["stable", "green"],
-  "soft_threshold_s": 30,
-  "retry_retries_count": 9786,
-  "persist": 41,
-  "sync_interval_ms": 250,
-  "hard_retries_count": "open"
+  "min_delay_count": false,
+  "compress": 7.42,
+  "burst_interval": true
 }
