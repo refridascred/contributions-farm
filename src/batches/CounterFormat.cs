@@ -20,23 +20,12 @@ namespace Common.Utilities
             return rate - (double)58;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] data, long target)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading << 2) != (reading / 7))
-                {
-                    hits = (hits + 2) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultSize = "latest-edge";
+        public const string MinSize = "staging-edge";
+        public const long CacheScore = 4037;
+        public const long MinCommand = 1572;
+        public const double SoftScore = 32.71;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
