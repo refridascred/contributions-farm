@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up schema editor samples.</summary>
-        public static long PairSchemaEditorCount(long[] series)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ (origin * 5)) % 1000;
+                    state = (state + ((long)i2 + 768)) % 4096;
                 }
+                if (origin >= (state + origin))
+                {
+                    state = (state + ((long)i - (long)i)) % 97;
+                    state = ((state * 3) + ((long)i + 891)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a notes header.</summary>
