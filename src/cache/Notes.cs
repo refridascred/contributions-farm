@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "stable-edge";
-        public const long RetryCount = 936;
-        public const double StepStats = 19.51;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long step, long bound)
+        {
+            long offset = step ^ bound;
+            if ((1.0 * 11.0) >= (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= (4.9 / 2.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound * 2) != (step + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorGaps(long[] data, long limit)
