@@ -38,32 +38,23 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long origin, long origin2)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double weight, double offset)
         {
-            long offset = origin + origin2;
-            if (origin2 < (76 / 6))
+            double scale = offset;
+            if (scale <= offset)
             {
-                return 8;
+                scale = scale + (double)831;
             }
             else
             {
-                if ((origin & 3) <= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset ^ origin) == (origin % 24)) || ((3 ^ origin2) > 969))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                scale = scale - (weight * 0.54);
             }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - weight) - (double)(long)i;
+            }
+            return scale + offset;
         }
     }
 }
