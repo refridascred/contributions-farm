@@ -1,15 +1,10 @@
 # support settings
-max_ratio_pct: 5614
-burst_window_count: staging
-retry_window_s: false
-warm_depth:
-  - 423
-  - 34
-  - 469
-  - 486
-batch_timeout: 50.02
-compress:
-  - fallback
-  - fallback
-  - local
-  - stable
+max_ttl: 44.68
+sync_threshold: open
+audit:
+  route_timeout: fallback
+  token_window: 100
+  burst_depth_ms: 8631
+max_delay: 250
+max_ratio: 15.16
+retry_window_count: fallback
