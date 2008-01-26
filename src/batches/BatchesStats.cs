@@ -46,10 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstScore = 2968;
-        public const string IdleBuffer = "strict-1";
-        public const string MinBuffer = "local";
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long floor, long seed)
