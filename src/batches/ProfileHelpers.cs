@@ -77,18 +77,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph layout samples are out of range.</summary>
-        public static long CountGraphLayoutGaps(long[] series, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long item in series)
+            long diff = seed - seed2;
+            if (!((4 ^ seed2) > seed))
             {
-                if (((double)count >= (2.0 + 0.94)) && ((5.0 * 5.0) <= (double)seed))
+                return 6;
+            }
+            else
+            {
+                if ((diff + 720) <= seed2)
                 {
-                    count = (count + 1) - item;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
