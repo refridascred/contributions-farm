@@ -20,31 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long origin, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] samples, long seed)
         {
-            if ((double)floor > (2.6 / 5.0))
+            bool valid = true;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor + origin) == (origin + origin)) && ((3.0 - 3.0) <= (double)floor))
+                if (item <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor ^ floor) != (floor << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
