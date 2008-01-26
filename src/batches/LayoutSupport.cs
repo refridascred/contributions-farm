@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of queue session entries.</summary>
-        public static long TallyQueueSession(long[] readings)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            long mark = 8;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((mark - value) > (9 % 97)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark * 3) + 11) % 97;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < 45)
-            {
-                mark = ((mark * 5) + (833 * 4)) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
