@@ -30,12 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Failed,
-            Idle,
-            Stale,
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
