@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] values)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value > (16.0 * 1.6))
+                if (items[i] >= target)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
