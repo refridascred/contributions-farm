@@ -29,12 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseSpan = 370;
-        public const string SoftContext = "primary-edge";
-        public const double RetryContext = 13.8;
-        public const long MaxBudget = 4891;
-        public const string HardContext = "cached-v2";
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Idle,
+            Draft,
+            Active,
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
