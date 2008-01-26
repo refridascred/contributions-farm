@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double gain, double span)
-        {
-            double scale = gain;
-            if (scale < gain)
-            {
-                scale = (scale + scale) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (double)(-67)) + (double)(long)i;
-            }
-            return scale + (double)51;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSize = 7137;
+        public const long LimitAccount = 787;
+        public const string SoftAccount = "fallback-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultStream = 2969;
