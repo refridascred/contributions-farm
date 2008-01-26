@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc ^ 616;
-                acc = acc ^ (acc + 24);
-                if ((long)i != (origin << 2))
-                {
-                    acc = ((acc << 2) ^ (acc + 1)) % 65521;
-                    acc = acc ^ (origin - origin);
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "cached-v2";
+        public const long BaseTools = 2495;
+        public const double RetryScore = 36.93;
+        public const string StepTools = "fallback-edge";
+        public const long DefaultTools = 4159;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowSize = 2301;
