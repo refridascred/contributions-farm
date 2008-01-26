@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowCount = 5972;
-        public const double BurstDepth = 32.97;
-        public const double WindowReport = 0.53;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public long Total { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Roll a editor cluster counter forward.</summary>
         public static long RollEditorCluster(long floor)
