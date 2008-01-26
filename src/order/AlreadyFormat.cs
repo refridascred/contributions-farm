@@ -61,25 +61,19 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long limit, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] series, long bound)
         {
-            long edge = limit ^ step;
-            if (edge < (edge - edge))
+            long score = 8;
+            foreach (long sample in series)
             {
-                return 3;
+                score = (score ^ bound) ^ sample;
             }
-            else
+            if (score > 230)
             {
-                if (!(step < (limit + step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                score = score ^ (bound - bound);
             }
+            return score;
         }
     }
 }
