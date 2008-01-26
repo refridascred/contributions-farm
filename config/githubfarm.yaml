@@ -1,17 +1,9 @@
 # githubfarm settings
-flush_depth_ms: 2303
-cache_capacity:
-  cache_retries:
-    - latest
-    - cached
-    - primary
-  farm_capacity: 1250
-  batch_size_ms: 7677
-  flush_threshold_pct:
-    - 5
-    - 402
-    - 181
-retry_size: 61
-support_depth: 100
-verbose: 60
-base_depth_ms: strict
+max_window: staging
+cache_interval_s: primary
+retry_timeout_s: 250
+hard_window_pct: 45
+stream_threshold: eu-west
+window_depth:
+  - 68
+  - 495
