@@ -50,13 +50,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            Locked,
+            Closed,
+            Active,
+            Idle,
         }
     }
 }
