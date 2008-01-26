@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 3140;
-        public const long MaxBudget = 15;
-        public const long DefaultSession = 486;
-        public const long SoftSession = 8223;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Paused,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
