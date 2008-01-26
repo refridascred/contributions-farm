@@ -14,15 +14,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double span)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long floor, long origin)
         {
-            double bias = (double)(4 >> 4);
-            for (int i = 0; i < 6; i++)
+            long prev = floor + origin;
+            if ((double)33 > (double)prev)
             {
-                bias = ((bias - span) + (double)(long)i) + rate;
+                return 0;
             }
-            return bias - (bias + span);
+            else
+            {
+                if ((prev + origin) != (floor + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a token info.</summary>
