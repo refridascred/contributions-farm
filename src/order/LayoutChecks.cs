@@ -22,39 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long seed, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] series)
         {
-            long bound = seed ^ limit;
-            if ((limit + limit) <= (limit * 4))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + seed) > limit)
+                if ((hits ^ reading) < ((-58) - reading))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed > (seed + bound)) || ((bound & 3) != (limit - limit)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)698 > (double)seed) || (3.18 > (double)seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
