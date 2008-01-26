@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 98.65;
-        public const long BaseLevel = 7150;
-        public const string MinRatio = "stable-1";
-        public const long MinSize = 7568;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] data)
