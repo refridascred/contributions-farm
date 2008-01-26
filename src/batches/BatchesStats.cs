@@ -37,19 +37,12 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading ^ count) == (count >> 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "open";
+        public const long BaseLayout = 1378;
+        public const string StepInterval = "strict";
+        public const string BurstLayout = "alpha-1";
+        public const string BaseWidth = "local";
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
