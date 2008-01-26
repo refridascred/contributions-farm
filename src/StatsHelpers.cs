@@ -23,10 +23,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryLevel = 7199;
-        public const long RetryRecord = 7202;
-        public const long StepFactor = 1062;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Draft,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
