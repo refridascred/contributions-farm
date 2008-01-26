@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload filter sample.</summary>
-        public static long LookupPayloadFilterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryLevel = 94.95;
+        public const long MaxSession = 9183;
+        public const string BurstSession = "strict-edge";
+        public const long WindowSession = 844;
+        public const double RetrySession = 8.26;
 
         /// <summary>Compare every pair of tools session readings.</summary>
         public static long OverlapToolsSessionCount(long[] levels)
