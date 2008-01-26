@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const long LimitMetric = 6025;
         public const long IdleMetric = 638;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            New,
+            Dropped,
+            Paused,
+            Failed,
+            Closed,
         }
     }
 }
