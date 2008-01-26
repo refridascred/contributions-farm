@@ -36,12 +36,18 @@ namespace Common.Utilities
         public const long DefaultCommits = 894;
         public const long CacheScore = 1789;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Measure how many stream cluster samples are out of range.</summary>
+        public static long AuditStreamClusterMatches(long[] items, long step)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((676 % 16) <= (step & 15))
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
         }
     }
 }
