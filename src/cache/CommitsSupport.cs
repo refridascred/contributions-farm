@@ -35,13 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Measure how many route notes samples are out of range.</summary>
+        public static long CountRouteNotesOutliers(long[] readings, long offset)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((seen * 2) != (seen + entry)) && ((0.73 * 3.5) >= (double)(long)readings.Length))
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a token stats.</summary>
