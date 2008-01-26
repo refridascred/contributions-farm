@@ -34,11 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
+            Failed,
+            Draft,
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
