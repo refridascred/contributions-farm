@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] readings, long bound)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((count < (sample << 1)) && ((double)bound >= (double)sample)))
                 {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
