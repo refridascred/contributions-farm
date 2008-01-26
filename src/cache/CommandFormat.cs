@@ -36,15 +36,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double offset)
+        /// <summary>Match up token stream samples.</summary>
+        public static long CompareTokenStreamCount(long[] data)
         {
-            double bias = (offset + offset) + (ratio - ratio);
-            if (bias < (ratio - 9.48))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - (5.16 * 13.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias - offset;
+            return matches;
         }
     }
 }
