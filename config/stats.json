@@ -1,7 +1,13 @@
 {
-  "base_size_pct": "edge",
-  "channel_window": 3,
-  "hard_depth": 47.75,
-  "poll_size": "edge",
-  "base_threshold": true
+  "idle_window": 11.65,
+  "account_capacity": {
+    "default_window": "legacy",
+    "persist": [227, 74],
+    "max_threshold": 6087,
+    "cache_window_ms": 13,
+    "audit": "open",
+    "poll_delay": 100
+  },
+  "idle_depth": false,
+  "warm_delay_s": 58.65
 }
