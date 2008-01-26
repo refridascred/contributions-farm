@@ -1,5 +1,13 @@
 {
-  "batch_limit": false,
-  "enabled": "cached",
-  "persist": 100
+  "verbose": true,
+  "warm_limit": {
+    "channel_ttl": "stable",
+    "graph_ttl": [22, 450, 384],
+    "burst_capacity": false,
+    "compress": false,
+    "min_capacity": ["primary", "latest", "blue", "primary"]
+  },
+  "cache_delay_pct": 7,
+  "warm_capacity_s": 61.85,
+  "flush_timeout": ["fallback", "legacy", "local", "staging"]
 }
