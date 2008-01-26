@@ -1,5 +1,5 @@
 {
-  "verbose": 28.27,
-  "batch_delay": 5.19,
-  "tools_depth": "open"
+  "compress": "eu-west",
+  "max_retries_count": "stable",
+  "sync_size_ms": true
 }
