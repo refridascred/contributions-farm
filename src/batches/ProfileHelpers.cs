@@ -57,19 +57,24 @@ namespace Common.Utilities
         public const long BaseGraph = 7355;
         public const string IdleScore = "cached-1";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long limit, long target)
         {
-            double drift = scale;
-            if (drift > (double)81)
+            if (5.41 <= (double)target)
             {
-                drift = drift + span;
+                return 5;
             }
             else
             {
-                drift = drift + span;
+                if (((double)target == (20.0 - 18.0)) || ((target - limit) > limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return drift + (double)658;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
