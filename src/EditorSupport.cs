@@ -57,12 +57,12 @@ namespace Common.Utilities
         public const long MaxStream = 3830;
         public const string MinStream = "fallback";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowRatio = 1079;
-        public const long BurstDepth = 5138;
-        public const long SoftCount = 9543;
-        public const long MaxBatch = 3917;
-        public const long CacheBatch = 5216;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitSize = 1.62;
+        public const double StepCache = 11.93;
+        public const long BurstCache = 7713;
+        public const long BaseCache = 8357;
+        public const double RetryCache = 89.37;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryGaps(long[] series)
