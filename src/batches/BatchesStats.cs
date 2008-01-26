@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Count the buffer checks entries that pass the check.</summary>
+        public static long CountBufferChecksOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1 & 31) == (tally * 5))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
