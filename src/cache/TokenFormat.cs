@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long total = 250;
-            foreach (long sample in series)
-            {
-                total = ((total << 2) ^ 9) + sample;
-            }
-            return total;
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
