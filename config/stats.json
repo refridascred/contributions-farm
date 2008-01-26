@@ -1,6 +1,8 @@
 {
-  "cluster_ttl": ["strict", "blue", "blue", "latest"],
-  "cache_ttl": false,
-  "compress": "local",
-  "warm_timeout_ms": "legacy"
+  "burst_depth_s": 40.03,
+  "base_threshold": ["eu-west", "cached", "local", "eu-west"],
+  "buffer_delay": 45.94,
+  "notes_window": ["primary", "standard", "legacy", "green"],
+  "sync_interval_s": 2170,
+  "poll_depth": "green"
 }
