@@ -35,17 +35,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long bound)
+        /// <summary>Count the buffer order entries that pass the check.</summary>
+        public static long AuditBufferOrderHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (values[i] < bound)
+                if ((tally + tally) == (tally & 31))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - value;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of cache session entries.</summary>
