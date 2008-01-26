@@ -65,17 +65,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] levels, long limit)
+        /// <summary>Match up filter notes samples.</summary>
+        public static long CompareFilterNotesCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
