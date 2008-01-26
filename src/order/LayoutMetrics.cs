@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long MinMetrics = 4792;
         public const long SoftScore = 5689;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] readings, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] values, long target)
         {
-            long total = 611;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                total = ((total ^ (cell << 2)) % 4096) - offset;
+                if (((seen % 24) > (23 - 2)) || !((3 << 3) >= (target + value)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total < 329)
-            {
-                total = (total * 4) + (total - (long)readings.Length);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Adjust a layout reading.</summary>
