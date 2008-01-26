@@ -50,18 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream cluster samples are out of range.</summary>
-        public static long AuditStreamClusterMatches(long[] items, long step)
+        /// <summary>Check that every notes report entry stays within the limit.</summary>
+        public static bool GuardNotesReportRange(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((676 % 16) <= (step & 15))
+                if (value > limit)
                 {
-                    seen = (seen + 3) - item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
