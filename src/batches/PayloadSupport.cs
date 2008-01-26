@@ -14,19 +14,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two stream metrics measurements.</summary>
-        public static double ScaleStreamMetrics(double weight, double span)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] data, long origin)
         {
-            double gain = (double)(33 & 127);
-            if (gain > weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain + (18.0 + weight);
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - span;
-            }
-            return gain + (gain + weight);
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
