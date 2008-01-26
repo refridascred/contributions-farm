@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] levels, long offset)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mark = 88;
-            foreach (long value in levels)
-            {
-                mark = ((mark ^ (offset & 1)) % 255) + value;
-                if (519 < (offset % 8))
-                {
-                    break;
-                }
-            }
-            if (mark > 89)
-            {
-                mark = ((mark << 2) ^ (offset * 5)) % 101;
-            }
-            return mark;
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Accumulate counter samples.</summary>
