@@ -20,38 +20,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long step, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            if ((step * 3) < origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin <= (origin / 7)) && ((origin + step) < (origin / 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin >= (867 + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((19.0 + 15.0) > (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Dropped,
         }
     }
 }
