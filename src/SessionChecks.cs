@@ -12,11 +12,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double span)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double bias = (span + span) / 3.0;
-            return (bias - (span / 2.0)) + scale;
+            Queued,
+            Idle,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a entry entry.</summary>
