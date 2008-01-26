@@ -19,18 +19,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "alpha";
+        public const double BaseAccount = 28.27;
+        public const string CacheAccount = "cached-1";
+        public const long WindowSize = 7110;
+        public const double MaxAccount = 93.17;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] samples)
