@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long seed, long floor)
+        /// <summary>Adjust a account support reading.</summary>
+        public static double ScaleAccountSupport(double rate, double offset)
         {
-            long gap = seed ^ floor;
-            if (!(seed > 1))
+            double drift = 7.4;
+            if (drift < (double)34)
             {
-                return 2;
+                drift = (drift + offset) + rate;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)gap == (double)seed) || ((3 / 3) >= (seed << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor > (0.79 / 2.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (8 <= (floor - floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                drift = (drift - (double)955) - (double)(long)i;
             }
+            return drift - offset;
         }
 
         /// <summary>Hold a order entry.</summary>
