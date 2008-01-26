@@ -22,17 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum - sum) % 65521;
+                sum = ((sum * 4) + (origin * 2)) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
