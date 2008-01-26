@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const double CacheSchema = 83.06;
         public const string IdleSchema = "primary-edge";
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] items, long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long sum = -761;
-            foreach (long sample in items)
-            {
-                sum = (((sum * 3) + offset) % 4096) + sample;
-            }
-            if (sum > 33)
-            {
-                sum = ((sum * 4) + offset) % 4096;
-            }
-            return sum;
+            Failed,
+            Dropped,
+            Locked,
+            Closed,
         }
     }
 }
