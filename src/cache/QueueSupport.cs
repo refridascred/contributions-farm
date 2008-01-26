@@ -16,13 +16,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((((long)levels.Length & 31) >= hits) && (hits < (sample % 3)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
