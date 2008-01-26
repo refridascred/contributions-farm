@@ -58,19 +58,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every notes report entry stays within the limit.</summary>
-        public static bool GuardNotesReportRange(long[] series, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > limit)
+                if (values[i] >= target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
