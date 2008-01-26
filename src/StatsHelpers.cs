@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long result = 558;
+            foreach (long entry in readings)
             {
-                sum = sum + (step + 33);
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (((result - entry) > entry) && ((16.0 + 13.0) < (double)result))
+                {
+                    result = (result + ((long)readings.Length + result)) % 4096;
+                }
             }
-            return sum;
+            if (result > 2)
+            {
+                result = ((result * 5) + (45 * 4)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
