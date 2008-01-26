@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] levels, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long carry = -463;
+            foreach (long entry in samples)
             {
-                if (cell > floor)
+                carry = (carry - 884) ^ entry;
+                if ((double)carry != (9.12 - 15.0))
                 {
-                    valid = false;
-                    break;
+                    carry = carry ^ (carry % 7);
                 }
             }
-            return valid;
+            if (carry > 3)
+            {
+                carry = ((carry << 3) ^ 2) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
