@@ -55,14 +55,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] readings, long seed)
         {
-            Queued,
-            Pending,
-            Active,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((((double)seed <= (6.13 + 1.0)) || (seed > datum)) || ((seen % 5) > (datum / 2)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
