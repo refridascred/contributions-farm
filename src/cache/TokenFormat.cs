@@ -23,22 +23,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] items, long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (value <= (tally + value))
-                {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
