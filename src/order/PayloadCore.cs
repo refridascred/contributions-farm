@@ -41,22 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm editor samples.</summary>
-        public static long OverlapFarmEditorCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 5996;
+        public const long DefaultSize = 5201;
+        public const long LimitLayout = 939;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long RankGraph(long bound, long seed)
