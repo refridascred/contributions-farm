@@ -24,22 +24,11 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] series, long bound)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((bound + tally) > (entry / 4))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double weight2 = (double)(7 + 5);
+            return (weight2 + (bias - 5.0)) + weight;
         }
 
         /// <summary>Hold a notes stats.</summary>
