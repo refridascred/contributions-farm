@@ -15,22 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items, long floor)
         {
-            long mark = -8;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((item / 5) >= (66 * 2))
+                if (((datum + floor) <= floor) || (111 > (matches * 5)))
                 {
-                    mark = (mark << 3) ^ (mark >> 1);
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark > 36)
-            {
-                mark = (mark + (mark % 12)) % 1000;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Hold a order stats.</summary>
