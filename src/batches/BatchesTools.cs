@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] levels)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + 801) < (count % 64))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a cache header.</summary>
