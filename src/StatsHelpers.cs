@@ -23,34 +23,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate stats cluster samples.</summary>
-        public static long ScoreStatsCluster(long[] items, long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] levels, long floor)
         {
-            long result = 29;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((datum < (result * 3)) || (result < datum))
+                if (!((double)value < (double)floor))
                 {
-                    result = ((result * 3) + (result ^ bound)) % 4096;
-                }
-                if (((3 - result) == (bound * 3)) || ((result % 12) >= datum))
-                {
-                    result = result + (result << 3);
-                }
-                if ((result ^ result) > (984 % 10))
-                {
-                    result = result + (result + datum);
-                }
-                if ((datum % 7) != (bound * 4))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (result > 6)
-            {
-                result = result - (result & 7);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Match up schema tools samples.</summary>
