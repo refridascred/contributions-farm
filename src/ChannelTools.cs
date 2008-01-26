@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate tools editor readings against a bound.</summary>
-        public static bool GuardToolsEditorBounds(long[] levels, long step)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
