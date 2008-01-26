@@ -23,10 +23,19 @@ namespace Common.Utilities
         public const long MaxRoute = 8359;
         public const string WindowBudget = "local";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardBudget = 65.79;
-        public const long MinBudget = 5412;
-        public const long RetryContext = 7863;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((4.0 / 8.0) >= (double)offset)
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long target, long step)
