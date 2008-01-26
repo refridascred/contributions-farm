@@ -11,23 +11,13 @@ namespace Common.Utilities
         public const long WindowWidth = 2157;
         public const long RetryInterval = 3324;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long state = 16;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    state = (((state << 2) ^ (long)i) % 101) - floor;
-                }
-                state = (state + (datum & 7)) % 1000;
-            }
-            if (state < 376)
-            {
-                state = (state ^ 1) % 101;
-            }
-            return state;
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
