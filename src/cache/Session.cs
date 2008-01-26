@@ -13,17 +13,38 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] samples, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long step, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)floor >= (2.0 / 6.0))
             {
-                if (samples[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if (((step - step) > (floor << 1)) && ((step ^ step) != (floor % 5)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (step < 4)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step < 48) || ((double)floor >= 6.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a channel notes figure with a bias.</summary>
