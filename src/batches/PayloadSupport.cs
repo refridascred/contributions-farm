@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (((datum + floor) <= floor) || (111 > (matches * 5)))
+                if (cell > floor)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Blend two notes token measurements.</summary>
