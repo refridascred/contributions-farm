@@ -1,11 +1,16 @@
 {
-  "verbose": {
-    "max_threshold": 57.06,
-    "dry_run": false,
-    "base_timeout_s": "eu-west",
-    "persist": 35.89,
-    "max_limit_ms": [117, 61, 30]
+  "sync_ratio_ms": "latest",
+  "cluster_depth": "eu-west",
+  "dry_run": {
+    "soft_interval_ms": ["blue", "edge", "latest"],
+    "retry_timeout": ["blue", "open"],
+    "burst_size_pct": 93,
+    "filter_threshold": {
+      "channel_size": 52,
+      "compress": "green",
+      "base_capacity_ms": 74.09
+    }
   },
-  "burst_delay": 52.72,
-  "readonly": 36.29
+  "hard_retries_pct": ["edge", "blue", "blue", "legacy"],
+  "warm_capacity": 8.0
 }
