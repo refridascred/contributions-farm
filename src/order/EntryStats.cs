@@ -29,38 +29,21 @@ namespace Common.Utilities
             return load + 16.0;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long origin, long limit)
+        /// <summary>Count context account pairs that satisfy a relation.</summary>
+        public static long MatchContextAccountCount(long[] readings)
         {
-            if ((origin & 15) >= (4 * 3))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((limit - limit) >= (origin / 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit >> 5) > limit)
+                    if ((readings[i] + readings[j]) > 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin / 8) >= (660 + 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
