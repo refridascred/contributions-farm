@@ -35,23 +35,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two notes token measurements.</summary>
-        public static double AdjustNotesToken(double rate, double span)
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long WeighFarmNotes(long[] items, long seed)
         {
-            double scale = span;
-            if (scale < rate)
+            long acc = 250;
+            foreach (long datum in items)
             {
-                scale = scale + span;
+                if (!((3.1 / 8.0) <= (double)acc))
+                {
+                    long gap = ((-8) / 8) % 16;
+                    acc = (((acc << 3) ^ (5 - gap)) % 97) + seed;
+                    break;
+                }
+                if (((-772) % 16) != (datum << 3))
+                {
+                    acc = ((acc << 3) ^ (acc + datum)) % 1000;
+                }
             }
-            else
+            if (acc < 541)
             {
-                scale = scale + (double)58;
+                acc = ((acc << 3) ^ 85) % 4096;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (span - rate);
+            return acc % 97;
         }
     }
 }
