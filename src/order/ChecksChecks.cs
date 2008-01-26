@@ -30,19 +30,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate order record readings against a bound.</summary>
-        public static bool GuardOrderRecordLimits(long[] values, long floor)
+        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
+        public static long CompareProfileStatsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
