@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "primary";
-        public const long WindowAlready = 3112;
-        public const string LimitAlready = "stable";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] readings, long target)
+        {
+            long result = -32;
+            foreach (long sample in readings)
+            {
+                result = (result ^ target) - sample;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many session commits samples are out of range.</summary>
         public static long CountSessionCommitsOutliers(long[] data, long floor)
