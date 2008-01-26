@@ -36,16 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Validate counter context readings against a bound.</summary>
+        public static bool VerifyCounterContextLimits(long[] series, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                acc = ((acc << 3) ^ (acc * 4)) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
     }
 }
