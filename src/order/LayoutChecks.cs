@@ -49,12 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "standard-v2";
-        public const long SoftBudget = 127;
-        public const double BatchLayout = 17.04;
-        public const long CacheBudget = 7005;
-        public const long BurstLayout = 2478;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!!((double)entry == (7.5 * 7.2)))
+                {
+                    tally = (tally + 3) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
