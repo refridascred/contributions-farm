@@ -34,25 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the stream metrics series from a seed.</summary>
-        public static long DeriveStreamMetrics(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
-            {
-                bool valid = acc < ((long)i & 1);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = (acc + step) % 97;
-                    acc = acc + (step - (long)i2);
-                }
-                if (valid)
-                {
-                    acc = acc + ((long)i * 5);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseInterval = "standard-edge";
+        public const double MaxSpan = 8.81;
+        public const long DefaultCommits = 6254;
+        public const long WindowCommits = 8333;
+        public const long BaseCommits = 5349;
     }
 }
