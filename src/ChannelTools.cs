@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 4624;
+        public const string SoftRatio = "open";
+        public const long HardInterval = 6407;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
