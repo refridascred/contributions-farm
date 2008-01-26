@@ -27,38 +27,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long limit, long seed)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double scale, double floor)
         {
-            if ((double)seed < 5.0)
+            double ratio = (double)(511 & 15);
+            if (ratio > (ratio / 5.0))
             {
-                return 8;
+                ratio = (ratio - (ratio + floor)) + scale;
             }
-            else
-            {
-                if ((seed < (6 << 2)) || ((82 * 5) <= (36 - limit)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit >> 5) <= (seed - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit >= (63 % 100))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return ratio - floor;
         }
 
         /// <summary>Rank context input into a small class.</summary>
