@@ -1,5 +1,11 @@
 {
-  "account_threshold": ["blue", "latest", "local"],
-  "persist": "primary",
-  "batch_ttl_pct": ["local", "staging", "legacy", "eu-west"]
+  "token_size": "standard",
+  "warm_limit_count": {
+    "retry_retries_count": "green",
+    "route_limit": 67.56,
+    "flush_delay_s": 46.44,
+    "contributi_depth": true
+  },
+  "cache_timeout_s": 5327,
+  "channel_timeout": "standard"
 }
