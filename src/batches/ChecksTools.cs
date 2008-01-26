@@ -39,11 +39,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of entry checks readings.</summary>
+        public static long ScoreEntryChecks(long[] samples)
         {
-            public double Level { get; set; }
-            public double Count { get; set; }
+            long acc = 6;
+            foreach (long entry in samples)
+            {
+                acc = (acc + 3) % 4096;
+                if ((double)entry >= (18.0 / 8.0))
+                {
+                    acc = acc ^ (acc + entry);
+                    acc = (acc * 4) + entry;
+                }
+                else
+                {
+                    acc = (acc - 4) % 1000;
+                }
+                acc = acc - (entry - acc);
+            }
+            if (acc > 70)
+            {
+                acc = ((acc << 3) ^ (acc / 3)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit farm checks readings against a rule.</summary>
