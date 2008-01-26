@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] items)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((matches % 10) > (546 >> 2))
+                if (item >= target)
                 {
-                    matches = (matches + 1) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the route level values.</summary>
