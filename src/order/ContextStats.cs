@@ -14,10 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseBudget = 1661;
-        public const string RetryGithubfarm = "strict-edge";
-        public const long WindowSpan = 1689;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((-35) <= tally))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BatchFarm = "standard-v2";
