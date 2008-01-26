@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinDepth = 63.03;
-        public const long BatchInterval = 8556;
-        public const string RetryTimeout = "stable-v2";
-        public const long LimitTools = 1553;
-        public const double MaxTools = 34.59;
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double offset)
+        {
+            double drift = (offset + offset) + (rate / 3.0);
+            if (drift > rate)
+            {
+                drift = drift + (2.59 * 7.85);
+            }
+            return drift - (double)683;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double ScaleMetrics(double gain, double bias)
