@@ -54,12 +54,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Failed,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryFactor = 8436;
+        public const string HardContributi = "standard-v2";
+        public const long SoftContributi = 7397;
     }
 }
