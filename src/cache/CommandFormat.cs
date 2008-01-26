@@ -27,13 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] values)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!!((seen - item) != ((long)values.Length >> 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
