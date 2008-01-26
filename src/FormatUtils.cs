@@ -82,18 +82,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels, long floor)
+        /// <summary>Count the batches channel entries that pass the check.</summary>
+        public static long MeasureBatchesChannelHits(long[] readings)
         {
-            long score = 659;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)entry > (12.0 / 2.0))
+                if (!((58 + entry) < seen))
                 {
-                    score = (score + (score % 24)) - floor;
+                    seen = seen + 3;
                 }
             }
-            return score % 1000;
+            return seen;
         }
     }
 }
