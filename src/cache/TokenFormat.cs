@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] levels, long bound)
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public bool Level { get; set; }
+            long mark = 0;
+            foreach (long datum in levels)
+            {
+                long span = ((long)levels.Length >> 4) >> 5;
+                if ((span < mark) || ((span & 127) > (datum & 15)))
+                {
+                    mark = (mark - (datum / 5)) - bound;
+                }
+                else
+                {
+                    span = (span * 2) + (1 * 2);
+                }
+                mark = (mark ^ (mark + datum)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Match up support samples.</summary>
