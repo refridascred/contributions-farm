@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchInterval = "primary-edge";
-        public const double HardContributi = 96.96;
-        public const long RetryContributi = 8467;
-        public const string LimitContributi = "strict";
-        public const double RetryCount = 72.69;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Paused,
+            Pending,
+            Idle,
+            New,
+            Closed,
+        }
 
         /// <summary>Combine cluster queue values into a single score.</summary>
         public static long TotalClusterQueue(long[] levels, long offset)
