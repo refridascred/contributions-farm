@@ -49,17 +49,12 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Done,
+            Retry,
         }
     }
 }
