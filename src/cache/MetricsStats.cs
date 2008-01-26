@@ -34,16 +34,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the editor channel series from a seed.</summary>
-        public static long DeriveEditorChannel(long offset)
+        /// <summary>Audit batch layout readings against a rule.</summary>
+        public static long AuditBatchLayoutMatches(long[] data)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                state = ((state * 3) + ((long)i + (long)i)) % 97;
-                state = ((state * 2) + (long)i) % 1000;
+                if ((matches + sample) <= (sample & 31))
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
