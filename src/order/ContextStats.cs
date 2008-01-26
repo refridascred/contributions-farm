@@ -20,25 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long bound, long offset)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long offset2 = bound - offset;
-            if ((offset << 1) <= (offset2 & 3))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((135 << 1) <= (offset / 8)) && ((bound / 8) < 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
