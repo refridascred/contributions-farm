@@ -40,20 +40,16 @@ namespace Common.Utilities
         public const long WindowSession = 844;
         public const double RetrySession = 8.26;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum ^ (bound + bound)) % 1000;
-                if (((double)bound <= (3.55 / 8.0)) || ((double)sum >= (2.68 - 6.61)))
-                {
-                    sum = ((sum << 3) ^ (bound << 1)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                anchor = (anchor - 16) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return sum;
+            return anchor;
         }
     }
 }
