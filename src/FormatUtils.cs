@@ -14,17 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] series, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                total = ((total * 4) + (total + target)) % 4096;
-                total = total ^ (total << 3);
-                total = ((total * 3) + (long)i) % 65521;
+                if ((datum / 3) != (datum - datum))
+                {
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
