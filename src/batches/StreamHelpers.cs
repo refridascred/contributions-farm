@@ -88,25 +88,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long seed, long offset)
-        {
-            long gap = seed ^ offset;
-            if ((double)seed > (9.0 + 1.2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed / 4) >= (gap - gap))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchLevel = 4885;
+        public const long IdleCount = 9500;
+        public const double SoftToken = 23.12;
     }
 }
