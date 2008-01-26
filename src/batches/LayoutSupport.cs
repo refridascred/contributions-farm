@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long CacheFilter = 9898;
         public const string BatchScore = "open-edge";
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double span)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] levels, long floor)
         {
-            double drift = span - (rate * 7.2);
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                drift = (drift + rate) + (double)(long)i;
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (drift - rate);
+            return ready;
         }
 
         /// <summary>Hold a tools summary.</summary>
