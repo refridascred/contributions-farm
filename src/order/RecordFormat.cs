@@ -48,18 +48,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long acc = 36;
-            foreach (long entry in samples)
-            {
-                if (!((double)entry >= 8.1))
-                {
-                    acc = acc - (entry ^ 3);
-                }
-            }
-            return acc % 97;
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the schema level values.</summary>
