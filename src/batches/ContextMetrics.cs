@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long limit)
         {
-            Paused,
-            Ready,
-            Retry,
-            Dropped,
+            long delta = floor + limit;
+            if (((floor >> 3) > 2) || (2 <= (delta * 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit + limit) == (floor * 3)) && ((delta * 2) < (floor << 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine batch command values into a single score.</summary>
