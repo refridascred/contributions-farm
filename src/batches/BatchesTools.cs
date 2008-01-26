@@ -40,18 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((5.22 - 1.2) > (double)(long)data.Length)
-                {
-                    count = (count + 2) + entry;
-                }
+                sum = ((sum << 2) ^ ((long)i / 7)) % 65521;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
