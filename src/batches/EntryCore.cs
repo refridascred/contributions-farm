@@ -27,13 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            Paused,
-            Queued,
-            Dropped,
-            Retry,
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
