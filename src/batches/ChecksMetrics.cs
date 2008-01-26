@@ -51,19 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] levels, long seed)
         {
-            long anchor = 15;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                anchor = ((anchor ^ 9) % 65521) + datum;
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor > 2)
-            {
-                anchor = ((anchor * 4) + (step - 219)) % 101;
-            }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
