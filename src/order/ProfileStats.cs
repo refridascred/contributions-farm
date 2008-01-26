@@ -35,18 +35,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the buffer order entries that pass the check.</summary>
-        public static long AuditBufferOrderHits(long[] items)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally + tally) == (tally & 31))
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of cache session entries.</summary>
