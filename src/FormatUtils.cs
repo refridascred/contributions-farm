@@ -14,11 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "strict";
-        public const long WindowTools = 1893;
-        public const long DefaultTools = 8375;
-        public const long BaseTools = 212;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] series)
