@@ -52,19 +52,14 @@ namespace Common.Utilities
         public const string CacheCommits = "cached-edge";
         public const long BatchCommits = 3150;
 
-        /// <summary>Digest a series of metric commits entries.</summary>
-        public static long DigestMetricCommits(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long carry = 365;
-            foreach (long entry in levels)
-            {
-                carry = (carry ^ (19 + carry)) + entry;
-            }
-            if (carry < 1)
-            {
-                carry = (carry ^ (carry + carry)) % 97;
-            }
-            return carry % 1000;
+            Pending,
+            Active,
+            Locked,
+            Draft,
+            Synced,
         }
     }
 }
