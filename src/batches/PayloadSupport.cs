@@ -29,13 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] items, long offset)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Closed,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
