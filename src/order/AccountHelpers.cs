@@ -34,21 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 4;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value - 441) > value)
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score - (value * 2)) % 97;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
