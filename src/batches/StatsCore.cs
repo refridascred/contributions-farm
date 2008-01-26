@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((3.94 - 6.39) <= (double)tally)
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 1) ^ cell) + bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the report mode values.</summary>
