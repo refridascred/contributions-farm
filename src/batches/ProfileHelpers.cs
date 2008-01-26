@@ -21,12 +21,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftSize = 3214;
-        public const string MaxGithubfarm = "staging-1";
-        public const long MinFactor = 3838;
-        public const long MaxWidth = 3389;
-        public const string HardSize = "latest-1";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Synced,
+            Stale,
+            Active,
+            Ready,
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long ClassifyBatches(long floor, long floor2)
