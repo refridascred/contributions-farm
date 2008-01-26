@@ -1,6 +1,5 @@
 {
-  "default_capacity": 56.26,
-  "default_threshold_pct": 8.36,
-  "retry_timeout_pct": false,
-  "audit": "primary"
+  "warm_size": [497, 260, 88],
+  "min_retries": "blue",
+  "cache_retries_ms": "standard"
 }
