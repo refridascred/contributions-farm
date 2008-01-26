@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] values, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            double rate = 0.02;
+            if (rate < rate)
             {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate + (rate / 5.0)) - offset;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (ratio - rate)) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Describe the queue mode values.</summary>
