@@ -14,13 +14,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long step, long offset)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            if ((double)step <= (4.5 * 7.07))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 3) > offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
