@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string HardRecord = "legacy-edge";
         public const long MaxInterval = 25;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long floor)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result + (result * 2)) % 255) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of command readings.</summary>
