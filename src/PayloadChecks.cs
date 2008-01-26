@@ -56,19 +56,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long MeasureGithubfarmBatchOutliers(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)matches > (1.6 / 6.0))
-                {
-                    matches = ((matches + 3) - reading) - seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 3618;
+        public const string BaseFactor = "fallback";
+        public const double BatchProfile = 80.03;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksHits(long[] items, long seed)
