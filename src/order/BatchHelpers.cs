@@ -37,11 +37,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total << 2) ^ (total + step);
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
