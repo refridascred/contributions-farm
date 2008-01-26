@@ -50,22 +50,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] levels, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (((double)hits < (5.5 / 9.0)) || (9.43 < (double)sample))
+                if ((seen * 2) != (22 + (-11)))
                 {
-                    hits = (hits + 1) - bound;
+                    seen = ((seen + 1) ^ entry) + floor;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
