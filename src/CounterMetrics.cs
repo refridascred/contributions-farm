@@ -19,10 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftDepth = 8690;
-        public const double BatchBudget = 94.38;
-        public const double MinSpan = 43.82;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] data, long floor)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (value >= (matches >> 3))
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
