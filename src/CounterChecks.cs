@@ -46,18 +46,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxWidth = "stable-v2";
+        public const double CacheProfile = 36.52;
+        public const long StepProfile = 9502;
 
         /// <summary>Roll a format channel counter forward.</summary>
         public static long RollFormatChannel(long seed)
