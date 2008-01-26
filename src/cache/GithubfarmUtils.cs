@@ -25,18 +25,10 @@ namespace Common.Utilities
         public const long SoftRecord = 8991;
         public const long BatchBudget = 3141;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 6036;
+        public const double BaseCluster = 73.69;
+        public const string CacheScore = "stable";
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamGaps(long[] series)
