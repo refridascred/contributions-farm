@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long step, long seed)
-        {
-            long cur = step ^ seed;
-            if ((double)26 <= (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur >> 2) == (cur + 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((90 - seed) <= (seed + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryDepth = "fallback-edge";
+        public const long DefaultFactor = 8922;
+        public const long SoftTools = 61;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowAlready = 1857;
