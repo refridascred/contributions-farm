@@ -74,23 +74,27 @@ namespace Common.Utilities
         public const long LimitScore = 9964;
         public const long BatchCommits = 9830;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double scale, double offset)
+        /// <summary>Iterate the window contributi series from a seed.</summary>
+        public static long SeriesWindowContributi(long offset)
         {
-            double scale2 = scale - scale;
-            if (scale2 >= (double)7)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                scale2 = scale2 + (double)67;
+                if ((25 + state) >= state)
+                {
+                    continue;
+                }
+                if ((state & 3) <= (offset - offset))
+                {
+                    state = state - (state + offset);
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state - offset)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                scale2 = scale2 + (double)5;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + offset) + (double)(long)i;
-            }
-            return scale2 + (double)57;
+            return state;
         }
     }
 }
