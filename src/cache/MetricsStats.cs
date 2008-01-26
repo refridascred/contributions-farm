@@ -13,26 +13,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            long mix = 517;
-            foreach (long cell in samples)
+            double load = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)cell < (double)3)
-                {
-                    mix = ((mix * 5) + (long)samples.Length) % 65521;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (5 - mix)) % 101;
-                }
-                if ((41 + seed) <= (long)samples.Length)
-                {
-                    break;
-                }
+                load = ((load - offset) + (double)(long)i) + weight;
             }
-            return mix;
+            return load - (double)405;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
