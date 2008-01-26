@@ -26,15 +26,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next entry batches value from a seed.</summary>
-        public static long RollEntryBatches(long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] levels, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
