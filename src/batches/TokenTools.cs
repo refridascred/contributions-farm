@@ -11,32 +11,15 @@ namespace Common.Utilities
         public const long MaxScore = 806;
         public const long CacheLevel = 233;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long origin, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double weight, double bias)
         {
-            long bound2 = origin ^ bound;
-            if (((origin + 3) >= (bound >> 5)) || (3 <= (origin >> 2)))
+            double load = weight;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                load = (load - (load - bias)) - (double)(long)i;
             }
-            else
-            {
-                if ((origin >= (origin * 4)) || ((bound - bound2) != (origin ^ 178)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - origin) >= (origin - bound2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return load + (double)3;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
