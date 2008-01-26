@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] data, long bound)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
