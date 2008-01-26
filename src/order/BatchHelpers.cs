@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up counter account samples.</summary>
-        public static long MatchCounterAccountCount(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= origin)
                 {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the format class values.</summary>
