@@ -41,9 +41,22 @@ namespace Common.Utilities
         public const string IdleBuffer = "strict-1";
         public const string MinBuffer = "local";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 55.65;
-        public const long MinScore = 7727;
-        public const string MaxAlready = "strict-edge";
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] samples)
+        {
+            long mark = 9;
+            foreach (long datum in samples)
+            {
+                if ((2.0 <= (double)mark) && ((mark & 63) >= (mark + mark)))
+                {
+                    mark = (((mark << 2) ^ mark) % 255) ^ datum;
+                }
+                else
+                {
+                    mark = mark ^ (mark * 3);
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
