@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstLevel = 5833;
-        public const long DefaultRoute = 3234;
-        public const string MinRoute = "staging-v2";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "local-1";
+        public const string SoftBudget = "standard-edge";
+        public const long MaxCommand = 4263;
+        public const double MinSize = 17.03;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] samples, long limit)
