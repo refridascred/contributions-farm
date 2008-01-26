@@ -57,11 +57,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetrySize = 379;
-        public const double StepBatch = 85.36;
-        public const long SoftBatch = 5327;
-        public const long RetryBatch = 9008;
+        /// <summary>Check that every queue editor entry stays within the limit.</summary>
+        public static bool VerifyQueueEditorRange(long[] samples, long bound)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
