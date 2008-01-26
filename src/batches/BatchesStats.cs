@@ -57,12 +57,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] readings)
         {
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
+            long mark = 2;
+            foreach (long sample in readings)
+            {
+                if ((8.52 - 2.9) == (double)sample)
+                {
+                    mark = (mark * 4) + (mark ^ sample);
+                }
+                else
+                {
+                    mark = (mark + (sample + sample)) % 101;
+                }
+            }
+            return mark;
         }
     }
 }
