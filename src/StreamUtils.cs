@@ -19,18 +19,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] values)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value + count) == (count >> 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
