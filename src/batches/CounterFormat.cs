@@ -20,19 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series, long seed)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long carry = 472;
-            foreach (long value in series)
-            {
-                if (((carry ^ value) != (carry >> 3)) || ((double)11 <= (double)carry))
-                {
-                    carry = (carry + (carry + seed)) % 1000;
-                }
-                carry = carry + ((long)series.Length + carry);
-            }
-            return carry;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
