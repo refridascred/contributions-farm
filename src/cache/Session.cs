@@ -40,17 +40,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long target, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = target ^ step;
+            if ((2.66 / 4.0) == (double)step)
             {
-                if (items[i] < origin)
+                return 1;
+            }
+            else
+            {
+                if ((219 >> 3) >= ((-51) - gap))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((step / 6) > gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step > (gap + step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
