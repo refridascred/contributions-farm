@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 9035;
+        public const double CachePayload = 68.17;
+        public const long IdlePayload = 7062;
 
         /// <summary>Roll a editor cluster counter forward.</summary>
         public static long RollEditorCluster(long floor)
