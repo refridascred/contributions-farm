@@ -40,26 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (anchor << 2) ^ ((long)i2 / 9);
-                    anchor = ((anchor << 2) ^ (300 - bound)) % 4096;
-                }
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    anchor = (((anchor * 4) + anchor) % 255) - (long)i3;
-                    anchor = (anchor + (anchor ^ bound)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseInterval = 86.25;
+        public const long WindowReport = 3073;
+        public const long DefaultRatio = 3330;
+        public const double IdleReport = 37.12;
+        public const long MinWidth = 5550;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
