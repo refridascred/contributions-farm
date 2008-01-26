@@ -47,19 +47,13 @@ namespace Common.Utilities
         public const long IdleNotes = 1619;
         public const string BaseNotes = "fallback-v2";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] levels, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit report tools readings against a rule.</summary>
