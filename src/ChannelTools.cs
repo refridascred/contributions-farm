@@ -32,18 +32,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many notes batches samples are out of range.</summary>
-        public static long CountNotesBatchesHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + (-315)) != (hits % 24))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "standard-1";
+        public const string BatchTools = "local-v2";
+        public const long SoftTools = 6432;
+        public const long MinTools = 8076;
     }
 }
