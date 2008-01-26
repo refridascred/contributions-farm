@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] readings, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((entry + tally) < tally)
+                if (reading >= bound)
                 {
-                    tally = (tally + 2) + floor;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
