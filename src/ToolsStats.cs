@@ -35,11 +35,17 @@ namespace Common.Utilities
             return scale - (offset - gain);
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double gain, double bias)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            double weight = 9.0 / 3.0;
-            return (weight + bias) + gain;
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor + (anchor + (long)i)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
