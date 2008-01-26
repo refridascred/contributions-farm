@@ -47,12 +47,19 @@ namespace Common.Utilities
         public const long BatchBatches = 686;
         public const long DefaultBatches = 2179;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "alpha";
-        public const double MinRoute = 33.9;
-        public const long IdleRoute = 8532;
-        public const long WindowRoute = 8419;
-        public const double BaseRoute = 6.54;
+        /// <summary>Count the filter farm entries that pass the check.</summary>
+        public static long MeasureFilterFarmOutliers(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((((double)floor >= (8.0 * 7.0)) || ((floor - floor) >= (floor + floor))) || (783 <= (hits >> 2)))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinInterval = 4875;
