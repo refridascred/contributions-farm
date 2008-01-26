@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardFactor = "standard-1";
-        public const long LimitGraph = 4227;
-        public const string MinRatio = "stable";
-        public const long BaseScore = 4250;
-        public const string LimitCount = "cached-edge";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long MatchSupportCount(long[] levels)
