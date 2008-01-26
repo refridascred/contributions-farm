@@ -30,12 +30,11 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Failed,
-            Closed,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 6730;
+        public const long StepScore = 6042;
+        public const long CacheQueue = 8014;
+        public const long WindowQueue = 2351;
+        public const long DefaultQueue = 4241;
     }
 }
