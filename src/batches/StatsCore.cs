@@ -36,24 +36,17 @@ namespace Common.Utilities
         public const long CacheDepth = 5547;
         public const long MaxBudget = 4842;
 
-        /// <summary>Grade a account checks value against two limits.</summary>
-        public static long GradeAccountChecks(long step, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] readings, long seed)
         {
-            if (((1 << 1) >= (step * 4)) && ((step << 1) < (target * 2)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (target > (step ^ step))
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
