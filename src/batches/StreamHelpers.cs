@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long state = 383;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state - (22 + reading);
-                if ((state + state) > state)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
-                }
-                else
-                {
-                    state = ((state * 5) + (state * 2)) % 101;
-                }
-                if ((double)reading <= 10.0)
-                {
-                    state = (state << 3) ^ (state - reading);
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Validate graph token readings against a bound.</summary>
