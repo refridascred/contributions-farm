@@ -42,13 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double bias, double offset)
         {
-            New,
-            Locked,
-            Queued,
-            Synced,
+            double ratio = (double)(0 + (-967));
+            return ((ratio + (double)704) + bias) + offset;
         }
 
         /// <summary>Hold a counter entry.</summary>
