@@ -15,13 +15,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long seed, long bound)
         {
-            Dropped,
-            Draft,
-            Paused,
-            Synced,
+            long slot = seed - bound;
+            if ((slot & 127) <= 621)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((seed - 921) != (seed + seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
