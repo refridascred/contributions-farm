@@ -30,18 +30,14 @@ namespace Common.Utilities
         public const double BurstGraph = 62.25;
         public const long MinFactor = 1421;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((13.0 / 5.0) > (double)matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Active,
+            Synced,
+            New,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
