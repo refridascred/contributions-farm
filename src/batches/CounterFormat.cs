@@ -33,15 +33,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of entry session readings.</summary>
-        public static long ScoreEntrySession(long[] values)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double gain, double span)
         {
-            long anchor = 23;
-            foreach (long datum in values)
+            double scale = (double)53 / 8.0;
+            if (scale <= (scale / 8.0))
             {
-                anchor = (anchor + datum) % 255;
+                scale = (scale - gain) + span;
             }
-            return anchor;
+            else
+            {
+                scale = scale + (gain + gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (gain * 16.0)) + (double)(long)i;
+            }
+            return scale - (double)4;
         }
     }
 }
