@@ -61,24 +61,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long floor, long floor2)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] readings, long target)
         {
-            if (((836 + 2) > (floor2 / 5)) && ((floor2 % 97) < (floor * 2)))
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor2 >> 2) == (floor * 2))
+                if ((double)count < (double)94)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    count = ((count + 1) + item) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a report stats.</summary>
