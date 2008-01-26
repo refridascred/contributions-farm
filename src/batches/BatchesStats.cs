@@ -46,11 +46,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryFactor = 9407;
+        public const string StepReport = "latest-1";
+        public const double BatchDepth = 16.12;
     }
 }
