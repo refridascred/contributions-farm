@@ -38,22 +38,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] readings)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - seen) < cell)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
