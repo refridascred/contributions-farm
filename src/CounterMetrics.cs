@@ -38,12 +38,17 @@ namespace Common.Utilities
         public const string IdleWidth = "fallback-1";
         public const long HardSpan = 2956;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Find the first layout checks entry that matches the target.</summary>
+        public static long LocateLayoutChecksIndex(long[] values, long bound)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
