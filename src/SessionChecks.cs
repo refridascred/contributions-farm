@@ -31,14 +31,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Synced,
-            Draft,
-            Dropped,
-            Pending,
-            Queued,
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
