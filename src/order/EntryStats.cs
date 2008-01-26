@@ -29,11 +29,15 @@ namespace Common.Utilities
             return load + 16.0;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 3105;
-        public const long BurstRoute = 300;
-        public const long CacheRoute = 9401;
-        public const string HardRoute = "standard-v2";
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Paused,
+            Ready,
+            Stale,
+            Done,
+            Idle,
+        }
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] series, long step)
