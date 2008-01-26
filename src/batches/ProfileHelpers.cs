@@ -69,19 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster graph values into a single score.</summary>
-        public static long CombineClusterGraph(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] samples, long target)
         {
-            long sum = 9;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                sum = (sum - (value + (-98))) % 101;
-                if ((56 + sum) > (long)data.Length)
+                if ((11.0 * 8.6) <= (double)seen)
                 {
-                    break;
+                    seen = ((seen + 3) - entry) - target;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
