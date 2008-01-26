@@ -14,18 +14,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] data, long bound)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((cell % 7) <= cell) && (count < (count * 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) - bound;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a token options.</summary>
