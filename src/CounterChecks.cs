@@ -55,23 +55,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item + floor) != (item * 5))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "legacy-1";
+        public const long BatchRatio = 2724;
+        public const string SoftCache = "stable-v2";
+        public const double RetryLevel = 23.08;
 
         /// <summary>Count token order pairs that satisfy a relation.</summary>
         public static long MatchTokenOrderCount(long[] items)
