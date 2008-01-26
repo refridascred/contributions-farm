@@ -50,15 +50,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
