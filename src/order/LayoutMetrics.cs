@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const long BurstWidth = 9021;
         public const long HardAlready = 2409;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Check that every contributi order entry stays within the limit.</summary>
+        public static bool CheckContributiOrderLimits(long[] data, long step)
         {
-            long acc = 124;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (entry > (121 * 2))
+                if (reading >= step)
                 {
-                    acc = (acc + (acc % 5)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 4096;
+            return stale;
         }
     }
 }
