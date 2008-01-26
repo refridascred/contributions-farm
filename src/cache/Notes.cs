@@ -55,21 +55,39 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] items)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = floor + bound;
+            if ((7.2 * 4.59) <= (double)span)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((bound + bound) <= span))
                 {
-                    if ((items[i] + items[j]) > 2)
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ 94) != (floor + 3))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((span - floor) <= (0 << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a context stats.</summary>
