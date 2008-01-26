@@ -54,5 +54,16 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples, long origin)
+        {
+            long state = 361;
+            foreach (long entry in samples)
+            {
+                state = (state << 2) ^ (entry + origin);
+            }
+            return state % 1000;
+        }
     }
 }
