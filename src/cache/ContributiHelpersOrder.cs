@@ -17,12 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] items)
         {
-            Retry,
-            New,
-            Synced,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits + hits) > 678)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
