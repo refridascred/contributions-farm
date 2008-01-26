@@ -1,6 +1,11 @@
-id,weight,count,level
-1,33.24,89.82,333
-2,fallback,cached,legacy
-3,806,edge,54.23
-4,791,79.14,primary
-5,edge,edge,95.05
+id,score,level
+1,open,45.62
+2,25.71,8.59
+3,944,42.93
+4,local,3.11
+5,786,180
+6,fallback,187
+7,74,80.45
+8,29.95,91
+9,53.64,82.97
+10,fallback,93.36
