@@ -33,15 +33,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count stream format pairs that satisfy a relation.</summary>
-        public static long CompareStreamFormatCount(long[] values)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
             long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 1)
+                    if ((values[i] - values[j]) < 8)
                     {
                         tally = tally + 1;
                     }
