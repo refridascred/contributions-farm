@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Ready,
-            Draft,
-            New,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheTimeout = 8644;
+        public const string RetrySpan = "cached-edge";
+        public const long StepStream = 230;
+        public const long LimitBudget = 3523;
+        public const double BaseStream = 10.11;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] items)
