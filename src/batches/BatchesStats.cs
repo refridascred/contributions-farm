@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (hits > ((long)values.Length / 6))
+                if (matches >= sample)
                 {
-                    hits = (hits + 3) + sample;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
