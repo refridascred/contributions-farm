@@ -82,21 +82,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count record queue pairs that satisfy a relation.</summary>
-        public static long CompareRecordQueueCount(long[] samples)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = offset;
+            if (rate >= (rate * 4.45))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate - (offset + rate)) - gain;
             }
-            return hits;
+            return rate + (18.0 * 4.0);
         }
 
         /// <summary>Find the first stream contributi entry that matches the target.</summary>
