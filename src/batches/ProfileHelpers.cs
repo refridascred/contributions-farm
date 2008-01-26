@@ -42,11 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 2206;
-        public const long LimitTimeout = 7360;
-        public const string RetryStats = "alpha-v2";
-        public const long DefaultStats = 6043;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftSize = 3214;
+        public const string MaxGithubfarm = "staging-1";
+        public const long MinFactor = 3838;
+        public const long MaxWidth = 3389;
+        public const string HardSize = "latest-1";
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
         public static bool GuardFilterGraphLimits(long[] items, long target)
