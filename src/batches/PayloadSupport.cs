@@ -26,14 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Stale,
-            Synced,
-            Retry,
-            Draft,
-            Idle,
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
