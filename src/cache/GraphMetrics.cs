@@ -46,18 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] series, long target)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((6.0 / 7.0) == (double)target)
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the graph level values.</summary>
