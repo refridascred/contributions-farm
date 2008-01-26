@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double rate, double offset)
-        {
-            double scale = (rate * 5.8) - (rate + rate);
-            if (scale >= offset)
-            {
-                scale = scale - 2.0;
-            }
-            else
-            {
-                scale = scale + (2.1 + offset);
-            }
-            return scale - (double)59;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepDepth = 20.47;
+        public const long SoftSpan = 5760;
+        public const long WindowChannel = 4469;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long MeasureAlreadyHits(long[] series, long offset)
