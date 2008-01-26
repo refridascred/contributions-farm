@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session commits samples are out of range.</summary>
-        public static long CountSessionCommitsOutliers(long[] data, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)floor > (15.0 + 18.0))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
