@@ -26,22 +26,15 @@ namespace Common.Utilities
         public const string BatchNotes = "standard-edge";
         public const string BaseNotes = "latest";
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] levels, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double mean = (double)5 - (double)139;
+            if (mean > 4.25)
             {
-                if ((origin * 5) <= (seen * 2))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean - (gain * 17.0)) + floor;
             }
-            return seen;
+            return mean - (double)9;
         }
     }
 }
