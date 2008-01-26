@@ -1,5 +1,26 @@
 {
-  "readonly": "latest",
-  "verbose": 86,
-  "warm_retries_ms": [381, 495, 309]
+  "editor_delay": "green",
+  "format_threshold": {
+    "cache_depth_ms": {
+      "batches_size": "strict",
+      "hard_ratio_pct": false,
+      "readonly": 4709,
+      "filter_threshold": 30,
+      "max_window_ms": 60,
+      "githubfarm_interval": "primary"
+    },
+    "persist": {
+      "checks_depth": 100,
+      "burst_ratio_pct": 100,
+      "warm_delay": [334, 63],
+      "sync_depth_count": 10,
+      "compress": true,
+      "batch_size_s": "local"
+    },
+    "burst_threshold_s": 57.68,
+    "compress": 37.71,
+    "stream_ratio": "stable"
+  },
+  "flush_capacity_s": "blue",
+  "batch_limit_count": 68.32
 }
