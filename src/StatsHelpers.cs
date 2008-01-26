@@ -35,19 +35,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate cache format readings against a bound.</summary>
-        public static bool GuardCacheFormatRange(long[] values, long origin)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the order kind values.</summary>
