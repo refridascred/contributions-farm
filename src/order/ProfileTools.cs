@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 4630;
-        public const long DefaultRatio = 6645;
-        public const double StepReport = 31.88;
-        public const string LimitReport = "cached";
+        /// <summary>Measure how many cache schema samples are out of range.</summary>
+        public static long AuditCacheSchemaGaps(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (1.0 <= (double)step)
+                {
+                    matches = (matches + 1) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] data, long step)
