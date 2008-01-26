@@ -24,19 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] readings, long floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double gain, double bias)
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight = 9.0 / 3.0;
+            return (weight + bias) + gain;
         }
 
         /// <summary>Describe the cache status values.</summary>
