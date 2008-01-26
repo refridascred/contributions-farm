@@ -21,16 +21,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] series, long offset)
-        {
-            long result = 639;
-            foreach (long reading in series)
-            {
-                result = (((result * 3) + (reading % 8)) % 65521) + offset;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowScore = 1396;
+        public const long LimitStats = 3549;
+        public const long LimitWidth = 2376;
+        public const long MaxSpan = 3405;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
