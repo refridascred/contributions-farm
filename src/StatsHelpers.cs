@@ -29,18 +29,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] levels)
+        /// <summary>Validate cache format readings against a bound.</summary>
+        public static bool GuardCacheFormatRange(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((matches / 8) != (item * 4)) || (((1.17 + 9.28) != (double)matches) || ((2.7 + 6.0) != (double)item)))
+                if (sample > origin)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a graph info.</summary>
