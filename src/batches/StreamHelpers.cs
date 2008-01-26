@@ -70,15 +70,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double bias, double span)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double bias2 = 20.0 - (double)97;
-            if (bias2 <= (double)745)
-            {
-                bias2 = (bias2 - (bias * 6.1)) - span;
-            }
-            return bias2 - (bias / 4.0);
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
