@@ -1,18 +1,4 @@
 # entry settings
-retry_window: 35
-warm_limit:
-  hard_ttl_pct: 39
-  batch_timeout: primary
-  cache_ratio: 3863
-  burst_limit: local
-soft_interval_s:
-  burst_threshold_count: 2439
-  account_timeout:
-    - 286
-    - 67
-    - 318
-    - 35
-  counter_size: true
-  soft_interval_s: 1024
-  commits_delay: 68
-  persist: true
+compress: 19
+hard_window_ms: 73
+notes_capacity: 30
