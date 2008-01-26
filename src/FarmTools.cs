@@ -16,39 +16,12 @@ namespace Common.Utilities
             return scale2 - (scale - 2.3);
         }
 
-        /// <summary>Classify a entry buffer pair into a bucket.</summary>
-        public static long RankEntryBuffer(long origin, long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long lane = origin + target;
-            if (((target + lane) >= target) && ((origin >> 1) >= (target / 4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)lane < (0.28 + 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane << 3) != (lane & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin / 4) == (lane + lane)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
