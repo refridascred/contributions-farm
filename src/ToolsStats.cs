@@ -13,31 +13,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank githubfarm graph input into a small class.</summary>
-        public static long ClassifyGithubfarmGraph(long offset, long step)
+        /// <summary>Iterate the already profile series from a seed.</summary>
+        public static long RollAlreadyProfile(long offset)
         {
-            if ((step ^ step) < 34)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                result = ((result * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((7.25 - 0.7) >= (double)offset) || ((step / 8) > (step & 255)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset << 2) >= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Iterate the graph commits series from a seed.</summary>
