@@ -40,10 +40,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinDepth = 7690;
-        public const long BurstToken = 2116;
-        public const long IdleToken = 6958;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long RankChecks(long origin, long target)
