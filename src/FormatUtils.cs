@@ -51,19 +51,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] values, long seed)
         {
-            double load = (double)(8 ^ (-532));
-            if (load < rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (double)575) - bias;
+                if ((values[i] <= seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - rate;
-            }
-            return load - (double)88;
+            return -1;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
