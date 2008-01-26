@@ -34,11 +34,38 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double scale, double bias)
+        /// <summary>Classify a report commits pair into a bucket.</summary>
+        public static long GradeReportCommits(long target, long floor)
         {
-            double scale2 = (double)(21 ^ 72);
-            return ((scale2 + (double)(-50)) + scale) + bias;
+            if ((target + target) <= target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7 / 8) >= floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target >= (0 ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor <= (3 >> 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
