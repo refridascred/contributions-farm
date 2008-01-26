@@ -61,12 +61,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long floor, long seed)
         {
-            Idle,
-            Ready,
-            Dropped,
+            if (floor <= seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed >= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((91 - seed) > (floor % 3)) || ((seed / 6) <= (seed ^ seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
