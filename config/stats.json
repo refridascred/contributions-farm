@@ -1,6 +1,6 @@
 {
-  "profile_interval": 5255,
-  "cluster_threshold": 80.03,
-  "format_capacity": 30,
-  "persist": 56.65
+  "cluster_ttl": ["strict", "blue", "blue", "latest"],
+  "cache_ttl": false,
+  "compress": "local",
+  "warm_timeout_ms": "legacy"
 }
