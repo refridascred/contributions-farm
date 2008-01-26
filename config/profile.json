@@ -1,5 +1,8 @@
 {
-  "retry_limit": false,
-  "soft_depth": 250,
-  "sync_size": ["blue", "standard", "cached", "local"]
+  "order_interval": ["legacy", "staging"],
+  "strict": "blue",
+  "already_window": [128, 206, 136, 488],
+  "context_threshold": "strict",
+  "idle_threshold_s": true,
+  "soft_threshold": true
 }
