@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long BaseRatio = 7306;
         public const long RetryCounter = 563;
 
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long CountFilterProfileHits(long[] samples, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = 8;
+            foreach (long reading in data)
             {
-                if ((586 - limit) >= (limit + 354))
-                {
-                    hits = (hits + 3) - value;
-                }
+                anchor = ((anchor ^ (limit + limit)) % 97) + reading;
             }
-            return hits;
+            if (anchor > 24)
+            {
+                anchor = ((anchor * 3) + (anchor * 5)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
