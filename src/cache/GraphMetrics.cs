@@ -27,21 +27,18 @@ namespace Common.Utilities
         public const string WindowSize = "primary-edge";
         public const long BurstRoute = 7257;
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Count the layout context entries that pass the check.</summary>
+        public static long AuditLayoutContextMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(datum <= (datum - datum)))
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a window info.</summary>
