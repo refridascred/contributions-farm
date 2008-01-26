@@ -33,11 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 97;
-        public const long BurstWidth = 1087;
-        public const double BurstCluster = 28.63;
-        public const long MaxCluster = 4150;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Done,
+            New,
+            Paused,
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long WeighBuffer(long[] readings)
