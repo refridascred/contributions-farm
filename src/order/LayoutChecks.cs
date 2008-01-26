@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const long CacheScore = 5227;
         public const long DefaultContext = 6446;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] series, long seed)
         {
-            New,
-            Pending,
-            Done,
-            Synced,
-            Active,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((((entry * 2) < ((-97) >> 4)) && ((3 + seed) < (entry - entry))) || !((tally * 5) <= (seed & 15)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
