@@ -32,11 +32,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "legacy-1";
-        public const long CacheRatio = 1930;
-        public const double RetryInterval = 24.55;
-        public const string DefaultInterval = "legacy-edge";
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen + reading) >= seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyLimits(long[] samples, long bound)
