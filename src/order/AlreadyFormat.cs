@@ -49,12 +49,18 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (reading >= (reading / 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
