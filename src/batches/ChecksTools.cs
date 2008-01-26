@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank metrics filter input into a small class.</summary>
-        public static long ClassifyMetricsFilter(long limit, long limit2)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long limit)
         {
-            if (!((limit2 + limit) > (limit - limit2)))
+            if ((limit / 3) < step)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((limit / 7) > (limit2 % 3))
+                if ((limit * 3) <= step)
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((30 % 12) != (limit2 + limit2))
+                    if (((double)limit >= (13.0 + 13.0)) || ((double)step >= (12.0 + 3.3)))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        if ((limit2 / 9) >= (limit2 + limit2))
+                        if ((8.69 / 4.0) < (double)step)
                         {
                             return 2;
                         }
                         else
                         {
-                            return 4;
+                            return 6;
                         }
                     }
                 }
