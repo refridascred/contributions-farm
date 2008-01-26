@@ -68,11 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 9471;
-        public const double BaseCounter = 31.45;
-        public const string LimitFactor = "latest-1";
-        public const string SoftLevel = "open-v2";
-        public const double SoftSpan = 36.01;
+        /// <summary>Audit batch graph readings against a rule.</summary>
+        public static long MeasureBatchGraphGaps(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally << 1) >= (tally % 10))
+                {
+                    tally = ((tally + 3) ^ sample) + floor;
+                }
+            }
+            return tally;
+        }
     }
 }
