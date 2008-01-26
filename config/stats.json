@@ -1,12 +1,6 @@
 {
-  "dry_run": [278, 16],
-  "min_size_count": "latest",
-  "batch_interval": 604,
-  "compress": {
-    "hard_ratio_ms": 10,
-    "hard_window_s": "green",
-    "hard_ttl_ms": ["strict", "cached", "primary"],
-    "audit": ["green", "legacy"],
-    "enabled": "staging"
-  }
+  "min_capacity_pct": true,
+  "dry_run": "blue",
+  "token_ttl": "stable",
+  "strict": "strict"
 }
