@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] series, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long score = 7;
-            foreach (long cell in series)
-            {
-                if ((double)cell != (20.0 + 8.8))
-                {
-                    score = (score ^ (seed ^ 8)) % 65521;
-                }
-            }
-            if (score < 140)
-            {
-                score = (score * 3) + 5;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
