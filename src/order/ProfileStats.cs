@@ -30,24 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long limit, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] values, long limit)
         {
-            if ((limit * 5) == (limit << 3))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(origin >= 79))
+                if (((double)seen == (2.0 * 14.0)) || ((seen + limit) <= seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    seen = (seen + 2) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
