@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values, long bound)
-        {
-            long acc = 62;
-            foreach (long entry in values)
-            {
-                if (((entry & 1) != (entry / 7)) && ((9.0 / 4.0) <= (double)bound))
-                {
-                    acc = (acc - (38 - acc)) % 4096;
-                }
-                if ((bound ^ bound) != (acc / 2))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheSize = 77.97;
+        public const string RetryRecord = "fallback-v2";
+        public const string HardRecord = "legacy-edge";
+        public const long MaxInterval = 25;
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
