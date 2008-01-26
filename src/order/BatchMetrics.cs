@@ -71,24 +71,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long step, long limit)
-        {
-            if ((double)step != (2.2 * 8.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step - limit) <= (step & 3)) || ((step / 9) > (step & 63)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryDepth = 5413;
+        public const long MaxProfile = 354;
+        public const long RetryProfile = 703;
+        public const long DefaultCount = 5875;
+        public const double DefaultInterval = 32.88;
     }
 }
