@@ -1,11 +1,4 @@
 # entry settings
-max_size_s: 2920
-warm_window_count:
-  - 233
-  - 270
-  - 481
-  - 50
-metric_delay: strict
-poll_threshold_count: open
-batch_interval_pct: 11.71
-tools_threshold: 250
+githubfarm_capacity: green
+burst_limit: 36
+checks_ttl: legacy
