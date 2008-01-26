@@ -70,12 +70,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
             public long Stamp { get; set; }
-            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
             public long Score { get; set; }
         }
     }
