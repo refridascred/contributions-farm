@@ -39,11 +39,10 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftDepth = 30.67;
-        public const double CacheTimeout = 34.64;
-        public const long MinRatio = 9474;
-        public const string WindowAccount = "primary";
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardBudget = 65.79;
+        public const long MinBudget = 5412;
+        public const long RetryContext = 7863;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long target, long step)
