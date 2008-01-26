@@ -28,11 +28,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftCommits = "cached-1";
-        public const string IdleCount = "alpha-v2";
-        public const long IdleWidth = 2643;
-        public const double HardCommits = 87.86;
-        public const long BaseCommits = 556;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxWidth = "standard-v2";
+        public const long RetryBudget = 7487;
+        public const string BaseToken = "staging";
     }
 }
