@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit graph buffer readings against a rule.</summary>
-        public static long AuditGraphBufferOutliers(long[] series, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (count < (971 + datum))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
