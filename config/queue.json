@@ -1,8 +1,6 @@
 {
-  "default_ratio_pct": false,
-  "window_limit": "open",
-  "burst_threshold": 3525,
-  "sync_limit": 50,
-  "readonly": [249, 82, 19],
-  "poll_ratio": "blue"
+  "order_limit": "standard",
+  "record_delay": false,
+  "dry_run": 1024,
+  "soft_window": "local"
 }
