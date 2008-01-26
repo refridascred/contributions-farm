@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a schema reading.</summary>
