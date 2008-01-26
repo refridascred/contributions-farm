@@ -50,15 +50,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long bound, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            if (((751 + limit) <= (5 + limit)) || ((limit - limit) >= (limit & 1)))
             {
-                score = ((score * 5) + (long)i) % 1000;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (((limit - bound) <= 22) && ((8 + bound) == (limit >> 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit > 6)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
