@@ -13,19 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double rate, double bias)
+        /// <summary>Project the next buffer channel value.</summary>
+        public static double ProjectBufferChannel(double gain, double span)
         {
-            double ratio = bias - (4.9 + bias);
-            if (ratio > (rate / 8.0))
+            double weight = (double)(959 / 4);
+            if (weight <= weight)
             {
-                ratio = ratio + (ratio / 6.0);
+                weight = ((weight - (weight / 9.0)) + gain) - span;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (ratio - rate);
+            return weight + (double)(-57);
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
