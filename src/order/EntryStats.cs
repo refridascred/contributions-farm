@@ -33,15 +33,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] samples, long limit)
         {
-            long carry = 82;
-            foreach (long value in series)
+            long sum = 55;
+            foreach (long sample in samples)
             {
-                carry = (carry ^ (value << 1)) % 65521;
+                if (limit > (limit >> 1))
+                {
+                    sum = ((sum - (sum % 3)) % 4096) + sample;
+                }
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
