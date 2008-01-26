@@ -28,12 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] series, long step)
+        /// <summary>Look up the position of a cluster channel sample.</summary>
+        public static long FindClusterChannelIndex(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
