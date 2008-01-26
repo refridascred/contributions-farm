@@ -48,22 +48,11 @@ namespace Common.Utilities
         public const long LimitScore = 7506;
         public const long RetryRatio = 1731;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long mark = 2;
-            foreach (long sample in readings)
-            {
-                if ((8.52 - 2.9) == (double)sample)
-                {
-                    mark = (mark * 4) + (mark ^ sample);
-                }
-                else
-                {
-                    mark = (mark + (sample + sample)) % 101;
-                }
-            }
-            return mark;
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
