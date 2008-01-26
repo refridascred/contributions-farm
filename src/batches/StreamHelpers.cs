@@ -43,38 +43,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long floor, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            if ((7 * 2) > floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor / 5) <= (floor << 2)) && ((6.48 - 8.51) != (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (0.12 <= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.79 + 3.82) == (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Locate a already reading by value.</summary>
