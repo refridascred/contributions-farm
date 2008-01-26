@@ -19,24 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] data, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] items, long seed)
         {
-            long carry = 35;
-            foreach (long cell in data)
+            long total = 52;
+            foreach (long reading in items)
             {
-                if (!(((-9) / 2) == (carry + cell)))
-                {
-                    carry = ((carry << 3) ^ (offset / 5)) % 65521;
-                    carry = (carry * 4) + (carry + carry);
-                }
-                carry = ((carry * 4) + cell) % 65521;
+                total = total + (total - reading);
+                total = (total - (seed + total)) % 1000;
             }
-            if (carry < 15)
-            {
-                carry = (carry * 5) + (507 % 5);
-            }
-            return carry;
+            return total % 97;
         }
 
         /// <summary>Hold a notes info.</summary>
