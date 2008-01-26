@@ -1,12 +1,14 @@
 {
-  "max_depth": "staging",
-  "default_ratio_count": 52.8,
-  "order_size": {
-    "compress": [96, 357, 188],
-    "readonly": 30,
-    "dry_run": "primary",
-    "audit": false,
-    "hard_timeout": 54.91
+  "poll_retries_count": {
+    "schema_retries": 30,
+    "base_interval_ms": 2009,
+    "max_threshold_ms": [372, 179, 33]
   },
-  "soft_timeout_pct": false
+  "base_retries_pct": {
+    "warm_size_ms": 12,
+    "queue_delay": 10.48,
+    "persist": "cached",
+    "default_timeout": 79.6
+  },
+  "cache_depth_ms": [161, 60, 123, 418]
 }
