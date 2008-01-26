@@ -77,15 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items, long offset)
+        /// <summary>Measure how many graph layout samples are out of range.</summary>
+        public static long CountGraphLayoutGaps(long[] series, long seed)
         {
-            long mix = 136;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                mix = (mix - (value - offset)) % 1000;
+                if (((double)count >= (2.0 + 0.94)) && ((5.0 * 5.0) <= (double)seed))
+                {
+                    count = (count + 1) - item;
+                }
             }
-            return mix % 97;
+            return count;
         }
     }
 }
