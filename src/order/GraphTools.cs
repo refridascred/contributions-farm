@@ -47,12 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheGithubfarm = 58.4;
+        public const double HardGithubfarm = 76.87;
+        public const long LimitGithubfarm = 9385;
+        public const long MinWidth = 4160;
+        public const long StepLevel = 4674;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long OverlapAccountCount(long[] levels)
