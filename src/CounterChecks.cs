@@ -75,17 +75,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] data, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
