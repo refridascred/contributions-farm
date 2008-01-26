@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 97.96;
-        public const double LimitOrder = 88.15;
-        public const long StepSpan = 7923;
-        public const long HardSize = 469;
-        public const long SoftOrder = 6115;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 11; i++)
+            {
+                state = state - (target << 1);
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextBounds(long[] data, long origin)
