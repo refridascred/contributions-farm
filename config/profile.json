@@ -1,15 +1,5 @@
 {
-  "strict": "blue",
-  "idle_ttl": [376, 353, 228, 334],
-  "soft_threshold": {
-    "persist": {
-      "buffer_delay": 8864,
-      "min_delay": ["eu-west", "stable"],
-      "verbose": 40
-    },
-    "sync_depth_ms": 66.32,
-    "sync_interval_s": 6181,
-    "strict": 77.13,
-    "retry_interval_ms": "green"
-  }
+  "account_threshold": ["blue", "latest", "local"],
+  "persist": "primary",
+  "batch_ttl_pct": ["local", "staging", "legacy", "eu-west"]
 }
