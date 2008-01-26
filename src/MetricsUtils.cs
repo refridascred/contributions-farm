@@ -30,22 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftDepth = 30.67;
+        public const double CacheTimeout = 34.64;
+        public const long MinRatio = 9474;
+        public const string WindowAccount = "primary";
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long ClassifyMetric(long target, long step)
