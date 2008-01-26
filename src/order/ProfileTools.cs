@@ -32,15 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double ratio, double bias)
+        /// <summary>Rank tools schema input into a small class.</summary>
+        public static long RankToolsSchema(long offset, long target)
         {
-            double weight = 2.64;
-            for (int i = 0; i < 8; i++)
+            if (offset > target)
             {
-                weight = (((weight + 6.0) + (double)(long)i) - ratio) - bias;
+                return 5;
             }
-            return weight + (double)(-480);
+            else
+            {
+                if (41 < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((90 % 60) <= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset >> 5) >= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a support entry.</summary>
