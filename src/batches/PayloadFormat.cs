@@ -45,18 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] items, long bound)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)seen <= (0.41 * 9.83))
-                {
-                    seen = ((seen + 3) ^ item) + bound;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
