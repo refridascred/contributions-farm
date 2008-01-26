@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            long carry = 5;
-            foreach (long sample in samples)
+            long state = 5;
+            foreach (long sample in readings)
             {
-                carry = (((carry * 4) + (sample % 10)) % 1000) + origin;
+                state = ((state + ((long)readings.Length * 5)) % 4096) ^ sample;
+                if ((double)state < (1.0 - 2.1))
+                {
+                    state = (state * 4) + (state + state);
+                }
             }
-            return carry % 65521;
+            if (state < 907)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
