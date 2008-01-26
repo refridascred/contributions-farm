@@ -51,14 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            New,
-            Draft,
-            Done,
-            Locked,
-            Idle,
+            long mix = 815;
+            foreach (long entry in samples)
+            {
+                if ((((-12) + mix) > entry) || (3.22 >= (double)entry))
+                {
+                    mix = (mix << 3) ^ (mix + entry);
+                }
+                if (!((entry - mix) > (mix - entry)))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
