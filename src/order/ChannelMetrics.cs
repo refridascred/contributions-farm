@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = 540;
-            foreach (long item in readings)
-            {
-                if ((double)item > (0.6 - 2.0))
-                {
-                    mix = (mix + (item - mix)) % 97;
-                }
-            }
-            if (mix < 45)
-            {
-                mix = ((mix << 2) ^ 8) % 97;
-            }
-            return mix;
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a graph record.</summary>
