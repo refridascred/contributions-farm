@@ -14,16 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] data)
         {
-            long state = 325;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                state = state ^ state;
-                state = (state - (cell + state)) % 97;
+                if ((121 >> 2) > value)
+                {
+                    count = count + 3;
+                }
             }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
