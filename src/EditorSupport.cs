@@ -59,14 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Fold a list of account session readings.</summary>
+        public static long CombineAccountSession(long[] items)
         {
-            Draft,
-            Locked,
-            Closed,
-            New,
-            Done,
+            long total = 302;
+            foreach (long cell in items)
+            {
+                total = (((total << 2) ^ (total / 5)) % 255) + cell;
+            }
+            if (total > 120)
+            {
+                total = total + (total * 3);
+            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
