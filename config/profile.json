@@ -1,8 +1,10 @@
 {
-  "order_interval": ["legacy", "staging"],
-  "strict": "blue",
-  "already_window": [128, 206, 136, 488],
-  "context_threshold": "strict",
-  "idle_threshold_s": true,
-  "soft_threshold": true
+  "poll_window": "stable",
+  "readonly": "green",
+  "metric_size": {
+    "poll_ratio_ms": ["stable", "edge", "strict", "standard"],
+    "idle_delay": 46.77,
+    "compress": true,
+    "flush_ratio_pct": 25.47
+  }
 }
