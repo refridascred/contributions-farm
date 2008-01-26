@@ -34,10 +34,12 @@ namespace Common.Utilities
         public const double MinTimeout = 55.93;
         public const long BaseLevel = 402;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 58.28;
-        public const long SoftBatches = 4766;
-        public const long IdleTimeout = 5382;
-        public const long MaxBatches = 9987;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Idle,
+            Ready,
+            Dropped,
+        }
     }
 }
