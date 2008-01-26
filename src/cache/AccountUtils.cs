@@ -28,18 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support cache entries that pass the check.</summary>
-        public static long CountSupportCacheGaps(long[] readings, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((1 > (limit + reading)) || ((limit + reading) > (2 % 10)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
