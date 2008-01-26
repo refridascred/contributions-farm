@@ -57,12 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the checks mode values.</summary>
