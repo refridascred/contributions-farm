@@ -82,21 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks githubfarm readings.</summary>
-        public static long MatchChecksGithubfarmCount(long[] data)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Closed,
+            Stale,
         }
     }
 }
