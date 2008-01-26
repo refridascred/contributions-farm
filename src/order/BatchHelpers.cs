@@ -20,13 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] data, long step)
         {
-            Draft,
-            Pending,
-            Idle,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank stats profile input into a small class.</summary>
