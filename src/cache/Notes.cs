@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] levels, long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long gap = limit + limit2;
+            if ((limit > (limit ^ gap)) && ((gap + limit) <= limit))
             {
-                if (sample > target)
+                return 3;
+            }
+            else
+            {
+                if (14.0 >= (double)limit2)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit == (1.5 + 12.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit - gap) <= (limit - 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
