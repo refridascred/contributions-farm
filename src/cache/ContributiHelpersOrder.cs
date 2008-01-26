@@ -29,30 +29,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats profile values into a single score.</summary>
-        public static long TotalStatsProfile(long[] series, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            long mark = 59;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 11; i++)
+                if ((hits % 8) == (hits >> 3))
                 {
-                    mark = (((mark * 3) + mark) % 1000) ^ (long)i;
+                    hits = (hits + 1) + value;
                 }
-                if ((cell >> 1) <= mark)
+                else
                 {
-                    mark = ((mark * 2) + (cell & 31)) % 65521;
-                }
-                if (1.86 < (double)cell)
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (mark < 28)
-            {
-                mark = (mark + (target % 64)) % 65521;
-            }
-            return mark % 65521;
+            return hits;
         }
     }
 }
