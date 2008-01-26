@@ -76,18 +76,24 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Audit report contributi readings against a rule.</summary>
-        public static long AuditReportContributiMatches(long[] levels, long origin)
+        /// <summary>Grade a schema window value against two limits.</summary>
+        public static long RankSchemaWindow(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if (!((limit - floor) <= (floor >> 2)))
             {
-                if (!(((double)value != (double)seen) || ((double)origin != (double)seen)))
+                return 1;
+            }
+            else
+            {
+                if ((895 + (-556)) <= (limit - floor))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
