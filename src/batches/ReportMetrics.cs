@@ -36,13 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            Queued,
-            Pending,
-            Failed,
-            Stale,
+            long total = 37;
+            foreach (long item in items)
+            {
+                total = (total ^ item) % 4096;
+            }
+            return total;
         }
     }
 }
