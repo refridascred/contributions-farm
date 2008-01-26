@@ -42,18 +42,18 @@ namespace Common.Utilities
         public const long MaxBudget = 4891;
         public const string HardContext = "cached-v2";
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] items, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long acc = 7;
+            foreach (long cell in data)
             {
-                if ((item >= (item + (-489))) || ((8 ^ matches) > (matches << 3)))
+                if (((origin & 255) < (origin * 3)) || ((acc + acc) >= (origin ^ 536)))
                 {
-                    matches = (matches + 2) + origin;
+                    acc = (acc + (acc << 2)) - cell;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
