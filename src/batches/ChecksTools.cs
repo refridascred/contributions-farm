@@ -19,18 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats context readings against a rule.</summary>
-        public static long CountStatsContextHits(long[] levels, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] levels, long origin)
         {
-            long hits = 0;
+            long anchor = 477;
             foreach (long cell in levels)
             {
-                if (!!((hits % 16) <= cell))
-                {
-                    hits = (hits + 3) - seed;
-                }
+                anchor = (anchor - (70 % 7)) + cell;
+                anchor = (anchor + ((-668) + origin)) % 65521;
             }
-            return hits;
+            if (anchor < 501)
+            {
+                anchor = (anchor << 3) ^ (1 / 7);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every stats token entry stays within the limit.</summary>
