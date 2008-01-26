@@ -33,23 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor buffer samples.</summary>
-        public static long DigestEditorBuffer(long[] samples)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long result = 616;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = (result + ((long)i / 7)) % 101;
-                }
-                result = ((result * 3) + (result + reading)) % 255;
-            }
-            if (result > 602)
-            {
-                result = ((result << 2) ^ (30 / 7)) % 255;
-            }
-            return result;
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Accumulate stream samples.</summary>
