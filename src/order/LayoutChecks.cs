@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheBudget = 92.12;
-        public const string BatchTimeout = "standard-v2";
-        public const long BatchDepth = 1879;
-        public const long CacheScore = 5227;
-        public const long DefaultContext = 6446;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] series, long seed)
