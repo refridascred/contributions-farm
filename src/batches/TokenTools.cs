@@ -33,23 +33,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long step, long origin)
         {
-            double load = scale;
-            if (load < load)
+            if ((step * 3) < origin)
             {
-                load = (load + (scale - scale)) - bias;
+                return 2;
             }
             else
             {
-                load = load + load;
+                if ((origin <= (origin / 7)) && ((origin + step) < (origin / 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin >= (867 + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((19.0 + 15.0) > (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - 7.0;
         }
     }
 }
