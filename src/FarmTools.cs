@@ -28,12 +28,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] samples)
         {
-            Synced,
-            Done,
-            Idle,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((double)count >= (8.62 + 9.09))
+                {
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
