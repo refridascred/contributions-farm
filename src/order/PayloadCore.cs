@@ -28,13 +28,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate layout metric readings against a bound.</summary>
+        public static bool GuardLayoutMetricLimits(long[] data, long limit)
         {
-            Stale,
-            Locked,
-            Closed,
-            Ready,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
