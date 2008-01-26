@@ -1,13 +1,11 @@
 # entry settings
-retry_size:
-  - 285
-  - 382
-  - 322
-flush_timeout: false
-cache_threshold:
-  - staging
-  - blue
-  - primary
-  - strict
-compress: latest
-retry_depth_s: edge
+poll_ratio_ms: green
+cluster_limit: legacy
+warm_capacity_count: strict
+farm_depth:
+  editor_limit: latest
+  soft_limit: latest
+  retry_interval_pct: staging
+  dry_run: open
+  base_threshold_s: 30
+entry_retries: 9746
