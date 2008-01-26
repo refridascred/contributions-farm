@@ -1,10 +1,8 @@
 {
-  "poll_window": "stable",
-  "readonly": "green",
-  "metric_size": {
-    "poll_ratio_ms": ["stable", "edge", "strict", "standard"],
-    "idle_delay": 46.77,
-    "compress": true,
-    "flush_ratio_pct": 25.47
-  }
+  "audit": "edge",
+  "poll_capacity": 1836,
+  "entry_threshold": 500,
+  "max_ttl_s": false,
+  "flush_retries_count": 60,
+  "hard_window": "strict"
 }
