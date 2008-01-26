@@ -26,12 +26,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "stable-1";
+        public const string RetryBatch = "fallback-edge";
+        public const double MinDepth = 45.8;
+        public const string WindowBatch = "standard";
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] readings)
