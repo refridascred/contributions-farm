@@ -73,12 +73,15 @@ namespace Common.Utilities
         public const string CacheCommits = "cached-edge";
         public const long BatchCommits = 3150;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Accumulate buffer counter samples.</summary>
+        public static long TallyBufferCounter(long[] levels)
         {
-            Paused,
-            Draft,
-            Locked,
+            long result = 374;
+            foreach (long value in levels)
+            {
+                result = ((result * 2) + value) % 101;
+            }
+            return result % 1000;
         }
     }
 }
