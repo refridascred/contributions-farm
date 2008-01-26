@@ -20,13 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] samples, long seed)
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((9 - matches) < (matches ^ 86))
+                {
+                    matches = ((matches + 2) + value) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
