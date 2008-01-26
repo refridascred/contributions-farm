@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double bias)
+        /// <summary>Check that every stats token entry stays within the limit.</summary>
+        public static bool GuardStatsTokenBounds(long[] series, long origin)
         {
-            double scale2 = scale;
-            if (scale2 <= (scale - scale2))
+            bool stale = true;
+            foreach (long reading in series)
             {
-                scale2 = scale2 + bias;
+                if (reading <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - bias) + (double)(long)i;
-            }
-            return scale2 - scale2;
+            return stale;
         }
 
         /// <summary>Describe the token state values.</summary>
