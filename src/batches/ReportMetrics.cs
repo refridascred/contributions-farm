@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Retry,
-            Synced,
-            Pending,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinSpan = "fallback-v2";
+        public const long SoftTimeout = 8787;
+        public const double BurstScore = 33.51;
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] levels)
