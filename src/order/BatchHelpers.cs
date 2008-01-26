@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings, long step)
+        /// <summary>Iterate the batch notes series from a seed.</summary>
+        public static long DeriveBatchNotes(long seed)
         {
-            long mix = 2;
-            foreach (long entry in readings)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((((mix * 3) + ((-36) - mix)) % 97) - entry) - step;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
