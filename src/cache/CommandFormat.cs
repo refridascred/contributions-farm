@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] series, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] levels)
         {
             long tally = 0;
-            foreach (long entry in series)
+            foreach (long item in levels)
             {
-                if (!((2 + tally) >= tally))
+                if ((item % 5) == (item - item))
                 {
-                    tally = ((tally + 1) + entry) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
