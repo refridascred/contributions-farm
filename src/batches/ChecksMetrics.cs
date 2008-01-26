@@ -51,11 +51,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 27.03;
-        public const long MinCounter = 9746;
-        public const long BatchBudget = 6399;
-        public const string MinCount = "local";
+        /// <summary>Look up the position of a counter filter sample.</summary>
+        public static long LookupCounterFilterIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] samples)
