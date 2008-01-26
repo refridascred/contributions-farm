@@ -14,31 +14,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values, long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long result = 60;
-            foreach (long value in values)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value >> 3) == (bound << 1))
-                {
-                    result = result - (6 << 2);
-                    continue;
-                }
-                if ((8 - result) > 26)
-                {
-                    result = (result ^ (598 + bound)) % 97;
-                }
-                if (((long)values.Length <= (result / 3)) && ((double)value <= (8.82 - 3.0)))
-                {
-                    break;
-                }
+                result = (result - (result * 2)) % 1000;
+                result = ((result << 2) ^ (origin >> 2)) % 255;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (result > 473)
-            {
-                result = ((result << 2) ^ (result % 12)) % 255;
-            }
-            return result % 1000;
+            return result;
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
