@@ -36,14 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double gain, double bias)
         {
-            Failed,
-            Queued,
-            Synced,
-            Ready,
-            Done,
+            double load = gain + bias;
+            if (load > (double)693)
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)7) - (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
