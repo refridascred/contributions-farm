@@ -68,11 +68,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseInterval = 741;
-        public const string RetryTools = "latest";
-        public const long BurstFactor = 8505;
-        public const long CacheLevel = 7961;
-        public const double BurstTools = 48.04;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long target, long bound)
+        {
+            if ((4.32 - 15.0) > (double)target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (4.6 >= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-11) ^ target) < (target % 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
