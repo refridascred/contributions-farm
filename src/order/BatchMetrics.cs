@@ -71,14 +71,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Blend two command layout measurements.</summary>
+        public static double ProjectCommandLayout(double ratio, double offset)
         {
-            Dropped,
-            Queued,
-            Paused,
-            New,
-            Synced,
+            double gain = offset;
+            return gain - ratio;
         }
     }
 }
