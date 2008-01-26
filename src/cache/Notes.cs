@@ -24,25 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long step = floor - bound;
-            if ((step >> 3) > floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)floor > (4.2 * 5.0)) || ((step ^ 93) >= (98 - bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
