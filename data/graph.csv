@@ -1,8 +1,8 @@
-id,active,label
-1,512,530
-2,71.36,675
-3,16.35,591
-4,cached,eu-west
-5,48.94,primary
-6,cached,local
-7,open,open
+id,owner,score
+1,staging,green
+2,primary,52.61
+3,365,83
+4,staging,blue
+5,local,7.62
+6,215,770
+7,primary,open
