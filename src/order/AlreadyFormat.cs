@@ -51,23 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double rate, double offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long bound)
         {
-            double gain = offset;
-            if (gain >= (double)4)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = gain - (gain - rate);
+                if ((samples[i] < bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (offset - gain)) + (double)(long)i;
-            }
-            return gain - (7.99 * 4.8);
+            return -1;
         }
     }
 }
