@@ -22,24 +22,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Find the first order context entry that matches the target.</summary>
+        public static long LocateOrderContextIndex(long[] samples, long step)
         {
-            long state = 45;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((value + value) != ((-27) - state)))
+                if ((samples[i] < step) && ((samples[i] % 2) != 0))
                 {
-                    state = (state * 3) + (value + value);
-                    break;
+                    return (long)i;
                 }
-                state = (state + (value / 5)) % 255;
             }
-            if (state > 336)
-            {
-                state = (state << 2) ^ ((long)series.Length % 100);
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Validate contributi session readings against a bound.</summary>
