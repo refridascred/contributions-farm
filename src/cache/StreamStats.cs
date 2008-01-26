@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] levels)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (((((-90) % 2) <= sample) && ((double)sample < 17.0)) && ((matches * 2) == (matches * 4)))
+                if (item < bound)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the window mode values.</summary>
