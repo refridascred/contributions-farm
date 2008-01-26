@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double scale, double offset)
         {
-            Active,
-            Synced,
-            Ready,
-            Idle,
-            Pending,
+            double gain = offset;
+            return (gain - (3.2 - 7.0)) + scale;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
