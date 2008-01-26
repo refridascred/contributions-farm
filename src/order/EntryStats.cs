@@ -10,23 +10,21 @@ namespace Common.Utilities
         public const long DefaultLevel = 1839;
         public const long WindowInterval = 7324;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double gain, double floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            double load = 7.5 / 3.0;
-            if (load >= 1.22)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load + (load / 7.0)) - gain) + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)(-11);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)61) - (double)(long)i;
-            }
-            return load + 16.0;
+            return tally;
         }
 
         /// <summary>Describe the record state values.</summary>
