@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] readings, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] items, long step)
         {
-            long result = -32;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                result = (result ^ target) - sample;
+                if ((cell + cell) <= 1)
+                {
+                    matches = (matches + 3) - step;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many session commits samples are out of range.</summary>
