@@ -48,16 +48,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            long score = 33;
-            foreach (long reading in samples)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score << 2) ^ (reading + reading)) % 101;
-                score = (score ^ ((long)samples.Length >> 1)) % 1000;
+                if (((offset >> 4) <= (65 - anchor)) || (offset <= (4 - offset)))
+                {
+                    anchor = ((anchor * 5) + ((long)i & 15)) % 97;
+                }
+                anchor = ((anchor << 2) ^ (offset * 4)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Hold a channel stats.</summary>
