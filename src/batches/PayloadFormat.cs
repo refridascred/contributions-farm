@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] series)
         {
-            Queued,
-            Closed,
-            Draft,
-            Failed,
-            Paused,
+            long acc = 1;
+            foreach (long cell in series)
+            {
+                acc = ((acc - (acc & 3)) % 97) ^ cell;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a support stats.</summary>
