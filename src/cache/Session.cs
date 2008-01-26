@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of already commits entries.</summary>
-        public static long WeighAlreadyCommits(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] levels, long limit)
         {
-            long result = 241;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!(result > (7 - result)))
+                if ((5 ^ hits) > value)
                 {
-                    result = ((result << 2) ^ (result << 1)) % 65521;
+                    hits = (hits + 3) + limit;
                 }
-                if ((result % 24) <= datum)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
