@@ -41,12 +41,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 3245;
         public const long LimitRoute = 1660;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Stale,
-            New,
-            Dropped,
+            Synced,
+            Queued,
+            Closed,
+            Failed,
         }
     }
 }
