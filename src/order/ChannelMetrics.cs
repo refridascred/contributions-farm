@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] items, long offset)
+        /// <summary>Measure how many cache commits samples are out of range.</summary>
+        public static long TallyCacheCommitsGaps(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((sample + tally) > (tally + sample))
+                if ((origin - origin) > (origin - count))
                 {
-                    tally = (tally + 1) + offset;
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the cache kind values.</summary>
