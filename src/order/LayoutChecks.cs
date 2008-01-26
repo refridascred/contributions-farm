@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] samples, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (item <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
