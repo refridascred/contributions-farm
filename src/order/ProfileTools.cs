@@ -45,11 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleRatio = 4916;
-        public const double LimitSpan = 53.97;
-        public const long MaxStream = 8777;
-        public const double MaxWidth = 85.14;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
