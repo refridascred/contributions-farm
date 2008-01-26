@@ -38,15 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double rate, double offset)
+        /// <summary>Blend two notes token measurements.</summary>
+        public static double AdjustNotesToken(double rate, double span)
         {
-            double rate2 = (7.1 * 16.0) + (double)1;
-            if (rate2 >= (double)2)
+            double scale = span;
+            if (scale < rate)
             {
-                rate2 = rate2 + (offset + rate);
+                scale = scale + span;
             }
-            return rate2 + (rate / 2.0);
+            else
+            {
+                scale = scale + (double)58;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (span - rate);
         }
     }
 }
