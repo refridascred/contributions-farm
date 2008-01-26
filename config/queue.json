@@ -1,7 +1,5 @@
 {
-  "base_threshold": 56,
-  "flush_retries_pct": 8962,
-  "poll_depth_count": false,
-  "max_size": "local",
-  "burst_window": false
+  "idle_timeout_pct": true,
+  "commits_interval": 30,
+  "retry_capacity": 100
 }
