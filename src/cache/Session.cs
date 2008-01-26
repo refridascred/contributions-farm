@@ -38,15 +38,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data)
         {
-            long score = 460;
-            foreach (long reading in values)
+            long mix = 56;
+            foreach (long datum in data)
             {
-                score = (score - reading) % 101;
+                if ((datum ^ datum) >= (datum + mix))
+                {
+                    mix = (mix + (mix % 24)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (datum + 20)) % 101;
+                }
+                if ((mix ^ datum) > 596)
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+                if (((mix ^ datum) == (datum << 1)) || (7.75 > (double)mix))
+                {
+                    mix = ((mix * 5) + (datum + datum)) % 4096;
+                }
+                if ((mix - datum) == (datum / 4))
+                {
+                    break;
+                }
             }
-            return score;
+            return mix % 1000;
         }
     }
 }
