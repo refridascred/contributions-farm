@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchDepth = 9521;
-        public const string MaxEditor = "strict-v2";
-        public const long BaseDepth = 1540;
-        public const string WindowEditor = "legacy-1";
-        public const double IdleWidth = 4.06;
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] readings, long seed)
