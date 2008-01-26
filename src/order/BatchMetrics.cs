@@ -19,11 +19,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
