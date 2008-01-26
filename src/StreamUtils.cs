@@ -48,24 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long limit, long step)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if (step < (39 + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit <= (0.61 + 8.8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a support reading.</summary>
