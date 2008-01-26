@@ -75,24 +75,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long origin, long seed)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            if (!((seed >> 1) == (origin + origin)))
+            long mix = 33;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - origin) <= origin)
+                if (((double)sample >= (9.4 / 3.0)) || ((-780) <= (mix ^ sample)))
                 {
-                    return 2;
+                    mix = (mix + (sample + 5)) % 65521;
                 }
                 else
                 {
-                    return 3;
+                    mix = (mix * 2) + (mix * 2);
                 }
             }
+            return mix;
         }
     }
 }
