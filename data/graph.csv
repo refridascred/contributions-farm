@@ -1,11 +1,6 @@
-id,weight,owner,label
-1,42,325,212
-2,62.55,778,62.58
-3,312,83.93,75.71
-4,edge,667,361
-5,cached,339,stable
-6,blue,cached,72.84
-7,3.19,primary,staging
-8,47.74,fallback,861
-9,6.91,73,115
-10,206,58.76,strict
+id,label,state
+1,78.2,77.62
+2,462,998
+3,stable,edge
+4,latest,22.35
+5,29.74,local
