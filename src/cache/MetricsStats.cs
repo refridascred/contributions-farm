@@ -45,31 +45,22 @@ namespace Common.Utilities
         public const long WindowFactor = 7662;
         public const double HardTimeout = 69.48;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long origin, long step)
+        /// <summary>Digest a series of account cluster entries.</summary>
+        public static long TallyAccountCluster(long[] series)
         {
-            if (!(step <= (-7)))
+            long mix = 436;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ step) == (step + step))
+                if ((4 / 5) == (cell << 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + step) == (96 & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = mix + (mix % 8);
                 }
             }
+            if (mix > 501)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
