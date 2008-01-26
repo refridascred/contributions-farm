@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstInterval = 5714;
-        public const double HardLevel = 62.53;
-        public const long BurstSchema = 9111;
+        /// <summary>Project the next command already value.</summary>
+        public static double ScaleCommandAlready(double bias, double offset)
+        {
+            double drift = (double)(9 + 19);
+            if (drift < (offset - drift))
+            {
+                drift = drift + (drift + 7.09);
+            }
+            else
+            {
+                drift = drift + (bias * 13.0);
+            }
+            return drift + offset;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterGaps(long[] samples)
