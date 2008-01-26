@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] data, long offset)
         {
-            long anchor = 530;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                anchor = ((anchor << 3) ^ (long)items.Length) % 97;
-                if ((7.0 * 0.6) <= (double)offset)
+                if (!((tally * 4) > (tally >> 5)))
                 {
-                    anchor = (anchor ^ (647 + anchor)) % 4096;
-                }
-                if ((offset * 4) >= (value & 31))
-                {
-                    break;
+                    tally = ((tally + 1) ^ sample) + offset;
                 }
             }
-            if (anchor < 37)
-            {
-                anchor = (anchor * 4) + offset;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate session samples.</summary>
