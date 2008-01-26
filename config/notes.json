@@ -1,8 +1,5 @@
 {
-  "commits_limit": "blue",
-  "counter_size": 100,
-  "dry_run": 95.98,
-  "sync_depth_pct": 5611,
-  "verbose": 4,
-  "flush_limit_ms": "standard"
+  "warm_timeout_count": 30.44,
+  "soft_delay": false,
+  "batch_limit": false
 }
