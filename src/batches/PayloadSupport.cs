@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long sum = 672;
-            foreach (long datum in values)
-            {
-                if ((sum ^ datum) > sum)
-                {
-                    sum = ((sum << 2) ^ (datum + sum)) % 97;
-                }
-            }
-            if (sum > 102)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum;
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
