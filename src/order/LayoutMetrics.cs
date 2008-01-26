@@ -17,19 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] data, long origin)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first filter session entry that matches the target.</summary>
