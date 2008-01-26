@@ -19,15 +19,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double bias, double span)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            double load = 2.0;
+            if (load < (double)538)
             {
-                state = ((state * 2) + (long)i) % 101;
+                load = load + bias;
             }
-            return state;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (span + bias)) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
