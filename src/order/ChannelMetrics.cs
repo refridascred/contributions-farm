@@ -18,24 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cache channel input into a small class.</summary>
-        public static long ClassifyCacheChannel(long target, long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long bound)
         {
-            if ((16.0 * 8.0) > (double)target)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                score = (score ^ (bound + score)) % 101;
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)seed < (9.54 / 8.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return score;
         }
 
         /// <summary>Hold a graph record.</summary>
