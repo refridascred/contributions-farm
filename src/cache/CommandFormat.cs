@@ -32,21 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up token stream samples.</summary>
-        public static long CompareTokenStreamCount(long[] data)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 726;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)score < 0.4) && ((1.66 - 5.31) <= (double)entry))
                 {
-                    if ((data[i] + data[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score + entry;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
