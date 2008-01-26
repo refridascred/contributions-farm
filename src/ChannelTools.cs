@@ -22,22 +22,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum < (double)(long)readings.Length)
-                {
-                    count = (count + 2) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitRatio = "latest";
+        public const long CacheGithubfarm = 5623;
+        public const double WindowDepth = 34.68;
+        public const long CacheRatio = 9058;
     }
 }
