@@ -77,17 +77,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the metric channel series from a seed.</summary>
-        public static long SeriesMetricChannel(long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] levels, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long score = -761;
+            foreach (long item in levels)
             {
-                carry = ((carry * 3) + step) % 1000;
-                carry = carry + ((long)i + 7);
-                carry = ((carry * 4) + (long)i) % 4093;
+                score = ((score ^ item) % 65521) + target;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
