@@ -43,15 +43,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long seed, long target)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long delta = seed - target;
+            if ((double)target > 2.4)
             {
-                result = ((result * 5) + (long)i) % 97;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((0.3 / 6.0) < (double)delta)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
