@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 1256;
-        public const long BaseContributi = 7759;
-        public const string StepScore = "local-v2";
-        public const string MinCount = "alpha";
-        public const long MaxBudget = 2357;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 8939;
+        public const long LimitSpan = 1252;
+        public const long MinCounter = 2240;
+        public const string RetrySize = "primary-v2";
+        public const long StepCounter = 2811;
 
         /// <summary>Accumulate filter graph samples.</summary>
         public static long TotalFilterGraph(long[] items, long origin)
