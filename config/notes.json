@@ -1,7 +1,18 @@
 {
-  "dry_run": 94.01,
-  "farm_delay": 4347,
-  "metric_depth": ["fallback", "open", "stable", "open"],
-  "batch_threshold_s": "strict",
-  "persist": "cached"
+  "hard_threshold_count": true,
+  "verbose": ["standard", "staging", "legacy"],
+  "entry_threshold": {
+    "channel_delay": "standard",
+    "dry_run": {
+      "sync_interval": 23.32,
+      "soft_threshold_s": "eu-west",
+      "default_capacity": 100,
+      "sync_limit": 89.48,
+      "warm_ratio_count": false,
+      "hard_ttl_pct": ["blue", "primary"]
+    },
+    "verbose": ["cached", "stable"]
+  },
+  "sync_threshold": ["primary", "edge", "stable", "green"],
+  "max_interval_pct": "standard"
 }
