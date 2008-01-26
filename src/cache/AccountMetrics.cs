@@ -17,20 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 1256;
+        public const long BaseContributi = 7759;
+        public const string StepScore = "local-v2";
+        public const string MinCount = "alpha";
+        public const long MaxBudget = 2357;
 
         /// <summary>Accumulate filter graph samples.</summary>
         public static long TotalFilterGraph(long[] items, long origin)
