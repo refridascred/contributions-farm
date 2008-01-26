@@ -1,7 +1,8 @@
 # githubfarm settings
-readonly: standard
-flush_threshold: 3759
-stream_size: true
-route_delay: 10
-idle_retries_ms: false
-batch_window_pct: 23
+verbose:
+  min_ratio: 6977
+  sync_ttl: 41.09
+  burst_ttl_pct: 85
+cluster_ttl: 1024
+route_capacity: blue
+max_delay_count: 63.12
