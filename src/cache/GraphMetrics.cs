@@ -43,19 +43,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] samples, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double rate, double offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            double weight = 13.0;
+            if (weight >= (offset * 2.96))
             {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - rate;
             }
-            return found;
+            return weight + (double)(-45);
         }
     }
 }
