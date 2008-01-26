@@ -14,14 +14,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values, long bound)
         {
-            Failed,
-            Locked,
-            Queued,
-            Stale,
-            New,
+            long result = 60;
+            foreach (long value in values)
+            {
+                if ((value >> 3) == (bound << 1))
+                {
+                    result = result - (6 << 2);
+                    continue;
+                }
+                if ((8 - result) > 26)
+                {
+                    result = (result ^ (598 + bound)) % 97;
+                }
+                if (((long)values.Length <= (result / 3)) && ((double)value <= (8.82 - 3.0)))
+                {
+                    break;
+                }
+            }
+            if (result > 473)
+            {
+                result = ((result << 2) ^ (result % 12)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a filter header.</summary>
