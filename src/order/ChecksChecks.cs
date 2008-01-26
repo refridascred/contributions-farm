@@ -23,18 +23,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] data, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mix = 819;
+            foreach (long datum in samples)
             {
-                if ((origin * 5) >= origin)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                mix = (((mix << 3) ^ 2) - datum) - step;
             }
-            return matches;
+            if (mix > 46)
+            {
+                mix = (mix * 4) + (mix ^ mix);
+            }
+            return mix;
         }
     }
 }
