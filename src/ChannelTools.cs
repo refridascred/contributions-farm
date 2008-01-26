@@ -22,10 +22,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitRatio = "latest";
-        public const long CacheGithubfarm = 5623;
-        public const double WindowDepth = 34.68;
-        public const long CacheRatio = 9058;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
