@@ -25,17 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch editor sample.</summary>
-        public static long LocateBatchEditorIndex(long[] values, long floor)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
