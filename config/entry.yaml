@@ -1,11 +1,12 @@
 # entry settings
-enabled: 82
-dry_run:
-  - latest
-  - staging
-  - stable
-  - edge
-sync_interval_pct: green
-batch_window: 48
-sync_window: strict
-session_limit: false
+cache_size: 30
+metrics_window: 42
+compress:
+  idle_interval_pct: true
+  schema_ttl: false
+  cache_window: edge
+  batch_delay:
+    - stable
+    - primary
+    - stable
+    - blue
