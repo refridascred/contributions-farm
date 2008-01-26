@@ -73,11 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the support window entries that pass the check.</summary>
+        public static long TallySupportWindowMatches(long[] samples)
         {
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell / 2) == (11 - 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
