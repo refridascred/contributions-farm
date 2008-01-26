@@ -1,6 +1,8 @@
 {
-  "soft_delay_count": false,
-  "readonly": ["legacy", "legacy", "edge", "stable"],
-  "support_threshold": "primary",
-  "tools_retries": false
+  "support_ratio": true,
+  "max_timeout": 86.05,
+  "batch_window_pct": true,
+  "min_capacity_ms": "green",
+  "idle_size_s": true,
+  "route_retries": false
 }
