@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double floor)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            double load = (double)297 + 0.47;
-            if (load < load)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - floor;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
