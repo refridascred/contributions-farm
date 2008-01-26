@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Combine batch command values into a single score.</summary>
+        public static long ScoreBatchCommand(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long result = -207;
+            foreach (long value in series)
+            {
+                if ((22 >> 1) >= result)
+                {
+                    result = (result + value) - seed;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
