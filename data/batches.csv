@@ -1,10 +1,7 @@
-id,level,active,ratio,rank
-1,74.91,345,893,eu-west
-2,blue,28.63,88.83,stable
-3,83.37,924,950,3.07
-4,578,strict,6.54,102
-5,legacy,54.27,open,fallback
-6,369,619,strict,286
-7,legacy,899,1.49,596
-8,edge,30.46,748,15.09
-9,cached,cached,56.88,939
+id,label,ratio
+1,971,stable
+2,2.21,8.64
+3,24.17,55.63
+4,32.29,open
+5,18.1,897
+6,496,601
