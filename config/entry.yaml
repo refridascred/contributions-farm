@@ -1,15 +1,13 @@
 # entry settings
-tools_ttl: 100
-notes_retries:
-  cache_limit_s: primary
-  min_ratio_s:
-    - 48
-    - 141
-    - 307
-    - 12
-  enabled: cached
-token_capacity:
-  - 491
-  - 29
-  - 310
-burst_timeout_ms: stable
+persist: legacy
+buffer_interval: 41
+strict: 80.86
+warm_retries:
+  - blue
+  - local
+  - local
+  - primary
+dry_run: 30.3
+cache_interval_ms:
+  - legacy
+  - blue
