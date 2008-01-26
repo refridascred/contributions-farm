@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] data, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long floor)
         {
-            long sum = -37;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((sum + 29) < (step % 12))
+                if (datum >= floor)
                 {
-                    sum = (sum - (328 * 5)) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            if (sum > 2)
-            {
-                sum = (sum - (step ^ sum)) % 255;
-            }
-            return sum % 97;
+            return valid;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
