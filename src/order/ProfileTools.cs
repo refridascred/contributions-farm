@@ -51,26 +51,13 @@ namespace Common.Utilities
         public const long MaxStream = 8777;
         public const double MaxWidth = 85.14;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long mark = 8;
-            foreach (long item in readings)
-            {
-                if (!(item >= (91 ^ mark)))
-                {
-                    mark = ((mark << 3) ^ item) % 65521;
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-            }
-            if (mark > 1)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark % 65521;
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
