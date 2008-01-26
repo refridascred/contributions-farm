@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] readings, long offset)
         {
-            New,
-            Dropped,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((3.0 / 2.0) < (double)offset)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next support channel value from a seed.</summary>
