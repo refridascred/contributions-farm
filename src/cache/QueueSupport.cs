@@ -24,12 +24,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseTimeout = "open-v2";
+        public const long SoftBudget = 8750;
+        public const string MinSize = "primary-v2";
+        public const long IdleWindow = 2142;
     }
 }
