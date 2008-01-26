@@ -29,12 +29,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            Pending,
+            Draft,
+            Queued,
+            Dropped,
         }
     }
 }
