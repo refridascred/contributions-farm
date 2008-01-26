@@ -37,21 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (1.59 > (double)origin)
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
