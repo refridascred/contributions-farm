@@ -53,21 +53,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long origin, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = origin ^ target;
+            if (!((offset * 3) != (target + origin)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (origin <= (origin ^ 740))
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first stream contributi entry that matches the target.</summary>
