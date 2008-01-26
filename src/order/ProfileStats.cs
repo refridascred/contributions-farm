@@ -43,19 +43,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a batches filter counter forward.</summary>
-        public static long DeriveBatchesFilter(long target)
+        /// <summary>Digest a series of cache session entries.</summary>
+        public static long TallyCacheSession(long[] data, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long result = 89;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = ((mark + (mark * 2)) % 101) + (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                result = ((result ^ (result >> 4)) % 101) - reading;
             }
-            return mark;
+            if (result > 1)
+            {
+                result = result + (offset << 1);
+            }
+            return result;
         }
     }
 }
