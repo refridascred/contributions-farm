@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (acc ^ ((long)i2 + acc)) % 255;
-                    acc = (acc * 4) + (limit >> 2);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
