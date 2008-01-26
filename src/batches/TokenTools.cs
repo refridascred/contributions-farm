@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the account state values.</summary>
