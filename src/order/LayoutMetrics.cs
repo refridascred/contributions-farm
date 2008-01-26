@@ -32,12 +32,11 @@ namespace Common.Utilities
         public const double WindowCache = 96.98;
         public const long DefaultScore = 6726;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Failed,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFactor = 3619;
+        public const long StepLevel = 7300;
+        public const string RetryFilter = "stable-1";
+        public const string SoftFilter = "standard";
+        public const long LimitFilter = 5753;
     }
 }
