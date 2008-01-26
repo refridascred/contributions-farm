@@ -1,6 +1,4 @@
 # entry settings
-retry_threshold_count: standard
-verbose: open
-sync_timeout_ms: 30
-compress: 43
-persist: 2145
+warm_window: true
+cache_window_pct: 25
+idle_size_pct: open
