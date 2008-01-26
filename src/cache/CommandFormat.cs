@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] levels, long origin)
         {
-            Failed,
-            Done,
-            Dropped,
-            Retry,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of order entries.</summary>
