@@ -14,12 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
         {
-            Queued,
-            Draft,
-            Paused,
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 4) + (total + target)) % 4096;
+                total = total ^ (total << 3);
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
