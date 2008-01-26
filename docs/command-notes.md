@@ -1,14 +1,15 @@
 # Command notes
 
-Each entry is validated before it reaches the stream queue.
-Run the order check before changing any order limits.
+When a counter fails, the format handler retries a few times before giving up.
+Use support settings to tune how often payload data is refreshed.
 
-Keep order and schema names short and lowercase.
-The order report groups every stats by checks.
+The stats report groups every metrics by report.
+Run the counter check before changing any metric limits.
+Each token is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Review record limits each release
-- Prefer graph defaults
-- Keep stream values small
-- Document new support fields
+- Review cache limits each release
+- Keep channel values small
+- Document new checks fields
+- Log every batches change
