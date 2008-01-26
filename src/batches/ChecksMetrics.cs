@@ -35,17 +35,15 @@ namespace Common.Utilities
             return (drift - (ratio + ratio)) + bias;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] data, long floor)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
