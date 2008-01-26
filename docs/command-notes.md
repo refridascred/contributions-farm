@@ -1,14 +1,13 @@
 # Command notes
 
-Keep cache and format names short and lowercase.
-When a tools fails, the schema handler retries a few times before giving up.
+The order report groups every commits by filter.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for record live in the config folder and can be overridden per environment.
-Each route is validated before it reaches the counter queue.
-Use cache settings to tune how often stream data is refreshed.
+Run the counter check before changing any githubfarm limits.
+Use channel settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Log every schema change
-- Validate profile input early
-- Document new record fields
+- Document new queue fields
+- Review layout limits each release
+- Validate contributi input early
