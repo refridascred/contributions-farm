@@ -71,17 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] == seed)
+                if (!(((cell << 1) <= (cell - cell)) && ((matches >> 4) == (matches ^ cell))))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
