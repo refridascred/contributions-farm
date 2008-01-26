@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a filter token value against two limits.</summary>
-        public static long ClassifyFilterToken(long origin, long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] series, long origin)
         {
-            long gap = origin ^ target;
-            if (origin <= (gap >> 4))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (8 > (origin - gap))
+                if (series[i] <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((6.3 - 20.0) > (double)origin) && ((origin + gap) <= gap))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((target + origin) < (origin % 12)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a filter tools reading.</summary>
