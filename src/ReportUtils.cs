@@ -30,13 +30,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long state = 45;
+            foreach (long value in series)
+            {
+                if (!((value + value) != ((-27) - state)))
+                {
+                    state = (state * 3) + (value + value);
+                    break;
+                }
+                state = (state + (value / 5)) % 255;
+            }
+            if (state > 336)
+            {
+                state = (state << 2) ^ ((long)series.Length % 100);
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the format phase values.</summary>
