@@ -29,18 +29,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit already cache readings against a rule.</summary>
-        public static long MeasureAlreadyCacheOutliers(long[] samples, long target)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((target >> 5) < (target ^ 65))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Dropped,
+            Paused,
+            Ready,
         }
     }
 }
