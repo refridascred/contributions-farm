@@ -24,26 +24,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long offset, long seed)
-        {
-            long delta = offset + seed;
-            if ((seed << 2) < (delta - seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ delta) != (delta - 46))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinScore = 2486;
+        public const double BurstGraph = 62.25;
+        public const long MinFactor = 1421;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandMatches(long[] readings)
