@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] data, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((data[i] == step) && ((data[i] % 2) != 0))
+                if (87 > ((long)i - floor))
                 {
-                    return (long)i;
+                    carry = (carry - (long)i) % 1000;
+                    carry = carry + (carry ^ carry);
+                    continue;
                 }
+                carry = carry ^ (74 >> 2);
+                carry = carry - (812 % 10);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a stats stats.</summary>
