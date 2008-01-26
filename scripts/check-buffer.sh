@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=83
+BUFFER_LIMIT=421
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in edge blue; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
