@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "alpha";
-        public const long BatchWidth = 6543;
-        public const long BurstBudget = 3940;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Retry,
+            Failed,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
