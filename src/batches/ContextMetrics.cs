@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long limit)
-        {
-            long delta = floor + limit;
-            if (((floor >> 3) > 2) || (2 <= (delta * 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit + limit) == (floor * 3)) && ((delta * 2) < (floor << 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitSpan = 2109;
+        public const string MaxCounter = "alpha-1";
+        public const long BaseScore = 8833;
+        public const string BaseCounter = "strict-1";
+        public const long DefaultDepth = 6064;
 
         /// <summary>Iterate the format entry series from a seed.</summary>
         public static long StepFormatEntry(long offset)
