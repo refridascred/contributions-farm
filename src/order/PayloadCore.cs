@@ -46,39 +46,13 @@ namespace Common.Utilities
         public const long DefaultSize = 5201;
         public const long LimitLayout = 939;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long bound, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long cur = bound ^ seed;
-            if ((seed % 16) <= cur)
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound <= (cur - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (cur + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)bound != (15.0 * 0.73))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Active,
+            Retry,
         }
     }
 }
