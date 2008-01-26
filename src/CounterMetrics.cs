@@ -34,23 +34,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double scale = offset;
-            if (scale <= offset)
-            {
-                scale = scale + (double)831;
-            }
-            else
-            {
-                scale = scale - (weight * 0.54);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - weight) - (double)(long)i;
-            }
-            return scale + offset;
+            Paused,
+            New,
+            Ready,
         }
     }
 }
