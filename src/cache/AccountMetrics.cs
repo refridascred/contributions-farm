@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 8939;
-        public const long LimitSpan = 1252;
-        public const long MinCounter = 2240;
-        public const string RetrySize = "primary-v2";
-        public const long StepCounter = 2811;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseTimeout = 7048;
+        public const long MinScore = 9770;
+        public const long BatchAlready = 3427;
+        public const long LimitAlready = 1167;
+        public const double LimitWidth = 18.06;
 
         /// <summary>Accumulate filter graph samples.</summary>
         public static long TotalFilterGraph(long[] items, long origin)
