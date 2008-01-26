@@ -1,12 +1,6 @@
 # entry settings
-warm_depth_count: false
-stats_interval: legacy
-dry_run:
-  - 42
-  - 380
-  - 118
-cache_size:
-  - standard
-  - blue
-  - open
-flush_size_count: 14.74
+burst_ttl_s: 38.61
+strict: 30
+payload_timeout: 46
+hard_depth_count: blue
+compress: false
