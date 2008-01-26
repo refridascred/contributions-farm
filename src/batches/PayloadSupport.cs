@@ -14,19 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Blend two stream metrics measurements.</summary>
+        public static double ScaleStreamMetrics(double weight, double span)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            double gain = (double)(33 & 127);
+            if (gain > weight)
             {
-                if (((long)i >> 4) > (target / 6))
-                {
-                    mark = (mark + 40) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                gain = gain + (18.0 + weight);
             }
-            return mark;
+            else
+            {
+                gain = gain - span;
+            }
+            return gain + (gain + weight);
         }
 
         /// <summary>Hold a entry info.</summary>
