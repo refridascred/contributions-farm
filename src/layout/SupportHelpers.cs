@@ -38,25 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long limit, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long origin)
         {
-            long delta = limit + offset;
-            if ((offset - offset) >= (delta / 6))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - limit) != (offset - limit))
+                if (levels[i] <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
