@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Ready,
-            Active,
-            Dropped,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 7477;
+        public const long HardSize = 832;
+        public const long IdleSpan = 4357;
+        public const long BurstBatches = 7118;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
