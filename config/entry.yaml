@@ -1,5 +1,12 @@
 # entry settings
-dry_run: 30
-base_retries_count: false
-layout_interval: 100
-filter_window: 82.87
+channel_limit:
+  retry_delay: open
+  strict: 100
+  idle_depth_count: edge
+  contributi_delay: 29.39
+strict: 4.38
+flush_threshold:
+  sync_delay: 51.21
+  entry_retries: 14.8
+  dry_run: true
+audit: eu-west
