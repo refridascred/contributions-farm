@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long origin, long target)
         {
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long slot = origin + target;
+            if ((target & 15) < (199 + (-252)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + 974) < (slot & 31))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (slot > (slot * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metric support samples are out of range.</summary>
