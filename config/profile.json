@@ -1,11 +1,27 @@
 {
-  "token_size": "standard",
-  "warm_limit_count": {
-    "retry_retries_count": "green",
-    "route_limit": 67.56,
-    "flush_delay_s": 46.44,
-    "contributi_depth": true
+  "hard_limit": 78.24,
+  "max_threshold": ["latest", "latest"],
+  "compress": {
+    "githubfarm_capacity": [32, 32],
+    "payload_ratio": [37, 39, 186],
+    "farm_delay": [447, 95, 298, 475],
+    "verbose": ["cached", "stable", "staging", "primary"]
   },
-  "cache_timeout_s": 5327,
-  "channel_timeout": "standard"
+  "readonly": {
+    "base_ratio_count": {
+      "compress": 2662,
+      "dry_run": 6841,
+      "warm_ttl_count": 43.97,
+      "session_limit": "local"
+    },
+    "min_timeout_ms": "primary",
+    "soft_retries_ms": {
+      "record_limit": true,
+      "enabled": 37.77,
+      "soft_threshold_s": 250
+    },
+    "cache_delay": "primary",
+    "account_threshold": 67,
+    "dry_run": "strict"
+  }
 }
