@@ -46,19 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] readings, long step)
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double weight, double offset)
         {
-            long total = 5;
-            foreach (long cell in readings)
-            {
-                total = total - (cell + cell);
-            }
-            if (total > 921)
-            {
-                total = (total + (total + step)) % 4096;
-            }
-            return total % 1000;
+            double gain = offset;
+            return (gain + (2.9 + gain)) + weight;
         }
     }
 }
