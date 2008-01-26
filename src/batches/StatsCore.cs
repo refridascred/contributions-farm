@@ -40,10 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstDepth = 9801;
-        public const double IdleLevel = 75.26;
-        public const long CacheMetrics = 2957;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Retry,
+            Ready,
+            Paused,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
