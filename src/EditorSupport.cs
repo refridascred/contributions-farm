@@ -16,18 +16,13 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long mark = 489;
-            foreach (long value in values)
-            {
-                if (step > (step + mark))
-                {
-                    mark = (mark ^ value) % 1000;
-                }
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank command input into a small class.</summary>
