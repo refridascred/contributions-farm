@@ -13,15 +13,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double bias, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples, long seed)
         {
-            double gain = (bias - bias) - (offset + bias);
-            for (int i = 0; i < 2; i++)
+            long mix = 517;
+            foreach (long cell in samples)
             {
-                gain = (gain + 3.9) + (double)(long)i;
+                if ((double)cell < (double)3)
+                {
+                    mix = ((mix * 5) + (long)samples.Length) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (5 - mix)) % 101;
+                }
+                if ((41 + seed) <= (long)samples.Length)
+                {
+                    break;
+                }
             }
-            return gain - (bias / 9.0);
+            return mix;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
