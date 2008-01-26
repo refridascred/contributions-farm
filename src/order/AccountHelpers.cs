@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 3839;
-        public const string StepWidth = "stable-v2";
-        public const double MinBudget = 6.18;
-        public const string StepStats = "local-v2";
+        /// <summary>Derive the next account commits value from a seed.</summary>
+        public static long StepAccountCommits(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((double)seed < (6.0 / 3.0)) && (seed > (seed << 2)))
+                {
+                    total = (total ^ (647 - seed)) % 101;
+                }
+                else
+                {
+                    total = total ^ (seed % 12);
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many batch checks samples are out of range.</summary>
         public static long AuditBatchChecksOutliers(long[] values, long seed)
