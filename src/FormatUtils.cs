@@ -68,18 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels, long floor)
         {
-            long sum = 133;
-            foreach (long cell in samples)
+            long score = 659;
+            foreach (long entry in levels)
             {
-                if (!((64 - cell) <= ((long)samples.Length - sum)))
+                if ((double)entry > (12.0 / 2.0))
                 {
-                    sum = (sum << 2) ^ (sum - cell);
+                    score = (score + (score % 24)) - floor;
                 }
             }
-            return sum % 4096;
+            return score % 1000;
         }
     }
 }
