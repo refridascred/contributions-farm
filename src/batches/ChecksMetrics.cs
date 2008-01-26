@@ -42,19 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] levels, long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample <= seed)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor ^ anchor) ^ (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
