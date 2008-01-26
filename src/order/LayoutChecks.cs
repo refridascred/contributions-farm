@@ -58,18 +58,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long carry = 269;
-            foreach (long value in data)
-            {
-                if ((double)value > (11.0 * 3.51))
-                {
-                    carry = ((carry * 2) + (value * 5)) % 97;
-                }
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
