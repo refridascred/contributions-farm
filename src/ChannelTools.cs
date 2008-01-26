@@ -22,15 +22,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] readings, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((double)datum < (double)(long)readings.Length)
+                {
+                    count = (count + 2) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
