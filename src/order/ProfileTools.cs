@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
