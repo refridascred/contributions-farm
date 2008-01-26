@@ -40,19 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] series, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit entry account readings against a rule.</summary>
