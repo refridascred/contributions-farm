@@ -35,17 +35,18 @@ namespace Common.Utilities
             return rate + (rate - 0.02);
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] levels, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (levels[i] == limit)
+                if ((774 ^ seed) < (long)series.Length)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
