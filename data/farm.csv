@@ -1,6 +1,11 @@
-id,ratio,weight,count,rank
-1,35.7,65.55,3.65,49.68
-2,977,45,977,8.02
-3,94.89,996,9.98,838
-4,fallback,edge,74.76,strict
-5,46.02,strict,40.22,98.38
+id,active,level
+1,5.57,blue
+2,latest,93.68
+3,open,fallback
+4,cached,356
+5,edge,990
+6,728,strict
+7,441,470
+8,60,55.87
+9,868,541
+10,staging,local
