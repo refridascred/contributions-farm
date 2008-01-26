@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] values, long limit)
         {
-            long state = 5;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state + ((long)readings.Length * 5)) % 4096) ^ sample;
-                if ((double)state < (1.0 - 2.1))
+                if (values[i] < limit)
                 {
-                    state = (state * 4) + (state + state);
+                    return (long)i;
                 }
             }
-            if (state < 907)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Iterate the checks entry series from a seed.</summary>
