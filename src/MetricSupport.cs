@@ -16,19 +16,13 @@ namespace Common.Utilities
             return rate + (double)95;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double scale, double bias)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double rate = (double)(15 * 4);
-            if (rate > scale)
-            {
-                rate = (rate - scale) - bias;
-            }
-            else
-            {
-                rate = rate - (6.0 / 9.0);
-            }
-            return rate + (rate - 0.02);
+            Closed,
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
