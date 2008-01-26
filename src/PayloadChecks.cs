@@ -19,13 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Grade a token batch value against two limits.</summary>
+        public static long ClassifyTokenBatch(long step, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            long delta = step - seed;
+            if ((delta << 3) > (step & 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if (7 < seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
