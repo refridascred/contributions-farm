@@ -71,13 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long mix = 1;
+            foreach (long sample in values)
+            {
+                if ((double)mix < (double)sample)
+                {
+                    mix = ((mix << 2) ^ mix) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (mix + 86)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Blend two stream measurements.</summary>
