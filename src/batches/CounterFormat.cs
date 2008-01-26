@@ -37,18 +37,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches tools entries that pass the check.</summary>
-        public static long MeasureBatchesToolsOutliers(long[] data)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((origin & 127) < 25)
             {
-                if (!(((double)hits >= (5.8 * 1.7)) || (hits <= (datum + 69))))
+                return 4;
+            }
+            else
+            {
+                if (10 < (origin / 2))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin * 5) > (origin % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
