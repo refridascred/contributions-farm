@@ -1,9 +1,7 @@
-id,ratio,owner,weight,rank
-1,162,791,868,primary
-2,702,527,510,387
-3,391,edge,961,637
-4,primary,149,eu-west,99
-5,486,80.21,eu-west,37.85
-6,58.56,690,82.15,77.2
-7,479,680,90.42,92.8
-8,legacy,567,921,969
+id,token,count
+1,44,50.3
+2,standard,staging
+3,blue,98.73
+4,545,legacy
+5,20.99,850
+6,640,eu-west
