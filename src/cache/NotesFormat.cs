@@ -27,9 +27,12 @@ namespace Common.Utilities
             return ((bias3 - (double)3) + bias) + bias2;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 3690;
-        public const string DefaultSize = "staging-edge";
-        public const double CacheRatio = 26.18;
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
