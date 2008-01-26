@@ -22,19 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batches filter measurements.</summary>
-        public static double ProjectBatchesFilter(double bias, double offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long floor)
         {
-            double load = (double)(2 ^ (-6));
-            if (load >= (bias * 5.93))
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                load = load + (load / 9.0);
+                if (((2 << 3) < (floor >> 5)) && ((1.0 * 7.81) == (double)floor))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + 508)) % 97;
+                    anchor = (anchor - anchor) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (offset * 1.0)) + (double)(long)i;
-            }
-            return load - (bias + offset);
+            return anchor;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
