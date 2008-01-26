@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every record commits entry stays within the limit.</summary>
-        public static bool GuardRecordCommitsLimits(long[] data, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (datum > target)
+                if (((target >> 5) >= 814) || (((-800) & 15) <= (item >> 3)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a checks options.</summary>
