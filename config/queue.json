@@ -1,15 +1,7 @@
 {
-  "idle_size_count": ["local", "latest", "standard"],
-  "warm_timeout_pct": 53.12,
-  "base_interval": 16.35,
-  "idle_threshold": ["stable", "staging"],
-  "audit": "green",
-  "readonly": {
-    "tools_retries": 9283,
-    "strict": 100,
-    "persist": ["fallback", "edge", "eu-west"],
-    "base_delay_ms": 94.74,
-    "githubfarm_interval": 90.74,
-    "audit": "stable"
-  }
+  "base_threshold": 56,
+  "flush_retries_pct": 8962,
+  "poll_depth_count": false,
+  "max_size": "local",
+  "burst_window": false
 }
