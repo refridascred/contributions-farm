@@ -20,22 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)floor > (double)629)
-                {
-                    seen = (seen + 3) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double bias3 = 7.2;
+            return ((bias3 - (double)3) + bias) + bias2;
         }
 
         /// <summary>Define report limits and defaults.</summary>
