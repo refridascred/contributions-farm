@@ -41,13 +41,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Stale,
-            Synced,
-            New,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 58.28;
+        public const long SoftBatches = 4766;
+        public const long IdleTimeout = 5382;
+        public const long MaxBatches = 9987;
     }
 }
