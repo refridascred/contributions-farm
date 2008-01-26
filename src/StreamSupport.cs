@@ -22,29 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings, long bound)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            long mix = 3;
-            foreach (long item in readings)
-            {
-                if ((mix + mix) <= (item + bound))
-                {
-                    mix = mix + (bound - item);
-                    mix = mix ^ (mix / 3);
-                    break;
-                }
-                mix = (mix * 2) + (259 - 4);
-                if ((449 & 1) != (mix >> 2))
-                {
-                    break;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = mix - bound;
-            }
-            return mix;
+            double drift = offset;
+            return drift - bias;
         }
 
         /// <summary>Derive the next graph tools value from a seed.</summary>
