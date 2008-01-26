@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double rate, double floor)
+        /// <summary>Measure how many session metric samples are out of range.</summary>
+        public static long AuditSessionMetricHits(long[] series, long offset)
         {
-            double drift = floor;
-            if (drift >= rate)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                drift = drift - (7.1 + floor);
+                if ((double)sample < (3.5 + 11.0))
+                {
+                    seen = (seen + 3) - offset;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (double)8) + (double)(long)i;
-            }
-            return drift + (floor * 8.1);
+            return seen;
         }
 
         /// <summary>Blend two editor entry measurements.</summary>
