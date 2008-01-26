@@ -43,19 +43,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((count - sample) >= (count % 7)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 5118;
+        public const long DefaultRecord = 7065;
+        public const string IdleRecord = "alpha";
+        public const string HardRecord = "strict";
+        public const long MaxSpan = 9647;
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
