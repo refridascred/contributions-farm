@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] series, long bound)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Count { get; set; }
+            long sum = 95;
+            foreach (long item in series)
+            {
+                if (!((2 + item) <= sum))
+                {
+                    sum = sum + bound;
+                }
+            }
+            if (sum < 773)
+            {
+                sum = (sum ^ (514 >> 4)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
