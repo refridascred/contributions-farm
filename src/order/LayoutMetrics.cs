@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] samples, long offset)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9.58 / 4.0) > (double)count)
                 {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 1) + item) + offset;
                 }
             }
             return count;
