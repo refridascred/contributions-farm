@@ -1,6 +1,10 @@
-id,level,ratio,label
-1,371,252,98.45
-2,64.15,971,377
-3,fallback,501,88.65
-4,530,28.26,438
-5,398,239,445
+id,level,token,rank,count
+1,550,green,local,50.61
+2,882,open,893,stable
+3,665,72.68,12.67,848
+4,18.17,green,143,41.26
+5,74.42,959,blue,3.91
+6,27.58,strict,local,287
+7,legacy,205,549,eu-west
+8,314,85.79,strict,64.88
+9,82.56,standard,249,87.86
