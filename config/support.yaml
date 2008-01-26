@@ -1,11 +1,31 @@
 # support settings
-session_delay:
-  - legacy
-  - open
-  - green
-  - cached
-soft_ttl: false
-report_threshold: 40.39
-entry_capacity: 1.7
-queue_retries: stable
-idle_retries: 48
+soft_ttl_s: 43.26
+cluster_delay: true
+readonly: 9887
+flush_depth_ms:
+  soft_retries_count: fallback
+  strict:
+    base_capacity_ms: 12
+    persist:
+      - 119
+      - 278
+    warm_capacity_count: 40.08
+    verbose:
+      - 27
+      - 283
+      - 206
+    context_timeout: true
+    cache_retries: 100
+  window_depth: 1024
+  soft_delay_pct: 74.74
+  notes_interval: 250
+  max_threshold_pct:
+    already_ttl: 92
+    counter_window: 8971
+    persist: false
+    enabled: standard
+retry_depth_count:
+  - 322
+  - 482
+  - 430
+metrics_delay: 30
