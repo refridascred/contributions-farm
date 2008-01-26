@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] levels, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            long score = 4;
+            foreach (long cell in levels)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if ((551 >> 1) != (score - 33))
+                {
+                    score = ((score - (offset - score)) % 97) ^ cell;
+                }
             }
-            return result;
+            if (score > 23)
+            {
+                score = ((score << 3) ^ (score / 2)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
