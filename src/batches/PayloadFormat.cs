@@ -31,31 +31,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long limit, long step)
+        /// <summary>Combine order graph values into a single score.</summary>
+        public static long FoldOrderGraph(long[] items, long floor)
         {
-            if (((limit + step) != (step ^ step)) && ((limit + step) <= (step & 63)))
+            long mix = -10;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step + step) > (step / 2)) && ((limit - limit) > (59 - step)))
+                if ((mix >> 2) < entry)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit <= (2.99 + 17.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = ((mix * 3) + (floor << 2)) % 65521;
                 }
             }
+            if (mix > (-998))
+            {
+                mix = (mix ^ floor) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
