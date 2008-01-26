@@ -1,5 +1,10 @@
 {
-  "min_threshold_s": 30,
-  "enabled": [92, 281, 145, 364],
-  "strict": "edge"
+  "filter_interval": 30,
+  "persist": "edge",
+  "poll_interval_pct": {
+    "route_ttl": 6.72,
+    "cluster_ratio": 66.53,
+    "stream_window": 96.56,
+    "verbose": 11.27
+  }
 }
