@@ -16,18 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mark = 489;
+            foreach (long value in values)
             {
-                if ((hits - cell) <= cell)
+                if (step > (step + mark))
                 {
-                    hits = hits + 2;
+                    mark = (mark ^ value) % 1000;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
