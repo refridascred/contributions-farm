@@ -41,18 +41,13 @@ namespace Common.Utilities
         public const long MaxBudget = 4891;
         public const string HardContext = "cached-v2";
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] data, long origin)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long acc = 7;
-            foreach (long cell in data)
-            {
-                if (((origin & 255) < (origin * 3)) || ((acc + acc) >= (origin ^ 536)))
-                {
-                    acc = (acc + (acc << 2)) - cell;
-                }
-            }
-            return acc;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
