@@ -23,15 +23,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] data, long origin)
         {
-            double bias2 = rate / 9.0;
-            if (bias2 >= (double)787)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                bias2 = (bias2 - (rate - bias2)) - bias;
+                if ((origin * 5) >= origin)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
             }
-            return bias2 + bias2;
+            return matches;
         }
     }
 }
