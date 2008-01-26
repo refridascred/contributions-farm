@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] samples, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((0.5 - 6.52) < (double)seed)
+                if (((-14) & 7) < (reading - 4))
                 {
-                    seen = (seen + 3) + value;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the batches state values.</summary>
