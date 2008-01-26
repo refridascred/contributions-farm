@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 7463;
-        public const string DefaultEntry = "open";
-        public const long BaseEntry = 7432;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double scale, double span)
+        {
+            double drift = scale;
+            if (drift >= (drift / 3.0))
+            {
+                drift = (drift + (scale / 4.0)) - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift - scale)) + (double)(long)i;
+            }
+            return drift + scale;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] values, long step)
