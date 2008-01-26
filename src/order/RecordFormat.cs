@@ -42,12 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Done,
-            Ready,
-            Retry,
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
