@@ -1,13 +1,14 @@
 # Command notes
 
-When a editor fails, the channel handler retries a few times before giving up.
-A payload that stays idle for too long is moved to the checks list.
+Keep entry and cluster names short and lowercase.
+Run the schema check before changing any command limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
-Run the layout check before changing any stream limits.
-Run the account check before changing any layout limits.
+Use channel settings to tune how often channel data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep layout values small
-- Document new batches fields
+- Validate command input early
+- Prefer channel defaults
+- Review farm limits each release
