@@ -1,6 +1,18 @@
 {
-  "cluster_retries": 12.01,
-  "account_depth": 60,
-  "persist": 100,
-  "strict": false
+  "context_ttl": {
+    "retry_ttl_count": "local",
+    "default_depth_count": {
+      "audit": 68.07,
+      "max_window": [71, 85],
+      "order_interval": ["stable", "green", "standard", "latest"],
+      "max_ttl_ms": false,
+      "enabled": 2
+    },
+    "cache_retries": false,
+    "audit": ["cached", "eu-west"],
+    "persist": [45, 119, 360, 334],
+    "warm_ttl_count": "strict"
+  },
+  "stats_limit": ["blue", "standard"],
+  "hard_interval_ms": 23
 }
