@@ -51,18 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] samples)
+        /// <summary>Roll a format channel counter forward.</summary>
+        public static long RollFormatChannel(long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((cell / 9) != (matches << 2))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
     }
 }
