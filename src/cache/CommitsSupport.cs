@@ -51,25 +51,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long origin, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] samples, long target)
         {
-            long offset = origin ^ target;
-            if (!((offset * 3) != (target + origin)))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin <= (origin ^ 740))
+                if (4.23 >= (double)target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 2) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first stream contributi entry that matches the target.</summary>
