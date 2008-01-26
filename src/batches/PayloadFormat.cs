@@ -25,12 +25,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long floor, long limit)
         {
-            Synced,
-            Done,
-            Queued,
+            if ((double)floor >= (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit > (limit << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
