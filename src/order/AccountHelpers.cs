@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next account commits value from a seed.</summary>
-        public static long StepAccountCommits(long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long target, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            long gap = target + seed;
+            if ((seed + gap) <= (gap >> 2))
             {
-                if (((double)seed < (6.0 / 3.0)) && (seed > (seed << 2)))
+                return 0;
+            }
+            else
+            {
+                if (881 < (seed + seed))
                 {
-                    total = (total ^ (647 - seed)) % 101;
+                    return 2;
                 }
                 else
                 {
-                    total = total ^ (seed % 12);
+                    return 7;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
         }
 
         /// <summary>Measure how many batch checks samples are out of range.</summary>
