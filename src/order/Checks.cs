@@ -56,32 +56,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a payload checks pair into a bucket.</summary>
-        public static long ClassifyPayloadChecks(long limit, long step)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long diff = limit - step;
-            if ((double)0 == (double)diff)
-            {
-                return 3;
-            }
-            else
-            {
-                if (5.31 < (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (12.0 - 7.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
     }
 }
