@@ -1,7 +1,8 @@
 {
-  "hard_delay": true,
-  "readonly": 60,
-  "editor_retries": "staging",
-  "max_interval": 60,
-  "flush_interval_pct": true
+  "profile_timeout": false,
+  "hard_depth": 2,
+  "order_ttl": false,
+  "base_depth": [358, 21, 26],
+  "flush_retries_count": false,
+  "readonly": "fallback"
 }
