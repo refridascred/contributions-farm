@@ -39,16 +39,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next graph tools value from a seed.</summary>
-        public static long StepGraphTools(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 11; i++)
-            {
-                score = score + ((-639) + score);
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchDepth = 4406;
+        public const long BatchSize = 7946;
+        public const double CacheFactor = 25.74;
+        public const long LimitBudget = 490;
+        public const long CacheBudget = 9762;
     }
 }
