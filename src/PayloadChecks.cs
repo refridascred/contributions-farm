@@ -19,31 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] series, long seed)
         {
-            if (((72 << 1) < target) || ((17.0 + 4.0) > (double)target))
+            long score = 7;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset + 98) == (7 ^ target)) || ((3.0 - 5.5) >= (double)target))
+                if ((double)cell != (20.0 + 8.8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + target) < (offset % 10)) || ((target - 357) >= (offset + target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = (score ^ (seed ^ 8)) % 65521;
                 }
             }
+            if (score < 140)
+            {
+                score = (score * 3) + 5;
+            }
+            return score;
         }
 
         /// <summary>Hold a checks summary.</summary>
