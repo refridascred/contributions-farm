@@ -19,20 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] levels, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] items, long origin)
         {
-            long anchor = 477;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor - (70 % 7)) + cell;
-                anchor = (anchor + ((-668) + origin)) % 65521;
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 501)
-            {
-                anchor = (anchor << 3) ^ (1 / 7);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every stats token entry stays within the limit.</summary>
