@@ -29,35 +29,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] data, long origin)
         {
-            long sum = 269;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum % 2) >= item)
+                if (data[i] == origin)
                 {
-                    sum = ((sum * 3) + sum) % 4096;
-                    sum = (sum << 2) ^ (sum + sum);
-                }
-                if ((8.02 * 9.0) != (double)item)
-                {
-                    sum = (sum << 2) ^ (item + sum);
-                }
-                else
-                {
-                    sum = (sum ^ (long)items.Length) % 4096;
-                }
-                if (5.41 >= (double)item)
-                {
-                    sum = sum - (long)items.Length;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (item / 8)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
     }
 }
