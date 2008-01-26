@@ -63,21 +63,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Fold a list of report record readings.</summary>
+        public static long FoldReportRecord(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 335;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((58 + carry) >= (cell * 5)))
                 {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry + (carry >> 1);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (431 << 3)) % 4096;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
