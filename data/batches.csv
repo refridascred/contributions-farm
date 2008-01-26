@@ -1,8 +1,8 @@
-id,region,score,label
-1,52.96,primary,eu-west
-2,local,991,open
-3,eu-west,green,30.52
-4,731,strict,27.62
-5,fallback,86.84,97
-6,742,234,469
-7,edge,22.02,420
+id,weight,rank,state,active
+1,601,eu-west,primary,467
+2,324,527,763,local
+3,stable,21.86,strict,285
+4,blue,legacy,522,strict
+5,860,edge,36.48,23
+6,local,primary,855,373
+7,strict,248,open,local
