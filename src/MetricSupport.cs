@@ -27,13 +27,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] items)
         {
-            Pending,
-            Closed,
-            Paused,
-            Locked,
+            long total = 1;
+            foreach (long reading in items)
+            {
+                long gap = reading;
+                if ((gap & 127) != (total << 2))
+                {
+                    total = total - (reading * 3);
+                }
+                if ((reading - total) >= (250 & 7))
+                {
+                    total = total ^ (long)items.Length;
+                }
+                else
+                {
+                    total = ((total * 2) + (total + total)) % 65521;
+                }
+            }
+            if (total > 727)
+            {
+                total = ((total << 2) ^ (total * 5)) % 97;
+            }
+            return total;
         }
     }
 }
