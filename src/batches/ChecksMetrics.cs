@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double rate, double offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double scale = (rate * 5.8) - (rate + rate);
+            if (scale >= offset)
             {
-                if ((entry - entry) > (count % 24))
-                {
-                    count = count + 3;
-                }
+                scale = scale - 2.0;
             }
-            return count;
+            else
+            {
+                scale = scale + (2.1 + offset);
+            }
+            return scale - (double)59;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
