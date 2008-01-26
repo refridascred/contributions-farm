@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] items, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] series)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = 1;
+            foreach (long reading in series)
             {
-                if (((target >> 5) >= 814) || (((-800) & 15) <= (item >> 3)))
+                if (((18.0 + 14.0) >= (double)result) && (reading > (reading % 60)))
                 {
-                    matches = matches + 1;
+                    result = ((result << 2) ^ (result ^ 31)) % 65521;
                 }
             }
-            return matches;
+            if (result < 730)
+            {
+                result = (result - (result * 4)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the window state values.</summary>
