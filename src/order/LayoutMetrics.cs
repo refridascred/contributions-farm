@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long HardSize = 469;
         public const long SoftOrder = 6115;
 
-        /// <summary>Measure how many context entry samples are out of range.</summary>
-        public static long TallyContextEntryMatches(long[] items, long step)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (tally < step)
+                if (cell >= origin)
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Find the first filter session entry that matches the target.</summary>
