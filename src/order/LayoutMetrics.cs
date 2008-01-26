@@ -32,12 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Find the first filter session entry that matches the target.</summary>
+        public static long FindFilterSessionIndex(long[] values, long seed)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
