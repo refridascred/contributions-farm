@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] readings, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry * 2) + target;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
