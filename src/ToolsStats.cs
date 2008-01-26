@@ -73,23 +73,14 @@ namespace Common.Utilities
         public const string CacheCommits = "cached-edge";
         public const long BatchCommits = 3150;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = 3;
-            foreach (long entry in levels)
-            {
-                anchor = anchor ^ (entry >> 3);
-                if ((double)anchor != (double)(-62))
-                {
-                    anchor = (anchor - anchor) % 255;
-                }
-            }
-            if (anchor < 31)
-            {
-                anchor = (anchor ^ anchor) % 97;
-            }
-            return anchor;
+            Failed,
+            Stale,
+            Active,
+            New,
+            Dropped,
         }
     }
 }
