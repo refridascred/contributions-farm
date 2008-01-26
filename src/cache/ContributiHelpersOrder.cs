@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 9179;
-        public const long BatchFormat = 7719;
-        public const long WindowCount = 1949;
-        public const double HardFormat = 19.14;
-        public const long MaxBudget = 452;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 98.65;
+        public const long BaseLevel = 7150;
+        public const string MinRatio = "stable-1";
+        public const long MinSize = 7568;
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] data)
