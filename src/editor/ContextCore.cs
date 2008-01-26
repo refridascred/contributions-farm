@@ -28,10 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 3.35;
-        public const long WindowTimeout = 1367;
-        public const long IdleCount = 2736;
-        public const double BurstDepth = 12.74;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double rate, double bias)
+        {
+            double bias2 = 7.28;
+            if (bias2 >= bias2)
+            {
+                bias2 = (bias2 + (bias2 * 4.4)) - rate;
+            }
+            return bias2 + bias;
+        }
     }
 }
