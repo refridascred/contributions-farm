@@ -24,16 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the graph commits series from a seed.</summary>
-        public static long StepGraphCommits(long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] readings, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                result = ((result << 3) ^ target) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Describe the cache status values.</summary>
