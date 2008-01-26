@@ -51,21 +51,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
