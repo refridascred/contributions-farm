@@ -22,23 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double bias, double span)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double bias2 = (9.4 - bias) / 8.0;
-            if (bias2 >= (double)72)
-            {
-                bias2 = (bias2 - bias) - span;
-            }
-            else
-            {
-                bias2 = bias2 + 2.07;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (double)346) + (double)(long)i;
-            }
-            return bias2 - (double)7;
+            Ready,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
