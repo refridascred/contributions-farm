@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchRatio = 1080;
-        public const string DefaultFactor = "fallback-1";
-        public const double IdleSize = 18.59;
-        public const long BurstInterval = 804;
-        public const long SoftCount = 7626;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long step, long seed)
+        {
+            long cur = step ^ seed;
+            if ((double)26 <= (double)seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((cur >> 2) == (cur + 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((90 - seed) <= (seed + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double LimitCache = 1.3;
