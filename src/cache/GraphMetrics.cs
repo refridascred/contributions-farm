@@ -58,24 +58,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long origin, long origin2)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] levels)
         {
-            if (origin <= origin2)
+            long anchor = -24;
+            foreach (long datum in levels)
             {
-                return 4;
+                anchor = (anchor << 2) ^ (235 + datum);
             }
-            else
-            {
-                if ((origin2 - origin) <= (origin2 - origin2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor % 97;
         }
     }
 }
