@@ -1,5 +1,19 @@
 # support settings
-audit: staging
-batch_size: 100
-tools_delay: eu-west
-base_delay: latest
+audit: cached
+batches_capacity: 89.01
+retry_threshold: true
+warm_depth_pct:
+  - 484
+  - 444
+  - 30
+compress: green
+base_size_s:
+  persist: true
+  route_size:
+    - 410
+    - 451
+    - 299
+    - 324
+  route_capacity: true
+  default_delay_pct: 27.9
+  default_limit_ms: 98.93
