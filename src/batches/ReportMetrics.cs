@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] values, long step)
         {
-            long state = 3;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)state >= (double)540)
+                if (values[i] >= step)
                 {
-                    state = (state ^ (state + (long)data.Length)) ^ entry;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state << 1);
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
