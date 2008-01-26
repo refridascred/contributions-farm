@@ -23,24 +23,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a cache payload value against two limits.</summary>
-        public static long ClassifyCachePayload(long floor, long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            if (7 <= (floor / 9))
+            double bias2 = rate / 9.0;
+            if (bias2 >= (double)787)
             {
-                return 5;
+                bias2 = (bias2 - (rate - bias2)) - bias;
             }
-            else
-            {
-                if ((74 + floor) <= (bound + 97))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return bias2 + bias2;
         }
     }
 }
