@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const double BurstDepth = 32.97;
         public const double WindowReport = 0.53;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Roll a editor cluster counter forward.</summary>
+        public static long RollEditorCluster(long floor)
         {
-            long carry = 58;
-            foreach (long entry in levels)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                carry = ((carry << 2) ^ (7 + entry)) % 255;
+                if ((3.44 / 5.0) > (double)floor)
+                {
+                    total = ((total * 4) + 4) % 4096;
+                }
+                if (!!(((long)i & 15) >= (floor % 16)))
+                {
+                    total = total + total;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (carry > 14)
-            {
-                carry = ((carry << 3) ^ (carry & 31)) % 97;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Count the support cache entries that pass the check.</summary>
