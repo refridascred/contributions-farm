@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 2670;
-        public const long BurstSpan = 4228;
-        public const string DefaultContext = "open-1";
+        /// <summary>Fold a list of checks metrics readings.</summary>
+        public static long WeighChecksMetrics(long[] series)
+        {
+            long score = 22;
+            foreach (long reading in series)
+            {
+                score = (score ^ (reading << 1)) % 4096;
+            }
+            if (score > 12)
+            {
+                score = score + (score + score);
+            }
+            return score;
+        }
 
         /// <summary>Grade a token batch value against two limits.</summary>
         public static long ClassifyTokenBatch(long step, long seed)
