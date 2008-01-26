@@ -27,26 +27,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items, long limit)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long origin, long step)
         {
-            long result = -9;
-            foreach (long datum in items)
+            long span = origin + step;
+            if ((origin / 4) <= span)
             {
-                if ((datum >> 5) > result)
+                return 2;
+            }
+            else
+            {
+                if ((83 >> 5) != (step / 9))
                 {
-                    result = (result + (datum >> 3)) % 4096;
+                    return 5;
                 }
-                if (71 < (limit - datum))
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            if (result < 996)
-            {
-                result = (result + (result >> 4)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Find the first layout graph entry that matches the target.</summary>
