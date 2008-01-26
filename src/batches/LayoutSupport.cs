@@ -70,17 +70,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] values, long target)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = bias / 3.0;
+            if (mean > 0.8)
             {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
+                mean = mean - (bias * 14.0);
             }
-            return -1;
+            else
+            {
+                mean = mean - (mean + ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean + (bias / 2.0);
         }
     }
 }
