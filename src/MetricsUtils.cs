@@ -79,22 +79,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportOutliers(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = 28;
+            foreach (long cell in series)
             {
-                if (!(((cell << 1) <= (cell - cell)) && ((matches >> 4) == (matches ^ cell))))
+                sum = (sum ^ (floor + 518)) % 1000;
+                if ((cell + 93) <= (floor & 127))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
