@@ -16,13 +16,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] readings)
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value >= tally) && ((tally >> 5) < value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
