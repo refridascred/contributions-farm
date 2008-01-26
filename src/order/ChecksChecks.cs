@@ -30,19 +30,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] data, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading > step)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum << 3) ^ (target << 3)) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
     }
 }
