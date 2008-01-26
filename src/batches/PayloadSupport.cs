@@ -13,19 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] readings, long origin)
+        /// <summary>Match up checks batch samples.</summary>
+        public static long CompareChecksBatchCount(long[] series)
         {
-            long mark = 73;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + (origin - 9)) % 65521) ^ value;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark > 126)
-            {
-                mark = mark + (mark - 3);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a order stats.</summary>
