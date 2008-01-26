@@ -41,11 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] series, long target)
         {
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((6.0 / 7.0) == (double)target)
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph level values.</summary>
