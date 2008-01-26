@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCount = 7420;
+        public const string MaxSize = "local-edge";
+        public const long MaxScore = 806;
+        public const long CacheLevel = 233;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long RankEditor(long origin, long bound)
