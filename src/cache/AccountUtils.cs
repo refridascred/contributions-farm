@@ -20,18 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] levels)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item >> 2) > seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Dropped,
+            Pending,
+            New,
+            Closed,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
