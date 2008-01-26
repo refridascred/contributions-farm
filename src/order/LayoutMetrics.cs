@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "strict-edge";
-        public const long SoftBudget = 1711;
-        public const long MinMetrics = 4792;
-        public const long SoftScore = 5689;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryScore = 750;
+        public const string BurstToken = "latest";
+        public const double BurstDepth = 63.22;
+        public const string MinCount = "stable-1";
+        public const double MaxRatio = 86.32;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamGaps(long[] values, long target)
