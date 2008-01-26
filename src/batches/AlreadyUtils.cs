@@ -45,19 +45,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = acc - ((long)i2 % 7);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
