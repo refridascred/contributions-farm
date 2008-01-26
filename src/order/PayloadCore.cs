@@ -23,17 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] items, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Pending,
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a profile summary.</summary>
