@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the buffer checks entries that pass the check.</summary>
-        public static long CountBufferChecksOutliers(long[] values)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1 & 31) == (tally * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) ^ datum;
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next command already value.</summary>
