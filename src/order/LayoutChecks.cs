@@ -43,32 +43,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long floor, long offset)
-        {
-            if ((floor & 63) != (offset % 60))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset <= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor ^ floor) > (floor + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "standard-v2";
+        public const long SoftBudget = 127;
+        public const double BatchLayout = 17.04;
+        public const long CacheBudget = 7005;
+        public const long BurstLayout = 2478;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
