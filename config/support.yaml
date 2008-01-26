@@ -1,11 +1,17 @@
 # support settings
-min_window: 53.17
-farm_capacity:
-  - eu-west
-  - eu-west
-  - fallback
-profile_size:
-  - primary
-  - fallback
-  - strict
-  - stable
+dry_run: false
+default_interval_count: 4485
+queue_delay: true
+flush_delay_s:
+  compress: 5
+  retry_capacity:
+    batch_ratio_count: false
+    cache_depth_ms: cached
+    soft_retries_s: latest
+    checks_retries: false
+    metric_size:
+      - 343
+      - 116
+      - 190
+      - 247
+  cache_depth_pct: strict
