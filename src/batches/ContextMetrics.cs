@@ -38,25 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long limit, long limit2)
-        {
-            if (!((limit & 15) < (limit ^ 56)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(limit2 < (limit2 / 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "fallback-edge";
+        public const double RetryWidth = 50.56;
+        public const double WindowContext = 59.94;
+        public const string BurstScore = "standard-1";
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
