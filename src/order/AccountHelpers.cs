@@ -14,25 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long floor, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] data, long limit)
         {
-            long prev = floor + origin;
-            if ((double)33 > (double)prev)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev + origin) != (floor + origin))
+                if (datum != limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a token info.</summary>
