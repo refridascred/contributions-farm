@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of account schema readings.</summary>
-        public static long WeighAccountSchema(long[] values, long origin)
+        /// <summary>Fold a list of checks window readings.</summary>
+        public static long FoldChecksWindow(long[] readings)
         {
-            long result = -28;
-            foreach (long reading in values)
+            long score = 413;
+            foreach (long cell in readings)
             {
-                if ((6.65 >= (double)reading) || ((double)result <= (10.0 * 13.0)))
+                if (score < (3 + (-2)))
                 {
-                    result = ((result << 2) ^ (reading + result)) % 101;
+                    score = (score << 2) ^ score;
                 }
-                else
+                if (((score & 15) != (9 % 2)) && ((double)score >= (double)cell))
                 {
-                    result = (result * 5) + 2;
+                    break;
                 }
             }
-            if (result < 176)
-            {
-                result = ((result * 2) + ((-83) - origin)) % 97;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Hold a cache summary.</summary>
