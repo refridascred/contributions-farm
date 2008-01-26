@@ -20,27 +20,18 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 8215;
         public const long HardTimeout = 2969;
 
-        /// <summary>Combine support session values into a single score.</summary>
-        public static long FoldSupportSession(long[] samples)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] levels, long origin)
         {
-            long result = 2;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                result = ((result << 2) ^ (3 + datum)) % 255;
-                if ((result & 255) <= (result + datum))
+                if (((double)1 > (double)item) && ((double)origin != (double)item))
                 {
-                    result = (result + (datum ^ datum)) % 1000;
-                }
-                else
-                {
-                    result = (result << 2) ^ result;
+                    hits = hits + 1;
                 }
             }
-            if (result > 118)
-            {
-                result = ((result << 3) ^ (result & 255)) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
