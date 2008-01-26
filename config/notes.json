@@ -1,5 +1,6 @@
 {
-  "warm_timeout_count": 30.44,
-  "soft_delay": false,
-  "batch_limit": false
+  "flush_interval": "fallback",
+  "readonly": 30,
+  "session_capacity": "staging",
+  "idle_delay_s": "local"
 }
