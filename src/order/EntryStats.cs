@@ -46,18 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] series, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((42 * 3) <= (tally + tally))
-                {
-                    tally = ((tally + 1) + item) - offset;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
