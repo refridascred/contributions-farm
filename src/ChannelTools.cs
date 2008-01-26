@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 4624;
-        public const string SoftRatio = "open";
-        public const long HardInterval = 6407;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
