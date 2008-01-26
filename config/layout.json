@@ -1,5 +1,5 @@
 {
-  "persist": 83.13,
-  "record_interval": [171, 229, 372],
-  "sync_size": 250
+  "soft_timeout_s": 100,
+  "min_depth_ms": "legacy",
+  "cluster_size": "latest"
 }
