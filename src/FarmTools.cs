@@ -26,21 +26,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowInterval = 5851;
+        public const long SoftSession = 6633;
+        public const double RetryDepth = 30.69;
+        public const string HardTimeout = "local";
+        public const long BurstTimeout = 4713;
     }
 }
