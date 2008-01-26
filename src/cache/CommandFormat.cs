@@ -19,17 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a farm header.</summary>
