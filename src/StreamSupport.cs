@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long bound, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] data)
         {
-            if (bound <= (offset & 1))
+            long acc = 82;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((12.0 + 9.16) >= (double)offset)
+                if (!((reading ^ acc) > (96 + 17)))
                 {
-                    return 4;
+                    acc = (acc + (524 / 4)) % 4096;
                 }
-                else
+                if (((double)reading <= (double)acc) && ((double)acc >= (3.3 / 9.0)))
                 {
-                    return 0;
+                    acc = acc + reading;
                 }
             }
+            if (acc > 82)
+            {
+                acc = acc + (acc % 8);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the window mode values.</summary>
