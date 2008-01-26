@@ -39,28 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Audit context metric readings against a rule.</summary>
+        public static long TallyContextMetricMatches(long[] readings, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((floor << 2) > mix)
+                if ((offset + entry) >= (73 + count))
                 {
-                    mix = (mix + (mix + (long)i)) % 97;
+                    count = count + 1;
                 }
-                else
-                {
-                    mix = (mix + (mix + mix)) % 255;
-                }
-                if ((mix + mix) != (mix >> 3))
-                {
-                    mix = ((mix * 5) + (floor / 4)) % 65521;
-                }
-                mix = ((mix * 3) + mix) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
     }
 }
