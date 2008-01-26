@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "alpha-v2";
-        public const long BurstFactor = 9343;
-        public const string LimitWidth = "alpha-edge";
-        public const long StepTimeout = 9222;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double floor)
+        {
+            double weight = (double)(73 >> 5);
+            return ((weight + (double)35) + bias) + floor;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BurstCache = 34.49;
