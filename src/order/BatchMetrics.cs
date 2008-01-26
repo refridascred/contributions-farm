@@ -35,15 +35,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit farm session readings against a rule.</summary>
-        public static long TallyFarmSessionHits(long[] samples)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] values)
         {
             long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value % 8) < (value << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
