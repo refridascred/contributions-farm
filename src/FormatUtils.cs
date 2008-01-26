@@ -59,10 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxLevel = 2549;
-        public const double BurstMetric = 71.33;
-        public const string WindowLevel = "fallback-v2";
-        public const double BatchMetric = 46.65;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 9471;
+        public const double BaseCounter = 31.45;
+        public const string LimitFactor = "latest-1";
+        public const string SoftLevel = "open-v2";
+        public const double SoftSpan = 36.01;
     }
 }
