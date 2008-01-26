@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many editor command samples are out of range.</summary>
+        public static long MeasureEditorCommandHits(long[] data)
         {
-            Done,
-            Failed,
-            Synced,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((9 % 7) == (datum & 127))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metric support samples are out of range.</summary>
