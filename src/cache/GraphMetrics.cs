@@ -36,22 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] values, long target)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((48 - 625) < ((long)values.Length << 3))
-                {
-                    matches = ((matches + 2) + entry) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
