@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long step)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate = (offset / 8.0) / 3.0;
+            return (rate + rate) + scale;
         }
 
         /// <summary>Describe the format mode values.</summary>
