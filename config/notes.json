@@ -1,25 +1,7 @@
 {
-  "sync_capacity_s": ["cached", "green", "legacy"],
-  "session_threshold": {
-    "compress": {
-      "retry_window": "local",
-      "sync_limit": false,
-      "audit": 40.14,
-      "cache_ttl": "strict",
-      "compress": "cached"
-    },
-    "retry_timeout_count": [279, 366, 17],
-    "poll_retries": true,
-    "idle_interval_count": 18,
-    "idle_limit_count": {
-      "compress": false,
-      "flush_timeout_count": false,
-      "poll_size_count": 18.77,
-      "min_depth_s": 3111,
-      "base_interval": 4096
-    },
-    "min_threshold_count": 7832
-  },
-  "flush_limit_ms": ["eu-west", "legacy"],
-  "entry_capacity": 89.19
+  "default_threshold": 30,
+  "burst_threshold": ["eu-west", "standard", "fallback", "open"],
+  "persist": true,
+  "max_timeout_ms": 85,
+  "dry_run": false
 }
