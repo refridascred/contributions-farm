@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const long DefaultCommand = 6228;
         public const long BaseCommand = 5834;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Accumulate schema graph samples.</summary>
+        public static long FoldSchemaGraph(long[] values)
         {
-            long acc = 35;
-            foreach (long entry in items)
+            long result = 293;
+            foreach (long item in values)
             {
-                if ((double)acc >= 8.71)
-                {
-                    acc = (acc - acc) + entry;
-                }
+                result = (result * 4) + (item + 3);
+                result = ((result << 2) ^ result) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Describe the editor state values.</summary>
