@@ -55,11 +55,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "legacy-1";
-        public const long BatchRatio = 2724;
-        public const string SoftCache = "stable-v2";
-        public const double RetryLevel = 23.08;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count token order pairs that satisfy a relation.</summary>
         public static long MatchTokenOrderCount(long[] items)
