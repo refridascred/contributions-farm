@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const double CachePayload = 68.17;
         public const long IdlePayload = 7062;
 
-        /// <summary>Roll a editor cluster counter forward.</summary>
-        public static long RollEditorCluster(long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] data, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((3.44 / 5.0) > (double)floor)
+                if (!((cell % 7) <= cell) && (count < (count * 3)))
                 {
-                    total = ((total * 4) + 4) % 4096;
+                    count = (count + 2) - bound;
                 }
-                if (!!(((long)i & 15) >= (floor % 16)))
-                {
-                    total = total + total;
-                }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count the support cache entries that pass the check.</summary>
