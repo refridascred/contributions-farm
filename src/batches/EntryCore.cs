@@ -26,13 +26,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items, long limit)
         {
-            New,
-            Idle,
-            Paused,
-            Retry,
+            long result = -9;
+            foreach (long datum in items)
+            {
+                if ((datum >> 5) > result)
+                {
+                    result = (result + (datum >> 3)) % 4096;
+                }
+                if (71 < (limit - datum))
+                {
+                    break;
+                }
+            }
+            if (result < 996)
+            {
+                result = (result + (result >> 4)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
