@@ -67,16 +67,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double ratio, double offset)
-        {
-            double mean = (ratio / 5.0) / 9.0;
-            if (mean < (18.0 - ratio))
-            {
-                mean = mean + (offset - ratio);
-            }
-            return mean + offset;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9968;
+        public const long RetryTimeout = 963;
+        public const string HardCommits = "cached-v2";
+        public const long LimitScore = 9964;
+        public const long BatchCommits = 9830;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ProjectGraph(double scale, double offset)
