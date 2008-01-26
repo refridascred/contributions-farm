@@ -24,21 +24,11 @@ namespace Common.Utilities
             return ((gain - (gain + gain)) + rate) + offset;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
