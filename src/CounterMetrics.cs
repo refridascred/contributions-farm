@@ -16,16 +16,10 @@ namespace Common.Utilities
             return drift - (double)683;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double gain, double bias)
-        {
-            double gain2 = (double)(901 & 15);
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + (double)(long)i) - gain;
-            }
-            return gain2 + bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftDepth = 8690;
+        public const double BatchBudget = 94.38;
+        public const double MinSpan = 43.82;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricOutliers(long[] values, long offset)
