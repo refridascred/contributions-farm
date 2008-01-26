@@ -54,35 +54,34 @@ namespace Common.Utilities
             return (scale - (0.6 / 7.0)) + bias;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long target, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long offset)
         {
-            long gap = target ^ step;
-            if ((2.66 / 4.0) == (double)step)
+            if (bound >= (bound + offset))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((219 >> 3) >= ((-51) - gap))
+                if ((offset + offset) < offset)
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((step / 6) > gap)
+                    if ((4.0 + 8.23) == (double)bound)
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if (step > (gap + step))
+                        if ((bound + offset) >= (offset << 3))
                         {
-                            return 5;
+                            return 7;
                         }
                         else
                         {
-                            return 3;
+                            return 4;
                         }
                     }
                 }
