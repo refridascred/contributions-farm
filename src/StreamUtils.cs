@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 5325;
-        public const long BatchScore = 7815;
-        public const long CacheSpan = 5457;
-        public const long WindowWidth = 9724;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] data, long step)
+        {
+            long sum = -37;
+            foreach (long value in data)
+            {
+                if ((sum + 29) < (step % 12))
+                {
+                    sum = (sum - (328 * 5)) ^ value;
+                }
+            }
+            if (sum > 2)
+            {
+                sum = (sum - (step ^ sum)) % 255;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
