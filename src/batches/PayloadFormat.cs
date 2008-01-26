@@ -25,24 +25,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long floor, long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] values, long step)
         {
-            if ((double)floor >= (double)limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit > (limit << 2))
+                if (values[i] < step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session summary.</summary>
