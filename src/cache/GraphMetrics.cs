@@ -54,16 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the counter channel series from a seed.</summary>
-        public static long DeriveCounterChannel(long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                score = score + (offset & 7);
-                score = ((score * 3) + (long)i) % 65521;
+                if ((4.8 >= (double)value) && (((count - 325) != (count ^ value)) && ((4.75 - 6.0) != (double)count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
