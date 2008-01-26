@@ -1,4 +1,10 @@
 # support settings
-poll_capacity_count: eu-west
-enabled: blue
-account_delay: staging
+soft_ratio: 73.32
+support_ttl: 21.43
+max_ttl_count:
+  sync_retries_ms: 39.87
+  cache_retries_pct: cached
+  enabled: false
+  readonly: 30
+  batch_depth_pct: 500
+soft_timeout: legacy
