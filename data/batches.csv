@@ -1,8 +1,8 @@
-id,score,rank,level
-1,64.48,597,60.7
-2,429,15.49,36.92
-3,372,26.8,777
-4,923,local,95.94
-5,22.66,324,cached
-6,394,18,59.27
-7,24.44,local,178
+id,region,score,label
+1,52.96,primary,eu-west
+2,local,991,open
+3,eu-west,green,30.52
+4,731,strict,27.62
+5,fallback,86.84,97
+6,742,234,469
+7,edge,22.02,420
