@@ -20,24 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] samples)
-        {
-            long carry = -463;
-            foreach (long entry in samples)
-            {
-                carry = (carry - 884) ^ entry;
-                if ((double)carry != (9.12 - 15.0))
-                {
-                    carry = carry ^ (carry % 7);
-                }
-            }
-            if (carry > 3)
-            {
-                carry = ((carry << 3) ^ 2) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseWidth = 5284;
+        public const double CacheSchema = 83.06;
+        public const string IdleSchema = "primary-edge";
 
         /// <summary>Accumulate format samples.</summary>
         public static long ScoreFormat(long[] items, long offset)
