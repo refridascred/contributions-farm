@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long limit)
         {
-            Paused,
-            Dropped,
-            Queued,
-            New,
-            Pending,
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (acc ^ ((long)i2 + acc)) % 255;
+                    acc = (acc * 4) + (limit >> 2);
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
