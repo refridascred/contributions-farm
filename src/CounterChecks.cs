@@ -25,22 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((390 + 56) >= mix)
-                {
-                    mix = (mix - (mix % 2)) % 65521;
-                    continue;
-                }
-                mix = (mix << 3) ^ (target + target);
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultRatio = 7341;
+        public const long BatchBudget = 8213;
+        public const double WindowStats = 43.49;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
