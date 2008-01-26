@@ -1,13 +1,12 @@
 {
-  "idle_window": 11.65,
-  "account_capacity": {
-    "default_window": "legacy",
-    "persist": [227, 74],
-    "max_threshold": 6087,
-    "cache_window_ms": 13,
-    "audit": "open",
-    "poll_delay": 100
+  "default_delay_ms": 1024,
+  "burst_timeout_pct": "blue",
+  "burst_ttl": "standard",
+  "batch_limit": 1024,
+  "default_window_pct": {
+    "default_capacity": 31,
+    "support_size": "strict",
+    "farm_limit": 7628
   },
-  "idle_depth": false,
-  "warm_delay_s": 58.65
+  "enabled": 100
 }
