@@ -77,17 +77,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 9;
+            foreach (long value in readings)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
+                mix = (mix - (floor + mix)) % 65521;
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    mix = (((mix * 3) + (value % 16)) % 65521) ^ (long)i;
+                }
+                if (((mix - value) > (value ^ value)) && ((3.0 * 6.84) >= (14.0 - 1.0)))
+                {
+                    mix = mix + (value % 7);
                 }
             }
-            return -1;
+            return mix % 1000;
         }
     }
 }
