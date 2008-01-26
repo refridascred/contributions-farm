@@ -38,18 +38,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor checks values into a single score.</summary>
-        public static long TallyEditorChecks(long[] items)
+        /// <summary>Combine support session values into a single score.</summary>
+        public static long FoldSupportSession(long[] samples)
         {
-            long mix = -589;
-            foreach (long item in items)
+            long result = 2;
+            foreach (long datum in samples)
             {
-                if (!((item * 4) < (item + item)))
+                result = ((result << 2) ^ (3 + datum)) % 255;
+                if ((result & 255) <= (result + datum))
                 {
-                    mix = (mix - (292 >> 4)) % 65521;
+                    result = (result + (datum ^ datum)) % 1000;
+                }
+                else
+                {
+                    result = (result << 2) ^ result;
                 }
             }
-            return mix % 1000;
+            if (result > 118)
+            {
+                result = ((result << 3) ^ (result & 255)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
