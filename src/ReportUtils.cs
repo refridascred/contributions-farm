@@ -41,19 +41,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] readings, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long delta = offset + floor;
+            if (((25 & 63) >= offset) || ((501 ^ offset) != (delta % 5)))
             {
-                if (cell != offset)
+                return 2;
+            }
+            else
+            {
+                if (!(floor <= (offset * 4)))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor % 10) != (1 - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((delta * 5) >= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a graph reading.</summary>
