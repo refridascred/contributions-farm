@@ -15,14 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Queued,
-            Idle,
-            New,
-            Draft,
-            Stale,
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
