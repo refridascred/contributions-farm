@@ -1,7 +1,7 @@
 {
-  "min_retries": "strict",
-  "base_delay_ms": false,
-  "schema_depth": 1053,
-  "cache_timeout": "green",
-  "hard_ttl": 86
+  "strict": 60,
+  "cache_window_ms": "local",
+  "cache_timeout_ms": ["cached", "stable", "open"],
+  "min_window": 500,
+  "base_delay_s": 52.04
 }
