@@ -40,19 +40,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= 1)
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleFactor = 4826;
+        public const double RetryLayout = 75.28;
+        public const long IdleLayout = 9124;
+        public const long HardLayout = 3074;
+        public const long MaxSize = 6347;
 
         /// <summary>Fold a list of account session readings.</summary>
         public static long CombineAccountSession(long[] items)
