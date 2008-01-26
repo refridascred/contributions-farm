@@ -1,8 +1,7 @@
-id,region
-1,135
-2,181
-3,53.65
-4,50
-5,672
-6,528
-7,30.38
+id,weight,active,owner,score
+1,47.85,fallback,87.96,primary
+2,16,primary,eu-west,blue
+3,92.91,453,blue,39.52
+4,fallback,76,legacy,latest
+5,7,324,734,667
+6,321,348,38.25,205
