@@ -33,17 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long limit)
+        /// <summary>Classify a session order pair into a bucket.</summary>
+        public static long BucketSessionOrder(long limit, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = limit - bound;
+            if ((limit ^ bound) <= (delta & 127))
             {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)limit >= (0.1 + 8.47))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (bound >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (5.32 <= (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the support stream entries that pass the check.</summary>
