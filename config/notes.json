@@ -1,5 +1,8 @@
 {
-  "route_limit": 3906,
-  "schema_timeout": "strict",
-  "soft_interval_count": "fallback"
+  "compress": 6.56,
+  "verbose": 2450,
+  "route_delay": 30,
+  "min_limit_ms": false,
+  "min_delay_pct": 68.38,
+  "warm_retries_ms": 9930
 }
