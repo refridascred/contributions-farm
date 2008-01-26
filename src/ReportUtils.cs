@@ -47,32 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long origin, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] readings, long offset)
         {
-            long prev = origin + limit;
-            if (!((prev >> 3) >= (prev >> 5)))
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit != (double)5)
+                if (cell != offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + origin) > (limit >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Digest a series of record entries.</summary>
