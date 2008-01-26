@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Synced,
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define command limits and defaults.</summary>
