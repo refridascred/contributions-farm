@@ -31,12 +31,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long anchor = 6;
+            foreach (long item in data)
+            {
+                if ((item + anchor) >= (anchor << 1))
+                {
+                    anchor = anchor - anchor;
+                    anchor = ((anchor * 5) + (item >> 4)) % 65521;
+                }
+                if ((54 + 3) >= ((long)data.Length ^ 233))
+                {
+                    anchor = anchor - (893 + 0);
+                }
+                if ((466 & 3) != (item % 24))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a session header.</summary>
