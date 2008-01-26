@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double BurstDepth = 32.97;
         public const double WindowReport = 0.53;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 1309;
-        public const long MaxWidth = 292;
-        public const long HardSize = 3564;
-        public const long BaseStats = 1876;
-        public const long LimitScore = 9820;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchCache = 97.62;
+        public const long MinSpan = 7821;
+        public const double MinBudget = 51.77;
+        public const long WindowCache = 8478;
+        public const string RetryCache = "staging-v2";
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long MeasureGithubfarmOutliers(long[] samples, long bound)
