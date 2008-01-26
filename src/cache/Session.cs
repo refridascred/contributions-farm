@@ -49,31 +49,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long origin, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] series)
         {
-            if ((origin - floor) == (origin ^ floor))
+            long acc = 995;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + (-7)) > (floor >> 2))
+                long seen = datum / 5;
+                for (int i = 0; i < 12; i++)
                 {
-                    return 3;
+                    acc = ((acc ^ (datum + seen)) % 4096) ^ (long)i;
                 }
-                else
+                if (((datum + acc) <= datum) && ((datum << 1) <= datum))
                 {
-                    if ((double)84 <= (5.47 - 0.36))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = (acc * 5) + (datum - datum);
                 }
             }
+            if (acc < 3)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
     }
 }
