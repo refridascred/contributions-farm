@@ -68,22 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of entry commits readings.</summary>
-        public static long OverlapEntryCommitsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleFactor = 59.53;
+        public const long BaseCommits = 6133;
+        public const double SoftCommits = 86.05;
+        public const long DefaultCommits = 894;
+        public const long CacheScore = 1789;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
