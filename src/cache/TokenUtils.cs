@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long origin)
         {
-            Failed,
-            Pending,
-            Idle,
-            Locked,
+            long cur = seed + origin;
+            if (!((origin + seed) < seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((168 ^ origin) >= cur))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((cur <= (cur - cur)) && ((17.0 * 17.0) > (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a payload filter sample.</summary>
