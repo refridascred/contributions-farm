@@ -43,12 +43,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Compare every pair of queue graph readings.</summary>
+        public static long OverlapQueueGraphCount(long[] series)
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a editor batches reading by value.</summary>
