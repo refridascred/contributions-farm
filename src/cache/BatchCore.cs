@@ -52,15 +52,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long sum = 71;
-            foreach (long item in values)
-            {
-                sum = sum ^ (item & 255);
-            }
-            return sum;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
