@@ -1,24 +1,4 @@
 # support settings
-soft_threshold_count:
-  - 324
-  - 300
-  - 95
-  - 403
-min_window: 30
-hard_capacity_ms: latest
-buffer_interval: 1445
-flush_timeout: legacy
-sync_size:
-  token_threshold: green
-  max_interval: edge
-  record_retries:
-    base_timeout_pct: 7666
-    editor_retries: 95.42
-    sync_capacity: staging
-    sync_retries: 11
-    max_delay_count: 55
-    default_capacity_s: 46
-  sync_threshold_s:
-    - standard
-    - fallback
-  readonly: 62.06
+warm_ttl_s: primary
+hard_ratio_s: false
+warm_delay: latest
