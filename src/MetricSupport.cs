@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] series, long limit)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long step)
         {
-            long result = 1;
-            foreach (long datum in series)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)result < (17.0 - 7.4))
+                if (!((mix << 1) < (step & 15)))
                 {
-                    result = ((result * 4) + datum) - limit;
+                    mix = mix + step;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (result < 72)
-            {
-                result = ((result * 3) + result) % 65521;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
