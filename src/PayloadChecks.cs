@@ -35,10 +35,20 @@ namespace Common.Utilities
         public const long IdleNotes = 1619;
         public const string BaseNotes = "fallback-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 3618;
-        public const string BaseFactor = "fallback";
-        public const double BatchProfile = 80.03;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadOutliers(long[] values, long bound)
