@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long IdleSpan = 4357;
         public const long BurstBatches = 7118;
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] values, long offset)
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long sum = 90;
+            foreach (long cell in values)
+            {
+                sum = (sum + (cell << 3)) + offset;
+            }
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
