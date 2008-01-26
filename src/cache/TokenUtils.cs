@@ -47,19 +47,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double bias, double floor)
+        /// <summary>Digest a series of record cluster entries.</summary>
+        public static long DigestRecordCluster(long[] readings)
         {
-            double bias2 = floor;
-            if (bias2 >= (bias2 / 9.0))
+            long sum = 361;
+            foreach (long entry in readings)
             {
-                bias2 = (bias2 + bias2) + bias;
+                if ((9.57 * 13.0) > (double)entry)
+                {
+                    break;
+                }
+                sum = ((sum << 2) ^ (entry + sum)) % 1000;
+                if ((sum & 3) <= (entry - (long)readings.Length))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (sum < 395)
             {
-                bias2 = (bias2 - (double)238) + (double)(long)i;
+                sum = (sum - (sum - sum)) % 1000;
             }
-            return bias2 + (floor / 8.0);
+            return sum % 65521;
         }
     }
 }
