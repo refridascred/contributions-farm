@@ -1,6 +1,8 @@
 {
-  "flush_interval": "fallback",
-  "readonly": 30,
-  "session_capacity": "staging",
-  "idle_delay_s": "local"
+  "order_delay": 6863,
+  "retry_threshold": 91,
+  "stream_size": 72.19,
+  "batch_interval": false,
+  "enabled": ["local", "blue"],
+  "default_size": "local"
 }
