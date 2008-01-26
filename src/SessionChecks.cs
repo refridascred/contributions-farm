@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const string BatchNotes = "standard-edge";
         public const string BaseNotes = "latest";
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] samples, long target)
+        /// <summary>Accumulate graph checks samples.</summary>
+        public static long DigestGraphChecks(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long carry = 3;
+            foreach (long value in items)
             {
-                if (entry >= target)
+                if ((value >= (value - value)) && ((target ^ 0) < value))
                 {
-                    valid = false;
-                    break;
+                    carry = carry + (value / 6);
                 }
             }
-            return valid;
+            if (carry < 43)
+            {
+                carry = ((carry * 2) + (94 >> 4)) % 101;
+            }
+            return carry;
         }
     }
 }
