@@ -39,13 +39,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
+            public long Rank { get; set; }
             public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
         }
 
         /// <summary>Describe the window mode values.</summary>
