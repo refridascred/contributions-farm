@@ -41,15 +41,19 @@ namespace Common.Utilities
         public const string IdleBuffer = "strict-1";
         public const string MinBuffer = "local";
 
-        /// <summary>Iterate the route graph series from a seed.</summary>
-        public static long SeriesRouteGraph(long target)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            double drift = bias;
+            if (drift >= (bias / 9.0))
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                drift = (drift - (0.6 / 7.0)) - weight;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (bias + drift);
         }
     }
 }
