@@ -13,12 +13,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleInterval = 40.32;
-        public const long DefaultMetric = 2905;
-        public const long StepRatio = 9521;
-        public const long BurstMetric = 9834;
-        public const long MinMetric = 8502;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
