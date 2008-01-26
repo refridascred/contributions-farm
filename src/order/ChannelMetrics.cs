@@ -35,15 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a notes already reading.</summary>
-        public static double BlendNotesAlready(double scale, double bias)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] readings, long seed)
         {
-            double weight = (double)(958 ^ 47);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                weight = (weight + bias) - (double)(long)i;
+                if ((((53 - seed) < ((-953) + seen)) && ((seed / 9) == (seed & 63))) || (37 <= seen))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
             }
-            return weight + (scale / 9.0);
+            return seen;
         }
     }
 }
