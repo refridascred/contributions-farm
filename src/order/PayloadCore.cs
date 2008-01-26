@@ -33,18 +33,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] levels)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)seen == (16.0 * 10.0))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                score = score - 2;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
