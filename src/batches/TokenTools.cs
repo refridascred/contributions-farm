@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const double HardReport = 77.01;
         public const string BaseReport = "primary-edge";
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] levels, long step)
         {
-            Stale,
-            Paused,
-            Active,
-            Retry,
-            Dropped,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
