@@ -25,10 +25,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultTimeout = 9073;
-        public const long WindowEntry = 4088;
-        public const string MaxEntry = "local-v2";
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Synced,
+            Done,
+            Queued,
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordMatches(long[] items, long bound)
