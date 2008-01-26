@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits + hits) > 678)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
