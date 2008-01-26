@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of checks window readings.</summary>
-        public static long FoldChecksWindow(long[] readings)
-        {
-            long score = 413;
-            foreach (long cell in readings)
-            {
-                if (score < (3 + (-2)))
-                {
-                    score = (score << 2) ^ score;
-                }
-                if (((score & 15) != (9 % 2)) && ((double)score >= (double)cell))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultDepth = 7894;
+        public const string MinWindow = "standard-1";
+        public const string StepCount = "fallback-edge";
+        public const long HardDepth = 5553;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
