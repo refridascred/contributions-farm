@@ -35,14 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Paused,
-            Ready,
-            Stale,
-            Done,
-            Idle,
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
