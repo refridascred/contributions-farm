@@ -26,18 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch command values into a single score.</summary>
-        public static long ScoreBatchCommand(long[] series, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long result = -207;
-            foreach (long value in series)
-            {
-                if ((22 >> 1) >= result)
-                {
-                    result = (result + value) - seed;
-                }
-            }
-            return result % 1000;
+            Done,
+            Synced,
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
