@@ -38,19 +38,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double gain, double bias)
-        {
-            double load = gain + bias;
-            if (load > (double)693)
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)7) - (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 3690;
+        public const string DefaultSize = "staging-edge";
+        public const double CacheRatio = 26.18;
     }
 }
