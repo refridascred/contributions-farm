@@ -36,13 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            long total = 37;
-            foreach (long item in items)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                total = (total ^ item) % 4096;
+                if (((floor * 3) < total) || (total <= (0 - (long)i)))
+                {
+                    total = (total ^ ((long)i & 63)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
             return total;
         }
