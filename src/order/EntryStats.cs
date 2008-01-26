@@ -25,12 +25,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Rank order stream input into a small class.</summary>
+        public static long ClassifyOrderStream(long origin, long offset)
         {
-            Dropped,
-            Draft,
-            Closed,
+            if ((offset >> 4) < offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin <= (origin & 63))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((53 - 778) >= offset) && ((offset >> 1) < (offset << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin > (origin / 5)) || ((origin ^ 238) >= (origin & 15)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of report entries.</summary>
