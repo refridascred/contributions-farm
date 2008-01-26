@@ -63,24 +63,19 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Grade a schema window value against two limits.</summary>
-        public static long RankSchemaWindow(long limit, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] samples, long bound)
         {
-            if (!((limit - floor) <= (floor >> 2)))
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((895 + (-556)) <= (limit - floor))
+                if (sample > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
