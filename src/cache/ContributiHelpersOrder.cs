@@ -12,13 +12,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long offset, long offset2)
         {
-            Queued,
-            Dropped,
-            Pending,
-            Paused,
+            if ((offset >> 5) != (offset + offset2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1 << 1) < (offset2 << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
