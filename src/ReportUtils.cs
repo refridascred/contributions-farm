@@ -39,23 +39,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double bias, double bias2)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double weight = (9.25 - 10.0) * 9.1;
-            if (weight >= 2.93)
-            {
-                weight = (weight - 9.17) + bias;
-            }
-            else
-            {
-                weight = weight - 4.7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - bias2) - (double)(long)i;
-            }
-            return weight - weight;
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Accumulate checks samples.</summary>
