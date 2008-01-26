@@ -31,10 +31,12 @@ namespace Common.Utilities
             return scale + 1.65;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultRatio = 7341;
-        public const long BatchBudget = 8213;
-        public const double WindowStats = 43.49;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
