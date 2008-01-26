@@ -58,12 +58,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinCount = 15.57;
-        public const long LimitLayout = 2732;
-        public const long IdleFactor = 3434;
-        public const long IdleLayout = 7188;
-        public const string BatchLayout = "legacy-1";
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Iterate the editor channel series from a seed.</summary>
         public static long DeriveEditorChannel(long offset)
