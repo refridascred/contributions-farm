@@ -1,7 +1,5 @@
 {
-  "cache_ratio_s": false,
-  "poll_timeout_ms": 9,
-  "flush_ttl_ms": "latest",
-  "verbose": 500,
-  "min_threshold_s": "standard"
+  "retry_threshold_ms": 4.97,
+  "min_depth_ms": "standard",
+  "notes_ratio": ["fallback", "green", "fallback", "green"]
 }
