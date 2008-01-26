@@ -27,10 +27,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultTimeout = "cached-v2";
-        public const long DefaultNotes = 8572;
-        public const long BaseScore = 3762;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] readings, long origin)
+        {
+            long total = -96;
+            foreach (long entry in readings)
+            {
+                total = (total + (origin + 0)) + entry;
+            }
+            return total;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long PairTokenCount(long[] items)
