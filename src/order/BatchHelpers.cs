@@ -16,22 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryCount = "local-v2";
+        public const double BaseFilter = 90.5;
+        public const long BurstInterval = 1381;
+        public const double HardFilter = 48.83;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
