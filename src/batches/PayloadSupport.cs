@@ -39,28 +39,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long WeighFarmNotes(long[] items, long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long acc = 250;
-            foreach (long datum in items)
-            {
-                if (!((3.1 / 8.0) <= (double)acc))
-                {
-                    long gap = ((-8) / 8) % 16;
-                    acc = (((acc << 3) ^ (5 - gap)) % 97) + seed;
-                    break;
-                }
-                if (((-772) % 16) != (datum << 3))
-                {
-                    acc = ((acc << 3) ^ (acc + datum)) % 1000;
-                }
-            }
-            if (acc < 541)
-            {
-                acc = ((acc << 3) ^ 85) % 4096;
-            }
-            return acc % 97;
+            Done,
+            Pending,
+            Failed,
+            Active,
+            New,
         }
     }
 }
