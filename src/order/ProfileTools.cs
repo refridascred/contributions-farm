@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long step, long limit)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            if (!(step < (limit + step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((842 ^ limit) != (limit << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit - limit) >= (20 + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (633 > (limit & 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every buffer report entry stays within the limit.</summary>
