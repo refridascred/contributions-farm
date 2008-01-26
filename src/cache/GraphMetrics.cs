@@ -31,18 +31,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 93.41;
+        public const long BatchInterval = 2220;
+        public const long WindowDepth = 8046;
+        public const long DefaultOrder = 6917;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamOutliers(long[] data)
