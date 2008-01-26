@@ -70,31 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long floor, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] items, long seed)
         {
-            if ((double)offset <= (3.39 - 9.5))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-846) >> 3) > (floor % 16))
+                if ((double)seed > (4.0 * 7.35))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor % 5) < (floor & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = (seen + 3) - entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many filter profile samples are out of range.</summary>
