@@ -14,11 +14,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 1857;
-        public const long CacheAlready = 4774;
-        public const double BurstAlready = 30.24;
-        public const long BatchAlready = 2210;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data, long offset)
+        {
+            long anchor = 9;
+            foreach (long entry in data)
+            {
+                if (!(entry < 47))
+                {
+                    anchor = ((anchor << 3) ^ (anchor << 2)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor ^ (62 - offset);
+                }
+                if ((entry - offset) >= (anchor << 3))
+                {
+                    break;
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = (anchor - offset) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TotalFilter(long[] levels)
