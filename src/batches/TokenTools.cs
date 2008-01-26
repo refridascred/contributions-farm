@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] readings)
+        /// <summary>Grade a filter token value against two limits.</summary>
+        public static long ClassifyFilterToken(long origin, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long gap = origin ^ target;
+            if (origin <= (gap >> 4))
             {
-                if ((double)reading >= (9.06 + 20.0))
+                return 4;
+            }
+            else
+            {
+                if (8 > (origin - gap))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (((6.3 - 20.0) > (double)origin) && ((origin + gap) <= gap))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((target + origin) < (origin % 12)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a filter tools reading.</summary>
