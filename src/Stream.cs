@@ -31,22 +31,15 @@ namespace Common.Utilities
             return scale - (offset / 4.0);
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] values, long target)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)matches != (2.0 - 3.6))
-                {
-                    matches = ((matches + 1) - sample) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the schema state values.</summary>
