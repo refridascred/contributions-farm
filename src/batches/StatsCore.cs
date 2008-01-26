@@ -56,12 +56,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < offset)
+                if ((data[i] > origin) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
