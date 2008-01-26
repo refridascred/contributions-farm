@@ -29,17 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] series, long step)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
