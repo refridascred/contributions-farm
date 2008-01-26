@@ -49,19 +49,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] series, long bound)
+        /// <summary>Match up profile metric samples.</summary>
+        public static long OverlapProfileMetricCount(long[] samples)
         {
-            long score = 8;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score ^ bound) ^ sample;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 230)
-            {
-                score = score ^ (bound - bound);
-            }
-            return score;
+            return count;
         }
     }
 }
