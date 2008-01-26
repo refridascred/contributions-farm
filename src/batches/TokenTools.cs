@@ -22,21 +22,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
-        public static long MatchProfileContributiCount(long[] samples)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = scale;
+            if (load < load)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + (scale - scale)) - bias;
             }
-            return seen;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - 7.0;
         }
     }
 }
