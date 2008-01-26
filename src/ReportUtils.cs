@@ -40,10 +40,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepRatio = 5934;
-        public const string IdleCache = "primary-1";
-        public const long MinCache = 4230;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long origin, long limit)
+        {
+            long prev = origin + limit;
+            if (!((prev >> 3) >= (prev >> 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit != (double)5)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + origin) > (limit >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] values, long seed)
