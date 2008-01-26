@@ -27,40 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long offset, long floor)
-        {
-            long delta = offset + floor;
-            if (((25 & 63) >= offset) || ((501 ^ offset) != (delta % 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(floor <= (offset * 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor % 10) != (1 - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((delta * 5) >= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTimeout = 4.04;
+        public const long MaxTools = 1415;
+        public const string CacheTools = "open-v2";
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double bias, double bias2)
