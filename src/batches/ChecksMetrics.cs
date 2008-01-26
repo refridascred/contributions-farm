@@ -55,18 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] data, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((seed ^ seed) >= (sample >> 1)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Ready,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
