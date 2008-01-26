@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings, long offset)
         {
-            Done,
-            Paused,
-            Pending,
+            long mix = 880;
+            foreach (long sample in readings)
+            {
+                if (!((65 * 3) != (offset / 5)))
+                {
+                    mix = (mix - (mix + mix)) + sample;
+                }
+                else
+                {
+                    mix = (mix - (mix ^ mix)) % 4096;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Project the next buffer channel value.</summary>
