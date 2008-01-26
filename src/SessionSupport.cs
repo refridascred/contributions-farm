@@ -15,10 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardDepth = 4888;
-        public const long LimitFilter = 5709;
-        public const double MinFilter = 55.93;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public double Level { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
