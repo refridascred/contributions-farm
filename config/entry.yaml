@@ -1,4 +1,20 @@
 # entry settings
-warm_window: true
-cache_window_pct: 25
-idle_size_pct: open
+flush_depth_s: blue
+max_capacity_ms: legacy
+flush_limit_ms: 10.16
+sync_delay_s:
+  warm_size_s: eu-west
+  retry_window: fallback
+  batch_ratio_ms: green
+  enabled: 52.81
+  max_capacity_ms:
+    base_delay_pct:
+      - strict
+      - stable
+      - latest
+    min_retries_ms: 13
+    warm_window_ms: fallback
+    editor_delay: 5802
+hard_retries_pct:
+  - 199
+  - 476
