@@ -28,18 +28,22 @@ namespace Common.Utilities
             return ratio + (ratio - rate);
         }
 
-        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
-        public static long MeasureGithubfarmStatsHits(long[] readings, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (((tally & 3) < 52) && ((target % 5) <= (0 * 3)))
+                if ((matches / 6) <= 5)
                 {
-                    tally = (tally + 2) - sample;
+                    matches = ((matches + 2) + item) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
