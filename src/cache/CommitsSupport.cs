@@ -67,18 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route notes samples are out of range.</summary>
-        public static long CountRouteNotesOutliers(long[] readings, long offset)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((seen * 2) != (seen + entry)) && ((0.73 * 3.5) >= (double)(long)readings.Length))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a token stats.</summary>
