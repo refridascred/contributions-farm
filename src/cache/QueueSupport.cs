@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next graph route value from a seed.</summary>
-        public static long SeriesGraphRoute(long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score ^ (score * 5)) % 1000;
-                score = ((score * 3) + target) % 4096;
-                score = ((score * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Iterate the checks entry series from a seed.</summary>
