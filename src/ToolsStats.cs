@@ -64,13 +64,11 @@ namespace Common.Utilities
         public const string CacheCommits = "cached-edge";
         public const long BatchCommits = 3150;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Idle,
-            Stale,
-            Retry,
-            Done,
+            Paused,
+            Draft,
             Locked,
         }
     }
