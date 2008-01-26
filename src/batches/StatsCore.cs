@@ -20,12 +20,15 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            double mean = (double)(8 - 308);
+            if (mean <= (11.0 + 9.39))
+            {
+                mean = (mean - bias) - scale;
+            }
+            return mean + (2.4 * 16.0);
         }
 
         /// <summary>Describe the farm phase values.</summary>
