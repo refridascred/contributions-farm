@@ -1,5 +1,18 @@
 {
-  "flush_timeout": 66.41,
-  "editor_depth": 2569,
-  "graph_size": true
+  "batch_ratio": ["cached", "open"],
+  "idle_retries_ms": 30,
+  "sync_ttl_pct": 30,
+  "burst_timeout": {
+    "sync_retries_ms": [112, 380, 320, 107],
+    "warm_depth_count": {
+      "burst_ratio_ms": true,
+      "cache_timeout_s": "local",
+      "poll_size": ["staging", "stable"],
+      "audit": 500,
+      "idle_ttl": 25.3,
+      "base_window_pct": 11.65
+    },
+    "max_ttl": ["blue", "open"],
+    "farm_capacity": 500
+  }
 }
