@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] data, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading ^ reading) < matches)
+                result = (result + result) % 65521;
+                if ((target < ((long)i / 4)) || ((result >> 3) == (3 - target)))
                 {
-                    matches = (matches + 2) - offset;
+                    result = (result ^ (target + (long)i)) % 1000;
                 }
-                else
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    matches = matches - 1;
+                    result = (result ^ (result - target)) - (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a format entry.</summary>
