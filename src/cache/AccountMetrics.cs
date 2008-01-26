@@ -43,12 +43,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 5118;
-        public const long DefaultRecord = 7065;
-        public const string IdleRecord = "alpha";
-        public const string HardRecord = "strict";
-        public const long MaxSpan = 9647;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((3.0 / 4.0) == (double)count)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
