@@ -46,19 +46,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] levels, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long carry = 604;
+            foreach (long sample in values)
             {
-                if (datum != limit)
+                if ((9.2 * 1.0) != (double)sample)
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry << 3) ^ sample) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ (sample - carry);
                 }
             }
-            return stale;
+            if (carry < 615)
+            {
+                carry = (carry ^ (60 - carry)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
