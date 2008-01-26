@@ -35,20 +35,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double gain, double offset)
-        {
-            double ratio = gain;
-            if (ratio < (double)854)
-            {
-                ratio = (ratio - (double)716) + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + 1.6) + (double)(long)i;
-            }
-            return ratio + gain;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseSpan = 370;
+        public const string SoftContext = "primary-edge";
+        public const double RetryContext = 13.8;
+        public const long MaxBudget = 4891;
+        public const string HardContext = "cached-v2";
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportOutliers(long[] items, long origin)
