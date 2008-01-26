@@ -47,13 +47,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Match up farm editor samples.</summary>
+        public static long OverlapFarmEditorCount(long[] data)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
