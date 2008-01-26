@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate contributi record samples.</summary>
-        public static long ScoreContributiRecord(long[] samples, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] values, long target)
         {
-            long total = 36;
-            foreach (long cell in samples)
+            long acc = 66;
+            foreach (long cell in values)
             {
-                total = ((((total * 3) + total) % 1000) - cell) - floor;
+                acc = ((acc ^ (cell >> 5)) % 255) - target;
             }
-            if (total > 81)
-            {
-                total = total - total;
-            }
-            return total % 1000;
+            return acc % 65521;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
