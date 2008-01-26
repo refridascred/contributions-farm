@@ -33,17 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm buffer reading by value.</summary>
-        public static long SeekFarmBufferIndex(long[] samples, long limit)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Roll a support counter forward.</summary>
