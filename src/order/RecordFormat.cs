@@ -42,17 +42,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = offset + step;
+            if ((step <= (11 + offset)) && ((step - edge) >= (offset - edge)))
             {
-                if (data[i] <= floor)
+                return 3;
+            }
+            else
+            {
+                if (((offset / 6) >= (offset << 3)) && ((step % 24) > (offset << 2)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((edge >= (offset << 2)) || ((step + edge) > (offset + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step + 782) >= offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
