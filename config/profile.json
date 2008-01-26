@@ -1,5 +1,5 @@
 {
-  "readonly": true,
-  "burst_ratio": true,
-  "burst_depth_count": ["open", "primary", "cached"]
+  "retry_limit": false,
+  "soft_depth": 250,
+  "sync_size": ["blue", "standard", "cached", "local"]
 }
