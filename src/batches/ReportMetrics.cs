@@ -20,12 +20,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxRatio = 3087;
-        public const string CacheBudget = "cached-1";
-        public const string MaxEntry = "latest-edge";
-        public const long CacheEntry = 84;
-        public const long LimitEntry = 3746;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double weight, double bias)
+        {
+            double rate = weight;
+            if (rate <= 0.98)
+            {
+                rate = (rate - weight) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate - (weight * 4.6);
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] samples, long target)
