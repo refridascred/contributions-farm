@@ -31,13 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long target)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((390 + 56) >= mix)
+                {
+                    mix = (mix - (mix % 2)) % 65521;
+                    continue;
+                }
+                mix = (mix << 3) ^ (target + target);
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
