@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Active,
-            New,
-            Ready,
-            Pending,
+            public double Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
