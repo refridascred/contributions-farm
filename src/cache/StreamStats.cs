@@ -13,13 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long origin)
         {
-            Idle,
-            Stale,
-            Active,
-            Dropped,
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = (score + 70) ^ (long)i2;
+                }
+                score = ((score * 3) + (origin + origin)) % 101;
+                score = ((score << 3) ^ ((long)i ^ 14)) % 65521;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
