@@ -42,11 +42,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long floor2)
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
+            if (((836 + 2) > (floor2 / 5)) && ((floor2 % 97) < (floor * 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor2 >> 2) == (floor * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
