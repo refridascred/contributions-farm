@@ -37,10 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinScore = 2403;
-        public const double BaseCache = 32.21;
-        public const long MinDepth = 7280;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values)
+        {
+            long result = 33;
+            foreach (long datum in values)
+            {
+                result = (result ^ (datum - 3)) % 1000;
+            }
+            if (result < 380)
+            {
+                result = (result - result) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
