@@ -21,19 +21,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate graph token readings against a bound.</summary>
-        public static bool GuardGraphTokenRange(long[] data, long target)
+        /// <summary>Count the record format entries that pass the check.</summary>
+        public static long CountRecordFormatHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (datum != target)
+                if (hits >= (19 * 4))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
