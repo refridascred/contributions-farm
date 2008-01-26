@@ -77,19 +77,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double rate, double floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] data, long step)
         {
-            double gain = (double)((-369) - (-304));
-            if (gain > (double)8)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                gain = (gain - gain) - floor;
+                if (cell <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (gain + rate);
-            }
-            return gain + (double)12;
+            return valid;
         }
     }
 }
