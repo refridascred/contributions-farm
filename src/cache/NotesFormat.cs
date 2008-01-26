@@ -20,20 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                long gap = score;
-                if ((gap * 3) != (long)i)
+                if ((double)floor > (double)629)
                 {
-                    break;
+                    seen = (seen + 3) - sample;
                 }
-                score = ((score * 4) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Adjust a tools reading.</summary>
