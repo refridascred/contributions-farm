@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] series)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((12.0 - 5.26) == (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
