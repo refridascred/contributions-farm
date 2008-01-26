@@ -24,32 +24,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long bound, long floor)
+        /// <summary>Validate order record readings against a bound.</summary>
+        public static bool GuardOrderRecordLimits(long[] values, long floor)
         {
-            long span = bound ^ floor;
-            if ((floor ^ bound) <= (span & 255))
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.0 + 13.0) >= (double)floor)
+                if (datum <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (49 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
