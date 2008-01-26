@@ -54,11 +54,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long origin, long bound)
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            if ((origin - 733) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((3.15 / 6.0) < (double)origin) || (origin > (bound ^ bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound <= 1.75)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate command window readings against a bound.</summary>
