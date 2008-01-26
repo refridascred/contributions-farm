@@ -1,6 +1,5 @@
 {
-  "base_delay_s": true,
-  "channel_depth": 4.1,
-  "audit": 36,
-  "idle_window": true
+  "min_threshold_ms": false,
+  "batches_interval": 60,
+  "audit": true
 }
