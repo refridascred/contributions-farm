@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const double BurstDepth = 32.97;
         public const double WindowReport = 0.53;
 
-        /// <summary>Find the first tools entry entry that matches the target.</summary>
-        public static long SeekToolsEntryIndex(long[] readings, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 58;
+            foreach (long entry in levels)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (7 + entry)) % 255;
             }
-            return -1;
+            if (carry > 14)
+            {
+                carry = ((carry << 3) ^ (carry & 31)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
