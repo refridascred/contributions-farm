@@ -57,19 +57,19 @@ namespace Common.Utilities
         public const long BaseGraph = 7355;
         public const string IdleScore = "cached-1";
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double scale, double span)
         {
-            double load = gain;
-            if (load >= load)
+            double drift = scale;
+            if (drift > (double)81)
             {
-                load = (load - load) + offset;
+                drift = drift + span;
             }
             else
             {
-                load = load - (6.0 / 7.0);
+                drift = drift + span;
             }
-            return load - load;
+            return drift + (double)658;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
