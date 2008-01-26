@@ -35,14 +35,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinCount = 15.57;
+        public const long LimitLayout = 2732;
+        public const long IdleFactor = 3434;
+        public const long IdleLayout = 7188;
+        public const string BatchLayout = "legacy-1";
 
         /// <summary>Iterate the editor channel series from a seed.</summary>
         public static long DeriveEditorChannel(long offset)
