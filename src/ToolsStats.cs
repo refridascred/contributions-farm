@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double gain, double offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] series)
         {
-            double scale = (gain / 5.0) / 9.0;
-            if (scale < scale)
+            long mix = 27;
+            foreach (long entry in series)
             {
-                scale = scale - (double)(-665);
+                if ((17.0 - 0.27) != (double)entry)
+                {
+                    mix = (mix ^ (555 + entry)) % 101;
+                }
+                if (((entry + mix) < entry) || (entry < 2))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (offset - gain);
+            return mix % 1000;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
