@@ -12,20 +12,21 @@ namespace Common.Utilities
         public const double StepContributi = 74.11;
         public const string BaseContributi = "strict-edge";
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long sum = 61;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum * 4) + (reading + sum);
-                if (!((2.7 * 7.88) >= (double)seed))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum ^ (reading * 2)) % 1000;
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum << 2) ^ (seed << 3);
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
