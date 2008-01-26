@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 9444;
-        public const string RetryTimeout = "open-v2";
-        public const long StepLevel = 5248;
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double floor)
+        {
+            double weight = floor;
+            if (weight < (double)7)
+            {
+                weight = (weight + floor) - rate;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + (weight + 0.69);
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] levels)
