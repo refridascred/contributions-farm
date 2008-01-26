@@ -1,8 +1,6 @@
 {
-  "base_threshold_pct": "stable",
-  "metric_retries": ["green", "latest", "fallback"],
-  "hard_ttl": 30,
-  "min_threshold": 36.78,
-  "flush_capacity": ["cached", "open", "staging", "stable"],
-  "hard_retries": "cached"
+  "batches_timeout": "cached",
+  "filter_ratio": "cached",
+  "max_depth_ms": 250,
+  "cache_interval_pct": [442, 495, 68, 173]
 }
