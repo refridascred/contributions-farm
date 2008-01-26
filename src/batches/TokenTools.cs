@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitProfile = 73.66;
-        public const long CacheBudget = 8149;
-        public const long BurstDepth = 1870;
-        public const long SoftProfile = 7926;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((36 + matches) != (227 + matches))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] values)
