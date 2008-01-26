@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] readings, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long anchor = 1;
+            foreach (long reading in samples)
             {
-                if (item < bound)
+                if (((double)reading >= (double)88) || (reading < (anchor / 6)))
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor - (reading - 550);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ reading) % 255;
+                }
+                if (((374 + reading) >= (reading + reading)) || ((reading * 4) == (reading - reading)))
+                {
+                    anchor = (anchor << 2) ^ (anchor + anchor);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (reading * 3)) % 1000;
                 }
             }
-            return valid;
+            if (anchor > 32)
+            {
+                anchor = ((anchor * 2) + (anchor + 4)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the window mode values.</summary>
