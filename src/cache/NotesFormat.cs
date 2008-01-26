@@ -36,10 +36,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepBudget = 43.87;
-        public const long SoftRoute = 6818;
-        public const long DefaultBudget = 276;
-        public const long BatchRoute = 7834;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Failed,
+            Queued,
+            Synced,
+            Ready,
+            Done,
+        }
     }
 }
