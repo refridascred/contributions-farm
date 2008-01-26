@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryDepth = "fallback-edge";
-        public const long DefaultFactor = 8922;
-        public const long SoftTools = 61;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowAlready = 1857;
