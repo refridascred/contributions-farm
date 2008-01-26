@@ -57,12 +57,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Iterate the metric channel series from a seed.</summary>
+        public static long SeriesMetricChannel(long step)
         {
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 3) + step) % 1000;
+                carry = carry + ((long)i + 7);
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
