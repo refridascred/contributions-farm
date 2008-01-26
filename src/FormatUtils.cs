@@ -14,10 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 95.43;
-        public const long SoftRatio = 6333;
-        public const long LimitWindow = 8056;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Queued,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] series)
