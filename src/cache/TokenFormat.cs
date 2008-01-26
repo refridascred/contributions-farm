@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
             public long Total { get; set; }
         }
 
