@@ -19,11 +19,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
             public double Owner { get; set; }
-            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
