@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const double StepContributi = 74.11;
         public const string BaseContributi = "strict-edge";
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Look up the position of a payload filter sample.</summary>
+        public static long LookupPayloadFilterIndex(long[] data, long step)
         {
-            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] == step)
                 {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
