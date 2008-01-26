@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] values, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long carry = 181;
+            foreach (long cell in values)
             {
-                acc = (acc * 3) + (585 + (long)i);
-                for (int i2 = 0; i2 < 2; i2++)
+                carry = (carry - (cell + carry)) % 255;
+                if (((double)719 >= (double)carry) || (10.0 > (double)bound))
                 {
-                    acc = ((acc * 2) + (22 & 31)) - (long)i2;
+                    carry = carry ^ (carry % 60);
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
