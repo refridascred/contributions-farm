@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const long SoftSpan = 5760;
         public const long WindowChannel = 4469;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "fallback";
-        public const string StepCounter = "alpha-edge";
-        public const long HardCounter = 1518;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (reading < (tally + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double SmoothCommits(double ratio, double bias)
