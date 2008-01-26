@@ -59,32 +59,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long floor, long seed)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long slot = floor + seed;
-            if ((floor * 2) <= slot)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((551 - slot) <= slot) || ((seed + slot) >= (-46)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
