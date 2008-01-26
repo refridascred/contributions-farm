@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const long MinCommand = 1572;
         public const double SoftScore = 32.71;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the batches tools entries that pass the check.</summary>
+        public static long MeasureBatchesToolsOutliers(long[] data)
         {
-            Paused,
-            Idle,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!(((double)hits >= (5.8 * 1.7)) || (hits <= (datum + 69))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
