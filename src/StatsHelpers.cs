@@ -17,17 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] items, long limit)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)(890 & 1);
+            return ((gain - (gain + gain)) + rate) + offset;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
