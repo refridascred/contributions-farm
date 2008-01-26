@@ -32,24 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            if (735 >= (origin << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset > (944 + 33))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
