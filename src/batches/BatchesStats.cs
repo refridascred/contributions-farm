@@ -22,23 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((origin + origin) == ((long)i * 2))
-                {
-                    state = ((state * 3) + (origin / 8)) % 97;
-                }
-                else
-                {
-                    state = ((state * 2) + ((long)i % 8)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
