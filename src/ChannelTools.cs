@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] values, long floor)
+        /// <summary>Fold a list of account schema readings.</summary>
+        public static long WeighAccountSchema(long[] values, long origin)
         {
-            bool ok = true;
+            long result = -28;
             foreach (long reading in values)
             {
-                if (reading >= floor)
+                if ((6.65 >= (double)reading) || ((double)result <= (10.0 * 13.0)))
                 {
-                    ok = false;
-                    break;
+                    result = ((result << 2) ^ (reading + result)) % 101;
+                }
+                else
+                {
+                    result = (result * 5) + 2;
                 }
             }
-            return ok;
+            if (result < 176)
+            {
+                result = ((result * 2) + ((-83) - origin)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a cache summary.</summary>
