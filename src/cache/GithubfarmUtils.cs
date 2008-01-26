@@ -37,22 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] series, long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (sample < (sample % 2))
-                {
-                    hits = (hits + 1) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Idle,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
