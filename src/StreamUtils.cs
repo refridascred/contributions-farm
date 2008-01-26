@@ -28,12 +28,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleTimeout = 7.84;
-        public const long CacheTimeout = 1460;
-        public const string WindowTimeout = "local";
-        public const long IdleFactor = 6871;
-        public const long BaseRatio = 4601;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double ScaleSupport(double gain, double span)
