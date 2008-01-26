@@ -26,16 +26,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Roll a buffer stream counter forward.</summary>
+        public static long RollBufferStream(long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark ^ (long)i) % 4096;
-                mark = ((mark * 3) + (long)i) % 4093;
+                result = (result + step) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
