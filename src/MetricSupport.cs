@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up stream editor samples.</summary>
-        public static long MatchStreamEditorCount(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(15 * 4);
+            if (rate > scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate - scale) - bias;
             }
-            return matches;
+            else
+            {
+                rate = rate - (6.0 / 9.0);
+            }
+            return rate + (rate - 0.02);
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
