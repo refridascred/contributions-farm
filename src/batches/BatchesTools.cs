@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)floor > (4.0 + 0.99))
+                if ((reading + 801) < (count % 64))
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every farm order entry stays within the limit.</summary>
