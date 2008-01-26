@@ -1,6 +1,11 @@
-id,label,count,level,weight
-1,653,891,277,18.05
-2,72,edge,6.19,47.88
-3,26.63,81.93,63,fallback
-4,82.24,33.46,primary,308
-5,24.45,fallback,local,19.63
+id,weight,owner,label
+1,42,325,212
+2,62.55,778,62.58
+3,312,83.93,75.71
+4,edge,667,361
+5,cached,339,stable
+6,blue,cached,72.84
+7,3.19,primary,staging
+8,47.74,fallback,861
+9,6.91,73,115
+10,206,58.76,strict
