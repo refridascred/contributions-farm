@@ -64,12 +64,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultSize = 5994;
+        public const double MinScore = 98.74;
+        public const string LimitMetrics = "open";
     }
 }
