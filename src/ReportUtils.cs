@@ -62,23 +62,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] values, long seed)
+        /// <summary>Look up the position of a route support sample.</summary>
+        public static long LocateRouteSupportIndex(long[] data, long floor)
         {
-            long sum = -37;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum ^ (721 - value);
-                if (((10.0 * 5.0) >= (double)sum) && (value < (seed / 9)))
+                if ((data[i] == floor) && ((data[i] % 2) == 0))
                 {
-                    sum = (sum - (value / 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (seed & 31)) % 4096;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
