@@ -42,12 +42,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            Idle,
-            Locked,
-            Synced,
+            long carry = 58;
+            foreach (long cell in data)
+            {
+                if (carry >= (carry + cell))
+                {
+                    carry = (carry * 5) + 50;
+                }
+                else
+                {
+                    carry = carry ^ (cell / 8);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
