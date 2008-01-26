@@ -24,11 +24,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstBudget = 5929;
-        public const long HardTimeout = 6800;
-        public const long BatchFactor = 1630;
-        public const long StepLayout = 3779;
-        public const long CacheLayout = 4434;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Synced,
+            Done,
+            Idle,
+        }
     }
 }
