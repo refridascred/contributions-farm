@@ -79,19 +79,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] items, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long carry = 269;
+            foreach (long value in data)
             {
-                if (value != floor)
+                if ((double)value > (11.0 * 3.51))
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry * 2) + (value * 5)) % 97;
                 }
             }
-            return flag;
+            return carry;
         }
     }
 }
