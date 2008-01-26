@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            long score = 1;
+            foreach (long value in series)
+            {
+                if (((long)series.Length / 2) <= 514)
+                {
+                    score = (score << 3) ^ (value * 2);
+                }
+                else
+                {
+                    score = (score ^ (floor + value)) % 255;
+                    score = score - (score * 2);
+                }
+                score = (score - (score + score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the record phase values.</summary>
