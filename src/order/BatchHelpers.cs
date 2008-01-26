@@ -20,22 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] readings, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] readings)
         {
-            long carry = 845;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading * 4) >= 686))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry * 4) + (offset + carry);
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > (-89))
-            {
-                carry = (carry - (offset << 2)) % 65521;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
