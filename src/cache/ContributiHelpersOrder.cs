@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 7689;
+        public const long BaseRatio = 7306;
+        public const long RetryCounter = 563;
 
         /// <summary>Audit filter profile readings against a rule.</summary>
         public static long CountFilterProfileHits(long[] samples, long limit)
