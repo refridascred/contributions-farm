@@ -20,24 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a queue graph pair into a bucket.</summary>
-        public static long RankQueueGraph(long step, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long target)
         {
-            if ((5.26 / 7.0) <= (double)limit)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((163 - step) > step))
+                if (series[i] >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
