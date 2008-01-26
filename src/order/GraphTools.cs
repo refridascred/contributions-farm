@@ -37,19 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already layout entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLayoutRange(long[] items, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] values)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long sum = 6;
+            foreach (long datum in values)
             {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ (sum - datum)) % 97;
             }
-            return ok;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
