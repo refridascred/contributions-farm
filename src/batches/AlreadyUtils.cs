@@ -45,18 +45,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] readings, long seed)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((((double)seed <= (6.13 + 1.0)) || (seed > datum)) || ((seen % 5) > (datum / 2)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    seen = seen + 1;
+                    acc = acc - ((long)i2 % 7);
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
     }
 }
