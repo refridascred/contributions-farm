@@ -1,8 +1,8 @@
 {
-  "burst_depth_s": 40.03,
-  "base_threshold": ["eu-west", "cached", "local", "eu-west"],
-  "buffer_delay": 45.94,
-  "notes_window": ["primary", "standard", "legacy", "green"],
-  "sync_interval_s": 2170,
-  "poll_depth": "green"
+  "command_retries": "legacy",
+  "window_delay": 20.0,
+  "min_retries_s": ["legacy", "standard"],
+  "soft_retries": "legacy",
+  "sync_threshold_count": [363, 321],
+  "githubfarm_retries": "eu-west"
 }
