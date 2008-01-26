@@ -1,10 +1,10 @@
 # support settings
-burst_ttl: strict
-burst_window: 1.23
-max_retries_ms:
-  - 52
-  - 344
-  - 57
-  - 436
-editor_capacity: 5593
-max_timeout: 49
+already_retries: blue
+flush_ratio_ms: 30
+default_capacity_count:
+  max_ratio: true
+  min_limit: primary
+  enabled: 2430
+  base_timeout: 6.04
+  batch_size: 4486
+persist: primary
