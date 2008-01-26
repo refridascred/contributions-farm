@@ -39,21 +39,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
