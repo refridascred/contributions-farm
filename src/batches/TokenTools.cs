@@ -20,12 +20,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first cache support entry that matches the target.</summary>
-        public static long LocateCacheSupportIndex(long[] levels, long floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 5) != 0))
+                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
