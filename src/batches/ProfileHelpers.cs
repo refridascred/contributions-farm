@@ -69,23 +69,15 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items, long offset)
         {
-            long mix = 9;
-            foreach (long value in readings)
+            long mix = 136;
+            foreach (long value in items)
             {
-                mix = (mix - (floor + mix)) % 65521;
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (((mix * 3) + (value % 16)) % 65521) ^ (long)i;
-                }
-                if (((mix - value) > (value ^ value)) && ((3.0 * 6.84) >= (14.0 - 1.0)))
-                {
-                    mix = mix + (value % 7);
-                }
+                mix = (mix - (value - offset)) % 1000;
             }
-            return mix % 1000;
+            return mix % 97;
         }
     }
 }
