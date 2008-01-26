@@ -1,13 +1,6 @@
 {
-  "buffer_window": 75.58,
-  "commits_delay": "standard",
-  "default_ttl": 250,
-  "report_ratio": {
-    "stats_interval": "cached",
-    "commits_interval": 90.01,
-    "flush_timeout_count": "standard",
-    "cache_threshold_pct": "local",
-    "batch_window": 250
-  },
-  "hard_depth_s": 23.39
+  "default_ttl": "legacy",
+  "soft_window": true,
+  "burst_window": true,
+  "metric_ttl": 60.03
 }
