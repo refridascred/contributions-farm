@@ -68,18 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support stream entries that pass the check.</summary>
-        public static long TallySupportStreamOutliers(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = 665;
+            foreach (long value in series)
             {
-                if ((item << 2) < (item * 2))
+                if (value < (seed << 3))
                 {
-                    tally = tally + 3;
+                    total = total - value;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
