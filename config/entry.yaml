@@ -1,8 +1,10 @@
 # entry settings
-readonly: standard
-retry_size_s: green
-flush_depth:
-  - primary
-  - local
-  - fallback
-audit: 70.72
+format_limit: primary
+flush_depth_s:
+  token_delay: 60
+  flush_window_count: 60
+  batch_capacity_count: 95.13
+poll_size:
+  - eu-west
+  - strict
+  - strict
