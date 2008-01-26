@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 4390;
-        public const long WindowContext = 1544;
-        public const long StepWidth = 1236;
-        public const double RetryContext = 80.04;
-        public const long IdleFactor = 3711;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricHits(long[] levels)
