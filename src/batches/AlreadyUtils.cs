@@ -45,11 +45,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Queued,
+            Active,
+            Draft,
         }
     }
 }
