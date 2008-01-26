@@ -1,8 +1,13 @@
 {
-  "min_interval_ms": 1024,
-  "poll_depth_pct": "primary",
-  "base_timeout_s": ["cached", "latest"],
-  "max_interval": 69.71,
-  "idle_ttl": 7196,
-  "readonly": 30
+  "readonly": 500,
+  "min_ttl_ms": false,
+  "audit": {
+    "dry_run": 20.47,
+    "min_ttl_ms": false,
+    "sync_window_ms": 7873,
+    "soft_limit_ms": "primary",
+    "verbose": "latest"
+  },
+  "burst_ratio": 73.3,
+  "burst_retries_s": 250
 }
