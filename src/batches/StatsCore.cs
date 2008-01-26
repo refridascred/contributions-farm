@@ -58,18 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] series, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items, long offset)
         {
-            long anchor = 2;
-            foreach (long sample in series)
+            long anchor = 60;
+            foreach (long cell in items)
             {
-                if (anchor < (sample - anchor))
-                {
-                    anchor = ((anchor * 3) + (seed << 3)) % 101;
-                }
+                anchor = ((anchor << 3) ^ (offset >> 4)) - cell;
             }
-            return anchor;
+            if (anchor > (-3))
+            {
+                anchor = (anchor + offset) % 1000;
+            }
+            return anchor % 4096;
         }
     }
 }
