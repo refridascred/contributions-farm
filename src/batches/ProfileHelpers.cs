@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes order readings against a rule.</summary>
-        public static long CountNotesOrderHits(long[] levels)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long origin)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (((double)reading <= (double)matches) && ((double)matches >= 6.48))
-                {
-                    matches = matches + 1;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
