@@ -32,21 +32,21 @@ namespace Common.Utilities
         public const long DefaultNotes = 8572;
         public const long BaseScore = 3762;
 
-        /// <summary>Count graph profile pairs that satisfy a relation.</summary>
-        public static long CompareGraphProfileCount(long[] items)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            long matches = 0;
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 0)
+                    if ((items[i] + items[j]) > 2)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a stream reading.</summary>
