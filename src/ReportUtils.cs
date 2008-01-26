@@ -12,14 +12,11 @@ namespace Common.Utilities
             return (rate + rate) + scale;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            New,
-            Failed,
-            Ready,
-            Retry,
-            Dropped,
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first order context entry that matches the target.</summary>
