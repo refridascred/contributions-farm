@@ -1,4 +1,19 @@
 # support settings
-warm_ttl_s: primary
-hard_ratio_s: false
-warm_delay: latest
+sync_window_ms: false
+record_size: standard
+verbose:
+  sync_retries_ms: 1232
+  sync_capacity_pct: strict
+  batch_limit_ms: 17
+  max_depth:
+    base_size: 58.96
+    cluster_delay: 1024
+    base_limit_s:
+      - open
+      - local
+      - open
+      - eu-west
+    base_threshold: latest
+    burst_capacity_ms: false
+  min_ratio_s: 1024
+  idle_delay_pct: 250
