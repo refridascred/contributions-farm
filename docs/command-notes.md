@@ -1,10 +1,14 @@
 # Command notes
 
-Each layout is validated before it reaches the window queue.
-Keep notes and entry names short and lowercase.
+Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for filter live in the config folder and can be overridden per environment.
+Keep batches and profile names short and lowercase.
+
+Use token settings to tune how often contributi data is refreshed.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every metric change
-- Validate window input early
-- Document new context fields
+- Review order limits each release
+- Validate contributi input early
+- Prefer githubfarm defaults
