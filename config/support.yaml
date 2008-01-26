@@ -1,6 +1,5 @@
 # support settings
-default_threshold_ms: 70.86
-enabled: 9203
-batch_window: false
-idle_ttl_count: 50
-flush_threshold_ms: false
+max_limit: 23.9
+soft_window_s: 1024
+default_retries_pct: true
+verbose: 60
