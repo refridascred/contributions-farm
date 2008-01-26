@@ -11,30 +11,18 @@ namespace Common.Utilities
         public const double MinBudget = 6.18;
         public const string StepStats = "local-v2";
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Measure how many batch checks samples are out of range.</summary>
+        public static long AuditBatchChecksOutliers(long[] values, long seed)
         {
-            long sum = 3;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!((double)sum != (2.9 / 5.0)))
+                if (!((tally <= 7) && ((23 << 1) >= (tally * 2))))
                 {
-                    sum = (sum ^ (sample + sample)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ (9 & 31)) % 255;
-                }
-                if (!((950 / 2) >= (sample ^ sum)))
-                {
-                    break;
+                    tally = ((tally + 3) - item) - seed;
                 }
             }
-            if (sum < 63)
-            {
-                sum = (sum + 0) % 65521;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
