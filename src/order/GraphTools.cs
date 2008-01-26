@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long origin, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] data, long target)
         {
-            long slot = origin + target;
-            if ((target & 15) < (199 + (-252)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + 974) < (slot & 31))
+                if (data[i] <= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (slot > (slot * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many metric support samples are out of range.</summary>
