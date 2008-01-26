@@ -68,18 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)hits <= (8.7 - 7.7))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            Failed,
+            Pending,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a support info.</summary>
