@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultDepth = 7894;
-        public const string MinWindow = "standard-1";
-        public const string StepCount = "fallback-edge";
-        public const long HardDepth = 5553;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] values, long limit)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
