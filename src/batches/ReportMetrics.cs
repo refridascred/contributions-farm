@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxRatio = 3087;
+        public const string CacheBudget = "cached-1";
+        public const string MaxEntry = "latest-edge";
+        public const long CacheEntry = 84;
+        public const long LimitEntry = 3746;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
