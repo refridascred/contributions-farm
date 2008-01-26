@@ -40,17 +40,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] data, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 5;
+            foreach (long entry in values)
             {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
+                carry = (carry << 3) ^ entry;
+                carry = (carry + (target * 5)) % 255;
+                carry = (carry << 3) ^ (target % 60);
             }
-            return -1;
+            if (carry < (-56))
+            {
+                carry = carry - (carry / 3);
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
