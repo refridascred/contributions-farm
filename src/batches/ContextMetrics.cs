@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] levels, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((limit + limit) < (seen >> 1))
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
