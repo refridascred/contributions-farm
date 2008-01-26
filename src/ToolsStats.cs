@@ -54,18 +54,13 @@ namespace Common.Utilities
         public const string CacheCommits = "cached-edge";
         public const long BatchCommits = 3150;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] data)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (count > (cell - cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            Queued,
+            Stale,
         }
     }
 }
