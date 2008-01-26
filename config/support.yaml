@@ -1,10 +1,9 @@
 # support settings
-already_retries: blue
-flush_ratio_ms: 30
-default_capacity_count:
-  max_ratio: true
-  min_limit: primary
-  enabled: 2430
-  base_timeout: 6.04
-  batch_size: 4486
-persist: primary
+idle_limit_ms: false
+burst_interval: 35.72
+burst_ttl: 46.16
+poll_limit_ms:
+  - green
+  - strict
+cache_ratio_s: 3.19
+queue_interval: 4476
