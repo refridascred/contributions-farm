@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] levels, long seed)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long origin)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long score = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + score) % 4096;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
