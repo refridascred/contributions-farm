@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate cache schema readings against a bound.</summary>
-        public static bool GuardCacheSchemaRange(long[] items, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long sum = 31;
+            foreach (long datum in samples)
             {
-                if (reading > origin)
+                if ((double)datum <= (9.0 - 5.6))
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ (-785)) + target;
                 }
             }
-            return found;
+            return sum % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
