@@ -48,19 +48,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            long sum = -101;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum << 2) ^ (sample - (-302))) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum < 1)
-            {
-                sum = ((sum * 5) + sum) % 1000;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
