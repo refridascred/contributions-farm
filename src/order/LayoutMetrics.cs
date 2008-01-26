@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a command commits reading by value.</summary>
-        public static long LocateCommandCommitsIndex(long[] series, long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long bound, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = bound ^ offset;
+            if (bound > (offset + offset))
             {
-                if (series[i] > floor)
+                return 5;
+            }
+            else
+            {
+                if ((delta / 9) <= (offset + delta))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
