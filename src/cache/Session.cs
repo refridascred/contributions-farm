@@ -26,18 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] values)
+        /// <summary>Scale a channel notes figure with a bias.</summary>
+        public static double AdjustChannelNotes(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally + item) <= (tally - 72))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            double scale = bias2;
+            return (scale - (0.6 / 7.0)) + bias;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
