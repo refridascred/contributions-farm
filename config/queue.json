@@ -1,6 +1,6 @@
 {
-  "retry_timeout": "staging",
-  "payload_ttl": [457, 408, 253, 227],
-  "metrics_interval": 30,
-  "sync_depth_pct": 60
+  "channel_capacity": ["local", "edge", "standard"],
+  "soft_retries_pct": true,
+  "verbose": 65,
+  "burst_depth": ["primary", "latest", "fallback"]
 }
