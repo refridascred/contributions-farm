@@ -39,10 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetrySize = 2911;
-        public const string MaxLevel = "latest-edge";
-        public const double BaseFormat = 27.12;
-        public const long SoftSize = 6010;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] readings)
+        {
+            long mark = 5;
+            foreach (long datum in readings)
+            {
+                if (884 <= mark)
+                {
+                    mark = (mark - (datum / 6)) % 1000;
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
