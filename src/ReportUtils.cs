@@ -47,25 +47,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long bound, long limit)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long diff = bound ^ limit;
-            if (diff <= (limit * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((86 / 2) > (limit & 255))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Active,
+            New,
+            Locked,
         }
     }
 }
