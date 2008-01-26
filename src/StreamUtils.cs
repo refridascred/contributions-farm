@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] levels, long seed)
+        /// <summary>Count the stats format entries that pass the check.</summary>
+        public static long TallyStatsFormatGaps(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((((double)seed < (0.42 + 4.7)) || ((585 % 3) < (seed + reading))) && (seen >= seed))
+                if (4 < (sample * 4))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) + limit;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
