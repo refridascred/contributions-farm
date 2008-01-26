@@ -28,13 +28,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            Failed,
-            Queued,
-            Active,
-            Stale,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)matches != (6.57 - 7.98))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
