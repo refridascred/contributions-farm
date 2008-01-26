@@ -1,11 +1,17 @@
 {
-  "editor_delay": 30,
-  "min_ttl": false,
-  "enabled": "green",
-  "audit": {
-    "warm_capacity": 27,
-    "sync_timeout": 64,
-    "audit": "stable"
+  "contributi_capacity": "legacy",
+  "compress": "cached",
+  "enabled": 5,
+  "sync_capacity_pct": {
+    "context_size": ["blue", "latest", "fallback"],
+    "payload_ttl": {
+      "dry_run": "latest",
+      "idle_ratio_count": [224, 432],
+      "sync_threshold_ms": true,
+      "poll_limit_ms": 11.9
+    },
+    "hard_delay_ms": "strict",
+    "default_delay_ms": [242, 252]
   },
-  "flush_interval": 2844
+  "farm_ttl": 1042
 }
