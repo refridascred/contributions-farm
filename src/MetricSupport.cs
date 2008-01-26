@@ -30,18 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] readings)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + matches) > (cell - 50))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Active,
+            Ready,
         }
     }
 }
