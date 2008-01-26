@@ -50,9 +50,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryFactor = 9407;
-        public const string StepReport = "latest-1";
-        public const double BatchDepth = 16.12;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 55.65;
+        public const long MinScore = 7727;
+        public const string MaxAlready = "strict-edge";
     }
 }
