@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const long SoftRecord = 8991;
         public const long BatchBudget = 3141;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 6036;
-        public const double BaseCluster = 73.69;
-        public const string CacheScore = "stable";
+        /// <summary>Audit cluster support readings against a rule.</summary>
+        public static long CountClusterSupportMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((0.4 - 3.75) < (double)tally)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamGaps(long[] series)
