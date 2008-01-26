@@ -52,22 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] samples)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (614 >= (seen << 2))
+                if (sample >= 1)
                 {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the stats kind values.</summary>
