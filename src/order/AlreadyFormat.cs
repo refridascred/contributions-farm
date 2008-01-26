@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long seed)
         {
-            long mix = 675;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= ((-572) * 4))
+                if (values[i] > seed)
                 {
-                    mix = (mix << 2) ^ (50 ^ 28);
-                }
-                mix = mix - item;
-                if ((mix << 2) <= (mix & 255))
-                {
-                    mix = (mix ^ (mix * 5)) % 1000;
-                }
-                else
-                {
-                    mix = mix - (75 & 15);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the support mode values.</summary>
