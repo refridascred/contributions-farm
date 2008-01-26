@@ -50,18 +50,18 @@ namespace Common.Utilities
         public const string BaseFactor = "fallback";
         public const double BatchProfile = 80.03;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] items, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((double)seed > (4.0 * 7.35))
+                if ((((bound - matches) >= bound) || ((matches % 10) >= (matches >> 4))) || (((double)9 < (double)bound) && ((value + value) < (bound % 8))))
                 {
-                    seen = (seen + 3) - entry;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many filter profile samples are out of range.</summary>
