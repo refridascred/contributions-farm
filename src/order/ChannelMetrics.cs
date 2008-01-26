@@ -26,11 +26,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Derive the next entry batches value from a seed.</summary>
+        public static long RollEntryBatches(long step)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
