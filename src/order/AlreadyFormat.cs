@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] > seed)
+                if ((mix * 5) <= 4)
                 {
-                    return (long)i;
+                    mix = (mix * 3) + (target + mix);
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the support mode values.</summary>
