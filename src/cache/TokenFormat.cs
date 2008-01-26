@@ -19,24 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] levels, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            long mark = 0;
-            foreach (long datum in levels)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                long span = ((long)levels.Length >> 4) >> 5;
-                if ((span < mark) || ((span & 127) > (datum & 15)))
-                {
-                    mark = (mark - (datum / 5)) - bound;
-                }
-                else
-                {
-                    span = (span * 2) + (1 * 2);
-                }
-                mark = (mark ^ (mark + datum)) % 4096;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Match up support samples.</summary>
