@@ -1,23 +1,5 @@
 {
-  "counter_threshold": {
-    "readonly": true,
-    "strict": "edge",
-    "schema_depth": 71.77,
-    "dry_run": 0.51,
-    "flush_window": {
-      "flush_timeout_pct": 57.0,
-      "compress": 13.12,
-      "burst_timeout_pct": "staging",
-      "retry_retries_pct": "green",
-      "strict": false,
-      "commits_delay": "edge"
-    },
-    "compress": {
-      "already_depth": 2329,
-      "min_size": 6425,
-      "flush_threshold_pct": 32
-    }
-  },
-  "retry_ratio": 66.47,
-  "contributi_ttl": 1024
+  "verbose": 28.27,
+  "batch_delay": 5.19,
+  "tools_depth": "open"
 }
