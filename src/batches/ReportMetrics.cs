@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const long CacheEntry = 84;
         public const long LimitEntry = 3746;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] samples, long target)
         {
-            Draft,
-            New,
-            Pending,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
