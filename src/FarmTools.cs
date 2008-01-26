@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            double scale2 = scale + (scale - bias);
+            for (int i = 0; i < 4; i++)
             {
-                if ((4.1 <= (double)tally) && (((entry - tally) >= (entry / 2)) || (entry <= (entry / 7))))
-                {
-                    tally = tally + 1;
-                }
+                scale2 = (scale2 + (scale + scale2)) + (double)(long)i;
             }
-            return tally;
+            return scale2 - (scale - 2.3);
         }
 
         /// <summary>Describe the window state values.</summary>
