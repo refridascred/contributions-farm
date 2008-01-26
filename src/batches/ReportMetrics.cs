@@ -22,10 +22,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstFactor = 65.08;
-        public const long StepScore = 6666;
-        public const string IdleCommits = "open-edge";
-        public const long StepBudget = 4989;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((52 % 24) >= (tally + tally))
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
