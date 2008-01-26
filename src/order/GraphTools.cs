@@ -47,26 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] values, long bound)
         {
-            long carry = 6;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((3.26 + 17.0) >= (double)carry)
+                if (datum < bound)
                 {
-                    carry = (carry + (carry ^ 15)) % 65521;
-                }
-                else
-                {
-                    carry = (carry + (item >> 3)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry + (carry + carry)) % 101;
-            }
-            return carry;
+            return valid;
         }
     }
 }
