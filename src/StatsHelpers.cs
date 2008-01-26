@@ -17,18 +17,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] levels, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long acc = 0;
+            foreach (long reading in values)
             {
-                if (!((double)value < (double)floor))
+                if (!(reading >= (floor & 31)))
                 {
-                    count = count + 2;
+                    acc = (acc + (reading >> 3)) % 255;
+                }
+                if (!((floor * 2) >= floor))
+                {
+                    acc = ((acc << 2) ^ (floor << 2)) % 65521;
                 }
             }
-            return count;
+            if (acc > 363)
+            {
+                acc = ((acc << 2) ^ (floor - floor)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Match up schema tools samples.</summary>
