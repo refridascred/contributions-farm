@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
             Dropped,
-            Draft,
-            Retry,
-            Pending,
-            Idle,
+            Locked,
+            Closed,
+            New,
+            Active,
         }
 
         /// <summary>Describe the record phase values.</summary>
