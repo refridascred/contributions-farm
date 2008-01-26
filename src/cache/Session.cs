@@ -13,19 +13,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] series, long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > floor)
+                if (samples[i] <= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
