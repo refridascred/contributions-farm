@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Digest a series of queue session entries.</summary>
+        public static long TallyQueueSession(long[] readings)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
+            long mark = 8;
+            foreach (long value in readings)
+            {
+                if (!((mark - value) > (9 % 97)))
+                {
+                    mark = ((mark * 3) + 11) % 97;
+                }
+            }
+            if (mark < 45)
+            {
+                mark = ((mark * 5) + (833 * 4)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
