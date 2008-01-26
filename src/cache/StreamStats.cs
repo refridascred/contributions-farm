@@ -22,18 +22,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] series)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((value - seen) <= (83 << 1))
+                if (reading <= offset)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Audit entry account readings against a rule.</summary>
