@@ -41,22 +41,15 @@ namespace Common.Utilities
         public const string IdleBuffer = "strict-1";
         public const string MinBuffer = "local";
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Iterate the route graph series from a seed.</summary>
+        public static long SeriesRouteGraph(long target)
         {
-            long acc = 3;
-            foreach (long value in readings)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if ((6 & 63) != (value + value))
-                {
-                    acc = (acc - (acc & 3)) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 3) + acc;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return acc % 4096;
+            return sum;
         }
     }
 }
