@@ -16,13 +16,13 @@ namespace Common.Utilities
             return scale2 - (scale - 2.3);
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Locked,
-            Draft,
-            Done,
-            Synced,
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
