@@ -45,10 +45,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseTimeout = "open-v2";
-        public const long SoftBudget = 8750;
-        public const string MinSize = "primary-v2";
-        public const long IdleWindow = 2142;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
