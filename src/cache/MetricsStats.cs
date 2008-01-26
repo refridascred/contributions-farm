@@ -49,13 +49,31 @@ namespace Common.Utilities
         public const long WindowFactor = 7662;
         public const double HardTimeout = 69.48;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long origin, long step)
         {
-            Queued,
-            Closed,
-            Done,
-            Draft,
+            if (!(step <= (-7)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ step) == (step + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + step) == (96 & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
