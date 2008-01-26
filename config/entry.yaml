@@ -1,4 +1,15 @@
 # entry settings
-compress: 19
-hard_window_ms: 73
-notes_capacity: 30
+default_limit_pct: standard
+base_delay_pct:
+  dry_run: 500
+  default_capacity_count: eu-west
+  strict: 82.08
+  already_ttl: false
+burst_interval_ms: 21
+cache_ttl: strict
+compress:
+  poll_interval: 500
+  githubfarm_ratio: 45.96
+  cache_timeout: 60
+  min_capacity_s: false
+  warm_size: 500
