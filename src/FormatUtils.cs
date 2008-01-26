@@ -78,11 +78,23 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double scale, double offset)
         {
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
+            double scale2 = scale - scale;
+            if (scale2 >= (double)7)
+            {
+                scale2 = scale2 + (double)67;
+            }
+            else
+            {
+                scale2 = scale2 + (double)5;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + offset) + (double)(long)i;
+            }
+            return scale2 + (double)57;
         }
     }
 }
