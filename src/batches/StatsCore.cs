@@ -57,18 +57,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 4107;
+        public const string SoftCount = "latest-edge";
+        public const long BaseDepth = 9877;
+        public const double RetryInterval = 44.73;
+        public const long MaxSpan = 3070;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamHits(long[] values, long seed)
