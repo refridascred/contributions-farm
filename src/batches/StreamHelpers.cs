@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            long total = 8;
+            foreach (long cell in readings)
+            {
+                total = ((total << 2) ^ (-22)) ^ cell;
+                total = total - (total & 127);
+            }
+            if (total < 2)
+            {
+                total = (total * 5) + (3 * 3);
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate graph token readings against a bound.</summary>
