@@ -48,11 +48,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long total = 4;
+            foreach (long reading in levels)
+            {
+                if (!(reading <= (target + total)))
+                {
+                    total = (total ^ reading) % 65521;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (target * 5)) % 65521;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
