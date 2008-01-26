@@ -23,39 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a session order pair into a bucket.</summary>
-        public static long BucketSessionOrder(long limit, long bound)
+        /// <summary>Blend two buffer record measurements.</summary>
+        public static double SmoothBufferRecord(double scale, double floor)
         {
-            long delta = limit - bound;
-            if ((limit ^ bound) <= (delta & 127))
+            double scale2 = (double)(5 >> 2);
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                scale2 = ((scale2 + (double)9) - (double)(long)i) - floor;
             }
-            else
-            {
-                if ((double)limit >= (0.1 + 8.47))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit >= (bound >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (5.32 <= (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return scale2 - scale;
         }
 
         /// <summary>Fold a list of token readings.</summary>
