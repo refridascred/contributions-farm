@@ -30,11 +30,17 @@ namespace Common.Utilities
             return bias + 3.18;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 6730;
-        public const long StepScore = 6042;
-        public const long CacheQueue = 8014;
-        public const long WindowQueue = 2351;
-        public const long DefaultQueue = 4241;
+        /// <summary>Locate a stats format reading by value.</summary>
+        public static long LookupStatsFormatIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
