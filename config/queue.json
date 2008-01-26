@@ -1,6 +1,7 @@
 {
-  "enabled": [200, 467, 293],
-  "cache_delay_pct": 5610,
-  "stream_timeout": false,
-  "min_window_s": ["primary", "edge", "strict"]
+  "cache_ratio_s": false,
+  "poll_timeout_ms": 9,
+  "flush_ttl_ms": "latest",
+  "verbose": 500,
+  "min_threshold_s": "standard"
 }
