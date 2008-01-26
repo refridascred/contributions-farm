@@ -34,12 +34,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double scale, double bias)
         {
-            Draft,
-            Retry,
-            New,
+            double scale2 = (double)(21 ^ 72);
+            return ((scale2 + (double)(-50)) + scale) + bias;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
