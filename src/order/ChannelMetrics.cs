@@ -29,12 +29,11 @@ namespace Common.Utilities
             return bias + (span / 4.0);
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double scale, double floor)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            double gain = (scale - scale) * 3.04;
+            return (gain + (7.86 - gain)) + floor;
         }
     }
 }
