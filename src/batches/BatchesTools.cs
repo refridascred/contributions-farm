@@ -20,19 +20,11 @@ namespace Common.Utilities
             return load + 7.0;
         }
 
-        /// <summary>Count the cache order entries that pass the check.</summary>
-        public static long AuditCacheOrderGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((count > (count & 31)) || ((reading >> 2) <= (reading * 4))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleInterval = 48.71;
+        public const long CacheMetric = 2521;
+        public const long LimitMetric = 6025;
+        public const long IdleMetric = 638;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string StepFarm = "stable-edge";
