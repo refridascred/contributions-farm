@@ -32,20 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double gain, double floor)
-        {
-            double drift = floor;
-            if (drift < 9.2)
-            {
-                drift = (drift + drift) - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 1309;
+        public const long MaxWidth = 292;
+        public const long HardSize = 3564;
+        public const long BaseStats = 1876;
+        public const long LimitScore = 9820;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long MatchClusterCount(long[] series)
