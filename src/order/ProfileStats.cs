@@ -13,21 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count profile token pairs that satisfy a relation.</summary>
-        public static long MatchProfileTokenCount(long[] items)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Locked,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
