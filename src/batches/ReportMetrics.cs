@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
-        public static bool GuardMetricsNotesRange(long[] readings, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long state = 3;
+            foreach (long entry in data)
             {
-                if (item <= bound)
+                if ((double)state >= (double)540)
                 {
-                    flag = false;
-                    break;
+                    state = (state ^ (state + (long)data.Length)) ^ entry;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state << 1);
                 }
             }
-            return flag;
+            return state % 65521;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
