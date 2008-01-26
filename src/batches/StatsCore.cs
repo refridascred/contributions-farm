@@ -53,38 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long bound, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] values, long limit)
         {
-            if ((floor - bound) != (bound + bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor + bound) >= 50) || ((floor + floor) < (99 / 2)))
+                if (values[i] == limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound <= (floor - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor * 4) > (bound & 127))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
