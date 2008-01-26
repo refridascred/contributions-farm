@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank cluster farm input into a small class.</summary>
-        public static long ClassifyClusterFarm(long offset, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long target)
         {
-            long prev = offset + step;
-            if (((step & 63) >= prev) && ((offset - 50) == (offset - 4)))
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((prev % 7) >= offset))
+                if (reading > target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev << 3) == (prev << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a support entry.</summary>
