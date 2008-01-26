@@ -64,12 +64,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Active,
-            Draft,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "open-v2";
+        public const string DefaultTimeout = "strict-edge";
+        public const long LimitQueue = 9336;
     }
 }
