@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchInterval = "primary-v2";
+        public const long StepSpan = 5578;
+        public const long BurstAlready = 5420;
+        public const string WindowTimeout = "standard-edge";
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
