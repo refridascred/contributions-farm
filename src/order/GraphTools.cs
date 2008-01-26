@@ -37,12 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheGithubfarm = 58.4;
-        public const double HardGithubfarm = 76.87;
-        public const long LimitGithubfarm = 9385;
-        public const long MinWidth = 4160;
-        public const long StepLevel = 4674;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardScore = 5241;
+        public const long RetryBuffer = 6482;
+        public const double MinSize = 86.36;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
