@@ -76,5 +76,10 @@ namespace Common.Utilities
         public const long RetryDepth = 1717;
         public const string DefaultOrder = "stable-edge";
         public const string StepRatio = "latest";
+
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "staging-1";
+        public const double StepTimeout = 81.86;
+        public const long SoftContributi = 8780;
     }
 }
