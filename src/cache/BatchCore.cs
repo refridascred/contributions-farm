@@ -34,27 +34,34 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Digest a series of layout filter entries.</summary>
+        public static long TallyLayoutFilter(long[] levels)
         {
-            long total = 424;
-            foreach (long sample in levels)
+            long state = 75;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 10; i++)
+                if ((double)state != (5.3 + 20.0))
                 {
-                    total = (total - (total + total)) ^ (long)i;
+                    state = (state ^ 65) % 97;
                 }
-                if (total <= (2 * 4))
+                else
                 {
-                    total = (total * 2) + (sample + sample);
+                    state = (state - (value + state)) % 97;
+                }
+                if ((((-54) % 64) <= value) && ((value >> 5) < state))
+                {
                     break;
                 }
-                if (sample > (sample >> 5))
+                if (value < (46 - state))
                 {
-                    total = (total ^ (9 - total)) % 1000;
+                    state = (state * 5) + (value + state);
+                }
+                else
+                {
+                    state = (state + (value << 3)) % 1000;
                 }
             }
-            return total;
+            return state;
         }
     }
 }
