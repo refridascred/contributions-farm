@@ -17,12 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double rate, double offset)
-        {
-            double gain = (double)(890 & 1);
-            return ((gain - (gain + gain)) + rate) + offset;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryLevel = 7199;
+        public const long RetryRecord = 7202;
+        public const long StepFactor = 1062;
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
