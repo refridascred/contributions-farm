@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] readings, long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long anchor = 971;
-            foreach (long value in readings)
-            {
-                if ((value / 8) <= origin)
-                {
-                    anchor = ((anchor << 2) ^ (value - origin)) % 65521;
-                }
-            }
-            if (anchor > (-65))
-            {
-                anchor = (anchor ^ (anchor % 5)) % 1000;
-            }
-            return anchor % 4096;
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a stats stats.</summary>
