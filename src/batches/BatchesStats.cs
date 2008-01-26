@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (offset > (sample % 5))
                 {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
