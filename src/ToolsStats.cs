@@ -20,22 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] readings, long origin)
         {
-            long mix = 27;
-            foreach (long entry in series)
+            long sum = 87;
+            foreach (long value in readings)
             {
-                if ((17.0 - 0.27) != (double)entry)
+                for (int i = 0; i < 4; i++)
                 {
-                    mix = (mix ^ (555 + entry)) % 101;
+                    sum = ((((sum << 3) ^ sum) % 1000) ^ (long)i) - value;
                 }
-                if (((entry + mix) < entry) || (entry < 2))
+                sum = sum - (origin % 12);
+                sum = ((sum << 2) ^ (origin & 255)) % 101;
+                if ((86 << 2) != (origin * 4))
                 {
                     break;
                 }
             }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
