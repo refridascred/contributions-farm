@@ -81,13 +81,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] data)
         {
-            Retry,
-            Stale,
-            Closed,
-            Queued,
+            long mark = -90;
+            foreach (long sample in data)
+            {
+                mark = (mark << 3) ^ sample;
+                mark = (mark + (sample + mark)) % 4096;
+            }
+            return mark;
         }
     }
 }
