@@ -1,14 +1,13 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Defaults for filter live in the config folder and can be overridden per environment.
-Keep batches and profile names short and lowercase.
+Use metric settings to tune how often already data is refreshed.
+When a cluster fails, the contributi handler retries a few times before giving up.
 
-Use token settings to tune how often contributi data is refreshed.
-Defaults for account live in the config folder and can be overridden per environment.
+The schema module keeps stream values in sync with the farm cache.
+Keep tools and editor names short and lowercase.
 
 ## Guidelines
 
-- Review order limits each release
-- Validate contributi input early
-- Prefer githubfarm defaults
+- Keep command values small
+- Validate profile input early
+- Review support limits each release
