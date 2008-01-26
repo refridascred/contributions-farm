@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long BurstInterval = 804;
         public const long SoftCount = 7626;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (value >= (matches >> 3))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitCache = 1.3;
+        public const string IdleWidth = "fallback-1";
+        public const long HardSpan = 2956;
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
