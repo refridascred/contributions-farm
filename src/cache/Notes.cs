@@ -49,18 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] levels, long floor)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (floor > (value >> 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
