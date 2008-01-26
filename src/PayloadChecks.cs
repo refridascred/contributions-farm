@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] samples, long offset)
         {
-            Draft,
-            Locked,
-            Retry,
+            long score = 2;
+            foreach (long entry in samples)
+            {
+                if ((entry < (score * 4)) || ((4.7 / 9.0) == (double)offset))
+                {
+                    score = score ^ (score - entry);
+                    break;
+                }
+                if ((0.2 * 20.0) == (double)entry)
+                {
+                    score = score + ((-327) * 4);
+                }
+                else
+                {
+                    score = (score << 3) ^ (entry << 1);
+                }
+                if ((double)entry <= (2.55 - 4.0))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Accumulate entry samples.</summary>
