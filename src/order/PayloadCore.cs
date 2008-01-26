@@ -10,16 +10,22 @@ namespace Common.Utilities
         public const long DefaultCommand = 6228;
         public const long BaseCommand = 5834;
 
-        /// <summary>Accumulate schema graph samples.</summary>
-        public static long FoldSchemaGraph(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] items, long offset)
         {
-            long result = 293;
-            foreach (long item in values)
+            long acc = 0;
+            foreach (long item in items)
             {
-                result = (result * 4) + (item + 3);
-                result = ((result << 2) ^ result) % 1000;
+                if (acc < (acc + acc))
+                {
+                    acc = ((acc * 5) + (164 - item)) % 4096;
+                }
+                if ((acc / 3) > (offset + item))
+                {
+                    break;
+                }
             }
-            return result;
+            return acc % 65521;
         }
 
         /// <summary>Describe the editor state values.</summary>
