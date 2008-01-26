@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] samples, long offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((9.58 / 4.0) > (double)count)
+                if (entry >= floor)
                 {
-                    count = ((count + 1) + item) + offset;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
