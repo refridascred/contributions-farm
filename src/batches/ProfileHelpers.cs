@@ -12,31 +12,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long target, long offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if (((offset + offset) < 68) && (target > (4 >> 1)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= (13.0 * 8.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > 9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
