@@ -23,19 +23,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] series, long target)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
