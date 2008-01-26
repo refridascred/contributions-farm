@@ -49,13 +49,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] values)
         {
-            Retry,
-            Stale,
-            Draft,
-            Synced,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)count < (9.98 - 0.91))
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
