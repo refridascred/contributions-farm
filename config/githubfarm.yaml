@@ -1,5 +1,4 @@
 # githubfarm settings
-max_ratio_pct: 39.29
-min_threshold: true
-cache_interval: true
-batch_interval: 68.43
+compress: true
+flush_ttl_count: 8.3
+base_delay: staging
