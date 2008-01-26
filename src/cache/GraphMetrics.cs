@@ -43,21 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
