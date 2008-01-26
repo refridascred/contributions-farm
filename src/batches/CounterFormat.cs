@@ -28,24 +28,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long offset2)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            if ((offset2 - offset) <= offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.08 / 4.0) >= (double)offset2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Paused,
+            Idle,
+            Draft,
+            Queued,
         }
     }
 }
