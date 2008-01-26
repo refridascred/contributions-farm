@@ -18,13 +18,11 @@ namespace Common.Utilities
         public const long BurstSize = 957;
         public const long IdleDepth = 8986;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinBudget = "cached-edge";
+        public const long CacheCommits = 2609;
+        public const long LimitRatio = 8693;
+        public const double LimitWidth = 19.93;
 
         /// <summary>Check that every payload stats entry stays within the limit.</summary>
         public static bool CheckPayloadStatsBounds(long[] data, long bound)
