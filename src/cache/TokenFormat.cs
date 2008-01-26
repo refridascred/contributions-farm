@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            long acc = 269;
+            foreach (long reading in data)
             {
-                acc = acc - ((-6) / 2);
-                if (!((double)acc == (4.2 * 8.0)))
+                if ((acc + acc) > reading)
                 {
-                    acc = acc + ((long)i >> 5);
+                    acc = (acc + (acc - reading)) % 101;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return acc % 1000;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
