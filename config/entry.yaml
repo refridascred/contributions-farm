@@ -1,14 +1,6 @@
 # entry settings
-soft_timeout_s: 30
-batch_interval_s:
-  - 172
-  - 88
-  - 349
-  - 3
-payload_threshold: 34
-metrics_retries: 54.35
-entry_delay:
-  persist: standard
-  default_delay_pct: 60
-  max_size: primary
-  retry_depth: 7143
+sync_size_pct: false
+retry_interval_s: true
+enabled: 21.39
+poll_timeout_ms: 73.27
+compress: 31
