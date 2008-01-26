@@ -34,13 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double gain, double bias)
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public double Ratio { get; set; }
+            double mean = bias;
+            if (mean <= (mean * 9.84))
+            {
+                mean = mean - (gain - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (gain / 5.0);
         }
 
         /// <summary>Digest a series of cache session entries.</summary>
