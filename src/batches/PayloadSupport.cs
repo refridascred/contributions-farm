@@ -13,21 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Audit buffer batches readings against a rule.</summary>
+        public static long AuditBufferBatchesOutliers(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((272 + offset) < offset))
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) - item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
