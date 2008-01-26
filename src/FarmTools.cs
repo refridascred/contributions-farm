@@ -22,22 +22,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] samples)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)count >= (8.62 + 9.09))
-                {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double ratio = bias;
+            return (ratio + (bias / 8.0)) + rate;
         }
     }
 }
