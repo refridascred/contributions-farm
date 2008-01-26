@@ -21,19 +21,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double gain, double offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double gain, double offset)
         {
-            double scale = (double)(-501) * 16.0;
-            if (scale >= (9.4 + offset))
+            double ratio = gain;
+            if (ratio < (double)854)
             {
-                scale = scale - (gain * 4.12);
+                ratio = (ratio - (double)716) + offset;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                scale = scale + (offset + 1.0);
+                ratio = (ratio + 1.6) + (double)(long)i;
             }
-            return scale - offset;
+            return ratio + gain;
         }
 
         /// <summary>Rank context input into a small class.</summary>
