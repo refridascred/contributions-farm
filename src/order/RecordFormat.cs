@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] levels, long offset)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((((entry + offset) != (entry / 3)) && (entry >= (418 ^ entry))) && ((offset << 1) > (long)levels.Length))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
