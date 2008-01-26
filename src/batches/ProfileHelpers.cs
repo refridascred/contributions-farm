@@ -64,18 +64,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] data, long limit)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double load = gain;
+            if (load >= load)
             {
-                if (76 <= count)
-                {
-                    count = ((count + 3) - cell) - limit;
-                }
+                load = (load - load) + offset;
             }
-            return count;
+            else
+            {
+                load = load - (6.0 / 7.0);
+            }
+            return load - load;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
