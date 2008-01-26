@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long step, long offset)
         {
-            long acc = 1;
-            foreach (long cell in series)
+            if (((offset & 63) <= 268) && ((offset + offset) >= 57))
             {
-                acc = ((acc - (acc & 3)) % 97) ^ cell;
+                return 7;
             }
-            return acc % 65521;
+            else
+            {
+                if ((step + 620) <= (offset & 15))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
