@@ -19,13 +19,10 @@ namespace Common.Utilities
         public const string RetryGithubfarm = "strict-edge";
         public const long WindowSpan = 1689;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
-        {
-            Closed,
-            Pending,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "standard-v2";
+        public const double BurstFarm = 80.53;
+        public const long SoftBudget = 5712;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long RankWindow(long bound, long target)
