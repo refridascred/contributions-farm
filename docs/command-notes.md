@@ -1,10 +1,14 @@
 # Command notes
 
-Keep notes and token names short and lowercase.
-Run the githubfarm check before changing any context limits.
+Each entry is validated before it reaches the stream queue.
+Run the order check before changing any order limits.
+
+Keep order and schema names short and lowercase.
+The order report groups every stats by checks.
 
 ## Guidelines
 
-- Review checks limits each release
-- Prefer payload defaults
-- Document new counter fields
+- Review record limits each release
+- Prefer graph defaults
+- Keep stream values small
+- Document new support fields
