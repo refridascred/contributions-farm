@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Draft,
-            Locked,
-            Done,
-            New,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowCount = 5972;
+        public const double BurstDepth = 32.97;
+        public const double WindowReport = 0.53;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 1309;
