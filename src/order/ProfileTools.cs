@@ -61,22 +61,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of report record readings.</summary>
-        public static long FoldReportRecord(long[] series)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long floor, long origin)
         {
-            long carry = 335;
-            foreach (long cell in series)
+            if ((floor << 2) == (floor + origin))
             {
-                if (!((58 + carry) >= (cell * 5)))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (7.9 - 2.0))
                 {
-                    carry = carry + (carry >> 1);
+                    return 7;
                 }
                 else
                 {
-                    carry = ((carry * 3) + (431 << 3)) % 4096;
+                    return 1;
                 }
             }
-            return carry;
         }
     }
 }
