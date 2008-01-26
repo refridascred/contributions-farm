@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+COMMAND_LIMIT=368
+log "limit is ${COMMAND_LIMIT}"
 
-for item in edge eu-west; do
+for item in staging green latest primary; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
