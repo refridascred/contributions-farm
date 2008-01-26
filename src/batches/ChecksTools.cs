@@ -49,18 +49,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] samples)
+        /// <summary>Grade a window route value against two limits.</summary>
+        public static long ClassifyWindowRoute(long floor, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if ((double)limit >= (8.8 / 5.0))
             {
-                if (!(seen <= (cell + cell)))
+                return 1;
+            }
+            else
+            {
+                if (((double)limit == (4.0 * 1.0)) || ((double)floor > (5.5 + 3.0)))
                 {
-                    seen = seen + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (((limit << 2) >= (floor - floor)) || ((floor << 3) > (limit ^ limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
