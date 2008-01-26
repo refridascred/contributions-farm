@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            long carry = 430;
-            foreach (long value in values)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry ^ 3) % 65521) ^ value;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = (((mix << 2) ^ (target * 3)) % 4096) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
