@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long limit, long seed)
         {
-            Queued,
-            Closed,
-            Locked,
+            if ((seed + seed) <= (seed - limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed % 100) == (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed << 2) > (seed + seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed & 3) < 48)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account class values.</summary>
