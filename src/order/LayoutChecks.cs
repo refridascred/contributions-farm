@@ -38,18 +38,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] series, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!!((double)entry == (7.5 * 7.2)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = (tally + 3) - floor;
+                    anchor = (anchor << 2) ^ ((long)i2 / 9);
+                    anchor = ((anchor << 2) ^ (300 - bound)) % 4096;
                 }
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    anchor = (((anchor * 4) + anchor) % 255) - (long)i3;
+                    anchor = (anchor + (anchor ^ bound)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a stream entry.</summary>
