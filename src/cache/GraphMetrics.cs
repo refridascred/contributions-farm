@@ -44,12 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] data)
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (((hits * 4) <= (datum >> 4)) || (835 <= (5 - hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
