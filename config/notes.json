@@ -1,7 +1,12 @@
 {
-  "hard_size": 250,
-  "enabled": 6.69,
-  "channel_capacity": 72,
-  "token_window": "strict",
-  "idle_delay_ms": "eu-west"
+  "sync_delay_s": {
+    "hard_capacity_pct": "standard",
+    "audit": 62,
+    "order_delay": 100
+  },
+  "batch_capacity": "standard",
+  "sync_delay_pct": "local",
+  "format_timeout": 1024,
+  "persist": 73,
+  "soft_delay": [301, 90, 64]
 }
