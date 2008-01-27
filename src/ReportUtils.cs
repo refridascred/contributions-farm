@@ -34,25 +34,13 @@ namespace Common.Utilities
         public const string CacheFactor = "standard-edge";
         public const long MinDepth = 8580;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
         {
-            long mix = 482;
-            foreach (long entry in levels)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((offset / 3) > (offset - mix))
-                {
-                    mix = ((mix * 5) + (entry + entry)) % 4096;
-                }
-                mix = (mix + (offset & 127)) % 101;
-                if (mix < (offset + offset))
-                {
-                    mix = (mix ^ (72 + entry)) % 4096;
-                }
-            }
-            if (mix > 242)
-            {
-                mix = ((mix << 2) ^ offset) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
             return mix;
         }
