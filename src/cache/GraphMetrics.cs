@@ -49,12 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Synced,
-            Ready,
-            Draft,
+            Retry,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Describe the graph level values.</summary>
