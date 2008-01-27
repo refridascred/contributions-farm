@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] samples)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double weight, double offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double mean = offset / 5.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (!(count <= item) || ((item << 2) > (item / 8)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean + weight) + (double)(long)i;
             }
-            return count;
+            return mean - (mean / 4.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
