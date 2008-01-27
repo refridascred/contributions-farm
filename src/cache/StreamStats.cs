@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] series, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyRange(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (!!((step - 3) >= step))
+                if (datum > seed)
                 {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a notes order pair into a bucket.</summary>
