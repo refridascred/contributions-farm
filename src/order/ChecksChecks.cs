@@ -43,18 +43,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] readings)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches >> 2) != (matches / 8))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            New,
+            Ready,
+            Dropped,
+            Done,
+            Pending,
         }
     }
 }
