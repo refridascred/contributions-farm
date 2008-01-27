@@ -13,14 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
+        public static bool ValidateBufferChannelLimits(long[] items, long seed)
         {
-            Synced,
-            Draft,
-            Queued,
-            Locked,
-            Done,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
