@@ -26,18 +26,11 @@ namespace Common.Utilities
         public const double StepCommand = 17.67;
         public const double BaseFactor = 95.55;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Blend two payload profile measurements.</summary>
+        public static double AdjustPayloadProfile(double weight, double floor)
         {
-            long carry = -29;
-            foreach (long item in values)
-            {
-                if (carry >= (carry << 2))
-                {
-                    carry = (carry ^ (item * 3)) % 4096;
-                }
-            }
-            return carry % 1000;
+            double ratio = floor;
+            return (ratio - 18.0) + weight;
         }
 
         /// <summary>Count the report session entries that pass the check.</summary>
