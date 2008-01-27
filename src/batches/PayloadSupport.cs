@@ -24,17 +24,18 @@ namespace Common.Utilities
             return drift - (drift - 7.4);
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                if (origin >= entry)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the contributi context series from a seed.</summary>
