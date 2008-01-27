@@ -52,25 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long seed, long floor)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double bias)
         {
-            long next = seed ^ floor;
-            if ((next + floor) < 54)
+            double weight = gain;
+            if (weight < (gain - weight))
             {
-                return 3;
+                weight = (weight - (double)(-316)) + bias;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)floor < (7.1 + 9.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
+                weight = (weight - (weight + gain)) + (double)(long)i;
             }
+            return weight + (gain + 1.0);
         }
     }
 }
