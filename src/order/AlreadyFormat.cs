@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a context metric figure with a bias.</summary>
-        public static double BlendContextMetric(double rate, double floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double ratio = floor;
-            if (ratio > (double)0)
-            {
-                ratio = ratio + floor;
-            }
-            else
-            {
-                ratio = ratio - (double)61;
-            }
-            return ratio - rate;
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of report entries.</summary>
