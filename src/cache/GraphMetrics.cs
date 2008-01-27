@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] data, long floor)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of context readings.</summary>
