@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long step)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long sum = step;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    sum = (sum << 3) ^ ((long)i2 - step);
+                }
+                sum = sum + (7 + step);
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
