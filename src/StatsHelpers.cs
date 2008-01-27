@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the order commits entries that pass the check.</summary>
-        public static long AuditOrderCommitsMatches(long[] data)
+        /// <summary>Find the first stats tools entry that matches the target.</summary>
+        public static long LocateStatsToolsIndex(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item & 31) <= (772 ^ item))
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
