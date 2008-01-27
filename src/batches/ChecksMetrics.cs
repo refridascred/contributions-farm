@@ -12,19 +12,32 @@ namespace Common.Utilities
             return (mean + (gain / 4.0)) + span;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long step)
+        /// <summary>Grade a cache counter value against two limits.</summary>
+        public static long RankCacheCounter(long target, long bound)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long cur = target ^ bound;
+            if (target <= cur)
             {
-                if (value < step)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > (6.0 / 3.0))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((2 * 4) >= cur)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Find the first cluster checks entry that matches the target.</summary>
