@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Locate a checks record reading by value.</summary>
-        public static long FindChecksRecordIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 1364;
+        public const long MaxChannel = 3465;
+        public const long RetryChannel = 3523;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
