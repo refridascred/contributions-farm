@@ -55,18 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 2) != (400 + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowTimeout = 8464;
+        public const long IdleBuffer = 1816;
+        public const long BurstLevel = 6249;
+        public const long BurstBuffer = 7242;
     }
 }
