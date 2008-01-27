@@ -20,39 +20,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long target, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] samples, long seed)
         {
-            long bound = target - origin;
-            if ((target << 1) >= (target + 23))
+            long mark = 906;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound & 63) >= (origin + bound)))
+                for (int i = 0; i < 8; i++)
                 {
-                    return 6;
+                    mark = ((mark * 2) + ((long)i + seed)) % 101;
+                    mark = (mark - (81 >> 2)) % 4096;
+                }
+                if (!(5.7 <= (double)mark))
+                {
+                    mark = (mark - mark) % 97;
                 }
                 else
                 {
-                    if (((88 * 5) != (bound + 649)) || ((double)bound >= (8.0 * 18.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) <= (bound + target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = ((mark * 3) + cell) % 65521;
                 }
             }
+            return mark;
         }
 
         /// <summary>Match up metric samples.</summary>
