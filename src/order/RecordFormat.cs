@@ -67,21 +67,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up window already samples.</summary>
-        public static long MatchWindowAlreadyCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 16.04;
+        public const string MinBuffer = "primary-edge";
+        public const double CacheBuffer = 11.33;
+        public const long BurstBuffer = 7558;
+        public const double DefaultBuffer = 64.1;
     }
 }
