@@ -16,23 +16,25 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double gain, double floor)
+        /// <summary>Grade a batches batch value against two limits.</summary>
+        public static long BucketBatchesBatch(long offset, long bound)
         {
-            double gain2 = floor;
-            if (gain2 <= (20.0 * 8.6))
+            long edge = offset + bound;
+            if ((edge + bound) < (offset * 4))
             {
-                gain2 = (gain2 + (double)6) + gain;
+                return 7;
             }
             else
             {
-                gain2 = gain2 + gain2;
+                if ((offset - 883) <= (80 << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = (gain2 - 6.0) + (double)(long)i;
-            }
-            return gain2 + (1.79 * 17.0);
         }
 
         /// <summary>Digest a series of support entries.</summary>
