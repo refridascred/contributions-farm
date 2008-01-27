@@ -26,19 +26,24 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double gain, double floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long floor, long origin)
         {
-            double load = (double)(45 - 4);
-            if (load > load)
+            if (floor > (floor / 2))
             {
-                load = (load + load) - floor;
+                return 1;
             }
             else
             {
-                load = load - (load / 5.0);
+                if (((origin + floor) > (origin + origin)) || ((floor & 15) < (origin + origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return load + (load + gain);
         }
 
         /// <summary>Rank order input into a small class.</summary>
