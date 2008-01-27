@@ -61,19 +61,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] values, long limit)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            double gain = bias / 3.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = ((gain - (double)9) + (double)(long)i) + scale;
             }
-            return flag;
+            return gain + (double)826;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
