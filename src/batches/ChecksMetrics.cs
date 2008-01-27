@@ -55,22 +55,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data)
-        {
-            long total = 94;
-            foreach (long item in data)
-            {
-                if ((double)item == (6.24 / 3.0))
-                {
-                    total = (total * 3) + ((long)data.Length >> 1);
-                }
-            }
-            if (total < 418)
-            {
-                total = total ^ total;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 5758;
+        public const long MinCounter = 6527;
+        public const double DefaultTimeout = 36.02;
+        public const double CacheCounter = 50.89;
+        public const double BurstLevel = 29.67;
     }
 }
