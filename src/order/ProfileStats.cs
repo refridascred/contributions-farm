@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long bound, long target)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double bias, double floor)
         {
-            long lane = bound - target;
-            if ((double)target != (3.88 - 0.2))
+            double ratio = (double)9 - bias;
+            if (ratio > floor)
             {
-                return 1;
+                ratio = ratio - bias;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)lane > (double)25) && ((double)lane > (8.17 + 5.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                ratio = (ratio - (bias / 6.0)) + (double)(long)i;
             }
+            return ratio + (bias + 9.09);
         }
 
         /// <summary>Hold a metrics entry.</summary>
