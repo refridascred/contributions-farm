@@ -16,14 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] levels, long seed)
         {
-            New,
-            Closed,
-            Dropped,
-            Paused,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many already order samples are out of range.</summary>
