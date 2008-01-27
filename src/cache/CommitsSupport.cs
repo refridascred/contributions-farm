@@ -28,17 +28,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long origin, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!((origin & 127) != (52 + origin)))
             {
-                if (values[i] >= seed)
+                return 7;
+            }
+            else
+            {
+                if (((origin * 3) <= (origin - origin)) && ((target - target) <= (9 * 5)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target >= (5.7 + 0.96)) || ((origin << 1) > (26 + origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
