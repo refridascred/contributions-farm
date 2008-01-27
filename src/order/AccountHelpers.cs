@@ -36,11 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] values, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen + reading) < (seed - 521))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record class values.</summary>
