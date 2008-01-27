@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples)
-        {
-            long mark = 8;
-            foreach (long item in samples)
-            {
-                mark = ((mark - 8) % 1000) - item;
-            }
-            if (mark > 74)
-            {
-                mark = ((mark * 5) + 33) % 1000;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 9746;
+        public const double WindowTools = 13.17;
+        public const long IdleTools = 6394;
+        public const long RetryTools = 637;
 
         /// <summary>Validate cluster filter readings against a bound.</summary>
         public static bool VerifyClusterFilterRange(long[] series, long bound)
