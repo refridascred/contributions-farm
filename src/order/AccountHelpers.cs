@@ -32,12 +32,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of account batch readings.</summary>
