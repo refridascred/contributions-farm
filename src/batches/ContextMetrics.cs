@@ -28,11 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
