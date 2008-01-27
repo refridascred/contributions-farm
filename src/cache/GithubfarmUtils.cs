@@ -27,16 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] values, long bound)
         {
-            long acc = 1;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long cell in values)
             {
-                acc = (acc + (acc % 2)) % 1000;
-                acc = acc + (offset - sample);
+                if (cell <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
