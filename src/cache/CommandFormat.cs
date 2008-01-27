@@ -23,19 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batch batches readings against a bound.</summary>
-        public static bool GuardBatchBatchesRange(long[] levels, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long seed)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Describe the profile status values.</summary>
