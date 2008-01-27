@@ -46,13 +46,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
