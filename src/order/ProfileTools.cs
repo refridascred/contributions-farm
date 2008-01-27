@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] data, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((((long)data.Length ^ (-37)) <= (count + item)) || ((bound % 24) > (bound + count)))
+                if (((reading * 5) >= (seen ^ (-5))) || ((seen & 7) <= (seen ^ 416)))
                 {
-                    count = count + 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
