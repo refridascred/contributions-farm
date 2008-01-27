@@ -85,11 +85,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] data, long offset)
         {
-            public double Region { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((item + 9) >= (item % 8)) || (((offset & 7) <= (2 - 5)) && ((89 << 3) >= (hits & 255))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
