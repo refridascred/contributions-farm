@@ -1,23 +1,4 @@
 # githubfarm settings
-farm_timeout:
-  sync_ttl:
-    - primary
-    - open
-  commits_size: 84.38
-  hard_size_s: 3882
-  readonly: true
-retry_retries_s: staging
-flush_threshold:
-  notes_interval: latest
-  max_ratio_ms: legacy
-  persist:
-    - 287
-    - 483
-    - 338
-    - 32
-  batch_interval_pct: 9016
-idle_depth_pct:
-  - 232
-  - 26
-  - 455
-audit: blue
+format_interval: green
+max_window_pct: 69.18
+command_interval: open
