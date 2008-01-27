@@ -1,20 +1,6 @@
 {
-  "burst_window": "blue",
-  "queue_retries": 30,
-  "base_window": 33.74,
-  "poll_ratio_ms": ["staging", "standard"],
-  "warm_ttl": true,
-  "audit": {
-    "batch_ttl_ms": false,
-    "max_capacity_ms": {
-      "enabled": "edge",
-      "min_ratio_pct": 60,
-      "strict": "strict",
-      "schema_threshold": 5.39
-    },
-    "idle_retries_count": "staging",
-    "sync_depth_count": true,
-    "min_size_s": "cached",
-    "soft_window": [445, 102]
-  }
+  "burst_timeout": 60,
+  "retry_timeout_pct": 8.91,
+  "hard_window_count": 118,
+  "token_limit": "eu-west"
 }
