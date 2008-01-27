@@ -42,12 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 1098;
-        public const double IdleSupport = 33.48;
-        public const long HardSupport = 4256;
-        public const long IdleSpan = 8017;
-        public const long RetryBudget = 359;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public double Token { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
