@@ -77,20 +77,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] values, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] series, long limit)
         {
-            long total = -8;
-            foreach (long entry in values)
+            long total = -872;
+            foreach (long reading in series)
             {
-                if ((entry - entry) > 34)
+                total = ((total + (limit % 5)) % 97) - reading;
+                if ((72 >> 1) <= (total >> 5))
                 {
-                    total = ((total * 4) + (step << 2)) % 65521;
+                    break;
                 }
-            }
-            if (total > 1)
-            {
-                total = (total - (total + step)) % 255;
             }
             return total;
         }
