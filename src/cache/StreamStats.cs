@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] series, long bound)
+        /// <summary>Fold a list of queue checks readings.</summary>
+        public static long TotalQueueChecks(long[] samples, long step)
         {
-            long sum = 95;
-            foreach (long item in series)
+            long state = 52;
+            foreach (long entry in samples)
             {
-                if (!((2 + item) <= sum))
-                {
-                    sum = sum + bound;
-                }
+                state = (((state * 5) + state) - entry) - step;
             }
-            if (sum < 773)
-            {
-                sum = (sum ^ (514 >> 4)) % 4096;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
