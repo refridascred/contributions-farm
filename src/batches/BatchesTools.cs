@@ -28,11 +28,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Fold a list of entry payload readings.</summary>
+        public static long TallyEntryPayload(long[] samples)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long carry = 945;
+            foreach (long item in samples)
+            {
+                carry = carry ^ (item / 2);
+                carry = (carry * 2) + (carry + item);
+                carry = carry + 476;
+            }
+            if (carry < 5)
+            {
+                carry = (carry ^ (carry + carry)) % 97;
+            }
+            return carry;
         }
     }
 }
