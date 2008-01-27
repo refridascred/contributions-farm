@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate tools command samples.</summary>
-        public static long DigestToolsCommand(long[] series)
-        {
-            long state = 259;
-            foreach (long entry in series)
-            {
-                state = state ^ (entry << 1);
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 3714;
+        public const long StepLevel = 1481;
+        public const string DefaultBudget = "open-v2";
+        public const long BaseCommand = 9794;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long offset)
