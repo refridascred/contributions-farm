@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] data)
         {
-            long result = 999;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                result = ((result * 3) + (result - sample)) % 4096;
-                if (!((result - sample) < sample))
+                if ((370 - entry) <= (817 + tally))
                 {
-                    result = (result - sample) % 4096;
+                    tally = tally + 2;
                 }
             }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
