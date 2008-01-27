@@ -30,12 +30,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 34.75;
-        public const long BurstEntry = 5108;
-        public const double HardEntry = 86.15;
-        public const string RetryEntry = "stable-edge";
-        public const long LimitEntry = 3268;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Failed,
+            Paused,
+            Queued,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Find the first cache support entry that matches the target.</summary>
         public static long LocateCacheSupportIndex(long[] samples, long floor)
