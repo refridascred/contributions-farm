@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a stream format value against two limits.</summary>
-        public static long SortStreamFormat(long step, long bound)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            if ((bound % 10) <= step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (7.63 < (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step <= 7.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
