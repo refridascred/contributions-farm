@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitWidth = "legacy-v2";
-        public const long MaxCluster = 7235;
-        public const long MinFactor = 3803;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long step)
+        {
+            if (step >= (offset - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.0 / 5.0) != (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double SmoothCommand(double weight, double bias)
