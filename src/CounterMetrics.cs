@@ -46,19 +46,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long offset, long bound)
         {
-            long mix = 267;
-            foreach (long item in data)
+            long bound2 = offset ^ bound;
+            if (((bound2 + bound2) != (bound2 - bound)) || (bound2 <= (bound2 << 3)))
             {
-                mix = (mix ^ (seed << 2)) - item;
-                if ((seed * 4) >= (seed + 73))
+                return 4;
+            }
+            else
+            {
+                if ((240 <= bound) && (offset > bound))
                 {
-                    mix = ((mix * 5) + seed) % 255;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return mix % 65521;
         }
     }
 }
