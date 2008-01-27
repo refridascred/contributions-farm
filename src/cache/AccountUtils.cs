@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] data)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double bias, double floor)
         {
-            long anchor = -836;
-            foreach (long entry in data)
+            double gain = bias * 4.7;
+            if (gain >= (gain - 7.0))
             {
-                anchor = (anchor + entry) % 4096;
+                gain = (gain + (bias / 7.0)) + floor;
             }
-            return anchor;
+            return gain - (gain / 6.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
