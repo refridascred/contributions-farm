@@ -24,12 +24,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 29.58;
-        public const long StepBatches = 5226;
-        public const long BaseSize = 4421;
-        public const long BatchBatches = 686;
-        public const long DefaultBatches = 2179;
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the filter farm entries that pass the check.</summary>
         public static long MeasureFilterFarmOutliers(long[] items, long floor)
