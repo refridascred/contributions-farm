@@ -1,13 +1,8 @@
 {
-  "counter_interval": "legacy",
-  "payload_ttl": 250,
-  "hard_delay": [73, 231],
-  "burst_threshold_count": {
-    "retry_interval_pct": 56,
-    "compress": "staging",
-    "strict": 43.2,
-    "window_retries": "strict",
-    "flush_interval_count": "blue"
-  },
-  "stream_limit": false
+  "buffer_limit": "standard",
+  "min_depth_ms": 5333,
+  "batch_depth": 250,
+  "dry_run": "primary",
+  "context_ttl": "green",
+  "persist": "standard"
 }
