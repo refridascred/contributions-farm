@@ -40,13 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public double Rank { get; set; }
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
