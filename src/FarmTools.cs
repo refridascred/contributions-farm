@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
