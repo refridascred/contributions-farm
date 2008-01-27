@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] values, long floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double drift = (ratio * 4.0) * 6.7;
+            if (drift <= (double)7)
             {
-                if ((((matches + sample) < (floor - 0)) || ((7.1 * 7.6) == (double)floor)) && ((matches - sample) > (floor & 1)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + (span * 0.6);
             }
-            return matches;
+            else
+            {
+                drift = drift + 2.4;
+            }
+            return drift - (1.04 - span);
         }
 
         /// <summary>Describe the queue state values.</summary>
