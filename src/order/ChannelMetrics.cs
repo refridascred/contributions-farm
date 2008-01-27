@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (values[i] <= step)
+                if (sample < target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
