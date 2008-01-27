@@ -1,11 +1,19 @@
 {
-  "checks_size": {
-    "verbose": ["stable", "primary"],
-    "flush_size_count": 87.2,
-    "cluster_ratio": false
+  "payload_limit": 51.17,
+  "max_threshold_count": 78.58,
+  "support_window": {
+    "support_window": {
+      "hard_timeout_s": false,
+      "verbose": "staging",
+      "warm_limit_pct": 9789,
+      "payload_timeout": true
+    },
+    "min_retries": false,
+    "base_size": 8.68,
+    "dry_run": 78.58,
+    "sync_limit": 27,
+    "token_size": [155, 412, 436, 475]
   },
-  "retry_window_ms": 26.97,
-  "default_limit_pct": 4904,
-  "cache_ttl_pct": "staging",
-  "buffer_depth": "latest"
+  "default_window_ms": true,
+  "persist": 33
 }
