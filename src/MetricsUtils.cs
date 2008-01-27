@@ -90,19 +90,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] series, long floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long sum = 28;
-            foreach (long cell in series)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                sum = (sum ^ (floor + 518)) % 1000;
-                if ((cell + 93) <= (floor & 127))
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return sum;
+            return mark;
         }
     }
 }
