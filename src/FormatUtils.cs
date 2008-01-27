@@ -65,18 +65,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] items)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((cell * 5) <= (624 + cell))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
