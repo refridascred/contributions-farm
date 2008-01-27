@@ -51,18 +51,20 @@ namespace Common.Utilities
         public const long SoftFarm = 8191;
         public const double WindowDepth = 88.89;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings, long floor)
+        /// <summary>Derive the next filter buffer value from a seed.</summary>
+        public static long SeriesFilterBuffer(long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((5.9 * 0.7) >= (double)entry)
+                sum = (sum - (step + step)) % 65521;
+                if (!((double)sum > 6.8))
                 {
-                    count = (count + 1) + floor;
+                    sum = (sum * 4) + (step - step);
                 }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
