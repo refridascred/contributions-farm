@@ -39,18 +39,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] values, long offset)
+        /// <summary>Rank cache order input into a small class.</summary>
+        public static long RankCacheOrder(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long cur = origin ^ bound;
+            if (((double)cur > (2.4 - 7.1)) && ((origin ^ origin) < (cur - origin)))
             {
-                if ((double)cell <= (double)offset)
+                return 1;
+            }
+            else
+            {
+                if (cur >= (bound << 1))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
