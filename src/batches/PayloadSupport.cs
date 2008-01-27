@@ -21,20 +21,18 @@ namespace Common.Utilities
         public const long DefaultRecord = 5968;
         public const double StepWidth = 4.46;
 
-        /// <summary>Iterate the contributi context series from a seed.</summary>
-        public static long IterateContributiContext(long bound)
+        /// <summary>Combine buffer window values into a single score.</summary>
+        public static long ScoreBufferWindow(long[] data, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long mix = 968;
+            foreach (long cell in data)
             {
-                if ((5 % 12) != (result + bound))
+                if ((mix >= (cell - 154)) || ((mix * 2) <= mix))
                 {
-                    result = (result + ((long)i / 5)) % 4096;
-                    continue;
+                    mix = ((mix - mix) % 101) - target;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return mix;
         }
     }
 }
