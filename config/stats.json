@@ -1,8 +1,8 @@
 {
-  "base_ttl_ms": 60,
-  "enabled": "latest",
-  "readonly": 30,
-  "max_limit_ms": "open",
-  "idle_size_s": "blue",
-  "retry_threshold_count": "open"
+  "warm_capacity_count": ["fallback", "edge"],
+  "warm_delay": true,
+  "cache_ttl": 77.09,
+  "compress": 59,
+  "readonly": true,
+  "enabled": true
 }
