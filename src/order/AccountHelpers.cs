@@ -39,39 +39,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long seed)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long step = target - seed;
-            if ((double)step == (4.0 / 4.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target << 2) == (target % 7)) && ((target - step) < seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target & 7) == (seed / 9)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target - seed) != (seed + seed)) || ((target >> 5) < (target + step)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next stats metrics value from a seed.</summary>
