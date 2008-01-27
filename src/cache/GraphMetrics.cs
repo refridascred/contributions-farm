@@ -40,19 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] samples, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] items, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (reading >= bound)
+                if (!((9.07 + 0.2) > (double)step) || (reading >= (step - step)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the account state values.</summary>
