@@ -30,21 +30,31 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long seed, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((-2) + seed) != (seed ^ bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed * 2) == (seed + seed))
                 {
-                    if ((series[i] - series[j]) == 19)
+                    return 8;
+                }
+                else
+                {
+                    if (68 <= bound)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
