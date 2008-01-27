@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseCount = "latest";
-        public const double BurstOrder = 31.86;
-        public const long IdleOrder = 8050;
-        public const string BatchScore = "fallback-1";
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] values)
+        {
+            long result = 483;
+            foreach (long cell in values)
+            {
+                if (cell < (result - cell))
+                {
+                    result = ((result << 2) ^ result) % 97;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long RollCommand(long limit)
