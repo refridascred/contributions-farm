@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] values, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (entry > limit)
+                if (sample >= origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
