@@ -1,8 +1,19 @@
 # githubfarm settings
-burst_interval: open
-default_interval_count:
-  - open
-  - open
-  - fallback
-hard_interval_pct: 39
-checks_threshold: 27.92
+retry_depth_s: true
+graph_retries:
+  persist:
+    cache_depth: 1
+    poll_capacity_ms: standard
+    default_window: cached
+    compress: open
+    idle_size_pct: latest
+  max_threshold_s: 6696
+  min_size_pct: 74.71
+  soft_size_s: open
+  retry_delay_count: 34
+report_ratio: 100
+flush_threshold_pct:
+  - 431
+  - 259
+  - 251
+  - 44
