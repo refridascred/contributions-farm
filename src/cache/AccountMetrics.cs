@@ -41,19 +41,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double scale, double span)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double weight = 4.5;
-            if (weight > (span * 1.0))
-            {
-                weight = weight - (scale / 5.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - span;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the filter token series from a seed.</summary>
