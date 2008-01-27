@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer window readings.</summary>
-        public static long FoldBufferWindow(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] series, long offset)
         {
-            long mix = 6;
-            foreach (long datum in readings)
+            long acc = 58;
+            foreach (long reading in series)
             {
-                mix = (mix - (datum - datum)) % 101;
+                acc = ((acc * 3) + (reading & 255)) % 1000;
             }
-            if (mix > 421)
+            if (acc < 5)
             {
-                mix = (mix - (mix / 5)) % 255;
+                acc = (acc * 4) + (offset - 568);
             }
-            return mix % 4096;
+            return acc % 65521;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
