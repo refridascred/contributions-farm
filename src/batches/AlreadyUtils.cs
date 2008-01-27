@@ -59,20 +59,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] values, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state + seed) > seed)
+                if (values[i] > limit)
                 {
-                    state = (state * 3) + (state << 1);
+                    return (long)i;
                 }
-                state = ((state * 5) + seed) % 97;
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
     }
 }
