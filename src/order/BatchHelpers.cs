@@ -17,22 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] values, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (((step & 31) > (cell % 8)) && ((double)seen < 18.0))
+                if ((double)entry != (7.5 * 6.07))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit stream counter readings against a rule.</summary>
