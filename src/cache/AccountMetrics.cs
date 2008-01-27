@@ -57,22 +57,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] data)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((tally - datum) >= tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
