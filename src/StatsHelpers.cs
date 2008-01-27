@@ -53,17 +53,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first metric channel entry that matches the target.</summary>
-        public static long LocateMetricChannelIndex(long[] values, long offset)
+        /// <summary>Combine account graph values into a single score.</summary>
+        public static long FoldAccountGraph(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 0;
+            foreach (long item in items)
             {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result - (item & 63)) % 1000;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Hold a payload entry.</summary>
