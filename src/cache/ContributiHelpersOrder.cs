@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] data)
+        /// <summary>Rank commits tools input into a small class.</summary>
+        public static long GradeCommitsTools(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if (!((limit / 5) < (floor % 64)))
             {
-                if (((double)seen >= (5.0 + 2.0)) || (((seen + value) == (682 << 2)) && ((value ^ seen) >= (seen >> 5))))
+                return 6;
+            }
+            else
+            {
+                if ((1.8 - 8.0) < (double)floor)
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
