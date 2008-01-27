@@ -1,19 +1,4 @@
 # githubfarm settings
-stream_threshold: primary
-checks_limit: open
-githubfarm_retries: local
-cache_ttl:
-  report_capacity: standard
-  idle_timeout: staging
-  cache_threshold_pct:
-    audit: 60.08
-    filter_size:
-      - 63
-      - 338
-      - 46
-      - 268
-    format_timeout: 35.12
-    sync_depth_pct: false
-    sync_size: 8310
-  cache_size_count: standard
-  min_ratio_s: 2990
+retry_ttl: fallback
+counter_timeout: 60
+cluster_limit: open
