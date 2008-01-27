@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] values)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count >= (value ^ value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
