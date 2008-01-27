@@ -52,12 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] readings, long step)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
