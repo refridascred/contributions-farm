@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two metrics entry measurements.</summary>
-        public static double BlendMetricsEntry(double gain, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] series, long step)
         {
-            double mean = (double)(9 << 2);
-            return (mean + (gain / 4.0)) + span;
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count < (62 / 4)) && ((5.56 + 0.54) == (double)step))
+                {
+                    count = (count + 3) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
