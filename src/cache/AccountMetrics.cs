@@ -48,18 +48,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many queue editor samples are out of range.</summary>
-        public static long AuditQueueEditorHits(long[] data, long target)
+        /// <summary>Roll a filter cache counter forward.</summary>
+        public static long SeriesFilterCache(long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((datum << 3) < (datum ^ 786)) || ((tally ^ target) >= tally))
-                {
-                    tally = tally + 1;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every queue editor entry stays within the limit.</summary>
