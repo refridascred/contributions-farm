@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] values, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long acc = 66;
-            foreach (long cell in values)
-            {
-                acc = ((acc ^ (cell >> 5)) % 255) - target;
-            }
-            return acc % 65521;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
