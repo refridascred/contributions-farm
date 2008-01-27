@@ -51,12 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long origin)
         {
-            public double Token { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix + mix) % 4096;
+                mix = ((mix * 3) + origin) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Locate a format reading by value.</summary>
