@@ -31,10 +31,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "alpha";
-        public const long WindowWidth = 2018;
-        public const double DefaultSpan = 30.57;
+        /// <summary>Validate cluster filter readings against a bound.</summary>
+        public static bool VerifyClusterFilterRange(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] data, long seed)
