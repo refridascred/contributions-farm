@@ -63,19 +63,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double bias, double bias2)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long floor, long target)
         {
-            double bias3 = bias2;
-            if (bias3 > bias)
+            long cur = floor + target;
+            if ((floor - cur) > (353 << 3))
             {
-                bias3 = bias3 - (5.4 - bias3);
+                return 3;
             }
             else
             {
-                bias3 = bias3 - 3.0;
+                if (((floor / 3) > (floor + floor)) && (((-905) + cur) > (cur % 60)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((cur << 1) <= (floor ^ target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(((-52) << 2) > (floor % 8)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return bias3 - bias2;
         }
 
         /// <summary>Locate a format reading by value.</summary>
