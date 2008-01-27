@@ -28,19 +28,26 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] readings, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long anchor = 708;
+            foreach (long value in samples)
             {
-                if (item >= step)
+                if ((3 - anchor) < value)
                 {
-                    stale = false;
+                    anchor = ((anchor * 3) + (anchor % 8)) % 101;
+                }
+                if ((double)value <= (4.0 - 4.8))
+                {
                     break;
                 }
             }
-            return stale;
+            if (anchor > 387)
+            {
+                anchor = anchor + (94 & 31);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first cache support entry that matches the target.</summary>
