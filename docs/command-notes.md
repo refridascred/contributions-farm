@@ -1,15 +1,14 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Run the session check before changing any editor limits.
-The editor report groups every cluster by context.
+The report helpers are pure functions, so they are safe to call from any thread.
+Keep metric and stream names short and lowercase.
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Defaults for account live in the config folder and can be overridden per environment.
+The session helpers are pure functions, so they are safe to call from any thread.
+A editor that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Prefer context defaults
-- Review contributi limits each release
-- Log every token change
-- Document new queue fields
+- Keep channel values small
+- Review commits limits each release
+- Log every metric change
+- Document new graph fields
