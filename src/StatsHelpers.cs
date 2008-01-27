@@ -38,27 +38,39 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] series, long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long origin, long target)
         {
-            long result = 4;
-            foreach (long cell in series)
+            long step = origin - target;
+            if (!((9.7 + 9.9) <= (double)origin))
             {
-                result = result + (cell + floor);
-                if ((-826) > (cell + result))
+                return 8;
+            }
+            else
+            {
+                if (step >= (942 * 4))
                 {
-                    result = (result - result) % 65521;
+                    return 7;
                 }
-                if ((cell < (result + floor)) || ((double)floor < (9.8 - 2.32)))
+                else
                 {
-                    result = ((result << 3) ^ ((-38) % 64)) % 255;
+                    if ((target - target) != (target + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)step != (4.81 / 8.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (result < (-4))
-            {
-                result = result - (22 & 3);
-            }
-            return result % 65521;
         }
 
         /// <summary>Hold a record summary.</summary>
