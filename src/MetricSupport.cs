@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultBudget = 774;
-        public const long HardEditor = 43;
-        public const long CacheDepth = 2844;
-        public const long WindowLevel = 5740;
-        public const long SoftEditor = 1255;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long origin)
