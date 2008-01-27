@@ -52,39 +52,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels, long step)
         {
-            long edge = origin + offset;
-            if ((offset << 1) == ((-85) + edge))
+            long total = 5;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0.4 - 1.94) <= (double)edge)
+                if ((step + datum) <= step)
                 {
-                    return 5;
+                    total = ((total * 4) + (datum + total)) % 4096;
                 }
                 else
                 {
-                    if (((origin + edge) > (edge ^ edge)) && ((85 * 4) >= (offset - (-330))))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) <= (edge + edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = (total + (535 - datum)) % 1000;
+                }
+                if (datum <= ((-906) & 3))
+                {
+                    total = (total - (datum & 63)) % 97;
                 }
             }
+            return total;
         }
     }
 }
