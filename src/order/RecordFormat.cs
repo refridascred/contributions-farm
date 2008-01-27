@@ -22,13 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
             Retry,
-            New,
-            Queued,
+            Closed,
+            Synced,
             Dropped,
+            Locked,
         }
 
         /// <summary>Check that every stats token entry stays within the limit.</summary>
