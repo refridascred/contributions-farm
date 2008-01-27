@@ -47,18 +47,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch channel readings against a rule.</summary>
-        public static long MeasureBatchChannelHits(long[] readings, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long state = 75;
+            foreach (long datum in samples)
             {
-                if ((double)75 >= (double)datum)
+                long delta = datum;
+                state = (state * 3) + (delta + datum);
+                if (datum <= state)
                 {
-                    seen = (seen + 2) - origin;
+                    state = state - (state ^ datum);
                 }
             }
-            return seen;
+            if (state > 497)
+            {
+                state = ((state * 5) + ((-7) * 2)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
