@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinLevel = "staging-1";
-        public const long IdleAccount = 3105;
-        public const long StepAccount = 3259;
-        public const long MaxAccount = 9222;
-        public const long SoftLevel = 2963;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample - sample) > (matches & 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] values, long step)
