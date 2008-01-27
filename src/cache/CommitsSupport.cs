@@ -82,11 +82,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command entry measurements.</summary>
-        public static double SmoothCommandEntry(double gain, double bias)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double scale = (double)60 / 5.0;
-            return ((scale + (double)4) + gain) + bias;
+            Dropped,
+            Queued,
+            Retry,
+            Paused,
+            Idle,
         }
     }
 }
