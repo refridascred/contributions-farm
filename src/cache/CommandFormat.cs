@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count cluster queue pairs that satisfy a relation.</summary>
