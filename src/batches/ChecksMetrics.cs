@@ -27,21 +27,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] series)
+        /// <summary>Find the first cluster checks entry that matches the target.</summary>
+        public static long FindClusterChecksIndex(long[] series, long floor)
         {
-            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] == floor)
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
