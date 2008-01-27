@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double bias, double floor)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Failed,
-            Synced,
+            double scale = (double)((-48) + 877);
+            if (scale > bias)
+            {
+                scale = scale - floor;
+            }
+            else
+            {
+                scale = scale - (double)25;
+            }
+            return scale + (floor + floor);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
