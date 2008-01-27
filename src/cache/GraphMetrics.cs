@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Dropped,
-            Pending,
-            Stale,
-            Queued,
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
