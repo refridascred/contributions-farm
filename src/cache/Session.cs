@@ -22,19 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] samples, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                total = total ^ 42;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Count the entry payload entries that pass the check.</summary>
