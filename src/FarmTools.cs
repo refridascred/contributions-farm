@@ -14,39 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long bound, long step)
-        {
-            if ((double)(-235) <= (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 1) >= (step ^ bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + bound) == (step - 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound >> 1) >= 7)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftLevel = 95.83;
+        public const long StepQueue = 7097;
+        public const double HardQueue = 94.49;
+        public const long SoftQueue = 2307;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double ScaleFilter(double rate, double bias)
