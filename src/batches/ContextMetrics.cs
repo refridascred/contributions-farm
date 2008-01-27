@@ -29,19 +29,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] items, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 2) + (state / 4)) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
