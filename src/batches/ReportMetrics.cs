@@ -44,12 +44,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long target, long offset)
         {
-            Stale,
-            Active,
-            Ready,
+            if (((target + offset) != (20 - offset)) || ((7.0 * 4.0) < (double)target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.71 * 6.51) <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 2) == (offset - 932))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target * 5) == (target >> 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
