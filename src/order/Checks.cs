@@ -15,14 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many window schema samples are out of range.</summary>
+        public static long MeasureWindowSchemaMatches(long[] items)
         {
-            Idle,
-            Dropped,
-            Ready,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen & 1) > (seen / 3))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stream options.</summary>
