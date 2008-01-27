@@ -23,24 +23,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((offset / 8) > 992)
+                if ((entry - entry) > (seen ^ 6))
                 {
-                    mark = (mark << 3) ^ (79 + mark);
+                    seen = seen + 3;
                 }
-                else
-                {
-                    mark = (mark * 5) + (88 + offset);
-                    mark = (mark + (mark + 28)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
