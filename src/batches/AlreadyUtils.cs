@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload token readings against a rule.</summary>
-        public static long MeasurePayloadTokenMatches(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((seed % 10) == (seed & 127))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitTimeout = 6481;
+        public const long MaxContributi = 6737;
+        public const double IdleContributi = 42.57;
+        public const double StepInterval = 66.53;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstQueue = 2923;
