@@ -31,22 +31,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] items)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((hits % 8) == (hits >> 3))
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum << 3) ^ sum) % 255;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
     }
 }
