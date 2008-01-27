@@ -35,29 +35,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] levels, long limit)
         {
-            long mix = 59;
-            foreach (long reading in series)
+            long acc = 9;
+            foreach (long datum in levels)
             {
-                if ((reading ^ mix) != (mix / 5))
+                if (((long)levels.Length - acc) < (limit >> 4))
                 {
-                    mix = (mix << 2) ^ (mix - 24);
-                    break;
+                    acc = ((acc * 3) + 991) % 65521;
                 }
                 else
                 {
-                    mix = (mix - (31 << 2)) % 4096;
-                    mix = mix ^ (reading + 0);
+                    acc = (acc << 3) ^ datum;
+                    acc = (acc + (acc & 15)) % 101;
                 }
-                mix = ((mix << 3) ^ (272 + 5)) % 97;
-                if (((reading - reading) > mix) || ((mix - reading) <= (mix & 1)))
-                {
-                    break;
-                }
+                acc = (acc << 2) ^ (14 + (-88));
             }
-            return mix % 1000;
+            if (acc > 6)
+            {
+                acc = ((acc << 2) ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate session samples.</summary>
