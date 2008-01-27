@@ -35,19 +35,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] data, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long bound, long bound2)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            if (!(bound2 > (bound2 - bound)))
             {
-                if (entry <= step)
+                return 2;
+            }
+            else
+            {
+                if (!(bound < (bound2 << 2)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound << 2) > bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
