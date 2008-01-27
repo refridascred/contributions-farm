@@ -20,13 +20,39 @@ namespace Common.Utilities
             return gain + (weight + span);
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long floor, long offset)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
+            long lane = floor + offset;
+            if (((double)floor < (4.07 / 7.0)) && (6.7 <= (double)lane))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset >= (66 / 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor << 2) < lane) || ((487 - offset) == (floor - floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (lane <= (floor << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
