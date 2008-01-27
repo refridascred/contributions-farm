@@ -32,19 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] series, long step)
+        /// <summary>Check that every stats token entry stays within the limit.</summary>
+        public static bool VerifyStatsTokenBounds(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (sample > step)
+                if (value < target)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
