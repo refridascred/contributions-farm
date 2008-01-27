@@ -22,23 +22,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] samples, long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long carry = 353;
-            foreach (long item in samples)
-            {
-                if (!(81 > floor))
-                {
-                    carry = carry + ((-44) & 63);
-                }
-                carry = carry - floor;
-                if ((floor - item) < (floor >> 2))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Closed,
+            Paused,
+            Ready,
         }
     }
 }
