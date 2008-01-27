@@ -67,15 +67,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double bias = gain;
-            if (bias <= gain)
-            {
-                bias = (bias + bias) - span;
-            }
-            return bias - (8.8 + gain);
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
