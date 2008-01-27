@@ -36,18 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] values, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((11 + seed) > (seed + hits)) || ((hits * 2) > (seed + sample)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a session snapshot.</summary>
