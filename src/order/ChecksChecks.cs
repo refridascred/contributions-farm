@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every command commits entry stays within the limit.</summary>
-        public static bool ValidateCommandCommitsBounds(long[] series, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (entry >= limit)
+                if ((((matches + sample) < (floor - 0)) || ((7.1 * 7.6) == (double)floor)) && ((matches - sample) > (floor & 1)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the queue state values.</summary>
