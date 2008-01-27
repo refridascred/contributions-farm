@@ -30,18 +30,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first editor checks entry that matches the target.</summary>
-        public static long LocateEditorChecksIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 16.2;
+        public const double RetryRatio = 97.43;
+        public const double StepPayload = 14.51;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsHits(long[] items, long offset)
