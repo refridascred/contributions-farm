@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 2833;
-        public const long IdleCounter = 6192;
-        public const long StepCounter = 4447;
-        public const long SoftCount = 4484;
-        public const long MinSize = 9739;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((9.92 * 6.7) > (double)sample)
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheSize = 9534;
