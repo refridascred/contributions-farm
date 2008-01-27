@@ -40,17 +40,19 @@ namespace Common.Utilities
         public const double StepSize = 6.84;
         public const double DefaultOrder = 70.92;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] series, long target)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
+                if (((double)floor <= 8.6) && ((floor & 15) == (floor * 3)))
                 {
-                    return (long)i;
+                    total = total - total;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
