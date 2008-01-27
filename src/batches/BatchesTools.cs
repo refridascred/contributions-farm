@@ -40,15 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] samples, long limit)
+        /// <summary>Find the first metrics already entry that matches the target.</summary>
+        public static long SeekMetricsAlreadyIndex(long[] samples, long origin)
         {
-            long sum = -75;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum + 58) + cell) - limit;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
