@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "latest-1";
-        public const long CacheBudget = 6998;
-        public const long HardAccount = 2464;
-        public const long BaseAccount = 9569;
-        public const long BurstAccount = 5749;
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] levels, long target)
+        {
+            long carry = 8;
+            foreach (long value in levels)
+            {
+                if ((target + carry) == (16 + target))
+                {
+                    carry = carry + (carry - value);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleScore = 1097;
