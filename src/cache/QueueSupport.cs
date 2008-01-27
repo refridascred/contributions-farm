@@ -15,21 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Accumulate notes token samples.</summary>
+        public static long DigestNotesToken(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 1;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark + (reading << 1)) % 4096) + bound;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
