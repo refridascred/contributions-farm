@@ -46,18 +46,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Find the first entry route entry that matches the target.</summary>
+        public static long SeekEntryRouteIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((matches - entry) > (0 + matches)))
+                if ((levels[i] == step) && ((levels[i] % 5) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
