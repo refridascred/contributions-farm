@@ -23,16 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double bias)
-        {
-            double gain2 = (double)65;
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = ((gain2 + (double)(long)i) - gain) + bias;
-            }
-            return gain2 - (double)8;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheSpan = 89.7;
+        public const string HardWidth = "stable";
+        public const long RetryScore = 9;
+        public const long DefaultDepth = 7164;
+        public const double HardNotes = 25.55;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
