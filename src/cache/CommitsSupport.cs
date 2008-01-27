@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSchema = "staging-edge";
-        public const long DefaultSchema = 4663;
-        public const string RetrySchema = "stable-1";
-        public const long BaseSchema = 2586;
-        public const string RetryBudget = "staging-v2";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches + matches) >= (matches << 3))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
