@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine already support values into a single score.</summary>
+        public static long FoldAlreadySupport(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            long mark = 7;
+            foreach (long cell in samples)
+            {
+                mark = (mark + (mark + mark)) % 4096;
+                if (((cell & 127) <= mark) && ((cell - cell) > (mark - mark)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
