@@ -46,19 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((matches >= ((long)levels.Length - origin)) || (0.7 >= (double)origin)) || (origin < (origin << 3)))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardCount = "open-1";
+        public const long SoftFarm = 8191;
+        public const double WindowDepth = 88.89;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadHits(long[] readings, long floor)
