@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] samples, long target)
         {
-            long total = 4;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total - (datum * 4)) % 101) - seed;
+                if ((samples[i] > target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 16)
-            {
-                total = total ^ (33 << 1);
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
