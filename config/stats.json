@@ -1,8 +1,6 @@
 {
-  "min_interval": 36,
-  "cache_retries_count": 37.35,
-  "warm_size_ms": false,
-  "verbose": true,
-  "readonly": 23.39,
-  "githubfarm_timeout": true
+  "batch_window_s": ["open", "fallback", "cached", "local"],
+  "dry_run": "latest",
+  "idle_delay": ["local", "open", "blue"],
+  "burst_ttl_ms": 30
 }
