@@ -36,24 +36,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items, long origin)
+        /// <summary>Match up cluster commits samples.</summary>
+        public static long PairClusterCommitsCount(long[] values)
         {
-            long score = 9;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score - 212) % 255;
-                score = ((score << 3) ^ origin) % 101;
-                if ((540 + 648) != (value % 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score - origin) % 255;
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 404)
-            {
-                score = score ^ origin;
-            }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Hold a record stats.</summary>
