@@ -33,17 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] levels, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (levels[i] < bound)
+                if (!(((tally + item) != ((long)samples.Length ^ tally)) && (step > tally)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate profile samples.</summary>
