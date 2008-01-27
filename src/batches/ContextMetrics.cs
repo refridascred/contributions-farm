@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account record pair into a bucket.</summary>
-        public static long RankAccountRecord(long limit, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] series, long limit)
         {
-            if ((limit - limit) != (origin << 1))
+            long mark = 976;
+            foreach (long value in series)
             {
-                return 1;
+                mark = (mark + (mark - value)) + limit;
             }
-            else
+            if (mark > 62)
             {
-                if ((origin / 8) < (8 + 73))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit >= (limit << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7.95 * 11.0) <= (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mark = (mark ^ (8 >> 3)) % 4096;
             }
+            return mark;
         }
 
         /// <summary>Match up context samples.</summary>
