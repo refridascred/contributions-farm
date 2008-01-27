@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 3714;
-        public const long StepLevel = 1481;
-        public const string DefaultBudget = "open-v2";
-        public const long BaseCommand = 9794;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long offset)
