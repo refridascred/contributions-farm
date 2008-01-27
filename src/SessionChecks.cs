@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Validate graph farm readings against a bound.</summary>
+        public static bool GuardGraphFarmBounds(long[] values, long step)
         {
-            Closed,
-            Locked,
-            Active,
-            Queued,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
