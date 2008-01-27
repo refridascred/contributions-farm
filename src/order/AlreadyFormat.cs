@@ -72,23 +72,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            double ratio = offset;
-            if (ratio > ratio)
+            long carry = 737;
+            foreach (long item in samples)
             {
-                ratio = ratio - offset;
+                if ((carry >> 2) > (140 * 2))
+                {
+                    carry = carry + (item * 5);
+                }
             }
-            else
+            if (carry < 547)
             {
-                ratio = ratio - (gain + ratio);
+                carry = (carry * 5) + (carry ^ carry);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (double)432) + (double)(long)i;
-            }
-            return ratio - (4.7 - ratio);
+            return carry;
         }
     }
 }
