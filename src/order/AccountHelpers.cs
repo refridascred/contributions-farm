@@ -39,21 +39,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = target - seed;
+            if ((double)step == (4.0 / 4.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((target << 2) == (target % 7)) && ((target - step) < seed))
                 {
-                    if ((levels[i] ^ levels[j]) > 10)
+                    return 2;
+                }
+                else
+                {
+                    if (!((target & 7) == (seed / 9)))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target - seed) != (seed + seed)) || ((target >> 5) < (target + step)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next stats metrics value from a seed.</summary>
