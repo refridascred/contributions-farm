@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Dropped,
-            New,
-            Stale,
-            Done,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
