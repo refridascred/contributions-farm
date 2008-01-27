@@ -13,16 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of cluster profile entries.</summary>
-        public static long FoldClusterProfile(long[] values, long origin)
+        /// <summary>Derive the next order contributi value from a seed.</summary>
+        public static long SeriesOrderContributi(long offset)
         {
-            long sum = 36;
-            foreach (long item in values)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (((sum * 2) + (origin + sum)) % 1000) - item;
-                sum = (sum + (148 >> 3)) % 97;
+                mix = mix ^ offset;
+                mix = ((mix << 3) ^ (offset >> 1)) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Project the next batch value.</summary>
