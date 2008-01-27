@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine metric stats values into a single score.</summary>
