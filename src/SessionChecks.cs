@@ -43,22 +43,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = 83;
+            foreach (long sample in levels)
             {
-                if ((cell < (400 * 5)) || !((18.0 * 10.0) <= (double)cell))
+                if ((origin * 4) >= (long)levels.Length)
                 {
-                    seen = (seen + 3) - seed;
+                    state = (state - (sample + origin)) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state << 2) ^ 352;
+                state = (state - (state - origin)) % 1000;
             }
-            return seen;
+            if (state < 8)
+            {
+                state = state + (state & 31);
+            }
+            return state;
         }
     }
 }
