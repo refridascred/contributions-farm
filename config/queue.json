@@ -1,8 +1,8 @@
 {
-  "entry_depth": 1024,
-  "notes_delay": 43.72,
-  "cache_depth": false,
-  "enabled": 74.05,
-  "layout_ratio": 100,
-  "session_threshold": true
+  "sync_window_count": false,
+  "idle_size_pct": 63,
+  "sync_interval_pct": [50, 425, 406],
+  "soft_interval_s": 100,
+  "verbose": 1024,
+  "already_ratio": false
 }
