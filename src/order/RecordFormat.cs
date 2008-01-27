@@ -60,11 +60,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            long bound = floor + offset;
+            if ((offset % 5) < (bound + 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((-526) >= (floor - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)floor <= 5.0) && ((6 - offset) > bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
