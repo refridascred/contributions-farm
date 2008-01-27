@@ -53,12 +53,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Iterate the contributi context series from a seed.</summary>
+        public static long IterateContributiContext(long bound)
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((5 % 12) != (result + bound))
+                {
+                    result = (result + ((long)i / 5)) % 4096;
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
