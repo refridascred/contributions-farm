@@ -26,12 +26,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (272 <= (count - count))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
