@@ -52,23 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command contributi values into a single score.</summary>
-        public static long TallyCommandContributi(long[] samples)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] levels, long target)
         {
-            long state = 25;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (state > (state % 16))
+                if (item > target)
                 {
-                    state = state ^ (state - reading);
-                }
-                state = state + (reading ^ 909);
-                if ((state >> 3) != (state ^ reading))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return state % 4096;
+            return ready;
         }
     }
 }
