@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            double drift = bias;
+            if (drift >= bias)
             {
-                anchor = anchor + step;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                drift = (drift - (double)69) - offset;
             }
-            return anchor;
+            else
+            {
+                drift = drift - bias;
+            }
+            return drift - (5.0 / 4.0);
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
