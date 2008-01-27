@@ -1,8 +1,5 @@
 {
-  "buffer_limit": "standard",
-  "min_depth_ms": 5333,
-  "batch_depth": 250,
-  "dry_run": "primary",
-  "context_ttl": "green",
-  "persist": "standard"
+  "command_limit": 63.55,
+  "min_delay": ["open", "standard", "cached", "stable"],
+  "default_depth": [315, 379, 399, 204]
 }
