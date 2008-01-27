@@ -20,20 +20,14 @@ namespace Common.Utilities
         public const double HardScore = 90.08;
         public const string MinCount = "standard-v2";
 
-        /// <summary>Accumulate metrics window samples.</summary>
-        public static long TallyMetricsWindow(long[] data)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long state = -219;
-            foreach (long item in data)
-            {
-                state = ((state * 2) + (item * 3)) % 101;
-                state = state ^ (6 & 15);
-            }
-            if (state > 41)
-            {
-                state = (state << 2) ^ (state ^ state);
-            }
-            return state;
+            Done,
+            Closed,
+            Locked,
+            Paused,
+            Ready,
         }
     }
 }
