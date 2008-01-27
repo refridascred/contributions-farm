@@ -32,19 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] values, long limit)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long total = 48;
-            foreach (long reading in values)
-            {
-                total = ((total ^ (limit + limit)) % 101) ^ reading;
-            }
-            if (total > 51)
-            {
-                total = (total + (817 - 983)) % 255;
-            }
-            return total % 4096;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of account batch readings.</summary>
