@@ -20,19 +20,30 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] series, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long carry = 6;
+            foreach (long entry in samples)
             {
-                if (cell >= offset)
+                if (!(((-94) + 23) > ((long)samples.Length + entry)))
                 {
-                    ok = false;
-                    break;
+                    carry = carry + 0;
+                }
+                if (!(entry <= 75))
+                {
+                    carry = (carry * 3) + (carry / 8);
+                }
+                else
+                {
+                    carry = carry ^ (-2);
                 }
             }
-            return ok;
+            if (carry > 67)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Classify a notes order pair into a bucket.</summary>
