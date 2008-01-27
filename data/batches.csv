@@ -1,7 +1,9 @@
-id,token,active
-1,804,blue
-2,779,71.09
-3,fallback,364
-4,788,668
-5,94.25,847
-6,49.3,primary
+id,count,label
+1,968,196
+2,65.58,798
+3,eu-west,593
+4,14.0,738
+5,primary,605
+6,889,539
+7,72.63,green
+8,green,859
