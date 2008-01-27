@@ -36,10 +36,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleScore = 1097;
-        public const double HardFilter = 83.21;
-        public const long IdleFilter = 5222;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 87.91;
+        public const string WindowToken = "alpha-1";
+        public const long IdleSpan = 3962;
 
         /// <summary>Rank cache batch input into a small class.</summary>
         public static long RankCacheBatch(long origin, long limit)
