@@ -22,13 +22,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long carry = 353;
+            foreach (long item in samples)
+            {
+                if (!(81 > floor))
+                {
+                    carry = carry + ((-44) & 63);
+                }
+                carry = carry - floor;
+                if ((floor - item) < (floor >> 2))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
