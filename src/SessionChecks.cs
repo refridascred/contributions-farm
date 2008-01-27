@@ -24,38 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long seed, long origin)
+        /// <summary>Fold a list of context layout readings.</summary>
+        public static long FoldContextLayout(long[] values, long offset)
         {
-            if (((origin - seed) > (origin * 2)) && ((seed - origin) != (origin / 5)))
+            long acc = -24;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((50 & 255) > origin) || ((seed + (-720)) != (686 % 10)))
+                if ((acc + 954) >= (offset * 3))
                 {
-                    return 4;
+                    acc = (acc << 2) ^ (datum / 8);
                 }
-                else
-                {
-                    if ((3.9 + 9.76) != (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.9 * 8.28) != (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                acc = (acc << 2) ^ (offset << 3);
             }
+            return acc;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
