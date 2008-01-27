@@ -42,18 +42,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cache profile samples are out of range.</summary>
-        public static long TallyCacheProfileOutliers(long[] values)
+        /// <summary>Validate stats record readings against a bound.</summary>
+        public static bool VerifyStatsRecordBounds(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (!(((count ^ datum) >= 2) || ((double)(long)values.Length >= (double)datum)))
+                if (item < floor)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
