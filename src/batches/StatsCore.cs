@@ -42,24 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a commits contributi pair into a bucket.</summary>
-        public static long BucketCommitsContributi(long offset, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
-            if ((offset - step) != (offset >> 3))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.7 * 2.0) > (8.4 / 3.0))
+                if ((5 >> 3) < (hits >> 4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    hits = (hits + 2) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit counter metrics readings against a rule.</summary>
