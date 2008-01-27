@@ -13,10 +13,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 1491;
-        public const string IdleRatio = "open-edge";
-        public const long MaxFactor = 2890;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "strict-1";
+        public const double BatchGraph = 51.23;
+        public const long MinInterval = 1841;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
