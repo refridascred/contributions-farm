@@ -41,32 +41,17 @@ namespace Common.Utilities
         public const string CacheFactor = "standard-edge";
         public const long MinDepth = 8580;
 
-        /// <summary>Iterate the metric report series from a seed.</summary>
-        public static long DeriveMetricReport(long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] readings, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((origin % 24) <= 3) || ((sum % 97) > sum))
+                if (readings[i] < floor)
                 {
-                    sum = ((sum * 3) + 278) % 1000;
+                    return (long)i;
                 }
-                if (!((sum ^ sum) > (sum - sum)))
-                {
-                    sum = (sum - ((long)i / 3)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 1000;
-                }
-                if ((256 - origin) <= origin)
-                {
-                    sum = sum + origin;
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
