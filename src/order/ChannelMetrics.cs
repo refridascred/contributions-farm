@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
+            Closed,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
