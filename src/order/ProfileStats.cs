@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] series, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (sample <= limit)
+                if ((((count % 24) <= ((-107) / 9)) && ((count * 2) <= (count + count))) && (((240 + 934) != (count ^ sample)) || ((count / 6) < (sample + sample))))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the stream mode values.</summary>
