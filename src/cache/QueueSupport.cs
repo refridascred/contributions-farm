@@ -19,23 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double gain, double offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] values, long origin)
         {
-            double drift = 17.0;
-            if (drift < (gain - 4.74))
+            bool ready = true;
+            foreach (long cell in values)
             {
-                drift = drift - offset;
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - offset;
+            return ready;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
