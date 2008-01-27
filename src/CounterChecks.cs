@@ -15,22 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate layout token samples.</summary>
-        public static long WeighLayoutToken(long[] values, long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] samples, long bound)
         {
-            long anchor = 34;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (((double)anchor <= (double)97) || ((double)anchor < 9.0))
+                if (datum > bound)
                 {
-                    anchor = anchor ^ (offset / 9);
-                }
-                else
-                {
-                    anchor = anchor + (value + anchor);
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Find the first editor checks entry that matches the target.</summary>
