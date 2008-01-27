@@ -12,38 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a route metrics pair into a bucket.</summary>
-        public static long SortRouteMetrics(long bound, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] levels, long limit)
         {
-            if (origin > (bound << 3))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin % 8) < bound)
+                if (((double)seen >= (2.54 - 9.5)) || (seen >= (421 ^ 48)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((9 + bound) != (bound - 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + origin) < (origin >> 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = ((seen + 2) + sample) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the payload status values.</summary>
