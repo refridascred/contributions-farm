@@ -34,20 +34,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] samples, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((offset >> 4) <= (65 - anchor)) || (offset <= (4 - offset)))
+                if ((count / 3) > (count + 31))
                 {
-                    anchor = ((anchor * 5) + ((long)i & 15)) % 97;
+                    count = ((count + 2) + datum) + step;
                 }
-                anchor = ((anchor << 2) ^ (offset * 4)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the session mode values.</summary>
