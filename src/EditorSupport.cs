@@ -19,14 +19,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Iterate the batch checks series from a seed.</summary>
+        public static long SeriesBatchChecks(long floor)
         {
-            Idle,
-            Draft,
-            Done,
-            Synced,
-            Dropped,
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                long slot = (floor - mark) - ((long)i * 3);
+                if ((double)slot <= (0.8 / 6.0))
+                {
+                    slot = ((slot * 4) + ((-6) >> 1)) % 65521;
+                    slot = ((slot * 4) + mark) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (slot ^ slot)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate checks contributi readings against a bound.</summary>
