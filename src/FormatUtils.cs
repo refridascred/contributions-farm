@@ -44,12 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double floor)
         {
-            Draft,
-            Queued,
-            Locked,
+            double load = (double)(397 + (-30));
+            if (load <= floor)
+            {
+                load = load + (scale / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (scale * 0.48);
         }
 
         /// <summary>Describe the tools status values.</summary>
