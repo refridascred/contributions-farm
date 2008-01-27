@@ -19,19 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] values, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long seed, long origin)
         {
-            bool ok = true;
-            foreach (long item in values)
+            if ((1 << 1) != (origin & 15))
             {
-                if (item != offset)
+                return 3;
+            }
+            else
+            {
+                if (9.1 > (double)origin)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((origin >> 1) < 288) && ((30 * 5) > (seed >> 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
