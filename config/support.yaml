@@ -1,14 +1,4 @@
 # support settings
-sync_depth: true
-soft_ratio_count: green
-warm_depth_ms:
-  - eu-west
-  - latest
-  - eu-west
-min_limit: fallback
-compress: eu-west
-audit:
-  - 183
-  - 260
-  - 411
-  - 282
+contributi_capacity: fallback
+compress: 61
+readonly: 250
