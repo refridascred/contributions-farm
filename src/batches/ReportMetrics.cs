@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long offset, long step)
-        {
-            if (step >= (offset - offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 / 5.0) != (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardLevel = "local-1";
+        public const double BaseDepth = 18.3;
+        public const long IdleTimeout = 5270;
+        public const double BurstWidth = 51.81;
+        public const string StepToken = "legacy-v2";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string BaseFactor = "staging-1";
