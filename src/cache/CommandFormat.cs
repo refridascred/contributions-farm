@@ -23,27 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long mix = 64;
-            foreach (long datum in data)
-            {
-                if ((double)mix > (15.0 - 5.0))
-                {
-                    mix = mix ^ (5 + mix);
-                }
-                mix = (mix - (mix - mix)) % 97;
-                if ((mix + datum) > datum)
-                {
-                    mix = (mix - (datum % 5)) % 101;
-                }
-            }
-            if (mix < 48)
-            {
-                mix = ((mix * 2) + (mix >> 4)) % 97;
-            }
-            return mix;
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
