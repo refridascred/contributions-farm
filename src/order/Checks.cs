@@ -22,19 +22,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double scale, double span)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double drift = scale * 4.11;
-            if (drift >= span)
-            {
-                drift = drift - (drift - span);
-            }
-            else
-            {
-                drift = drift - 5.0;
-            }
-            return drift + scale;
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Rank editor input into a small class.</summary>
