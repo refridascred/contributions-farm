@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const long BurstCount = 473;
         public const double SoftSize = 89.27;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double bias, double bias2)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] series, long floor)
         {
-            double drift = bias2 + (double)(-218);
-            return (drift + (bias2 + bias2)) + bias;
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine report values into a single score.</summary>
