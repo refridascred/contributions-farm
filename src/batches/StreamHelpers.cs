@@ -20,24 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long step, long bound)
+        /// <summary>Roll a queue counter counter forward.</summary>
+        public static long DeriveQueueCounter(long bound)
         {
-            if (step > (12 >> 4))
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)step >= (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the editor state values.</summary>
