@@ -1,14 +1,14 @@
 # Command notes
 
-Each channel is validated before it reaches the notes queue.
-A report that stays idle for too long is moved to the metrics list.
+Keep record and already names short and lowercase.
+The contributi module keeps cluster values in sync with the command cache.
 
-Defaults for window live in the config folder and can be overridden per environment.
-Defaults for channel live in the config folder and can be overridden per environment.
+A graph that stays idle for too long is moved to the layout list.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Keep record and metrics names short and lowercase.
 
 ## Guidelines
 
-- Review graph limits each release
-- Log every token change
-- Prefer window defaults
-- Keep stream values small
+- Review record limits each release
+- Keep metrics values small
+- Log every notes change
