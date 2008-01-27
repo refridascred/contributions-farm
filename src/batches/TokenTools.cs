@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 994;
+        public const long HardWidth = 6002;
+        public const string DefaultFarm = "cached";
+        public const string MinLevel = "cached-v2";
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
