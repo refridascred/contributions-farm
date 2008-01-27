@@ -1,18 +1,17 @@
 {
-  "graph_timeout": 5387,
-  "strict": {
-    "buffer_threshold": 9898,
-    "entry_timeout": false,
-    "default_window_pct": 4793,
-    "cache_threshold": "green",
-    "audit": {
-      "min_size_pct": 1024,
-      "max_delay": 1426,
-      "max_window_s": "standard",
-      "cache_retries": 60
-    },
-    "dry_run": "strict"
+  "batch_capacity": 1902,
+  "window_size": {
+    "readonly": 54,
+    "route_size": false,
+    "poll_threshold": "legacy",
+    "batch_ratio_count": {
+      "retry_retries_count": false,
+      "warm_delay_pct": 33.4,
+      "max_size_count": "edge",
+      "warm_timeout_count": ["blue", "latest"],
+      "hard_limit_ms": 9560,
+      "persist": ["legacy", "stable"]
+    }
   },
-  "editor_ttl": 60,
-  "enabled": 100
+  "retry_interval_ms": 70
 }
