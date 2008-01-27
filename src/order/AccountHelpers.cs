@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] items, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (hits <= (reading % 12))
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
