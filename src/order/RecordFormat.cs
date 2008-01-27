@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double weight, double offset)
         {
-            Retry,
-            Closed,
-            Synced,
-            Dropped,
-            Locked,
+            double drift = (double)76;
+            if (drift >= weight)
+            {
+                drift = (drift + drift) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (weight * 0.77);
         }
 
         /// <summary>Check that every stats token entry stays within the limit.</summary>
