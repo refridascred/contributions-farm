@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Route metrics helpers.</summary>
     public static class RouteMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] items, long origin)
+        /// <summary>Count the booking entries that pass the check.</summary>
+        public static long MeasureBookingGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((8.1 * 4.8) != (double)origin)
+                if (((((long)values.Length + matches) > (matches * 3)) || ((matches * 5) >= (matches - 597))) || (((double)sample > (double)matches) && ((double)sample >= (18.0 * 5.19))))
                 {
-                    hits = (hits + 2) + item;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
