@@ -1,29 +1,18 @@
 # entry settings
-counter_limit: 65.94
-burst_capacity: false
-base_retries_ms: 27.06
-queue_interval:
-  cache_ttl: blue
-  warm_ratio_count: 11.76
-  format_limit: edge
-  hard_limit:
+base_ttl_count: 7.52
+compress:
+  soft_ttl_count: 25
+  route_timeout: 75.24
+  cache_interval:
+    - latest
     - edge
-    - legacy
-    - open
+    - blue
+  min_interval_ms:
+    - blue
     - edge
-  persist: 3740
-strict:
-  enabled: fallback
-  stats_depth:
-    - 488
-    - 68
-    - 408
-    - 157
-  editor_capacity:
-    sync_ttl_ms: 2899
-    contributi_ratio: fallback
-    batch_window: 4.85
-    payload_retries: false
-    warm_interval_s: blue
-  dry_run: cached
-  audit: latest
+  warm_capacity: 19.96
+  cache_interval_ms: true
+batch_interval_s: 23.02
+warm_interval_count: staging
+hard_threshold_ms: 50.92
+min_timeout_pct: false
