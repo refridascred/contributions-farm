@@ -1,19 +1,11 @@
 {
-  "default_timeout_s": [277, 495, 131, 35],
-  "report_retries": {
-    "warm_ratio_ms": ["cached", "latest", "primary"],
-    "hard_size": 5858,
-    "enabled": true,
-    "route_limit": false
+  "poll_limit_count": {
+    "cache_ratio": "edge",
+    "max_interval_s": ["fallback", "standard", "open", "primary"],
+    "default_size": "fallback",
+    "poll_window_count": "staging",
+    "warm_threshold": [328, 407, 169]
   },
-  "metrics_interval": "green",
-  "retry_capacity_ms": [363, 274],
-  "audit": {
-    "filter_limit": "legacy",
-    "strict": "primary",
-    "compress": 61.86,
-    "warm_delay_count": "legacy",
-    "buffer_size": false,
-    "stats_timeout": true
-  }
+  "compress": "legacy",
+  "readonly": 22
 }
