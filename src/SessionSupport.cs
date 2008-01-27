@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowTimeout = 8756;
-        public const double StepStats = 6.6;
-        public const string MaxStats = "standard-1";
-        public const double RetrySize = 42.42;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Retry,
+            Active,
+            Idle,
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterMatches(long[] series)
