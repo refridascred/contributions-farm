@@ -69,13 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Look up the position of a order schema sample.</summary>
+        public static long LookupOrderSchemaIndex(long[] data, long step)
         {
-            Idle,
-            Queued,
-            Stale,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
