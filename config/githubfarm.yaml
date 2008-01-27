@@ -1,4 +1,11 @@
 # githubfarm settings
-format_interval: green
-max_window_pct: 69.18
-command_interval: open
+hard_ttl_ms:
+  - fallback
+  - open
+  - green
+  - stable
+soft_timeout:
+  - strict
+  - blue
+  - strict
+warm_retries_pct: open
