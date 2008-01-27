@@ -10,38 +10,19 @@ namespace Common.Utilities
         public const string LimitTools = "cached-edge";
         public const string BatchBudget = "open-v2";
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long floor, long limit)
+        /// <summary>Check that every checks stream entry stays within the limit.</summary>
+        public static bool CheckChecksStreamRange(long[] levels, long limit)
         {
-            if (floor > (limit - limit))
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit > (floor ^ limit)) && ((limit % 64) != (limit << 1)))
+                if (entry < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - limit) <= (floor + 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)floor < (double)limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
