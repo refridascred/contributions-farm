@@ -17,14 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Active,
-            New,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinSize = 3988;
+        public const long BatchTimeout = 8870;
+        public const long BurstAccount = 7824;
+        public const double DefaultLevel = 1.58;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsHits(long[] values, long offset)
