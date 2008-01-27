@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metric editor samples are out of range.</summary>
-        public static long MeasureMetricEditorOutliers(long[] levels, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (seed > (item + item))
+                if (value >= limit)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit cluster support readings against a rule.</summary>
