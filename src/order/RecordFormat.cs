@@ -61,25 +61,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long target, long offset)
+        /// <summary>Match up window already samples.</summary>
+        public static long MatchWindowAlreadyCount(long[] series)
         {
-            long offset2 = target + offset;
-            if (offset2 > (offset2 * 3))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target + target) == (9 + offset2)) && ((offset + 9) < offset2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
