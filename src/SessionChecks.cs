@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] data, long step)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((entry * 4) > (10 + hits)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + step;
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a cache stats.</summary>
