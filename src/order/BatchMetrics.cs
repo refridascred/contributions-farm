@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long floor)
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
