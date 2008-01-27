@@ -47,27 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record cluster entries.</summary>
-        public static long DigestRecordCluster(long[] readings)
-        {
-            long sum = 361;
-            foreach (long entry in readings)
-            {
-                if ((9.57 * 13.0) > (double)entry)
-                {
-                    break;
-                }
-                sum = ((sum << 2) ^ (entry + sum)) % 1000;
-                if ((sum & 3) <= (entry - (long)readings.Length))
-                {
-                    break;
-                }
-            }
-            if (sum < 395)
-            {
-                sum = (sum - (sum - sum)) % 1000;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "stable-edge";
+        public const double SoftBudget = 48.29;
+        public const double MinQueue = 8.11;
+        public const long RetryQueue = 5372;
     }
 }
