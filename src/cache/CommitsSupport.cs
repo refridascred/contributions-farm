@@ -20,19 +20,13 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double gain, double bias)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double bias2 = (double)(78 - 363);
-            if (bias2 < 1.05)
-            {
-                bias2 = (bias2 + (5.55 / 5.0)) - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (double)(-96)) + (double)(long)i;
-            }
-            return bias2 - (gain * 7.18);
+            Idle,
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a channel entry.</summary>
