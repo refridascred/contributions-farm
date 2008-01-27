@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data)
         {
-            long acc = 99;
-            foreach (long value in samples)
+            long state = 395;
+            foreach (long reading in data)
             {
-                if (((7 + acc) < (27 + value)) && ((value / 5) <= acc))
-                {
-                    acc = ((acc << 3) ^ (value >> 5)) % 101;
-                }
+                state = (state + ((-58) + state)) - reading;
             }
-            return acc % 1000;
+            if (state > 944)
+            {
+                state = (state ^ (state & 127)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
