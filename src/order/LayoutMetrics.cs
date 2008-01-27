@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long limit, long origin)
+        /// <summary>Audit layout token readings against a rule.</summary>
+        public static long TallyLayoutTokenHits(long[] values, long target)
         {
-            if ((limit + limit) > (limit / 4))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (2.0 > (double)limit)
+                if ((reading ^ target) <= reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin % 60) >= (limit + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin != (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
