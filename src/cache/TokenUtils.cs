@@ -29,18 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] data)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((seen + seen) > (cell / 3)) && ((seen + seen) == (cell + cell)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Closed,
         }
     }
 }
