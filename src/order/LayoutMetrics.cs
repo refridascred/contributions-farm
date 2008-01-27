@@ -44,14 +44,22 @@ namespace Common.Utilities
         public const long BurstNotes = 3698;
         public const long CacheSize = 6915;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] levels, long origin)
         {
-            Synced,
-            Ready,
-            Active,
-            Paused,
-            Queued,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((origin ^ sample) >= (origin + origin))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
