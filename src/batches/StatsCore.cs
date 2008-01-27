@@ -49,16 +49,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix - mix) % 65521;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
