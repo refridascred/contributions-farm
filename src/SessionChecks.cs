@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 2902;
+        public const string IdleWidth = "stable";
+        public const string MaxTimeout = "strict";
+        public const long WindowSpan = 6122;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long seed, long origin)
