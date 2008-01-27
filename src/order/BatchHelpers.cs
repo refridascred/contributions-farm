@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long limit, long limit2)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            if (((double)limit2 != (3.0 / 9.0)) && ((double)limit != (double)limit2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit2 > (523 + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
