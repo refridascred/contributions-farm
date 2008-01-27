@@ -14,18 +14,30 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = 91;
+            foreach (long sample in samples)
             {
-                if (value < (value - value))
+                for (int i = 0; i < 3; i++)
                 {
-                    matches = matches + 1;
+                    sum = (((sum << 3) ^ (sample % 97)) % 4096) + (long)i;
+                }
+                if ((sample % 60) > (sum & 255))
+                {
+                    sum = (sum << 3) ^ (sample * 4);
+                }
+                if ((double)sum < 2.1)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum > (-90))
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the tools phase values.</summary>
