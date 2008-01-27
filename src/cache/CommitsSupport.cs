@@ -24,19 +24,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a payload tools figure with a bias.</summary>
-        public static double AdjustPayloadTools(double rate, double offset)
+        /// <summary>Count notes schema pairs that satisfy a relation.</summary>
+        public static long PairNotesSchemaCount(long[] samples)
         {
-            double gain = rate;
-            if (gain <= rate)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + (1.3 * 18.0)) - offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - (double)523;
+            return count;
         }
 
         /// <summary>Blend two command measurements.</summary>
