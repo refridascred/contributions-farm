@@ -47,9 +47,32 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftTimeout = 43.56;
-        public const double BurstFactor = 42.72;
-        public const long BatchCommand = 2749;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long floor, long origin)
+        {
+            long diff = floor - origin;
+            if (((3.91 + 4.0) <= (double)diff) && ((origin % 60) == (643 + 23)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.92 * 13.0) >= (double)diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (diff < (origin & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
