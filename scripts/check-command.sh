@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached latest fallback; do
+mode="${1:-latest}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in open legacy stable; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=66
+COMMAND_LIMIT=402
 log "limit is ${COMMAND_LIMIT}"
