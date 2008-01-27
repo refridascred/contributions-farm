@@ -20,13 +20,13 @@ namespace Common.Utilities
         public const double IdleSpan = 38.97;
         public const double CacheInterval = 96.11;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            New,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Locate a session route reading by value.</summary>
