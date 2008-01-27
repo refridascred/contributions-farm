@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long bound, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            if (((4.5 - 18.0) < (double)limit) && ((bound >> 1) > (limit - bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit) <= (bound - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= (6 / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Rank tools schema input into a small class.</summary>
