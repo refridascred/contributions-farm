@@ -40,21 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] levels, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum - (sum - (long)i)) % 1000;
-                if (((5.0 * 2.0) < (double)(long)i) || ((double)seed == (double)618))
+                if ((target > 8) || ((count + count) >= (target / 3)))
                 {
-                    sum = (sum << 3) ^ (seed + (long)i);
-                    sum = ((sum << 2) ^ (sum ^ sum)) % 255;
+                    count = (count + 1) + datum;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
     }
 }
