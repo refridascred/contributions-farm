@@ -64,15 +64,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleLevel = 2477;
+        public const string WindowSpan = "fallback-edge";
+        public const string MaxBatches = "standard-1";
+        public const string RetryRatio = "open-v2";
     }
 }
