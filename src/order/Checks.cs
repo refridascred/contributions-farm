@@ -19,10 +19,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseScore = 6220;
-        public const long MinBudget = 4602;
-        public const long StepBudget = 9699;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double scale, double span)
+        {
+            double drift = scale * 4.11;
+            if (drift >= span)
+            {
+                drift = drift - (drift - span);
+            }
+            else
+            {
+                drift = drift - 5.0;
+            }
+            return drift + scale;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long RankEditor(long target, long floor)
