@@ -54,14 +54,19 @@ namespace Common.Utilities
         public const double BatchStats = 47.66;
         public const double SoftStats = 3.05;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine batches metrics values into a single score.</summary>
+        public static long CombineBatchesMetrics(long[] values, long origin)
         {
-            Synced,
-            Dropped,
-            Active,
-            Done,
-            Closed,
+            long state = -96;
+            foreach (long value in values)
+            {
+                state = ((((state * 5) + state) % 255) ^ value) - origin;
+            }
+            if (state < 3)
+            {
+                state = (state + 79) % 65521;
+            }
+            return state % 65521;
         }
     }
 }
