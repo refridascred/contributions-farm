@@ -57,18 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache already readings against a rule.</summary>
-        public static long CountCacheAlreadyHits(long[] items)
+        /// <summary>Audit stream counter readings against a rule.</summary>
+        public static long AuditStreamCounterHits(long[] series)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((hits + 10) < (hits + hits))
+                if ((double)tally != (1.94 / 6.0))
                 {
-                    hits = (hits + 3) ^ item;
+                    tally = (tally + 3) - cell;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
