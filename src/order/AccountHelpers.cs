@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorBounds(long[] data, long limit)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Match up already stats samples.</summary>
