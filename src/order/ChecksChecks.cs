@@ -31,15 +31,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double bias)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double bias2 = rate;
-            if (bias2 > rate)
-            {
-                bias2 = (bias2 - bias2) - bias;
-            }
-            return bias2 + (7.55 - bias2);
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
