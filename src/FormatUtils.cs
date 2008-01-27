@@ -52,19 +52,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long limit)
         {
-            double load = (double)(397 + (-30));
-            if (load <= floor)
+            if (limit >= (target >> 1))
             {
-                load = load + (scale / 2.0);
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = load - (double)(long)i;
+                if (((4.99 + 4.25) != (double)target) || ((limit * 4) <= (target * 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target & 3) <= (limit & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target < (target + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return load - (scale * 0.48);
         }
 
         /// <summary>Describe the schema level values.</summary>
