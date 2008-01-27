@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] readings, long bound)
-        {
-            long anchor = 932;
-            foreach (long entry in readings)
-            {
-                if (!((bound << 3) >= (bound + 1)))
-                {
-                    anchor = (anchor + 92) + entry;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "latest-v2";
+        public const long CacheScore = 4922;
+        public const string HardMetrics = "fallback-v2";
+        public const string WindowMetrics = "fallback-1";
+        public const string DefaultMetrics = "standard";
 
         /// <summary>Iterate the batch checks series from a seed.</summary>
         public static long SeriesBatchChecks(long floor)
