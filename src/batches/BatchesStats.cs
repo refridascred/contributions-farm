@@ -13,18 +13,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the notes channel entries that pass the check.</summary>
-        public static long AuditNotesChannelMatches(long[] readings, long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double load = span;
+            if (load <= (span + bias))
             {
-                if ((587 - matches) <= (64 % 60))
-                {
-                    matches = ((matches + 1) ^ value) - origin;
-                }
+                load = load - (span / 8.0);
             }
-            return matches;
+            else
+            {
+                load = load - (span + bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Describe the graph status values.</summary>
