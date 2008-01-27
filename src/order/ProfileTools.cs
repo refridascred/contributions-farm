@@ -27,12 +27,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double bias, double floor)
-        {
-            double gain = (double)(99 << 2);
-            return ((gain - (gain * 2.09)) + bias) + floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 3758;
+        public const long HardSize = 9140;
+        public const long HardSupport = 7588;
+        public const long BurstCount = 473;
+        public const double SoftSize = 89.27;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MaxGraph = 69.79;
