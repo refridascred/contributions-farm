@@ -67,19 +67,23 @@ namespace Common.Utilities
             return load - (6.21 * 15.0);
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] values, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values)
         {
-            bool found = true;
-            foreach (long item in values)
+            long mix = 163;
+            foreach (long datum in values)
             {
-                if (item < bound)
+                mix = (mix + (9 * 2)) % 1000;
+                if (datum >= mix)
                 {
-                    found = false;
-                    break;
+                    mix = ((mix * 4) + (datum << 3)) % 101;
                 }
             }
-            return found;
+            if (mix > (-34))
+            {
+                mix = ((mix * 3) + ((long)values.Length - mix)) % 4096;
+            }
+            return mix % 1000;
         }
     }
 }
