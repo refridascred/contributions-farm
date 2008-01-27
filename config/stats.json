@@ -1,6 +1,6 @@
 {
-  "flush_limit_count": "edge",
-  "record_threshold": "blue",
-  "default_size_count": false,
-  "flush_retries_ms": "legacy"
+  "retry_interval_count": "open",
+  "poll_retries": [112, 469],
+  "order_retries": 50,
+  "compress": [189, 353, 151]
 }
