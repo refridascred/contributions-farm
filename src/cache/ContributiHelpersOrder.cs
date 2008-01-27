@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double scale, double floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double bias = (double)(720 % 5);
-            return ((bias - bias) + scale) + floor;
+            Queued,
+            Failed,
+            Synced,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
