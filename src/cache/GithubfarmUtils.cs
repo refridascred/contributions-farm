@@ -46,10 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 8500;
-        public const string BatchToken = "stable-1";
-        public const double IdleInterval = 34.61;
-        public const long SoftToken = 9433;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] samples, long offset)
+        {
+            long acc = 6;
+            foreach (long reading in samples)
+            {
+                acc = (((acc << 3) ^ reading) % 97) - offset;
+            }
+            return acc;
+        }
     }
 }
