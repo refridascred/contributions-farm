@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ratio + (bias + 9.09);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] items, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((items[i] == floor) && ((items[i] % 2) != 0))
+                if (((bound % 2) < (sample * 4)) || (((bound << 3) <= bound) || ((hits ^ (-74)) <= (sample - bound))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a channel stats.</summary>
