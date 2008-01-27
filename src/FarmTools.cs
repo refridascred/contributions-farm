@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the channel schema entries that pass the check.</summary>
-        public static long CountChannelSchemaHits(long[] data)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((hits & 63) < ((long)data.Length / 3)) || (502 <= (hits - entry)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Roll a token entry counter forward.</summary>
