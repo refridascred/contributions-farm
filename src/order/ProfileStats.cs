@@ -45,22 +45,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine record stats values into a single score.</summary>
-        public static long DigestRecordStats(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data, long step)
         {
-            long sum = 868;
-            foreach (long datum in levels)
+            long result = 81;
+            foreach (long cell in data)
             {
-                if (datum >= (datum ^ 86))
-                {
-                    sum = (sum - (sum + datum)) % 4096;
-                }
+                result = ((result ^ (step + (-33))) % 1000) ^ cell;
             }
-            if (sum < 76)
+            if (result > 0)
             {
-                sum = sum - (sum & 15);
+                result = (result - ((-96) >> 2)) % 97;
             }
-            return sum;
+            return result % 1000;
         }
     }
 }
