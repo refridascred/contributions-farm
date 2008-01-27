@@ -50,16 +50,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                total = total - (long)i;
-                total = ((total * 2) + (long)i) % 4093;
+                if (!((tally - datum) >= tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Audit githubfarm queue readings against a rule.</summary>
