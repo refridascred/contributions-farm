@@ -75,18 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter metrics readings against a rule.</summary>
-        public static long MeasureCounterMetricsMatches(long[] readings, long seed)
+        /// <summary>Measure how many checks report samples are out of range.</summary>
+        public static long MeasureChecksReportOutliers(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((item / 8) < (41 / 9))
+                if (!((cell + (-46)) <= seen))
                 {
-                    matches = (matches + 1) - seed;
+                    seen = (seen + 2) + target;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the profile state values.</summary>
