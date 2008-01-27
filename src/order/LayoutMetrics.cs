@@ -19,10 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchSize = 9172;
-        public const double CacheTimeout = 66.79;
-        public const long WindowStream = 6754;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSpan = 951;
+        public const long MaxRatio = 9682;
+        public const double HardPayload = 3.93;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long AuditBatchesOutliers(long[] readings)
