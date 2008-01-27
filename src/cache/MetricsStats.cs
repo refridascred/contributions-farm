@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-edge";
         public const string BatchTimeout = "primary-v2";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((hits ^ hits) <= (reading * 4)) || (((double)hits < (6.6 + 7.53)) && (reading >= hits)))
+                if (value < step)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
