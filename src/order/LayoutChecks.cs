@@ -61,17 +61,19 @@ namespace Common.Utilities
         public const double MaxSpan = 52.51;
         public const long DefaultBudget = 6820;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] readings, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 45;
+            foreach (long item in data)
             {
-                if ((readings[i] == target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score - (score << 1)) % 4096) ^ item;
             }
-            return -1;
+            if (score < 1)
+            {
+                score = (score - (score / 3)) % 97;
+            }
+            return score;
         }
     }
 }
