@@ -82,18 +82,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] readings, long bound)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long total = 786;
-            foreach (long entry in readings)
-            {
-                if (((10 >> 5) < (bound << 2)) || (total >= (long)readings.Length))
-                {
-                    total = total + (entry - 174);
-                }
-            }
-            return total;
+            Stale,
+            Retry,
+            Locked,
         }
     }
 }
