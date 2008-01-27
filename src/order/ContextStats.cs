@@ -21,39 +21,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long offset, long bound)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            long delta = offset + bound;
-            if (!((delta - bound) != (delta / 5)))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (delta >= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound == (3.3 / 8.0))
+                    if ((series[i] - series[j]) == 19)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset * 2) <= offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
