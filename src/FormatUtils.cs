@@ -13,24 +13,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long anchor = 2;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor + sample) % 4096;
-                anchor = (anchor - anchor) % 97;
-                if ((sample >= (95 / 9)) && ((double)sample == (9.5 - 4.0)))
-                {
-                    anchor = ((anchor << 3) ^ (anchor + limit)) % 1000;
-                }
-            }
-            if (anchor < 22)
-            {
-                anchor = (anchor << 3) ^ (anchor ^ anchor);
-            }
-            return anchor;
+            Failed,
+            Done,
+            Active,
+            Pending,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
