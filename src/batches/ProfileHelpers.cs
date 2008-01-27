@@ -49,26 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double gain, double floor)
         {
-            long state = 9;
-            foreach (long value in data)
+            double load = (double)(45 - 4);
+            if (load > load)
             {
-                if (((3.0 / 9.0) <= (double)value) && ((double)value > 0.86))
-                {
-                    break;
-                }
-                if ((state - value) == (state >> 2))
-                {
-                    state = ((state * 2) + state) % 101;
-                }
-                else
-                {
-                    state = state ^ 8;
-                }
+                load = (load + load) - floor;
             }
-            return state % 65521;
+            else
+            {
+                load = load - (load / 5.0);
+            }
+            return load + (load + gain);
         }
 
         /// <summary>Rank order input into a small class.</summary>
