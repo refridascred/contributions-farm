@@ -45,19 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] samples, long offset)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (value > offset)
+                if (value != bound)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
