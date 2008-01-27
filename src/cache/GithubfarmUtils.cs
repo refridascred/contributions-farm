@@ -37,19 +37,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a context queue figure with a bias.</summary>
-        public static double BlendContextQueue(double bias, double offset)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            double ratio = 20.0;
-            if (ratio > ratio)
-            {
-                ratio = ratio - 18.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (ratio + offset)) - (double)(long)i;
-            }
-            return ratio - (bias * 11.0);
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
