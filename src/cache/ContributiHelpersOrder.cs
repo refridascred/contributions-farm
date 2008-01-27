@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BaseRatio = 7306;
         public const long RetryCounter = 563;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit channel batch readings against a rule.</summary>
+        public static long TallyChannelBatchGaps(long[] readings)
         {
-            Idle,
-            Queued,
-            Done,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((matches + matches) > (matches >> 5)) || !(33 > ((long)readings.Length >> 4)))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
