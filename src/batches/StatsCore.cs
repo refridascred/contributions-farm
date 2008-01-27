@@ -30,18 +30,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many account context samples are out of range.</summary>
-        public static long AuditAccountContextGaps(long[] values, long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((floor + 8) > (long)values.Length)
-                {
-                    hits = (hits + 2) + value;
-                }
+                mix = (mix - mix) % 65521;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Classify a commits contributi pair into a bucket.</summary>
