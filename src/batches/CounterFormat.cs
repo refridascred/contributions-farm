@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 286;
-        public const long IdleStats = 908;
-        public const long StepCount = 5029;
-        public const long WindowStats = 6745;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] readings)
+        {
+            long total = 6;
+            foreach (long sample in readings)
+            {
+                if ((sample + sample) >= total)
+                {
+                    total = (total * 5) + (sample % 3);
+                }
+                else
+                {
+                    total = total ^ (sample + 8);
+                }
+                if ((double)total > (double)4)
+                {
+                    break;
+                }
+            }
+            if (total < 960)
+            {
+                total = (total * 4) + (total + total);
+            }
+            return total;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheSize = 9534;
