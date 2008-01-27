@@ -61,15 +61,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double scale, double floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double load = (double)(493 + 527);
-            if (load >= floor)
-            {
-                load = load + (load - load);
-            }
-            return load - scale;
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
