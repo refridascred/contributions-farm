@@ -80,12 +80,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Stale,
-            Active,
-            Paused,
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
