@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryBudget = 6918;
+        public const long IdleEntry = 3073;
+        public const string BaseBudget = "primary";
+        public const long RetryEntry = 1985;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ScaleBuffer(double ratio, double offset)
