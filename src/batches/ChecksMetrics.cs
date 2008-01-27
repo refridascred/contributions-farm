@@ -28,15 +28,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Synced,
-            Idle,
-            Failed,
-            Active,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 54.26;
+        public const long SoftDepth = 7249;
+        public const long DefaultFactor = 6092;
+        public const double StepBudget = 64.21;
+        public const double BatchCounter = 31.7;
 
         /// <summary>Fold a list of format support readings.</summary>
         public static long ScoreFormatSupport(long[] levels)
