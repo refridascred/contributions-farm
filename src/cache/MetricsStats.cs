@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-edge";
         public const string BatchTimeout = "primary-v2";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] values, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long state = 197;
-            foreach (long reading in values)
-            {
-                if ((state - reading) > reading)
-                {
-                    state = (state + (reading + 26)) - step;
-                }
-            }
-            return state % 4096;
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the payload level values.</summary>
