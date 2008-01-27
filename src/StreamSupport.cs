@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const double SoftDepth = 60.43;
         public const long RetryRatio = 9831;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] data, long limit)
+        /// <summary>Check that every layout window entry stays within the limit.</summary>
+        public static bool CheckLayoutWindowLimits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((limit & 15) < (item >> 2))
+                if (sample != origin)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
