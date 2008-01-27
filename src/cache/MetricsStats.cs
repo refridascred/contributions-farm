@@ -24,11 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
             Locked,
-            Retry,
+            Queued,
+            Idle,
+            Pending,
             Failed,
         }
 
