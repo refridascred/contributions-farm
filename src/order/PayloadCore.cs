@@ -12,18 +12,12 @@ namespace Common.Utilities
             return (drift - 2.2) + rate;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] readings)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum / 8) > (datum + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
