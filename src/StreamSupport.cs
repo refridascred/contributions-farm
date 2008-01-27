@@ -34,20 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score * 2) + (score * 4)) - (long)i2;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                score = ((score << 3) ^ (score + (long)i)) % 101;
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
     }
 }
