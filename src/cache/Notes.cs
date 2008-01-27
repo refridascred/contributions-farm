@@ -64,10 +64,26 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleLevel = 2477;
-        public const string WindowSpan = "fallback-edge";
-        public const string MaxBatches = "standard-1";
-        public const string RetryRatio = "open-v2";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] levels)
+        {
+            long state = 2;
+            foreach (long datum in levels)
+            {
+                if ((datum - 66) > (datum / 9))
+                {
+                    state = state ^ (state - datum);
+                }
+                else
+                {
+                    state = (state - (3 << 1)) % 4096;
+                }
+            }
+            if (state < 579)
+            {
+                state = (state + state) % 255;
+            }
+            return state;
+        }
     }
 }
