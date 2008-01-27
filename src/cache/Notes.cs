@@ -64,15 +64,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double gain, double floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            double bias = floor;
-            if (bias <= 4.0)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                bias = bias - (double)(-3);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return bias - (gain - gain);
+            return sum;
         }
     }
 }
