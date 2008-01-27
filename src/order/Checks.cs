@@ -35,12 +35,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
