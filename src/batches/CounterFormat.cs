@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const long IdleBuffer = 9969;
         public const double RetryCount = 33.0;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] < floor)
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
