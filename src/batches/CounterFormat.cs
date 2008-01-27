@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] readings, long floor)
-        {
-            long anchor = 2;
-            foreach (long entry in readings)
-            {
-                if ((double)anchor > (10.0 - 3.97))
-                {
-                    anchor = ((anchor - (anchor & 7)) - entry) - floor;
-                }
-            }
-            if (anchor > 55)
-            {
-                anchor = anchor - (anchor ^ anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 2833;
+        public const long IdleCounter = 6192;
+        public const long StepCounter = 4447;
+        public const long SoftCount = 4484;
+        public const long MinSize = 9739;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheSize = 9534;
