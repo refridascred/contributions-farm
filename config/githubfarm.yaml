@@ -1,7 +1,7 @@
 # githubfarm settings
-profile_window:
-  - primary
-  - eu-west
-  - blue
-dry_run: stable
-max_limit_pct: 3.3
+channel_threshold: 723
+hard_delay_s:
+  - 214
+  - 59
+  - 17
+sync_window_ms: false
