@@ -12,13 +12,38 @@ namespace Common.Utilities
         public const string BaseCounter = "strict-1";
         public const long DefaultDepth = 6064;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Classify a account record pair into a bucket.</summary>
+        public static long RankAccountRecord(long limit, long origin)
         {
-            Failed,
-            Idle,
-            Draft,
-            Queued,
+            if ((limit - limit) != (origin << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin / 8) < (8 + 73))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit >= (limit << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.95 * 11.0) <= (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up context samples.</summary>
