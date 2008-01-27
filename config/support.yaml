@@ -1,20 +1,25 @@
 # support settings
-default_size:
-  - 312
-  - 39
-  - 387
-  - 99
-schema_depth:
-  retry_threshold:
-    - 106
-    - 414
-    - 459
-    - 284
-  enabled: 2295
-  hard_ratio_pct:
-    - eu-west
-    - legacy
-    - eu-west
-    - staging
-warm_threshold: fallback
-compress: strict
+checks_timeout:
+  filter_depth: 30
+  base_window_s: false
+  readonly: 250
+cache_capacity_s: true
+notes_retries: 5073
+verbose:
+  enabled: 97.98
+  readonly: false
+  soft_delay_s: 30
+  poll_interval:
+    - strict
+    - stable
+    - cached
+audit:
+  default_limit_s: primary
+  readonly:
+    - blue
+    - stable
+    - local
+  counter_depth: 92.25
+  contributi_ratio: false
+  batch_timeout_s: strict
+  min_threshold: 3640
