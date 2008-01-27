@@ -58,13 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Count the report session entries that pass the check.</summary>
+        public static long CountReportSessionMatches(long[] items, long step)
         {
-            Queued,
-            Closed,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (7.32 / 7.0))
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
         }
     }
 }
