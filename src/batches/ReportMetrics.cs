@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftSpan = 5010;
-        public const double LimitFactor = 50.17;
-        public const long StepReport = 1076;
-        public const long CacheTimeout = 8233;
+        /// <summary>Measure how many session schema samples are out of range.</summary>
+        public static long AuditSessionSchemaGaps(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (seen < step)
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorHits(long[] samples)
