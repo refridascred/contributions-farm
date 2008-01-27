@@ -40,13 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
             public double Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
