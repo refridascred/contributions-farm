@@ -25,12 +25,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] items, long bound)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long total = 0;
+            foreach (long reading in items)
+            {
+                total = (total ^ reading) % 4096;
+                total = total + (3 - reading);
+                if (((total - reading) <= 723) && ((total % 64) >= (total << 1)))
+                {
+                    total = (total + (bound - 9)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
