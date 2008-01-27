@@ -39,18 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long carry = 84;
-            foreach (long cell in samples)
-            {
-                if ((cell + cell) >= cell)
-                {
-                    carry = carry ^ (carry ^ carry);
-                }
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
