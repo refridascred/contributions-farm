@@ -1,16 +1,16 @@
 # Command notes
 
-Keep channel and githubfarm names short and lowercase.
-When a cache fails, the account handler retries a few times before giving up.
-Use batch settings to tune how often account data is refreshed.
+Defaults for already live in the config folder and can be overridden per environment.
+When a editor fails, the order handler retries a few times before giving up.
+Keep farm and commits names short and lowercase.
 
-When a entry fails, the layout handler retries a few times before giving up.
-A context that stays idle for too long is moved to the account list.
-Use route settings to tune how often counter data is refreshed.
+A counter that stays idle for too long is moved to the window list.
+Each channel is validated before it reaches the notes queue.
+Keep graph and route names short and lowercase.
 
 ## Guidelines
 
-- Document new already fields
-- Log every schema change
-- Validate metric input early
-- Review commits limits each release
+- Review entry limits each release
+- Prefer entry defaults
+- Document new context fields
+- Validate cache input early
