@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] samples, long limit)
+        /// <summary>Count the checks report entries that pass the check.</summary>
+        public static long CountChecksReportGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
+                if ((offset % 97) < (sample >> 1))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
