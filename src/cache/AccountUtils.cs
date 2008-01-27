@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine record cache values into a single score.</summary>
-        public static long DigestRecordCache(long[] series, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] samples, long target)
         {
-            long anchor = 0;
-            foreach (long datum in series)
+            long acc = 835;
+            foreach (long datum in samples)
             {
-                anchor = (anchor * 4) + (datum << 1);
-                if (!((double)step < (10.0 + 19.0)))
+                if (acc < (target - acc))
                 {
-                    anchor = (anchor * 3) + step;
-                    anchor = (anchor + (datum * 3)) % 255;
-                    continue;
+                    acc = (acc - (0 * 5)) + datum;
                 }
-                if (((3 - anchor) > ((-738) >> 4)) || (20.0 < (double)datum))
-                {
-                    anchor = ((anchor << 2) ^ datum) % 1000;
-                }
+                acc = acc - acc;
             }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
