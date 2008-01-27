@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double rate, double span)
-        {
-            double drift = (span * 3.7) + (span * 6.7);
-            return (drift - 2.2) + rate;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitFactor = 5381;
+        public const long RetryGraph = 9202;
+        public const long BurstGraph = 452;
+        public const long BaseInterval = 3393;
 
         /// <summary>Look up the position of a editor account sample.</summary>
         public static long LookupEditorAccountIndex(long[] readings, long target)
