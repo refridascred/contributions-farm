@@ -25,10 +25,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardCount = "open-1";
-        public const long SoftFarm = 8191;
-        public const double WindowDepth = 88.89;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long offset, long target)
+        {
+            if (!((offset - 311) == (target - 178)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset < (3.38 - 8.7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - 9) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (4.0 < (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardContext = 8501;
