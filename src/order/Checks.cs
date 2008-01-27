@@ -15,11 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public double Stamp { get; set; }
-            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
