@@ -34,18 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (3.75 >= (double)sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitFactor = 83.58;
+        public const double CacheAlready = 39.27;
+        public const long MinAlready = 6537;
     }
 }
