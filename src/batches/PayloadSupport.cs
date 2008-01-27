@@ -25,17 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] readings, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = span;
+            if (mean < (span + span))
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                mean = mean - (4.12 / 4.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - scale) - (double)(long)i;
+            }
+            return mean - (double)52;
         }
     }
 }
