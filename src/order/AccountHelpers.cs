@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long step, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double scale, double span)
         {
-            long gap = step - limit;
-            if ((step & 1) >= 952)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.0 <= (6.0 * 0.3)) && ((limit >> 2) > (gap >> 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + step) >= (gap << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((4 ^ (-9)) >= (limit - 9)) || ((step << 1) >= 97))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double scale2 = scale;
+            return (scale2 - scale2) + span;
         }
 
         /// <summary>Project the next cache stats value.</summary>
