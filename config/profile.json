@@ -1,14 +1,5 @@
 {
-  "hard_limit_s": 21,
-  "soft_window_pct": {
-    "cache_limit_count": 30,
-    "cache_window_s": 43,
-    "base_interval_ms": {
-      "soft_interval": true,
-      "poll_ttl_ms": [387, 106, 400, 77],
-      "burst_depth": [387, 196, 65, 443]
-    }
-  },
-  "base_interval_s": "blue",
-  "already_timeout": 4885
+  "flush_size": [465, 168, 475],
+  "burst_ttl_s": 9741,
+  "contributi_window": "green"
 }
