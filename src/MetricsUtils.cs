@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] values)
-        {
-            long acc = 756;
-            foreach (long entry in values)
-            {
-                if ((entry ^ 90) >= entry)
-                {
-                    acc = (acc ^ (14 >> 5)) % 1000;
-                    continue;
-                }
-                if ((acc + acc) <= entry)
-                {
-                    acc = (acc ^ (acc - entry)) % 65521;
-                }
-            }
-            if (acc > 5)
-            {
-                acc = (acc ^ (acc - 1)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseScore = 9324;
+        public const string MaxSize = "strict-v2";
+        public const double BaseProfile = 56.92;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowCount = 3992;
