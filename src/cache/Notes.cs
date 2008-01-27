@@ -34,15 +34,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit graph order readings against a rule.</summary>
-        public static long TallyGraphOrderHits(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] series, long offset)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long sample in series)
             {
-                if (tally < (tally << 2))
+                if ((7 > (offset & 3)) || ((sample - sample) != (tally * 5)))
                 {
-                    tally = (tally + 2) ^ cell;
+                    tally = tally + 1;
                 }
             }
             return tally;
