@@ -32,23 +32,32 @@ namespace Common.Utilities
         public const long MaxCache = 2663;
         public const long DefaultBudget = 2754;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double floor)
+        /// <summary>Iterate the metric report series from a seed.</summary>
+        public static long DeriveMetricReport(long origin)
         {
-            double drift = floor;
-            if (drift <= (double)5)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                drift = drift - (bias + 3.04);
+                if (((origin % 24) <= 3) || ((sum % 97) > sum))
+                {
+                    sum = ((sum * 3) + 278) % 1000;
+                }
+                if (!((sum ^ sum) > (sum - sum)))
+                {
+                    sum = (sum - ((long)i / 3)) % 97;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ sum) % 1000;
+                }
+                if ((256 - origin) <= origin)
+                {
+                    sum = sum + origin;
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift - (bias - floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (double)(-837);
+            return sum;
         }
 
         /// <summary>Describe the command level values.</summary>
