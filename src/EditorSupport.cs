@@ -19,11 +19,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Blend two metrics profile measurements.</summary>
+        public static double ProjectMetricsProfile(double rate, double floor)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            double drift = (double)(93 ^ 49);
+            if (drift <= drift)
+            {
+                drift = (drift - (3.21 * 9.0)) + floor;
+            }
+            else
+            {
+                drift = drift + (double)1;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - rate) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Rank command input into a small class.</summary>
