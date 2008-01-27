@@ -1,16 +1,7 @@
 {
-  "enabled": "open",
-  "min_depth": 7170,
-  "base_capacity_s": {
-    "base_window": [270, 228, 457],
-    "base_depth_ms": 30,
-    "burst_ttl_count": "strict",
-    "buffer_threshold": {
-      "payload_threshold": true,
-      "idle_depth": 1024,
-      "max_threshold": 5319,
-      "base_threshold_s": false
-    },
-    "poll_delay": 100
-  }
+  "account_limit": ["local", "fallback", "eu-west"],
+  "record_ratio": 27.58,
+  "cluster_threshold": "cached",
+  "idle_limit": 92.78,
+  "session_interval": false
 }
