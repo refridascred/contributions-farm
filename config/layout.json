@@ -1,7 +1,8 @@
 {
-  "batches_interval": 88.76,
-  "metrics_capacity": 8339,
-  "audit": 56.8,
-  "verbose": 45,
-  "sync_threshold_count": 5869
+  "dry_run": 60.3,
+  "metric_interval": "eu-west",
+  "sync_depth": 34.02,
+  "readonly": 22.88,
+  "poll_retries_pct": 9181,
+  "base_ratio_s": "strict"
 }
