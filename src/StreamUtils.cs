@@ -63,19 +63,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Combine entry githubfarm values into a single score.</summary>
+        public static long TallyEntryGithubfarm(long[] levels)
         {
-            long score = 31;
-            foreach (long sample in readings)
+            long mix = 218;
+            foreach (long sample in levels)
             {
-                if ((sample / 3) < (7 - 0))
+                if ((sample / 8) < (33 + sample))
                 {
-                    score = (score << 2) ^ score;
+                    mix = (mix ^ (sample + (-6))) % 255;
                 }
-                score = score + (sample & 127);
+                if ((48 >> 2) >= (mix << 1))
+                {
+                    break;
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Hold a counter info.</summary>
