@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long floor, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            if ((double)floor <= 6.0)
+            long acc = 251;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (40 > (step % 64))
+                if ((sample / 5) != (sample + acc))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)floor < 2.08) && ((floor + floor) <= (-32)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = (acc + acc) % 1000;
                 }
             }
+            if (acc < 439)
+            {
+                acc = ((acc * 4) + (acc + acc)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
