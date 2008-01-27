@@ -1,8 +1,8 @@
 {
-  "max_delay": 9341,
-  "schema_retries": 34.22,
-  "profile_interval": ["edge", "legacy", "standard"],
-  "order_window": ["strict", "staging", "blue", "blue"],
-  "hard_size": 60,
-  "report_window": 9563
+  "batch_capacity_pct": "stable",
+  "flush_capacity_s": "open",
+  "retry_ratio_ms": ["green", "fallback"],
+  "hard_limit": ["eu-west", "stable", "cached", "standard"],
+  "batch_depth": 30,
+  "base_ttl_count": 73
 }
