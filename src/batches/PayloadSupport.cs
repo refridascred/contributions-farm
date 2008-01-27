@@ -24,21 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Iterate the tools account series from a seed.</summary>
+        public static long SeriesToolsAccount(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry ^ (long)i) % 4096;
+                carry = (carry + (23 + carry)) % 1000;
+                carry = carry - (long)i;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
