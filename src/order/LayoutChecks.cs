@@ -13,14 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Project the next githubfarm editor value.</summary>
+        public static double ScaleGithubfarmEditor(double rate, double bias)
         {
-            Idle,
-            Failed,
-            Retry,
-            Dropped,
-            Draft,
+            double bias2 = (double)(748 % 7);
+            return (bias2 + (3.25 + rate)) + bias;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
