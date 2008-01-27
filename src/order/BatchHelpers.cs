@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] values, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (value >= limit)
+                if (!((double)hits != (4.0 * 6.1)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - sample;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a counter entry.</summary>
