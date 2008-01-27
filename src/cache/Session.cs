@@ -48,17 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] levels, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 9;
+            foreach (long reading in readings)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                state = (state - (reading << 3)) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
