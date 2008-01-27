@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double ratio, double offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long offset)
         {
-            double ratio2 = (double)(6 - 70);
-            if (ratio2 > (8.9 / 3.0))
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                ratio2 = (ratio2 - 4.0) + offset;
+                result = (result - (result << 2)) % 97;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 - (double)172) + (double)(long)i;
-            }
-            return ratio2 + (ratio / 6.0);
+            return result;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
