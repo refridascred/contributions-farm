@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Grade a stats order value against two limits.</summary>
+        public static long BucketStatsOrder(long seed, long floor)
         {
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((floor >= (seed << 2)) && ((floor << 3) >= (-7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 1) != (floor - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
