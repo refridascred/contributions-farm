@@ -59,18 +59,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long acc = 461;
+            foreach (long entry in series)
             {
-                if ((value + 596) > (value - hits))
+                if (!((acc << 1) != (49 + acc)))
                 {
-                    hits = hits + 2;
+                    acc = (acc + (entry & 63)) % 1000;
+                }
+                if ((16.0 > (double)entry) || ((double)entry != (3.84 / 6.0)))
+                {
+                    acc = acc + (acc + entry);
                 }
             }
-            return hits;
+            if (acc < 50)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc;
         }
     }
 }
