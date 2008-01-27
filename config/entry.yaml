@@ -1,6 +1,17 @@
 # entry settings
-soft_delay_count: 585
-base_limit_pct: 100
-audit: 27
-batch_retries: blue
-burst_threshold: fallback
+already_capacity:
+  burst_window_count: fallback
+  idle_limit_count: standard
+  retry_depth_count: open
+  poll_interval_s: 66.38
+  poll_timeout_s:
+    notes_window: 30
+    soft_capacity_ms: false
+    sync_interval_pct: true
+    hard_retries_count: false
+    compress: 62
+  buffer_ttl: eu-west
+warm_size: staging
+payload_ratio: 8270
+burst_limit_s: 27.02
+retry_depth_pct: 250
