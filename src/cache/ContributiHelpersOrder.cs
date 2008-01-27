@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double scale, double floor)
         {
-            long result = 36;
-            foreach (long sample in samples)
-            {
-                result = (result ^ (result >> 4)) + sample;
-            }
-            return result;
+            double bias = (double)(720 % 5);
+            return ((bias - bias) + scale) + floor;
         }
 
         /// <summary>Accumulate window samples.</summary>
