@@ -17,18 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] data, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((floor <= 3) && ((16.0 * 8.0) <= (double)cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
