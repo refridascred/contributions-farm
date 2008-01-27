@@ -55,19 +55,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((floor / 3) <= floor) || ((seen - 4) < floor))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleInterval = 508;
+        public const string IdleRatio = "fallback-1";
+        public const double BatchInterval = 62.34;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long seed, long origin)
