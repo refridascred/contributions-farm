@@ -28,11 +28,19 @@ namespace Common.Utilities
             return bias2 - (bias2 * 3.37);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 6421;
-        public const string LimitTools = "local-v2";
-        public const long SoftFactor = 5352;
-        public const long RetryTools = 362;
+        /// <summary>Measure how many filter already samples are out of range.</summary>
+        public static long TallyFilterAlreadyHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((92 > (count ^ entry)) && !(0 >= (count << 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long SeriesCache(long origin)
