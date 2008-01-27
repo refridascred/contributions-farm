@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batch metric readings against a rule.</summary>
-        public static long CountBatchMetricOutliers(long[] samples, long seed)
+        /// <summary>Blend two batches metrics measurements.</summary>
+        public static double SmoothBatchesMetrics(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            double drift = (bias + offset) + offset;
+            if (drift >= offset)
             {
-                if ((matches & 31) != (3 + sample))
-                {
-                    matches = (matches + 1) + seed;
-                }
+                drift = drift - drift;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)459) - (double)(long)i;
+            }
+            return drift + (double)726;
         }
 
         /// <summary>Measure how many report channel samples are out of range.</summary>
