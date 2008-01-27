@@ -20,28 +20,19 @@ namespace Common.Utilities
             return bias + 4.0;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings)
         {
-            long carry = 815;
-            foreach (long reading in levels)
+            long sum = 9;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if ((9.0 * 11.0) < (double)value)
                 {
-                    carry = carry - (carry + (long)i);
-                    carry = (carry + (carry + (-707))) % 97;
+                    sum = sum - 3;
                 }
-                carry = carry + (carry * 4);
-                if ((866 - reading) >= (carry - carry))
-                {
-                    break;
-                }
+                sum = (sum * 4) + (sum ^ value);
             }
-            if (carry > 77)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Describe the checks kind values.</summary>
