@@ -59,19 +59,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] samples, long target)
+        /// <summary>Project the next route githubfarm value.</summary>
+        public static double BlendRouteGithubfarm(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            double drift = floor;
+            if (drift < weight)
             {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift - weight;
             }
-            return ready;
+            return drift + 3.9;
         }
     }
 }
