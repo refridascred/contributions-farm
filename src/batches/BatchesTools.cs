@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 5694;
+        public const double SoftFilter = 31.42;
+        public const long MaxSize = 8994;
 
         /// <summary>Compare every pair of record queue readings.</summary>
         public static long CompareRecordQueueCount(long[] values)
