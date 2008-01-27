@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryScore = 750;
-        public const string BurstToken = "latest";
-        public const double BurstDepth = 63.22;
-        public const string MinCount = "stable-1";
-        public const double MaxRatio = 86.32;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Paused,
+            New,
+            Active,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchSize = 9172;
