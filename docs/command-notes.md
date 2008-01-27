@@ -1,15 +1,15 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the stream list.
-Each support is validated before it reaches the metrics queue.
-A batches that stays idle for too long is moved to the record list.
+Run the support check before changing any order limits.
+When a window fails, the notes handler retries a few times before giving up.
+Run the stats check before changing any graph limits.
 
-Run the token check before changing any entry limits.
-Defaults for entry live in the config folder and can be overridden per environment.
-The record report groups every graph by record.
+Run the schema check before changing any githubfarm limits.
+The schema module keeps account values in sync with the metrics cache.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new support fields
-- Validate account input early
-- Prefer contributi defaults
+- Document new report fields
+- Keep stats values small
+- Validate channel input early
