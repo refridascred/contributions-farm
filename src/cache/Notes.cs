@@ -47,13 +47,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftTimeout = 43.56;
+        public const double BurstFactor = 42.72;
+        public const long BatchCommand = 2749;
     }
 }
