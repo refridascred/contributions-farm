@@ -39,23 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine session stream values into a single score.</summary>
-        public static long WeighSessionStream(long[] data, long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long score = 75;
-            foreach (long entry in data)
-            {
-                score = (score - (score ^ entry)) % 97;
-                if (((entry + floor) <= score) && ((score + entry) < (entry - floor)))
-                {
-                    score = (score - entry) % 4096;
-                }
-                if (((entry >> 1) > (floor - 926)) && ((floor & 255) < 9))
-                {
-                    break;
-                }
-            }
-            return score;
+            Dropped,
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Hold a account stats.</summary>
