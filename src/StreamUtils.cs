@@ -75,22 +75,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry githubfarm values into a single score.</summary>
-        public static long TallyEntryGithubfarm(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long target)
         {
-            long mix = 218;
-            foreach (long sample in levels)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample / 8) < (33 + sample))
-                {
-                    mix = (mix ^ (sample + (-6))) % 255;
-                }
-                if ((48 >> 2) >= (mix << 1))
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Hold a counter info.</summary>
