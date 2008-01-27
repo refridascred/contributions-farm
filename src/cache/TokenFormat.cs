@@ -19,15 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long target, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long edge = target ^ seed;
+            if ((seed << 3) != (seed - target))
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((edge / 8) >= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed & 31) < (seed - target)) && ((target - target) == (94 / 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed + 915) != (436 - target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
