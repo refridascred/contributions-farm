@@ -40,25 +40,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long floor2)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] data)
         {
-            long next = floor ^ floor2;
-            if (!((floor + floor2) > (floor - next)))
+            long state = 9;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)next == (1.48 + 10.0))
+                if (((3.0 / 9.0) <= (double)value) && ((double)value > 0.86))
                 {
-                    return 4;
+                    break;
+                }
+                if ((state - value) == (state >> 2))
+                {
+                    state = ((state * 2) + state) % 101;
                 }
                 else
                 {
-                    return 2;
+                    state = state ^ 8;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Rank order input into a small class.</summary>
