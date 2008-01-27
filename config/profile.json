@@ -1,5 +1,7 @@
 {
+  "retry_interval_pct": 4930,
   "strict": "fallback",
-  "flush_ttl_ms": ["standard", "local", "green"],
-  "burst_size": [328, 250, 16]
+  "dry_run": [20, 81, 486],
+  "farm_threshold": 250,
+  "window_timeout": "primary"
 }
