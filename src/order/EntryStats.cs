@@ -37,19 +37,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool VerifyChecksPayloadRange(long[] samples, long limit)
         {
-            long state = 395;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                state = (state + ((-58) + state)) - reading;
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state > 944)
-            {
-                state = (state ^ (state & 127)) % 4096;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
