@@ -42,18 +42,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine notes filter values into a single score.</summary>
-        public static long CombineNotesFilter(long[] samples)
+        /// <summary>Grade a notes context value against two limits.</summary>
+        public static long SortNotesContext(long origin, long seed)
         {
-            long total = 42;
-            foreach (long item in samples)
+            long step = origin + seed;
+            if (((origin - seed) > (origin % 16)) && ((seed / 7) != (origin ^ (-646))))
             {
-                if (80 < (item % 64))
+                return 1;
+            }
+            else
+            {
+                if (!((1.37 * 4.2) != (double)seed))
                 {
-                    total = total - (33 % 7);
+                    return 5;
+                }
+                else
+                {
+                    if (!((seed * 4) != (step << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Describe the report status values.</summary>
