@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double bias, double floor)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double span)
         {
-            double gain = bias * 4.7;
-            if (gain >= (gain - 7.0))
+            double weight = span;
+            for (int i = 0; i < 9; i++)
             {
-                gain = (gain + (bias / 7.0)) + floor;
+                weight = (weight - (weight / 7.0)) + (double)(long)i;
             }
-            return gain - (gain / 6.0);
+            return weight + ratio;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
