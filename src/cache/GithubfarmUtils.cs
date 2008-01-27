@@ -55,19 +55,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] items, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample <= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
