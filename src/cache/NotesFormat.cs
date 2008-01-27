@@ -29,12 +29,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Dropped,
-            Paused,
-            Ready,
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
