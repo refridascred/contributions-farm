@@ -71,15 +71,15 @@ namespace Common.Utilities
         public const string BurstGithubfarm = "standard-1";
         public const long WindowGithubfarm = 444;
 
-        /// <summary>Count the report entry entries that pass the check.</summary>
-        public static long MeasureReportEntryHits(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] levels, long seed)
         {
             long matches = 0;
-            foreach (long cell in levels)
+            foreach (long reading in levels)
             {
-                if (cell > (matches + cell))
+                if ((matches & 255) >= reading)
                 {
-                    matches = matches + 2;
+                    matches = (matches + 3) + seed;
                 }
             }
             return matches;
