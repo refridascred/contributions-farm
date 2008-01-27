@@ -27,15 +27,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double rate, double span)
-        {
-            double rate2 = rate;
-            if (rate2 >= (double)570)
-            {
-                rate2 = (rate2 + rate) - span;
-            }
-            return rate2 - (double)86;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 2321;
+        public const long CacheInterval = 387;
+        public const long DefaultAlready = 9687;
     }
 }
