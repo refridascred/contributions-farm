@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every cache account entry stays within the limit.</summary>
-        public static bool ValidateCacheAccountLimits(long[] levels, long target)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
