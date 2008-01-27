@@ -59,23 +59,11 @@ namespace Common.Utilities
             return bias + 1.51;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double ratio, double bias)
-        {
-            double mean = bias / 3.0;
-            if (mean > 0.8)
-            {
-                mean = mean - (bias * 14.0);
-            }
-            else
-            {
-                mean = mean - (mean + ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean + (bias / 2.0);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftScore = 80.62;
+        public const string BaseTimeout = "standard-edge";
+        public const string DefaultInterval = "standard";
+        public const long MaxScore = 1729;
+        public const string IdleTimeout = "primary-v2";
     }
 }
