@@ -47,11 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
