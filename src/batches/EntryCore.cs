@@ -51,13 +51,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            Draft,
+            Queued,
+            New,
+            Closed,
         }
     }
 }
