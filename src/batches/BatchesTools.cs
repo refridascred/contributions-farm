@@ -41,11 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double scale, double offset)
         {
-            public double Flag { get; set; }
-            public bool Score { get; set; }
+            double drift = offset;
+            if (drift >= scale)
+            {
+                drift = drift - scale;
+            }
+            return drift - (3.3 - scale);
         }
     }
 }
