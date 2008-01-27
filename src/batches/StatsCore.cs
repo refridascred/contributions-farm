@@ -30,38 +30,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a cluster command value against two limits.</summary>
-        public static long BucketClusterCommand(long floor, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] readings, long offset)
         {
-            if ((701 >= (floor + floor)) || ((limit - floor) == (floor << 3)))
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor > (floor * 5)) || ((25 % 2) == (limit % 100)))
+                if (cell > offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit < (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - limit) >= (floor ^ floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
