@@ -50,19 +50,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the filter token series from a seed.</summary>
-        public static long DeriveFilterToken(long floor)
+        /// <summary>Count the channel counter entries that pass the check.</summary>
+        public static long TallyChannelCounterHits(long[] items, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!!((floor + 5) == (floor * 3)))
                 {
-                    acc = (acc ^ (floor + floor)) + (long)i2;
+                    hits = (hits + 2) + reading;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine entry account values into a single score.</summary>
