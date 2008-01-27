@@ -39,21 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
-            {
-                long diff = 83 + ((long)i - acc);
-                if ((step + step) < (diff >> 5))
-                {
-                    diff = (diff ^ (step - (long)i)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 1937;
+        public const long SoftContributi = 2012;
+        public const long BatchContributi = 4865;
+        public const long HardInterval = 2396;
+        public const string MinTimeout = "latest-1";
 
         /// <summary>Match up entry samples.</summary>
         public static long OverlapEntryCount(long[] samples)
