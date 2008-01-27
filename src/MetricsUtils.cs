@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseScore = 9324;
-        public const string MaxSize = "strict-v2";
-        public const double BaseProfile = 56.92;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowCount = 3992;
