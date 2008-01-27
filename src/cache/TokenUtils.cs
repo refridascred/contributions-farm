@@ -26,18 +26,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] readings, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long total = 42;
+            foreach (long datum in samples)
             {
-                if ((entry << 1) > (entry + limit))
+                if (datum > (total - total))
                 {
-                    count = count + 2;
+                    total = (total + datum) % 65521;
+                }
+                else
+                {
+                    total = (total - (total ^ 2)) % 4096;
                 }
             }
-            return count;
+            if (total > 88)
+            {
+                total = ((total * 5) + (total + total)) % 97;
+            }
+            return total;
         }
     }
 }
