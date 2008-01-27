@@ -44,19 +44,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double scale, double offset)
+        /// <summary>Fold a list of format stats readings.</summary>
+        public static long FoldFormatStats(long[] readings)
         {
-            double bias = (double)(17 + (-456));
-            if (bias < (offset - scale))
+            long mix = 55;
+            foreach (long datum in readings)
             {
-                bias = bias + (double)1;
+                mix = ((mix - mix) % 255) - datum;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + offset) - (double)(long)i;
-            }
-            return bias + 1.51;
+            return mix;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
