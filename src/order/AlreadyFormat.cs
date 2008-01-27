@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheInterval = 10.74;
-        public const double StepMetrics = 18.34;
-        public const long WindowSpan = 2856;
-        public const long MinMetrics = 9377;
+        /// <summary>Blend two support channel measurements.</summary>
+        public static double SmoothSupportChannel(double gain, double span)
+        {
+            double load = 0.5;
+            if (load < (gain - 0.83))
+            {
+                load = load - span;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load + span;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
