@@ -48,29 +48,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the token metric series from a seed.</summary>
-        public static long RollTokenMetric(long target)
+        /// <summary>Rank cache batch input into a small class.</summary>
+        public static long RankCacheBatch(long origin, long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long delta = origin - limit;
+            if ((origin >> 3) == (origin + limit))
             {
-                if ((15.0 / 4.0) != (double)(long)i)
+                return 3;
+            }
+            else
+            {
+                if (!((delta / 2) > (limit * 2)))
                 {
-                    mark = (mark * 4) + ((long)i + mark);
-                    continue;
-                }
-                if ((double)mark >= (19.0 - 1.6))
-                {
-                    mark = (mark * 2) + (target ^ 787);
-                    mark = ((mark << 2) ^ (target + mark)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    mark = (mark - target) % 255;
+                    if (((origin ^ origin) <= delta) && (origin < 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + limit) <= 1)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
         }
     }
 }
