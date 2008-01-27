@@ -17,11 +17,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long offset, long floor)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long lane = offset ^ floor;
+            if (((floor - offset) != (offset ^ lane)) || ((floor + lane) <= offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((14.0 / 5.0) > (double)lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank cache order input into a small class.</summary>
