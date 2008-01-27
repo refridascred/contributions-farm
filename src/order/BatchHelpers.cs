@@ -35,22 +35,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit cluster support readings against a rule.</summary>
-        public static long TallyClusterSupportGaps(long[] samples)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((46 + matches) < (reading + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
