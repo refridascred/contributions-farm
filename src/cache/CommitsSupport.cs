@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 1364;
-        public const long MaxChannel = 3465;
-        public const long RetryChannel = 3523;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
