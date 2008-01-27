@@ -51,20 +51,19 @@ namespace Common.Utilities
         public const long SoftFarm = 8191;
         public const double WindowDepth = 88.89;
 
-        /// <summary>Derive the next filter buffer value from a seed.</summary>
-        public static long SeriesFilterBuffer(long step)
+        /// <summary>Check that every tools record entry stays within the limit.</summary>
+        public static bool GuardToolsRecordBounds(long[] series, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                sum = (sum - (step + step)) % 65521;
-                if (!((double)sum > 6.8))
+                if (sample <= target)
                 {
-                    sum = (sum * 4) + (step - step);
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return ready;
         }
     }
 }
