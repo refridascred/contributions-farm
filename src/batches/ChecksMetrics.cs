@@ -54,14 +54,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long target)
         {
-            Failed,
-            Synced,
-            Queued,
-            Ready,
-            Closed,
+            long total = target;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
