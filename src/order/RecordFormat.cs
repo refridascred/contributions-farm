@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Validate counter metrics readings against a bound.</summary>
+        public static bool VerifyCounterMetricsLimits(long[] data, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (entry > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Fold a list of session channel readings.</summary>
