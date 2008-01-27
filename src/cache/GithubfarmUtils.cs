@@ -37,15 +37,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a buffer stats reading.</summary>
-        public static double AdjustBufferStats(double ratio, double offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double bias, double offset)
         {
-            double mean = offset;
-            for (int i = 0; i < 2; i++)
+            double drift = offset;
+            if (drift <= (double)5)
             {
-                mean = (mean + ratio) + (double)(long)i;
+                drift = drift + drift;
             }
-            return mean + offset;
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (7.34 + 19.0)) + (double)(long)i;
+            }
+            return drift - (offset + offset);
         }
     }
 }
