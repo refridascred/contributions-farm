@@ -63,18 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (!(hits < (2 / 2)) || (((double)item > (1.0 / 4.0)) || ((hits / 8) == (95 + 8))))
+                if ((count ^ count) <= (71 + (long)readings.Length))
                 {
-                    hits = hits + 2;
+                    count = (count + 1) + sample;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
