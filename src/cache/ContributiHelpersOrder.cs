@@ -45,11 +45,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Derive the next window contributi value from a seed.</summary>
+        public static long SeriesWindowContributi(long origin)
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc << 3) ^ (acc / 6);
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
