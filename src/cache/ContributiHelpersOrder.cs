@@ -26,9 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 3717;
-        public const double SoftEntry = 8.02;
-        public const long StepEntry = 1551;
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data, long target)
+        {
+            long mark = 1;
+            foreach (long entry in data)
+            {
+                if ((double)target <= (9.8 * 8.0))
+                {
+                    mark = mark ^ (entry & 127);
+                }
+            }
+            return mark % 97;
+        }
     }
 }
