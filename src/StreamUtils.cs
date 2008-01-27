@@ -36,10 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 8324;
-        public const double BatchRatio = 67.2;
-        public const string SoftWidth = "stable-v2";
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Closed,
+            Pending,
+            New,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Compare every pair of queue graph readings.</summary>
         public static long OverlapQueueGraphCount(long[] series)
