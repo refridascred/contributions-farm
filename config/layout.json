@@ -1,6 +1,6 @@
 {
-  "session_delay": "legacy",
-  "max_ratio": 78.38,
-  "poll_retries": "standard",
-  "persist": 34.76
+  "window_window": 500,
+  "retry_delay": "edge",
+  "cache_delay_ms": 5576,
+  "sync_ttl_ms": "eu-west"
 }
