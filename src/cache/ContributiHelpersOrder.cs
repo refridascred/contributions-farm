@@ -33,12 +33,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double ratio, double offset)
         {
-            Draft,
-            New,
-            Queued,
+            double drift = 4.1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (((drift + (drift + drift)) + (double)(long)i) - ratio) - offset;
+            }
+            return drift + drift;
         }
     }
 }
