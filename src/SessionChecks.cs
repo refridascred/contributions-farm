@@ -14,13 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
