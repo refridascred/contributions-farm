@@ -86,22 +86,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] data, long limit)
         {
-            long carry = 5;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((carry + origin) == (carry - cell)) && ((origin + origin) > (cell << 3)))
+                if ((hits - hits) < (hits ^ limit))
                 {
-                    carry = (carry ^ (carry << 2)) % 101;
+                    hits = (hits + 2) + reading;
                 }
             }
-            if (carry < 7)
-            {
-                carry = ((carry << 2) ^ ((-744) * 2)) % 1000;
-            }
-            return carry;
+            return hits;
         }
     }
 }
