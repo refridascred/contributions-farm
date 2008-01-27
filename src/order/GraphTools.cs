@@ -46,13 +46,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit batch channel readings against a rule.</summary>
+        public static long MeasureBatchChannelHits(long[] readings, long origin)
         {
-            Ready,
-            Closed,
-            Retry,
-            Queued,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)75 >= (double)datum)
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two stream measurements.</summary>
