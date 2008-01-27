@@ -27,24 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long floor, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double rate, double span)
         {
-            if ((floor << 1) >= bound)
+            double rate2 = rate;
+            if (rate2 >= (double)570)
             {
-                return 0;
+                rate2 = (rate2 + rate) - span;
             }
-            else
-            {
-                if (!(bound >= (floor - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return rate2 - (double)86;
         }
     }
 }
