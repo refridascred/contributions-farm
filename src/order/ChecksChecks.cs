@@ -31,21 +31,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Accumulate report cache samples.</summary>
+        public static long TotalReportCache(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 273;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.79 / 9.0) >= (double)limit)
                 {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total * 3) + limit) ^ datum;
+                }
+                if ((double)total != (15.0 / 7.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total < 0)
+            {
+                total = (total * 4) + total;
+            }
+            return total % 4096;
         }
     }
 }
