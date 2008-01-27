@@ -27,12 +27,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitNotes = 96.08;
-        public const double MinScore = 67.19;
-        public const long WindowNotes = 9456;
-        public const long HardSize = 7948;
-        public const double StepNotes = 4.15;
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double ratio, double floor)
+        {
+            double gain = (double)(57 & 63);
+            if (gain <= (floor * 5.0))
+            {
+                gain = gain + (ratio * 2.48);
+            }
+            return gain + (11.0 / 8.0);
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] values)
