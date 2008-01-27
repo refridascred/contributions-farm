@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] samples, long limit)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen - 26) >= (cell * 2))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit batch contributi readings against a rule.</summary>
