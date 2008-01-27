@@ -22,18 +22,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Check that every stream command entry stays within the limit.</summary>
+        public static bool VerifyStreamCommandLimits(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((((item ^ hits) > (item << 2)) || ((item ^ (long)values.Length) < item)) || (((798 - item) == (item ^ item)) || ((item + item) <= (hits & 1))))
+                if (item > floor)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Check that every commits batches entry stays within the limit.</summary>
