@@ -1,8 +1,4 @@
 # support settings
-strict:
-  - 433
-  - 25
-  - 21
-min_window_s: false
-idle_interval_s: 7482
-hard_size: 2134
+order_timeout: 84.61
+compress: 60
+batch_ttl_ms: true
