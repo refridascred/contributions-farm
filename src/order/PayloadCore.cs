@@ -48,21 +48,29 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of record graph readings.</summary>
-        public static long PairRecordGraphCount(long[] data)
+        /// <summary>Iterate the token metric series from a seed.</summary>
+        public static long RollTokenMetric(long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((15.0 / 4.0) != (double)(long)i)
                 {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark * 4) + ((long)i + mark);
+                    continue;
                 }
+                if ((double)mark >= (19.0 - 1.6))
+                {
+                    mark = (mark * 2) + (target ^ 787);
+                    mark = ((mark << 2) ^ (target + mark)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - target) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
     }
 }
