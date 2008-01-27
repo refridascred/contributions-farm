@@ -57,30 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!(seed > anchor))
-                {
-                    anchor = (anchor * 4) + (anchor ^ 8);
-                    anchor = (anchor ^ (seed + anchor)) % 101;
-                }
-                if ((double)anchor < 6.21)
-                {
-                    anchor = (anchor * 5) + (seed ^ anchor);
-                    anchor = (anchor ^ ((-2) ^ seed)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (seed - (long)i);
-                }
-                anchor = anchor ^ ((long)i * 5);
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
