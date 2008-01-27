@@ -43,19 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster format measurements.</summary>
-        public static double ProjectClusterFormat(double gain, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] items, long offset)
         {
-            double scale = (offset / 4.0) + (gain - gain);
-            if (scale < (scale + scale))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                scale = scale - offset;
+                if (!(((long)items.Length % 5) >= sample))
+                {
+                    matches = (matches + 1) + offset;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale - (7.2 - gain);
+            return matches;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
