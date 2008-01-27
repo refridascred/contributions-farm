@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const long BurstCount = 473;
         public const double SoftSize = 89.27;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 69.79;
-        public const long LimitTimeout = 7675;
-        public const double LimitLevel = 44.67;
-        public const long CacheGraph = 5508;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double bias, double bias2)
+        {
+            double drift = bias2 + (double)(-218);
+            return (drift + (bias2 + bias2)) + bias;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] samples, long floor)
