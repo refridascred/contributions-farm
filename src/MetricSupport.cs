@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of buffer notes readings.</summary>
-        public static long DigestBufferNotes(long[] samples)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            long mix = -47;
-            foreach (long sample in samples)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix - ((long)samples.Length >> 2)) % 1000;
-                mix = mix - (72 ^ sample);
+                mark = (mark + (mark / 6)) % 1000;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            if (mix < 29)
-            {
-                mix = mix ^ (mix * 5);
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the record state values.</summary>
