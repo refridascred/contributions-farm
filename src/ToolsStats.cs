@@ -59,25 +59,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long origin, long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] items, long floor)
         {
-            long lane = origin ^ seed;
-            if (((36 ^ origin) < (origin % 60)) || ((6.1 - 0.55) <= (double)seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane + lane) <= ((-301) / 7))
+                if (items[i] == floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
