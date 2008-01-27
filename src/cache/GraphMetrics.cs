@@ -14,12 +14,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseDepth = 17.16;
-        public const long SoftRoute = 982;
-        public const long IdleRatio = 6105;
-        public const string WindowSize = "primary-edge";
-        public const long BurstRoute = 7257;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result << 3) ^ limit) % 65521;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long WeighNotes(long[] values)
