@@ -87,30 +87,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long floor, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long target, long target2)
         {
-            long diff = floor - origin;
-            if (((3.91 + 4.0) <= (double)diff) && ((origin % 60) == (643 + 23)))
+            if ((target + target2) >= (target % 16))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((4.92 * 13.0) >= (double)diff)
+                if ((double)target <= (1.0 * 2.65))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (diff < (origin & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 2;
                 }
             }
         }
