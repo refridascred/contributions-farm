@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double weight, double bias)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double rate = weight;
-            if (rate <= 0.98)
-            {
-                rate = (rate - weight) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate - (weight * 4.6);
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Digest a series of record entries.</summary>
