@@ -24,38 +24,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data, long step)
+        /// <summary>Audit profile stats readings against a rule.</summary>
+        public static long TallyProfileStatsGaps(long[] readings)
         {
-            long mark = 7;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((mark + step) == (mark + 213))
+                if ((matches / 8) <= matches)
                 {
-                    mark = (mark << 2) ^ step;
-                }
-                else
-                {
-                    mark = (mark - (reading << 2)) % 4096;
-                }
-                if ((96 + reading) != (reading + step))
-                {
-                    mark = (mark - (reading ^ reading)) % 97;
-                }
-                if ((step > ((long)data.Length * 3)) || (((long)data.Length + reading) != (step & 1)))
-                {
-                    mark = (mark << 2) ^ (reading >> 2);
-                }
-                else
-                {
-                    mark = (mark - (reading - 9)) % 4096;
-                }
-                if (1 < reading)
-                {
-                    break;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
     }
 }
