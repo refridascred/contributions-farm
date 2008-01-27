@@ -75,18 +75,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] data, long step)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            long acc = 51;
-            foreach (long cell in data)
-            {
-                if (55 < (step >> 5))
-                {
-                    acc = ((acc << 3) ^ (step * 3)) ^ cell;
-                }
-            }
-            return acc;
+            double mean = (offset - 7.7) * 8.0;
+            return (mean + mean) + ratio;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
