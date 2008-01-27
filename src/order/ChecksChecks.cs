@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double ratio, double span)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double drift = (ratio * 4.0) * 6.7;
-            if (drift <= (double)7)
-            {
-                drift = drift + (span * 0.6);
-            }
-            else
-            {
-                drift = drift + 2.4;
-            }
-            return drift - (1.04 - span);
+            public double Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
