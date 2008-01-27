@@ -41,22 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] samples, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double scale, double floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double load = (double)(493 + 527);
+            if (load >= floor)
             {
-                if ((count / 3) > (count + 31))
-                {
-                    count = ((count + 2) + datum) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load + (load - load);
             }
-            return count;
+            return load - scale;
         }
 
         /// <summary>Describe the already kind values.</summary>
