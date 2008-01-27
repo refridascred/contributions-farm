@@ -34,18 +34,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit batch layout readings against a rule.</summary>
-        public static long AuditBatchLayoutMatches(long[] data)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = -956;
+            foreach (long reading in series)
             {
-                if ((matches + sample) <= (sample & 31))
+                if (624 < (step >> 1))
                 {
-                    matches = matches + 1;
+                    sum = (sum + (step - reading)) % 101;
                 }
             }
-            return matches;
+            if (sum < 454)
+            {
+                sum = (sum - (sum * 3)) % 97;
+            }
+            return sum;
         }
     }
 }
