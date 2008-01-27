@@ -64,19 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits buffer entry stays within the limit.</summary>
-        public static bool GuardCommitsBufferRange(long[] data, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
