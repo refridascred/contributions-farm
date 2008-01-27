@@ -31,16 +31,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Draft,
+            New,
+            Queued,
         }
     }
 }
