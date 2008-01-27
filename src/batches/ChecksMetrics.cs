@@ -12,32 +12,12 @@ namespace Common.Utilities
             return (mean + (gain / 4.0)) + span;
         }
 
-        /// <summary>Grade a cache counter value against two limits.</summary>
-        public static long RankCacheCounter(long target, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long cur = target ^ bound;
-            if (target <= cur)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > (6.0 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2 * 4) >= cur)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Find the first cluster checks entry that matches the target.</summary>
