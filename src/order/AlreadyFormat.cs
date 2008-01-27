@@ -81,9 +81,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 80.46;
-        public const double RetryWidth = 28.9;
-        public const long HardRatio = 5328;
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
