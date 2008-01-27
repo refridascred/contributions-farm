@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long limit, long step)
+        /// <summary>Find the first notes report entry that matches the target.</summary>
+        public static long SeekNotesReportIndex(long[] readings, long seed)
         {
-            long cur = limit - step;
-            if (((limit >> 2) <= (limit >> 5)) || ((step + cur) == (78 ^ 737)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)step == (double)200))
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (cur > (8 ^ limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (3.2 * 10.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
