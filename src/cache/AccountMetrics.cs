@@ -23,22 +23,27 @@ namespace Common.Utilities
         public const double RetrySize = 71.67;
         public const double LimitScore = 29.0;
 
-        /// <summary>Accumulate filter graph samples.</summary>
-        public static long TotalFilterGraph(long[] items, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] data, long step)
         {
-            long score = 380;
-            foreach (long sample in items)
+            long carry = 1;
+            foreach (long item in data)
             {
-                if (origin <= (sample ^ score))
+                carry = ((carry + (item / 4)) % 1000) + step;
+                if (carry >= (item % 10))
                 {
-                    score = (score ^ (sample >> 4)) % 1000;
+                    carry = (carry - item) % 65521;
                 }
                 else
                 {
-                    score = ((score * 5) + (score / 7)) % 255;
+                    carry = (carry << 2) ^ item;
                 }
             }
-            return score % 4096;
+            if (carry < (-5))
+            {
+                carry = (carry + (81 % 5)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
