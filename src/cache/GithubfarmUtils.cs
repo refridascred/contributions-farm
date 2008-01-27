@@ -36,16 +36,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                total = (total ^ ((long)i << 1)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((double)value == (3.2 + 4.1))
+                {
+                    matches = matches + 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
