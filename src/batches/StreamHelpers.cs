@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series, long target)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            long mark = 652;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 2) + mark) ^ cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark < 58)
-            {
-                mark = mark + (mark ^ target);
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
