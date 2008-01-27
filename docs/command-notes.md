@@ -1,14 +1,12 @@
 # Command notes
 
-Each stream is validated before it reaches the payload queue.
-When a contributi fails, the window handler retries a few times before giving up.
-Use stream settings to tune how often support data is refreshed.
-
-Keep window and entry names short and lowercase.
-Each account is validated before it reaches the batches queue.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The context module keeps commits values in sync with the queue cache.
+A buffer that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Validate stream input early
-- Log every tools change
-- Review order limits each release
+- Review format limits each release
+- Document new editor fields
+- Keep stream values small
+- Log every cache change
