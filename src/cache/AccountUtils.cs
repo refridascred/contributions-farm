@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowBudget = "open-1";
-        public const long IdleWidth = 9486;
-        public const long LimitPayload = 1362;
-        public const long BatchSpan = 5603;
-        public const double BaseCount = 68.7;
+        /// <summary>Count notes entry pairs that satisfy a relation.</summary>
+        public static long OverlapNotesEntryCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double ScaleRecord(double gain, double bias)
