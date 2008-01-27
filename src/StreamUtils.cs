@@ -20,19 +20,26 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] series, long step)
+        /// <summary>Accumulate schema account samples.</summary>
+        public static long DigestSchemaAccount(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long mark = -2;
+            foreach (long sample in series)
             {
-                if (reading > step)
+                if (2 <= sample)
                 {
-                    found = false;
-                    break;
+                    mark = (mark - (sample % 24)) % 1000;
+                }
+                else
+                {
+                    mark = mark + (2 + sample);
                 }
             }
-            return found;
+            if (mark < (-20))
+            {
+                mark = mark - (mark - limit);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
