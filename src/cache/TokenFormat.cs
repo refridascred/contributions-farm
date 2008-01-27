@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] values, long step)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
