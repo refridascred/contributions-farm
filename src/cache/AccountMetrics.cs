@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] data, long offset)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long total = 70;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    total = ((total + (total >> 4)) % 1000) + (long)i;
-                }
-                if (total > (offset * 4))
-                {
-                    total = (total + (entry + 19)) % 1000;
-                }
-            }
-            return total;
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
