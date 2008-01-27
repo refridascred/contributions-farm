@@ -14,18 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long score = 3;
+            foreach (long item in items)
             {
-                if ((4.48 + 3.18) < (double)value)
+                score = (score ^ item) % 65521;
+                if ((item >> 5) > item)
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Check that every support record entry stays within the limit.</summary>
