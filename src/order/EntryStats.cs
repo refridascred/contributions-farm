@@ -37,11 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen & 127) < (item ^ 9))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a editor entry.</summary>
