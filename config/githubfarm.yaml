@@ -1,5 +1,6 @@
 # githubfarm settings
-retry_depth_pct: true
-default_retries_count: 11.09
-compress: open
-command_threshold: true
+compress: 1024
+already_ratio: standard
+metrics_delay: local
+max_threshold_count: 250
+queue_ttl: stable
