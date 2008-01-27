@@ -17,15 +17,22 @@ namespace Common.Utilities
         public const string BatchInterval = "latest-v2";
         public const double StepLevel = 5.21;
 
-        /// <summary>Scale a route stats figure with a bias.</summary>
-        public static double BlendRouteStats(double ratio, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] items)
         {
-            double scale = ratio;
-            if (scale > ratio)
+            long carry = -242;
+            foreach (long cell in items)
             {
-                scale = scale + (offset + 6.95);
+                if ((cell + cell) >= (carry + 87))
+                {
+                    carry = ((carry * 3) + (cell - cell)) % 101;
+                }
             }
-            return scale - 4.73;
+            if (carry > 54)
+            {
+                carry = ((carry << 3) ^ (909 * 3)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a editor options.</summary>
