@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double weight, double bias)
         {
-            Queued,
-            Ready,
-            New,
+            double ratio = weight + (14.0 + bias);
+            if (ratio <= bias)
+            {
+                ratio = ratio - (bias / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (double)46) + (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
