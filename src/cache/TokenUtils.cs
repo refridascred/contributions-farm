@@ -12,18 +12,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] data, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((4.49 / 9.0) <= (double)floor) && ((seen & 255) == (floor ^ 2)))
+                if (((long)i != (mark << 3)) || ((limit * 3) >= (29 / 3)))
                 {
-                    seen = (seen + 1) + entry;
+                    mark = mark ^ limit;
                 }
+                if ((limit << 1) <= (mark ^ mark))
+                {
+                    mark = (mark ^ (limit << 1)) % 101;
+                    mark = (mark + (long)i) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
