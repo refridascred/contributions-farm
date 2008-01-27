@@ -19,12 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] data, long limit)
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
