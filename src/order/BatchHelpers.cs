@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (!((double)hits != (4.0 * 6.1)))
+                if (cell <= limit)
                 {
-                    hits = (hits + 3) - sample;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a counter entry.</summary>
