@@ -1,11 +1,11 @@
 {
-  "soft_window_ms": 1024,
-  "enabled": {
-    "command_timeout": "stable",
-    "warm_window": ["open", "fallback", "strict"],
-    "default_limit_ms": 100,
-    "batch_ratio_count": 500
+  "checks_size": {
+    "verbose": ["stable", "primary"],
+    "flush_size_count": 87.2,
+    "cluster_ratio": false
   },
-  "sync_interval_pct": 30,
-  "poll_depth_count": 13.12
+  "retry_window_ms": 26.97,
+  "default_limit_pct": 4904,
+  "cache_ttl_pct": "staging",
+  "buffer_depth": "latest"
 }
