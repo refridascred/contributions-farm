@@ -86,13 +86,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Measure how many stats commits samples are out of range.</summary>
+        public static long MeasureStatsCommitsOutliers(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((288 << 2) < hits)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
