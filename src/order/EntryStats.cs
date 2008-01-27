@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next commits contributi value.</summary>
-        public static double ProjectCommitsContributi(double gain, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] samples, long offset)
         {
-            double rate = floor;
-            if (rate < (double)5)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                rate = rate + (rate - rate);
+                if (((cell - offset) < (offset & 1)) || ((double)offset > (6.6 / 8.0)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return rate - (floor + gain);
+            return hits;
         }
 
         /// <summary>Hold a record record.</summary>
