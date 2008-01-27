@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mark = 6;
+            foreach (long item in readings)
             {
-                if (!((19.0 / 6.0) == (double)reading))
-                {
-                    matches = matches + 3;
-                }
+                mark = (mark ^ (mark / 4)) ^ item;
             }
-            return matches;
+            if (mark < 6)
+            {
+                mark = mark ^ (mark << 2);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a order stats.</summary>
