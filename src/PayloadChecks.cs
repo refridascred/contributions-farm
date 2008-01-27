@@ -24,13 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] readings, long limit)
         {
-            Closed,
-            Failed,
-            Pending,
-            Active,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a metrics record pair into a bucket.</summary>
