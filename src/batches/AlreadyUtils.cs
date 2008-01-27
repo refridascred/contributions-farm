@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] items)
         {
-            Retry,
-            Paused,
-            New,
-            Synced,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell >> 5) >= tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
