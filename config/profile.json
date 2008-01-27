@@ -1,5 +1,15 @@
 {
-  "flush_size": [465, 168, 475],
-  "burst_ttl_s": 9741,
-  "contributi_window": "green"
+  "default_ttl_ms": "cached",
+  "readonly": 61.82,
+  "poll_window_count": {
+    "filter_capacity": ["standard", "eu-west", "green", "fallback"],
+    "graph_capacity": true,
+    "format_capacity": 12.18,
+    "max_depth_count": 30,
+    "record_size": [308, 420],
+    "default_limit_count": "standard"
+  },
+  "command_limit": true,
+  "counter_ratio": "latest",
+  "hard_delay_s": "green"
 }
