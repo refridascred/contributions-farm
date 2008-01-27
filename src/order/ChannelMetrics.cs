@@ -29,11 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] items)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 2) != (400 + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
