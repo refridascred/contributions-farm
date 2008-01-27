@@ -34,19 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Measure how many cache profile samples are out of range.</summary>
