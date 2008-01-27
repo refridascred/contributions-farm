@@ -17,22 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxScore = 3516;
+        public const string StepCount = "strict";
+        public const long RetrySession = 1833;
+        public const long MinSpan = 4641;
+        public const long HardCount = 5071;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] levels)
