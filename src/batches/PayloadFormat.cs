@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((anchor / 8) >= ((long)i ^ (long)i)) || ((target * 3) >= target))
+                {
+                    anchor = (anchor * 2) + ((long)i << 1);
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
