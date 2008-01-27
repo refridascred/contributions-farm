@@ -12,22 +12,27 @@ namespace Common.Utilities
         public const long BatchLevel = 2962;
         public const string BatchAccount = "cached-edge";
 
-        /// <summary>Accumulate metrics already samples.</summary>
-        public static long DigestMetricsAlready(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series, long target)
         {
-            long mark = 44;
-            foreach (long entry in samples)
+            long carry = 586;
+            foreach (long reading in series)
             {
-                if (((entry << 2) < (mark - entry)) || ((790 - entry) == (entry - mark)))
+                if ((target / 3) < (reading >> 3))
                 {
-                    mark = mark + (entry * 5);
+                    carry = (carry + (reading + reading)) % 101;
+                    continue;
+                }
+                if (reading >= 26)
+                {
+                    carry = carry + (target - 356);
+                }
+                else
+                {
+                    carry = carry + (reading & 255);
                 }
             }
-            if (mark < 57)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Hold a token summary.</summary>
