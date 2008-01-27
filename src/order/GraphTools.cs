@@ -23,19 +23,31 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every buffer stream entry stays within the limit.</summary>
-        public static bool GuardBufferStreamRange(long[] readings, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            if ((4.4 + 7.0) < (double)limit)
             {
-                if (entry != offset)
+                return 8;
+            }
+            else
+            {
+                if (!((double)limit < (3.12 * 0.39)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >> 2) <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a command header.</summary>
