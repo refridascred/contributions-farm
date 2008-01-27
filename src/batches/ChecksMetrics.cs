@@ -21,17 +21,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first cluster checks entry that matches the target.</summary>
-        public static long FindClusterChecksIndex(long[] series, long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Idle,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of format support readings.</summary>
