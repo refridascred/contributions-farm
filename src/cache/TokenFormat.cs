@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinFactor = 22.63;
-        public const double RetryFactor = 98.34;
-        public const long CacheWidth = 1831;
-        public const string LimitTimeout = "strict";
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long seed, long floor)
+        {
+            long diff = seed + floor;
+            if (((seed * 2) < (seed - seed)) && ((5 - 92) <= (floor * 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((diff - diff) >= (seed >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (210 < (diff + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] series, long seed)
