@@ -1,19 +1,21 @@
 # entry settings
-warm_ttl_pct: true
-retry_interval: eu-west
-poll_timeout_ms: true
-context_timeout:
-  soft_retries: 91
-  compress: edge
+token_threshold:
   dry_run:
-    filter_threshold: 52.62
-    route_ratio: 7.02
-    dry_run: true
-  min_capacity_ms: 12
-  idle_window_count: true
-  min_threshold: local
-sync_ttl_count: cached
-metric_capacity:
-  - 422
-  - 214
-  - 356
+    - green
+    - latest
+    - blue
+  burst_window_s: primary
+  compress: legacy
+  hard_retries_ms: 11.85
+readonly: 6371
+burst_timeout_s:
+  burst_size_ms: legacy
+  batch_timeout:
+    - 15
+    - 41
+  soft_timeout: 6.82
+  hard_size_s: standard
+soft_window_count: 500
+min_depth_pct:
+  - 69
+  - 145
