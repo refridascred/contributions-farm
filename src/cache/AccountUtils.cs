@@ -26,15 +26,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next report support value from a seed.</summary>
-        public static long StepReportSupport(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long anchor = 3;
+            foreach (long entry in items)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                anchor = (anchor - (anchor + anchor)) + entry;
             }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Scale a entry profile figure with a bias.</summary>
