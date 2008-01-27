@@ -1,14 +1,13 @@
 # Command notes
 
-Run the counter check before changing any graph limits.
-The tools module keeps entry values in sync with the window cache.
+Keep context and graph names short and lowercase.
+Use format settings to tune how often format data is refreshed.
 
-The graph module keeps editor values in sync with the graph cache.
-Use metric settings to tune how often queue data is refreshed.
+Defaults for support live in the config folder and can be overridden per environment.
+Use format settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Keep context values small
-- Document new record fields
-- Validate context input early
-- Log every checks change
+- Review session limits each release
+- Document new account fields
+- Validate tools input early
