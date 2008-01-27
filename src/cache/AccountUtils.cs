@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseTimeout = 6395;
-        public const long MaxTimeout = 9345;
-        public const long BaseDepth = 477;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaLimits(long[] values, long target)
