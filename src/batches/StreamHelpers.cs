@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long floor)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] values, long offset)
         {
-            long bound = seed ^ floor;
-            if ((double)floor != (6.0 - 6.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + floor) > 4)
+                if ((values[i] <= offset) && ((values[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((5 - seed) == (bound % 10)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
