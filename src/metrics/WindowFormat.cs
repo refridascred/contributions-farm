@@ -73,5 +73,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
             public bool Ratio { get; set; }
         }
+
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
