@@ -34,32 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stats profile input into a small class.</summary>
-        public static long SortStatsProfile(long target, long limit)
+        /// <summary>Audit cluster support readings against a rule.</summary>
+        public static long TallyClusterSupportGaps(long[] samples)
         {
-            long diff = target ^ limit;
-            if ((target & 3) != (9 + limit))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff & 1) >= (limit + diff))
+                if ((46 + matches) < (reading + matches))
                 {
-                    return 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (((6.1 + 5.3) < (double)diff) && (limit <= (diff & 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
