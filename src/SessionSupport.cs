@@ -27,18 +27,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit profile stats readings against a rule.</summary>
-        public static long TallyProfileStatsGaps(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((matches / 8) <= matches)
+                if (value != limit)
                 {
-                    matches = (matches + 2) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
