@@ -29,13 +29,13 @@ namespace Common.Utilities
         public const long IdleStream = 2303;
         public const double MaxLevel = 49.24;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Active,
-            Closed,
-            Synced,
-            Failed,
+            public double Rank { get; set; }
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
