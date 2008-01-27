@@ -12,12 +12,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 93.64;
-        public const long IdleCommits = 6634;
-        public const string BatchFactor = "alpha-v2";
-        public const long HardCommits = 6557;
-        public const long CacheCommits = 9250;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 2862;
+        public const string BatchInterval = "latest-v2";
+        public const double StepLevel = 5.21;
 
         /// <summary>Scale a route stats figure with a bias.</summary>
         public static double BlendRouteStats(double ratio, double offset)
