@@ -1,6 +1,5 @@
 {
-  "warm_window_ms": 30,
-  "sync_timeout_ms": [337, 457],
-  "enabled": 34.29,
-  "hard_timeout": 377
+  "verbose": 8643,
+  "cache_depth": "blue",
+  "hard_limit_count": "strict"
 }
