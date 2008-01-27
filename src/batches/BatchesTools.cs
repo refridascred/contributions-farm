@@ -20,32 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a session layout pair into a bucket.</summary>
-        public static long ClassifySessionLayout(long target, long step)
+        /// <summary>Locate a schema tools reading by value.</summary>
+        public static long FindSchemaToolsIndex(long[] readings, long offset)
         {
-            long lane = target ^ step;
-            if ((target << 2) >= (target + target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step * 3) < (step ^ target)) || ((5 ^ 37) >= (lane + step)))
+                if (readings[i] >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (75 <= (step << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
