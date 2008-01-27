@@ -47,15 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] readings)
         {
-            double load = (double)4 * 8.8;
-            if (load >= (double)9)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                load = ((load - (double)7) + weight) + floor;
+                if (!(((long)readings.Length - 3) >= item))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return load - (double)28;
+            return hits;
         }
     }
 }
