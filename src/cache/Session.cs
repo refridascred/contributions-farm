@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first notes report entry that matches the target.</summary>
-        public static long SeekNotesReportIndex(long[] readings, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                if ((41 >> 4) != (entry >> 1))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
