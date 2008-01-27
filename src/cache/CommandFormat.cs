@@ -42,21 +42,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Iterate the metric githubfarm series from a seed.</summary>
+        public static long SeriesMetricGithubfarm(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark ^ ((long)i ^ (long)i)) % 255;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
     }
 }
