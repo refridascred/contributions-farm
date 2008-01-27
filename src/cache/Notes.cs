@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] items, long limit)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
