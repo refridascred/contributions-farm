@@ -1,4 +1,18 @@
 # support settings
-max_timeout_count: 60
-record_window: cached
-max_retries: 17.53
+audit:
+  - blue
+  - staging
+  - primary
+compress:
+  - 40
+  - 205
+  - 139
+default_size_count:
+  flush_size_count: latest
+  tools_threshold: 55.23
+  flush_timeout: true
+  min_ttl_s: 7365
+  min_ttl: edge
+  channel_interval:
+    - stable
+    - strict
