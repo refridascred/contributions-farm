@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double weight, double bias)
         {
-            long mix = 831;
-            foreach (long entry in values)
+            double ratio = (double)(2 << 3);
+            if (ratio < (double)36)
             {
-                mix = (mix + (entry & 1)) % 97;
+                ratio = ratio + (8.2 - weight);
             }
-            return mix % 65521;
+            return ratio + bias;
         }
 
         /// <summary>Accumulate counter samples.</summary>
