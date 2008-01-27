@@ -40,12 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
