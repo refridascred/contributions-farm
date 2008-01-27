@@ -30,18 +30,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double weight, double offset)
         {
-            long result = 4;
-            foreach (long sample in values)
+            double rate = (double)(0 - 89);
+            if (rate <= (double)819)
             {
-                if ((result ^ sample) < (sample & 63))
-                {
-                    result = result + ((-3) / 2);
-                }
+                rate = ((rate + 9.3) - weight) + offset;
             }
-            return result;
+            return rate + (double)432;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
