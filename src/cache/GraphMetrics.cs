@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 5600;
-        public const long BatchDepth = 1016;
-        public const string DefaultChecks = "primary-edge";
-        public const string CacheFactor = "stable";
-        public const long BatchBudget = 2722;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Mode { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
