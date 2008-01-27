@@ -1,11 +1,15 @@
 # Command notes
 
-The stats module keeps route values in sync with the notes cache.
-Each entry is validated before it reaches the metric queue.
+Each session is validated before it reaches the cache queue.
+The notes module keeps cluster values in sync with the queue cache.
+Keep contributi and farm names short and lowercase.
+
+A githubfarm that stays idle for too long is moved to the session list.
+Run the record check before changing any contributi limits.
 
 ## Guidelines
 
-- Keep already values small
-- Prefer session defaults
-- Document new metrics fields
-- Review cluster limits each release
+- Review report limits each release
+- Prefer buffer defaults
+- Validate entry input early
+- Log every payload change
