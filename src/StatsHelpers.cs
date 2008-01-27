@@ -86,18 +86,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] data, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double bias = gain;
+            if (bias <= gain)
             {
-                if ((hits - hits) < (hits ^ limit))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                bias = (bias + bias) - span;
             }
-            return hits;
+            return bias - (8.8 + gain);
         }
     }
 }
