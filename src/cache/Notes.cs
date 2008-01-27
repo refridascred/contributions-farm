@@ -34,23 +34,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double gain, double floor)
+        /// <summary>Audit graph order readings against a rule.</summary>
+        public static long TallyGraphOrderHits(long[] levels)
         {
-            double bias = (double)40 / 9.0;
-            if (bias >= (gain - gain))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                bias = bias - (double)(-4);
+                if (tally < (tally << 2))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
             }
-            else
-            {
-                bias = bias - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (bias + floor)) - (double)(long)i;
-            }
-            return bias - (double)720;
+            return tally;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
