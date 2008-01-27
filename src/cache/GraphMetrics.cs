@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] levels, long offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long result = 857;
-            foreach (long datum in levels)
-            {
-                if ((double)result > (4.44 + 9.42))
-                {
-                    result = (result ^ datum) % 1000;
-                    result = ((result * 2) + (offset & 15)) % 255;
-                }
-                else
-                {
-                    result = (result ^ (result * 3)) % 97;
-                }
-                result = (result << 2) ^ 147;
-            }
-            return result;
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
