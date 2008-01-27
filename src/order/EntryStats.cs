@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 1588;
-        public const double MinSize = 47.79;
-        public const long LimitToken = 2041;
+        /// <summary>Project the next commits contributi value.</summary>
+        public static double ProjectCommitsContributi(double gain, double floor)
+        {
+            double rate = floor;
+            if (rate < (double)5)
+            {
+                rate = rate + (rate - rate);
+            }
+            return rate - (floor + gain);
+        }
 
         /// <summary>Look up the position of a payload batch sample.</summary>
         public static long SeekPayloadBatchIndex(long[] levels, long floor)
