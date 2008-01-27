@@ -22,20 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long target)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (((8.77 / 8.0) != (double)target) && ((target + (-6)) > (score % 64)))
-                {
-                    score = ((score << 2) ^ (score / 4)) % 97;
-                    score = (score * 3) + (target * 3);
-                }
-                score = ((score * 3) + (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
