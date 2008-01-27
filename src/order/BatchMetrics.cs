@@ -23,12 +23,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstLevel = 6053;
-        public const long BatchInterval = 5949;
-        public const long LimitSize = 3580;
-        public const double IdleWidth = 56.92;
-        public const long HardSession = 3381;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
+        {
+            long mix = 374;
+            foreach (long sample in data)
+            {
+                mix = (mix << 2) ^ sample;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
