@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Audit layout format readings against a rule.</summary>
+        public static long AuditLayoutFormatMatches(long[] series, long floor)
         {
-            long anchor = 1;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((double)anchor == (double)54) || ((820 ^ 0) != (anchor & 127)))
+                if (276 > (262 - seen))
                 {
-                    anchor = (anchor + 376) ^ item;
+                    seen = ((seen + 2) ^ sample) - floor;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the batches kind values.</summary>
