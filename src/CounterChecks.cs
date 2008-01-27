@@ -41,18 +41,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] levels)
+        /// <summary>Accumulate counter notes samples.</summary>
+        public static long TallyCounterNotes(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long result = 3;
+            foreach (long sample in levels)
             {
-                if ((double)seen != (4.0 + 19.0))
+                if (((result + 994) != (sample & 7)) || (result < (result - sample)))
                 {
-                    seen = (seen + 1) - datum;
+                    result = ((result * 3) + (result + 534)) % 101;
+                    result = result ^ (result - result);
+                    break;
                 }
+                result = result ^ (result & 255);
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
