@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySpan = "standard";
+        public const double BurstSession = 22.82;
+        public const long MaxSession = 5315;
+        public const string CacheSession = "staging-v2";
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long RollGithubfarm(long seed)
