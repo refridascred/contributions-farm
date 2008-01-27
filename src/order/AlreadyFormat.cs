@@ -50,12 +50,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Accumulate farm format samples.</summary>
+        public static long DigestFarmFormat(long[] readings)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
+            long state = 0;
+            foreach (long reading in readings)
+            {
+                if ((7.84 <= (double)state) && ((12.0 * 5.0) >= (double)reading))
+                {
+                    state = state ^ (state >> 1);
+                }
+                if (!((94 + 9) == (long)readings.Length))
+                {
+                    break;
+                }
+            }
+            if (state > 1)
+            {
+                state = state - state;
+            }
+            return state;
         }
     }
 }
