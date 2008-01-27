@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] series, long limit)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long mark = 976;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + (mark - value)) + limit;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 62)
-            {
-                mark = (mark ^ (8 >> 3)) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a queue header.</summary>
