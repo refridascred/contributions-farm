@@ -55,16 +55,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] samples)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc - ((long)i - limit);
-                acc = ((acc * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate stats support readings against a bound.</summary>
