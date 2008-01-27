@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public long Size { get; set; }
+            Done,
+            Dropped,
+            Queued,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the stream level values.</summary>
