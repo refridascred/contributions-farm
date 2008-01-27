@@ -55,13 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] levels, long floor)
         {
-            Active,
-            Dropped,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((floor / 3) <= floor) || ((seen - 4) < floor))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
