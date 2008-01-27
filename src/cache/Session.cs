@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepSpan = 121;
-        public const double HardSpan = 83.81;
-        public const double BatchStream = 64.22;
-        public const string BurstStream = "strict";
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Dropped,
+            New,
+            Stale,
+            Done,
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] levels)
