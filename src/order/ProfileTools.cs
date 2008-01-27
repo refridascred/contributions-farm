@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] samples, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double gain = offset + scale;
+            if (gain > (double)16)
             {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain - (8.0 * 7.75);
             }
-            return ok;
+            return gain + (offset - scale);
         }
 
         /// <summary>Rank tools schema input into a small class.</summary>
