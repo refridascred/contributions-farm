@@ -14,22 +14,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit batch contributi readings against a rule.</summary>
-        public static long TallyBatchContributiHits(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double drift = 17.0;
+            if (drift < (gain - 4.74))
             {
-                if ((24 ^ 6) < (item + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift - offset;
             }
-            return hits;
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Hold a token entry.</summary>
