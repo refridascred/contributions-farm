@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] items, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Pending,
+            Dropped,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
