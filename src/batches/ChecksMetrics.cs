@@ -58,14 +58,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit support layout readings against a rule.</summary>
+        public static long CountSupportLayoutGaps(long[] samples, long offset)
         {
-            Pending,
-            New,
-            Stale,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits * 3) == (cell * 4))
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the route class values.</summary>
