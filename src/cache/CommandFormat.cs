@@ -32,19 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (((mix << 2) ^ (target * 3)) % 4096) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Stale,
+            Draft,
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
