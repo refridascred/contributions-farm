@@ -74,16 +74,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Project the next token context value.</summary>
+        public static double ProjectTokenContext(double ratio, double span)
         {
-            long mix = -833;
-            foreach (long item in series)
+            double ratio2 = ratio - span;
+            if (ratio2 <= (ratio2 / 8.0))
             {
-                mix = (mix - (mix + item)) % 97;
-                mix = (mix ^ 51) % 65521;
+                ratio2 = ratio2 + (double)637;
             }
-            return mix;
+            else
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            return ratio2 + (double)(-623);
         }
     }
 }
