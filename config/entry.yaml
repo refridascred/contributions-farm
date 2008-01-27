@@ -1,9 +1,18 @@
 # entry settings
-compress:
-  hard_size_s: 500
-  soft_timeout: latest
-  poll_timeout_s:
-    - edge
-    - edge
-default_size_ms: standard
-warm_interval_ms: 73.06
+persist: strict
+entry_timeout:
+  - local
+  - strict
+  - primary
+  - local
+base_timeout_pct: 8105
+hard_threshold_pct: stable
+dry_run:
+  window_interval: 250
+  cache_timeout_s: false
+  context_retries:
+    - blue
+    - standard
+    - strict
+  min_retries_ms: 3.0
+strict: staging
