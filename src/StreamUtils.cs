@@ -35,13 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] readings, long origin)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two filter measurements.</summary>
