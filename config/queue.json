@@ -1,5 +1,20 @@
 {
-  "checks_interval": [318, 326],
-  "session_capacity": 70,
-  "batch_depth": [384, 397]
+  "retry_timeout_ms": true,
+  "soft_timeout_s": {
+    "idle_interval": ["primary", "latest", "cached", "latest"],
+    "warm_limit_count": "fallback",
+    "readonly": 92,
+    "support_ratio": 47.05,
+    "compress": {
+      "flush_delay_ms": "cached",
+      "enabled": "staging",
+      "commits_capacity": "edge",
+      "min_ttl_pct": 44.11,
+      "counter_window": 56.5,
+      "soft_threshold_ms": 40.62
+    },
+    "verbose": 60
+  },
+  "soft_depth_count": "fallback",
+  "warm_depth_pct": [420, 314, 194, 73]
 }
