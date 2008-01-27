@@ -59,10 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 8501;
-        public const string MaxContext = "local-edge";
-        public const string RetryContext = "open";
-        public const string BatchContext = "standard-1";
+        /// <summary>Check that every record tools entry stays within the limit.</summary>
+        public static bool ValidateRecordToolsLimits(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
