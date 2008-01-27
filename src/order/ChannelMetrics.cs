@@ -52,19 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] levels, long target)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total - (total << 3)) % 255;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
     }
 }
