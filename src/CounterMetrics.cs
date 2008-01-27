@@ -26,19 +26,26 @@ namespace Common.Utilities
         public const long IdleTools = 6394;
         public const long RetryTools = 637;
 
-        /// <summary>Check that every batches entry entry stays within the limit.</summary>
-        public static bool GuardBatchesEntryLimits(long[] readings, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long sum = 72;
+            foreach (long item in readings)
             {
-                if (cell >= bound)
+                if (!((6 >> 3) == (sum ^ sum)))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum - (sum / 9)) % 1000) + item;
+                }
+                else
+                {
+                    sum = sum ^ (sum >> 5);
                 }
             }
-            return ok;
+            if (sum > 787)
+            {
+                sum = (sum << 2) ^ (sum ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
