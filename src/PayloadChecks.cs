@@ -54,11 +54,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryContributi = 40.37;
-        public const string MaxBudget = "primary-edge";
-        public const long StepContributi = 7851;
-        public const long BaseDepth = 8516;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] values)
+        {
+            long total = -4;
+            foreach (long reading in values)
+            {
+                total = (total - (reading ^ reading)) % 1000;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 814;
