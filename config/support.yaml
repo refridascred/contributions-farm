@@ -1,13 +1,4 @@
 # support settings
-burst_depth_pct: standard
-retry_depth: edge
-farm_retries:
-  min_ttl_count:
-    max_timeout_ms: latest
-    soft_retries: true
-    batch_timeout_s: 83.6
-    max_limit_s: true
-    retry_retries_s: 1024
-  default_capacity: strict
-  dry_run: legacy
-soft_capacity: 63.06
+max_timeout_count: 60
+record_window: cached
+max_retries: 17.53
