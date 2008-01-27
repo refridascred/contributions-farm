@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support channel measurements.</summary>
-        public static double SmoothSupportChannel(double gain, double span)
+        /// <summary>Count the metrics filter entries that pass the check.</summary>
+        public static long AuditMetricsFilterGaps(long[] levels)
         {
-            double load = 0.5;
-            if (load < (gain - 0.83))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                load = load - span;
+                if ((count >> 5) <= (count << 3))
+                {
+                    count = (count + 1) - sample;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + span;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
