@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleInterval = 2850;
+        public const long MinRatio = 840;
+        public const long MaxBuffer = 4324;
+        public const string CacheInterval = "cached-v2";
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long limit)
