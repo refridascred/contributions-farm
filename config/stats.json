@@ -1,6 +1,6 @@
 {
-  "audit": 94.45,
-  "base_timeout_count": 6,
-  "min_limit_count": "local",
-  "base_interval_pct": ["local", "stable", "fallback", "fallback"]
+  "readonly": false,
+  "persist": 500,
+  "burst_size": 60,
+  "stats_delay": "primary"
 }
