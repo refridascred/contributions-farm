@@ -28,19 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] items, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
