@@ -31,24 +31,13 @@ namespace Common.Utilities
         public const long StepTimeout = 6967;
         public const long IdleStats = 8225;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] values, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long state = 988;
-            foreach (long reading in values)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state << 1) == (state - state))
-                {
-                    state = state - (reading >> 4);
-                }
-                else
-                {
-                    state = (state * 4) + (state + state);
-                }
-            }
-            if (state > 6)
-            {
-                state = (state - (origin - origin)) % 101;
+                state = ((state * 4) + (long)i) % 4093;
             }
             return state;
         }
