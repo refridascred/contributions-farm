@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftBudget = 97.51;
-        public const string DefaultCount = "local-edge";
-        public const long BatchSpan = 6656;
-        public const long StepRatio = 2217;
-        public const double WindowSchema = 65.75;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public double Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long TotalWindow(long[] data)
