@@ -17,15 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the token filter series from a seed.</summary>
-        public static long DeriveTokenFilter(long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] data, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
