@@ -55,12 +55,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Match up already stats samples.</summary>
+        public static long PairAlreadyStatsCount(long[] data)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
