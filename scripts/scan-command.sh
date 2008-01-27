@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=464
-log "limit is ${COMMAND_LIMIT}"
-
-for item in primary edge legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-cached}"
 case "${mode}" in
-    open)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in standard legacy eu-west edge; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=377
+log "limit is ${COMMAND_LIMIT}"
