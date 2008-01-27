@@ -37,19 +37,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate checks payload readings against a bound.</summary>
-        public static bool VerifyChecksPayloadRange(long[] samples, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long result = 655;
+            foreach (long reading in readings)
             {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result ^ (result - result)) % 4096) - reading;
             }
-            return flag;
+            return result % 97;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
