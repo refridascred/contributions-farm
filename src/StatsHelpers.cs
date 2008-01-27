@@ -17,13 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Ready,
-            Synced,
-            Dropped,
-            Active,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a cluster record.</summary>
