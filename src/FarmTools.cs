@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string DefaultContext = "alpha-v2";
         public const string SoftContext = "local";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftLevel = 95.83;
-        public const long StepQueue = 7097;
-        public const double HardQueue = 94.49;
-        public const long SoftQueue = 2307;
+        /// <summary>Look up the position of a payload command sample.</summary>
+        public static long FindPayloadCommandIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmRange(long[] items, long step)
