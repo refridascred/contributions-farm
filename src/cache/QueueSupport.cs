@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public bool Size { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Project the next support value.</summary>
