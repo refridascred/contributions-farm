@@ -27,18 +27,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] samples, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seen - cell) > (638 - bound))
+                if ((step - step) <= ((long)i - step))
                 {
-                    seen = seen + 3;
+                    total = (total * 5) + step;
+                    continue;
                 }
+                total = ((total * 2) + (total ^ (long)i)) % 65521;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
     }
 }
