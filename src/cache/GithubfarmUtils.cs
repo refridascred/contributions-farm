@@ -37,23 +37,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double bias, double offset)
+        /// <summary>Scale a context queue figure with a bias.</summary>
+        public static double BlendContextQueue(double bias, double offset)
         {
-            double drift = offset;
-            if (drift <= (double)5)
+            double ratio = 20.0;
+            if (ratio > ratio)
             {
-                drift = drift + drift;
+                ratio = ratio - 18.0;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                drift = drift + bias;
+                ratio = (ratio + (ratio + offset)) - (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (7.34 + 19.0)) + (double)(long)i;
-            }
-            return drift - (offset + offset);
+            return ratio - (bias * 11.0);
         }
     }
 }
