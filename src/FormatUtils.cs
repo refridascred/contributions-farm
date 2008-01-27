@@ -78,22 +78,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token metrics samples.</summary>
-        public static long TallyTokenMetrics(long[] samples, long seed)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long floor)
         {
-            long result = 4;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((5.7 - 4.7) > (double)seed) || (cell <= (seed ^ seed)))
+                if (data[i] == floor)
                 {
-                    result = (result ^ (result * 3)) % 101;
+                    return (long)i;
                 }
             }
-            if (result > (-604))
-            {
-                result = ((result * 5) + (result - result)) % 255;
-            }
-            return result % 4096;
+            return -1;
         }
     }
 }
