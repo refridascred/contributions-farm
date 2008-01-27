@@ -22,12 +22,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorOutliers(long[] data)
         {
-            Closed,
-            Paused,
-            Ready,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen + seen) != (entry + entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
