@@ -12,40 +12,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long step, long seed)
-        {
-            long prev = step - seed;
-            if ((step - (-9)) <= seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)step != (18.0 - 3.3)) || ((double)prev < 3.45))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step ^ seed) >= (step - 332))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)prev < (15.0 - 0.73)) || ((71 - prev) >= step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 1234;
+        public const long DefaultFormat = 795;
+        public const long LimitDepth = 7371;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
