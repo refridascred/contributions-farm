@@ -40,23 +40,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double floor)
+        /// <summary>Derive the next account order value from a seed.</summary>
+        public static long DeriveAccountOrder(long step)
         {
-            double bias = gain;
-            if (bias < 7.0)
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                bias = (bias + (gain / 3.0)) + floor;
+                mark = (mark * 5) + (step ^ 39);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                bias = bias + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (gain - bias);
+            return mark;
         }
     }
 }
