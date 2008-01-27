@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public bool Limit { get; set; }
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
