@@ -19,12 +19,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 64.61;
-        public const double LimitFactor = 6.14;
-        public const double DefaultSize = 20.01;
-        public const long MinGithubfarm = 5408;
-        public const long StepInterval = 2257;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long floor, long seed)
+        {
+            if (((seed % 100) == (seed << 3)) || ((double)floor > (0.2 / 8.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor ^ seed) <= floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (0 <= (floor * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterOutliers(long[] data)
