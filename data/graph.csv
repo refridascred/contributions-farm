@@ -1,8 +1,9 @@
-id,active,weight
-1,legacy,55.65
-2,standard,963
-3,352,stable
-4,514,stable
-5,72.98,eu-west
-6,192,7.19
-7,3.28,cached
+id,owner,token,label
+1,green,60,787
+2,fallback,664,legacy
+3,primary,948,90
+4,fallback,81.68,508
+5,359,eu-west,697
+6,edge,green,123
+7,edge,local,standard
+8,86.76,66.71,63.4
