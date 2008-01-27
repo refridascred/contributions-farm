@@ -46,12 +46,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 7033;
-        public const string RetrySchema = "fallback";
-        public const long BatchTimeout = 7149;
-        public const long HardInterval = 4888;
-        public const double StepSize = 80.78;
+        /// <summary>Fold a list of entry githubfarm readings.</summary>
+        public static long WeighEntryGithubfarm(long[] values)
+        {
+            long state = 878;
+            foreach (long reading in values)
+            {
+                state = (state + state) % 97;
+                if (state < (reading % 7))
+                {
+                    break;
+                }
+            }
+            if (state > 597)
+            {
+                state = (state + (state ^ state)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
