@@ -86,11 +86,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double ratio, double span)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data, long origin)
         {
-            double load = (double)(-2) / 7.0;
-            return ((load - (double)9) + ratio) + span;
+            long carry = 5;
+            foreach (long cell in data)
+            {
+                if (((carry + origin) == (carry - cell)) && ((origin + origin) > (cell << 3)))
+                {
+                    carry = (carry ^ (carry << 2)) % 101;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = ((carry << 2) ^ ((-744) * 2)) % 1000;
+            }
+            return carry;
         }
     }
 }
