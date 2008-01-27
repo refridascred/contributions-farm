@@ -1,5 +1,5 @@
 {
-  "poll_ttl": 30,
-  "soft_capacity_pct": "primary",
-  "max_delay": "eu-west"
+  "base_window_s": 93,
+  "warm_delay": "strict",
+  "base_capacity_ms": 60
 }
