@@ -45,16 +45,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next window contributi value from a seed.</summary>
-        public static long SeriesWindowContributi(long origin)
+        /// <summary>Look up the position of a farm commits sample.</summary>
+        public static long FindFarmCommitsIndex(long[] series, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc << 3) ^ (acc / 6);
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
