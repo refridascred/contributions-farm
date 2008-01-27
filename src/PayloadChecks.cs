@@ -39,25 +39,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a metrics record pair into a bucket.</summary>
-        public static long BucketMetricsRecord(long step, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long cur = step ^ bound;
-            if (1 < (bound >> 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 2) >= (step - cur))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a window record.</summary>
