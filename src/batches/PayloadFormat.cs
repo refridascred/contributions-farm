@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] readings, long target)
+        /// <summary>Iterate the commits stream series from a seed.</summary>
+        public static long IterateCommitsStream(long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)tally != (9.0 * 7.0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = ((tally + 2) + datum) - target;
+                    anchor = (anchor - (long)i2) % 1000;
+                    anchor = (anchor * 3) + 9;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the format status values.</summary>
