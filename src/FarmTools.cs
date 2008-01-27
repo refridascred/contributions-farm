@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Count the channel schema entries that pass the check.</summary>
+        public static long CountChannelSchemaHits(long[] data)
         {
-            Paused,
-            Retry,
-            Done,
-            Active,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((hits & 63) < ((long)data.Length / 3)) || (502 <= (hits - entry)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
