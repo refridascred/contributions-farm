@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinFactor = 22.63;
+        public const double RetryFactor = 98.34;
+        public const long CacheWidth = 1831;
+        public const string LimitTimeout = "strict";
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long LocateCounterIndex(long[] series, long seed)
