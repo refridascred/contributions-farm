@@ -58,11 +58,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double weight, double offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double rate = (double)(-9) - (offset * 0.6);
-            return (rate - 5.57) + weight;
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
