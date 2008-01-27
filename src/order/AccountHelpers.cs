@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double scale, double span)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] series, long seed)
         {
-            double scale2 = scale;
-            return (scale2 - scale2) + span;
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((2.2 - 9.07) < (double)seed)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
