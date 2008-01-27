@@ -1,5 +1,14 @@
 # entry settings
-min_depth: fallback
-soft_retries_pct: 49
-soft_limit: 47.99
-batch_interval_count: false
+batch_limit_pct:
+  - 153
+  - 260
+  - 171
+session_timeout: true
+base_window: 72.48
+command_limit: false
+idle_timeout: 30
+metric_limit:
+  flush_interval: 30
+  base_interval_s: standard
+  default_limit: 85.85
+  checks_depth: 60
