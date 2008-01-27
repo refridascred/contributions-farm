@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] items, long target)
+        /// <summary>Check that every report already entry stays within the limit.</summary>
+        public static bool VerifyReportAlreadyLimits(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (items[i] >= target)
+                if (value < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
