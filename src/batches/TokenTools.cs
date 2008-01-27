@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a queue support pair into a bucket.</summary>
-        public static long GradeQueueSupport(long offset, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] levels, long origin)
         {
-            long bound = offset + target;
-            if (!(offset <= (2 ^ bound)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target != (4.66 + 4.0))
+                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound > target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-336) + (-667)) == (offset + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
