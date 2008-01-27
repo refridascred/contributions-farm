@@ -32,26 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items, long target)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long total = 32;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    total = ((total << 3) ^ (target % 97)) ^ (long)i;
-                }
-                if (!((3 - target) > (datum / 5)))
-                {
-                    total = total ^ (total - target);
-                }
-                if (((7.4 - 0.4) > (double)total) || ((total % 5) >= (target / 5)))
-                {
-                    break;
-                }
-            }
-            return total;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
