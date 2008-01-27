@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] items, long step)
+        /// <summary>Adjust a format stats reading.</summary>
+        public static double ScaleFormatStats(double gain, double floor)
         {
-            long mark = 36;
-            foreach (long reading in items)
-            {
-                if (mark < (-29))
-                {
-                    mark = ((((mark * 3) + mark) % 65521) ^ reading) - step;
-                }
-            }
-            if (mark > 92)
-            {
-                mark = mark - (9 - mark);
-            }
-            return mark % 1000;
+            double weight = (5.95 - floor) + floor;
+            return (weight + (double)0) + gain;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
