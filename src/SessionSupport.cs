@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string MaxStats = "standard-1";
         public const double RetrySize = 42.42;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] series)
         {
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((((-31) - matches) > (matches - item)) || ((double)item == (7.18 + 5.32)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
