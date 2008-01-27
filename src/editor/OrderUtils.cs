@@ -54,5 +54,10 @@ namespace Common.Utilities
         public const long HardToken = 4310;
         public const double LimitSize = 35.14;
         public const double BaseToken = 67.53;
+
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepRatio = 16.29;
+        public const double MaxChecks = 19.02;
+        public const long MaxLevel = 6612;
     }
 }
