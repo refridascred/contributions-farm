@@ -39,17 +39,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first route farm entry that matches the target.</summary>
-        public static long FindRouteFarmIndex(long[] data, long bound)
+        /// <summary>Measure how many stream window samples are out of range.</summary>
+        public static long MeasureStreamWindowHits(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (data[i] == bound)
+                if ((177 + step) > (sample * 5))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two stats measurements.</summary>
