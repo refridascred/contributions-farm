@@ -61,12 +61,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 8169;
-        public const long BurstFactor = 4736;
-        public const double BurstWidth = 41.75;
-        public const double MaxSpan = 52.51;
-        public const long DefaultBudget = 6820;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Draft,
+            Ready,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long FoldChannel(long[] series, long target)
