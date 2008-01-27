@@ -1,8 +1,5 @@
 {
-  "record_timeout": "latest",
-  "warm_threshold_s": 21,
-  "flush_depth": 7694,
-  "session_size": [91, 499],
-  "payload_window": 100,
-  "flush_capacity_ms": 70
+  "retry_capacity_ms": 60,
+  "verbose": "eu-west",
+  "min_ttl": 100
 }
