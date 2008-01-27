@@ -17,22 +17,22 @@ namespace Common.Utilities
         public const string DefaultTimeout = "fallback-edge";
         public const double StepBuffer = 86.85;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] samples, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((3.6 + 4.0) >= (double)bound)
+                if ((seen << 2) >= seen)
                 {
-                    count = (count + 2) + cell;
+                    seen = ((seen + 1) + item) - offset;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
