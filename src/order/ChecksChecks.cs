@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] items, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] levels)
         {
-            long total = 5;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (((7.0 / 9.0) < (double)value) && ((value + value) >= (value - 624)))
+                if ((12 + entry) > (entry - entry))
                 {
-                    total = ((total << 2) ^ (1 >> 3)) % 65521;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    total = (total - (limit >> 5)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            if (total < 2)
-            {
-                total = total ^ 30;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Derive the next buffer checks value from a seed.</summary>
