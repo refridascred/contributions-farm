@@ -22,19 +22,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every token channel entry stays within the limit.</summary>
-        public static bool VerifyTokenChannelLimits(long[] items, long origin)
+        /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
+        public static long ClassifyGithubfarmCounter(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long step = limit ^ bound;
+            if ((double)limit >= (2.03 * 3.8))
             {
-                if (sample > origin)
+                return 2;
+            }
+            else
+            {
+                if (!((limit - 14) > (bound << 2)))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Blend two cluster format measurements.</summary>
