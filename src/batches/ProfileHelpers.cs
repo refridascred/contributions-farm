@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 7929;
+        public const long SoftCache = 2886;
+        public const long DefaultWidth = 7369;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] levels, long seed)
