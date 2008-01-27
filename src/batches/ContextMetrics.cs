@@ -53,13 +53,12 @@ namespace Common.Utilities
             return bias3 - bias2;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
             public long Size { get; set; }
-            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
