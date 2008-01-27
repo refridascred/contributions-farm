@@ -38,24 +38,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long target, long seed)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] readings, long offset)
         {
-            if ((double)seed != (11.0 + 8.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((8.62 - 4.31) == (double)target))
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
