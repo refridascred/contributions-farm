@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 5820;
         public const long LimitInterval = 9507;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] values, long offset)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the route class values.</summary>
