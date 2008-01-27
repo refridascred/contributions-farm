@@ -1,5 +1,7 @@
 {
-  "stats_timeout": true,
-  "verbose": 23.09,
-  "record_depth": 6834
+  "commits_threshold": ["latest", "staging", "standard"],
+  "default_limit_s": false,
+  "cache_delay_count": 250,
+  "window_capacity": 58,
+  "sync_depth": ["legacy", "legacy", "green", "eu-west"]
 }
