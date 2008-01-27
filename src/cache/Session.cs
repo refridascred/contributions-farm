@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultCount = 5628;
-        public const long CacheSize = 6184;
-        public const long BatchTimeout = 6898;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long limit, long step)
+        {
+            long cur = limit - step;
+            if (((limit >> 2) <= (limit >> 5)) || ((step + cur) == (78 ^ 737)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)step == (double)200))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (cur > (8 ^ limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step != (3.2 * 10.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long origin)
