@@ -52,16 +52,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long step, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long prev = step + bound;
+            if (((double)step <= (double)prev) && ((bound + bound) != (prev / 7)))
             {
-                total = (total - (total << 3)) % 255;
-                total = ((total * 3) + (long)i) % 1000;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (((step >> 1) > (bound ^ step)) || (((-5) - step) != (27 % 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((16.0 <= (double)step) || (((-4) >> 3) <= (bound << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step << 3) < (step + step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
