@@ -22,31 +22,13 @@ namespace Common.Utilities
         public const long HardTimeout = 6895;
         public const long BatchFormat = 5165;
 
-        /// <summary>Rank payload stream input into a small class.</summary>
-        public static long BucketPayloadStream(long origin, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if (((double)floor >= (1.5 / 6.0)) && ((double)72 < (double)origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ origin) != (floor % 24))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((4.0 + 8.9) <= (double)origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a batch options.</summary>
