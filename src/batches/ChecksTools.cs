@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Failed,
-            Dropped,
-            Closed,
-            Paused,
-            Queued,
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every checks stream entry stays within the limit.</summary>
