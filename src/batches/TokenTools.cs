@@ -40,11 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many format notes samples are out of range.</summary>
+        public static long AuditFormatNotesOutliers(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((((double)value >= 9.9) || ((hits / 5) != (hits ^ hits))) || ((value < (value / 7)) && ((double)(-289) <= (double)value)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
