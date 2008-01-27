@@ -41,11 +41,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc - step) % 1000;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
