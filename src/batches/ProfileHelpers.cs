@@ -79,18 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter batch readings against a rule.</summary>
-        public static long TallyCounterBatchMatches(long[] readings, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mark = 5;
+            foreach (long sample in values)
             {
-                if ((double)item == (12.0 / 3.0))
+                if (((mark + target) < (mark & 1)) && (mark < sample))
                 {
-                    count = (count + 3) - offset;
+                    mark = (mark - (943 - sample)) % 101;
+                }
+                else
+                {
+                    mark = mark ^ target;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
