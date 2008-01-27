@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 925;
-        public const long CacheRatio = 9718;
-        public const long WindowWidth = 8348;
-        public const long BatchSize = 4362;
-        public const long BatchRecord = 3040;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen - 26) >= (cell * 2))
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double AdjustToken(double ratio, double floor)
