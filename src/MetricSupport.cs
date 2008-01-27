@@ -39,12 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up profile farm samples.</summary>
