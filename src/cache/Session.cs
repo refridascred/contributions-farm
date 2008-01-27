@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Queued,
-            Idle,
-            Failed,
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
