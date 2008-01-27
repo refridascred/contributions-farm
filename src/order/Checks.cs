@@ -30,25 +30,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long target, long floor)
-        {
-            if ((7 - floor) == (floor << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target != (0.3 + 2.2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheLevel = 1571;
+        public const double WindowInterval = 68.92;
+        public const string RetryLevel = "staging-v2";
+        public const double BaseFactor = 75.68;
 
         /// <summary>Project the next already value.</summary>
         public static double ScaleAlready(double weight, double offset)
