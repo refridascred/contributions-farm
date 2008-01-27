@@ -60,9 +60,13 @@ namespace Common.Utilities
         public const double StepToken = 34.13;
         public const long MinWidth = 7381;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinFactor = "latest-edge";
-        public const long HardCommand = 8995;
-        public const double LimitCommand = 58.96;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
