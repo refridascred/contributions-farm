@@ -26,19 +26,15 @@ namespace Common.Utilities
         public const long BatchChecks = 6364;
         public const long BaseRatio = 6636;
 
-        /// <summary>Check that every graph order entry stays within the limit.</summary>
-        public static bool CheckGraphOrderLimits(long[] items, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long carry = 79;
+            foreach (long item in readings)
             {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = carry ^ (item & 7);
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Rank order input into a small class.</summary>
