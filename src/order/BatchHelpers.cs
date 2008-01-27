@@ -17,12 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 9817;
-        public const long WindowGithubfarm = 7531;
-        public const string MaxCount = "standard-v2";
-        public const double BurstGithubfarm = 11.75;
-        public const string IdleRatio = "alpha-v2";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!(hits > datum))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit stream counter readings against a rule.</summary>
         public static long AuditStreamCounterHits(long[] series)
