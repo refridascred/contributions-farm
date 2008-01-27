@@ -50,16 +50,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] items, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark + (mark / 3);
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a format reading by value.</summary>
