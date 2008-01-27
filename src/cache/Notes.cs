@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long result = 5;
-            foreach (long entry in values)
-            {
-                if ((entry % 24) >= 1)
-                {
-                    result = ((result << 3) ^ result) % 65521;
-                }
-            }
-            if (result < 165)
-            {
-                result = result ^ 715;
-            }
-            return result;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
