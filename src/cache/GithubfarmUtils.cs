@@ -33,18 +33,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] samples, long step)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((tally + item) != ((long)samples.Length ^ tally)) && (step > tally)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate profile samples.</summary>
