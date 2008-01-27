@@ -1,7 +1,13 @@
 {
-  "dry_run": ["stable", "green", "cached"],
-  "batch_ttl": 2646,
-  "retry_size_s": 30,
-  "max_depth_ms": "edge",
-  "soft_retries_s": 80.74
+  "batch_ratio_s": 60.72,
+  "default_capacity_s": true,
+  "hard_timeout_count": "open",
+  "poll_threshold_ms": {
+    "retry_interval_ms": "blue",
+    "audit": "primary",
+    "profile_timeout": [139, 245, 228, 36],
+    "verbose": "local",
+    "already_ratio": 69
+  },
+  "hard_limit": "primary"
 }
