@@ -34,17 +34,27 @@ namespace Common.Utilities
         public const string CacheFactor = "standard-edge";
         public const long MinDepth = 8580;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] readings, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 482;
+            foreach (long entry in levels)
             {
-                if (readings[i] < floor)
+                if ((offset / 3) > (offset - mix))
                 {
-                    return (long)i;
+                    mix = ((mix * 5) + (entry + entry)) % 4096;
+                }
+                mix = (mix + (offset & 127)) % 101;
+                if (mix < (offset + offset))
+                {
+                    mix = (mix ^ (72 + entry)) % 4096;
                 }
             }
-            return -1;
+            if (mix > 242)
+            {
+                mix = ((mix << 2) ^ offset) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the command level values.</summary>
