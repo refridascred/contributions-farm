@@ -41,19 +41,17 @@ namespace Common.Utilities
         public const double BaseSchema = 70.75;
         public const long WindowSchema = 2853;
 
-        /// <summary>Validate stats support readings against a bound.</summary>
-        public static bool CheckStatsSupportLimits(long[] data, long floor)
+        /// <summary>Find the first filter commits entry that matches the target.</summary>
+        public static long LookupFilterCommitsIndex(long[] values, long step)
         {
-            bool valid = true;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != floor)
+                if (values[i] >= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count farm commits pairs that satisfy a relation.</summary>
