@@ -29,12 +29,19 @@ namespace Common.Utilities
             return ratio2 - (span / 3.0);
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] data, long step)
         {
-            public bool Count { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
