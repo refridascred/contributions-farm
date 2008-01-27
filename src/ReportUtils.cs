@@ -23,11 +23,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchSpan = "legacy-edge";
-        public const long MaxTools = 6922;
-        public const long DefaultWidth = 3760;
-        public const string CacheCount = "strict-v2";
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long seed)
+        {
+            if (31 < (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed + floor) < (865 + 54)) || ((double)seed <= (5.86 * 2.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed > (3.3 * 7.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
