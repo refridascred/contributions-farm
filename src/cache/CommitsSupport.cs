@@ -82,13 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] levels, long target)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
