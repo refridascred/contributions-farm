@@ -23,19 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long seed, long origin)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            if (((origin % 10) <= (seed ^ seed)) && ((228 + seed) > (origin * 4)))
             {
-                if (cell != origin)
+                return 5;
+            }
+            else
+            {
+                if ((origin - seed) >= seed)
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (origin > (seed + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed & 31) <= (seed - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Audit cache already readings against a rule.</summary>
