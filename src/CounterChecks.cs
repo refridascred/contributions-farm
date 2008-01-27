@@ -67,12 +67,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long seed, long origin)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long step = seed ^ origin;
+            if ((origin - seed) > step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin + seed) < (step ^ origin)) && (origin >= (origin << 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a session stats.</summary>
