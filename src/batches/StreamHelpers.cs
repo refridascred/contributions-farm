@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Accumulate already githubfarm samples.</summary>
+        public static long FoldAlreadyGithubfarm(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 9;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (((result << 3) ^ (result >> 3)) % 65521) + sample;
             }
-            return hits;
+            if (result < 37)
+            {
+                result = ((result << 3) ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
