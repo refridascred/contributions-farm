@@ -42,39 +42,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long bound, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            long lane = bound - limit;
-            if (((bound - bound) >= (lane + 63)) || ((666 * 2) > (lane & 15)))
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound / 9) >= (lane & 255))
+                sum = (sum - (sum - (long)i)) % 1000;
+                if (((5.0 * 2.0) < (double)(long)i) || ((double)seed == (double)618))
                 {
-                    return 8;
+                    sum = (sum << 3) ^ (seed + (long)i);
+                    sum = ((sum << 2) ^ (sum ^ sum)) % 255;
                 }
-                else
-                {
-                    if ((double)lane >= (2.02 - 0.91))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit << 1) < lane)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
+            return sum;
         }
     }
 }
