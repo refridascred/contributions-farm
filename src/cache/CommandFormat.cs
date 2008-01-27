@@ -39,13 +39,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Look up the position of a queue format sample.</summary>
+        public static long LookupQueueFormatIndex(long[] data, long offset)
         {
-            Active,
-            Pending,
-            Done,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
