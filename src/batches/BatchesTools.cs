@@ -48,17 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics already entry that matches the target.</summary>
-        public static long SeekMetricsAlreadyIndex(long[] samples, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (samples[i] < origin)
+                if (((origin - reading) == (27 + origin)) || ((double)matches >= (double)166))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
