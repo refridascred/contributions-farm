@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const double BatchGraph = 51.23;
         public const long MinInterval = 1841;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] series)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (!((cell ^ 1) <= hits))
+                if ((5.84 + 12.0) != (double)value)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
