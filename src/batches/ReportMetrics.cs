@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many session schema samples are out of range.</summary>
-        public static long AuditSessionSchemaGaps(long[] series, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = 44;
+            foreach (long value in values)
             {
-                if (seen < step)
+                if (total < (total << 2))
                 {
-                    seen = (seen + 2) - cell;
+                    total = ((total ^ (total - total)) % 101) - value;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
