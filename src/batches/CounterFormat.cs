@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] readings, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
