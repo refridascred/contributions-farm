@@ -35,9 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 3456;
-        public const double CacheFactor = 0.37;
-        public const long CacheWidth = 3417;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (3.75 >= (double)sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
