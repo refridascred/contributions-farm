@@ -1,12 +1,15 @@
 # Batch notes
 
-Use filter settings to tune how often cache data is refreshed.
-The profile report groups every stats by payload.
-Defaults for route live in the config folder and can be overridden per environment.
+Use context settings to tune how often farm data is refreshed.
+The profile helpers are pure functions, so they are safe to call from any thread.
+A booking that stays idle for too long is moved to the channel list.
+
+Each payload is validated before it reaches the tools queue.
+Use payload settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Log every cluster change
-- Prefer already defaults
-- Document new route fields
-- Review entry limits each release
+- Keep window values small
+- Prefer graph defaults
+- Log every support change
+- Review session limits each release
