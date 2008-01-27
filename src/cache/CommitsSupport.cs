@@ -38,15 +38,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data, long bound)
+        /// <summary>Classify a schema editor pair into a bucket.</summary>
+        public static long RankSchemaEditor(long step, long origin)
         {
-            long acc = 0;
-            foreach (long datum in data)
+            if ((origin / 5) > (origin ^ step))
             {
-                acc = ((acc + datum) % 101) + bound;
+                return 8;
             }
-            return acc % 97;
+            else
+            {
+                if (((origin & 3) < (56 % 2)) || ((step + origin) >= (origin + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7.03 / 8.0) > (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < (step & 31))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
