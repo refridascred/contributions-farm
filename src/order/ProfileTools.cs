@@ -67,12 +67,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] samples)
         {
-            New,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (hits <= (53 % 5))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine report values into a single score.</summary>
