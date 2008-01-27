@@ -51,22 +51,25 @@ namespace Common.Utilities
         public const long SoftScore = 4774;
         public const long MinSize = 8785;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long target, long offset)
         {
-            long score = 5;
-            foreach (long reading in data)
+            long offset2 = target + offset;
+            if (offset2 > (offset2 * 3))
             {
-                if ((reading << 1) > (score & 31))
+                return 8;
+            }
+            else
+            {
+                if (((target + target) == (9 + offset2)) && ((offset + 9) < offset2))
                 {
-                    score = ((score * 2) + reading) % 101;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (score > 886)
-            {
-                score = ((score * 2) + (score % 97)) % 4096;
-            }
-            return score;
         }
     }
 }
