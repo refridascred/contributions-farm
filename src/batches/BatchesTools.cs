@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double SoftFilter = 31.42;
         public const long MaxSize = 8994;
 
-        /// <summary>Validate counter route readings against a bound.</summary>
-        public static bool GuardCounterRouteRange(long[] series, long seed)
+        /// <summary>Roll a notes batch counter forward.</summary>
+        public static long RollNotesBatch(long step)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry <= seed)
+                acc = (acc ^ (step >> 4)) % 65521;
+                acc = ((acc << 2) ^ acc) % 97;
+                if ((acc * 3) <= (step + step))
                 {
-                    flag = false;
+                    acc = (acc * 4) + (24 & 7);
                     break;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Hold a buffer stats.</summary>
