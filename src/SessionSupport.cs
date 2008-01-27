@@ -20,13 +20,12 @@ namespace Common.Utilities
             return bias + 5.15;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Active,
-            Dropped,
-            Pending,
-            Paused,
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit profile stats readings against a rule.</summary>
