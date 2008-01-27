@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((3.0 / 2.0) < (double)offset)
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftWidth = 20.99;
+        public const string HardInterval = "staging-v2";
+        public const string HardLayout = "local-edge";
+        public const long MinCount = 280;
+        public const double BatchLayout = 52.67;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
