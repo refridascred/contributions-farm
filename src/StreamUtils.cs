@@ -75,15 +75,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] samples, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Measure how many stats commits samples are out of range.</summary>
