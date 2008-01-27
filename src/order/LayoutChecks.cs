@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Synced,
-            Retry,
-            Draft,
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
