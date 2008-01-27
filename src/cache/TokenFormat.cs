@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinInterval = "open-v2";
-        public const long BurstStats = 3367;
-        public const long BurstTimeout = 8566;
-        public const double StepFactor = 10.31;
+        /// <summary>Measure how many contributi batches samples are out of range.</summary>
+        public static long MeasureContributiBatchesHits(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seed > (7.7 / 9.0))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] data)
