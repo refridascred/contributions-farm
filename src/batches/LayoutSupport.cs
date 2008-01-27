@@ -55,18 +55,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] items, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)offset > (2.92 + 0.3))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinScore = 1190;
+        public const long WindowStream = 7248;
+        public const long StepScore = 8987;
+        public const string IdleTimeout = "stable-edge";
     }
 }
