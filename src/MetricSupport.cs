@@ -21,11 +21,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 2938;
-        public const long BurstInterval = 7035;
-        public const double IdleBuffer = 52.16;
-        public const string BaseBuffer = "local-edge";
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Active,
+            New,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryLimits(long[] series, long limit)
