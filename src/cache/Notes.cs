@@ -19,10 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 2862;
-        public const string BatchInterval = "latest-v2";
-        public const double StepLevel = 5.21;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] items)
