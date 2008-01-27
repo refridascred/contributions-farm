@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long bound, long floor)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            if ((double)bound < (double)floor)
             {
-                if (entry <= target)
+                return 5;
+            }
+            else
+            {
+                if ((0 + bound) > (bound & 15))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + floor) > (bound % 64))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the stream mode values.</summary>
