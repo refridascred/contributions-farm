@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Pending,
-            Locked,
-            Failed,
-            Done,
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
