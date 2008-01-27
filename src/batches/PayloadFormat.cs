@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mean - (mean + offset);
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double scale, double span)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            double drift = scale;
-            if (drift >= (drift / 3.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + (scale / 4.0)) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift - scale)) + (double)(long)i;
-            }
-            return drift + scale;
+            return count;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
