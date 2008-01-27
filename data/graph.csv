@@ -1,6 +1,10 @@
-id,score,token
-1,462,staging
-2,29.39,107
-3,753,74.41
-4,eu-west,47.31
-5,standard,blue
+id,region,token,state
+1,933,346,60.21
+2,fallback,926,19.59
+3,26.92,primary,stable
+4,blue,202,539
+5,27.44,primary,80.26
+6,631,469,881
+7,371,primary,87
+8,strict,606,12.31
+9,889,stable,735
