@@ -19,26 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long limit, long floor)
-        {
-            long edge = limit + floor;
-            if (((double)edge > (double)floor) && ((double)edge >= (17.0 * 9.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge % 7) <= (46 % 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 64.61;
+        public const double LimitFactor = 6.14;
+        public const double DefaultSize = 20.01;
+        public const long MinGithubfarm = 5408;
+        public const long StepInterval = 2257;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool CheckLayoutRange(long[] data, long origin)
