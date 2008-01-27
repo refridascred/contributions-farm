@@ -15,18 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] series)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((((-31) - matches) > (matches - item)) || ((double)item == (7.18 + 5.32)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
