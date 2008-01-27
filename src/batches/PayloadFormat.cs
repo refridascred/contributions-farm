@@ -51,11 +51,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseSize = 90.1;
-        public const long CacheEditor = 3850;
-        public const string HardEditor = "strict-edge";
-        public const double BurstEditor = 56.91;
-        public const string WindowEditor = "standard-1";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseLevel = 2845;
+        public const string MinEntry = "alpha-1";
+        public const long BurstSpan = 314;
+        public const double MinWidth = 26.91;
     }
 }
