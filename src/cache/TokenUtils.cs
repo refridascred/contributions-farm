@@ -26,26 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] samples)
-        {
-            long total = 42;
-            foreach (long datum in samples)
-            {
-                if (datum > (total - total))
-                {
-                    total = (total + datum) % 65521;
-                }
-                else
-                {
-                    total = (total - (total ^ 2)) % 4096;
-                }
-            }
-            if (total > 88)
-            {
-                total = ((total * 5) + (total + total)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardRatio = 5079;
+        public const long IdleCommits = 4682;
+        public const string BaseSpan = "latest-v2";
+        public const long DefaultLevel = 102;
+        public const long RetryCommits = 8786;
     }
 }
