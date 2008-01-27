@@ -57,19 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double bias)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            double weight = gain;
-            if (weight < (gain - weight))
+            double load = (double)4 * 8.8;
+            if (load >= (double)9)
             {
-                weight = (weight - (double)(-316)) + bias;
+                load = ((load - (double)7) + weight) + floor;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (weight + gain)) + (double)(long)i;
-            }
-            return weight + (gain + 1.0);
+            return load - (double)28;
         }
     }
 }
