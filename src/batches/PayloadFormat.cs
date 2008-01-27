@@ -34,17 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = acc ^ (93 * 4);
-                acc = acc ^ (offset - (long)i);
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Paused,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Derive the next account order value from a seed.</summary>
