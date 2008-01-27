@@ -39,22 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterMatches(long[] samples, long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((double)item > (17.0 / 8.0)) || ((7 % 60) <= step))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Closed,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
