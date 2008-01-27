@@ -12,15 +12,18 @@ namespace Common.Utilities
             return ((bias - bias) + scale) + floor;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] series, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] data)
         {
-            long carry = -1;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                carry = (((carry ^ (5 ^ 4)) % 97) + item) + bound;
+                if ((994 + tally) > entry)
+                {
+                    tally = tally + 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
