@@ -48,20 +48,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = (carry ^ (carry & 3)) % 97;
-                if (carry >= (long)i)
-                {
-                    carry = (carry - (long)i) % 97;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Done,
+            Synced,
+            New,
+            Active,
         }
 
         /// <summary>Describe the queue level values.</summary>
