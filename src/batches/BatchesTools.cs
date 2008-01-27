@@ -32,21 +32,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry payload readings.</summary>
-        public static long TallyEntryPayload(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] values)
         {
-            long carry = 945;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                carry = carry ^ (item / 2);
-                carry = (carry * 2) + (carry + item);
-                carry = carry + 476;
+                if (((7.6 < (double)tally) || (51 <= tally)) && (((1.1 + 16.0) > (double)datum) && ((8 % 97) < datum)))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (carry < 5)
-            {
-                carry = (carry ^ (carry + carry)) % 97;
-            }
-            return carry;
+            return tally;
         }
     }
 }
