@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
