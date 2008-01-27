@@ -36,12 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
