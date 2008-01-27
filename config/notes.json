@@ -1,6 +1,5 @@
 {
-  "verbose": 4606,
-  "base_window": "cached",
-  "audit": "legacy",
-  "burst_retries": "local"
+  "poll_ttl": 30,
+  "soft_capacity_pct": "primary",
+  "max_delay": "eu-west"
 }
