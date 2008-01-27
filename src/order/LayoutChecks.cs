@@ -53,12 +53,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long limit)
         {
-            Retry,
-            New,
-            Synced,
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = acc - ((long)i - limit);
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the format status values.</summary>
