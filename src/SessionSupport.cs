@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate batches profile readings against a bound.</summary>
+        public static bool CheckBatchesProfileLimits(long[] data, long target)
         {
-            Draft,
-            Pending,
-            Closed,
-            Retry,
-            Active,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the order state values.</summary>
