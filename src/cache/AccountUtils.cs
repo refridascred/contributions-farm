@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] values, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item + 5) <= tally)
-                {
-                    tally = (tally + 3) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
