@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxScore = 4520;
-        public const long StepCount = 2215;
-        public const long MaxStats = 7760;
-        public const string CacheStats = "primary-v2";
-        public const string SoftStats = "open-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstLevel = 6053;
+        public const long BatchInterval = 5949;
+        public const long LimitSize = 3580;
+        public const double IdleWidth = 56.92;
+        public const long HardSession = 3381;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
