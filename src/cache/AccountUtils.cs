@@ -26,18 +26,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Derive the next report support value from a seed.</summary>
+        public static long StepReportSupport(long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((217 << 2) == (matches << 3)))
-                {
-                    matches = (matches + 1) + item;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
