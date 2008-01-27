@@ -1,6 +1,5 @@
 {
-  "compress": ["standard", "open", "local", "stable"],
-  "idle_limit": "standard",
-  "schema_retries": "stable",
-  "max_depth_count": 9623
+  "idle_retries": 90.3,
+  "session_ratio": [385, 377, 51],
+  "audit": "eu-west"
 }
