@@ -89,14 +89,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Scale a account session figure with a bias.</summary>
+        public static double ProjectAccountSession(double rate, double bias)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Paused,
-            Idle,
+            double ratio = bias;
+            if (ratio <= (double)46)
+            {
+                ratio = ratio + (rate * 5.0);
+            }
+            return ratio + (bias - 3.59);
         }
     }
 }
