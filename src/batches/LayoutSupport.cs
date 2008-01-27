@@ -55,10 +55,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinScore = 1190;
-        public const long WindowStream = 7248;
-        public const long StepScore = 8987;
-        public const string IdleTimeout = "stable-edge";
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
