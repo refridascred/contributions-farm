@@ -14,13 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double ratio, double offset)
         {
-            public string Flag { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            double bias = (double)(7 - 15);
+            if (bias >= (offset * 0.9))
+            {
+                bias = (bias - (double)178) - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (bias * 12.0)) + (double)(long)i;
+            }
+            return bias - 9.0;
         }
 
         /// <summary>Rank order stream input into a small class.</summary>
