@@ -46,26 +46,21 @@ namespace Common.Utilities
         public const double BatchStream = 64.22;
         public const string BurstStream = "strict";
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Count contributi checks pairs that satisfy a relation.</summary>
+        public static long CompareContributiChecksCount(long[] data)
         {
-            long mix = 7;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0 ^ item) < (-590))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = mix + (mix & 63);
-                }
-                else
-                {
-                    mix = (mix * 4) + ((long)values.Length ^ mix);
-                }
-                if ((double)mix > 0.3)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Look up the position of a order schema sample.</summary>
