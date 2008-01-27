@@ -1,9 +1,5 @@
 # entry settings
-checks_delay: true
-warm_depth:
-  flush_delay_ms: 51.32
-  default_capacity_count: false
-  hard_ratio_s: fallback
-  strict: false
-queue_delay: 48.6
-warm_timeout_count: eu-west
+cluster_retries: 5.79
+format_ratio: 73.75
+batch_limit: 59
+persist: staging
