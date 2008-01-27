@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Rank schema profile input into a small class.</summary>
+        public static long BucketSchemaProfile(long origin, long floor)
         {
-            Retry,
-            Failed,
-            New,
+            if (origin >= (9 + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor >= (origin + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)origin != (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin >> 4) < (origin / 8)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account snapshot.</summary>
