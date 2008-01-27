@@ -48,18 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] values)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count * 5) == (reading + reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
