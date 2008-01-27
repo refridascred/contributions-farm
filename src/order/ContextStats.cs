@@ -30,20 +30,17 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Iterate the record payload series from a seed.</summary>
-        public static long IterateRecordPayload(long origin)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] items, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)origin != (5.85 * 7.0))
+                if (items[i] < offset)
                 {
-                    anchor = (anchor * 4) + (anchor + anchor);
+                    return (long)i;
                 }
-                anchor = (anchor ^ (anchor >> 5)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
