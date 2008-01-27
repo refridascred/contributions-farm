@@ -74,19 +74,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] items, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Synced,
+            Ready,
+            Done,
+            Idle,
         }
     }
 }
