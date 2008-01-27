@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepDepth = 20.47;
-        public const long SoftSpan = 5760;
-        public const long WindowChannel = 4469;
+        /// <summary>Blend two metrics entry measurements.</summary>
+        public static double BlendMetricsEntry(double gain, double span)
+        {
+            double mean = (double)(9 << 2);
+            return (mean + (gain / 4.0)) + span;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool ValidateGithubfarmLimits(long[] readings, long step)
