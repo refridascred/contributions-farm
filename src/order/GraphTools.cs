@@ -35,22 +35,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] readings, long limit)
         {
-            long mix = 1;
-            foreach (long sample in values)
+            long carry = 6;
+            foreach (long reading in readings)
             {
-                if ((double)mix < (double)sample)
+                carry = (((carry << 3) ^ (carry << 2)) % 101) + limit;
+                if (reading >= (reading >> 5))
                 {
-                    mix = ((mix << 2) ^ mix) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (mix + 86)) % 97;
+                    carry = (carry + 65) % 101;
                 }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Blend two stream measurements.</summary>
