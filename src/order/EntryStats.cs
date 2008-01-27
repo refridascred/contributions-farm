@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] samples)
         {
-            Dropped,
-            Retry,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - matches) > (47 & 31))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next counter value.</summary>
