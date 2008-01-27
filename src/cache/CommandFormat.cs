@@ -52,21 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count route account pairs that satisfy a relation.</summary>
-        public static long CompareRouteAccountCount(long[] samples)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 2)
+                    if ((levels[i] + levels[j]) < 1)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
