@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many editor cache samples are out of range.</summary>
-        public static long MeasureEditorCacheOutliers(long[] series, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)value < (3.11 * 7.58))
+                if ((double)reading <= (6.11 - 3.7))
                 {
-                    matches = (matches + 1) - bound;
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
