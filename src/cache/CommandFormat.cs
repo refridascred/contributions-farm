@@ -23,15 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double gain, double bias)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            double gain2 = (double)65;
+            for (int i = 0; i < 2; i++)
             {
-                total = ((total * 3) + (long)i) % 101;
+                gain2 = ((gain2 + (double)(long)i) - gain) + bias;
             }
-            return total;
+            return gain2 - (double)8;
         }
 
         /// <summary>Describe the profile status values.</summary>
