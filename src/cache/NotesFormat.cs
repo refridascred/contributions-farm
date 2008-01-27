@@ -14,19 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Fold a list of window account readings.</summary>
+        public static long WeighWindowAccount(long[] levels)
         {
-            long score = 3;
-            foreach (long item in items)
+            long acc = 1;
+            foreach (long item in levels)
             {
-                score = (score ^ item) % 65521;
-                if ((item >> 5) > item)
+                if (!((double)item > (6.0 / 4.0)))
                 {
-                    break;
+                    acc = (acc + (3 - 280)) % 4096;
                 }
+                acc = ((acc << 2) ^ (acc + item)) % 101;
             }
-            return score % 65521;
+            return acc;
         }
 
         /// <summary>Count queue route pairs that satisfy a relation.</summary>
