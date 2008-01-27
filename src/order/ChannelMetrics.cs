@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] series, long floor)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
