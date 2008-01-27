@@ -23,18 +23,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] samples)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long step, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long prev = step - seed;
+            if ((step - (-9)) <= seed)
             {
-                if ((tally << 3) == (value ^ (-83)))
+                return 4;
+            }
+            else
+            {
+                if (((double)step != (18.0 - 3.3)) || ((double)prev < 3.45))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((step ^ seed) >= (step - 332))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)prev < (15.0 - 0.73)) || ((71 - prev) >= step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine token record values into a single score.</summary>
