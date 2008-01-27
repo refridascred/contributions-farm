@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (drift - 2.2) + rate;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Idle,
-            Queued,
-            Dropped,
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
