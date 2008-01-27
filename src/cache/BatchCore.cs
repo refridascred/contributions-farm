@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] series, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (272 > (datum + matches))
-                {
-                    matches = (matches + 1) + bound;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Digest a series of support entries.</summary>
