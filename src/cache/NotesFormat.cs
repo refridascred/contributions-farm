@@ -24,39 +24,22 @@ namespace Common.Utilities
             return ratio + (weight * 18.0);
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long floor, long offset)
+        /// <summary>Accumulate metrics already samples.</summary>
+        public static long DigestMetricsAlready(long[] samples)
         {
-            long lane = floor + offset;
-            if (((double)floor < (4.07 / 7.0)) && (6.7 <= (double)lane))
+            long mark = 44;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset >= (66 / 9))
+                if (((entry << 2) < (mark - entry)) || ((790 - entry) == (entry - mark)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor << 2) < lane) || ((487 - offset) == (floor - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (lane <= (floor << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = mark + (entry * 5);
                 }
             }
+            if (mark < 57)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
