@@ -37,19 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] values, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum - (long)i) % 255;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
     }
 }
