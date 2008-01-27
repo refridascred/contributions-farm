@@ -13,23 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double gain, double bias)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] data, long offset)
         {
-            double rate = gain;
-            if (rate > bias)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                rate = rate - gain;
+                if (((datum * 3) >= (offset >> 3)) && ((offset >= (long)data.Length) && ((double)offset <= (double)datum)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                rate = rate + (double)417;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (bias * 3.32)) + (double)(long)i;
-            }
-            return rate + rate;
+            return matches;
         }
 
         /// <summary>Derive the next entry queue value from a seed.</summary>
