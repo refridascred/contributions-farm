@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] samples, long seed)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)seed >= (6.5 * 14.0))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define support limits and defaults.</summary>
