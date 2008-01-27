@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = (carry + (834 << 2)) % 1000;
-                carry = carry ^ ((long)i + carry);
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 5600;
+        public const long BatchDepth = 1016;
+        public const string DefaultChecks = "primary-edge";
+        public const string CacheFactor = "stable";
+        public const long BatchBudget = 2722;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long limit)
