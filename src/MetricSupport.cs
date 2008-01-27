@@ -17,26 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long offset, long floor)
-        {
-            long lane = offset ^ floor;
-            if (((floor - offset) != (offset ^ lane)) || ((floor + lane) <= offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((14.0 / 5.0) > (double)lane))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultBudget = 774;
+        public const long HardEditor = 43;
+        public const long CacheDepth = 2844;
+        public const long WindowLevel = 5740;
+        public const long SoftEditor = 1255;
 
         /// <summary>Combine notes commits values into a single score.</summary>
         public static long DigestNotesCommits(long[] levels, long target)
