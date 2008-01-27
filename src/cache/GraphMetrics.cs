@@ -44,31 +44,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a contributi command value against two limits.</summary>
-        public static long ClassifyContributiCommand(long target, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            if ((260 % 97) > (floor + target))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + 9) > (target % 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target / 3) < target)
+                    if ((data[i] - data[j]) == 14)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
