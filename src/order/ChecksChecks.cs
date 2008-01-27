@@ -39,13 +39,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 2299;
+        public const string MaxBatches = "legacy-1";
+        public const double WindowBatches = 24.84;
     }
 }
