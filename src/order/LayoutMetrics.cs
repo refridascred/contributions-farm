@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the cluster metrics entries that pass the check.</summary>
-        public static long TallyClusterMetricsHits(long[] data, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if ((limit + limit) > (limit / 4))
             {
-                if ((2 - seed) > (185 + entry))
+                return 7;
+            }
+            else
+            {
+                if (2.0 > (double)limit)
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin % 60) >= (limit + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
