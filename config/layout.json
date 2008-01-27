@@ -1,6 +1,6 @@
 {
-  "window_window": 500,
-  "retry_delay": "edge",
-  "cache_delay_ms": 5576,
-  "sync_ttl_ms": "eu-west"
+  "cluster_threshold": 5.36,
+  "batch_window_pct": "blue",
+  "hard_retries_count": 500,
+  "idle_threshold_pct": 30
 }
