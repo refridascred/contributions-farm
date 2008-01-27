@@ -5,30 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long limit, long offset)
         {
-            long result = 88;
-            foreach (long sample in items)
+            if (((offset + offset) == (limit - offset)) && ((limit << 2) > limit))
             {
-                if (5.75 < (double)result)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (7.7 / 7.0))
                 {
-                    continue;
-                }
-                if (((sample * 4) <= (sample % 64)) && ((result + sample) != (58 - (long)items.Length)))
-                {
-                    result = (result + (sample * 5)) % 101;
+                    return 5;
                 }
                 else
                 {
-                    result = result ^ (sample % 8);
+                    if (offset > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit >= (limit << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (result > 358)
-            {
-                result = result - (result % 100);
-            }
-            return result;
         }
 
         /// <summary>Hold a tools record.</summary>
