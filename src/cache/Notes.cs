@@ -29,12 +29,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long offset, long step)
         {
-            public double Count { get; set; }
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
+            long bound = offset + step;
+            if (!(6.93 > (8.0 + 2.86)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound ^ step) >= (648 - step)) && (offset <= (630 - step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((5.33 * 10.0) == (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
