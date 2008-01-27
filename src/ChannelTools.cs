@@ -17,25 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long offset, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long delta = offset ^ bound;
-            if (((delta - offset) < (bound - offset)) && ((double)bound <= (1.91 / 3.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (5.0 + 9.3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Synced,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
