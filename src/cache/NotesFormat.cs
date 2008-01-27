@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Stale,
-            Failed,
-            Draft,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 7823;
+        public const long IdleRatio = 3117;
+        public const string WindowContext = "strict-v2";
+        public const long HardContext = 6373;
+        public const long DefaultSpan = 2919;
 
         /// <summary>Fold a list of window account readings.</summary>
         public static long WeighWindowAccount(long[] levels)
