@@ -45,12 +45,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepLevel = "standard-v2";
+        public const long RetryTools = 8337;
+        public const double DefaultInterval = 0.8;
     }
 }
