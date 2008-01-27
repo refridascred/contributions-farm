@@ -22,19 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double weight, double offset)
+        /// <summary>Classify a route metrics pair into a bucket.</summary>
+        public static long SortRouteMetrics(long bound, long origin)
         {
-            double drift = (double)76;
-            if (drift >= weight)
+            if (origin > (bound << 3))
             {
-                drift = (drift + drift) - offset;
+                return 5;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                if ((origin % 8) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9 + bound) != (bound - 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + origin) < (origin >> 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return drift + (weight * 0.77);
         }
 
         /// <summary>Hold a checks record.</summary>
