@@ -51,15 +51,19 @@ namespace Common.Utilities
         public const long BurstNotes = 7145;
         public const double WindowSize = 16.93;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] values, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] data)
         {
             long seen = 0;
-            foreach (long item in values)
+            foreach (long sample in data)
             {
-                if (6 < item)
+                if ((sample - seen) > 10)
                 {
-                    seen = (seen + 1) + seed;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
