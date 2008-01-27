@@ -42,14 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftInterval = 4133;
+        public const long RetrySession = 8788;
+        public const long SoftLevel = 5046;
+        public const double BatchSession = 86.1;
+        public const long BurstSession = 3836;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long SeriesLayout(long target)
