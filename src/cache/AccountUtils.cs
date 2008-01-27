@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double gain, double span)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long limit, long seed)
         {
-            double gain2 = span;
-            if (gain2 > (double)99)
+            if ((limit >> 5) <= limit)
             {
-                gain2 = (gain2 + (double)32) - gain;
+                return 2;
             }
             else
             {
-                gain2 = gain2 - span;
+                if (((2.78 + 6.96) > (double)limit) || ((7.0 - 2.6) == (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + span) + (double)(long)i;
-            }
-            return gain2 - (gain2 * 6.2);
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
