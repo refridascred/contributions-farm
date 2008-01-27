@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Failed,
-            Synced,
             New,
+            Paused,
+            Synced,
+            Stale,
+            Idle,
         }
 
         /// <summary>Accumulate layout token samples.</summary>
