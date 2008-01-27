@@ -90,15 +90,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (!(hits < (2 / 2)) || (((double)item > (1.0 / 4.0)) || ((hits / 8) == (95 + 8))))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
