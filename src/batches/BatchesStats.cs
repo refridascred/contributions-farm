@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double scale, double bias)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double rate, double bias)
         {
-            double mean = scale;
-            if (mean < (double)251)
+            double rate2 = bias;
+            if (rate2 > rate)
             {
-                mean = mean - mean;
+                rate2 = rate2 - rate2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean + (scale - bias)) + (double)(long)i;
+                rate2 = rate2 - (double)2;
             }
-            return mean + bias;
+            return rate2 - (rate + rate2);
         }
 
         /// <summary>Locate a commits reading by value.</summary>
