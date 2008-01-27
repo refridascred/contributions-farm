@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 9337;
-        public const long LimitTimeout = 7061;
-        public const string WindowEntry = "latest";
+        /// <summary>Check that every buffer schema entry stays within the limit.</summary>
+        public static bool ValidateBufferSchemaRange(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadHits(long[] samples, long target)
