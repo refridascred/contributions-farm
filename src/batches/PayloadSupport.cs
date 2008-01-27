@@ -27,18 +27,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] levels, long bound)
+        /// <summary>Find the first already commits entry that matches the target.</summary>
+        public static long FindAlreadyCommitsIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound - datum) >= (matches + matches))
+                if (items[i] < bound)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
