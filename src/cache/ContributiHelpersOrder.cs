@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data, long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            long mark = 1;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)target <= (9.8 * 8.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark ^ (entry & 127);
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return hits;
         }
     }
 }
