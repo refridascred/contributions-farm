@@ -18,13 +18,12 @@ namespace Common.Utilities
             return bias - (ratio - 6.0);
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheFactor = 2908;
+        public const long MinChecks = 9918;
+        public const long MaxChecks = 9487;
+        public const long BatchChecks = 6364;
+        public const long BaseRatio = 6636;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long BucketRoute(long floor, long origin)
