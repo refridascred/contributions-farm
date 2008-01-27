@@ -75,13 +75,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples, long floor)
         {
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long result = -73;
+            foreach (long datum in samples)
+            {
+                result = (result - (result ^ 2)) + floor;
+                result = (result << 3) ^ result;
+                if ((datum - 39) >= 5)
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
