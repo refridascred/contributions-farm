@@ -1,9 +1,13 @@
 # entry settings
+enabled: open
+support_timeout: 9975
 compress:
-  already_depth: false
-  contributi_retries: 1024
-  window_timeout: 91.18
-  checks_threshold: 56.41
-  default_timeout_count: standard
-poll_retries: fallback
-schema_capacity: 28.54
+  burst_delay:
+    - 431
+    - 316
+    - 248
+    - 443
+  readonly: 9488
+  batch_ttl_count: 60
+  default_timeout: 923
+readonly: 100
