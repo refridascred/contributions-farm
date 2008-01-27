@@ -20,32 +20,13 @@ namespace Common.Utilities
         public const double IdleSpan = 38.97;
         public const double CacheInterval = 96.11;
 
-        /// <summary>Grade a notes context value against two limits.</summary>
-        public static long SortNotesContext(long origin, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long step = origin + seed;
-            if (((origin - seed) > (origin % 16)) && ((seed / 7) != (origin ^ (-646))))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((1.37 * 4.2) != (double)seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed * 4) != (step << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
