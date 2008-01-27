@@ -53,18 +53,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] levels)
+        /// <summary>Find the first metric channel entry that matches the target.</summary>
+        public static long LocateMetricChannelIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((count + count) <= (entry >> 3)) && (entry > (count - count))) && !((double)count < (5.07 + 9.94)))
+                if ((values[i] > offset) && ((values[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
