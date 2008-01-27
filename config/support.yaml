@@ -1,4 +1,9 @@
 # support settings
-order_timeout: 84.61
-compress: 60
-batch_ttl_ms: true
+readonly: 69
+base_limit_ms: staging
+dry_run:
+  - 374
+  - 329
+  - 184
+  - 165
+audit: primary
