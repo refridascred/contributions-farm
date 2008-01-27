@@ -44,20 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] samples, long bound)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheScore = 80.95;
+        public const long BatchGraph = 6219;
+        public const long MaxInterval = 654;
+        public const long RetryInterval = 4891;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
