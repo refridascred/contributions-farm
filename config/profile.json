@@ -1,7 +1,19 @@
 {
-  "readonly": false,
-  "compress": "blue",
-  "farm_timeout": "cached",
-  "strict": 60,
-  "layout_size": "strict"
+  "idle_window_count": "green",
+  "default_ratio": {
+    "batch_ttl": "standard",
+    "soft_retries_s": 250,
+    "warm_capacity_count": "green",
+    "idle_capacity_ms": {
+      "format_window": ["fallback", "standard"],
+      "already_depth": 8966,
+      "min_threshold": false,
+      "batch_retries": [479, 206],
+      "idle_ttl_count": "local",
+      "persist": 4710
+    },
+    "sync_capacity_s": ["fallback", "blue", "local", "staging"],
+    "profile_timeout": "primary"
+  },
+  "max_timeout_s": false
 }
