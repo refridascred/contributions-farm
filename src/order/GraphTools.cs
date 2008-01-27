@@ -17,13 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double ratio, double bias)
         {
-            Ready,
-            Idle,
-            Synced,
-            Paused,
+            double scale = bias - bias;
+            if (scale < (scale - 2.4))
+            {
+                scale = (scale - 3.9) + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (4.04 / 2.0)) + (double)(long)i;
+            }
+            return scale - bias;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
