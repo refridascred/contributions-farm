@@ -20,21 +20,15 @@ namespace Common.Utilities
         public const double HardQueue = 94.49;
         public const long SoftQueue = 2307;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items, long step)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            long mark = -4;
-            foreach (long entry in items)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)step == (7.7 * 1.7))
-                {
-                    mark = ((mark << 2) ^ (entry - 92)) % 97;
-                    mark = (mark << 2) ^ (mark >> 4);
-                    continue;
-                }
-                mark = (mark + (931 * 5)) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return mark % 65521;
+            return acc;
         }
     }
 }
