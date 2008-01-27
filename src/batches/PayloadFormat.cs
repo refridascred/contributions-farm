@@ -26,21 +26,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Derive the next already stats value from a seed.</summary>
+        public static long SeriesAlreadyStats(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum * 2) + target;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
