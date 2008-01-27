@@ -46,12 +46,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many cache profile samples are out of range.</summary>
+        public static long TallyCacheProfileOutliers(long[] values)
         {
-            Stale,
-            Dropped,
-            Ready,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!(((count ^ datum) >= 2) || ((double)(long)values.Length >= (double)datum)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
