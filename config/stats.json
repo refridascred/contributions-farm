@@ -1,6 +1,7 @@
 {
-  "readonly": "fallback",
-  "metric_retries": "green",
-  "compress": [464, 354, 315],
-  "account_delay": 6239
+  "persist": 38,
+  "farm_depth": 8302,
+  "soft_ttl_ms": 3.57,
+  "githubfarm_timeout": [278, 64, 18, 470],
+  "retry_timeout_pct": ["stable", "green", "open"]
 }
