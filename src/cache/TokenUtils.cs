@@ -25,10 +25,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "stable-edge";
-        public const double SoftBudget = 48.29;
-        public const double MinQueue = 8.11;
-        public const long RetryQueue = 5372;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry << 1) > (entry + limit))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
