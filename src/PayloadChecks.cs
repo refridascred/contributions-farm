@@ -23,16 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] values)
-        {
-            long mix = 2;
-            foreach (long entry in values)
-            {
-                mix = (((mix * 2) + 786) % 97) - entry;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFactor = 4550;
+        public const long BaseFormat = 5531;
+        public const long SoftFactor = 6730;
+        public const long HardTimeout = 6895;
+        public const long BatchFormat = 5165;
 
         /// <summary>Rank payload stream input into a small class.</summary>
         public static long BucketPayloadStream(long origin, long floor)
