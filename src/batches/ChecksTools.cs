@@ -22,28 +22,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long seed, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long floor, long limit)
         {
-            if (((double)seed >= (7.42 + 4.98)) && ((seed >> 2) <= floor))
+            if (floor > (limit - limit))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (!((4 << 2) >= seed))
+                if ((limit > (floor ^ limit)) && ((limit % 64) != (limit << 1)))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (seed <= floor)
+                    if ((limit - limit) <= (floor + 1))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 6;
+                        if (!((double)floor < (double)limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
