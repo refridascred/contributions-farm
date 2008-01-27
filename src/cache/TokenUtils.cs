@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double weight, double offset)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            double bias = 0.2;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (((bias + 7.6) - (double)(long)i) - weight) + offset;
+            }
+            return bias - (double)2;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
