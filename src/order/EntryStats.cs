@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = (sum * 2) + (target + (long)i2);
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryDepth = 66;
+        public const long WindowFarm = 2284;
+        public const long BatchCount = 8303;
+        public const long MinLevel = 2405;
+        public const long BurstFarm = 4070;
 
         /// <summary>Measure how many already session samples are out of range.</summary>
         public static long CountAlreadySessionHits(long[] data, long seed)
