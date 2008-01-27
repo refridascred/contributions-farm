@@ -1,9 +1,14 @@
 # entry settings
-metrics_interval: 9390
-flush_retries_pct: 1
-poll_window_count: false
-default_ttl_ms: 81.12
-strict:
-  - standard
-  - blue
-  - eu-west
+batch_threshold_pct: true
+cache_ttl:
+  notes_timeout: 13
+  cache_retries_s: standard
+  cache_depth_count: true
+  min_threshold_ms: 250
+poll_size:
+  - fallback
+  - local
+  - green
+idle_timeout_ms: open
+hard_delay_pct: true
+cache_ttl_count: 1024
