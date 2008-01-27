@@ -13,13 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            Idle,
+            Failed,
+            Retry,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
