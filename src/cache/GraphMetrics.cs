@@ -44,13 +44,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
+            Queued,
+            Closed,
+            New,
+            Stale,
         }
     }
 }
