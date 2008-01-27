@@ -30,11 +30,31 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long offset, long origin)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            if (64 < (offset & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset > (5.4 / 7.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)520 > (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first cache support entry that matches the target.</summary>
