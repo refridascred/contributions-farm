@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = 1.1;
+            if (bias > offset)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + 0.1;
             }
-            return seen;
+            else
+            {
+                bias = bias + (bias - offset);
+            }
+            return bias + (offset + scale);
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
