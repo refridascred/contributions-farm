@@ -31,20 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] samples, long offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long acc = 7;
-            foreach (long item in samples)
-            {
-                acc = ((acc - (55 % 8)) % 101) + offset;
-                acc = acc ^ item;
-            }
-            if (acc > 333)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc % 65521;
+            Retry,
+            Pending,
+            Paused,
         }
     }
 }
