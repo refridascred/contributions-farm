@@ -70,21 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 50;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((anchor + cell) != (anchor >> 5)) && ((cell ^ anchor) > (anchor ^ anchor)))
                 {
-                    if ((values[i] ^ values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor << 2) ^ anchor;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
