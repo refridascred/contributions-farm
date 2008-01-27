@@ -12,24 +12,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (((long)i != (mark << 3)) || ((limit * 3) >= (29 / 3)))
-                {
-                    mark = mark ^ limit;
-                }
-                if ((limit << 1) <= (mark ^ mark))
-                {
-                    mark = (mark ^ (limit << 1)) % 101;
-                    mark = (mark + (long)i) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                total = total ^ 695;
+                total = (total << 2) ^ (9 + floor);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
