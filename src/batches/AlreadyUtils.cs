@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the account level values.</summary>
