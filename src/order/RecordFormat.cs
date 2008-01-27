@@ -22,14 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] values)
         {
-            Closed,
-            Pending,
-            Locked,
-            Paused,
-            Draft,
+            long acc = 16;
+            foreach (long value in values)
+            {
+                if ((value << 2) < (value + value))
+                {
+                    acc = acc ^ value;
+                    continue;
+                }
+                if (((-60) ^ value) < acc)
+                {
+                    acc = ((acc * 4) + (213 + (long)values.Length)) % 101;
+                }
+            }
+            if (acc < 954)
+            {
+                acc = (acc * 3) + (acc - acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Check that every stats token entry stays within the limit.</summary>
