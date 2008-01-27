@@ -26,26 +26,21 @@ namespace Common.Utilities
         public const long IdleTools = 6394;
         public const long RetryTools = 637;
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long sum = 72;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((6 >> 3) == (sum ^ sum)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum - (sum / 9)) % 1000) + item;
-                }
-                else
-                {
-                    sum = sum ^ (sum >> 5);
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 787)
-            {
-                sum = (sum << 2) ^ (sum ^ sum);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
