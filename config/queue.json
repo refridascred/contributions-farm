@@ -1,8 +1,10 @@
 {
-  "sync_window_count": false,
-  "idle_size_pct": 63,
-  "sync_interval_pct": [50, 425, 406],
-  "soft_interval_s": 100,
-  "verbose": 1024,
-  "already_ratio": false
+  "cache_timeout_s": {
+    "sync_size_ms": "fallback",
+    "profile_timeout": "stable",
+    "default_ttl": 500
+  },
+  "max_capacity_ms": false,
+  "format_depth": true,
+  "hard_delay": 13.94
 }
