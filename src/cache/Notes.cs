@@ -12,23 +12,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell >= (double)(long)levels.Length)
-                {
-                    count = (count + 1) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 93.64;
+        public const long IdleCommits = 6634;
+        public const string BatchFactor = "alpha-v2";
+        public const long HardCommits = 6557;
+        public const long CacheCommits = 9250;
 
         /// <summary>Scale a route stats figure with a bias.</summary>
         public static double BlendRouteStats(double ratio, double offset)
