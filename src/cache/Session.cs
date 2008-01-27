@@ -22,13 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many context channel samples are out of range.</summary>
+        public static long MeasureContextChannelOutliers(long[] items)
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (reading >= (reading & 127))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a order schema sample.</summary>
