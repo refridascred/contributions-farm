@@ -1,26 +1,17 @@
 # entry settings
-poll_limit_count:
-  - staging
-  - open
-  - green
-  - staging
-retry_capacity: 10
-githubfarm_ttl: green
-max_ratio_s: false
-queue_retries: 30
-cluster_timeout:
-  min_timeout: 10
-  max_ttl_pct: fallback
-  cache_ratio_count:
-    max_depth_count: false
-    warm_depth_pct: 1277
-    default_window_s: true
-    flush_ttl_ms: 71.4
-    max_capacity: false
-    token_size: eu-west
-  default_threshold:
-    - 215
-    - 385
-    - 128
-  dry_run: 77
-  retry_depth_count: latest
+default_retries:
+  compress: legacy
+  flush_interval_ms: blue
+  enabled:
+    hard_ttl: 5.79
+    retry_ratio: staging
+    readonly: green
+    min_delay_ms: 6.97
+  base_ratio: staging
+warm_window_pct: 34
+schema_capacity:
+  - local
+  - blue
+  - latest
+  - strict
+verbose: true
