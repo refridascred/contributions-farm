@@ -30,12 +30,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long step)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
