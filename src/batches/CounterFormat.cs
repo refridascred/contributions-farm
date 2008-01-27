@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public double Token { get; set; }
+            long result = 6;
+            foreach (long sample in levels)
+            {
+                if ((sample / 4) != (result << 1))
+                {
+                    result = (result << 3) ^ (result * 3);
+                }
+            }
+            if (result < 807)
+            {
+                result = (result + (result + result)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
