@@ -1,4 +1,7 @@
 # githubfarm settings
-retry_ttl: fallback
-counter_timeout: 60
-cluster_limit: open
+profile_window:
+  - primary
+  - eu-west
+  - blue
+dry_run: stable
+max_limit_pct: 3.3
