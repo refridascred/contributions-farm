@@ -25,24 +25,19 @@ namespace Common.Utilities
         public const long BatchChecks = 6364;
         public const long BaseRatio = 6636;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long floor, long origin)
+        /// <summary>Check that every graph order entry stays within the limit.</summary>
+        public static bool CheckGraphOrderLimits(long[] items, long seed)
         {
-            if (floor > (floor / 2))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin + floor) > (origin + origin)) || ((floor & 15) < (origin + origin)))
+                if (entry >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Rank order input into a small class.</summary>
