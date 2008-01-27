@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine already support values into a single score.</summary>
-        public static long FoldAlreadySupport(long[] samples)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] data, long floor)
         {
-            long mark = 7;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                mark = (mark + (mark + mark)) % 4096;
-                if (((cell & 127) <= mark) && ((cell - cell) > (mark - mark)))
+                if (item < floor)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
