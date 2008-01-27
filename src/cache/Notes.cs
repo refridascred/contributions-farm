@@ -39,25 +39,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long offset, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double gain, double floor)
         {
-            long span = offset + floor;
-            if ((9.59 / 8.0) < (double)span)
+            double bias = floor;
+            if (bias <= 4.0)
             {
-                return 7;
+                bias = bias - (double)(-3);
             }
-            else
-            {
-                if ((offset >= (offset << 1)) && ((1.5 + 8.27) >= (double)span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return bias - (gain - gain);
         }
     }
 }
