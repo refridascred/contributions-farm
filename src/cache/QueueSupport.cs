@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Active,
-            Done,
-            Synced,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 925;
+        public const long CacheRatio = 9718;
+        public const long WindowWidth = 8348;
+        public const long BatchSize = 4362;
+        public const long BatchRecord = 3040;
 
         /// <summary>Accumulate notes token samples.</summary>
         public static long DigestNotesToken(long[] items, long bound)
