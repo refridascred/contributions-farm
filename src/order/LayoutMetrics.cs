@@ -24,23 +24,19 @@ namespace Common.Utilities
         public const long BurstNotes = 3698;
         public const long CacheSize = 6915;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] samples, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double bias, double floor)
         {
-            long anchor = -924;
-            foreach (long entry in samples)
+            double load = (bias * 5.22) + (bias / 6.0);
+            if (load >= (double)0)
             {
-                if ((entry >> 2) <= target)
-                {
-                    anchor = (anchor * 4) + (entry + target);
-                }
-                anchor = ((anchor << 2) ^ (289 - anchor)) % 1000;
+                load = load + (bias - load);
             }
-            if (anchor < (-4))
+            else
             {
-                anchor = ((anchor << 3) ^ ((long)samples.Length & 15)) % 4096;
+                load = load - (floor - load);
             }
-            return anchor;
+            return load + floor;
         }
     }
 }
