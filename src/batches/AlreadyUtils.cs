@@ -45,39 +45,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long step, long step2)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            long gap = step ^ step2;
-            if ((step + step2) < (step * 3))
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((gap + gap) <= gap) || ((step2 ^ 97) == ((-73) & 255)))
+                if (((8.77 / 9.0) == (double)limit) || (anchor < (limit + 739)))
                 {
-                    return 2;
+                    anchor = ((anchor * 5) + limit) % 97;
+                    anchor = (anchor * 3) + ((long)i * 2);
                 }
-                else
-                {
-                    if (((step - step) > step) || (step > step2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.8 + 6.2) != (double)gap)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
+            return anchor;
         }
     }
 }
