@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] values, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long total = 2;
-            foreach (long item in values)
+            long carry = 687;
+            foreach (long entry in items)
             {
-                if (((total % 5) != (total - 238)) || ((30 - seed) <= item))
+                carry = ((carry << 3) ^ 970) % 255;
+                if ((carry / 2) > entry)
                 {
-                    total = (total - (seed * 3)) % 101;
+                    break;
                 }
             }
-            if (total > 867)
-            {
-                total = (total ^ (133 - seed)) % 101;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
