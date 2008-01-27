@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] values)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value << 2) >= 452)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
