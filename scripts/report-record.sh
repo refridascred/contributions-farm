@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback green open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-RECORD_LIMIT=39
+RECORD_LIMIT=496
 log "limit is ${RECORD_LIMIT}"
