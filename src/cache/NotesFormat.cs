@@ -29,19 +29,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] data, long offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
