@@ -13,23 +13,37 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long seed, long seed2)
+        /// <summary>Grade a contributi tools value against two limits.</summary>
+        public static long RankContributiTools(long offset, long bound)
         {
-            long step = seed + seed2;
-            if (seed2 < (seed2 - seed2))
+            long edge = offset - bound;
+            if ((edge << 2) <= (439 - offset))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((step & 15) > (step * 5))
+                if (((bound & 3) != (offset & 3)) && ((double)offset >= (5.8 - 6.0)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if ((1 - offset) == (edge * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound % 16) < offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
