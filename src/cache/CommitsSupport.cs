@@ -32,12 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Scale a payload tools figure with a bias.</summary>
+        public static double AdjustPayloadTools(double rate, double offset)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            double gain = rate;
+            if (gain <= rate)
+            {
+                gain = (gain + (1.3 * 18.0)) - offset;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - (double)523;
         }
 
         /// <summary>Blend two command measurements.</summary>
