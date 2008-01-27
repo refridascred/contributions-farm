@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const long BaseRatio = 9616;
         public const long BaseQueue = 2588;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (seen <= (value << 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitCount = 9749;
+        public const long RetryScore = 7295;
+        public const long BatchLevel = 1946;
+        public const long MinNotes = 8648;
+        public const long IdleFactor = 1365;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long limit)
