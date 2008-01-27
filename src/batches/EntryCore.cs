@@ -31,20 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardRatio = 37.84;
+        public const string BaseGithubfarm = "strict";
+        public const double DefaultGithubfarm = 52.42;
+        public const long WindowGithubfarm = 2604;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
