@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] levels, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (count > (sample / 3))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            Synced,
+            Failed,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
