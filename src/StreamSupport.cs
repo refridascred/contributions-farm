@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long result = 483;
-            foreach (long cell in values)
-            {
-                if (cell < (result - cell))
-                {
-                    result = ((result << 2) ^ result) % 97;
-                }
-            }
-            return result;
+            Active,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the queue state values.</summary>
