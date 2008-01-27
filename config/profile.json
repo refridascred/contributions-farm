@@ -1,7 +1,6 @@
 {
-  "compress": ["cached", "cached", "local"],
-  "filter_size": false,
-  "account_threshold": 92.17,
-  "poll_ratio_count": "standard",
-  "burst_ttl_s": [98, 218]
+  "sync_ratio_ms": 33.16,
+  "persist": 95.67,
+  "max_delay_s": "primary",
+  "cache_window_s": 2211
 }
