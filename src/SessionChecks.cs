@@ -60,12 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] readings, long floor)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry / 3) <= hits)
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
