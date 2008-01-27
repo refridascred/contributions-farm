@@ -12,6 +12,6 @@ while [ "${count}" -lt 7 ]; do
 done
 log "ran ${count} rounds"
 
-for item in edge strict; do
+for item in standard local stable; do
     log "checking ${item}"
 done
