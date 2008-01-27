@@ -32,11 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Locked,
+            Idle,
         }
     }
 }
