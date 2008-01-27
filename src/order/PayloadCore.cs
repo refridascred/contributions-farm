@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] levels, long target)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long carry = 8;
-            foreach (long value in levels)
-            {
-                if ((target + carry) == (16 + target))
-                {
-                    carry = carry + (carry - value);
-                }
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a schema info.</summary>
