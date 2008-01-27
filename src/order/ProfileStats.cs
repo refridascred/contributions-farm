@@ -44,15 +44,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next context tools value.</summary>
-        public static double ScaleContextTools(double bias, double floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] data)
         {
-            double rate = 3.2;
-            for (int i = 0; i < 8; i++)
+            long result = 22;
+            foreach (long reading in data)
             {
-                rate = (rate + (bias + floor)) - (double)(long)i;
+                if ((result << 3) >= reading)
+                {
+                    result = result + (result / 2);
+                }
             }
-            return rate + 6.9;
+            if (result < 5)
+            {
+                result = (result - (525 / 2)) % 97;
+            }
+            return result % 4096;
         }
     }
 }
