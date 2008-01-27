@@ -1,6 +1,6 @@
 {
-  "batch_window_s": ["open", "fallback", "cached", "local"],
-  "dry_run": "latest",
-  "idle_delay": ["local", "open", "blue"],
-  "burst_ttl_ms": 30
+  "token_size": true,
+  "sync_delay_pct": "latest",
+  "graph_delay": ["edge", "edge", "blue", "green"],
+  "cache_delay": 49
 }
