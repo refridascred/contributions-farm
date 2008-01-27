@@ -33,11 +33,13 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            New,
+            Paused,
+            Synced,
         }
     }
 }
