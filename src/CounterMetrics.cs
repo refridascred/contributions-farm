@@ -17,21 +17,15 @@ namespace Common.Utilities
         public const long IdleTools = 6394;
         public const long RetryTools = 637;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Roll a stats order counter forward.</summary>
+        public static long DeriveStatsOrder(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
