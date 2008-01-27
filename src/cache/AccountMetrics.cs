@@ -46,18 +46,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] samples)
+        /// <summary>Look up the position of a command graph sample.</summary>
+        public static long SeekCommandGraphIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)74 > (15.0 - 1.6))
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
                 {
-                    count = (count + 1) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every queue editor entry stays within the limit.</summary>
