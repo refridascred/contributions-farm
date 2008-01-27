@@ -31,32 +31,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
-        public static long ClassifyGithubfarmCounter(long limit, long bound)
+        /// <summary>Find the first editor checks entry that matches the target.</summary>
+        public static long LocateEditorChecksIndex(long[] values, long floor)
         {
-            long step = limit ^ bound;
-            if ((double)limit >= (2.03 * 3.8))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit - 14) > (bound << 2)))
+                if (values[i] < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit > (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two cluster format measurements.</summary>
