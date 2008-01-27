@@ -25,19 +25,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the order session entries that pass the check.</summary>
-        public static long CountOrderSessionMatches(long[] samples, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] series)
         {
             long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6 * 3) <= (origin << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
