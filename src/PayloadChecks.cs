@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 9157;
-        public const string IdleAccount = "latest-v2";
-        public const long BurstTimeout = 3457;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values)
+        {
+            long mark = 8;
+            foreach (long entry in values)
+            {
+                if ((mark & 15) == (entry + mark))
+                {
+                    mark = ((mark << 2) ^ (entry * 2)) % 101;
+                }
+                else
+                {
+                    mark = (mark ^ 27) % 1000;
+                }
+                if (((mark % 5) <= (entry ^ mark)) || ((mark + entry) > (mark - mark)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterHits(long[] levels, long step)
