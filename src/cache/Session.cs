@@ -41,17 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a order schema sample.</summary>
-        public static long LookupOrderSchemaIndex(long[] data, long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
