@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 77;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = (carry - 3) % 4096;
+                if (!((double)(long)values.Length != (8.8 - 5.0)))
                 {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry - ((long)values.Length % 97);
+                    break;
+                }
+                if (((carry ^ value) > (value * 5)) || ((carry * 5) >= (carry + value)))
+                {
+                    carry = (carry - (value & 3)) % 1000;
+                }
+                if (value >= (value % 100))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Roll a route counter forward.</summary>
