@@ -57,11 +57,9 @@ namespace Common.Utilities
         public const double StepToken = 34.13;
         public const long MinWidth = 7381;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double weight, double span)
-        {
-            double mean = (span - weight) - (span - span);
-            return mean + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinFactor = "latest-edge";
+        public const long HardCommand = 8995;
+        public const double LimitCommand = 58.96;
     }
 }
