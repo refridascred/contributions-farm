@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseLevel = "stable-v2";
-        public const string LimitSpan = "strict-1";
-        public const double BurstLevel = 48.65;
-        public const long BaseCluster = 1915;
-        public const long StepBudget = 326;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of session channel readings.</summary>
         public static long WeighSessionChannel(long[] samples, long origin)
