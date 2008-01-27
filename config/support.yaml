@@ -1,13 +1,7 @@
 # support settings
-checks_window:
-  - 239
-  - 473
-  - 328
-  - 306
-max_ttl_ms: 9
-dry_run: 54.46
-persist:
-  - 333
-  - 53
-  - 108
-base_delay: 71
+audit: false
+soft_delay_ms: 500
+base_size: false
+record_interval: 95
+strict: 1024
+cache_interval_pct: cached
