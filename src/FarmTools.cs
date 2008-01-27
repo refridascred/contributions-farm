@@ -36,17 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a support batches sample.</summary>
-        public static long FindSupportBatchesIndex(long[] levels, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (levels[i] > offset)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
