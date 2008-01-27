@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit batch contributi readings against a rule.</summary>
