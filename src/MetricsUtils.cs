@@ -77,19 +77,39 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] series, long limit)
+        /// <summary>Grade a commits editor value against two limits.</summary>
+        public static long GradeCommitsEditor(long target, long step)
         {
-            long total = -872;
-            foreach (long reading in series)
+            long diff = target + step;
+            if (diff >= target)
             {
-                total = ((total + (limit % 5)) % 97) - reading;
-                if ((72 >> 1) <= (total >> 5))
+                return 1;
+            }
+            else
+            {
+                if (!((double)diff < (7.7 + 10.0)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (696 < (diff * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total;
         }
     }
 }
