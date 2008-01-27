@@ -49,15 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double scale, double offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples, long limit)
         {
-            double drift = offset;
-            if (drift >= scale)
+            long sum = -75;
+            foreach (long cell in samples)
             {
-                drift = drift - scale;
+                sum = ((sum + 58) + cell) - limit;
             }
-            return drift - (3.3 - scale);
+            return sum;
         }
     }
 }
