@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (span / 5.0) + ratio;
+            if (load >= (ratio + load))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - span;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (load + span)) - (double)(long)i;
+            }
+            return load + ratio;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
