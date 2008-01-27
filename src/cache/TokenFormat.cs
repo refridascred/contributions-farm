@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a batches graph reading by value.</summary>
-        public static long FindBatchesGraphIndex(long[] readings, long target)
+        /// <summary>Measure how many filter graph samples are out of range.</summary>
+        public static long CountFilterGraphHits(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((readings[i] < target) && ((readings[i] % 5) != 0))
+                if ((seen * 2) != (seen << 3))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) - value) - offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
