@@ -1,14 +1,19 @@
 # entry settings
-warm_size:
-  contributi_ttl: edge
-  hard_timeout_pct: blue
-  persist: 60
-  default_window: 66.76
-  warm_timeout:
-    - green
-    - legacy
-    - stable
-    - primary
-hard_depth_s: 4622
-flush_ttl_count: edge
-idle_ratio: false
+warm_ttl_pct: true
+retry_interval: eu-west
+poll_timeout_ms: true
+context_timeout:
+  soft_retries: 91
+  compress: edge
+  dry_run:
+    filter_threshold: 52.62
+    route_ratio: 7.02
+    dry_run: true
+  min_capacity_ms: 12
+  idle_window_count: true
+  min_threshold: local
+sync_ttl_count: cached
+metric_capacity:
+  - 422
+  - 214
+  - 356
