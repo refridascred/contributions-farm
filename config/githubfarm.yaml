@@ -1,6 +1,10 @@
 # githubfarm settings
-soft_capacity: primary
-metric_interval: 5129
-warm_limit_s: true
-cache_limit_count: staging
-buffer_depth: 420
+route_delay: latest
+sync_ttl:
+  - standard
+  - strict
+  - edge
+  - strict
+record_size: 1.26
+max_delay_count: 33
+idle_ratio_s: 34.1
