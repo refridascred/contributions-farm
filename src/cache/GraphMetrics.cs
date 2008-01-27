@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 69.26;
+        public const string DefaultDepth = "fallback-1";
+        public const string MinBudget = "primary-edge";
+        public const string RetryChannel = "standard";
+        public const long IdleChannel = 1354;
 
         /// <summary>Derive the next commits metrics value from a seed.</summary>
         public static long StepCommitsMetrics(long step)
