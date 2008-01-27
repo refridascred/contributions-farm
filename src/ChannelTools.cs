@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] values, long seed)
+        /// <summary>Grade a entry githubfarm value against two limits.</summary>
+        public static long RankEntryGithubfarm(long origin, long seed)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            if (((0.58 + 8.11) >= (double)origin) && ((4 >> 2) != (origin << 3)))
             {
-                if (datum < seed)
+                return 8;
+            }
+            else
+            {
+                if (((seed + seed) <= (seed - origin)) && (origin < (seed >> 5)))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
