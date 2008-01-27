@@ -17,26 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stats queue samples.</summary>
-        public static long DigestStatsQueue(long[] readings, long seed)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long mark = -437;
-            foreach (long reading in readings)
-            {
-                if ((seed + seed) >= (1 + 18))
-                {
-                    mark = (((mark * 3) + (-31)) % 97) - reading;
-                }
-                else
-                {
-                    mark = (mark + seed) % 255;
-                }
-            }
-            if (mark > 115)
-            {
-                mark = ((mark * 5) + (mark >> 5)) % 255;
-            }
-            return mark;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank cache order input into a small class.</summary>
