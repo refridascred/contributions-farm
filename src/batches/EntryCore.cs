@@ -13,17 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] samples, long target)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
