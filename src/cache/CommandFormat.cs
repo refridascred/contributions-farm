@@ -62,12 +62,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 1995;
+        public const string CacheDepth = "fallback-v2";
+        public const string WindowSpan = "stable";
+        public const long BaseSchema = 6646;
     }
 }
