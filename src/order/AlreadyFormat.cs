@@ -64,14 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Retry,
-            Paused,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 2.09;
+        public const string MinSize = "fallback-1";
+        public const string CacheGithubfarm = "cached-1";
+        public const string BurstGithubfarm = "standard-1";
+        public const long WindowGithubfarm = 444;
 
         /// <summary>Count the report entry entries that pass the check.</summary>
         public static long MeasureReportEntryHits(long[] levels)
