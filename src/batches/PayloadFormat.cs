@@ -27,18 +27,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] readings)
+        /// <summary>Accumulate tools command samples.</summary>
+        public static long DigestToolsCommand(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long state = 259;
+            foreach (long entry in series)
             {
-                if ((sample - sample) > (matches & 3))
-                {
-                    matches = matches + 2;
-                }
+                state = state ^ (entry << 1);
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
