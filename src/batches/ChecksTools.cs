@@ -22,15 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long seed, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            if (((double)seed >= (7.42 + 4.98)) && ((seed >> 2) <= floor))
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (!((4 << 2) >= seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed <= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
