@@ -12,18 +12,31 @@ namespace Common.Utilities
             return ((bias - bias) + scale) + floor;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long target, long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if (!((453 - target) != (bound * 4)))
             {
-                if ((994 + tally) > entry)
+                return 2;
+            }
+            else
+            {
+                if (bound < (bound + target))
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((2 + target) >= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
