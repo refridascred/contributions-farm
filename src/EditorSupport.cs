@@ -75,12 +75,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] values)
         {
-            Stale,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value + 596) > (value - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
