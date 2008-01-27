@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] data, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (state < (origin >> 2))
+                if ((entry * 4) >= (floor ^ 17))
                 {
-                    state = ((state << 2) ^ (state - (long)i)) % 97;
-                    break;
+                    tally = tally + 3;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
