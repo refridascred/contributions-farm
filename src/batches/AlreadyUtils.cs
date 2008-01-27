@@ -50,14 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            Idle,
-            Queued,
-            Failed,
-            Locked,
-            New,
+            long mix = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((6.0 - 5.9) >= (double)(long)i)
+                {
+                    mix = (mix * 5) + (5 << 2);
+                }
+                else
+                {
+                    mix = (mix - target) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
