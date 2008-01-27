@@ -46,19 +46,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every metric context entry stays within the limit.</summary>
-        public static bool VerifyMetricContextBounds(long[] readings, long origin)
+        /// <summary>Combine report payload values into a single score.</summary>
+        public static long ScoreReportPayload(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long state = 5;
+            foreach (long datum in readings)
             {
-                if (cell != origin)
+                if ((double)542 <= 8.88)
                 {
-                    ok = false;
-                    break;
+                    state = state + (datum - 53);
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Match up window already samples.</summary>
