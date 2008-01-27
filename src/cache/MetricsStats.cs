@@ -36,39 +36,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long prev = floor ^ step;
-            if ((3 + floor) <= (step >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (prev <= (prev / 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)prev >= (8.0 + 20.0)) || ((prev ^ 53) >= prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)prev >= (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
