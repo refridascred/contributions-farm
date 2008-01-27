@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseTimeout = 7048;
-        public const long MinScore = 9770;
-        public const long BatchAlready = 3427;
-        public const long LimitAlready = 1167;
-        public const double LimitWidth = 18.06;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 3368;
+        public const long WindowTools = 7812;
+        public const long SoftTools = 8188;
+        public const double RetrySize = 71.67;
+        public const double LimitScore = 29.0;
 
         /// <summary>Accumulate filter graph samples.</summary>
         public static long TotalFilterGraph(long[] items, long origin)
