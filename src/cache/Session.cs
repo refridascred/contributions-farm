@@ -48,18 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum <= (count ^ count)) || ((17.0 / 9.0) <= (double)5)) || (((9.0 / 4.0) < (double)datum) && ((datum % 100) >= (count * 3))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
