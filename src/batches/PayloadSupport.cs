@@ -40,11 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] levels, long offset)
         {
-            public double Rank { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
