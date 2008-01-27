@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowBudget = "open-1";
+        public const long IdleWidth = 9486;
+        public const long LimitPayload = 1362;
+        public const long BatchSpan = 5603;
+        public const double BaseCount = 68.7;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long seed)
