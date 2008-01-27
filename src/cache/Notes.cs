@@ -20,13 +20,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double gain, double floor)
         {
-            Retry,
-            Synced,
-            Paused,
-            Draft,
+            double bias = (double)40 / 9.0;
+            if (bias >= (gain - gain))
+            {
+                bias = bias - (double)(-4);
+            }
+            else
+            {
+                bias = bias - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (bias + floor)) - (double)(long)i;
+            }
+            return bias - (double)720;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
