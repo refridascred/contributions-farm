@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const double CacheTimeout = 66.79;
         public const long WindowStream = 6754;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] readings)
         {
-            New,
-            Draft,
-            Ready,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry / 2) < (entry - entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
