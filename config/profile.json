@@ -1,19 +1,7 @@
 {
-  "payload_limit": 51.17,
-  "max_threshold_count": 78.58,
-  "support_window": {
-    "support_window": {
-      "hard_timeout_s": false,
-      "verbose": "staging",
-      "warm_limit_pct": 9789,
-      "payload_timeout": true
-    },
-    "min_retries": false,
-    "base_size": 8.68,
-    "dry_run": 78.58,
-    "sync_limit": 27,
-    "token_size": [155, 412, 436, 475]
-  },
-  "default_window_ms": true,
-  "persist": 33
+  "flush_size": 159,
+  "retry_limit_ms": 63,
+  "idle_timeout_count": 26.04,
+  "flush_delay_ms": 40.18,
+  "cache_ttl_count": 8.58
 }
