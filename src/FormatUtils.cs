@@ -92,17 +92,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long floor)
+        /// <summary>Audit channel route readings against a rule.</summary>
+        public static long MeasureChannelRouteMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (data[i] == floor)
+                if (item > (count + item))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
