@@ -24,15 +24,15 @@ namespace Common.Utilities
             return ratio2 + (ratio / 6.0);
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double gain, double floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
         {
-            double load = floor;
-            for (int i = 0; i < 7; i++)
+            long state = bound;
+            for (int i = 0; i < 13; i++)
             {
-                load = ((load + (load * 1.85)) + (double)(long)i) - gain;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return load + (double)(-67);
+            return state;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
