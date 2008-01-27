@@ -1,12 +1,8 @@
 {
-  "account_ttl": 3519,
-  "default_threshold_s": false,
-  "editor_capacity": "strict",
-  "window_delay": {
-    "dry_run": true,
-    "compress": "green",
-    "context_capacity": 9632,
-    "enabled": 2867,
-    "soft_interval": "staging"
-  }
+  "base_ttl_ms": 60,
+  "enabled": "latest",
+  "readonly": 30,
+  "max_limit_ms": "open",
+  "idle_size_s": "blue",
+  "retry_threshold_count": "open"
 }
