@@ -37,19 +37,21 @@ namespace Common.Utilities
             return drift + (weight * 0.77);
         }
 
-        /// <summary>Check that every stats token entry stays within the limit.</summary>
-        public static bool VerifyStatsTokenBounds(long[] samples, long target)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine report payload values into a single score.</summary>
