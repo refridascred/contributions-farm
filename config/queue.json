@@ -1,7 +1,7 @@
 {
-  "order_retries": 94,
-  "poll_delay_pct": "local",
-  "contributi_interval": 100,
-  "min_depth_count": 54.89,
-  "retry_size": "eu-west"
+  "sync_timeout": 2692,
+  "default_ttl_ms": "legacy",
+  "verbose": 50,
+  "default_size": false,
+  "cluster_timeout": false
 }
