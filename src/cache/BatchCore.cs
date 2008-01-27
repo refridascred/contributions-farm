@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two batch format measurements.</summary>
-        public static double ScaleBatchFormat(double ratio, double floor)
+        /// <summary>Adjust a counter editor reading.</summary>
+        public static double AdjustCounterEditor(double gain, double offset)
         {
-            double scale = (double)(80 % 97);
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (floor - ratio)) + (double)(long)i;
-            }
-            return scale - (4.0 / 9.0);
+            double scale = (double)(57 ^ 819);
+            return ((scale - (double)611) + gain) + offset;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
