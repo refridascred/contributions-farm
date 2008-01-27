@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardCommits = 41.05;
-        public const string SoftCount = "primary-v2";
-        public const long StepWidth = 9922;
-        public const long RetryCommits = 2243;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftBudget = 97.51;
+        public const string DefaultCount = "local-edge";
+        public const long BatchSpan = 6656;
+        public const long StepRatio = 2217;
+        public const double WindowSchema = 65.75;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
