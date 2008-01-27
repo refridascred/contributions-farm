@@ -31,17 +31,26 @@ namespace Common.Utilities
             return rate - (weight * 4.6);
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] samples, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 988;
+            foreach (long reading in values)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                if ((state << 1) == (state - state))
                 {
-                    return (long)i;
+                    state = state - (reading >> 4);
+                }
+                else
+                {
+                    state = (state * 4) + (state + state);
                 }
             }
-            return -1;
+            if (state > 6)
+            {
+                state = (state - (origin - origin)) % 101;
+            }
+            return state;
         }
     }
 }
