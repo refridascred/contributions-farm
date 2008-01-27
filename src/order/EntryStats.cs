@@ -30,26 +30,11 @@ namespace Common.Utilities
             return rate - (floor + gain);
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] data, long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long sum = 329;
-            foreach (long sample in data)
-            {
-                if (5.2 < (double)sum)
-                {
-                    sum = (sum + (sample - sum)) % 1000;
-                }
-                if ((sample << 1) == (origin + sample))
-                {
-                    break;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = sum - (7 * 5);
-            }
-            return sum % 4096;
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
