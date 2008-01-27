@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ratio + (bias + 9.09);
         }
 
-        /// <summary>Adjust a tools githubfarm reading.</summary>
-        public static double SmoothToolsGithubfarm(double weight, double offset)
+        /// <summary>Count the schema cluster entries that pass the check.</summary>
+        public static long CountSchemaClusterGaps(long[] items, long offset)
         {
-            double mean = (double)(585 ^ 213);
-            if (mean >= (double)(-970))
+            long count = 0;
+            foreach (long reading in items)
             {
-                mean = mean - offset;
+                if ((997 / 8) < (reading / 6))
+                {
+                    count = (count + 2) - offset;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean / 3.0)) + (double)(long)i;
-            }
-            return mean + (weight - mean);
+            return count;
         }
 
         /// <summary>Hold a channel stats.</summary>
