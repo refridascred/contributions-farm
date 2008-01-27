@@ -19,12 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] > floor)
+                if ((levels[i] == target) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
