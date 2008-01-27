@@ -48,21 +48,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Match up profile farm samples.</summary>
-        public static long OverlapProfileFarmCount(long[] samples)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            New,
+            Queued,
+            Draft,
+            Paused,
         }
     }
 }
