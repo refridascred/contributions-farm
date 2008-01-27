@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double scale, double offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            double bias = 1.1;
-            if (bias > offset)
+            long anchor = 1;
+            foreach (long item in readings)
             {
-                bias = bias + 0.1;
+                if (((double)anchor == (double)54) || ((820 ^ 0) != (anchor & 127)))
+                {
+                    anchor = (anchor + 376) ^ item;
+                }
             }
-            else
-            {
-                bias = bias + (bias - offset);
-            }
-            return bias + (offset + scale);
+            return anchor;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
