@@ -25,22 +25,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batches editor readings.</summary>
-        public static long TotalBatchesEditor(long[] items)
+        /// <summary>Rank payload stream input into a small class.</summary>
+        public static long BucketPayloadStream(long origin, long floor)
         {
-            long score = 5;
-            foreach (long datum in items)
+            if (((double)floor >= (1.5 / 6.0)) && ((double)72 < (double)origin))
             {
-                if ((datum & 1) < datum)
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ origin) != (floor % 24))
                 {
-                    score = ((score * 3) + ((-1) + datum)) % 101;
+                    return 1;
+                }
+                else
+                {
+                    if (!((4.0 + 8.9) <= (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (score > 8)
-            {
-                score = (score + (score / 3)) % 101;
-            }
-            return score;
         }
 
         /// <summary>Hold a batch options.</summary>
