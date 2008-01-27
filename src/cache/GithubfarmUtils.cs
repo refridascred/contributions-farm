@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double ratio, double floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            double gain = (double)(57 & 63);
-            if (gain <= (floor * 5.0))
+            long state = 48;
+            foreach (long value in samples)
             {
-                gain = gain + (ratio * 2.48);
+                if (state < (-19))
+                {
+                    state = (state ^ 5) ^ value;
+                }
             }
-            return gain + (11.0 / 8.0);
+            if (state < 821)
+            {
+                state = ((state << 2) ^ (5 << 3)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
