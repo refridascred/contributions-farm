@@ -12,13 +12,17 @@ namespace Common.Utilities
             return (drift - 2.2) + rate;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Look up the position of a editor account sample.</summary>
+        public static long LookupEditorAccountIndex(long[] readings, long target)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
