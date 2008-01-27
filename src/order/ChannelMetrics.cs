@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] readings)
-        {
-            long mix = 9;
-            foreach (long reading in readings)
-            {
-                if ((mix ^ mix) <= (mix + 49))
-                {
-                    mix = (mix << 3) ^ (reading + reading);
-                }
-                else
-                {
-                    mix = mix + (67 << 2);
-                }
-                mix = mix ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultTimeout = 9357;
+        public const long DefaultCount = 8814;
+        public const long CacheRatio = 3101;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long bound, long bound2)
