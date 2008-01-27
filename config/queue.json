@@ -1,6 +1,17 @@
 {
-  "enabled": false,
-  "already_ttl": ["green", "local", "cached"],
-  "retry_ratio_ms": 30.38,
-  "compress": "staging"
+  "readonly": 62,
+  "batch_delay_ms": "cached",
+  "persist": true,
+  "retry_capacity": 1620,
+  "idle_ratio_pct": {
+    "token_threshold": 500,
+    "readonly": 1024,
+    "cluster_interval": true,
+    "cache_window": ["legacy", "blue", "stable", "cached"]
+  },
+  "batch_ttl_s": {
+    "max_delay": 81.27,
+    "poll_capacity_count": "green",
+    "burst_interval_pct": "local"
+  }
 }
