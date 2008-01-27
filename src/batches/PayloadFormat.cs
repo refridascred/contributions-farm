@@ -32,16 +32,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already stats value from a seed.</summary>
-        public static long SeriesAlreadyStats(long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum * 2) + target;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Locked,
+            Paused,
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
