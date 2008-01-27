@@ -20,17 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] data, long step)
+        /// <summary>Measure how many metric editor samples are out of range.</summary>
+        public static long MeasureMetricEditorOutliers(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (data[i] >= step)
+                if (seed > (item + item))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank stats profile input into a small class.</summary>
