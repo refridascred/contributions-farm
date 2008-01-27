@@ -23,18 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report editor readings against a rule.</summary>
-        public static long CountReportEditorOutliers(long[] values)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((seen + sample) > (seen >> 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double bias2 = offset / 5.0;
+            return bias2 - bias;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
