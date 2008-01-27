@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] readings)
+        /// <summary>Fold a list of buffer notes readings.</summary>
+        public static long DigestBufferNotes(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mix = -47;
+            foreach (long sample in samples)
             {
-                if ((hits / 2) < (hits << 1))
-                {
-                    hits = (hits + 1) + entry;
-                }
+                mix = (mix - ((long)samples.Length >> 2)) % 1000;
+                mix = mix - (72 ^ sample);
             }
-            return hits;
+            if (mix < 29)
+            {
+                mix = mix ^ (mix * 5);
+            }
+            return mix;
         }
 
         /// <summary>Accumulate graph samples.</summary>
