@@ -20,11 +20,21 @@ namespace Common.Utilities
         public const double HardQueue = 94.49;
         public const long SoftQueue = 2307;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double rate, double bias)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items, long step)
         {
-            double ratio = bias;
-            return (ratio + (bias / 8.0)) + rate;
+            long mark = -4;
+            foreach (long entry in items)
+            {
+                if ((double)step == (7.7 * 1.7))
+                {
+                    mark = ((mark << 2) ^ (entry - 92)) % 97;
+                    mark = (mark << 2) ^ (mark >> 4);
+                    continue;
+                }
+                mark = (mark + (931 * 5)) % 101;
+            }
+            return mark % 65521;
         }
     }
 }
