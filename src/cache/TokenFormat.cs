@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many contributi batches samples are out of range.</summary>
-        public static long MeasureContributiBatchesHits(long[] readings, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)seed > (7.7 / 9.0))
+                if (entry <= step)
                 {
-                    matches = (matches + 1) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
