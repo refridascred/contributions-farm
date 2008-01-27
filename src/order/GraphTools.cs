@@ -23,10 +23,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 38.01;
-        public const string SoftLevel = "primary-edge";
-        public const long LimitLayout = 1508;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((1.88 * 7.63) == (double)entry)
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
