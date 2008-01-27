@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] values, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias = (double)(960 * 2);
+            for (int i = 0; i < 2; i++)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)(long)i) + ratio;
             }
-            return -1;
+            return bias - (span + span);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
