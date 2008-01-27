@@ -25,19 +25,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metric filter entries.</summary>
-        public static long ScoreMetricFilter(long[] levels, long limit)
+        /// <summary>Count the order session entries that pass the check.</summary>
+        public static long CountOrderSessionMatches(long[] samples, long origin)
         {
-            long state = 17;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                state = ((((state * 5) + (state * 2)) % 255) - value) - limit;
+                if ((6 * 3) <= (origin << 1))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (state < 77)
-            {
-                state = state - (state + state);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
