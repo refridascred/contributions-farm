@@ -25,18 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics filter entries that pass the check.</summary>
-        public static long AuditMetricsFilterGaps(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long step = seed + seed2;
+            if (seed2 < (seed2 - seed2))
             {
-                if ((count >> 5) <= (count << 3))
+                return 0;
+            }
+            else
+            {
+                if ((step & 15) > (step * 5))
                 {
-                    count = (count + 1) - sample;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
