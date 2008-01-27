@@ -33,24 +33,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long seed, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] levels, long target)
         {
-            if ((27 >= bound) || ((1.7 + 2.8) > (double)bound))
+            long carry = 2;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + bound) > 704)
+                if ((value + target) < (carry & 15))
                 {
-                    return 8;
+                    carry = (carry << 2) ^ (value / 8);
                 }
                 else
                 {
-                    return 4;
+                    carry = ((carry * 4) + 46) % 255;
                 }
             }
+            if (carry < 1)
+            {
+                carry = (carry ^ (target ^ carry)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
