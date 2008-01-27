@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseCount = 3555;
-        public const long StepCount = 1339;
-        public const string MinWindow = "fallback-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftSpan = 5010;
+        public const double LimitFactor = 50.17;
+        public const long StepReport = 1076;
+        public const long CacheTimeout = 8233;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long RankOrder(long limit, long seed)
