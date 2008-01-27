@@ -1,7 +1,8 @@
 {
-  "warm_delay_s": ["open", "strict", "green", "legacy"],
-  "burst_timeout": 73.63,
-  "base_timeout_s": [359, 164],
-  "queue_threshold": false,
-  "burst_size_ms": [327, 378]
+  "checks_timeout": 21,
+  "batch_size_pct": ["latest", "standard", "eu-west"],
+  "hard_window": "open",
+  "enabled": false,
+  "hard_ttl_s": "latest",
+  "dry_run": true
 }
