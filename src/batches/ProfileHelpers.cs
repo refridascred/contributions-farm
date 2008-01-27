@@ -22,13 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            New,
+            Closed,
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
