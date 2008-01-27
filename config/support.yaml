@@ -1,12 +1,9 @@
 # support settings
-base_timeout_ms: 1346
-flush_ttl: false
-min_size_count: 6
-batch_limit_pct:
-  base_interval_count: 75.96
-  batch_ratio: fallback
-  base_limit_s: eu-west
-  batch_delay: false
-  hard_size_s: 100
-  batch_depth: false
-entry_interval: 100
+default_limit:
+  - 15
+  - 25
+  - 252
+  - 115
+persist: 4924
+readonly: 65.44
+batch_timeout_ms: 37.66
