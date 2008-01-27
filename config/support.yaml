@@ -1,4 +1,9 @@
 # support settings
-max_ratio_pct: edge
-soft_window: 44.81
-dry_run: 30
+audit:
+  - standard
+  - edge
+  - stable
+contributi_interval: 9504
+default_delay_ms: 822
+burst_window: 33.22
+soft_retries: 60
