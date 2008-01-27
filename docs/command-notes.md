@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Run the channel check before changing any commits limits.
-Keep stats and route names short and lowercase.
+A payload that stays idle for too long is moved to the stream list.
+Each support is validated before it reaches the metrics queue.
+A batches that stays idle for too long is moved to the record list.
 
-Keep notes and stream names short and lowercase.
-A contributi that stays idle for too long is moved to the githubfarm list.
-Keep format and report names short and lowercase.
+Run the token check before changing any entry limits.
+Defaults for entry live in the config folder and can be overridden per environment.
+The record report groups every graph by record.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Keep graph values small
-- Prefer channel defaults
-- Log every channel change
+- Document new support fields
+- Validate account input early
+- Prefer contributi defaults
