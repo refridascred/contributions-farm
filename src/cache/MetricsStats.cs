@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Check that every entry support entry stays within the limit.</summary>
+        public static bool GuardEntrySupportLimits(long[] samples, long bound)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
