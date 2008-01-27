@@ -1,5 +1,7 @@
 {
-  "buffer_limit": "eu-west",
-  "readonly": 93.22,
-  "burst_ttl": true
+  "min_size": 500,
+  "checks_timeout": "green",
+  "enabled": 84.6,
+  "entry_threshold": 500,
+  "sync_window": "edge"
 }
