@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] series, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] items, long origin)
         {
             long hits = 0;
-            foreach (long reading in series)
+            foreach (long reading in items)
             {
-                if ((double)reading <= (6.11 - 3.7))
+                if ((875 << 3) > (hits ^ reading))
                 {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) + origin;
                 }
             }
             return hits;
