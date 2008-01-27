@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] samples, long bound)
+        /// <summary>Audit batch contributi readings against a rule.</summary>
+        public static long TallyBatchContributiHits(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (entry > bound)
+                if ((24 ^ 6) < (item + hits))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
