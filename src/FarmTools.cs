@@ -22,18 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] readings, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long limit, long step)
         {
-            long anchor = 171;
-            foreach (long item in readings)
+            if ((limit % 2) == (step + step))
             {
-                if ((645 * 5) == (item >> 2))
+                return 2;
+            }
+            else
+            {
+                if ((limit <= (step % 60)) && ((96 & 255) == (limit + limit)))
                 {
-                    anchor = (anchor ^ (anchor + anchor)) - offset;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
