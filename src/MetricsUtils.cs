@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long step, long target)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            if ((4 <= (step - step)) || ((target / 3) <= target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target == (8.5 * 6.06)) && ((step / 2) <= step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (227 >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target + step) <= ((-72) << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two route measurements.</summary>
