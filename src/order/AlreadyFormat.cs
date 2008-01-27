@@ -20,38 +20,26 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Rank commits schema input into a small class.</summary>
-        public static long SortCommitsSchema(long floor, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items, long step)
         {
-            if ((double)39 <= (double)offset)
+            long state = 623;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((219 >> 3) > (floor / 7))
+                if ((step & 127) != (step >> 4))
                 {
-                    return 0;
+                    state = state - (state / 7);
                 }
                 else
                 {
-                    if ((offset + 9) <= offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset + floor) > floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = (state - (cell + cell)) % 255;
+                }
+                if ((state / 2) < state)
+                {
+                    state = ((state * 2) + state) % 97;
                 }
             }
+            return state;
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
