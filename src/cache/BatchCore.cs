@@ -16,16 +16,10 @@ namespace Common.Utilities
             return scale - (4.0 / 9.0);
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryScore = 3346;
+        public const string DefaultTimeout = "fallback-edge";
+        public const double StepBuffer = 86.85;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryOutliers(long[] samples, long bound)
