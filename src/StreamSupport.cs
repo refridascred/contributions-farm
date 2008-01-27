@@ -19,21 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (((score << 3) ^ (score + limit)) % 4096) ^ (long)i2;
-                }
-                score = score + ((long)i & 1);
-                score = ((score << 2) ^ (long)i) % 4096;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
