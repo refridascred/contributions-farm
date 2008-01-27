@@ -33,15 +33,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
