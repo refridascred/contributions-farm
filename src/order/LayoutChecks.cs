@@ -78,26 +78,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] series, long target)
+        /// <summary>Count farm commits pairs that satisfy a relation.</summary>
+        public static long PairFarmCommitsCount(long[] samples)
         {
-            long total = 7;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((13.0 * 1.98) > (double)total))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total * 3) + (83 * 4);
-                }
-                if ((target % 64) == (entry << 2))
-                {
-                    total = (total * 5) + (total / 5);
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > (-9))
-            {
-                total = ((total * 2) + (target + 2)) % 1000;
-            }
-            return total;
+            return count;
         }
     }
 }
