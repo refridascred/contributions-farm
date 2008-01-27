@@ -35,12 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double rate, double floor)
         {
-            Idle,
-            Dropped,
-            Paused,
+            double scale = (double)17 - floor;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (double)(long)i) - rate;
+            }
+            return scale - (double)188;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
