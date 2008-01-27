@@ -20,23 +20,18 @@ namespace Common.Utilities
             return weight - (double)129;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double gain, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] samples, long target)
         {
-            double scale = (double)4 + span;
-            if (scale <= (gain + scale))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                scale = scale - gain;
+                if ((double)seen < (8.26 + 18.0))
+                {
+                    seen = ((seen + 2) + datum) + target;
+                }
             }
-            else
-            {
-                scale = scale - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Find the first checks token entry that matches the target.</summary>
