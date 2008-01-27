@@ -23,19 +23,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] samples, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long acc = 733;
+            foreach (long cell in samples)
             {
-                if (sample >= floor)
+                acc = ((acc * 2) + acc) % 4096;
+                if (!(cell >= ((long)samples.Length * 5)))
                 {
-                    ready = false;
+                    acc = (acc - cell) % 65521;
+                }
+                if ((acc & 127) != (cell / 6))
+                {
                     break;
                 }
             }
-            return ready;
+            if (acc < 756)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a already snapshot.</summary>
