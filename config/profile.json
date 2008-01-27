@@ -1,6 +1,7 @@
 {
-  "burst_capacity_ms": true,
-  "burst_ttl": 91,
-  "context_delay": "legacy",
-  "soft_depth": "stable"
+  "compress": "local",
+  "warm_size_pct": 40.68,
+  "cache_retries": [24, 337],
+  "readonly": "eu-west",
+  "flush_depth_ms": 500
 }
