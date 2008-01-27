@@ -1,5 +1,6 @@
 {
-  "buffer_window": 40,
-  "idle_interval_pct": [463, 382],
-  "soft_threshold_count": "fallback"
+  "verbose": "blue",
+  "audit": "staging",
+  "base_limit": 1024,
+  "counter_threshold": "latest"
 }
