@@ -22,10 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 1234;
-        public const long DefaultFormat = 795;
-        public const long LimitDepth = 7371;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
