@@ -48,15 +48,14 @@ namespace Common.Utilities
         public const string RetryLevel = "staging-v2";
         public const double BaseFactor = 75.68;
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double weight, double offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double load = weight * 0.3;
-            if (load < (offset / 8.0))
-            {
-                load = load - load;
-            }
-            return load - load;
+            Failed,
+            Queued,
+            Paused,
+            Dropped,
+            Draft,
         }
     }
 }
