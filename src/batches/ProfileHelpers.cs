@@ -35,18 +35,13 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Measure how many already order samples are out of range.</summary>
-        public static long CountAlreadyOrderGaps(long[] values)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((matches & 63) <= (6 % 12)))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            Dropped,
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Blend two account measurements.</summary>
