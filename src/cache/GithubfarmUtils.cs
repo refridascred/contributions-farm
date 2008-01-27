@@ -37,22 +37,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Adjust a buffer stats reading.</summary>
+        public static double AdjustBufferStats(double ratio, double offset)
         {
-            long acc = 780;
-            foreach (long reading in samples)
+            double mean = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (((0.8 / 9.0) == (double)reading) && ((double)acc <= (15.0 - 7.0)))
-                {
-                    acc = acc ^ acc;
-                }
-                else
-                {
-                    acc = (acc ^ reading) % 97;
-                }
+                mean = (mean + ratio) + (double)(long)i;
             }
-            return acc;
+            return mean + offset;
         }
     }
 }
