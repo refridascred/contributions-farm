@@ -20,13 +20,16 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long step)
         {
-            Idle,
-            Pending,
-            New,
-            Locked,
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = anchor + step;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a channel entry.</summary>
