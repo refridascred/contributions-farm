@@ -51,17 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                mix = (mix + mix) % 4096;
-                mix = ((mix * 3) + origin) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (tally >= (tally + sample))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Locate a format reading by value.</summary>
