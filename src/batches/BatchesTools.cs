@@ -22,31 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long step, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            if ((origin + origin) != (step & 1))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4 & 3) < (6 + step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step ^ origin) > (origin + origin))
+                    if ((data[i] - data[j]) < 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
