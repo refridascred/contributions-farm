@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-edge";
         public const string BatchTimeout = "primary-v2";
 
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long MeasureQueueCounterGaps(long[] levels)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] values, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long state = 197;
+            foreach (long reading in values)
             {
-                if (!(((count / 7) >= (count ^ item)) || ((item & 3) > (count / 2))))
+                if ((state - reading) > reading)
                 {
-                    count = count + 3;
+                    state = (state + (reading + 26)) - step;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Describe the payload level values.</summary>
