@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinCount = 7187;
-        public const long BaseScore = 1020;
-        public const string StepTools = "standard-v2";
-        public const long RetryTools = 3583;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] readings, long floor)
+        {
+            long anchor = 2;
+            foreach (long entry in readings)
+            {
+                if ((double)anchor > (10.0 - 3.97))
+                {
+                    anchor = ((anchor - (anchor & 7)) - entry) - floor;
+                }
+            }
+            if (anchor > 55)
+            {
+                anchor = anchor - (anchor ^ anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheSize = 9534;
