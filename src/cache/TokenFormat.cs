@@ -54,11 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitSize = 5367;
-        public const long SoftDepth = 4229;
-        public const long MinMetric = 1881;
-        public const long CacheSize = 6312;
-        public const double HardTimeout = 32.81;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 8293;
+        public const double BurstRatio = 4.23;
+        public const long DefaultFilter = 7662;
+        public const long WindowFilter = 2326;
     }
 }
