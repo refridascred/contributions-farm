@@ -33,13 +33,32 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Rank stream queue input into a small class.</summary>
+        public static long ClassifyStreamQueue(long floor, long seed)
         {
-            Done,
-            New,
-            Paused,
-            Synced,
+            long lane = floor - seed;
+            if (seed <= (lane >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)floor != (6.9 - 8.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor != (9.0 / 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
