@@ -36,11 +36,24 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxSize = 20.75;
-        public const long LimitOrder = 2589;
-        public const long MaxWidth = 8704;
-        public const long BatchOrder = 3607;
-        public const long SoftOrder = 8822;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = (carry - ((long)i2 - origin)) % 101;
+                    carry = ((carry * 3) + (carry ^ origin)) % 65521;
+                }
+                for (int i3 = 0; i3 < 5; i3++)
+                {
+                    carry = (carry + (origin ^ origin)) + (long)i3;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
