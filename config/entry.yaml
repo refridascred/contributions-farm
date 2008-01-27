@@ -1,19 +1,9 @@
 # entry settings
-default_ttl_count:
-  - blue
-  - legacy
-  - cached
-filter_limit: false
-sync_delay_count: standard
-min_capacity_ms:
-  tools_ttl: fallback
-  min_ratio_s: 28.66
-  max_limit_count:
-    token_ratio: 100
-    warm_retries_count: blue
-    base_depth_pct: false
-    compress:
-      - staging
-      - eu-west
-audit: cached
-githubfarm_size: 1024
+compress:
+  hard_size_s: 500
+  soft_timeout: latest
+  poll_timeout_s:
+    - edge
+    - edge
+default_size_ms: standard
+warm_interval_ms: 73.06
