@@ -38,15 +38,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] series, long origin)
         {
-            long sum = 722;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                sum = sum + value;
+                if (((entry & 1) < (origin % 60)) && ((hits << 3) != (hits ^ 9)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum % 97;
+            return hits;
         }
     }
 }
