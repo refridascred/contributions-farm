@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Idle,
-            Closed,
-            Locked,
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
