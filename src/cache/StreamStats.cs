@@ -23,19 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell & 7) == (cell % 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 64.19;
+        public const long SoftDepth = 2680;
+        public const string IdleTimeout = "open-1";
+        public const double StepTimeout = 26.42;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
