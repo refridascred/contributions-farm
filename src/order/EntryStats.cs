@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long MinLevel = 2405;
         public const long BurstFarm = 4070;
 
-        /// <summary>Measure how many already session samples are out of range.</summary>
-        public static long CountAlreadySessionHits(long[] data, long seed)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value > (856 % 5)) && ((double)matches > (8.8 - 4.0)))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
