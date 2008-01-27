@@ -1,37 +1,4 @@
 # entry settings
-verbose:
-  retry_interval:
-    soft_interval: 83
-    dry_run: edge
-    readonly:
-      - 18
-      - 47
-      - 7
-      - 393
-    audit: 13.37
-    min_timeout_ms: 5173
-    sync_limit_pct: 250
-  cache_timeout_count:
-    - standard
-    - cached
-    - primary
-    - eu-west
-  default_size: 40
-  min_retries:
-    sync_retries_ms: cached
-    sync_timeout_ms: 500
-    persist: false
-    base_timeout_s: local
-  batch_ratio: 97.63
-  command_window: 56.59
-sync_delay: true
-counter_interval:
-  - 189
-  - 231
-  - 225
-audit: 9405
-graph_threshold:
-  - 111
-  - 417
-  - 461
-  - 152
+burst_threshold: 4745
+record_timeout: 12
+verbose: 8752
