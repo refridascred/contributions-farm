@@ -50,22 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] series, long step)
+        /// <summary>Audit support commits readings against a rule.</summary>
+        public static long CountSupportCommitsHits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (seen < (7 - reading))
+                if (!((matches * 3) <= value))
                 {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a metrics stats.</summary>
