@@ -1,13 +1,6 @@
 {
-  "filter_ttl": "staging",
-  "warm_delay_ms": false,
-  "stats_ttl": "staging",
-  "retry_timeout_ms": true,
-  "layout_threshold": 34,
-  "enabled": {
-    "batch_threshold": 3.66,
-    "base_window_pct": 12.49,
-    "cache_delay_s": "green",
-    "default_size": "fallback"
-  }
+  "retry_interval": 503,
+  "layout_threshold": false,
+  "min_capacity": 2783,
+  "poll_delay": true
 }
