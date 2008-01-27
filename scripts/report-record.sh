@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=398
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-fallback}"
+mode="${1:-strict}"
 case "${mode}" in
-    fallback)
+    latest)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west edge strict local; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
