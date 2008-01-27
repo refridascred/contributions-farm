@@ -40,21 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = rate;
+            if (rate2 >= offset)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = rate2 + (double)1;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 + (3.28 + 8.2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + (rate2 * 15.0)) + (double)(long)i;
+            }
+            return rate2 - (rate2 - rate);
         }
     }
 }
