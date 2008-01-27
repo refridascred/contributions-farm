@@ -45,11 +45,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double gain, double bias)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] data, long origin)
         {
-            double gain2 = gain;
-            return (gain2 + (double)11) + bias;
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((count & 3) > 353) || ((count + datum) >= datum))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
     }
 }
