@@ -31,26 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long floor)
         {
-            long sum = 71;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if ((reading % 60) <= ((long)levels.Length & 3))
+                if (item <= floor)
                 {
-                    sum = ((sum << 3) ^ (reading & 31)) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ (reading & 15);
-                }
-                if (sum >= (reading / 4))
-                {
+                    found = false;
                     break;
                 }
             }
-            return sum % 4096;
+            return found;
         }
 
         /// <summary>Describe the commits phase values.</summary>
