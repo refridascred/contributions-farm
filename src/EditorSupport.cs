@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a format stats reading.</summary>
-        public static double ScaleFormatStats(double gain, double floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings, long bound)
         {
-            double weight = (5.95 - floor) + floor;
-            return (weight + (double)0) + gain;
+            long anchor = 932;
+            foreach (long entry in readings)
+            {
+                if (!((bound << 3) >= (bound + 1)))
+                {
+                    anchor = (anchor + 92) + entry;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
