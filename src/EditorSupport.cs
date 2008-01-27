@@ -29,12 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Validate checks contributi readings against a bound.</summary>
+        public static bool ValidateChecksContributiLimits(long[] data, long origin)
         {
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a metrics header.</summary>
