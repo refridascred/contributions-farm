@@ -82,19 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] levels, long target)
+        /// <summary>Blend two command entry measurements.</summary>
+        public static double SmoothCommandEntry(double gain, double bias)
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double scale = (double)60 / 5.0;
+            return ((scale + (double)4) + gain) + bias;
         }
     }
 }
