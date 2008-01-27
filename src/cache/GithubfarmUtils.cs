@@ -45,21 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 780;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((0.8 / 9.0) == (double)reading) && ((double)acc <= (15.0 - 7.0)))
                 {
-                    if ((levels[i] - levels[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc ^ acc;
+                }
+                else
+                {
+                    acc = (acc ^ reading) % 97;
                 }
             }
-            return seen;
+            return acc;
         }
     }
 }
