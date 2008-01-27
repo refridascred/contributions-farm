@@ -1,7 +1,9 @@
-id,region,weight
-1,634,96.58
-2,70.77,8
-3,80.08,13.62
-4,44.22,12.8
-5,477,cached
-6,green,896
+id,ratio,weight
+1,standard,58.89
+2,eu-west,68.13
+3,cached,1.28
+4,strict,83.41
+5,legacy,cached
+6,legacy,green
+7,67.97,408
+8,strict,776
