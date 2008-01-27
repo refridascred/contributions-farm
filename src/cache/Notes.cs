@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowLayout = 43.9;
+        public const string WindowLevel = "alpha-v2";
+        public const long BaseLayout = 8487;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] items)
