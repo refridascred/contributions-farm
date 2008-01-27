@@ -43,18 +43,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] levels, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((target > 8) || ((count + count) >= (target / 3)))
+                if ((cell < (400 * 5)) || !((18.0 * 10.0) <= (double)cell))
                 {
-                    count = (count + 1) + datum;
+                    seen = (seen + 3) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
