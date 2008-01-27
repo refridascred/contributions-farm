@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultTimeout = 9357;
-        public const long DefaultCount = 8814;
-        public const long CacheRatio = 3101;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long bound, long bound2)
