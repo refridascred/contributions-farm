@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-When a token fails, the entry handler retries a few times before giving up.
-Run the schema check before changing any token limits.
+The format module keeps metric values in sync with the channel cache.
+A commits that stays idle for too long is moved to the profile list.
+
+The tools report groups every filter by cache.
+Keep support and cluster names short and lowercase.
 
 ## Guidelines
 
-- Validate tools input early
-- Review queue limits each release
-- Log every githubfarm change
-- Prefer farm defaults
+- Document new support fields
+- Keep window values small
+- Validate session input early
+- Review entry limits each release
