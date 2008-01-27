@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the channel window entries that pass the check.</summary>
-        public static long CountChannelWindowGaps(long[] values, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (((limit / 3) <= entry) && (((entry - entry) < matches) && ((limit ^ limit) == (entry - matches))))
+                if (((hits ^ 187) >= (974 + datum)) || ((double)hits > (8.16 + 0.65)))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
