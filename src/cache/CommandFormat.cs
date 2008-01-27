@@ -63,11 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSpan = 3730;
-        public const string SoftCounter = "primary-edge";
-        public const string BatchScore = "primary-edge";
-        public const long MaxCounter = 343;
-        public const string BatchInterval = "stable-1";
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Active,
+            Pending,
+            Done,
+            Paused,
+        }
     }
 }
