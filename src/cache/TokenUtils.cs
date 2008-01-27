@@ -19,31 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long floor, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if (((seed % 100) == (seed << 3)) || ((double)floor > (0.2 / 8.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor ^ seed) <= floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (0 <= (floor * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
