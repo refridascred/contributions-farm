@@ -1,6 +1,7 @@
 {
-  "flush_interval": ["cached", "cached"],
-  "record_limit": "blue",
-  "format_timeout": "edge",
-  "burst_interval_s": 67.66
+  "min_capacity_s": [101, 61, 420],
+  "idle_timeout": false,
+  "counter_ttl": 26.74,
+  "verbose": false,
+  "enabled": 60
 }
