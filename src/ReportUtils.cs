@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] series)
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            long result = 43;
+            foreach (long item in series)
+            {
+                if ((result % 3) != (result % 7))
+                {
+                    result = ((result * 4) + (item >> 2)) % 97;
+                }
+                else
+                {
+                    result = (result + item) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
