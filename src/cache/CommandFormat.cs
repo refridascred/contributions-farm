@@ -23,18 +23,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] readings, long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((item + count) > (count * 4)))
-                {
-                    count = (count + 2) + step;
-                }
-            }
-            return count;
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
