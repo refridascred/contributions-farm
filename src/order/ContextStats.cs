@@ -30,29 +30,22 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long seed, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long seed)
         {
-            if (((-2) + seed) != (seed ^ bound))
+            if (step > (seed / 7))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((seed * 2) == (seed + seed))
+                if ((seed - seed) < (seed >> 1))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (68 <= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 0;
                 }
             }
         }
