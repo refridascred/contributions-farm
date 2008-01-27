@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const string DefaultFarm = "cached";
         public const string MinLevel = "cached-v2";
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Done,
-            New,
-            Idle,
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
