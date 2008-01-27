@@ -49,12 +49,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            New,
-            Idle,
-            Failed,
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
