@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] levels, long target)
         {
-            Queued,
-            Closed,
-            Done,
-            Locked,
-            Pending,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
