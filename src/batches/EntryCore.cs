@@ -60,18 +60,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] series, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((origin - 833) > (sample * 5)) || ((double)sample <= (double)origin))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double mean = (span - weight) - (span - span);
+            return mean + span;
         }
     }
 }
