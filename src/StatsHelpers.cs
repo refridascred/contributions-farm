@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Count the order commits entries that pass the check.</summary>
+        public static long AuditOrderCommitsMatches(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                acc = acc + (24 ^ acc);
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((item & 31) <= (772 ^ item))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
