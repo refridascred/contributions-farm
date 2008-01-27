@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 12.69;
-        public const long LimitAccount = 5546;
-        public const long BurstFactor = 9734;
-        public const long MinInterval = 2909;
-        public const string MinAccount = "alpha-edge";
+        /// <summary>Grade a checks channel value against two limits.</summary>
+        public static long ClassifyChecksChannel(long bound, long offset)
+        {
+            if (((offset + 946) < offset) || ((bound / 6) >= bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset >= (bound & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((9.84 + 8.2) > (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowBudget = "open-1";
