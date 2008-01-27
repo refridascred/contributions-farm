@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] data)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (sample < (sample >> 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
