@@ -21,13 +21,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long floor, long origin)
         {
-            Dropped,
-            Queued,
-            Active,
-            Ready,
+            if ((624 + floor) > ((-2) ^ origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin << 3) > (origin + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a token reading by value.</summary>
