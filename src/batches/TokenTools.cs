@@ -33,9 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryFactor = "latest-1";
-        public const long BaseSize = 2078;
-        public const long LimitCount = 487;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
