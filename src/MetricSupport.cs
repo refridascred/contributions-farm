@@ -31,11 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
