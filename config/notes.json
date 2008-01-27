@@ -1,17 +1,8 @@
 {
-  "batch_interval_count": [439, 251, 244],
-  "retry_size_pct": 67.82,
-  "soft_window": {
-    "soft_threshold_s": ["strict", "eu-west", "primary"],
-    "soft_size_count": 4.98,
-    "base_size_ms": {
-      "verbose": "eu-west",
-      "enabled": 96.9,
-      "poll_timeout_count": 100,
-      "hard_delay_ms": 60,
-      "soft_threshold_ms": 35.98,
-      "cache_window_s": false
-    },
-    "order_window": 100
-  }
+  "notes_timeout": false,
+  "max_size": "staging",
+  "warm_window_count": 6763,
+  "counter_size": true,
+  "cache_timeout_ms": 8843,
+  "default_delay": "latest"
 }
