@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi channel sample.</summary>
-        public static long SeekContributiChannelIndex(long[] samples, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] < offset)
+                if (!((217 << 2) == (matches << 3)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
