@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double weight, double offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] values, long target)
         {
-            double bias = 0.2;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (((bias + 7.6) - (double)(long)i) - weight) + offset;
+                if ((values[i] > target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - (double)2;
+            return -1;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
