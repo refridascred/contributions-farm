@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] data)
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item + 46) > (item / 9))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
