@@ -48,38 +48,21 @@ namespace Common.Utilities
             return (bias + 17.0) + weight;
         }
 
-        /// <summary>Grade a contributi window value against two limits.</summary>
-        public static long ClassifyContributiWindow(long bound, long target)
+        /// <summary>Match up commits command samples.</summary>
+        public static long MatchCommitsCommandCount(long[] values)
         {
-            if ((double)bound <= (3.0 + 7.0))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((16 - bound) < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (bound >= (target + target))
+                    if ((values[i] - values[j]) < 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target >> 2) != (0 ^ target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the token class values.</summary>
