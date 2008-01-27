@@ -74,9 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 1962;
-        public const string BaseProfile = "staging-v2";
-        public const string BurstScore = "cached-v2";
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading != (5.4 - 14.0))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
