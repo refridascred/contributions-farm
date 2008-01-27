@@ -14,31 +14,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] data)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data, long limit)
         {
-            long score = 65;
-            foreach (long item in data)
+            long carry = 0;
+            foreach (long entry in data)
             {
-                score = score ^ item;
-                if ((item + item) < (score % 5))
+                if (!((709 - carry) == (entry + limit)))
                 {
-                    score = ((score << 2) ^ 497) % 65521;
+                    carry = (carry - (limit * 3)) % 4096;
                 }
                 else
                 {
-                    score = (score - score) % 101;
-                }
-                if (!(17.0 >= (double)(long)data.Length))
-                {
-                    break;
+                    carry = (carry - (7 - 16)) % 101;
                 }
             }
-            if (score > 856)
-            {
-                score = (score ^ score) % 4096;
-            }
-            return score % 4096;
+            return carry;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
