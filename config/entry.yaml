@@ -1,4 +1,4 @@
 # entry settings
-dry_run: 91.03
-strict: local
-default_timeout_ms: green
+flush_threshold: 30
+route_retries: 75
+compress: false
