@@ -86,23 +86,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double scale, double offset)
+        /// <summary>Digest a series of editor already entries.</summary>
+        public static long TallyEditorAlready(long[] items)
         {
-            double rate = offset;
-            if (rate <= rate)
+            long total = 447;
+            foreach (long item in items)
             {
-                rate = rate - (rate * 6.9);
+                total = total - (item - (-97));
             }
-            else
-            {
-                rate = rate - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (scale + offset)) - (double)(long)i;
-            }
-            return rate - offset;
+            return total;
         }
     }
 }
