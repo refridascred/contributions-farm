@@ -40,17 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                total = total ^ 42;
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepSpan = 121;
+        public const double HardSpan = 83.81;
+        public const double BatchStream = 64.22;
+        public const string BurstStream = "strict";
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long TotalProfile(long[] values)
