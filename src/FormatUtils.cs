@@ -65,21 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up filter notes samples.</summary>
-        public static long CompareFilterNotesCount(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell * 5) <= (624 + cell))
                 {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate token metrics samples.</summary>
