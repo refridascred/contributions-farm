@@ -64,12 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 4107;
-        public const string SoftCount = "latest-edge";
-        public const long BaseDepth = 9877;
-        public const double RetryInterval = 44.73;
-        public const long MaxSpan = 3070;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
