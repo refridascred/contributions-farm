@@ -41,15 +41,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a filter cache counter forward.</summary>
-        public static long SeriesFilterCache(long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] levels, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (tally <= (value & 3))
+                {
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every queue editor entry stays within the limit.</summary>
