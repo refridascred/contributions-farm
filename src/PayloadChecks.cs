@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of checks metrics readings.</summary>
-        public static long WeighChecksMetrics(long[] series)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long score = 22;
-            foreach (long reading in series)
-            {
-                score = (score ^ (reading << 1)) % 4096;
-            }
-            if (score > 12)
-            {
-                score = score + (score + score);
-            }
-            return score;
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
