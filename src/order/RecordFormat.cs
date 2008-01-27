@@ -60,33 +60,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long offset)
-        {
-            long bound = floor + offset;
-            if ((offset % 5) < (bound + 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((-526) >= (floor - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)floor <= 5.0) && ((6 - offset) > bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 35.07;
+        public const long SoftScore = 4774;
+        public const long MinSize = 8785;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] data)
