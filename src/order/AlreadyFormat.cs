@@ -29,12 +29,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 2.09;
-        public const string MinSize = "fallback-1";
-        public const string CacheGithubfarm = "cached-1";
-        public const string BurstGithubfarm = "standard-1";
-        public const long WindowGithubfarm = 444;
+        /// <summary>Locate a session route reading by value.</summary>
+        public static long SeekSessionRouteIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
