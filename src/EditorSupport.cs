@@ -58,17 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((values[i] > bound) && ((values[i] % 3) == 0))
+                if (861 < cell)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the format status values.</summary>
