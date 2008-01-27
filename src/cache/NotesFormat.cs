@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSize = 1491;
-        public const long MinAccount = 3790;
-        public const string WindowAccount = "open-edge";
-        public const long BatchLevel = 2962;
-        public const string BatchAccount = "cached-edge";
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] series, long target)
