@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] data)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((double)seen >= (5.0 + 2.0)) || (((seen + value) == (682 << 2)) && ((value ^ seen) >= (seen >> 5))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
