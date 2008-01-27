@@ -29,15 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the schema queue entries that pass the check.</summary>
-        public static long TallySchemaQueueGaps(long[] values)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
             long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!(sample >= (0 % 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
