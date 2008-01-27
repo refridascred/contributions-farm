@@ -62,11 +62,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
