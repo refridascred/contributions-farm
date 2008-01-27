@@ -24,21 +24,12 @@ namespace Common.Utilities
         public const long BurstNotes = 3698;
         public const long CacheSize = 6915;
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
