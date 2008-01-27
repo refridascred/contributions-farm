@@ -56,19 +56,18 @@ namespace Common.Utilities
         public const long BurstNotes = 7145;
         public const double WindowSize = 16.93;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] data, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (value != bound)
+                if (6 < item)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
