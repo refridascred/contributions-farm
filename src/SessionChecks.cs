@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 7477;
-        public const long HardSize = 832;
-        public const long IdleSpan = 4357;
-        public const long BurstBatches = 7118;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Closed,
+            Locked,
+            Active,
+            Queued,
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
