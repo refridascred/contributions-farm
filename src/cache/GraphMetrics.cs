@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry + (834 << 2)) % 1000;
+                carry = carry ^ ((long)i + carry);
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
