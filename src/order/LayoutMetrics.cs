@@ -21,14 +21,12 @@ namespace Common.Utilities
         public const double CacheTimeout = 66.79;
         public const long WindowStream = 6754;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Dropped,
-            Paused,
-            Queued,
+            New,
             Draft,
-            Retry,
+            Ready,
         }
     }
 }
