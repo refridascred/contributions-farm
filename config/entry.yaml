@@ -1,18 +1,24 @@
 # entry settings
-persist: strict
-entry_timeout:
-  - local
-  - strict
-  - primary
-  - local
-base_timeout_pct: 8105
-hard_threshold_pct: stable
-dry_run:
-  window_interval: 250
-  cache_timeout_s: false
-  context_retries:
-    - blue
-    - standard
-    - strict
-  min_retries_ms: 3.0
-strict: staging
+min_retries: latest
+burst_depth_pct:
+  batch_capacity_s: open
+  min_limit: 50
+  warm_retries_ms:
+    - 275
+    - 415
+    - 398
+    - 212
+base_ttl_pct: fallback
+retry_interval_s:
+  channel_delay:
+    - cached
+    - edge
+    - edge
+  soft_ttl_s: 55
+  retry_ttl_ms: cached
+  flush_window_s: 17.23
+record_ratio:
+  dry_run: primary
+  audit: 8608
+  batch_retries_count: 868
+enabled: 250
