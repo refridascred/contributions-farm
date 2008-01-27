@@ -72,14 +72,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Retry,
-            Ready,
             Active,
-            Dropped,
             Stale,
+            Queued,
+            Idle,
+            Paused,
         }
 
         /// <summary>Accumulate filter samples.</summary>
