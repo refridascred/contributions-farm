@@ -1,21 +1,7 @@
 {
-  "cache_size": "eu-west",
-  "soft_ratio": 5756,
-  "compress": {
-    "warm_threshold": 50.61,
-    "context_ratio": 34,
-    "verbose": 43.07,
-    "readonly": 39.61,
-    "strict": 60.09,
-    "persist": "cached"
-  },
-  "dry_run": {
-    "base_capacity": "stable",
-    "contributi_limit": ["legacy", "fallback", "edge"],
-    "flush_timeout_pct": [152, 452, 360],
-    "report_depth": [160, 108, 236, 9],
-    "stats_interval": [237, 26]
-  },
-  "route_ratio": false,
-  "already_ttl": "open"
+  "warm_delay_s": ["open", "strict", "green", "legacy"],
+  "burst_timeout": 73.63,
+  "base_timeout_s": [359, 164],
+  "queue_threshold": false,
+  "burst_size_ms": [327, 378]
 }
