@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long seed, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data, long target)
         {
-            long diff = seed + floor;
-            if (((seed * 2) < (seed - seed)) && ((5 - 92) <= (floor * 2)))
+            long acc = -29;
+            foreach (long cell in data)
             {
-                return 4;
+                acc = (((acc ^ 237) % 97) + cell) + target;
             }
-            else
-            {
-                if ((diff - diff) >= (seed >> 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (210 < (diff + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
