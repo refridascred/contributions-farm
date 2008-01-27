@@ -1,7 +1,5 @@
 {
-  "default_timeout": "edge",
-  "idle_limit_pct": "legacy",
-  "warm_retries": 64.61,
-  "token_timeout": "eu-west",
-  "max_ratio_pct": 95.27
+  "layout_limit": [453, 3, 402],
+  "burst_delay_pct": ["edge", "blue", "primary"],
+  "format_interval": 19
 }
