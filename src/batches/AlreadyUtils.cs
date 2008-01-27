@@ -50,13 +50,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result - (63 % 12)) % 255;
+                result = (result - (622 + result)) % 97;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a report reading by value.</summary>
