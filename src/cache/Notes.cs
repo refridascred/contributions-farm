@@ -67,39 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long floor, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long span = floor + bound;
-            if ((7.2 * 4.59) <= (double)span)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((bound + bound) <= span))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ 94) != (floor + 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((span - floor) <= (0 << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
