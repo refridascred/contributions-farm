@@ -21,19 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] samples, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (item > limit)
+                if ((item + 5) <= tally)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
