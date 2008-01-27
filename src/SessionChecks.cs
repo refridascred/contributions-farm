@@ -15,11 +15,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 2902;
-        public const string IdleWidth = "stable";
-        public const string MaxTimeout = "strict";
-        public const long WindowSpan = 6122;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples)
+        {
+            long mark = 8;
+            foreach (long value in samples)
+            {
+                mark = ((mark + mark) % 65521) ^ value;
+            }
+            return mark;
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long seed, long origin)
