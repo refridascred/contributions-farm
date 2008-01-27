@@ -1,10 +1,19 @@
 # githubfarm settings
-tools_ratio: 58
-checks_limit: stable
-idle_limit: true
-entry_interval: false
-dry_run:
-  - legacy
-  - latest
-  - staging
-  - latest
+notes_window: stable
+sync_retries:
+  audit:
+    audit: 79.57
+    default_limit_s: true
+    strict: true
+    batch_interval: 5
+    min_interval_pct: 3.96
+    persist: stable
+  default_threshold_s: 28
+  sync_ttl_count: true
+  retry_interval: open
+  persist:
+    - 50
+    - 32
+    - 488
+  base_ttl_pct: 1159
+retry_interval: 30
