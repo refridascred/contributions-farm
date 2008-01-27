@@ -78,17 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stream contributi entry that matches the target.</summary>
-        public static long LocateStreamContributiIndex(long[] items, long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
