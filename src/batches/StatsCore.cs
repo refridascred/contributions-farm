@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long seed, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] data, long offset)
         {
-            if (((bound - bound) >= (0 << 3)) && ((bound >> 3) == (bound + seed)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-42) >= (3 + bound))
+                if (!((datum - datum) == (offset ^ offset)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (7.32 >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed + seed) == (357 + 498))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
