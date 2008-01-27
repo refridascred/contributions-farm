@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] data, long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long step, long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if (((double)seed == (6.0 / 3.0)) || ((step + seed) < step))
             {
-                if ((double)value != (13.0 / 4.0))
+                return 8;
+            }
+            else
+            {
+                if (step <= 53)
                 {
-                    seen = (seen + 2) + target;
+                    return 0;
+                }
+                else
+                {
+                    if ((4 - seed) == (seed % 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
