@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Measure how many order cluster samples are out of range.</summary>
+        public static long MeasureOrderClusterHits(long[] data, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mix = (mix - (limit - 68)) % 101;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((bound << 3) > (48 << 3))
+                {
+                    hits = (hits + 3) + entry;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Project the next schema value.</summary>
