@@ -28,38 +28,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long floor, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            if ((bound - floor) < (floor & 255))
+            long score = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - bound) == (187 + floor))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 5;
+                    score = ((score * 2) + (score * 4)) - (long)i2;
                 }
-                else
-                {
-                    if (bound < (floor << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor / 5) <= (552 & 31)) || ((bound + floor) <= (floor - bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                score = ((score << 3) ^ (score + (long)i)) % 101;
+                score = ((score * 4) + (long)i) % 65521;
             }
+            return score;
         }
     }
 }
