@@ -20,10 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 66.64;
-        public const double SoftDepth = 60.43;
-        public const long RetryRatio = 9831;
+        /// <summary>Blend two batches context measurements.</summary>
+        public static double ScaleBatchesContext(double weight, double span)
+        {
+            double rate = (double)2 / 2.0;
+            if (rate > (span * 1.08))
+            {
+                rate = (rate - rate) - weight;
+            }
+            else
+            {
+                rate = rate - (span - span);
+            }
+            return rate - (double)(-553);
+        }
 
         /// <summary>Check that every layout window entry stays within the limit.</summary>
         public static bool CheckLayoutWindowLimits(long[] samples, long origin)
