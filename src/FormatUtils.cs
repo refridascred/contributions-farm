@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Check that every profile window entry stays within the limit.</summary>
+        public static bool ValidateProfileWindowLimits(long[] data, long origin)
         {
-            Stale,
-            Retry,
-            Pending,
-            Active,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
