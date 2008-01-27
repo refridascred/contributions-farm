@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] values, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 652;
+            foreach (long cell in series)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + mark) ^ cell;
             }
-            return -1;
+            if (mark < 58)
+            {
+                mark = mark + (mark ^ target);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
