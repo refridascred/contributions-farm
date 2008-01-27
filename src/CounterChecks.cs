@@ -49,12 +49,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Digest a series of support cluster entries.</summary>
+        public static long CombineSupportCluster(long[] readings, long floor)
         {
-            Locked,
-            Active,
-            Dropped,
+            long total = 707;
+            foreach (long item in readings)
+            {
+                total = ((total * 2) + (item + 2)) - floor;
+            }
+            return total % 97;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
