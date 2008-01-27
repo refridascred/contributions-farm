@@ -16,11 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 64.19;
-        public const long SoftDepth = 2680;
-        public const string IdleTimeout = "open-1";
-        public const double StepTimeout = 26.42;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string MaxScore = "local-v2";
