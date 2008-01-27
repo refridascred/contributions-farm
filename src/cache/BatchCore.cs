@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batches batch value against two limits.</summary>
-        public static long BucketBatchesBatch(long offset, long bound)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] series, long bound)
         {
-            long edge = offset + bound;
-            if ((edge + bound) < (offset * 4))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset - 883) <= (80 << 3))
+                if (272 > (datum + matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) + bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of support entries.</summary>
