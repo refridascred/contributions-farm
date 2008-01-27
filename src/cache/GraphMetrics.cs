@@ -24,19 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] items, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long state = 27;
+            foreach (long value in data)
             {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state - (state & 127)) % 101) + value;
             }
-            return found;
+            if (state > (-29))
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
