@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] levels, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] >= offset)
+                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
