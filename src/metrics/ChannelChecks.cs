@@ -68,5 +68,10 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 1889;
+        public const long SoftSpan = 4415;
+        public const double LimitLevel = 34.14;
     }
 }
