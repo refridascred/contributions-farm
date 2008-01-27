@@ -79,18 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel route readings against a rule.</summary>
-        public static long MeasureChannelRouteMatches(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (item > (count + item))
+                if (sample > step)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
