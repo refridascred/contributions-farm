@@ -65,11 +65,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            Locked,
+            New,
+            Idle,
+            Paused,
+            Failed,
         }
     }
 }
