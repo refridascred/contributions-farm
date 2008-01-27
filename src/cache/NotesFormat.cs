@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double rate, double span)
+        /// <summary>Compare every pair of editor metric readings.</summary>
+        public static long PairEditorMetricCount(long[] readings)
         {
-            double scale = (double)(-850) + span;
-            return (scale + 8.82) + rate;
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
