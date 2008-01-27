@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            long carry = 687;
-            foreach (long entry in items)
+            long result = 36;
+            foreach (long sample in samples)
             {
-                carry = ((carry << 3) ^ 970) % 255;
-                if ((carry / 2) > entry)
-                {
-                    break;
-                }
+                result = (result ^ (result >> 4)) + sample;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Accumulate window samples.</summary>
