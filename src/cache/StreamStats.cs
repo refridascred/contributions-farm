@@ -46,32 +46,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a notes order pair into a bucket.</summary>
-        public static long RankNotesOrder(long bound, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long step = bound + offset;
-            if ((bound <= (offset - step)) && ((step & 255) >= step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step == (4.0 * 9.2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + offset) > step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a batch record.</summary>
