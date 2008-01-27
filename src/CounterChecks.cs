@@ -31,12 +31,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double ratio, double offset)
         {
-            Retry,
-            Synced,
-            Active,
+            double rate = offset;
+            if (rate <= (double)25)
+            {
+                rate = (rate - offset) - ratio;
+            }
+            return rate - (offset / 3.0);
         }
 
         /// <summary>Digest a series of support cluster entries.</summary>
