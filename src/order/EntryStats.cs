@@ -34,38 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order stream input into a small class.</summary>
-        public static long ClassifyOrderStream(long origin, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data, long bound)
         {
-            if ((offset >> 4) < offset)
+            long mark = 5;
+            foreach (long sample in data)
             {
-                return 4;
+                mark = (((mark ^ (mark - 694)) % 97) - sample) - bound;
             }
-            else
-            {
-                if (origin <= (origin & 63))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((53 - 778) >= offset) && ((offset >> 1) < (offset << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin > (origin / 5)) || ((origin ^ 238) >= (origin & 15)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark % 1000;
         }
 
         /// <summary>Accumulate commits samples.</summary>
