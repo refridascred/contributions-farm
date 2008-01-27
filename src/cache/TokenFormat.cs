@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many filter graph samples are out of range.</summary>
-        public static long CountFilterGraphHits(long[] samples, long offset)
+        /// <summary>Derive the next batches format value from a seed.</summary>
+        public static long IterateBatchesFormat(long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen * 2) != (seen << 3))
+                if ((18.0 * 8.7) != (double)seed)
                 {
-                    seen = ((seen + 1) - value) - offset;
+                    anchor = (anchor << 3) ^ (anchor - (long)i);
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
