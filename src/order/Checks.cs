@@ -19,18 +19,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a batches metrics sample.</summary>
-        public static long LookupBatchesMetricsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseScore = 6220;
+        public const long MinBudget = 4602;
+        public const long StepBudget = 9699;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long bound)
