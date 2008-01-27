@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardScore = "latest-1";
-        public const double MaxAlready = 42.08;
-        public const string LimitAlready = "open-1";
+        /// <summary>Digest a series of metrics stream entries.</summary>
+        public static long WeighMetricsStream(long[] readings, long bound)
+        {
+            long total = 417;
+            foreach (long entry in readings)
+            {
+                total = ((total ^ total) + entry) + bound;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the batch checks series from a seed.</summary>
         public static long SeriesBatchChecks(long floor)
