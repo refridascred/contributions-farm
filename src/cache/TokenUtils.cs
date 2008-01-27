@@ -22,14 +22,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double weight, double span)
         {
-            Stale,
-            Closed,
-            Queued,
-            Failed,
-            Pending,
+            double gain = 4.36;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (span / 4.0)) - (double)(long)i;
+            }
+            return gain - weight;
         }
     }
 }
