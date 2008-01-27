@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] items, long bound)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits & 31) > (hits - 170))
-                {
-                    hits = ((hits + 3) + item) - bound;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Project the next contributi value.</summary>
