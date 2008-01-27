@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const long BatchSpan = 5603;
         public const double BaseCount = 68.7;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double bias)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            double bias2 = 5.11;
+            for (int i = 0; i < 9; i++)
             {
-                state = state + (origin + origin);
-                state = (state * 4) + state;
-                state = ((state * 2) + (long)i) % 101;
+                bias2 = ((bias2 - (bias2 * 1.0)) + (double)(long)i) + gain;
             }
-            return state;
+            return bias2 + (bias - 6.83);
         }
     }
 }
