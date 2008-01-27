@@ -49,23 +49,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long step, long step2)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            long gap = step ^ step2;
+            if ((step + step2) < (step * 3))
             {
-                if ((6.0 - 5.9) >= (double)(long)i)
+                return 7;
+            }
+            else
+            {
+                if (((gap + gap) <= gap) || ((step2 ^ 97) == ((-73) & 255)))
                 {
-                    mix = (mix * 5) + (5 << 2);
+                    return 2;
                 }
                 else
                 {
-                    mix = (mix - target) % 101;
+                    if (((step - step) > step) || (step > step2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6.8 + 6.2) != (double)gap)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
         }
     }
 }
