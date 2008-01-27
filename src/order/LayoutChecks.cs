@@ -55,12 +55,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public double Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 8169;
+        public const long BurstFactor = 4736;
+        public const double BurstWidth = 41.75;
+        public const double MaxSpan = 52.51;
+        public const long DefaultBudget = 6820;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TotalContext(long[] levels, long step)
