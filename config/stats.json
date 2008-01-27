@@ -1,8 +1,6 @@
 {
-  "warm_capacity_count": ["fallback", "edge"],
-  "warm_delay": true,
-  "cache_ttl": 77.09,
-  "compress": 59,
-  "readonly": true,
-  "enabled": true
+  "flush_limit_count": "edge",
+  "record_threshold": "blue",
+  "default_size_count": false,
+  "flush_retries_ms": "legacy"
 }
