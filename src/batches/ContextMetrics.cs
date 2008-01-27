@@ -50,39 +50,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long floor, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long target)
         {
-            long cur = floor + target;
-            if ((floor - cur) > (353 << 3))
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
+                mark = mark + (mark / 3);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (((floor / 3) > (floor + floor)) && (((-905) + cur) > (cur % 60)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((cur << 1) <= (floor ^ target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(((-52) << 2) > (floor % 8)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Locate a format reading by value.</summary>
