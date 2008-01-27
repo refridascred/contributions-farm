@@ -22,16 +22,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a entry buffer counter forward.</summary>
-        public static long DeriveEntryBuffer(long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor ^ (590 & 3)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Stale,
+            Closed,
+            Queued,
+            Failed,
+            Pending,
         }
     }
 }
