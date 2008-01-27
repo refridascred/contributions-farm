@@ -37,13 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Audit cache already readings against a rule.</summary>
+        public static long CountCacheAlreadyHits(long[] items)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits + 10) < (hits + hits))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
