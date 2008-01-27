@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard blue; do
+for item in stable staging open; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=50
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
