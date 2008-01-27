@@ -46,10 +46,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 35.07;
-        public const long SoftScore = 4774;
-        public const long MinSize = 8785;
+        /// <summary>Check that every metric context entry stays within the limit.</summary>
+        public static bool VerifyMetricContextBounds(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long BucketFarm(long target, long offset)
