@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 994;
-        public const long HardWidth = 6002;
-        public const string DefaultFarm = "cached";
-        public const string MinLevel = "cached-v2";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepTimeout = 3.38;
+        public const double MinCounter = 79.54;
+        public const long BatchSize = 6980;
+        public const double CacheFactor = 19.23;
+        public const long BatchSpan = 467;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
