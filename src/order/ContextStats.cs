@@ -40,15 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series, long floor)
+        /// <summary>Measure how many filter metrics samples are out of range.</summary>
+        public static long TallyFilterMetricsHits(long[] readings, long limit)
         {
-            long score = -64;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                score = ((score ^ (floor - floor)) % 97) ^ sample;
+                if ((reading + limit) > (-10))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
