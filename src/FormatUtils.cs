@@ -56,15 +56,34 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long state = -8;
+            foreach (long sample in data)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((double)state == (3.0 / 9.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state + (sample ^ sample)) % 101;
+                }
+                if ((((long)data.Length % 64) > state) && ((double)sample == (6.08 + 2.0)))
+                {
+                    state = (state * 2) + ((-46) << 3);
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state / 8)) % 4096;
+                }
             }
-            return acc;
+            if (state < 404)
+            {
+                state = (state + (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
