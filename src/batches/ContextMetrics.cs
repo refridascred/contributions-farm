@@ -49,28 +49,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = (acc * 5) + 6;
-                if ((bound - bound) < (bound << 1))
-                {
-                    acc = ((acc << 2) ^ (acc - bound)) % 1000;
-                    break;
-                }
-                else
-                {
-                    acc = (acc + bound) % 255;
-                    acc = (acc * 3) + (acc ^ bound);
-                }
-                acc = acc - (bound / 2);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 21.4;
+        public const long MaxStats = 4437;
+        public const double BatchStats = 47.66;
+        public const double SoftStats = 3.05;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
