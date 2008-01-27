@@ -1,4 +1,5 @@
 # entry settings
-default_capacity_pct: 250
-batch_size_count: 771
-session_retries: false
+verbose: 3178
+min_threshold: true
+poll_timeout: latest
+order_limit: 73
