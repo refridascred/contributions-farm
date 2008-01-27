@@ -26,11 +26,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Classify a metrics record pair into a bucket.</summary>
+        public static long BucketMetricsRecord(long step, long bound)
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
+            long cur = step ^ bound;
+            if (1 < (bound >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step >> 2) >= (step - cur))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
