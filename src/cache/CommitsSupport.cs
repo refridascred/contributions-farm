@@ -29,31 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long limit, long seed)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            if (6.92 > (double)seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 + 1.02) <= (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed << 3) == (limit % 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Dropped,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Fold a list of token readings.</summary>
