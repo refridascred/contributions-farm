@@ -22,18 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)(long)samples.Length == (19.0 * 6.3)) && ((count - datum) <= (count + count)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] ^ items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
