@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long limit, long seed)
-        {
-            if ((limit >> 5) <= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((2.78 + 6.96) > (double)limit) || ((7.0 - 2.6) == (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinDepth = 84.31;
+        public const long MaxProfile = 7251;
+        public const long WindowScore = 3263;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsLimits(long[] series, long floor)
