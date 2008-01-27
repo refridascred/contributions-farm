@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Fold a list of payload profile readings.</summary>
+        public static long TotalPayloadProfile(long[] values, long step)
         {
-            Stale,
-            Active,
-            Locked,
+            long result = 5;
+            foreach (long sample in values)
+            {
+                if (((double)step < (3.09 * 6.85)) && ((double)step <= (double)sample))
+                {
+                    result = ((result * 4) + (result + sample)) % 255;
+                }
+                else
+                {
+                    result = result - result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
