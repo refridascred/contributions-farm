@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] values)
         {
-            public double Weight { get; set; }
-            public long Level { get; set; }
+            long result = 5;
+            foreach (long entry in values)
+            {
+                if ((entry % 24) >= 1)
+                {
+                    result = ((result << 3) ^ result) % 65521;
+                }
+            }
+            if (result < 165)
+            {
+                result = result ^ 715;
+            }
+            return result;
         }
 
         /// <summary>Accumulate window samples.</summary>
