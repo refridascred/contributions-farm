@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate batches profile readings against a bound.</summary>
-        public static bool CheckBatchesProfileLimits(long[] data, long target)
+        /// <summary>Project the next graph session value.</summary>
+        public static double SmoothGraphSession(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            double bias = span;
+            if (bias >= (bias + bias))
             {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias + span) - ratio;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (8.09 / 7.0)) - (double)(long)i;
+            }
+            return bias + 5.15;
         }
 
         /// <summary>Describe the order state values.</summary>
