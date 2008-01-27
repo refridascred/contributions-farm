@@ -43,22 +43,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of layout support entries.</summary>
-        public static long CombineLayoutSupport(long[] readings, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] values, long step)
         {
-            long score = -44;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((((long)readings.Length * 3) >= item) && (item <= (floor ^ floor)))
+                if (reading >= step)
                 {
-                    score = (score ^ (item + item)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 73)
-            {
-                score = ((score * 3) + (score % 2)) % 65521;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
