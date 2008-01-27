@@ -32,15 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
-        {
-            Stale,
-            Draft,
-            Locked,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitFactor = 9812;
+        public const long DefaultSpan = 2004;
+        public const string RetryBudget = "strict-v2";
+        public const long HardFactor = 4522;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterMatches(long[] series)
