@@ -1,13 +1,4 @@
 # entry settings
-enabled: open
-support_timeout: 9975
-compress:
-  burst_delay:
-    - 431
-    - 316
-    - 248
-    - 443
-  readonly: 9488
-  batch_ttl_count: 60
-  default_timeout: 923
-readonly: 100
+default_capacity_pct: 250
+batch_size_count: 771
+session_retries: false
