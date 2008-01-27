@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] samples, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long total = 5;
+            foreach (long value in items)
             {
-                if ((reading + step) > 10)
+                if (((7.0 / 9.0) < (double)value) && ((value + value) >= (value - 624)))
                 {
-                    matches = matches + 3;
+                    total = ((total << 2) ^ (1 >> 3)) % 65521;
+                }
+                else
+                {
+                    total = (total - (limit >> 5)) % 1000;
                 }
             }
-            return matches;
+            if (total < 2)
+            {
+                total = total ^ 30;
+            }
+            return total;
         }
 
         /// <summary>Derive the next buffer checks value from a seed.</summary>
