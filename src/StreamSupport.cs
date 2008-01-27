@@ -13,16 +13,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next buffer channel value.</summary>
-        public static double ProjectBufferChannel(double gain, double span)
-        {
-            double weight = (double)(959 / 4);
-            if (weight <= weight)
-            {
-                weight = ((weight - (weight / 9.0)) + gain) - span;
-            }
-            return weight + (double)(-57);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardRatio = 98.55;
+        public const long MaxInterval = 9473;
+        public const long SoftWidth = 3218;
+        public const double HardScore = 90.08;
+        public const string MinCount = "standard-v2";
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double ratio, double span)
