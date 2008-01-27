@@ -1,6 +1,11 @@
 {
-  "retry_threshold_ms": "stable",
-  "hard_depth_count": 500,
-  "commits_capacity": 30,
-  "retry_depth_ms": [1, 14, 211]
+  "tools_size": ["standard", "local", "staging"],
+  "readonly": 250,
+  "buffer_threshold": {
+    "flush_timeout": true,
+    "schema_ratio": 500,
+    "channel_depth": ["green", "standard", "staging"]
+  },
+  "stream_capacity": "blue",
+  "tools_retries": 17.01
 }
