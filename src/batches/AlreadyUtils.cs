@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a counter command figure with a bias.</summary>
-        public static double AdjustCounterCommand(double weight, double offset)
-        {
-            double bias = offset;
-            if (bias <= (bias * 9.0))
-            {
-                bias = (bias - (bias + bias)) - weight;
-            }
-            else
-            {
-                bias = bias - 3.0;
-            }
-            return bias + 4.0;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 93.4;
+        public const long BatchSpan = 8243;
+        public const double LimitFilter = 36.37;
+        public const string IdleTimeout = "open-1";
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
