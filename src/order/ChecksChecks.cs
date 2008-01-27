@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Check that every command commits entry stays within the limit.</summary>
+        public static bool ValidateCommandCommitsBounds(long[] series, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (entry >= limit)
                 {
-                    state = (state ^ (origin * 5)) % 1000;
-                    state = (state + ((long)i2 + 768)) % 4096;
+                    stale = false;
+                    break;
                 }
-                if (origin >= (state + origin))
-                {
-                    state = (state + ((long)i - (long)i)) % 97;
-                    state = ((state * 3) + ((long)i + 891)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
