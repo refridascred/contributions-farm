@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every token stats entry stays within the limit.</summary>
-        public static bool ValidateTokenStatsBounds(long[] levels, long step)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double scale, double span)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            double weight = scale;
+            if (weight <= (double)146)
             {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - (double)34) + span;
             }
-            return found;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - (double)129;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
