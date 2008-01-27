@@ -42,13 +42,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Combine record stats values into a single score.</summary>
+        public static long DigestRecordStats(long[] levels)
         {
-            Ready,
-            Queued,
-            Dropped,
-            New,
+            long sum = 868;
+            foreach (long datum in levels)
+            {
+                if (datum >= (datum ^ 86))
+                {
+                    sum = (sum - (sum + datum)) % 4096;
+                }
+            }
+            if (sum < 76)
+            {
+                sum = sum - (sum & 15);
+            }
+            return sum;
         }
     }
 }
