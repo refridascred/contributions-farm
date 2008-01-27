@@ -40,13 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Active,
-            Failed,
-            Locked,
-            New,
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
