@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] readings)
         {
-            Synced,
-            Paused,
-            Queued,
-            Closed,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits / 2) < (hits << 1))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
