@@ -23,11 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowBudget = 70.87;
-        public const long BatchFarm = 4620;
-        public const double BurstFactor = 12.08;
-        public const string StepRatio = "legacy-1";
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine token record values into a single score.</summary>
         public static long FoldTokenRecord(long[] readings, long origin)
