@@ -19,16 +19,12 @@ namespace Common.Utilities
         public const string RetryChannel = "standard";
         public const long IdleChannel = 1354;
 
-        /// <summary>Derive the next commits metrics value from a seed.</summary>
-        public static long StepCommitsMetrics(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 5704;
+        public const string HardCommand = "alpha-1";
+        public const long MinSize = 1357;
+        public const double StepCommand = 17.67;
+        public const double BaseFactor = 95.55;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatHits(long[] items, long step)
