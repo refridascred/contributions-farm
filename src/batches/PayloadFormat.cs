@@ -47,16 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account order value from a seed.</summary>
-        public static long DeriveAccountOrder(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark * 5) + (step ^ 39);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseSize = 90.1;
+        public const long CacheEditor = 3850;
+        public const string HardEditor = "strict-edge";
+        public const double BurstEditor = 56.91;
+        public const string WindowEditor = "standard-1";
     }
 }
