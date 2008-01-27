@@ -36,21 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metrics counter readings.</summary>
-        public static long OverlapMetricsCounterCount(long[] levels)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (step > ((-338) ^ origin))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (origin > (origin << 1))
                 {
-                    if ((levels[i] - levels[j]) == 20)
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin - origin) < origin))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
     }
 }
