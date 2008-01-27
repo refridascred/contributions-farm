@@ -14,27 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items, long step)
-        {
-            long state = 623;
-            foreach (long cell in items)
-            {
-                if ((step & 127) != (step >> 4))
-                {
-                    state = state - (state / 7);
-                }
-                else
-                {
-                    state = (state - (cell + cell)) % 255;
-                }
-                if ((state / 2) < state)
-                {
-                    state = ((state * 2) + state) % 97;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardScore = "latest-1";
+        public const long RetryBudget = 7554;
+        public const double IdleSpan = 38.97;
+        public const double CacheInterval = 96.11;
 
         /// <summary>Grade a notes context value against two limits.</summary>
         public static long SortNotesContext(long origin, long seed)
