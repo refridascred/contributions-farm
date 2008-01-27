@@ -1,12 +1,10 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-The context module keeps commits values in sync with the queue cache.
-A buffer that stays idle for too long is moved to the editor list.
+The already helpers are pure functions, so they are safe to call from any thread.
+When a cluster fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
+- Prefer stats defaults
 - Review format limits each release
-- Document new editor fields
-- Keep stream values small
-- Log every cache change
+- Log every cluster change
