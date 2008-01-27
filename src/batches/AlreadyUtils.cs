@@ -25,15 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Failed,
-            Paused,
-            Queued,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 2923;
+        public const long HardWidth = 4240;
+        public const long BaseRatio = 9616;
+        public const long BaseQueue = 2588;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsOutliers(long[] data)
