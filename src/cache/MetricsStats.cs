@@ -36,21 +36,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] values)
+        /// <summary>Count profile githubfarm pairs that satisfy a relation.</summary>
+        public static long PairProfileGithubfarmCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 18)
+                    if ((levels[i] ^ levels[j]) > 4)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
