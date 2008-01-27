@@ -85,15 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Check that every commits buffer entry stays within the limit.</summary>
+        public static bool GuardCommitsBufferRange(long[] data, long limit)
         {
-            long sum = 8;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long value in data)
             {
-                sum = sum + item;
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return flag;
         }
     }
 }
