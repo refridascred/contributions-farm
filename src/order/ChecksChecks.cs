@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] items)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (272 <= (count - count))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
