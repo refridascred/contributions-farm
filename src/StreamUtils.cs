@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double weight, double bias)
+        /// <summary>Measure how many editor cache samples are out of range.</summary>
+        public static long MeasureEditorCacheOutliers(long[] series, long bound)
         {
-            double ratio = weight + (14.0 + bias);
-            if (ratio <= bias)
+            long matches = 0;
+            foreach (long value in series)
             {
-                ratio = ratio - (bias / 6.0);
+                if ((double)value < (3.11 * 7.58))
+                {
+                    matches = (matches + 1) - bound;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (double)46) + (double)(long)i;
-            }
-            return ratio + weight;
+            return matches;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
