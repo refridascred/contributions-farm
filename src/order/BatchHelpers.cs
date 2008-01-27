@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Closed,
-            Ready,
+            Pending,
+            Active,
             Failed,
         }
 
