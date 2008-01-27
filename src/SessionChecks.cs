@@ -30,24 +30,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] levels, long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long state = 83;
-            foreach (long sample in levels)
-            {
-                if ((origin * 4) >= (long)levels.Length)
-                {
-                    state = (state - (sample + origin)) % 97;
-                }
-                state = (state << 2) ^ 352;
-                state = (state - (state - origin)) % 1000;
-            }
-            if (state < 8)
-            {
-                state = state + (state & 31);
-            }
-            return state;
+            Dropped,
+            Draft,
+            Stale,
+            Idle,
+            Failed,
         }
     }
 }
