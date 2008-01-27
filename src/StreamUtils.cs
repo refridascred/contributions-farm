@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardCount = 6812;
+        public const string BurstWidth = "stable";
+        public const double BatchSpan = 69.48;
+        public const long StepPayload = 3758;
+        public const long LimitSpan = 752;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
