@@ -1,21 +1,4 @@
 # support settings
-queue_ratio: 2229
-batch_window:
-  - 464
-  - 231
-  - 144
-  - 13
-idle_depth_ms: fallback
-cache_threshold_s:
-  persist: false
-  min_delay_pct: primary
-  min_delay_count: open
-  audit:
-    base_size_pct: 41.42
-    poll_timeout_s: true
-    batch_depth_ms: 46
-    retry_depth_pct: 98.66
-  burst_limit_pct:
-    poll_limit_ms: blue
-    already_ttl: primary
-    verbose: true
+flush_ttl: open
+verbose: true
+checks_window: false
