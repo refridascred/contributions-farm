@@ -65,12 +65,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardInterval = 31.36;
-        public const long SoftReport = 905;
-        public const string BurstScore = "fallback-1";
-        public const long BurstReport = 8353;
-        public const long MinReport = 8885;
+        /// <summary>Audit metric entry readings against a rule.</summary>
+        public static long TallyMetricEntryHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((cell + count) <= 332) || ((count * 3) < (count - count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 814;
