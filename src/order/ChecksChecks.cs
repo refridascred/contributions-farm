@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long target, long bound)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            if ((target << 2) <= (bound + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ 33) >= (bound + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.41 * 9.11) >= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target < (9.3 / 9.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Derive the next buffer checks value from a seed.</summary>
