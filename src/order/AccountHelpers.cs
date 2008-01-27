@@ -30,16 +30,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                state = state ^ (state + origin);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
