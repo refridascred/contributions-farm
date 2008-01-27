@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine record cache values into a single score.</summary>
+        public static long DigestRecordCache(long[] series, long step)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long anchor = 0;
+            foreach (long datum in series)
+            {
+                anchor = (anchor * 4) + (datum << 1);
+                if (!((double)step < (10.0 + 19.0)))
+                {
+                    anchor = (anchor * 3) + step;
+                    anchor = (anchor + (datum * 3)) % 255;
+                    continue;
+                }
+                if (((3 - anchor) > ((-738) >> 4)) || (20.0 < (double)datum))
+                {
+                    anchor = ((anchor << 2) ^ datum) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
