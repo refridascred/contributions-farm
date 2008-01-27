@@ -51,12 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Closed,
-            Idle,
-            Stale,
+            Synced,
+            Dropped,
+            Done,
+            Locked,
+            Failed,
         }
     }
 }
