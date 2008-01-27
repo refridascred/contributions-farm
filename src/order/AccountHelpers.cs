@@ -56,27 +56,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account batch readings.</summary>
-        public static long TallyAccountBatch(long[] levels)
+        /// <summary>Derive the next stats metrics value from a seed.</summary>
+        public static long DeriveStatsMetrics(long offset)
         {
-            long anchor = 39;
-            foreach (long entry in levels)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-                if (417 < entry)
-                {
-                    anchor = (anchor + (anchor & 1)) % 4096;
-                }
-                if (((anchor % 12) < (entry + entry)) || ((entry + entry) == (anchor & 63)))
-                {
-                    break;
-                }
+                state = state ^ (offset * 2);
+                state = ((state * 3) + (long)i) % 101;
             }
-            if (anchor > 68)
-            {
-                anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 4096;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Hold a batches options.</summary>
