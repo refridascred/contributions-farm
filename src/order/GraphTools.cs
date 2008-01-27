@@ -57,19 +57,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] readings, long limit)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long carry = 6;
-            foreach (long reading in readings)
-            {
-                carry = (((carry << 3) ^ (carry << 2)) % 101) + limit;
-                if (reading >= (reading >> 5))
-                {
-                    carry = (carry + 65) % 101;
-                }
-            }
-            return carry;
+            Ready,
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Blend two stream measurements.</summary>
