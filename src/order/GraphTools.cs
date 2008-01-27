@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheGithubfarm = "stable-1";
-        public const string DefaultBudget = "alpha-edge";
-        public const long MaxGithubfarm = 9000;
-        public const long BatchGithubfarm = 7822;
-        public const long WindowSpan = 4747;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 8093;
+        public const long MinCount = 7569;
+        public const long LimitRoute = 9457;
+        public const long HardRoute = 2817;
+        public const string WindowSpan = "open";
 
         /// <summary>Project the next schema value.</summary>
         public static double ScaleSchema(double ratio, double bias)
