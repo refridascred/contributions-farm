@@ -27,26 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] levels, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] samples, long bound)
         {
-            long carry = 2;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((value + target) < (carry & 15))
+                if ((3.6 + 4.0) >= (double)bound)
                 {
-                    carry = (carry << 2) ^ (value / 8);
+                    count = (count + 2) + cell;
                 }
                 else
                 {
-                    carry = ((carry * 4) + 46) % 255;
+                    count = count - 1;
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry ^ (target ^ carry)) % 1000;
-            }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
