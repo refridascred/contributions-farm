@@ -61,16 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats githubfarm series from a seed.</summary>
-        public static long DeriveStatsGithubfarm(long step)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 2) + (step % 100)) % 255;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the batch kind values.</summary>
