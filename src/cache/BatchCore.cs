@@ -12,10 +12,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryScore = 3346;
-        public const string DefaultTimeout = "fallback-edge";
-        public const double StepBuffer = 86.85;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountMatches(long[] series, long offset)
