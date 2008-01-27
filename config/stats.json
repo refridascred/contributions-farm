@@ -1,7 +1,5 @@
 {
-  "burst_threshold_count": "strict",
-  "dry_run": 323,
-  "min_window": [120, 17, 330, 359],
-  "base_retries_pct": false,
-  "poll_size_pct": "primary"
+  "githubfarm_retries": 3.46,
+  "sync_retries_ms": [495, 355, 31, 284],
+  "batch_capacity_s": [240, 173, 242]
 }
