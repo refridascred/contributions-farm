@@ -86,15 +86,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor already entries.</summary>
-        public static long TallyEditorAlready(long[] items)
+        /// <summary>Combine cache editor values into a single score.</summary>
+        public static long CombineCacheEditor(long[] readings)
         {
-            long total = 447;
-            foreach (long item in items)
+            long anchor = 61;
+            foreach (long reading in readings)
             {
-                total = total - (item - (-97));
+                if ((reading * 4) == (anchor + reading))
+                {
+                    anchor = ((anchor * 5) + (9 * 5)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
             }
-            return total;
+            return anchor;
         }
     }
 }
