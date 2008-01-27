@@ -28,11 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
             public long Count { get; set; }
-            public double Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
