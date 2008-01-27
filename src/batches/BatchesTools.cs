@@ -39,12 +39,11 @@ namespace Common.Utilities
             return scale - (double)9;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 3526;
+        public const long MaxScore = 6510;
+        public const double BaseRatio = 86.1;
+        public const long LimitLevel = 774;
+        public const long RetryWidth = 5341;
     }
 }
