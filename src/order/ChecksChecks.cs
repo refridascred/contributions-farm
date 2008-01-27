@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] data, long target)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long target, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            if ((target << 2) <= (bound + target))
             {
-                if (sample > target)
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ 33) >= (bound + target))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((5.41 * 9.11) >= (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target < (9.3 / 9.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Derive the next buffer checks value from a seed.</summary>
