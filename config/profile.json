@@ -1,12 +1,5 @@
 {
-  "warm_capacity_pct": "blue",
-  "queue_depth": "eu-west",
-  "account_limit": 33,
-  "min_retries_count": 5314,
-  "flush_ttl": "staging",
-  "compress": {
-    "sync_timeout_ms": 65.15,
-    "context_capacity": "strict",
-    "cache_interval": false
-  }
+  "sync_capacity_s": [78, 172],
+  "min_threshold_pct": true,
+  "idle_ratio_count": [435, 334, 294]
 }
