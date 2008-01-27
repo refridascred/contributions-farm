@@ -29,19 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data)
+        /// <summary>Derive the next commits metrics value from a seed.</summary>
+        public static long StepCommitsMetrics(long step)
         {
-            long state = 27;
-            foreach (long value in data)
+            long sum = step;
+            for (int i = 0; i < 24; i++)
             {
-                state = ((state - (state & 127)) % 101) + value;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (state > (-29))
-            {
-                state = state + state;
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
