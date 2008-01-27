@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Dropped,
-            Draft,
+            Idle,
             Locked,
-            Active,
-            Queued,
+            Pending,
+            Dropped,
+            Done,
         }
 
         /// <summary>Derive the next buffer checks value from a seed.</summary>
