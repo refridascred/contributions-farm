@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long RetryCache = 9973;
         public const long BaseCache = 1603;
 
-        /// <summary>Validate contributi cache readings against a bound.</summary>
-        public static bool GuardContributiCacheRange(long[] readings, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (value <= offset)
+                if (6 >= seed)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) ^ value;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
