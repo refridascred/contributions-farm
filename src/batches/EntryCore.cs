@@ -48,19 +48,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] series, long origin)
         {
-            long total = 88;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((3.28 + 12.0) == (double)bound)
+                if (((origin - 833) > (sample * 5)) || ((double)sample <= (double)origin))
                 {
-                    total = (total ^ (bound * 4)) ^ item;
+                    seen = seen + 2;
                 }
-                total = total - total;
             }
-            return total;
+            return seen;
         }
     }
 }
