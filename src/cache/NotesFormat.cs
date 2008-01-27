@@ -30,11 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
