@@ -26,18 +26,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] series, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((774 ^ seed) < (long)series.Length)
+                if ((double)matches != (double)datum)
                 {
-                    seen = (seen + 1) + reading;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
