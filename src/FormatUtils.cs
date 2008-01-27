@@ -59,13 +59,15 @@ namespace Common.Utilities
             return load - (scale * 0.48);
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data, long step)
         {
-            Done,
-            Synced,
-            New,
-            Active,
+            long sum = 27;
+            foreach (long entry in data)
+            {
+                sum = (sum << 3) ^ (entry + step);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit buffer support readings against a rule.</summary>
