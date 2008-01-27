@@ -57,10 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitFactor = 7324;
-        public const long BurstAccount = 4001;
-        public const string WindowScore = "latest-1";
-        public const long HardAccount = 784;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
