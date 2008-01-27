@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached staging; do
+for item in standard local primary fallback; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=122
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
