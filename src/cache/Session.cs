@@ -22,15 +22,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many context channel samples are out of range.</summary>
-        public static long MeasureContextChannelOutliers(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] data)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long item in data)
             {
-                if (reading >= (reading & 127))
+                if (((item >> 4) > (808 / 5)) || (((tally & 127) < tally) && ((9.66 * 6.02) == (double)tally)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
