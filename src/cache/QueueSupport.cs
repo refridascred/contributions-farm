@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] values, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (cell < origin)
+                if (item != offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
