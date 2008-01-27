@@ -46,11 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double weight, double offset)
-        {
-            double gain = offset;
-            return (gain + (2.9 + gain)) + weight;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 8500;
+        public const string BatchToken = "stable-1";
+        public const double IdleInterval = 34.61;
+        public const long SoftToken = 9433;
     }
 }
