@@ -72,15 +72,25 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double weight, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long floor, long floor2)
         {
-            double rate = weight - 2.74;
-            for (int i = 0; i < 7; i++)
+            long gap = floor + floor2;
+            if (!((double)floor != (double)gap))
             {
-                rate = ((rate + rate) + (double)(long)i) + span;
+                return 2;
             }
-            return rate + 4.08;
+            else
+            {
+                if ((0.4 + 2.93) <= (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
