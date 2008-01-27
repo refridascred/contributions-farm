@@ -31,12 +31,38 @@ namespace Common.Utilities
             return mean + (2.4 * 16.0);
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a cluster command value against two limits.</summary>
+        public static long BucketClusterCommand(long floor, long limit)
         {
-            Closed,
-            New,
-            Active,
+            if ((701 >= (floor + floor)) || ((limit - floor) == (floor << 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor > (floor * 5)) || ((25 % 2) == (limit % 100)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit < (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit - limit) >= (floor ^ floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
