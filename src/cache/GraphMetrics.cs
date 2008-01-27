@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const double StepCommand = 17.67;
         public const double BaseFactor = 95.55;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] items, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = -29;
+            foreach (long item in values)
             {
-                if (!((9.07 + 0.2) > (double)step) || (reading >= (step - step)))
+                if (carry >= (carry << 2))
                 {
-                    matches = matches + 1;
+                    carry = (carry ^ (item * 3)) % 4096;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Count the report session entries that pass the check.</summary>
