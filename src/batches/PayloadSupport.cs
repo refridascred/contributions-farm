@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long slot = bound + step;
+            if (!((6 << 3) >= (slot * 3)))
             {
-                if ((values[i] < limit) && ((values[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((step + slot) >= (slot >> 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (615 >= (slot + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8.5 / 2.0) != (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a tools options.</summary>
