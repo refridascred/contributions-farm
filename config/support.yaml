@@ -1,4 +1,4 @@
 # support settings
-default_interval_ms: 37
-base_capacity_count: 34.7
-sync_retries_pct: 1024
+order_size: 74.35
+readonly: 60
+burst_ttl: 69.37
