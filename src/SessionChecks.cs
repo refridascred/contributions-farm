@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Idle,
-            Done,
-            Ready,
-            Pending,
-            Paused,
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Digest a series of context entries.</summary>
