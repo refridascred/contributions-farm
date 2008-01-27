@@ -40,22 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] samples)
+        /// <summary>Project the next cache stats value.</summary>
+        public static double BlendCacheStats(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)seen == (4.8 + 20.0))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double mean = rate;
+            return mean - floor;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
