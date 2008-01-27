@@ -12,18 +12,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] levels, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long edge = limit + floor;
+            if (((double)edge > (double)floor) && ((double)edge >= (17.0 * 9.0)))
             {
-                if ((item * 2) != (6 + bound))
+                return 2;
+            }
+            else
+            {
+                if ((edge % 7) <= (46 % 8))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
