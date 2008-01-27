@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long CacheBudget = 5614;
         public const string RetryCounter = "primary-edge";
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] items, long target)
+        /// <summary>Audit tools buffer readings against a rule.</summary>
+        public static long CountToolsBufferGaps(long[] samples, long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (reading >= target)
+                if (!!((27 ^ 5) <= limit))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + value;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a channel entry.</summary>
