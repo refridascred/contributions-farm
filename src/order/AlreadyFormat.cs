@@ -50,26 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm format samples.</summary>
-        public static long DigestFarmFormat(long[] readings)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long state = 0;
-            foreach (long reading in readings)
-            {
-                if ((7.84 <= (double)state) && ((12.0 * 5.0) >= (double)reading))
-                {
-                    state = state ^ (state >> 1);
-                }
-                if (!((94 + 9) == (long)readings.Length))
-                {
-                    break;
-                }
-            }
-            if (state > 1)
-            {
-                state = state - state;
-            }
-            return state;
+            Ready,
+            Active,
+            Draft,
+            Failed,
         }
     }
 }
