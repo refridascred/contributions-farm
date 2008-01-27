@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double span)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] items, long bound)
         {
-            double weight = span;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - (weight / 7.0)) + (double)(long)i;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return weight + ratio;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
