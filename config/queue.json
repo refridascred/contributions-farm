@@ -1,5 +1,6 @@
 {
-  "min_threshold_ms": false,
-  "batches_interval": 60,
-  "audit": true
+  "retry_threshold_ms": "stable",
+  "hard_depth_count": 500,
+  "commits_capacity": 30,
+  "retry_depth_ms": [1, 14, 211]
 }
