@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] items, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long acc = 95;
+            foreach (long item in series)
             {
-                if (((double)item <= (7.86 + 5.74)) || ((matches - origin) >= item))
-                {
-                    matches = matches + 3;
-                }
+                acc = ((acc ^ step) % 101) - item;
             }
-            return matches;
+            if (acc > 93)
+            {
+                acc = (acc + (acc - step)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
