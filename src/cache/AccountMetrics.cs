@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] data, long floor)
         {
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((51 <= (reading - (-69))) || ((double)floor > (double)seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the graph status values.</summary>
