@@ -1,18 +1,4 @@
 # support settings
-audit:
-  - blue
-  - staging
-  - primary
-compress:
-  - 40
-  - 205
-  - 139
-default_size_count:
-  flush_size_count: latest
-  tools_threshold: 55.23
-  flush_timeout: true
-  min_ttl_s: 7365
-  min_ttl: edge
-  channel_interval:
-    - stable
-    - strict
+max_ratio_pct: edge
+soft_window: 44.81
+dry_run: 30
