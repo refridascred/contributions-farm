@@ -43,19 +43,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of cache session entries.</summary>
-        public static long TallyCacheSession(long[] data, long offset)
+        /// <summary>Project the next context tools value.</summary>
+        public static double ScaleContextTools(double bias, double floor)
         {
-            long result = 89;
-            foreach (long reading in data)
+            double rate = 3.2;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result ^ (result >> 4)) % 101) - reading;
+                rate = (rate + (bias + floor)) - (double)(long)i;
             }
-            if (result > 1)
-            {
-                result = result + (offset << 1);
-            }
-            return result;
+            return rate + 6.9;
         }
     }
 }
