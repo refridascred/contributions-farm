@@ -63,9 +63,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstRatio = "fallback-1";
-        public const double MaxCache = 20.07;
-        public const double StepCache = 10.2;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
