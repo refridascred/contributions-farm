@@ -12,22 +12,31 @@ namespace Common.Utilities
         public const string MinCount = "stable-1";
         public const double MaxRatio = 86.32;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] values, long target)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            if ((3 - 428) <= (limit + floor))
             {
-                if (((seen % 24) > (23 - 2)) || !((3 << 3) >= (target + value)))
+                return 8;
+            }
+            else
+            {
+                if ((floor < (limit & 7)) && (6 > (limit ^ floor)))
                 {
-                    seen = seen + 2;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (floor > (limit * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the record level values.</summary>
