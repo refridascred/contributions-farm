@@ -14,17 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] data, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (data[i] >= bound)
+                if ((4.48 + 3.18) < (double)value)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every support record entry stays within the limit.</summary>
