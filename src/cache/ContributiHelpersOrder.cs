@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 7689;
-        public const long BaseRatio = 7306;
-        public const long RetryCounter = 563;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
         public static long TallyChannelBatchGaps(long[] readings)
