@@ -1,5 +1,6 @@
 {
-  "githubfarm_retries": 3.46,
-  "sync_retries_ms": [495, 355, 31, 284],
-  "batch_capacity_s": [240, 173, 242]
+  "max_ttl": 30,
+  "hard_size": [247, 132, 191],
+  "soft_depth_pct": "eu-west",
+  "poll_depth_count": 250
 }
