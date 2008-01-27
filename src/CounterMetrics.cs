@@ -41,17 +41,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first entry route entry that matches the target.</summary>
-        public static long SeekEntryRouteIndex(long[] levels, long step)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] == step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
