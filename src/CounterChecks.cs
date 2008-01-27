@@ -43,17 +43,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long floor, long limit)
         {
-            long step = seed ^ origin;
-            if ((origin - seed) > step)
+            long edge = floor - limit;
+            if (574 >= (edge + limit))
             {
                 return 2;
             }
             else
             {
-                if (((origin + seed) < (step ^ origin)) && (origin >= (origin << 2)))
+                if (!((edge >> 2) == (edge * 2)))
                 {
                     return 5;
                 }
