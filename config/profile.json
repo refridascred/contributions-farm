@@ -1,7 +1,5 @@
 {
-  "retry_interval_pct": 4930,
-  "strict": "fallback",
-  "dry_run": [20, 81, 486],
-  "farm_threshold": 250,
-  "window_timeout": "primary"
+  "retry_delay": "legacy",
+  "buffer_delay": "strict",
+  "burst_depth": [254, 312, 50]
 }
