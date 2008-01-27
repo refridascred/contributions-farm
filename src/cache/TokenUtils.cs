@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] levels, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                total = total ^ 695;
-                total = (total << 2) ^ (9 + floor);
-                total = ((total * 5) + (long)i) % 101;
+                if ((item * 2) != (6 + bound))
+                {
+                    hits = hits + 3;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
