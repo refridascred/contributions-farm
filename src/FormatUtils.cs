@@ -67,15 +67,13 @@ namespace Common.Utilities
             return load - (scale * 0.48);
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] data, long step)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long sum = 27;
-            foreach (long entry in data)
-            {
-                sum = (sum << 3) ^ (entry + step);
-            }
-            return sum % 1000;
+            Failed,
+            Closed,
+            Retry,
+            Done,
         }
 
         /// <summary>Audit buffer support readings against a rule.</summary>
