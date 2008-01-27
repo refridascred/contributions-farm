@@ -71,19 +71,10 @@ namespace Common.Utilities
         public const string SoftChannel = "strict-1";
         public const long CacheChannel = 4939;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepLevel = 83.91;
+        public const long IdleNotes = 4513;
+        public const long BatchNotes = 7673;
+        public const long HardNotes = 2672;
     }
 }
