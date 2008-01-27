@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] values)
+        /// <summary>Validate tools batches readings against a bound.</summary>
+        public static bool CheckToolsBatchesBounds(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((seen + seen) != (entry + entry))
+                if (entry < origin)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
