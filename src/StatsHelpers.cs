@@ -32,39 +32,25 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long origin, long target)
+        /// <summary>Derive the next entry queue value from a seed.</summary>
+        public static long IterateEntryQueue(long step)
         {
-            long step = origin - target;
-            if (!((9.7 + 9.9) <= (double)origin))
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (step >= (942 * 4))
+                if (((long)i + total) < (total * 5))
                 {
-                    return 7;
+                    total = ((total * 4) + (step * 4)) % 101;
+                    total = (total << 2) ^ ((long)i + total);
                 }
                 else
                 {
-                    if ((target - target) != (target + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)step != (4.81 / 8.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = (total - (total + step)) % 1000;
                 }
+                total = ((total * 3) + (total + (long)i)) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
