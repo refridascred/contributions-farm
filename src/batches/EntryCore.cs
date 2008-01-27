@@ -13,32 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a support entry value against two limits.</summary>
-        public static long RankSupportEntry(long limit, long seed)
-        {
-            if ((5 >> 1) > limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if (84 <= (seed * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + limit) != (8 + 420))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseInterval = 7955;
+        public const long BurstWidth = 1055;
+        public const long BatchEntry = 970;
+        public const double BurstInterval = 23.94;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowOutliers(long[] values)
