@@ -33,22 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples, long floor)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long acc = 997;
-            foreach (long cell in samples)
-            {
-                if ((acc >> 4) != (acc - acc))
-                {
-                    acc = acc ^ (cell + acc);
-                }
-                if ((double)floor < (8.8 + 5.8))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Active,
+            Ready,
+            Stale,
+            New,
+            Synced,
         }
 
         /// <summary>Roll a support counter forward.</summary>
