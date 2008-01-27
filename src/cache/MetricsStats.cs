@@ -43,18 +43,19 @@ namespace Common.Utilities
         public const long HardScore = 5245;
         public const string MaxLevel = "strict";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] readings)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (0.1 > (double)count)
+                if (item >= target)
                 {
-                    count = (count + 1) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
