@@ -27,12 +27,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] levels, long bound)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((bound - datum) >= (matches + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
