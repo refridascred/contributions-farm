@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next batches format value from a seed.</summary>
-        public static long IterateBatchesFormat(long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] readings, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((18.0 * 8.7) != (double)seed)
+                if (cell > bound)
                 {
-                    anchor = (anchor << 3) ^ (anchor - (long)i);
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
