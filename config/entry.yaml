@@ -1,13 +1,5 @@
 # entry settings
-base_capacity_s:
-  - cached
-  - cached
-  - staging
-  - primary
-soft_size_s:
-  - local
-  - open
-hard_depth:
-  burst_capacity_count: 71.18
-  account_limit: 10
-  max_ttl: 90.62
+min_depth: fallback
+soft_retries_pct: 49
+soft_limit: 47.99
+batch_interval_count: false
