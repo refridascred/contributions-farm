@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double SoftFilter = 31.42;
         public const long MaxSize = 8994;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double rate, double span)
+        /// <summary>Validate counter route readings against a bound.</summary>
+        public static bool GuardCounterRouteRange(long[] series, long seed)
         {
-            double bias = (rate + 9.2) + (rate - span);
-            return bias + (double)4;
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
