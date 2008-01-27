@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardFactor = 79.64;
+        public const long BurstLayout = 9318;
+        public const double BaseScore = 73.98;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long TotalOrder(long[] samples)
