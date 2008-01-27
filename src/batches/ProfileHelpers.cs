@@ -23,13 +23,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many already order samples are out of range.</summary>
+        public static long CountAlreadyOrderGaps(long[] values)
         {
-            Synced,
-            Stale,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!((matches & 63) <= (6 % 12)))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
