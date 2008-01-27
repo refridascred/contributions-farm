@@ -42,21 +42,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Dropped,
+            New,
         }
     }
 }
