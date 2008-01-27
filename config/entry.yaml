@@ -1,24 +1,7 @@
 # entry settings
-min_retries: latest
-burst_depth_pct:
-  batch_capacity_s: open
-  min_limit: 50
-  warm_retries_ms:
-    - 275
-    - 415
-    - 398
-    - 212
-base_ttl_pct: fallback
-retry_interval_s:
-  channel_delay:
-    - cached
-    - edge
-    - edge
-  soft_ttl_s: 55
-  retry_ttl_ms: cached
-  flush_window_s: 17.23
-record_ratio:
-  dry_run: primary
-  audit: 8608
-  batch_retries_count: 868
-enabled: 250
+batch_window_count: cached
+verbose:
+  - 369
+  - 285
+command_capacity: 93.15
+audit: 30.74
