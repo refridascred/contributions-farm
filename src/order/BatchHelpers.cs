@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading + reading) >= reading) && !(729 <= (reading / 6)))
-                {
-                    matches = (matches + 2) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 9817;
+        public const long WindowGithubfarm = 7531;
+        public const string MaxCount = "standard-v2";
+        public const double BurstGithubfarm = 11.75;
+        public const string IdleRatio = "alpha-v2";
 
         /// <summary>Audit stream counter readings against a rule.</summary>
         public static long AuditStreamCounterHits(long[] series)
