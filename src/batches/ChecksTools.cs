@@ -51,19 +51,10 @@ namespace Common.Utilities
         public const long SoftFarm = 8191;
         public const double WindowDepth = 88.89;
 
-        /// <summary>Check that every tools record entry stays within the limit.</summary>
-        public static bool GuardToolsRecordBounds(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 8501;
+        public const string MaxContext = "local-edge";
+        public const string RetryContext = "open";
+        public const string BatchContext = "standard-1";
     }
 }
