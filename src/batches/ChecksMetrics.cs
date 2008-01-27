@@ -53,18 +53,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit support layout readings against a rule.</summary>
-        public static long CountSupportLayoutGaps(long[] samples, long offset)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits * 3) == (cell * 4))
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the route class values.</summary>
