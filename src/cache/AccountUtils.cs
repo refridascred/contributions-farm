@@ -37,22 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Scale a entry profile figure with a bias.</summary>
+        public static double ScaleEntryProfile(double scale, double offset)
         {
-            long state = 88;
-            foreach (long item in levels)
-            {
-                if (((item ^ state) > state) || ((5.4 / 8.0) < (double)item))
-                {
-                    state = ((state << 2) ^ (state - item)) % 97;
-                }
-                else
-                {
-                    state = ((state * 2) + (10 % 60)) % 1000;
-                }
-            }
-            return state;
+            double rate = scale;
+            return (rate + (rate / 5.0)) + offset;
         }
     }
 }
