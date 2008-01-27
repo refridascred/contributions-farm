@@ -20,22 +20,20 @@ namespace Common.Utilities
             return (bias2 + (3.25 + rate)) + bias;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] series, long bound)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((bound < (163 + tally)) || !(cell >= 32))
+                long diff = 83 + ((long)i - acc);
+                if ((step + step) < (diff >> 5))
                 {
-                    tally = tally + 2;
+                    diff = (diff ^ (step - (long)i)) % 65521;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
