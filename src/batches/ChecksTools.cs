@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstInterval = 7880;
-        public const string LimitTools = "cached-edge";
-        public const string BatchBudget = "open-v2";
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Failed,
+            Dropped,
+            Closed,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Check that every checks stream entry stays within the limit.</summary>
         public static bool CheckChecksStreamRange(long[] levels, long limit)
