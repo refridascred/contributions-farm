@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Audit payload token readings against a rule.</summary>
+        public static long MeasurePayloadTokenMatches(long[] items, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((seed % 10) == (seed & 127))
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
