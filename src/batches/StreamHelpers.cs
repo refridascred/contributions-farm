@@ -54,13 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] items, long target)
         {
-            public double Region { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)target < (4.0 / 7.0))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route options.</summary>
