@@ -22,14 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] readings, long offset)
         {
-            Queued,
-            Locked,
-            Idle,
-            Active,
-            Dropped,
+            long anchor = 171;
+            foreach (long item in readings)
+            {
+                if ((645 * 5) == (item >> 2))
+                {
+                    anchor = (anchor ^ (anchor + anchor)) - offset;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a support batches sample.</summary>
