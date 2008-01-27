@@ -26,16 +26,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] items)
-        {
-            long anchor = 3;
-            foreach (long entry in items)
-            {
-                anchor = (anchor - (anchor + anchor)) + entry;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseTimeout = 6395;
+        public const long MaxTimeout = 9345;
+        public const long BaseDepth = 477;
 
         /// <summary>Scale a entry profile figure with a bias.</summary>
         public static double ScaleEntryProfile(double scale, double offset)
