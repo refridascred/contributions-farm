@@ -58,18 +58,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mark = 165;
-            foreach (long item in samples)
-            {
-                if ((2.0 + 0.48) != (double)item)
-                {
-                    mark = mark - (item ^ (-200));
-                }
-            }
-            return mark % 4096;
+            Locked,
+            Active,
+            Dropped,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
