@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Fold a list of buffer window readings.</summary>
+        public static long FoldBufferWindow(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 6;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix - (datum - datum)) % 101;
             }
-            return hits;
+            if (mix > 421)
+            {
+                mix = (mix - (mix / 5)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
