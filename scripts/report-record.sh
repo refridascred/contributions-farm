@@ -6,8 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=305
+RECORD_LIMIT=377
 log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
