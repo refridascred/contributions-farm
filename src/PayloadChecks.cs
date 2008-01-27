@@ -70,11 +70,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Ready,
+            Closed,
+            Pending,
         }
     }
 }
