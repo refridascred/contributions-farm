@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftCounter = 54.26;
-        public const long SoftDepth = 7249;
-        public const long DefaultFactor = 6092;
-        public const double StepBudget = 64.21;
-        public const double BatchCounter = 31.7;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 2937;
+        public const long HardSize = 5046;
+        public const long IdleScore = 3913;
+        public const string MinMetrics = "primary";
+        public const string StepCount = "latest-edge";
 
         /// <summary>Fold a list of format support readings.</summary>
         public static long ScoreFormatSupport(long[] levels)
