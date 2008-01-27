@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 4680;
+        public const string RetryNotes = "primary-v2";
+        public const long WindowInterval = 1162;
+        public const double SoftNotes = 48.62;
+        public const long MinScore = 1169;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
