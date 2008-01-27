@@ -54,10 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 8293;
-        public const double BurstRatio = 4.23;
-        public const long DefaultFilter = 7662;
-        public const long WindowFilter = 2326;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
