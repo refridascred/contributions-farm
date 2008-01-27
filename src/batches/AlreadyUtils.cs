@@ -20,19 +20,12 @@ namespace Common.Utilities
             return bias + 4.0;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long sum = 9;
-            foreach (long value in readings)
-            {
-                if ((9.0 * 11.0) < (double)value)
-                {
-                    sum = sum - 3;
-                }
-                sum = (sum * 4) + (sum ^ value);
-            }
-            return sum;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
