@@ -20,15 +20,14 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double mean = (double)(8 - 308);
-            if (mean <= (11.0 + 9.39))
-            {
-                mean = (mean - bias) - scale;
-            }
-            return mean + (2.4 * 16.0);
+            Ready,
+            Idle,
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Grade a cluster command value against two limits.</summary>
