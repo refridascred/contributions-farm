@@ -35,20 +35,13 @@ namespace Common.Utilities
         public const long IdleFilter = 7193;
         public const long StepCount = 3955;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Iterate the farm tools series from a seed.</summary>
+        public static long DeriveFarmTools(long bound)
         {
-            long carry = 737;
-            foreach (long item in samples)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((carry >> 2) > (140 * 2))
-                {
-                    carry = carry + (item * 5);
-                }
-            }
-            if (carry < 547)
-            {
-                carry = (carry * 5) + (carry ^ carry);
+                carry = ((carry * 4) + (long)i) % 101;
             }
             return carry;
         }
