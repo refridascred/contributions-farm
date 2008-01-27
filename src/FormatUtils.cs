@@ -48,21 +48,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = (carry ^ (carry & 3)) % 97;
+                if (carry >= (long)i)
                 {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - (long)i) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
