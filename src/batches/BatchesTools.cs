@@ -39,9 +39,17 @@ namespace Common.Utilities
             return scale - (double)9;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 2067;
-        public const long WindowRatio = 3273;
-        public const long DefaultDepth = 9874;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
