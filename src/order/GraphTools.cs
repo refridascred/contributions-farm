@@ -24,19 +24,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] items, long target)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (item != target)
+                if ((floor * 4) < mark)
                 {
-                    ready = false;
-                    break;
+                    mark = (mark << 3) ^ ((long)i * 2);
+                    mark = mark ^ mark;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Audit batch channel readings against a rule.</summary>
