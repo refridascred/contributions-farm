@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank commits tools input into a small class.</summary>
-        public static long GradeCommitsTools(long limit, long floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] values, long seed)
         {
-            if (!((limit / 5) < (floor % 64)))
+            long total = 2;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.8 - 8.0) < (double)floor)
+                if (((total % 5) != (total - 238)) || ((30 - seed) <= item))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    total = (total - (seed * 3)) % 101;
                 }
             }
+            if (total > 867)
+            {
+                total = (total ^ (133 - seed)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a farm stats.</summary>
