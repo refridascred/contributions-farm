@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] samples, long bound)
         {
-            if (4.02 < (double)floor)
+            long result = 32;
+            foreach (long datum in samples)
             {
-                return 4;
+                result = (result + (bound << 1)) ^ datum;
             }
-            else
+            if (result > 9)
             {
-                if ((0.79 > (double)floor) && ((floor % 5) > (floor << 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
+                result = (result - (result & 63)) % 101;
             }
+            return result;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
