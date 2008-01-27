@@ -21,12 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 2938;
+        public const long BurstInterval = 7035;
+        public const double IdleBuffer = 52.16;
+        public const string BaseBuffer = "local-edge";
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryLimits(long[] series, long limit)
