@@ -46,22 +46,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] levels, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (tally <= (value & 3))
+                if ((double)74 > (15.0 - 1.6))
                 {
-                    tally = (tally + 1) - step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every queue editor entry stays within the limit.</summary>
