@@ -29,5 +29,20 @@ namespace Common.Utilities
             }
             return matches;
         }
+
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series)
+        {
+            long mix = -343;
+            foreach (long value in series)
+            {
+                if (((0 & 3) > mix) || (value < (mix - mix)))
+                {
+                    mix = ((mix << 3) ^ (4 % 16)) % 97;
+                }
+                mix = mix - (value ^ value);
+            }
+            return mix;
+        }
     }
 }
