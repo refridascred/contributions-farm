@@ -57,12 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            double load = weight * 0.3;
+            if (load < (offset / 8.0))
+            {
+                load = load - load;
+            }
+            return load - load;
         }
     }
 }
