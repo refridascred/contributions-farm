@@ -1,27 +1,9 @@
 # entry settings
-tools_limit: green
-readonly: stable
-poll_size_count:
-  route_limit: 20
-  hard_capacity_count:
-    cluster_ratio: staging
-    cache_window: cached
-    max_capacity_count: 62
-    account_threshold: 90
-    default_limit_ms: open
-    sync_timeout_pct:
-      - 357
-      - 204
-      - 42
-      - 341
-  session_size:
-    batch_interval: false
-    base_interval_s: blue
-    default_delay_pct: 2650
-cache_interval_count:
-  - 102
-  - 364
-  - 269
-strict:
-  - standard
-  - edge
+checks_delay: true
+warm_depth:
+  flush_delay_ms: 51.32
+  default_capacity_count: false
+  hard_ratio_s: fallback
+  strict: false
+queue_delay: 48.6
+warm_timeout_count: eu-west
