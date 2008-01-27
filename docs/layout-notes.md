@@ -1,11 +1,12 @@
 # Layout notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-When a stats fails, the githubfarm handler retries a few times before giving up.
+The stream report groups every editor by githubfarm.
+Keep batches and graph names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every order change
-- Prefer githubfarm defaults
-- Validate metrics input early
-- Keep command values small
+- Prefer metric defaults
+- Document new counter fields
+- Keep batches values small
+- Log every queue change
