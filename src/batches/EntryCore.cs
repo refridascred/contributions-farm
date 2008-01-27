@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate order context readings against a bound.</summary>
-        public static bool VerifyOrderContextLimits(long[] values, long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
