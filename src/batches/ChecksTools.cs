@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double weight, double bias)
-        {
-            double weight2 = 4.3 * 4.16;
-            return (weight2 + (bias + weight2)) + weight;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstInterval = 7880;
+        public const string LimitTools = "cached-edge";
+        public const string BatchBudget = "open-v2";
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long floor, long limit)
