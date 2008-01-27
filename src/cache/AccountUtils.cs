@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long MaxProfile = 7251;
         public const long WindowScore = 3263;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] series, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (sample <= floor)
+                if ((matches & 31) >= ((long)levels.Length - matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
