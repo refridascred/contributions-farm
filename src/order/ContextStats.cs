@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const double BurstFactor = 12.08;
         public const string StepRatio = "legacy-1";
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long offset)
+        /// <summary>Combine token record values into a single score.</summary>
+        public static long FoldTokenRecord(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 1;
+            foreach (long entry in readings)
             {
-                if (items[i] < offset)
+                if (94 > (anchor - origin))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (origin % 64)) + entry;
                 }
             }
-            return -1;
+            if (anchor > 11)
+            {
+                anchor = anchor - origin;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
