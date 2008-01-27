@@ -1,9 +1,21 @@
 # githubfarm settings
-readonly: 3792
-channel_ratio:
-  - open
-  - staging
-checks_size: 6321
-batch_ttl: legacy
-compress: false
-burst_timeout: 37.55
+sync_timeout_s: latest
+flush_timeout_ms:
+  - 434
+  - 193
+  - 128
+  - 405
+verbose:
+  - 317
+  - 444
+  - 475
+  - 403
+schema_interval: 80
+format_threshold:
+  soft_ratio_pct: 30
+  poll_timeout_ms:
+    - staging
+    - standard
+    - edge
+  dry_run: 63
+channel_delay: green
