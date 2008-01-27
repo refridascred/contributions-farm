@@ -77,15 +77,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] values)
         {
-            long result = 6;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                result = ((result << 2) ^ entry) % 65521;
+                if ((double)entry >= (3.1 - 2.81))
+                {
+                    seen = seen + 3;
+                }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
