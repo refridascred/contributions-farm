@@ -82,12 +82,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] items, long floor)
         {
-            Synced,
-            Ready,
-            Retry,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
