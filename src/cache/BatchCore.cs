@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a graph counter sample.</summary>
-        public static long SeekGraphCounterIndex(long[] samples, long limit)
+        /// <summary>Blend two batch format measurements.</summary>
+        public static double ScaleBatchFormat(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (double)(80 % 97);
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (floor - ratio)) + (double)(long)i;
             }
-            return -1;
+            return scale - (4.0 / 9.0);
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
