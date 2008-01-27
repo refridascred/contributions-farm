@@ -62,19 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine entry account values into a single score.</summary>
-        public static long TallyEntryAccount(long[] values)
+        /// <summary>Audit githubfarm queue readings against a rule.</summary>
+        public static long CountGithubfarmQueueGaps(long[] samples)
         {
-            long carry = 1;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                carry = (((carry << 2) ^ (carry + carry)) % 65521) ^ cell;
+                if ((2.08 * 20.0) == (double)seen)
+                {
+                    seen = (seen + 2) - item;
+                }
             }
-            if (carry > 81)
-            {
-                carry = (carry + 47) % 1000;
-            }
-            return carry;
+            return seen;
         }
     }
 }
