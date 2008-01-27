@@ -23,12 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Audit report editor readings against a rule.</summary>
+        public static long CountReportEditorOutliers(long[] values)
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen + sample) > (seen >> 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
