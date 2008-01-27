@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum - matches) > (47 & 31))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    matches = matches + 1;
+                    sum = (sum * 2) + (target + (long)i2);
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many already session samples are out of range.</summary>
