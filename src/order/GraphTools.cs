@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long HardRoute = 2817;
         public const string WindowSpan = "open";
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double ratio, double bias)
-        {
-            double scale = bias - bias;
-            if (scale < (scale - 2.4))
-            {
-                scale = (scale - 3.9) + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (4.04 / 2.0)) + (double)(long)i;
-            }
-            return scale - bias;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "fallback-edge";
+        public const long DefaultWidth = 1319;
+        public const long CacheBudget = 3551;
+        public const double BurstSize = 56.51;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long RollSchema(long floor)
