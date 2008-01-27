@@ -74,13 +74,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
+            Stale,
+            Active,
             Paused,
-            New,
-            Queued,
-            Idle,
         }
     }
 }
