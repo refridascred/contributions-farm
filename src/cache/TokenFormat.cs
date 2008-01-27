@@ -29,22 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long anchor = 44;
-            foreach (long value in samples)
-            {
-                if (value <= (value ^ 15))
-                {
-                    anchor = anchor ^ (anchor + anchor);
-                }
-                if ((value + value) < anchor)
-                {
-                    anchor = (anchor - (anchor ^ value)) % 4096;
-                }
-            }
-            return anchor % 4096;
+            Done,
+            Stale,
+            Draft,
+            New,
         }
     }
 }
