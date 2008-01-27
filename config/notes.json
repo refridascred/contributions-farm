@@ -1,6 +1,6 @@
 {
-  "compress": ["blue", "latest"],
-  "warm_capacity": 100,
-  "route_capacity": false,
-  "batches_ratio": false
+  "flush_interval": ["cached", "cached"],
+  "record_limit": "blue",
+  "format_timeout": "edge",
+  "burst_interval_s": 67.66
 }
