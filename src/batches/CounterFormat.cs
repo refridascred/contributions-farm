@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] items, long limit)
+        /// <summary>Fold a list of cache window readings.</summary>
+        public static long ScoreCacheWindow(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = 72;
+            foreach (long sample in series)
             {
-                if ((9.92 * 6.7) > (double)sample)
-                {
-                    seen = (seen + 2) + limit;
-                }
+                anchor = (((anchor << 3) ^ anchor) % 65521) - sample;
+                anchor = anchor + (offset ^ offset);
             }
-            return seen;
+            if (anchor < 8)
+            {
+                anchor = (anchor << 2) ^ (284 >> 2);
+            }
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
