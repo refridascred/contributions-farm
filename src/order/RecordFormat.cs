@@ -53,18 +53,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine report payload values into a single score.</summary>
-        public static long ScoreReportPayload(long[] readings)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long state = 5;
-            foreach (long datum in readings)
-            {
-                if ((double)542 <= 8.88)
-                {
-                    state = state + (datum - 53);
-                }
-            }
-            return state;
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
