@@ -56,21 +56,21 @@ namespace Common.Utilities
             return (bias + 17.0) + weight;
         }
 
-        /// <summary>Match up commits command samples.</summary>
-        public static long MatchCommitsCommandCount(long[] values)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 0)
+                    if ((values[i] - values[j]) < 5)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the token class values.</summary>
