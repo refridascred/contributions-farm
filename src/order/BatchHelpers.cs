@@ -23,19 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] values, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (cell <= limit)
+                if (step > (sample + (-76)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a counter entry.</summary>
