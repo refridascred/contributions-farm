@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] values, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (step > (sample + (-76)))
+                if (cell != origin)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit cache already readings against a rule.</summary>
