@@ -15,12 +15,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            Idle,
+            Dropped,
+            Ready,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a stream options.</summary>
