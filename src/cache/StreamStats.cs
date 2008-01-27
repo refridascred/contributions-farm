@@ -33,13 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Find the first checks token entry that matches the target.</summary>
+        public static long LookupChecksTokenIndex(long[] samples, long limit)
         {
-            Paused,
-            Closed,
-            Draft,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
