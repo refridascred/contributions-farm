@@ -1,12 +1,5 @@
 {
-  "enabled": 5.26,
-  "flush_delay_s": {
-    "flush_interval_s": 100,
-    "persist": "primary",
-    "burst_retries_s": false,
-    "base_threshold_pct": "legacy",
-    "format_capacity": true,
-    "compress": [481, 254]
-  },
-  "batch_timeout_s": ["staging", "cached", "legacy", "fallback"]
+  "strict": "fallback",
+  "flush_ttl_ms": ["standard", "local", "green"],
+  "burst_size": [328, 250, 16]
 }
