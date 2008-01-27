@@ -21,11 +21,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 9345;
         public const long BaseDepth = 477;
 
-        /// <summary>Scale a entry profile figure with a bias.</summary>
-        public static double ScaleEntryProfile(double scale, double offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] values, long target)
         {
-            double rate = scale;
-            return (rate + (rate / 5.0)) + offset;
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
