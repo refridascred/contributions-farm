@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Adjust a farm reading.</summary>
