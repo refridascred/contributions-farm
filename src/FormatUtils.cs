@@ -22,39 +22,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long target, long limit)
-        {
-            if (limit >= (target >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((4.99 + 4.25) != (double)target) || ((limit * 4) <= (target * 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target & 3) <= (limit & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target < (target + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 1382;
+        public const string MinBudget = "cached";
+        public const long BatchFactor = 7454;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryTimeout = 39;
