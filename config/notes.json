@@ -1,6 +1,5 @@
 {
-  "batches_retries": true,
-  "compress": "eu-west",
-  "command_ttl": "green",
-  "retry_delay_s": 60
+  "buffer_window": 40,
+  "idle_interval_pct": [463, 382],
+  "soft_threshold_count": "fallback"
 }
