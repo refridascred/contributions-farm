@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long DefaultSize = 5201;
         public const long LimitLayout = 939;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] samples)
         {
-            Queued,
-            Locked,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (seen > (seen - entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
