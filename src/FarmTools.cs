@@ -23,19 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] readings, long floor)
+        /// <summary>Roll a token entry counter forward.</summary>
+        public static long IterateTokenEntry(long floor)
         {
-            long result = -4;
-            foreach (long cell in readings)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (((floor + floor) <= acc) || ((acc / 4) != (floor % 5)))
                 {
-                    result = (((result * 3) + (cell - floor)) % 255) + (long)i;
+                    acc = (acc ^ (floor / 5)) % 4096;
+                    continue;
                 }
-                result = (result - (36 >> 2)) % 4096;
+                acc = ((acc << 2) ^ ((long)i ^ floor)) % 97;
+                if ((double)acc > (double)floor)
+                {
+                    acc = ((acc * 3) + 639) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return result % 65521;
+            return acc;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
