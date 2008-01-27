@@ -28,11 +28,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
+            Paused,
+            New,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
