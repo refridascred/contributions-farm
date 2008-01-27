@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] series, long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (value <= (count & 31))
-                {
-                    count = (count + 2) - seed;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Adjust a context reading.</summary>
