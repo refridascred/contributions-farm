@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "open-v2";
-        public const string StepDepth = "alpha-edge";
-        public const string BatchTimeout = "primary-v2";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + matches) != (matches + datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TotalMetrics(long[] data)
