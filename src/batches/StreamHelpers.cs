@@ -20,11 +20,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 9703;
-        public const long BatchBudget = 6627;
-        public const string SoftCount = "latest-1";
-        public const long MaxScore = 2386;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long step, long bound)
+        {
+            if (step > (12 >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
