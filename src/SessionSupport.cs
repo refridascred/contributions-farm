@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] samples)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
