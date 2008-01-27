@@ -17,12 +17,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double gain, double bias)
         {
-            Draft,
-            Done,
-            Idle,
+            double rate = gain;
+            if (rate > bias)
+            {
+                rate = rate - gain;
+            }
+            else
+            {
+                rate = rate + (double)417;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (bias * 3.32)) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
