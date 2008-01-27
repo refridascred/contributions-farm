@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
+            long total = 970;
+            foreach (long datum in levels)
+            {
+                total = ((total - total) % 255) + datum;
+            }
+            if (total < 607)
+            {
+                total = total - (344 / 8);
+            }
+            return total;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
