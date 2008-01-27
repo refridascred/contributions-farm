@@ -1,15 +1,12 @@
 {
-  "default_ttl_ms": "cached",
-  "readonly": 61.82,
-  "poll_window_count": {
-    "filter_capacity": ["standard", "eu-west", "green", "fallback"],
-    "graph_capacity": true,
-    "format_capacity": 12.18,
-    "max_depth_count": 30,
-    "record_size": [308, 420],
-    "default_limit_count": "standard"
-  },
-  "command_limit": true,
-  "counter_ratio": "latest",
-  "hard_delay_s": "green"
+  "warm_capacity_pct": "blue",
+  "queue_depth": "eu-west",
+  "account_limit": 33,
+  "min_retries_count": 5314,
+  "flush_ttl": "staging",
+  "compress": {
+    "sync_timeout_ms": 65.15,
+    "context_capacity": "strict",
+    "cache_interval": false
+  }
 }
