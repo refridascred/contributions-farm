@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < (sample >> 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
