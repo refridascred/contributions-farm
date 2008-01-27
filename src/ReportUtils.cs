@@ -49,16 +49,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepDepth = 8433;
+        public const double MaxRatio = 17.96;
+        public const double SoftNotes = 33.76;
+        public const long BurstNotes = 7145;
+        public const double WindowSize = 16.93;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorRange(long[] data, long bound)
