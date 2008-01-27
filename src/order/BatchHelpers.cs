@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long step)
+        /// <summary>Count the counter session entries that pass the check.</summary>
+        public static long CountCounterSessionGaps(long[] data, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                result = (result + ((long)i & 15)) % 65521;
-                result = ((result * 2) + (long)i) % 1000;
+                if ((((matches + matches) >= ((-11) & 63)) || ((matches - matches) >= (matches << 3))) && ((floor & 1) != (matches / 7)))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
