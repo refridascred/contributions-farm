@@ -1,20 +1,9 @@
 # githubfarm settings
-verbose: 10.46
-batch_delay:
-  soft_capacity: staging
-  poll_ratio_pct: 1905
-  sync_ratio_pct:
-    - cached
-    - cached
-    - standard
-  soft_timeout_s:
-    entry_interval: true
-    batches_delay: true
-    default_interval_s: 60
-    sync_size_pct: primary
-  dry_run: true
-  sync_threshold_s: staging
-sync_limit_count: 47
-sync_size: false
-sync_retries: 97.5
-contributi_ttl: 5671
+readonly: 3792
+channel_ratio:
+  - open
+  - staging
+checks_size: 6321
+batch_ttl: legacy
+compress: false
+burst_timeout: 37.55
