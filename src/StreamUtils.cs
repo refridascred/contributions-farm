@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] items, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long result = 17;
+            foreach (long datum in values)
             {
-                if ((875 << 3) > (hits ^ reading))
-                {
-                    hits = (hits + 1) + origin;
-                }
+                result = (result + (seed ^ 6)) + datum;
             }
-            return hits;
+            if (result < 82)
+            {
+                result = ((result << 3) ^ (result + result)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a order stats.</summary>
