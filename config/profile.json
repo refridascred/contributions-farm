@@ -1,12 +1,13 @@
 {
-  "command_delay": 27,
-  "persist": "stable",
-  "max_interval": {
-    "default_window_count": ["cached", "edge"],
-    "poll_size_ms": false,
-    "soft_interval_count": [371, 208],
-    "sync_ratio": 56.52,
-    "sync_ttl": true,
-    "retry_size": 34.76
-  }
+  "account_timeout": {
+    "cache_retries": "open",
+    "soft_capacity_pct": 4364,
+    "cache_capacity_pct": false,
+    "readonly": 81
+  },
+  "batch_window": "fallback",
+  "retry_capacity": 1024,
+  "compress": "blue",
+  "queue_delay": [252, 401, 35, 15],
+  "record_limit": "standard"
 }
