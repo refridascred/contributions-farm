@@ -1,7 +1,13 @@
 # support settings
-contributi_size: stable
-layout_ttl: 22.59
-stats_depth: blue
-burst_delay_pct: false
-cache_limit: green
-compress: 66.35
+burst_depth_pct: standard
+retry_depth: edge
+farm_retries:
+  min_ttl_count:
+    max_timeout_ms: latest
+    soft_retries: true
+    batch_timeout_s: 83.6
+    max_limit_s: true
+    retry_retries_s: 1024
+  default_capacity: strict
+  dry_run: legacy
+soft_capacity: 63.06
