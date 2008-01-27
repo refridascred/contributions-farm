@@ -47,22 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long sum = 73;
+            foreach (long item in series)
             {
-                if (!(((long)readings.Length - 3) >= item))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum << 2) ^ (item - 8)) - limit;
             }
-            return hits;
+            return sum;
         }
     }
 }
