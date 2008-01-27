@@ -1,11 +1,9 @@
 # entry settings
-githubfarm_size: 7892
-batch_timeout: true
-entry_interval:
-  - 268
-  - 424
-  - 348
-  - 459
-buffer_size: 299
-flush_limit_pct: 16
-batch_ttl_count: edge
+cache_window:
+  - latest
+  - standard
+base_limit: true
+burst_interval_pct: false
+payload_depth: 38.58
+strict: strict
+dry_run: false
