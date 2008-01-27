@@ -20,23 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double weight, double span)
+        /// <summary>Compare every pair of record queue readings.</summary>
+        public static long CompareRecordQueueCount(long[] values)
         {
-            double scale = weight;
-            if (scale >= (double)56)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (scale - weight)) + (double)(long)i;
-            }
-            return scale - (double)9;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
