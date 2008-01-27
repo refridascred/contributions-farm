@@ -1,6 +1,21 @@
 {
-  "default_retries_s": 61,
-  "burst_capacity": "cached",
-  "hard_threshold_ms": "green",
-  "retry_window_ms": "local"
+  "max_ratio_s": false,
+  "default_capacity_count": "stable",
+  "compress": false,
+  "editor_interval": 1024,
+  "poll_timeout": {
+    "checks_interval": true,
+    "readonly": false,
+    "cache_capacity": 4178,
+    "counter_ratio": false,
+    "persist": {
+      "poll_depth_count": ["legacy", "open"],
+      "hard_ttl": 1024,
+      "format_limit": "cached",
+      "contributi_depth": "eu-west",
+      "soft_depth_pct": 4477,
+      "compress": [137, 466, 83]
+    },
+    "audit": "eu-west"
+  }
 }
