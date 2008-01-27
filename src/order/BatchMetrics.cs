@@ -83,23 +83,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] items)
         {
-            long mix = 163;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mix = (mix + (9 * 2)) % 1000;
-                if (datum >= mix)
+                if ((6.0 / 3.0) < (double)tally)
                 {
-                    mix = ((mix * 4) + (datum << 3)) % 101;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            if (mix > (-34))
-            {
-                mix = ((mix * 3) + ((long)values.Length - mix)) % 4096;
-            }
-            return mix % 1000;
+            return tally;
         }
     }
 }
