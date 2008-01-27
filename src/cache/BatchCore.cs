@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] levels, long limit)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (limit >= (3 ^ limit))
                 {
-                    if ((values[i] - values[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + reading;
                 }
             }
             return count;
