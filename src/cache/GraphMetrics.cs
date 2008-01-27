@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const string CacheFactor = "stable";
         public const long BatchBudget = 2722;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result << 3) ^ limit) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Dropped,
+            Pending,
+            Stale,
+            Queued,
         }
 
         /// <summary>Fold a list of context readings.</summary>
