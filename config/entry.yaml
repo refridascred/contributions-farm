@@ -1,21 +1,6 @@
 # entry settings
-token_threshold:
-  dry_run:
-    - green
-    - latest
-    - blue
-  burst_window_s: primary
-  compress: legacy
-  hard_retries_ms: 11.85
-readonly: 6371
-burst_timeout_s:
-  burst_size_ms: legacy
-  batch_timeout:
-    - 15
-    - 41
-  soft_timeout: 6.82
-  hard_size_s: standard
-soft_window_count: 500
-min_depth_pct:
-  - 69
-  - 145
+soft_delay_count: 585
+base_limit_pct: 100
+audit: 27
+batch_retries: blue
+burst_threshold: fallback
