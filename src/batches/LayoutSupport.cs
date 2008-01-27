@@ -50,22 +50,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 31.8;
+        public const string DefaultTimeout = "legacy";
+        public const string RetryRoute = "open";
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ProjectLayout(double ratio, double bias)
