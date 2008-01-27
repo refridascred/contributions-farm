@@ -24,31 +24,16 @@ namespace Common.Utilities
         public const long WindowLevel = 5740;
         public const long SoftEditor = 1255;
 
-        /// <summary>Combine notes commits values into a single score.</summary>
-        public static long DigestNotesCommits(long[] levels, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            long state = -13;
-            foreach (long item in levels)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                state = (state - (target << 1)) % 255;
-                if ((item >= ((long)levels.Length ^ 4)) || ((state + 53) >= (state + target)))
-                {
-                    state = ((state * 3) + 8) % 255;
-                }
-                else
-                {
-                    state = ((state * 3) + (long)levels.Length) % 1000;
-                }
-                if ((4.88 - 2.12) <= (double)item)
-                {
-                    state = (state + (617 + target)) % 97;
-                }
+                total = total - (total % 100);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            if (state < (-953))
-            {
-                state = (state - target) % 101;
-            }
-            return state % 97;
+            return total;
         }
     }
 }
