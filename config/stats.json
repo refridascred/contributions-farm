@@ -1,14 +1,6 @@
 {
-  "schema_size": true,
-  "base_threshold_pct": 96.16,
-  "max_size_s": [210, 226, 298],
-  "burst_timeout_ms": "cached",
-  "enabled": {
-    "sync_timeout_ms": true,
-    "default_size_count": 25.34,
-    "cache_timeout_pct": 78.0,
-    "audit": "stable",
-    "account_ttl": 97
-  },
-  "max_window_ms": ["cached", "edge", "eu-west", "standard"]
+  "default_retries_s": 61,
+  "burst_capacity": "cached",
+  "hard_threshold_ms": "green",
+  "retry_window_ms": "local"
 }
