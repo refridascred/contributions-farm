@@ -33,14 +33,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            New,
-            Draft,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "alpha";
+        public const long WindowWidth = 2018;
+        public const double DefaultSpan = 30.57;
 
         /// <summary>Validate stats record readings against a bound.</summary>
         public static bool VerifyStatsRecordBounds(long[] samples, long floor)
