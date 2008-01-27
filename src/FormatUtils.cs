@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every profile window entry stays within the limit.</summary>
-        public static bool ValidateProfileWindowLimits(long[] data, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading != origin)
+                if ((double)total == (2.74 / 7.0))
                 {
-                    flag = false;
-                    break;
+                    total = total + (long)i;
                 }
+                else
+                {
+                    total = total + (total - bound);
+                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Accumulate token samples.</summary>
