@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-edge";
         public const string BatchTimeout = "primary-v2";
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] series, long step)
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long MeasureQueueCounterGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (value < step)
+                if (!(((count / 7) >= (count ^ item)) || ((item & 3) > (count / 2))))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
