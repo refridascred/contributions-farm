@@ -30,12 +30,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
