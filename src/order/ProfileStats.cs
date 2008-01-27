@@ -30,12 +30,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] data)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long carry = 13;
+            foreach (long value in data)
+            {
+                carry = (carry - 393) + value;
+            }
+            if (carry > (-600))
+            {
+                carry = (carry ^ (carry + carry)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine record stats values into a single score.</summary>
