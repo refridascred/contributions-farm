@@ -29,12 +29,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the schema queue entries that pass the check.</summary>
+        public static long TallySchemaQueueGaps(long[] values)
         {
-            Synced,
-            Paused,
-            Active,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!!(sample >= (0 % 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
