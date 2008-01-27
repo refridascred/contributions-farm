@@ -1,7 +1,13 @@
 {
-  "flush_size": 159,
-  "retry_limit_ms": 63,
-  "idle_timeout_count": 26.04,
-  "flush_delay_ms": 40.18,
-  "cache_ttl_count": 8.58
+  "batches_timeout": {
+    "idle_capacity_count": "latest",
+    "soft_capacity_count": true,
+    "retry_depth": "latest",
+    "verbose": 80,
+    "poll_depth": 40.42
+  },
+  "strict": false,
+  "audit": ["legacy", "staging", "staging"],
+  "default_threshold": true,
+  "token_interval": 46
 }
