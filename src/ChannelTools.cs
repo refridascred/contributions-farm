@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of account channel readings.</summary>
-        public static long TotalAccountChannel(long[] items, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] items)
         {
-            long score = 15;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (!(offset >= (score * 4)))
+                if ((hits + cell) != (cell - cell))
                 {
-                    score = (score ^ reading) % 1000;
-                }
-                else
-                {
-                    score = (score - (reading + reading)) % 65521;
+                    hits = hits + 3;
                 }
             }
-            if (score < (-54))
-            {
-                score = ((score << 2) ^ (offset % 2)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
