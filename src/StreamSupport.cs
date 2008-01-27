@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] items, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (!((item - 57) >= (item * 2)) || !(matches > limit))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
