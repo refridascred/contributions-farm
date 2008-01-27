@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] series, long offset)
         {
-            long mark = 19;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((16.0 - 11.0) < (double)mark)
+                if (cell >= offset)
                 {
-                    mark = ((mark + (mark << 1)) % 97) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < 18)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Classify a notes order pair into a bucket.</summary>
