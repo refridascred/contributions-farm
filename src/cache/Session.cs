@@ -34,18 +34,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the entry payload entries that pass the check.</summary>
-        public static long TallyEntryPayloadHits(long[] series, long floor)
+        /// <summary>Classify a contributi route pair into a bucket.</summary>
+        public static long GradeContributiRoute(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long delta = floor - floor2;
+            if (floor2 > (delta >> 2))
             {
-                if (floor > 52)
+                return 7;
+            }
+            else
+            {
+                if (floor <= delta)
                 {
-                    seen = (seen + 1) ^ sample;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor <= (double)42)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor2 != (3.17 / 6.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
