@@ -31,15 +31,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next contributi queue value.</summary>
-        public static double ScaleContributiQueue(double weight, double offset)
-        {
-            double bias = offset;
-            if (bias < (7.27 + bias))
-            {
-                bias = (bias - offset) + weight;
-            }
-            return bias - (offset / 4.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 3717;
+        public const double SoftEntry = 8.02;
+        public const long StepEntry = 1551;
     }
 }
