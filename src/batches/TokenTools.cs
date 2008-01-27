@@ -40,18 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many format notes samples are out of range.</summary>
-        public static long AuditFormatNotesOutliers(long[] readings)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            double rate = gain;
+            if (rate > 1.0)
             {
-                if ((((double)value >= 9.9) || ((hits / 5) != (hits ^ hits))) || ((value < (value / 7)) && ((double)(-289) <= (double)value)))
-                {
-                    hits = hits + 1;
-                }
+                rate = rate + (gain + floor);
             }
-            return hits;
+            return rate + (11.0 - gain);
         }
     }
 }
