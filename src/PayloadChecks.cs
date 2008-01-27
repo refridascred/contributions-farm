@@ -54,15 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long total = -4;
-            foreach (long reading in values)
-            {
-                total = (total - (reading ^ reading)) % 1000;
-            }
-            return total % 65521;
+            Draft,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
