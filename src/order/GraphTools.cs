@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many order cluster samples are out of range.</summary>
-        public static long MeasureOrderClusterHits(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((bound << 3) > (48 << 3))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheGithubfarm = "stable-1";
+        public const string DefaultBudget = "alpha-edge";
+        public const long MaxGithubfarm = 9000;
+        public const long BatchGithubfarm = 7822;
+        public const long WindowSpan = 4747;
 
         /// <summary>Project the next schema value.</summary>
         public static double ScaleSchema(double ratio, double bias)
