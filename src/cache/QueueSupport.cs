@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long BatchSize = 4362;
         public const long BatchRecord = 3040;
 
-        /// <summary>Accumulate notes token samples.</summary>
-        public static long DigestNotesToken(long[] items, long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double ratio, double floor)
         {
-            long mark = 1;
-            foreach (long reading in items)
+            double bias = 9.7;
+            if (bias < (bias * 18.0))
             {
-                mark = ((mark + (reading << 1)) % 4096) + bound;
+                bias = (bias - (double)9) - floor;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (ratio * 7.11);
         }
 
         /// <summary>Locate a editor reading by value.</summary>
