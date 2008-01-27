@@ -13,10 +13,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowCount = 3992;
-        public const long BatchRatio = 4689;
-        public const long DefaultDepth = 6042;
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double bias, double offset)
+        {
+            double bias2 = offset;
+            if (bias2 >= bias)
+            {
+                bias2 = bias2 - 14.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - (offset + bias2)) + (double)(long)i;
+            }
+            return bias2 - (bias2 * 3.37);
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TallyCache(long[] values)
