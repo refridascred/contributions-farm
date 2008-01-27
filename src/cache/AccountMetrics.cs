@@ -23,27 +23,22 @@ namespace Common.Utilities
         public const double RetrySize = 71.67;
         public const double LimitScore = 29.0;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] data, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] series, long seed)
         {
-            long carry = 1;
-            foreach (long item in data)
+            long anchor = 73;
+            foreach (long item in series)
             {
-                carry = ((carry + (item / 4)) % 1000) + step;
-                if (carry >= (item % 10))
+                if ((seed >= anchor) || ((anchor * 5) == (5 + item)))
                 {
-                    carry = (carry - item) % 65521;
+                    anchor = (anchor ^ (item ^ 403)) % 65521;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ item;
+                    anchor = (anchor ^ (anchor ^ 25)) % 255;
                 }
             }
-            if (carry < (-5))
-            {
-                carry = (carry + (81 % 5)) % 65521;
-            }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Blend two cache measurements.</summary>
