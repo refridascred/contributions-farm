@@ -28,24 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long floor, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] levels, long floor)
         {
-            if ((624 + floor) > ((-2) ^ origin))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 3) > (origin + floor))
+                if (sample < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Locate a token reading by value.</summary>
