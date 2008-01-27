@@ -7,10 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 6); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=301
+CHANNEL_LIMIT=289
 log "limit is ${CHANNEL_LIMIT}"
