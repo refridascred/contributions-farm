@@ -28,21 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 88;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((item ^ state) > state) || ((5.4 / 8.0) < (double)item))
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 2) ^ (state - item)) % 97;
+                }
+                else
+                {
+                    state = ((state * 2) + (10 % 60)) % 1000;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
