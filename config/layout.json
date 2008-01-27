@@ -1,7 +1,7 @@
 {
-  "cluster_ratio": "eu-west",
-  "already_limit": 3,
-  "strict": ["staging", "cached", "cached"],
-  "notes_depth": "fallback",
-  "min_delay": 55.94
+  "batches_interval": 88.76,
+  "metrics_capacity": 8339,
+  "audit": 56.8,
+  "verbose": 45,
+  "sync_threshold_count": 5869
 }
