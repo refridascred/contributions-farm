@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseCount = "latest";
+        public const double BurstOrder = 31.86;
+        public const long IdleOrder = 8050;
+        public const string BatchScore = "fallback-1";
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long RollCommand(long limit)
