@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many command support samples are out of range.</summary>
-        public static long TallyCommandSupportGaps(long[] data)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry < 8.7)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Locked,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define format limits and defaults.</summary>
