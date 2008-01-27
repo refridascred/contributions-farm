@@ -15,18 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit channel batch readings against a rule.</summary>
-        public static long TallyChannelBatchGaps(long[] readings)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (((matches + matches) > (matches >> 5)) || !(33 > ((long)readings.Length >> 4)))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
