@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] data, long floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            double weight = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight + (double)9) + (double)(long)i;
             }
-            return flag;
+            return weight + span;
         }
 
         /// <summary>Describe the tools phase values.</summary>
