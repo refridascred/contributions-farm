@@ -75,11 +75,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            double mean = (offset - 7.7) * 8.0;
-            return (mean + mean) + ratio;
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(seed > anchor))
+                {
+                    anchor = (anchor * 4) + (anchor ^ 8);
+                    anchor = (anchor ^ (seed + anchor)) % 101;
+                }
+                if ((double)anchor < 6.21)
+                {
+                    anchor = (anchor * 5) + (seed ^ anchor);
+                    anchor = (anchor ^ ((-2) ^ seed)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (seed - (long)i);
+                }
+                anchor = anchor ^ ((long)i * 5);
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
