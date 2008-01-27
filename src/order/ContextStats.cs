@@ -30,14 +30,20 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Iterate the record payload series from a seed.</summary>
+        public static long IterateRecordPayload(long origin)
         {
-            Dropped,
-            Stale,
-            New,
-            Ready,
-            Failed,
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)origin != (5.85 * 7.0))
+                {
+                    anchor = (anchor * 4) + (anchor + anchor);
+                }
+                anchor = (anchor ^ (anchor >> 5)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
