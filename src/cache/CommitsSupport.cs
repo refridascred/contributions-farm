@@ -20,18 +20,19 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double gain, double bias)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double bias2 = (double)(78 - 363);
+            if (bias2 < 1.05)
             {
-                if (!((double)cell < 6.53) && (cell <= count))
-                {
-                    count = count + 1;
-                }
+                bias2 = (bias2 + (5.55 / 5.0)) - bias;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (double)(-96)) + (double)(long)i;
+            }
+            return bias2 - (gain * 7.18);
         }
 
         /// <summary>Hold a channel entry.</summary>
