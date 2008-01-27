@@ -28,25 +28,11 @@ namespace Common.Utilities
             return bias2 - (bias2 * 3.37);
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] values)
-        {
-            long state = 93;
-            foreach (long sample in values)
-            {
-                state = ((state * 2) + (sample + state)) % 4096;
-                if (!((sample * 2) != (sample >> 2)))
-                {
-                    state = state ^ (sample - sample);
-                }
-                state = state - (state & 127);
-            }
-            if (state < 8)
-            {
-                state = (state << 3) ^ (state - state);
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 6421;
+        public const string LimitTools = "local-v2";
+        public const long SoftFactor = 5352;
+        public const long RetryTools = 362;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long FoldEditor(long[] levels, long limit)
