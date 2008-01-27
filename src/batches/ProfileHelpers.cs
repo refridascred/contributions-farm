@@ -79,22 +79,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] values, long target)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = 5;
-            foreach (long sample in values)
-            {
-                if (((mark + target) < (mark & 1)) && (mark < sample))
-                {
-                    mark = (mark - (943 - sample)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ target;
-                }
-            }
-            return mark;
+            Idle,
+            Done,
+            Ready,
+            New,
         }
     }
 }
