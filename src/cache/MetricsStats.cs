@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-edge";
         public const string BatchTimeout = "primary-v2";
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            Failed,
-            Queued,
-            Closed,
+            long score = 416;
+            foreach (long value in data)
+            {
+                long lane = score;
+                if (!((lane + value) < (-654)))
+                {
+                    lane = (lane << 2) ^ 840;
+                }
+                if ((double)1 == (double)value)
+                {
+                    score = (score * 2) + 765;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the payload level values.</summary>
