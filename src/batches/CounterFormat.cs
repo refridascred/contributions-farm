@@ -25,18 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((((tally & 15) >= tally) || ((double)(long)readings.Length >= (double)33)) && (((cell * 3) >= ((-3) + tally)) || ((tally + tally) < (cell * 5))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 3456;
+        public const double CacheFactor = 0.37;
+        public const long CacheWidth = 3417;
     }
 }
