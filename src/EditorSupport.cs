@@ -85,22 +85,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] data, long offset)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((item + 9) >= (item % 8)) || (((offset & 7) <= (2 - 5)) && ((89 << 3) >= (hits & 255))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 86.8;
+        public const long BatchSpan = 2683;
+        public const long RetryOrder = 7175;
+        public const double BaseOrder = 49.27;
+        public const double LimitOrder = 92.49;
     }
 }
