@@ -27,21 +27,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor << 1) >= bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!(bound >= (floor - bound)))
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
