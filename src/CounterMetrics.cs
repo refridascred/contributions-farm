@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] data, long seed)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Dropped,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
