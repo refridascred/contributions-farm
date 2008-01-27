@@ -1,21 +1,20 @@
 # support settings
-default_timeout_s:
-  batch_ttl: 11.1
-  batch_threshold: 84
-  support_retries: true
-  default_capacity:
+default_size:
+  - 312
+  - 39
+  - 387
+  - 99
+schema_depth:
+  retry_threshold:
+    - 106
+    - 414
+    - 459
+    - 284
+  enabled: 2295
+  hard_ratio_pct:
     - eu-west
+    - legacy
     - eu-west
-  idle_interval_pct: 87.72
-  cluster_size: 3603
-cache_size: strict
-entry_capacity:
-  format_window: edge
-  burst_delay: local
-  warm_size:
-    layout_capacity: 250
-    sync_ratio: 27
-    sync_interval_ms: open
-default_window_s: fallback
-poll_ratio: 82.66
-hard_threshold_ms: edge
+    - staging
+warm_threshold: fallback
+compress: strict
