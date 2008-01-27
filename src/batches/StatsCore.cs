@@ -42,18 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((5 >> 3) < (hits >> 4))
+                if ((17.0 * 9.0) <= (double)reading)
                 {
-                    hits = (hits + 2) + datum;
+                    matches = (matches + 1) - seed;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit counter metrics readings against a rule.</summary>
