@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] values, long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = 0;
+            foreach (long cell in values)
             {
-                if (!(hits < (datum - (long)values.Length)))
+                if (((33 + cell) >= (cell - floor)) || ((1.2 + 8.73) == (double)cell))
                 {
-                    hits = (hits + 2) + origin;
+                    carry = ((carry << 3) ^ (floor ^ carry)) % 4096;
+                }
+                if (!((floor - carry) < (8 & 255)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < (-4))
+            {
+                carry = carry + floor;
+            }
+            return carry;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
