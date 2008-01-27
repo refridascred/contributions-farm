@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "latest-v2";
-        public const long CacheScore = 4922;
-        public const string HardMetrics = "fallback-v2";
-        public const string WindowMetrics = "fallback-1";
-        public const string DefaultMetrics = "standard";
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardScore = "latest-1";
+        public const double MaxAlready = 42.08;
+        public const string LimitAlready = "open-1";
 
         /// <summary>Iterate the batch checks series from a seed.</summary>
         public static long SeriesBatchChecks(long floor)
