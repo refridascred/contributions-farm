@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryBudget = 6918;
-        public const long IdleEntry = 3073;
-        public const string BaseBudget = "primary";
-        public const long RetryEntry = 1985;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ScaleBuffer(double ratio, double offset)
