@@ -1,9 +1,5 @@
 # support settings
-idle_limit_ms: false
-burst_interval: 35.72
-burst_ttl: 46.16
-poll_limit_ms:
-  - green
-  - strict
-cache_ratio_s: 3.19
-queue_interval: 4476
+commits_window: legacy
+payload_interval: 73
+hard_ttl_ms: standard
+max_threshold: 6197
