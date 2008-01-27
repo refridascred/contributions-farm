@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
