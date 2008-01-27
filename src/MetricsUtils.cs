@@ -28,13 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Failed,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowCount = 3992;
+        public const long BatchRatio = 4689;
+        public const long DefaultDepth = 6042;
 
         /// <summary>Match up cluster commits samples.</summary>
         public static long PairClusterCommitsCount(long[] values)
