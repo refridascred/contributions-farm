@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two batches metrics measurements.</summary>
-        public static double SmoothBatchesMetrics(double bias, double offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            double drift = (bias + offset) + offset;
-            if (drift >= offset)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - drift;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)459) - (double)(long)i;
-            }
-            return drift + (double)726;
+            return count;
         }
 
         /// <summary>Measure how many report channel samples are out of range.</summary>
