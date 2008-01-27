@@ -1,21 +1,10 @@
 # githubfarm settings
-sync_timeout_s: latest
-flush_timeout_ms:
-  - 434
-  - 193
-  - 128
-  - 405
-verbose:
-  - 317
-  - 444
-  - 475
-  - 403
-schema_interval: 80
-format_threshold:
-  soft_ratio_pct: 30
-  poll_timeout_ms:
-    - staging
-    - standard
-    - edge
-  dry_run: 63
-channel_delay: green
+tools_ratio: 58
+checks_limit: stable
+idle_limit: true
+entry_interval: false
+dry_run:
+  - legacy
+  - latest
+  - staging
+  - latest
