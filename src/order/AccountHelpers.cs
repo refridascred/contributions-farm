@@ -46,17 +46,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next stats metrics value from a seed.</summary>
-        public static long DeriveStatsMetrics(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state ^ (offset * 2);
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 7033;
+        public const string RetrySchema = "fallback";
+        public const long BatchTimeout = 7149;
+        public const long HardInterval = 4888;
+        public const double StepSize = 80.78;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
