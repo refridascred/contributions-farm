@@ -44,17 +44,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] data, long limit)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long acc = 979;
-            foreach (long cell in data)
-            {
-                acc = (acc + (limit >> 5)) % 97;
-                acc = (acc - (cell + 24)) % 101;
-                acc = (acc - (acc % 60)) % 101;
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
