@@ -33,10 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "strict-1";
-        public const double BatchGraph = 51.23;
-        public const long MinInterval = 1841;
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
+        {
+            Retry,
+            Active,
+            New,
+            Dropped,
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaGaps(long[] items)
