@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two githubfarm graph measurements.</summary>
-        public static double BlendGithubfarmGraph(double ratio, double span)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            double rate = (double)8 + (span * 7.73);
-            return (rate - rate) + ratio;
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits phase values.</summary>
