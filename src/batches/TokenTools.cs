@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const string DefaultFarm = "cached";
         public const string MinLevel = "cached-v2";
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((matches + value) != (matches ^ matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
