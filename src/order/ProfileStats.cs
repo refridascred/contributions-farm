@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ratio + (bias + 9.09);
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] items, long floor)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel stats.</summary>
