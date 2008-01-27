@@ -34,13 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] items, long limit)
         {
-            Paused,
-            Stale,
-            Dropped,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next account order value from a seed.</summary>
