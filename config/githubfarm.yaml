@@ -1,10 +1,8 @@
 # githubfarm settings
-route_delay: latest
-sync_ttl:
-  - standard
-  - strict
-  - edge
-  - strict
-record_size: 1.26
-max_delay_count: 33
-idle_ratio_s: 34.1
+burst_interval: open
+default_interval_count:
+  - open
+  - open
+  - fallback
+hard_interval_pct: 39
+checks_threshold: 27.92
