@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] data)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)data.Length <= (9.3 + 13.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
