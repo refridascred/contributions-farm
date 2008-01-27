@@ -13,39 +13,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi tools value against two limits.</summary>
-        public static long RankContributiTools(long offset, long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long edge = offset - bound;
-            if ((edge << 2) <= (439 - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound & 3) != (offset & 3)) && ((double)offset >= (5.8 - 6.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 - offset) == (edge * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound % 16) < offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
