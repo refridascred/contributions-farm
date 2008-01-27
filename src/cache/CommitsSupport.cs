@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double bias, double offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            double drift = bias;
-            if (drift >= bias)
-            {
-                drift = (drift - (double)69) - offset;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            return drift - (5.0 / 4.0);
+            Paused,
+            Active,
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
