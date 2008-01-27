@@ -1,6 +1,11 @@
-id,owner,rank,score
-1,846,558,49
-2,local,497,829
-3,20.65,43.89,primary
-4,88.12,latest,green
-5,85.23,47,legacy
+id,token,weight
+1,71.49,4.81
+2,1.31,90.05
+3,414,2.47
+4,legacy,761
+5,strict,staging
+6,primary,fallback
+7,strict,90.62
+8,cached,9.8
+9,610,508
+10,350,494
