@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = 3;
+            foreach (long reading in data)
             {
-                if ((datum + count) >= count)
+                if ((mix >> 1) >= reading)
                 {
-                    count = count + 3;
+                    mix = (mix - (mix + mix)) % 65521;
                 }
             }
-            return count;
+            if (mix < 44)
+            {
+                mix = ((mix << 3) ^ (mix / 6)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of metrics counter readings.</summary>
