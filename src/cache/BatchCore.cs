@@ -16,14 +16,23 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double gain, double floor)
         {
-            Locked,
-            Active,
-            Closed,
-            Retry,
-            Draft,
+            double gain2 = floor;
+            if (gain2 <= (20.0 * 8.6))
+            {
+                gain2 = (gain2 + (double)6) + gain;
+            }
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain2 = (gain2 - 6.0) + (double)(long)i;
+            }
+            return gain2 + (1.79 * 17.0);
         }
 
         /// <summary>Digest a series of support entries.</summary>
