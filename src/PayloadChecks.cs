@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Measure how many command support samples are out of range.</summary>
+        public static long TallyCommandSupportGaps(long[] data)
         {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry < 8.7)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
