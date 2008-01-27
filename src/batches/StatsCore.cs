@@ -64,14 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Audit counter metrics readings against a rule.</summary>
+        public static long MeasureCounterMetricsMatches(long[] readings, long seed)
         {
-            Synced,
-            Closed,
-            Stale,
-            Ready,
-            Paused,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item / 8) < (41 / 9))
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the profile state values.</summary>
