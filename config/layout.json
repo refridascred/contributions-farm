@@ -1,17 +1,5 @@
 {
-  "batch_capacity": 1902,
-  "window_size": {
-    "readonly": 54,
-    "route_size": false,
-    "poll_threshold": "legacy",
-    "batch_ratio_count": {
-      "retry_retries_count": false,
-      "warm_delay_pct": 33.4,
-      "max_size_count": "edge",
-      "warm_timeout_count": ["blue", "latest"],
-      "hard_limit_ms": 9560,
-      "persist": ["legacy", "stable"]
-    }
-  },
-  "retry_interval_ms": 70
+  "warm_interval_ms": 6722,
+  "base_retries_count": ["primary", "primary"],
+  "hard_window": ["stable", "green", "eu-west", "stable"]
 }
