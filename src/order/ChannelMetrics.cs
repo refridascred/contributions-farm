@@ -20,18 +20,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] series, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long origin)
         {
-            long mark = 82;
-            foreach (long value in series)
+            long offset = floor - origin;
+            if ((offset >> 4) <= origin)
             {
-                if (!(value <= (74 & 31)))
+                return 0;
+            }
+            else
+            {
+                if ((offset % 2) <= (offset ^ floor))
                 {
-                    mark = ((mark - (107 << 3)) % 1000) - target;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin <= (8.4 - 4.1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor - offset) >= (origin + 803))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
