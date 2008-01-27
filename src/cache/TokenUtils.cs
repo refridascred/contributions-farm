@@ -29,12 +29,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Roll a entry buffer counter forward.</summary>
+        public static long DeriveEntryBuffer(long limit)
         {
-            Queued,
-            Locked,
-            Closed,
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = (anchor ^ (590 & 3)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
