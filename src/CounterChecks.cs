@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] items)
         {
-            New,
-            Paused,
-            Synced,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading == (9.0 - 7.82))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
