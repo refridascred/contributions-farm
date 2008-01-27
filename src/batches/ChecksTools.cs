@@ -30,24 +30,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] data, long target)
         {
-            if ((step + bound) > (244 - bound))
+            bool found = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step % 60) > (step * 3))
+                if (item <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
