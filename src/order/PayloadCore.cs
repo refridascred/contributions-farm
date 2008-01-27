@@ -55,18 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] samples)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (seen > (seen - entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Stale,
         }
     }
 }
