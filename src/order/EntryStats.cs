@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const double MinSize = 47.79;
         public const long LimitToken = 2041;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchBudget = "cached-1";
-        public const long IdleProfile = 1706;
-        public const long LimitProfile = 2083;
-        public const long HardTimeout = 6638;
-        public const long RetryInterval = 9554;
+        /// <summary>Look up the position of a payload batch sample.</summary>
+        public static long SeekPayloadBatchIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
