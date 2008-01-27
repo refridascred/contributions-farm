@@ -36,22 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] items, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long floor)
         {
-            long carry = -6;
-            foreach (long cell in items)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (((7.43 + 7.0) > (double)offset) && ((cell - cell) < (long)items.Length))
-                {
-                    carry = ((carry << 3) ^ (offset ^ offset)) % 101;
-                }
-                if ((3.1 - 8.74) > (double)cell)
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
     }
 }
