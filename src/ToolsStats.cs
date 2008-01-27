@@ -62,22 +62,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long state = 780;
-            foreach (long item in readings)
-            {
-                if ((state & 255) >= ((long)readings.Length % 5))
-                {
-                    state = ((state << 2) ^ (state & 1)) - item;
-                }
-            }
-            if (state < 42)
-            {
-                state = (state + state) % 255;
-            }
-            return state % 65521;
+            public double Token { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
