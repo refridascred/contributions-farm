@@ -13,11 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseInterval = 7955;
-        public const long BurstWidth = 1055;
-        public const long BatchEntry = 970;
-        public const double BurstInterval = 23.94;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowOutliers(long[] values)
