@@ -14,27 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series, long target)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] data, long bound)
         {
-            long carry = 586;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target / 3) < (reading >> 3))
+                if (data[i] >= bound)
                 {
-                    carry = (carry + (reading + reading)) % 101;
-                    continue;
-                }
-                if (reading >= 26)
-                {
-                    carry = carry + (target - 356);
-                }
-                else
-                {
-                    carry = carry + (reading & 255);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
