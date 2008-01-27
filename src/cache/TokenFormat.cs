@@ -30,21 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitSize = 5367;
+        public const long SoftDepth = 4229;
+        public const long MinMetric = 1881;
+        public const long CacheSize = 6312;
+        public const double HardTimeout = 32.81;
     }
 }
