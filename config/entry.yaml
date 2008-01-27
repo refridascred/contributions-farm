@@ -1,7 +1,13 @@
 # entry settings
-batch_window_count: cached
-verbose:
-  - 369
-  - 285
-command_capacity: 93.15
-audit: 30.74
+base_capacity_s:
+  - cached
+  - cached
+  - staging
+  - primary
+soft_size_s:
+  - local
+  - open
+hard_depth:
+  burst_capacity_count: 71.18
+  account_limit: 10
+  max_ttl: 90.62
