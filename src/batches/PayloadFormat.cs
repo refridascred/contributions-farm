@@ -47,10 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseLevel = 2845;
-        public const string MinEntry = "alpha-1";
-        public const long BurstSpan = 314;
-        public const double MinWidth = 26.91;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long seed, long floor)
+        {
+            long next = seed ^ floor;
+            if ((next + floor) < 54)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor < (7.1 + 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
