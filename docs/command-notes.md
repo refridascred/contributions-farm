@@ -1,14 +1,12 @@
 # Command notes
 
-Each route is validated before it reaches the batches queue.
-A githubfarm that stays idle for too long is moved to the githubfarm list.
-
-Run the batches check before changing any layout limits.
-The graph report groups every token by order.
-Keep support and account names short and lowercase.
+When a profile fails, the route handler retries a few times before giving up.
+The filter report groups every context by session.
+Run the route check before changing any account limits.
 
 ## Guidelines
 
-- Prefer window defaults
-- Review cluster limits each release
-- Validate session input early
+- Validate support input early
+- Keep cache values small
+- Review entry limits each release
+- Prefer payload defaults
