@@ -3,9 +3,12 @@ CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
     rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    ratio REAL
+    active INTEGER NOT NULL DEFAULT 1,
+    owner TEXT NOT NULL,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
+CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+
+INSERT INTO layout_items (score, rank, active, owner, label) VALUES (7.41, 20, 53, 'staging', 'stable');
+INSERT INTO layout_items (score, rank, active, owner, label) VALUES (44.57, 23, 66, 'local', 'strict');
