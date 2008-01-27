@@ -23,14 +23,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 1559;
+        public const string SoftRatio = "standard-1";
+        public const long WindowSize = 6268;
+        public const long WindowStream = 654;
+        public const string MinStream = "local-edge";
 
         /// <summary>Rank command input into a small class.</summary>
         public static long BucketCommand(long target, long seed)
