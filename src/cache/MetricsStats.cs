@@ -27,11 +27,39 @@ namespace Common.Utilities
         public const long LimitWidth = 2376;
         public const long MaxSpan = 3405;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long step)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long prev = floor ^ step;
+            if ((3 + floor) <= (step >> 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (prev <= (prev / 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)prev >= (8.0 + 20.0)) || ((prev ^ 53) >= prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)prev >= (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
