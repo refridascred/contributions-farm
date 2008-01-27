@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] series, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 756;
+            foreach (long entry in values)
             {
-                if (series[i] >= step)
+                if ((entry ^ 90) >= entry)
                 {
-                    return (long)i;
+                    acc = (acc ^ (14 >> 5)) % 1000;
+                    continue;
+                }
+                if ((acc + acc) <= entry)
+                {
+                    acc = (acc ^ (acc - entry)) % 65521;
                 }
             }
-            return -1;
+            if (acc > 5)
+            {
+                acc = (acc ^ (acc - 1)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the farm level values.</summary>
