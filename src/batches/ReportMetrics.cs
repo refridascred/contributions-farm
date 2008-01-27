@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count command support pairs that satisfy a relation.</summary>
-        public static long OverlapCommandSupportCount(long[] levels)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = weight;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = ((scale - (double)39) + (double)(long)i) - floor;
             }
-            return tally;
+            return scale - scale;
         }
 
         /// <summary>Measure how many report channel samples are out of range.</summary>
