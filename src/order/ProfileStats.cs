@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long bound, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] series, long limit)
         {
-            if ((double)bound < (double)floor)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0 + bound) > (bound & 15))
+                if (sample <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + floor) > (bound % 64))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the stream mode values.</summary>
