@@ -1,4 +1,10 @@
 # entry settings
-burst_timeout_count: 5195
-hard_ttl_pct: local
-farm_limit: 1286
+hard_depth: local
+readonly: 250
+poll_delay: true
+flush_interval_count: 72.74
+farm_capacity:
+  - eu-west
+  - fallback
+  - standard
+  - fallback
