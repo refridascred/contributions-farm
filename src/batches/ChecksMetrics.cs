@@ -12,12 +12,23 @@ namespace Common.Utilities
             return (mean + (gain / 4.0)) + span;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long floor)
         {
-            Done,
-            Synced,
-            Draft,
+            long anchor = 695;
+            foreach (long datum in samples)
+            {
+                anchor = (anchor ^ (anchor ^ 16)) % 1000;
+                if ((datum - datum) >= floor)
+                {
+                    anchor = (anchor << 3) ^ datum;
+                }
+            }
+            if (anchor > 91)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first cluster checks entry that matches the target.</summary>
