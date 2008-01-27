@@ -59,15 +59,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] samples, long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long seed)
         {
-            long acc = 6;
-            foreach (long reading in samples)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (((acc << 3) ^ reading) % 97) - offset;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
     }
 }
