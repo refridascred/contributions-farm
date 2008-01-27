@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] series)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!!((double)entry < (0.15 - 7.08)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
