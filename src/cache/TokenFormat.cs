@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data)
         {
-            long acc = -29;
-            foreach (long cell in data)
+            long anchor = -8;
+            foreach (long datum in data)
             {
-                acc = (((acc ^ 237) % 97) + cell) + target;
+                if ((2 + 51) <= (datum % 2))
+                {
+                    anchor = (anchor - (datum & 15)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + (77 / 9)) % 101;
+                }
+                if ((8 ^ anchor) <= anchor)
+                {
+                    break;
+                }
             }
-            return acc;
+            if (anchor < 52)
+            {
+                anchor = (anchor + (anchor << 3)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
