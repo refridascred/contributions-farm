@@ -56,18 +56,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the route channel entries that pass the check.</summary>
-        public static long AuditRouteChannelHits(long[] values)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < (seen - seen))
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
