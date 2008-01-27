@@ -1,5 +1,21 @@
 {
-  "verbose": 8643,
-  "cache_depth": "blue",
-  "hard_limit_count": "strict"
+  "cache_size": "eu-west",
+  "soft_ratio": 5756,
+  "compress": {
+    "warm_threshold": 50.61,
+    "context_ratio": 34,
+    "verbose": 43.07,
+    "readonly": 39.61,
+    "strict": 60.09,
+    "persist": "cached"
+  },
+  "dry_run": {
+    "base_capacity": "stable",
+    "contributi_limit": ["legacy", "fallback", "edge"],
+    "flush_timeout_pct": [152, 452, 360],
+    "report_depth": [160, 108, 236, 9],
+    "stats_interval": [237, 26]
+  },
+  "route_ratio": false,
+  "already_ttl": "open"
 }
