@@ -27,16 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 2) + (state / 4)) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Active,
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
