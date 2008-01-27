@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] readings, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (item >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
