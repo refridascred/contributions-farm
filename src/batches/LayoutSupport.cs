@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] levels, long target)
+        /// <summary>Audit session metrics readings against a rule.</summary>
+        public static long TallySessionMetricsOutliers(long[] readings, long limit)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long item in readings)
             {
-                if ((45 ^ matches) > (matches / 4))
+                if (item < (item % 64))
                 {
-                    matches = ((matches + 1) + entry) - target;
+                    matches = (matches + 1) - limit;
                 }
             }
             return matches;
