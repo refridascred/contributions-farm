@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series, long offset)
         {
-            Retry,
-            Failed,
-            Closed,
+            long score = 898;
+            foreach (long item in series)
+            {
+                score = ((score - (offset << 3)) % 101) + item;
+            }
+            return score % 4096;
         }
 
         /// <summary>Digest a series of context entries.</summary>
