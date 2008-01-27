@@ -47,13 +47,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Done,
-            New,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 3729;
+        public const string LimitQueue = "standard";
+        public const long MinSpan = 3785;
+        public const long MinQueue = 991;
+        public const long MaxQueue = 9982;
     }
 }
