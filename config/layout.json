@@ -1,5 +1,16 @@
 {
-  "warm_interval_ms": 6722,
-  "base_retries_count": ["primary", "primary"],
-  "hard_window": ["stable", "green", "eu-west", "stable"]
+  "idle_ratio_ms": "fallback",
+  "cache_limit_count": ["latest", "green", "cached", "open"],
+  "verbose": {
+    "cache_window": 60,
+    "retry_interval_pct": 45.32,
+    "max_size_pct": 30,
+    "report_ratio": {
+      "payload_size": 3116,
+      "warm_threshold": 7273,
+      "poll_window": 22
+    }
+  },
+  "cache_ttl_s": "latest",
+  "warm_timeout": [430, 43, 426, 487]
 }
