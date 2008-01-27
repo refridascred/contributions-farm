@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token command values into a single score.</summary>
-        public static long ScoreTokenCommand(long[] data, long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long seed, long offset)
         {
-            long sum = 71;
-            foreach (long cell in data)
+            long slot = seed ^ offset;
+            if ((double)offset >= (6.3 * 9.8))
             {
-                if ((sum >> 3) != (sum % 16))
+                return 6;
+            }
+            else
+            {
+                if ((seed - 473) <= (offset % 8))
                 {
-                    sum = (((sum + 37) % 1000) ^ cell) + offset;
+                    return 4;
+                }
+                else
+                {
+                    if (((seed + slot) == (28 - 83)) || ((double)seed >= (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((slot + 44) <= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Digest a series of command entries.</summary>
