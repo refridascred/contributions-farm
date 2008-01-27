@@ -53,19 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double scale, double span)
+        /// <summary>Scale a report channel figure with a bias.</summary>
+        public static double BlendReportChannel(double rate, double span)
         {
-            double weight = (double)(780 * 2);
-            if (weight > weight)
+            double mean = rate;
+            if (mean >= (rate * 4.0))
             {
-                weight = (weight + span) + scale;
+                mean = mean - (rate + span);
             }
-            else
-            {
-                weight = weight + (weight * 7.58);
-            }
-            return weight - (span * 1.6);
+            return mean - mean;
         }
     }
 }
