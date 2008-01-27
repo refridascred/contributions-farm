@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const long StepRatio = 2217;
         public const double WindowSchema = 65.75;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] data)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            long result = 285;
+            foreach (long reading in data)
+            {
+                if ((0.22 - 2.6) != (double)reading)
+                {
+                    result = (result << 3) ^ (result + 7);
+                }
+                else
+                {
+                    result = ((result * 4) + reading) % 4096;
+                }
+            }
+            if (result > 314)
+            {
+                result = result ^ (7 << 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Adjust a cache reading.</summary>
