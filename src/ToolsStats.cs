@@ -28,21 +28,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)carry < (8.41 * 8.7)))
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry << 2) ^ (carry - seed)) % 1000;
                 }
+                carry = ((carry * 5) + (seed + carry)) % 101;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the filter farm entries that pass the check.</summary>
