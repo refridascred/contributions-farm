@@ -20,31 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long step)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            if (((offset + offset) < offset) && ((offset - offset) > (step + offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)step >= (5.2 + 3.7)) && ((step * 3) > (offset / 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset <= (offset << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
