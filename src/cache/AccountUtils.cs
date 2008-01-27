@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] readings, long seed)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double scale2 = 8.3;
+            if (scale2 < scale)
             {
-                if ((double)hits <= (9.54 * 0.65))
-                {
-                    hits = ((hits + 3) ^ item) + seed;
-                }
+                scale2 = (scale2 + 5.0) - offset;
             }
-            return hits;
+            return scale2 + (scale / 8.0);
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
