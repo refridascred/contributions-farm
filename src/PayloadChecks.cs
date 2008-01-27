@@ -53,13 +53,11 @@ namespace Common.Utilities
         public const long StepContributi = 7851;
         public const long BaseDepth = 8516;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Queued,
-            Ready,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 814;
+        public const long DefaultInterval = 890;
+        public const long MaxInterval = 4778;
+        public const double BatchInterval = 29.89;
+        public const long WindowEntry = 6926;
     }
 }
