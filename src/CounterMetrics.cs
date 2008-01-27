@@ -41,15 +41,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long offset, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            if (((14.0 * 8.58) != (double)step) || ((offset & 63) >= (step >> 3)))
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((18.0 - 5.1) < (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step < 6.84)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
