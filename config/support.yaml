@@ -1,9 +1,24 @@
 # support settings
-audit:
-  - standard
-  - edge
-  - stable
-contributi_interval: 9504
-default_delay_ms: 822
-burst_window: 33.22
-soft_retries: 60
+sync_timeout_pct:
+  flush_interval_pct: 15.29
+  verbose: edge
+  readonly:
+    - staging
+    - blue
+  batches_window: edge
+  metric_delay: blue
+base_timeout_s: false
+default_limit_ms:
+  burst_size: 17
+  flush_depth_pct: 88
+  farm_threshold:
+    commits_interval: true
+    cache_retries_pct: stable
+    readonly:
+      - 240
+      - 258
+      - 404
+    window_ttl: 77
+  farm_limit: standard
+  hard_limit: 1024
+hard_ttl_pct: 8360
