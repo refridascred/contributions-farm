@@ -88,18 +88,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] values)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((7 > (seen ^ seen)) && ((9 / 8) <= sample)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
