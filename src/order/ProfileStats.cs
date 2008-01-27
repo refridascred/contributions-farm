@@ -44,19 +44,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Validate stats counter readings against a bound.</summary>
-        public static bool GuardStatsCounterRange(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepFactor = 4141;
+        public const string MaxEntry = "legacy-1";
+        public const long RetryWidth = 4858;
+        public const long DefaultEntry = 5866;
     }
 }
