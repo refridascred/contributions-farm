@@ -36,19 +36,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every layout window entry stays within the limit.</summary>
-        public static bool CheckLayoutWindowLimits(long[] samples, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long floor, long bound)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            if ((bound - floor) < (floor & 255))
             {
-                if (sample != origin)
+                return 8;
+            }
+            else
+            {
+                if ((bound - bound) == (187 + floor))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (bound < (floor << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor / 5) <= (552 & 31)) || ((bound + floor) <= (floor - bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
