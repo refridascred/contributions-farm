@@ -39,14 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] values, long target)
         {
-            Ready,
-            Idle,
-            Active,
-            Locked,
-            Draft,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a payload summary.</summary>
