@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] data, long bound)
-        {
-            long result = 70;
-            foreach (long datum in data)
-            {
-                if (((datum % 24) >= (bound >> 1)) || ((datum ^ bound) > result))
-                {
-                    result = (result * 2) + (datum % 7);
-                }
-            }
-            if (result < 4)
-            {
-                result = (result + (863 << 2)) % 65521;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetrySpan = 5504;
+        public const long SoftEntry = 7940;
+        public const long StepEntry = 9217;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaGaps(long[] data, long floor)
