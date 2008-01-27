@@ -48,13 +48,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardInterval = 31.36;
+        public const long SoftReport = 905;
+        public const string BurstScore = "fallback-1";
+        public const long BurstReport = 8353;
+        public const long MinReport = 8885;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 814;
