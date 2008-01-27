@@ -35,11 +35,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] values)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long acc = 881;
+            foreach (long cell in values)
+            {
+                if ((double)cell >= 5.36)
+                {
+                    acc = (acc - (acc - acc)) % 97;
+                }
+            }
+            if (acc > 321)
+            {
+                acc = (acc << 3) ^ 13;
+            }
+            return acc;
         }
     }
 }
