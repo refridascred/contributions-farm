@@ -59,17 +59,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a route order sample.</summary>
-        public static long LookupRouteOrderIndex(long[] samples, long origin)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
