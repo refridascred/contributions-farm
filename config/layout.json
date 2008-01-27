@@ -1,8 +1,14 @@
 {
-  "hard_timeout": 77.35,
-  "compress": 2.62,
-  "schema_limit": [319, 461, 164],
-  "batch_limit": "strict",
-  "hard_limit": "green",
-  "window_window": "latest"
+  "warm_depth_ms": 500,
+  "persist": 57.44,
+  "retry_interval_pct": 8.57,
+  "context_ratio": 100,
+  "checks_size": {
+    "max_limit_s": "legacy",
+    "command_depth": 6125,
+    "flush_timeout": 35.12,
+    "cache_size": 37.69,
+    "readonly": "open"
+  },
+  "burst_size_count": 54
 }
