@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepWidth = 6520;
-        public const long BatchSpan = 4998;
-        public const long MaxOrder = 242;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a session layout pair into a bucket.</summary>
         public static long ClassifySessionLayout(long target, long step)
