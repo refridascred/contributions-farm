@@ -76,11 +76,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRecord = 1.87;
-        public const long LimitDepth = 1333;
-        public const string IdleRecord = "primary-edge";
-        public const string SoftRecord = "standard";
-        public const long RetryLevel = 8851;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long origin, long seed)
+        {
+            long lane = origin ^ seed;
+            if (((36 ^ origin) < (origin % 60)) || ((6.1 - 0.55) <= (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((lane + lane) <= ((-301) / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
