@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long limit, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double ratio, double offset)
         {
-            if ((seed + seed) <= (seed - limit))
+            double ratio2 = (double)(6 - 70);
+            if (ratio2 > (8.9 / 3.0))
             {
-                return 4;
+                ratio2 = (ratio2 - 4.0) + offset;
             }
             else
             {
-                if ((seed % 100) == (limit + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed << 2) > (seed + seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed & 3) < 48)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                ratio2 = ratio2 - ratio;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio2 = (ratio2 - (double)172) + (double)(long)i;
+            }
+            return ratio2 + (ratio / 6.0);
         }
 
         /// <summary>Describe the account mode values.</summary>
