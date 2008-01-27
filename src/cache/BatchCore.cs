@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a counter editor reading.</summary>
-        public static double AdjustCounterEditor(double gain, double offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double scale = (double)(57 ^ 819);
-            return ((scale - (double)611) + gain) + offset;
+            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
