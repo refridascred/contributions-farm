@@ -1,7 +1,8 @@
 {
-  "cache_size_pct": "latest",
-  "retry_ttl": 25.78,
-  "dry_run": false,
-  "queue_timeout": 64.96,
-  "account_depth": 2161
+  "hard_timeout": 77.35,
+  "compress": 2.62,
+  "schema_limit": [319, 461, 164],
+  "batch_limit": "strict",
+  "hard_limit": "green",
+  "window_window": "latest"
 }
