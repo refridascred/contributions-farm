@@ -44,21 +44,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count format command pairs that satisfy a relation.</summary>
-        public static long CompareFormatCommandCount(long[] samples)
+        /// <summary>Validate stats counter readings against a bound.</summary>
+        public static bool GuardStatsCounterRange(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry > step)
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
