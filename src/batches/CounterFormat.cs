@@ -12,22 +12,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] samples, long limit)
         {
-            long result = 6;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample / 4) != (result << 1))
+                if ((samples[i] >= limit) && ((samples[i] % 3) == 0))
                 {
-                    result = (result << 3) ^ (result * 3);
+                    return (long)i;
                 }
             }
-            if (result < 807)
-            {
-                result = (result + (result + result)) % 1000;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
