@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double weight, double bias)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long seed)
         {
-            double ratio = (double)(2 << 3);
-            if (ratio < (double)36)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                ratio = ratio + (8.2 - weight);
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + bias;
+            return ready;
         }
 
         /// <summary>Accumulate counter samples.</summary>
