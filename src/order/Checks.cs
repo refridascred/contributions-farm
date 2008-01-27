@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftWidth = 20.99;
-        public const string HardInterval = "staging-v2";
-        public const string HardLayout = "local-edge";
-        public const long MinCount = 280;
-        public const double BatchLayout = 52.67;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            New,
+            Paused,
+            Ready,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
