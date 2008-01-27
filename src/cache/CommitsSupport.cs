@@ -30,31 +30,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long origin, long target)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double offset)
         {
-            if (!((origin & 127) != (52 + origin)))
+            double weight = ratio;
+            if (weight > offset)
             {
-                return 7;
+                weight = weight - (double)0;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (((origin * 3) <= (origin - origin)) && ((target - target) <= (9 * 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)target >= (5.7 + 0.96)) || ((origin << 1) > (26 + origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                weight = (weight + offset) + (double)(long)i;
             }
+            return weight - (weight / 7.0);
         }
 
         /// <summary>Blend two command measurements.</summary>
