@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] items)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((hits + cell) != (cell - cell))
+                if (datum < seed)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
