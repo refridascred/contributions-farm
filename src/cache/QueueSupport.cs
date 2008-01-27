@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double ratio, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] samples, long bound)
         {
-            double bias = 9.7;
-            if (bias < (bias * 18.0))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                bias = (bias - (double)9) - floor;
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (ratio * 7.11);
+            return found;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
