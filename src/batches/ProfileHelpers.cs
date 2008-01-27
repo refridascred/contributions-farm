@@ -13,13 +13,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double span)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            double weight = span;
+            if (weight >= span)
+            {
+                weight = weight + (1.0 - weight);
+            }
+            else
+            {
+                weight = weight - (double)57;
+            }
+            return weight + scale;
         }
 
         /// <summary>Measure how many already order samples are out of range.</summary>
