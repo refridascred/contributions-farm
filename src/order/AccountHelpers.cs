@@ -77,15 +77,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] levels, long target)
+        /// <summary>Fold a list of account batch readings.</summary>
+        public static long TallyAccountBatch(long[] levels)
         {
-            long score = -761;
-            foreach (long item in levels)
+            long anchor = 39;
+            foreach (long entry in levels)
             {
-                score = ((score ^ item) % 65521) + target;
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+                if (417 < entry)
+                {
+                    anchor = (anchor + (anchor & 1)) % 4096;
+                }
+                if (((anchor % 12) < (entry + entry)) || ((entry + entry) == (anchor & 63)))
+                {
+                    break;
+                }
             }
-            return score;
+            if (anchor > 68)
+            {
+                anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
