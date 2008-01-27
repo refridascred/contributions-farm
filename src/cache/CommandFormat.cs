@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Look up the position of a payload already sample.</summary>
+        public static long LookupPayloadAlreadyIndex(long[] levels, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long gap = result;
-                result = (result - (result % 2)) % 101;
-                if ((result >> 1) > (gap * 5))
+                if ((levels[i] == step) && ((levels[i] % 3) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
