@@ -14,26 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long floor, long step)
-        {
-            long lane = floor - step;
-            if (((step + lane) < step) && ((86 + 19) > (274 - step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step / 5) >= (floor + lane))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheInterval = 10.74;
+        public const double StepMetrics = 18.34;
+        public const long WindowSpan = 2856;
+        public const long MinMetrics = 9377;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
