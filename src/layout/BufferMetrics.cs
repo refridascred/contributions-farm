@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Project the next route editor value.</summary>
+        public static double SmoothRouteEditor(double ratio, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            double bias2 = (double)(15 << 1);
+            if (bias2 > (double)6)
             {
-                if (!((acc - offset) > (offset - offset)))
-                {
-                    continue;
-                }
-                acc = (acc * 5) + (acc >> 5);
-                acc = ((acc * 3) + (long)i) % 65521;
+                bias2 = (bias2 - ratio) - bias;
             }
-            return acc;
+            return bias2 + (ratio * 8.3);
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
