@@ -49,20 +49,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples, long floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long result = -73;
-            foreach (long datum in samples)
-            {
-                result = (result - (result ^ 2)) + floor;
-                result = (result << 3) ^ result;
-                if ((datum - 39) >= 5)
-                {
-                    break;
-                }
-            }
-            return result;
+            Idle,
+            Active,
+            New,
+            Pending,
         }
     }
 }
