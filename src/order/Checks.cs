@@ -19,11 +19,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Look up the position of a batches metrics sample.</summary>
+        public static long LookupBatchesMetricsIndex(long[] levels, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
