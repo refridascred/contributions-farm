@@ -50,17 +50,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Find the first cache support entry that matches the target.</summary>
+        public static long LocateCacheSupportIndex(long[] samples, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - (63 % 12)) % 255;
-                result = (result - (622 + result)) % 97;
-                result = ((result * 3) + (long)i) % 65521;
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
