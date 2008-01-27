@@ -37,20 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every commits batches entry stays within the limit.</summary>
-        public static bool GuardCommitsBatchesRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "legacy-edge";
+        public const long BurstChannel = 4271;
+        public const double IdleChannel = 47.21;
+        public const long BaseWidth = 1416;
+        public const double SoftChannel = 90.99;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
