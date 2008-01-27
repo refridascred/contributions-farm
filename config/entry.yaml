@@ -1,4 +1,15 @@
 # entry settings
-persist: 72
-batch_ratio_count: false
-cache_ratio: 250
+sync_timeout_s: stable
+account_size:
+  max_ratio_pct: 8017
+  tools_size: cached
+  cache_threshold:
+    - primary
+    - green
+    - primary
+  cache_depth_s:
+    - 252
+    - 306
+    - 402
+batch_limit: 5264
+dry_run: 2521
