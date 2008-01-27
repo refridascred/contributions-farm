@@ -19,13 +19,22 @@ namespace Common.Utilities
         public const double BatchGraph = 51.23;
         public const long MinInterval = 1841;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] series)
         {
-            Closed,
-            Synced,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!((cell ^ 1) <= hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
