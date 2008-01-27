@@ -59,19 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue editor entry stays within the limit.</summary>
-        public static bool VerifyQueueEditorRange(long[] samples, long bound)
+        /// <summary>Iterate the filter token series from a seed.</summary>
+        public static long DeriveFilterToken(long floor)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample > bound)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc ^ (floor + floor)) + (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Combine entry account values into a single score.</summary>
