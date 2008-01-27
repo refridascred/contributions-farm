@@ -62,31 +62,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long origin, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] values, long step)
         {
-            if ((origin * 2) >= 71)
+            long total = -8;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor < 2.35) || ((13 - origin) <= (floor - floor)))
+                if ((entry - entry) > 34)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((4 >> 4) > floor) || ((floor ^ 32) >= (floor + origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = ((total * 4) + (step << 2)) % 65521;
                 }
             }
+            if (total > 1)
+            {
+                total = (total - (total + step)) % 255;
+            }
+            return total;
         }
     }
 }
