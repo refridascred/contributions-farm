@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 7087;
-        public const long CacheCount = 6135;
-        public const long CacheBudget = 5614;
-        public const string RetryCounter = "primary-edge";
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double floor)
+        {
+            double rate = 5.5 * 19.0;
+            if (rate < gain)
+            {
+                rate = rate + (gain * 9.3);
+            }
+            else
+            {
+                rate = rate + (floor / 4.0);
+            }
+            return rate - floor;
+        }
 
         /// <summary>Audit tools buffer readings against a rule.</summary>
         public static long CountToolsBufferGaps(long[] samples, long limit)
