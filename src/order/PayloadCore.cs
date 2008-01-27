@@ -36,10 +36,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 87.91;
-        public const string WindowToken = "alpha-1";
-        public const long IdleSpan = 3962;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Rank cache batch input into a small class.</summary>
         public static long RankCacheBatch(long origin, long limit)
