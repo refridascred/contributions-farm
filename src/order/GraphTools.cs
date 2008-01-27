@@ -43,24 +43,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] levels, long origin)
         {
-            long state = 75;
-            foreach (long datum in samples)
+            long score = -445;
+            foreach (long cell in levels)
             {
-                long delta = datum;
-                state = (state * 3) + (delta + datum);
-                if (datum <= state)
+                if ((origin + 45) < ((long)levels.Length % 2))
                 {
-                    state = state - (state ^ datum);
+                    score = score + (cell & 63);
                 }
             }
-            if (state > 497)
+            if (score < 6)
             {
-                state = ((state * 5) + ((-7) * 2)) % 101;
+                score = ((score << 3) ^ ((-133) + score)) % 65521;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
