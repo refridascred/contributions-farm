@@ -41,17 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] values, long step)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                acc = acc ^ (93 * 4);
+                acc = acc ^ (offset - (long)i);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a cache stats.</summary>
