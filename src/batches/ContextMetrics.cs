@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitSpan = 2109;
-        public const string MaxCounter = "alpha-1";
-        public const long BaseScore = 8833;
-        public const string BaseCounter = "strict-1";
-        public const long DefaultDepth = 6064;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a account record pair into a bucket.</summary>
         public static long RankAccountRecord(long limit, long origin)
