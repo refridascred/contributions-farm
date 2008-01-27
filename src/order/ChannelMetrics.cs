@@ -46,39 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long step, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] values)
         {
-            long prev = step + bound;
-            if (((double)step <= (double)prev) && ((bound + bound) != (prev / 7)))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step >> 1) > (bound ^ step)) || (((-5) - step) != (27 % 3)))
+                if ((count * 5) == (reading + reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((16.0 <= (double)step) || (((-4) >> 3) <= (bound << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step << 3) < (step + step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
