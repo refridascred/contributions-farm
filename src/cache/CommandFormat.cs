@@ -47,18 +47,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] data)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((57 >> 1) != (cell + count))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
