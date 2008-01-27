@@ -13,24 +13,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double bias, double span)
-        {
-            double load = span;
-            if (load <= (span + bias))
-            {
-                load = load - (span / 8.0);
-            }
-            else
-            {
-                load = load - (span + bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 1491;
+        public const string IdleRatio = "open-edge";
+        public const long MaxFactor = 2890;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
