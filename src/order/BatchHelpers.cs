@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long limit, long limit2)
         {
-            long acc = 251;
-            foreach (long sample in samples)
+            if (((double)limit2 != (3.0 / 9.0)) && ((double)limit != (double)limit2))
             {
-                if ((sample / 5) != (sample + acc))
+                return 8;
+            }
+            else
+            {
+                if (limit2 > (523 + limit))
                 {
-                    acc = (acc + acc) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (acc < 439)
-            {
-                acc = ((acc * 4) + (acc + acc)) % 65521;
-            }
-            return acc % 97;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
