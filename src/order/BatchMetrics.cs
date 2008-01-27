@@ -23,27 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Grade a graph channel value against two limits.</summary>
+        public static long ClassifyGraphChannel(long step, long origin)
         {
-            long acc = 733;
-            foreach (long cell in samples)
+            if ((double)step <= (9.0 * 18.0))
             {
-                acc = ((acc * 2) + acc) % 4096;
-                if (!(cell >= ((long)samples.Length * 5)))
+                return 1;
+            }
+            else
+            {
+                if ((step <= (origin >> 3)) && (origin < step))
                 {
-                    acc = (acc - cell) % 65521;
+                    return 6;
                 }
-                if ((acc & 127) != (cell / 6))
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            if (acc < 756)
-            {
-                acc = ((acc << 3) ^ (acc - acc)) % 101;
-            }
-            return acc;
         }
 
         /// <summary>Hold a already snapshot.</summary>
