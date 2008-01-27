@@ -1,12 +1,4 @@
 # entry settings
-warm_capacity_pct:
-  - stable
-  - staging
-  - cached
-  - strict
-retry_ratio: latest
-compress:
-  - 478
-  - 137
-  - 186
-audit: 2812
+burst_timeout_count: 5195
+hard_ttl_pct: local
+farm_limit: 1286
