@@ -63,10 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 570;
-        public const string BaseSize = "cached";
-        public const long BatchWidth = 7438;
-        public const double WindowSpan = 14.53;
+        /// <summary>Digest a series of token checks entries.</summary>
+        public static long FoldTokenChecks(long[] values)
+        {
+            long total = 65;
+            foreach (long entry in values)
+            {
+                total = total - (entry >> 5);
+                if ((double)total < 7.0)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
     }
 }
