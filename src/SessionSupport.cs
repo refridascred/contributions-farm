@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next graph session value.</summary>
-        public static double SmoothGraphSession(double ratio, double span)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] items, long bound)
         {
-            double bias = span;
-            if (bias >= (bias + bias))
+            long count = 0;
+            foreach (long value in items)
             {
-                bias = (bias + span) - ratio;
+                if (((value - count) == (value + 210)) && ((double)value < (3.0 + 4.5)))
+                {
+                    count = (count + 3) + bound;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (8.09 / 7.0)) - (double)(long)i;
-            }
-            return bias + 5.15;
+            return count;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
