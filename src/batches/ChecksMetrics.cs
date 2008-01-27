@@ -55,11 +55,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 5758;
-        public const long MinCounter = 6527;
-        public const double DefaultTimeout = 36.02;
-        public const double CacheCounter = 50.89;
-        public const double BurstLevel = 29.67;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            New,
+            Locked,
+            Failed,
+            Active,
+            Dropped,
+        }
     }
 }
