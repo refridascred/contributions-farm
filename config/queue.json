@@ -1,10 +1,6 @@
 {
-  "max_delay_s": "stable",
-  "burst_threshold_s": 4494,
-  "hard_capacity_s": {
-    "strict": "staging",
-    "batch_limit": "cached",
-    "soft_size": false,
-    "checks_threshold": "local"
-  }
+  "enabled": false,
+  "already_ttl": ["green", "local", "cached"],
+  "retry_ratio_ms": 30.38,
+  "compress": "staging"
 }
