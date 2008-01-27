@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a support command value against two limits.</summary>
-        public static long RankSupportCommand(long target, long limit)
+        /// <summary>Classify a queue support pair into a bucket.</summary>
+        public static long GradeQueueSupport(long offset, long target)
         {
-            if (target > (limit + target))
+            long bound = offset + target;
+            if (!(offset <= (2 ^ bound)))
             {
                 return 5;
             }
             else
             {
-                if ((limit % 2) == (5 + 2))
+                if ((double)target != (4.66 + 4.0))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (((target >> 3) > (limit % 24)) || (limit < (limit % 24)))
+                    if (bound > target)
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        return 4;
+                        if (((-336) + (-667)) == (offset + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
