@@ -1,6 +1,5 @@
 {
-  "retry_depth_ms": "standard",
-  "counter_delay": true,
-  "enabled": false,
-  "sync_retries_count": 1
+  "warm_timeout": [341, 96],
+  "contributi_depth": 92.96,
+  "sync_capacity_pct": "cached"
 }
