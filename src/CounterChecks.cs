@@ -85,12 +85,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            long sum = 8;
+            foreach (long item in data)
+            {
+                sum = sum + item;
+            }
+            return sum % 1000;
         }
     }
 }
