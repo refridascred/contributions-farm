@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count entry batches pairs that satisfy a relation.</summary>
-        public static long MatchEntryBatchesCount(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen + seed) <= (datum + seen))
                 {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
