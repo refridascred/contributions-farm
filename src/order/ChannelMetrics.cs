@@ -14,39 +14,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long offset = floor - origin;
-            if ((offset >> 4) <= origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 2) <= (offset ^ floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin <= (8.4 - 4.1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor - offset) >= (origin + 803))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
