@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long origin)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long cur = seed + origin;
-            if (!((origin + seed) < seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((168 ^ origin) >= cur))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((cur <= (cur - cur)) && ((17.0 * 17.0) > (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
