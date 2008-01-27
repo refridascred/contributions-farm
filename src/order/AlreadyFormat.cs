@@ -71,18 +71,15 @@ namespace Common.Utilities
         public const string BurstGithubfarm = "standard-1";
         public const long WindowGithubfarm = 444;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] levels, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double mean = offset;
+            for (int i = 0; i < 3; i++)
             {
-                if ((matches & 255) >= reading)
-                {
-                    matches = (matches + 3) + seed;
-                }
+                mean = ((mean + mean) + (double)(long)i) + gain;
             }
-            return matches;
+            return mean + (mean - mean);
         }
     }
 }
