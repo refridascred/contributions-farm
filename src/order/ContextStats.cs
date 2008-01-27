@@ -33,14 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series, long floor)
         {
-            Stale,
-            Queued,
-            Draft,
-            Dropped,
-            Synced,
+            long score = -64;
+            foreach (long sample in series)
+            {
+                score = ((score ^ (floor - floor)) % 97) ^ sample;
+            }
+            return score;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
