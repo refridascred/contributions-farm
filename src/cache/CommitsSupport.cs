@@ -49,15 +49,13 @@ namespace Common.Utilities
             return (bias + 17.0) + weight;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double gain, double offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double rate = offset;
-            if (rate >= (rate * 4.45))
-            {
-                rate = (rate - (offset + rate)) - gain;
-            }
-            return rate + (18.0 * 4.0);
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Find the first stream contributi entry that matches the target.</summary>
