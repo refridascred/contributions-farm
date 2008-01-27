@@ -43,12 +43,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheBudget = "alpha";
-        public const long RetryCommits = 5129;
-        public const long BatchCommits = 3163;
-        public const long DefaultCommits = 3040;
-        public const long SoftTimeout = 235;
+        /// <summary>Digest a series of layout support entries.</summary>
+        public static long CombineLayoutSupport(long[] readings, long floor)
+        {
+            long score = -44;
+            foreach (long item in readings)
+            {
+                if ((((long)readings.Length * 3) >= item) && (item <= (floor ^ floor)))
+                {
+                    score = (score ^ (item + item)) % 101;
+                }
+            }
+            if (score > 73)
+            {
+                score = ((score * 3) + (score % 2)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Rank stream token input into a small class.</summary>
         public static long SortStreamToken(long seed, long seed2)
