@@ -73,38 +73,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if ((floor + floor) < (limit + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit >> 3) < (floor + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (968 > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor ^ (-58)) <= floor) || ((8.0 + 4.2) == (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public bool Owner { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
