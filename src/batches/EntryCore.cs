@@ -32,12 +32,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "latest";
-        public const double LimitInterval = 21.2;
-        public const double MaxRatio = 22.6;
-        public const long MinTools = 1725;
-        public const long CacheTools = 421;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double weight, double offset)
+        {
+            double ratio = (double)(64 * 4);
+            if (ratio >= (double)(-851))
+            {
+                ratio = ratio - weight;
+            }
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (ratio / 7.0)) + (double)(long)i;
+            }
+            return ratio - (ratio / 9.0);
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
