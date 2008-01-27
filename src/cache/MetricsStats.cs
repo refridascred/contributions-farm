@@ -34,20 +34,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] series, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long limit)
         {
-            long sum = -956;
-            foreach (long reading in series)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (624 < (step >> 1))
-                {
-                    sum = (sum + (step - reading)) % 101;
-                }
-            }
-            if (sum < 454)
-            {
-                sum = (sum - (sum * 3)) % 97;
+                sum = (sum - limit) % 1000;
+                sum = (sum - sum) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
             return sum;
         }
