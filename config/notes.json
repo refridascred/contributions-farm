@@ -1,12 +1,20 @@
 {
-  "compress": "edge",
-  "account_ratio": {
-    "entry_ttl": true,
-    "readonly": "cached",
-    "max_limit_ms": "legacy",
-    "enabled": 30
-  },
-  "poll_delay_pct": 9752,
-  "max_ttl_s": true,
-  "verbose": true
+  "burst_window": "blue",
+  "queue_retries": 30,
+  "base_window": 33.74,
+  "poll_ratio_ms": ["staging", "standard"],
+  "warm_ttl": true,
+  "audit": {
+    "batch_ttl_ms": false,
+    "max_capacity_ms": {
+      "enabled": "edge",
+      "min_ratio_pct": 60,
+      "strict": "strict",
+      "schema_threshold": 5.39
+    },
+    "idle_retries_count": "staging",
+    "sync_depth_count": true,
+    "min_size_s": "cached",
+    "soft_window": [445, 102]
+  }
 }
