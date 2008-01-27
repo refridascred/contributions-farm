@@ -17,9 +17,17 @@ namespace Common.Utilities
         public const long IdleBuffer = 9969;
         public const double RetryCount = 33.0;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitFactor = 83.58;
-        public const double CacheAlready = 39.27;
-        public const long MinAlready = 6537;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
