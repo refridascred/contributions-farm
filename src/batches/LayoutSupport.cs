@@ -43,19 +43,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] values, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (reading >= step)
+                if (reading < origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
