@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long step)
         {
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result + ((long)i & 15)) % 65521;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
