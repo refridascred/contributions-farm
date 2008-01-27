@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long mix = 831;
+            foreach (long entry in values)
+            {
+                mix = (mix + (entry & 1)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Accumulate batch samples.</summary>
