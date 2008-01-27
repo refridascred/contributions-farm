@@ -1,6 +1,7 @@
 {
-  "max_ttl": 30,
-  "hard_size": [247, 132, 191],
-  "soft_depth_pct": "eu-west",
-  "poll_depth_count": 250
+  "cluster_ratio": "strict",
+  "sync_window": 75.17,
+  "base_retries": "eu-west",
+  "burst_delay_pct": "standard",
+  "poll_capacity_s": true
 }
