@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] data)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            long mark = 89;
+            foreach (long cell in data)
+            {
+                mark = mark ^ ((long)data.Length - mark);
+                if (3 < (mark % 7))
+                {
+                    mark = mark - (mark % 7);
+                    mark = (mark + cell) % 4096;
+                }
+                if ((cell + mark) <= mark)
+                {
+                    mark = (mark + (cell & 7)) % 101;
+                }
+                else
+                {
+                    mark = (mark - (long)data.Length) % 4096;
+                }
+            }
+            if (mark > (-39))
+            {
+                mark = mark - (mark ^ (long)data.Length);
+            }
+            return mark;
         }
 
         /// <summary>Check that every checks stream entry stays within the limit.</summary>
