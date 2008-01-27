@@ -40,13 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] samples, long bound)
         {
-            Retry,
-            Pending,
-            Done,
-            Idle,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the account state values.</summary>
