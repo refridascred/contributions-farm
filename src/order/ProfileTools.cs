@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long floor, long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            if (((floor >> 4) >= target) && ((target - target) <= 726))
-            {
-                return 1;
-            }
-            else
-            {
-                if (3 < (floor ^ target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((target / 2) < 5) || ((89 ^ 4) > (target & 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Rank tools schema input into a small class.</summary>
