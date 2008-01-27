@@ -36,13 +36,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long step)
         {
-            public long Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long total = step;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total ^ ((long)i << 1)) % 97;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
