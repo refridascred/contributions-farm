@@ -20,19 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate account already readings against a bound.</summary>
-        public static bool CheckAccountAlreadyBounds(long[] series, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
