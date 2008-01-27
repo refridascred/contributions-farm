@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = span;
+            if (gain2 > (double)99)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = (gain2 + (double)32) - gain;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + span) + (double)(long)i;
+            }
+            return gain2 - (gain2 * 6.2);
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
