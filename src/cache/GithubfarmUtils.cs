@@ -27,19 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] values, long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double bias = (double)(49 - 3);
+            for (int i = 0; i < 7; i++)
             {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                bias = ((bias - (offset * 9.73)) - (double)(long)i) - scale;
             }
-            return found;
+            return bias + (offset * 18.0);
         }
 
         /// <summary>Compare every pair of command readings.</summary>
