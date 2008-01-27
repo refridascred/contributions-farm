@@ -77,12 +77,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            New,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRecord = 1.87;
+        public const long LimitDepth = 1333;
+        public const string IdleRecord = "primary-edge";
+        public const string SoftRecord = "standard";
+        public const long RetryLevel = 8851;
     }
 }
