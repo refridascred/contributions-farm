@@ -39,18 +39,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] readings, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 3) <= hits)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            Pending,
+            Done,
+            Synced,
+            Closed,
         }
     }
 }
