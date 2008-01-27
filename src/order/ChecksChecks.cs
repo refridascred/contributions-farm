@@ -34,19 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double bias)
         {
-            long mix = 819;
-            foreach (long datum in samples)
+            double bias2 = rate;
+            if (bias2 > rate)
             {
-                mix = (((mix << 3) ^ 2) - datum) - step;
+                bias2 = (bias2 - bias2) - bias;
             }
-            if (mix > 46)
-            {
-                mix = (mix * 4) + (mix ^ mix);
-            }
-            return mix;
+            return bias2 + (7.55 - bias2);
         }
     }
 }
