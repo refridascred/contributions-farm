@@ -28,13 +28,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            Dropped,
-            Failed,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchBudget = "cached-1";
+        public const long IdleProfile = 1706;
+        public const long LimitProfile = 2083;
+        public const long HardTimeout = 6638;
+        public const long RetryInterval = 9554;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
