@@ -27,11 +27,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 2412;
-        public const string RetryRecord = "fallback-edge";
-        public const long DefaultRecord = 5968;
-        public const double StepWidth = 4.46;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
