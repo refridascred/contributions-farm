@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] samples, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long acc = 44;
+            foreach (long item in items)
             {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc ^ (acc / 4)) % 1000) - item;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the window phase values.</summary>
