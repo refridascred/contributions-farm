@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long IdleSpan = 4357;
         public const long BurstBatches = 7118;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] values, long offset)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long sum = 90;
-            foreach (long cell in values)
-            {
-                sum = (sum + (cell << 3)) + offset;
-            }
-            return sum;
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
