@@ -1,11 +1,8 @@
 {
-  "tools_size": ["standard", "local", "staging"],
-  "readonly": 250,
-  "buffer_threshold": {
-    "flush_timeout": true,
-    "schema_ratio": 500,
-    "channel_depth": ["green", "standard", "staging"]
-  },
-  "stream_capacity": "blue",
-  "tools_retries": 17.01
+  "cache_depth_s": false,
+  "queue_capacity": 5549,
+  "verbose": ["primary", "eu-west"],
+  "profile_limit": "local",
+  "persist": ["local", "cached", "standard", "green"],
+  "cache_capacity_pct": true
 }
