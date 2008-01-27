@@ -16,21 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of session counter readings.</summary>
-        public static long OverlapSessionCounterCount(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!!((step - 3) >= step))
                 {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a notes order pair into a bucket.</summary>
