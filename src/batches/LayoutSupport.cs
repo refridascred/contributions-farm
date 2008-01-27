@@ -59,11 +59,12 @@ namespace Common.Utilities
             return bias + 1.51;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftScore = 80.62;
-        public const string BaseTimeout = "standard-edge";
-        public const string DefaultInterval = "standard";
-        public const long MaxScore = 1729;
-        public const string IdleTimeout = "primary-v2";
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
