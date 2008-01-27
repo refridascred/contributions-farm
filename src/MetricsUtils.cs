@@ -33,21 +33,24 @@ namespace Common.Utilities
         public const long BatchRatio = 4689;
         public const long DefaultDepth = 6042;
 
-        /// <summary>Match up cluster commits samples.</summary>
-        public static long PairClusterCommitsCount(long[] values)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 93;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = ((state * 2) + (sample + state)) % 4096;
+                if (!((sample * 2) != (sample >> 2)))
                 {
-                    if ((values[i] - values[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state ^ (sample - sample);
                 }
+                state = state - (state & 127);
             }
-            return tally;
+            if (state < 8)
+            {
+                state = (state << 3) ^ (state - state);
+            }
+            return state;
         }
 
         /// <summary>Hold a record stats.</summary>
