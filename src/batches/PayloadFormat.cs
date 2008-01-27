@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings, long limit)
+        /// <summary>Check that every cache account entry stays within the limit.</summary>
+        public static bool ValidateCacheAccountLimits(long[] levels, long target)
         {
-            long score = 7;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (score >= (limit + score))
+                if (entry < target)
                 {
-                    score = (((score * 5) + 9) % 4096) + reading;
-                }
-                else
-                {
-                    score = ((score * 4) + (limit + limit)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (score < 74)
-            {
-                score = (score * 5) + limit;
-            }
-            return score % 1000;
+            return ok;
         }
 
         /// <summary>Accumulate tools command samples.</summary>
