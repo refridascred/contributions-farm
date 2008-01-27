@@ -1,7 +1,5 @@
 {
-  "verbose": true,
-  "soft_timeout": 10,
-  "batch_retries_ms": 68,
-  "batch_ratio": true,
-  "base_ratio": true
+  "buffer_limit": "eu-west",
+  "readonly": 93.22,
+  "burst_ttl": true
 }
