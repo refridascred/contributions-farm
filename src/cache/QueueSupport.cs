@@ -33,32 +33,16 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Rank stream queue input into a small class.</summary>
-        public static long ClassifyStreamQueue(long floor, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long bound)
         {
-            long lane = floor - seed;
-            if (seed <= (lane >> 5))
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                score = (score << 2) ^ bound;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)floor != (6.9 - 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor != (9.0 / 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
