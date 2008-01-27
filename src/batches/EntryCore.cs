@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] items, long offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long sum = 3;
-            foreach (long item in items)
-            {
-                sum = (sum - (offset ^ (long)items.Length)) % 255;
-                if ((double)item < (10.0 / 7.0))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Dropped,
+            Draft,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Roll a order account counter forward.</summary>
