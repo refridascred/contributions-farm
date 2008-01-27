@@ -61,19 +61,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double ratio, double bias)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data, long step)
         {
-            double load = ratio;
-            if (load > (double)(-3))
+            long acc = 51;
+            foreach (long cell in data)
             {
-                load = (load + ratio) - bias;
+                if (55 < (step >> 5))
+                {
+                    acc = ((acc << 3) ^ (step * 3)) ^ cell;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (6.21 * 15.0);
+            return acc;
         }
 
         /// <summary>Accumulate payload samples.</summary>
