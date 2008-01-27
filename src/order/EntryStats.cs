@@ -30,17 +30,26 @@ namespace Common.Utilities
             return rate - (floor + gain);
         }
 
-        /// <summary>Look up the position of a payload batch sample.</summary>
-        public static long SeekPayloadBatchIndex(long[] levels, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 329;
+            foreach (long sample in data)
             {
-                if (levels[i] >= floor)
+                if (5.2 < (double)sum)
                 {
-                    return (long)i;
+                    sum = (sum + (sample - sum)) % 1000;
+                }
+                if ((sample << 1) == (origin + sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (sum < 3)
+            {
+                sum = sum - (7 * 5);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
