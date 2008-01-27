@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
