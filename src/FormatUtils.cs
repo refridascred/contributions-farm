@@ -56,14 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Failed,
-            Closed,
-            Retry,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryTimeout = 39;
+        public const string StepSize = "strict-1";
+        public const long CacheReport = 8324;
+        public const long RetryScore = 9787;
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
