@@ -14,11 +14,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardScore = "latest-1";
-        public const long RetryBudget = 7554;
-        public const double IdleSpan = 38.97;
-        public const double CacheInterval = 96.11;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long floor, long step)
+        {
+            long lane = floor - step;
+            if (((step + lane) < step) && ((86 + 19) > (274 - step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step / 5) >= (floor + lane))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
