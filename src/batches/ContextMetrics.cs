@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a stats order value against two limits.</summary>
-        public static long BucketStatsOrder(long seed, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            if ((floor >= (seed << 2)) && ((floor << 3) >= (-7)))
+            long acc = 282;
+            foreach (long sample in items)
             {
-                return 0;
+                acc = (acc * 5) + (sample + 2);
             }
-            else
+            if (acc > 28)
             {
-                if ((floor >> 1) != (floor - floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                acc = (acc + (acc * 4)) % 97;
             }
+            return acc;
         }
 
         /// <summary>Describe the counter status values.</summary>
