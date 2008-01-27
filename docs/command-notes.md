@@ -1,10 +1,12 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-When a cluster fails, the token handler retries a few times before giving up.
+Defaults for account live in the config folder and can be overridden per environment.
+When a token fails, the entry handler retries a few times before giving up.
+Run the schema check before changing any token limits.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Review format limits each release
-- Log every cluster change
+- Validate tools input early
+- Review queue limits each release
+- Log every githubfarm change
+- Prefer farm defaults
