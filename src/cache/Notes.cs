@@ -45,32 +45,13 @@ namespace Common.Utilities
             return scale - 4.73;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long offset, long step)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long bound = offset + step;
-            if (!(6.93 > (8.0 + 2.86)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound ^ step) >= (648 - step)) && (offset <= (630 - step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.33 * 10.0) == (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
