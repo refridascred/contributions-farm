@@ -26,10 +26,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 69.65;
-        public const double StepGithubfarm = 30.6;
-        public const string LimitGithubfarm = "stable-edge";
-        public const long CacheGithubfarm = 330;
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
