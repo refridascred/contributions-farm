@@ -43,18 +43,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seen <= (value << 3))
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
