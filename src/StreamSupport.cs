@@ -20,18 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 66.64;
+        public const double SoftDepth = 60.43;
+        public const long RetryRatio = 9831;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountOutliers(long[] data, long limit)
