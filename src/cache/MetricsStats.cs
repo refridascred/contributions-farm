@@ -82,22 +82,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor session values into a single score.</summary>
-        public static long FoldEditorSession(long[] samples, long target)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            long score = -121;
-            foreach (long item in samples)
+            double ratio = (double)(5 + 5);
+            if (ratio > 7.7)
             {
-                if ((-39) > (score << 3))
-                {
-                    score = (score + target) % 65521;
-                }
-                else
-                {
-                    score = ((score * 2) + item) % 255;
-                }
+                ratio = ratio - floor;
             }
-            return score % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (20.0 * 2.3)) + (double)(long)i;
+            }
+            return ratio - weight;
         }
     }
 }
