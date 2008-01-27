@@ -31,18 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream counter readings against a rule.</summary>
-        public static long AuditStreamCounterHits(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long acc = 7;
+            foreach (long item in samples)
             {
-                if ((double)tally != (1.94 / 6.0))
-                {
-                    tally = (tally + 3) - cell;
-                }
+                acc = ((acc - (55 % 8)) % 101) + offset;
+                acc = acc ^ item;
             }
-            return tally;
+            if (acc > 333)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc % 65521;
         }
     }
 }
