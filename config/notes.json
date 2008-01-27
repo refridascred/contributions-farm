@@ -1,8 +1,17 @@
 {
-  "account_ttl": 42,
-  "soft_interval_count": ["eu-west", "primary", "open", "standard"],
-  "sync_window": true,
-  "max_size": "open",
-  "flush_depth_count": 87.67,
-  "sync_limit_s": ["strict", "green", "primary", "strict"]
+  "readonly": 26.07,
+  "soft_delay_pct": "stable",
+  "sync_ttl_count": {
+    "hard_retries_s": {
+      "batch_limit_s": 5031,
+      "strict": 100,
+      "hard_delay_pct": 3
+    },
+    "hard_ttl": "open",
+    "readonly": "green",
+    "burst_capacity_count": 60,
+    "soft_limit_ms": 39
+  },
+  "warm_size_ms": 68.07,
+  "idle_timeout_s": "cached"
 }
