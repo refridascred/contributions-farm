@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((((item ^ hits) > (item << 2)) || ((item ^ (long)values.Length) < item)) || (((798 - item) == (item ^ item)) || ((item + item) <= (hits & 1))))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
