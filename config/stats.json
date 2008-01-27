@@ -1,6 +1,19 @@
 {
-  "readonly": false,
-  "persist": 500,
-  "burst_size": 60,
-  "stats_delay": "primary"
+  "dry_run": {
+    "cache_timeout_pct": 10.7,
+    "burst_ratio_count": {
+      "verbose": "eu-west",
+      "token_timeout": 56.65,
+      "retry_depth": 87.67
+    },
+    "max_depth_count": "eu-west",
+    "metrics_ratio": true
+  },
+  "cache_threshold": {
+    "flush_retries_count": "strict",
+    "sync_limit_s": [283, 229],
+    "retry_limit_s": 9.64,
+    "idle_delay": [113, 380, 404, 133]
+  },
+  "poll_interval_ms": 100
 }
