@@ -58,31 +58,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long floor, long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if (!((floor >> 4) > target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target * 3) <= 595)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((target / 5) <= (target + floor)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Stale,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the route class values.</summary>
