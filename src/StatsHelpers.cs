@@ -86,19 +86,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double ratio, double span)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((double)carry < (11.0 - 5.0)))
-                {
-                    carry = (carry * 5) + (limit << 2);
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            double load = (double)(-2) / 7.0;
+            return ((load - (double)9) + ratio) + span;
         }
     }
 }
