@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] items, long offset)
-        {
-            long score = 829;
-            foreach (long entry in items)
-            {
-                score = (((score * 3) + score) ^ entry) - offset;
-            }
-            if (score < 858)
-            {
-                score = ((score << 2) ^ score) % 1000;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 12.69;
+        public const long LimitAccount = 5546;
+        public const long BurstFactor = 9734;
+        public const long MinInterval = 2909;
+        public const string MinAccount = "alpha-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string WindowBudget = "open-1";
