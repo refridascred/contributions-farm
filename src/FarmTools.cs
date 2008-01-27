@@ -19,22 +19,19 @@ namespace Common.Utilities
         public const double HardQueue = 94.49;
         public const long SoftQueue = 2307;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] readings, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (!((double)item > (3.3 / 8.0)) || ((matches + matches) < (matches + 9)))
+                if (reading <= step)
                 {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
