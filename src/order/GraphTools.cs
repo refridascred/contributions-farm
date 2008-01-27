@@ -23,31 +23,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long origin)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if ((4.4 + 7.0) < (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)limit < (3.12 * 0.39)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin >> 2) <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
