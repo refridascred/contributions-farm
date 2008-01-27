@@ -59,12 +59,18 @@ namespace Common.Utilities
             return bias + 1.51;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] items, long offset)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)offset > (2.92 + 0.3))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
