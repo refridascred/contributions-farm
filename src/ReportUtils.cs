@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Find the first editor githubfarm entry that matches the target.</summary>
+        public static long LocateEditorGithubfarmIndex(long[] levels, long seed)
         {
-            long result = 43;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result % 3) != (result % 7))
+                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
                 {
-                    result = ((result * 4) + (item >> 2)) % 97;
-                }
-                else
-                {
-                    result = (result + item) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count githubfarm metrics pairs that satisfy a relation.</summary>
