@@ -61,25 +61,23 @@ namespace Common.Utilities
             return scale - (7.2 - gain);
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long floor, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] samples, long offset)
         {
-            long edge = floor - limit;
-            if (574 >= (edge + limit))
+            long sum = 685;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((edge >> 2) == (edge * 2)))
+                bool ready = (offset - sum) == (5 + 5);
+                if (!(((double)sum == (5.8 + 9.91)) && ready))
                 {
-                    return 5;
+                    ready = (value / 7) < (82 % 12);
                 }
-                else
+                if (((value >> 3) >= (sum + 230)) || ((75 ^ value) >= (offset << 3)))
                 {
-                    return 7;
+                    sum = ((sum << 3) ^ value) % 4096;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Combine cache editor values into a single score.</summary>
