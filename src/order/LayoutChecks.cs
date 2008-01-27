@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter commits entry stays within the limit.</summary>
-        public static bool ValidateCounterCommitsLimits(long[] items, long offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (item >= offset)
+                if (((double)(long)samples.Length == (19.0 * 6.3)) && ((count - datum) <= (count + count)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
