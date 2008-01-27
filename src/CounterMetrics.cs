@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long IdleTools = 6394;
         public const long RetryTools = 637;
 
-        /// <summary>Validate cluster filter readings against a bound.</summary>
-        public static bool VerifyClusterFilterRange(long[] series, long bound)
+        /// <summary>Check that every batches entry entry stays within the limit.</summary>
+        public static bool GuardBatchesEntryLimits(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long cell in readings)
             {
                 if (cell >= bound)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
