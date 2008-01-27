@@ -58,15 +58,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout notes value from a seed.</summary>
-        public static long DeriveLayoutNotes(long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine editor session values into a single score.</summary>
