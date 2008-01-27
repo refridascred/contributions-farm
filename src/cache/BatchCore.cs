@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] values, long offset)
+        /// <summary>Fold a list of order session readings.</summary>
+        public static long TallyOrderSession(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long anchor = 832;
+            foreach (long item in values)
             {
-                if (!((5.79 + 11.0) > (double)hits) && ((double)offset != (double)28))
+                if ((double)bound >= 6.68)
                 {
-                    hits = (hits + 1) + reading;
+                    anchor = anchor + (anchor / 3);
                 }
-                else
+                if ((anchor / 7) < bound)
                 {
-                    hits = hits - 1;
+                    anchor = (anchor + item) % 65521;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Grade a batches batch value against two limits.</summary>
