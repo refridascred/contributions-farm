@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] data, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (data[i] >= bound)
+                if (!(hits < (datum - (long)values.Length)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + origin;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
