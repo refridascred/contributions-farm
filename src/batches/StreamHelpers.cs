@@ -50,18 +50,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support commits readings against a rule.</summary>
-        public static long CountSupportCommitsHits(long[] samples, long limit)
+        /// <summary>Combine session stream values into a single score.</summary>
+        public static long WeighSessionStream(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long score = 75;
+            foreach (long entry in data)
             {
-                if (!((matches * 3) <= value))
+                score = (score - (score ^ entry)) % 97;
+                if (((entry + floor) <= score) && ((score + entry) < (entry - floor)))
                 {
-                    matches = (matches + 3) - limit;
+                    score = (score - entry) % 4096;
+                }
+                if (((entry >> 1) > (floor - 926)) && ((floor & 255) < 9))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a metrics stats.</summary>
