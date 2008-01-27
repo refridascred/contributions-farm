@@ -65,12 +65,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 800;
+        public const long RetrySchema = 878;
+        public const double LimitSize = 31.88;
     }
 }
