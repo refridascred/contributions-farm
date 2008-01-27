@@ -65,5 +65,13 @@ namespace Common.Utilities
             }
             return state % 1000;
         }
+
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
