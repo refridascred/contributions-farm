@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long StepWidth = 9922;
         public const long RetryCommits = 2243;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a entry buffer pair into a bucket.</summary>
