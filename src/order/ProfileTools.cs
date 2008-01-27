@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] series, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((value < (value * 5)) && (((4 / 2) < ((-9) - floor)) && ((532 ^ matches) < (floor % 5))))
+                if ((((long)data.Length ^ (-37)) <= (count + item)) || ((bound % 24) > (bound + count)))
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a notes stats.</summary>
