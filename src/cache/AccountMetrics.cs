@@ -75,18 +75,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm queue readings against a rule.</summary>
-        public static long CountGithubfarmQueueGaps(long[] samples)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((2.08 * 20.0) == (double)seen)
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
