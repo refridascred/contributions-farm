@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] samples, long origin)
+        /// <summary>Count the metric notes entries that pass the check.</summary>
+        public static long TallyMetricNotesMatches(long[] data)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (sample >= origin)
+                if (((hits - cell) <= hits) || ((double)cell <= (3.25 * 8.23)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
