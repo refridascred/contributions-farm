@@ -20,18 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] values)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mix = 2;
+            foreach (long entry in values)
             {
-                if (164 >= count)
-                {
-                    count = (count + 3) + sample;
-                }
+                mix = (((mix * 2) + 786) % 97) - entry;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of batches editor readings.</summary>
