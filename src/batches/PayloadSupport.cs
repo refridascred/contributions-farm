@@ -47,13 +47,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public double Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
