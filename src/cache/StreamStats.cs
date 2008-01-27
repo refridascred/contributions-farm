@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((4 - 87) <= (cell + cell)) || !((cell >> 5) <= 859))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 9337;
+        public const long LimitTimeout = 7061;
+        public const string WindowEntry = "latest";
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadHits(long[] samples, long target)
