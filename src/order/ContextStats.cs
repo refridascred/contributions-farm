@@ -30,24 +30,14 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long step, long seed)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            if (step > (seed / 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed - seed) < (seed >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Dropped,
+            Stale,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
