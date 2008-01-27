@@ -27,22 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] values)
+        /// <summary>Check that every support record entry stays within the limit.</summary>
+        public static bool GuardSupportRecordBounds(long[] items, long target)
         {
-            long acc = 881;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((double)cell >= 5.36)
+                if (entry >= target)
                 {
-                    acc = (acc - (acc - acc)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 321)
-            {
-                acc = (acc << 3) ^ 13;
-            }
-            return acc;
+            return found;
         }
     }
 }
