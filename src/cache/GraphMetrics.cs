@@ -44,21 +44,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 979;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc + (limit >> 5)) % 97;
+                acc = (acc - (cell + 24)) % 101;
+                acc = (acc - (acc % 60)) % 101;
             }
-            return tally;
+            return acc % 65521;
         }
     }
 }
