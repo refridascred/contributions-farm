@@ -29,19 +29,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] items, long floor)
         {
-            long carry = 13;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - 393) + value;
+                if ((items[i] <= floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > (-600))
-            {
-                carry = (carry ^ (carry + carry)) % 65521;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
