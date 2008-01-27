@@ -23,20 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxScore = 4520;
+        public const long StepCount = 2215;
+        public const long MaxStats = 7760;
+        public const string CacheStats = "primary-v2";
+        public const string SoftStats = "open-edge";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextGaps(long[] levels, long step)
