@@ -23,17 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] samples, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
+                if ((tally << 3) == (value ^ (-83)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine token record values into a single score.</summary>
