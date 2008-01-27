@@ -35,31 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long bound, long bound2)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            if (!(bound2 > (bound2 - bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(bound < (bound2 << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound << 2) > bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
