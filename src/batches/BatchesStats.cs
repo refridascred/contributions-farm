@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long floor, long floor2)
         {
-            Retry,
-            Paused,
-            Idle,
+            long delta = floor ^ floor2;
+            if (73 >= delta)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor - floor2) < (delta + floor2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)floor == (8.4 * 17.0)) && (29 <= (floor2 * 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
