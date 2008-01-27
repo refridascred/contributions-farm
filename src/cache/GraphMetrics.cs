@@ -44,13 +44,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Grade a contributi command value against two limits.</summary>
+        public static long ClassifyContributiCommand(long target, long floor)
         {
-            Draft,
-            Retry,
-            Synced,
-            Stale,
+            if ((260 % 97) > (floor + target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target + 9) > (target % 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target / 3) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
