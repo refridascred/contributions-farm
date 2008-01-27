@@ -1,20 +1,8 @@
 {
-  "sync_limit_pct": "staging",
-  "batch_depth_s": "cached",
-  "warm_capacity_pct": {
-    "hard_interval": "primary",
-    "account_size": 82.6,
-    "poll_interval_ms": {
-      "batch_timeout": 80.26,
-      "audit": "standard",
-      "soft_ttl": 16,
-      "compress": false
-    },
-    "batch_timeout_ms": 51,
-    "flush_size_count": 8442,
-    "sync_capacity": ["primary", "green", "stable"]
-  },
-  "compress": 30,
-  "report_size": [351, 152, 379, 97],
-  "poll_capacity": true
+  "min_interval": 36,
+  "cache_retries_count": 37.35,
+  "warm_size_ms": false,
+  "verbose": true,
+  "readonly": 23.39,
+  "githubfarm_timeout": true
 }
