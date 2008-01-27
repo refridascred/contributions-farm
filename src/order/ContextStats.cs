@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long carry = 77;
-            foreach (long value in values)
-            {
-                carry = (carry - 3) % 4096;
-                if (!((double)(long)values.Length != (8.8 - 5.0)))
-                {
-                    carry = carry - ((long)values.Length % 97);
-                    break;
-                }
-                if (((carry ^ value) > (value * 5)) || ((carry * 5) >= (carry + value)))
-                {
-                    carry = (carry - (value & 3)) % 1000;
-                }
-                if (value >= (value % 100))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
