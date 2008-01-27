@@ -74,19 +74,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next token context value.</summary>
-        public static double ProjectTokenContext(double ratio, double span)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double ratio2 = ratio - span;
-            if (ratio2 <= (ratio2 / 8.0))
-            {
-                ratio2 = ratio2 + (double)637;
-            }
-            else
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            return ratio2 + (double)(-623);
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
