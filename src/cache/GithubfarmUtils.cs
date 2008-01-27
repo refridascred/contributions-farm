@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] values, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] data, long origin)
         {
-            long carry = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (((33 + cell) >= (cell - floor)) || ((1.2 + 8.73) == (double)cell))
+                if (reading < origin)
                 {
-                    carry = ((carry << 3) ^ (floor ^ carry)) % 4096;
-                }
-                if (!((floor - carry) < (8 & 255)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (carry < (-4))
-            {
-                carry = carry + floor;
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Project the next commits value.</summary>
