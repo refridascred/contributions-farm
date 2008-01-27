@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] series, long step)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count < (62 / 4)) && ((5.56 + 0.54) == (double)step))
-                {
-                    count = (count + 3) - value;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
