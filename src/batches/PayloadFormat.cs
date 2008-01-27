@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] levels, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 6;
+            foreach (long entry in series)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                if ((673 + 54) < (entry / 9))
                 {
-                    return (long)i;
+                    state = state + state;
+                }
+                if ((state * 5) <= (entry + state))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the commits stream series from a seed.</summary>
