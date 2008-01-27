@@ -34,17 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] values, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (span + span) / 9.0;
+            if (load >= gain)
             {
-                if ((values[i] == target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + (load * 1.4);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (gain / 8.0)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Project the next record value.</summary>
