@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] items, long offset)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long sum = 3;
+            foreach (long item in items)
+            {
+                sum = (sum - (offset ^ (long)items.Length)) % 255;
+                if ((double)item < (10.0 / 7.0))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Validate account already readings against a bound.</summary>
