@@ -23,31 +23,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long seed)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            if (31 < (floor + floor))
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                total = (total ^ (-9)) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((seed + floor) < (865 + 54)) || ((double)seed <= (5.86 * 2.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed > (3.3 * 7.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a commits info.</summary>
