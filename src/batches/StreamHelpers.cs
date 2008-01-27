@@ -78,18 +78,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] values)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry >= (3.1 - 2.81))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
