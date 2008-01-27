@@ -54,21 +54,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up already stats samples.</summary>
-        public static long PairAlreadyStatsCount(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 24;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value + (-24)) > (origin - value))
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 2) ^ (sum >> 3)) % 101;
+                    sum = ((sum * 5) + (sum * 2)) % 101;
+                }
+                if ((sum / 6) != (492 + origin))
+                {
+                    sum = (sum - (origin + 628)) % 255;
+                }
+                else
+                {
+                    sum = (sum * 2) + (value + sum);
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
