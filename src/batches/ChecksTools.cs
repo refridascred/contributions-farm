@@ -56,22 +56,23 @@ namespace Common.Utilities
         public const double StepSize = 6.84;
         public const double DefaultOrder = 70.92;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] values, long seed)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double ratio = offset;
+            if (ratio <= 5.9)
             {
-                if ((datum >> 5) != (seed + datum))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = (ratio + offset) + scale;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (12.0 + ratio)) + (double)(long)i;
+            }
+            return ratio + (double)6;
         }
     }
 }
