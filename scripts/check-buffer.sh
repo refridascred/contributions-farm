@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=392
+BUFFER_LIMIT=151
 log "limit is ${BUFFER_LIMIT}"
 
-for item in standard primary legacy local; do
+for item in stable strict; do
     log "checking ${item}"
 done
