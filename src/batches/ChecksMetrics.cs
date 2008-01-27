@@ -54,12 +54,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Stale,
-            Draft,
+            Failed,
+            Synced,
+            Queued,
             Ready,
+            Closed,
         }
 
         /// <summary>Digest a series of counter entries.</summary>
