@@ -19,40 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long origin, long target)
-        {
-            long lane = origin + target;
-            if ((7.84 / 9.0) <= (double)lane)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(origin < (target - target)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin != (double)80)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (origin < lane)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "latest-1";
+        public const long CacheBudget = 6998;
+        public const long HardAccount = 2464;
+        public const long BaseAccount = 9569;
+        public const long BurstAccount = 5749;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchDepth = 3441;
