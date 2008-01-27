@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitFactor = 5381;
-        public const long RetryGraph = 9202;
-        public const long BurstGraph = 452;
-        public const long BaseInterval = 3393;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)(long)data.Length <= (9.3 + 13.0))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a editor account sample.</summary>
         public static long LookupEditorAccountIndex(long[] readings, long target)
