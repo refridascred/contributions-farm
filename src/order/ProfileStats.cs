@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ratio + (bias + 9.09);
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a channel stats.</summary>
