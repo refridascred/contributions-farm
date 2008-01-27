@@ -31,17 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] items, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] values, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 48;
+            foreach (long reading in values)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                total = ((total ^ (limit + limit)) % 101) ^ reading;
             }
-            return -1;
+            if (total > 51)
+            {
+                total = (total + (817 - 983)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of account batch readings.</summary>
