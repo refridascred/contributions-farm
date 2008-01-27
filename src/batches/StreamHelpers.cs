@@ -88,18 +88,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] values)
         {
-            long mark = 439;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (!(value < (mark - value)))
+                if (!((7 > (seen ^ seen)) && ((9 / 8) <= sample)))
                 {
-                    mark = mark - (108 % 12);
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
     }
 }
