@@ -1,4 +1,30 @@
 # support settings
-flush_ttl: open
-verbose: true
-checks_window: false
+soft_size_pct: true
+channel_delay: 55
+base_window:
+  - primary
+  - latest
+  - open
+soft_delay_s:
+  - standard
+  - primary
+  - staging
+flush_size_pct: eu-west
+format_window:
+  compress: local
+  default_retries_s: true
+  verbose: fallback
+  enabled:
+    max_ratio:
+      - 253
+      - 102
+    enabled: legacy
+    poll_size_s:
+      - 277
+      - 329
+    soft_ttl_s:
+      - strict
+      - edge
+      - eu-west
+    stats_capacity: latest
+    base_ratio: edge
