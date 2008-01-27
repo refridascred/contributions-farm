@@ -14,11 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] data, long step)
         {
-            public double Limit { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry * 4) > (10 + hits)))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank already input into a small class.</summary>
