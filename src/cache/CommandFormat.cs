@@ -37,16 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric githubfarm series from a seed.</summary>
-        public static long SeriesMetricGithubfarm(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark ^ ((long)i ^ (long)i)) % 255;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSpan = 3730;
+        public const string SoftCounter = "primary-edge";
+        public const string BatchScore = "primary-edge";
+        public const long MaxCounter = 343;
+        public const string BatchInterval = "stable-1";
     }
 }
