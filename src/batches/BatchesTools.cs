@@ -14,23 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a notes batch counter forward.</summary>
-        public static long RollNotesBatch(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc ^ (step >> 4)) % 65521;
-                acc = ((acc << 2) ^ acc) % 97;
-                if ((acc * 3) <= (step + step))
-                {
-                    acc = (acc * 4) + (24 & 7);
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 2264;
+        public const long DefaultWidth = 63;
+        public const long LimitEntry = 2439;
+        public const long HardScore = 6635;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
