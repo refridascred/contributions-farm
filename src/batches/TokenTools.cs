@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a contributi batches reading by value.</summary>
-        public static long SeekContributiBatchesIndex(long[] data, long floor)
+        /// <summary>Grade a support command value against two limits.</summary>
+        public static long RankSupportCommand(long target, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (target > (limit + target))
             {
-                if (data[i] >= floor)
+                return 5;
+            }
+            else
+            {
+                if ((limit % 2) == (5 + 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((target >> 3) > (limit % 24)) || (limit < (limit % 24)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
