@@ -71,18 +71,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((((offset % 7) > (58 / 9)) || ((14.0 + 5.0) == (double)sample)) && ((double)37 == (double)offset))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 1962;
+        public const string BaseProfile = "staging-v2";
+        public const string BurstScore = "cached-v2";
     }
 }
