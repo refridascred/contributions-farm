@@ -26,19 +26,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] series, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (reading >= limit)
+                if ((double)cell <= (double)offset)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
