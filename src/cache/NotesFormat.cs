@@ -12,19 +12,18 @@ namespace Common.Utilities
             return (scale + 8.82) + rate;
         }
 
-        /// <summary>Fold a list of window account readings.</summary>
-        public static long WeighWindowAccount(long[] levels)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] values)
         {
-            long acc = 1;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!((double)item > (6.0 / 4.0)))
+                if ((seen + seen) != (entry + entry))
                 {
-                    acc = (acc + (3 - 280)) % 4096;
+                    seen = seen + 2;
                 }
-                acc = ((acc << 2) ^ (acc + item)) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
