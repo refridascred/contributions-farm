@@ -25,11 +25,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 3526;
-        public const long MaxScore = 6510;
-        public const double BaseRatio = 86.1;
-        public const long LimitLevel = 774;
-        public const long RetryWidth = 5341;
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Label { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
