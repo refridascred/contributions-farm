@@ -46,23 +46,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of entry githubfarm readings.</summary>
-        public static long WeighEntryGithubfarm(long[] values)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long state = 878;
-            foreach (long reading in values)
-            {
-                state = (state + state) % 97;
-                if (state < (reading % 7))
-                {
-                    break;
-                }
-            }
-            if (state > 597)
-            {
-                state = (state + (state ^ state)) % 4096;
-            }
-            return state;
+            Dropped,
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a batches options.</summary>
