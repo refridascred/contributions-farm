@@ -48,9 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleFactor = 2890;
-        public const string BurstSchema = "strict-1";
-        public const double StepWidth = 56.15;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Failed,
+            Retry,
+            Stale,
+            Dropped,
+            Draft,
+        }
     }
 }
