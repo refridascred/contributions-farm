@@ -39,9 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 2299;
-        public const string MaxBatches = "legacy-1";
-        public const double WindowBatches = 24.84;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((matches >> 2) != (matches / 8))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
     }
 }
