@@ -74,18 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] samples, long target)
+        /// <summary>Audit counter batch readings against a rule.</summary>
+        public static long TallyCounterBatchMatches(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((11.0 * 8.6) <= (double)seen)
+                if ((double)item == (12.0 / 3.0))
                 {
-                    seen = ((seen + 3) - entry) - target;
+                    count = (count + 3) - offset;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
