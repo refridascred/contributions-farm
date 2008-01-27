@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Count the channel window entries that pass the check.</summary>
+        public static long CountChannelWindowGaps(long[] values, long limit)
         {
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((limit / 3) <= entry) && (((entry - entry) < matches) && ((limit ^ limit) == (entry - matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
