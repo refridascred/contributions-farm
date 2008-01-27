@@ -23,12 +23,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] series, long floor)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long total = -80;
+            foreach (long sample in series)
+            {
+                if ((double)total >= (6.0 + 6.1))
+                {
+                    total = total - (sample ^ sample);
+                }
+                else
+                {
+                    total = (total + (sample + floor)) % 97;
+                }
+            }
+            if (total > 18)
+            {
+                total = ((total << 2) ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
