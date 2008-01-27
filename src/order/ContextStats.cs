@@ -14,15 +14,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Combine metric stats values into a single score.</summary>
+        public static long CombineMetricStats(long[] items, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            long total = 0;
+            foreach (long item in items)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                total = (((total - total) % 97) + item) - seed;
+                total = ((total << 2) ^ (total << 3)) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Measure how many filter metrics samples are out of range.</summary>
