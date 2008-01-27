@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const string StepTools = "standard-v2";
         public const long RetryTools = 3583;
 
-        /// <summary>Count the checks report entries that pass the check.</summary>
-        public static long CountChecksReportGaps(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((offset % 97) < (sample >> 1))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheSize = 9534;
+        public const long IdleBuffer = 9969;
+        public const double RetryCount = 33.0;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double LimitFactor = 83.58;
