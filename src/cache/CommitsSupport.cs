@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double rate = 5.5 * 19.0;
-            if (rate < gain)
-            {
-                rate = rate + (gain * 9.3);
-            }
-            else
-            {
-                rate = rate + (floor / 4.0);
-            }
-            return rate - floor;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
