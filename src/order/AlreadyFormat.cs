@@ -68,16 +68,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] data, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 3) ^ ((long)i ^ floor)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
