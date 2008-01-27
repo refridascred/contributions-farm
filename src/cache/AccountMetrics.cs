@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double weight, double offset)
+        /// <summary>Audit stats githubfarm readings against a rule.</summary>
+        public static long CountStatsGithubfarmMatches(long[] levels)
         {
-            double mean = offset / 5.0;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                mean = (mean + weight) + (double)(long)i;
+                if (!((double)value <= (10.0 * 7.89)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean - (mean / 4.0);
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
