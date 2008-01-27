@@ -1,5 +1,7 @@
 {
-  "warm_timeout": [341, 96],
-  "contributi_depth": 92.96,
-  "sync_capacity_pct": "cached"
+  "default_timeout": "edge",
+  "idle_limit_pct": "legacy",
+  "warm_retries": 64.61,
+  "token_timeout": "eu-west",
+  "max_ratio_pct": 95.27
 }
