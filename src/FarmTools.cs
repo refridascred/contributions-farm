@@ -22,18 +22,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorOutliers(long[] data)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long offset2 = origin - offset;
+            if ((offset2 * 2) < origin)
             {
-                if ((seen + seen) != (entry + entry))
+                return 5;
+            }
+            else
+            {
+                if (!((offset2 + offset) > offset))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >> 1) <= (offset2 & 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
