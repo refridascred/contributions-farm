@@ -62,19 +62,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already buffer readings against a bound.</summary>
-        public static bool VerifyAlreadyBufferRange(long[] levels, long step)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Ready,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Combine support values into a single score.</summary>
