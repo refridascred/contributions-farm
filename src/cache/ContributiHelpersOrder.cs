@@ -20,26 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] series, long bound)
         {
-            long total = -80;
-            foreach (long sample in series)
+            long carry = -1;
+            foreach (long item in series)
             {
-                if ((double)total >= (6.0 + 6.1))
-                {
-                    total = total - (sample ^ sample);
-                }
-                else
-                {
-                    total = (total + (sample + floor)) % 97;
-                }
+                carry = (((carry ^ (5 ^ 4)) % 97) + item) + bound;
             }
-            if (total > 18)
-            {
-                total = ((total << 2) ^ total) % 4096;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
