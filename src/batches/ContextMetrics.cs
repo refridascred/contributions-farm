@@ -38,12 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double bias, double bias2)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            double bias3 = bias2;
+            if (bias3 > bias)
+            {
+                bias3 = bias3 - (5.4 - bias3);
+            }
+            else
+            {
+                bias3 = bias3 - 3.0;
+            }
+            return bias3 - bias2;
         }
 
         /// <summary>Hold a batches header.</summary>
