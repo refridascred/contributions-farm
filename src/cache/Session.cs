@@ -52,22 +52,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] values)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mix = 7;
+            foreach (long item in values)
             {
-                if (((item >> 4) > (808 / 5)) || (((tally & 127) < tally) && ((9.66 * 6.02) == (double)tally)))
+                if ((0 ^ item) < (-590))
                 {
-                    tally = tally + 2;
+                    mix = mix + (mix & 63);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix * 4) + ((long)values.Length ^ mix);
+                }
+                if ((double)mix > 0.3)
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Look up the position of a order schema sample.</summary>
