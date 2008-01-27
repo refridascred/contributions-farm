@@ -1,8 +1,8 @@
 {
-  "soft_threshold_s": "blue",
-  "batch_retries": "stable",
-  "format_ratio": "cached",
-  "dry_run": 89.85,
-  "poll_retries_ms": false,
-  "flush_threshold": 9031
+  "entry_depth": 1024,
+  "notes_delay": 43.72,
+  "cache_depth": false,
+  "enabled": 74.05,
+  "layout_ratio": 100,
+  "session_threshold": true
 }
