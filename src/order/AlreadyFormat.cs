@@ -72,13 +72,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            double ratio = offset;
+            if (ratio > ratio)
+            {
+                ratio = ratio - offset;
+            }
+            else
+            {
+                ratio = ratio - (gain + ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (double)432) + (double)(long)i;
+            }
+            return ratio - (4.7 - ratio);
         }
     }
 }
