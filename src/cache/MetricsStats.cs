@@ -32,17 +32,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine channel batches values into a single score.</summary>
-        public static long TallyChannelBatches(long[] samples, long step)
+        /// <summary>Derive the next layout notes value from a seed.</summary>
+        public static long DeriveLayoutNotes(long seed)
         {
-            long anchor = -161;
-            foreach (long value in samples)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = (anchor + (step + value)) % 1000;
-                if ((step << 3) > step)
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
             return anchor;
         }
