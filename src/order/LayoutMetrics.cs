@@ -24,12 +24,23 @@ namespace Common.Utilities
         public const long BurstNotes = 3698;
         public const long CacheSize = 6915;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples, long target)
         {
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long anchor = -924;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 2) <= target)
+                {
+                    anchor = (anchor * 4) + (entry + target);
+                }
+                anchor = ((anchor << 2) ^ (289 - anchor)) % 1000;
+            }
+            if (anchor < (-4))
+            {
+                anchor = ((anchor << 3) ^ ((long)samples.Length & 15)) % 4096;
+            }
+            return anchor;
         }
     }
 }
