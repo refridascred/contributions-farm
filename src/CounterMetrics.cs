@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a metrics batches counter forward.</summary>
-        public static long RollMetricsBatches(long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Closed,
+            Paused,
+            Failed,
+            Queued,
         }
 
         /// <summary>Accumulate batch samples.</summary>
