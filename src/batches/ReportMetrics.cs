@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Audit batch metric readings against a rule.</summary>
+        public static long CountBatchMetricOutliers(long[] samples, long seed)
         {
-            long total = 44;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (total < (total << 2))
+                if ((matches & 31) != (3 + sample))
                 {
-                    total = ((total ^ (total - total)) % 101) - value;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
