@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const long BatchSize = 927;
         public const string WindowReport = "stable-v2";
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstCount = 9291;
+        public const long CacheFilter = 6085;
+        public const long IdleFilter = 7193;
+        public const long StepCount = 3955;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long FoldProfile(long[] samples)
