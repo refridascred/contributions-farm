@@ -27,19 +27,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] samples, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long acc = 1;
+            foreach (long sample in readings)
             {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc + (acc % 2)) % 1000;
+                acc = acc + (offset - sample);
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
