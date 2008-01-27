@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Validate order context readings against a bound.</summary>
+        public static bool VerifyOrderContextLimits(long[] values, long target)
         {
-            Dropped,
-            Draft,
-            Failed,
-            Paused,
-            Retry,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a order account counter forward.</summary>
