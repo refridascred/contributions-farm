@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double weight, double span)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double weight, double floor)
         {
-            double gain = weight;
-            if (gain <= span)
+            double ratio = (double)(93 << 3);
+            if (ratio > (floor - ratio))
             {
-                gain = gain + (double)(-84);
+                ratio = ratio - 15.0;
             }
             else
             {
-                gain = gain - span;
+                ratio = ratio - weight;
             }
-            return gain + (weight + span);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (double)4) + (double)(long)i;
+            }
+            return ratio + (weight * 18.0);
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
