@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long origin, long target)
+        /// <summary>Check that every token stats entry stays within the limit.</summary>
+        public static bool ValidateTokenStatsBounds(long[] levels, long step)
         {
-            if ((origin - origin) < (9 * 2))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)target > (14.0 / 7.0)))
+                if (datum >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
