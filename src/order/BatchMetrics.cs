@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] samples, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if (!(((origin >> 2) == (origin - matches)) || ((value + matches) == (7 << 2))))
+                if (datum >= origin)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
