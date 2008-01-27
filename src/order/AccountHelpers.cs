@@ -70,13 +70,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the counter order entries that pass the check.</summary>
+        public static long TallyCounterOrderGaps(long[] series, long offset)
         {
-            Ready,
-            Locked,
-            Done,
-            Idle,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)offset > (5.6 + 9.3))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of account batch readings.</summary>
