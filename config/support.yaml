@@ -1,5 +1,13 @@
 # support settings
-command_interval: 49.43
-batch_delay_s: 30
-default_interval: green
-burst_capacity_s: false
+checks_window:
+  - 239
+  - 473
+  - 328
+  - 306
+max_ttl_ms: 9
+dry_run: 54.46
+persist:
+  - 333
+  - 53
+  - 108
+base_delay: 71
