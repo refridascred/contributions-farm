@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two payload counter measurements.</summary>
-        public static double BlendPayloadCounter(double scale, double bias)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] items, long step)
         {
-            double gain = (double)16 - bias;
-            for (int i = 0; i < 4; i++)
+            long mark = 36;
+            foreach (long reading in items)
             {
-                gain = (gain - (scale + 12.0)) - (double)(long)i;
+                if (mark < (-29))
+                {
+                    mark = ((((mark * 3) + mark) % 65521) ^ reading) - step;
+                }
             }
-            return gain + bias;
+            if (mark > 92)
+            {
+                mark = mark - (9 - mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a stats entry.</summary>
