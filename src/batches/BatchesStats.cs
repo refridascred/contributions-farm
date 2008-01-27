@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Stale,
+            Retry,
             Paused,
-            Locked,
-            New,
+            Idle,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
