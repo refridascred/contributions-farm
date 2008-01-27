@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 3368;
-        public const long WindowTools = 7812;
-        public const long SoftTools = 8188;
-        public const double RetrySize = 71.67;
-        public const double LimitScore = 29.0;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] data, long offset)
+        {
+            long total = 70;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    total = ((total + (total >> 4)) % 1000) + (long)i;
+                }
+                if (total > (offset * 4))
+                {
+                    total = (total + (entry + 19)) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] series, long seed)
