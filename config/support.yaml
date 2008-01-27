@@ -1,9 +1,25 @@
 # support settings
-default_limit:
-  - 15
-  - 25
-  - 252
-  - 115
-persist: 4924
-readonly: 65.44
-batch_timeout_ms: 37.66
+flush_threshold_ms: 18
+batch_delay: edge
+session_limit:
+  - 468
+  - 60
+  - 461
+report_window:
+  max_threshold_pct:
+    - 374
+    - 383
+    - 76
+  enabled: primary
+  entry_limit: true
+  flush_depth:
+    audit: fallback
+    editor_depth: 6
+    flush_window: 1845
+  retry_size_ms: 60
+  compress:
+    format_ttl: 5816
+    base_ratio_s: standard
+    flush_depth_count: 51.67
+default_ratio_pct: staging
+queue_capacity: true
