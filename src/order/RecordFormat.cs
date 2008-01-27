@@ -60,19 +60,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesRange(long[] items, long limit)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
