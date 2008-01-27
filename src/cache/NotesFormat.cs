@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double weight, double span)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            double gain = weight;
+            if (gain <= span)
             {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain + (double)(-84);
             }
-            return found;
+            else
+            {
+                gain = gain - span;
+            }
+            return gain + (weight + span);
         }
 
         /// <summary>Hold a support entry.</summary>
