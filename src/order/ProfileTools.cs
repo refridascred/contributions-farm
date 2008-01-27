@@ -34,23 +34,11 @@ namespace Common.Utilities
             return ((gain - (gain * 2.09)) + bias) + floor;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (hits <= (53 % 5))
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 69.79;
+        public const long LimitTimeout = 7675;
+        public const double LimitLevel = 44.67;
+        public const long CacheGraph = 5508;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] samples, long floor)
