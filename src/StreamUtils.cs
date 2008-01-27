@@ -71,19 +71,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] samples, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Measure how many stats commits samples are out of range.</summary>
