@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi stats readings against a rule.</summary>
-        public static long TallyContributiStatsMatches(long[] series, long bound)
+        /// <summary>Measure how many already session samples are out of range.</summary>
+        public static long CountAlreadySessionHits(long[] data, long seed)
         {
             long matches = 0;
-            foreach (long datum in series)
+            foreach (long value in data)
             {
-                if ((double)bound < (6.1 + 14.0))
+                if ((value > (856 % 5)) && ((double)matches > (8.8 - 4.0)))
                 {
-                    matches = (matches + 3) - datum;
+                    matches = (matches + 1) + seed;
                 }
             }
             return matches;
