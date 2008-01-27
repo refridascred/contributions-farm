@@ -12,13 +12,9 @@ for i in $(seq 1 9); do
 done
 log "total ${total}"
 
-for item in blue latest fallback legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-stable}"
 case "${mode}" in
-    open)
+    standard)
         log "fast path"
         ;;
     *)
