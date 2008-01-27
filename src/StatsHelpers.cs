@@ -50,24 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a contributi queue pair into a bucket.</summary>
-        public static long GradeContributiQueue(long bound, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            if (((origin >> 5) >= (bound - bound)) || (7 >= origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (48 >= (bound - origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Idle,
+            Active,
         }
     }
 }
