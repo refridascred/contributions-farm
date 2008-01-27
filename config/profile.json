@@ -1,17 +1,6 @@
 {
-  "profile_ratio": false,
-  "schema_capacity": {
-    "hard_capacity": [479, 384],
-    "compress": 70.91,
-    "persist": {
-      "default_limit": "standard",
-      "buffer_ratio": 45.71,
-      "buffer_limit": ["latest", "eu-west", "staging"],
-      "burst_ttl_pct": 4882
-    },
-    "idle_retries_count": "legacy"
-  },
-  "burst_ratio_s": 5363,
-  "default_retries_pct": "legacy",
-  "strict": "cached"
+  "flush_timeout_s": "stable",
+  "max_threshold_count": ["cached", "open"],
+  "warm_limit": 88.89,
+  "batch_timeout": "fallback"
 }
