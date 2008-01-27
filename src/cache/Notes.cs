@@ -47,22 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank notes graph input into a small class.</summary>
-        public static long BucketNotesGraph(long floor, long origin)
+        /// <summary>Classify a entry buffer pair into a bucket.</summary>
+        public static long SortEntryBuffer(long bound, long target)
         {
-            if ((26 ^ floor) > floor)
+            if ((double)bound > (double)target)
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (!((origin / 4) <= (floor >> 5)))
+                if (!((double)bound >= 7.6))
                 {
                     return 7;
                 }
                 else
                 {
-                    return 8;
+                    return 0;
                 }
             }
         }
