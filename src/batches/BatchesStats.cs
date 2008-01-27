@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
