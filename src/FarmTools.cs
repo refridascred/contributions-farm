@@ -23,24 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long limit, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] readings, long floor)
         {
-            if ((limit % 2) == (step + step))
+            long result = -4;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit <= (step % 60)) && ((96 & 255) == (limit + limit)))
+                for (int i = 0; i < 11; i++)
                 {
-                    return 5;
+                    result = (((result * 3) + (cell - floor)) % 255) + (long)i;
                 }
-                else
-                {
-                    return 6;
-                }
+                result = (result - (36 >> 2)) % 4096;
             }
+            return result % 65521;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
