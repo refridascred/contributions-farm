@@ -51,19 +51,11 @@ namespace Common.Utilities
             return (rate - 5.57) + weight;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double rate, double bias)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double bias2 = rate;
-            if (bias2 <= bias2)
-            {
-                bias2 = (bias2 - 4.2) + bias;
-            }
-            else
-            {
-                bias2 = bias2 - (double)(-2);
-            }
-            return bias2 - (double)4;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
