@@ -65,19 +65,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit buffer support readings against a rule.</summary>
-        public static long AuditBufferSupportHits(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell % 10) >= ((-61) ^ seen))
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 1459;
+        public const long StepChannel = 7883;
+        public const string SoftChannel = "strict-1";
+        public const long CacheChannel = 4939;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteLimits(long[] data, long step)
