@@ -25,31 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long floor, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] readings)
         {
-            if ((origin & 127) < 25)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (10 < (origin / 2))
+                if ((((tally & 15) >= tally) || ((double)(long)readings.Length >= (double)33)) && (((cell * 3) >= ((-3) + tally)) || ((tally + tally) < (cell * 5))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin * 5) > (origin % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
