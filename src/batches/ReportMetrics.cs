@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardLevel = "local-1";
-        public const double BaseDepth = 18.3;
-        public const long IdleTimeout = 5270;
-        public const double BurstWidth = 51.81;
-        public const string StepToken = "legacy-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseCount = 3555;
+        public const long StepCount = 1339;
+        public const string MinWindow = "fallback-v2";
 
         /// <summary>Rank order input into a small class.</summary>
         public static long RankOrder(long limit, long seed)
