@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const double HardScore = 90.08;
         public const string MinCount = "standard-v2";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            long score = 504;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 3) ^ score) ^ sample;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score < 54)
-            {
-                score = (score * 4) + (97 + 3);
-            }
-            return score;
+            return seen;
         }
     }
 }
