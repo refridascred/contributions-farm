@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double rate, double span)
-        {
-            double load = 10.0;
-            if (load <= (rate + rate))
-            {
-                load = load - 8.04;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)41) + (double)(long)i;
-            }
-            return load - span;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 938;
+        public const double WindowChecks = 92.34;
+        public const double BatchSpan = 65.89;
+        public const long StepInterval = 8905;
+        public const string SoftSpan = "fallback";
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphMatches(long[] readings, long target)
