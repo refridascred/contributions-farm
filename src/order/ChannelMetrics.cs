@@ -52,21 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Combine command contributi values into a single score.</summary>
+        public static long TallyCommandContributi(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 25;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (state > (state % 16))
                 {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state ^ (state - reading);
+                }
+                state = state + (reading ^ 909);
+                if ((state >> 3) != (state ^ reading))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state % 4096;
         }
     }
 }
