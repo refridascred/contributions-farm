@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double rate, double bias)
+        /// <summary>Count the notes channel entries that pass the check.</summary>
+        public static long AuditNotesChannelMatches(long[] readings, long origin)
         {
-            double rate2 = bias;
-            if (rate2 > rate)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                rate2 = rate2 - rate2;
+                if ((587 - matches) <= (64 % 60))
+                {
+                    matches = ((matches + 1) ^ value) - origin;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (double)2;
-            }
-            return rate2 - (rate + rate2);
+            return matches;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
