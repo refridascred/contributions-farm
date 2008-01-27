@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series, long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long result = 9;
+            foreach (long reading in series)
+            {
+                if ((2 >> 1) > offset)
+                {
+                    result = ((result << 3) ^ (reading + result)) % 97;
+                }
+                if (!(18 < (offset >> 1)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
