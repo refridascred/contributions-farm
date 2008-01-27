@@ -13,19 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every buffer channel entry stays within the limit.</summary>
-        public static bool ValidateBufferChannelLimits(long[] items, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long total = 697;
+            foreach (long item in values)
             {
-                if (cell > seed)
+                if ((limit + 2) != ((long)values.Length - limit))
                 {
-                    flag = false;
-                    break;
+                    total = ((total << 3) ^ limit) ^ item;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
