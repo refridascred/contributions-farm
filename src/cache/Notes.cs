@@ -53,31 +53,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long target, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            if ((limit * 5) == (limit << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) <= (target + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit / 6) < (target - target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
