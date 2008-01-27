@@ -53,18 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] levels, long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long anchor = 7;
-            foreach (long datum in levels)
-            {
-                if (((long)levels.Length <= 1) && ((8.2 * 7.0) < (double)datum))
-                {
-                    anchor = (((anchor * 3) + (datum >> 2)) % 101) - limit;
-                }
-            }
-            return anchor % 4096;
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
