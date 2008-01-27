@@ -33,18 +33,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (27 > (datum + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryFactor = "latest-1";
+        public const long BaseSize = 2078;
+        public const long LimitCount = 487;
     }
 }
