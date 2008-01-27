@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long seed)
         {
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            long total = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
