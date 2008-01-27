@@ -1,5 +1,31 @@
 # entry settings
-cluster_retries: 5.79
-format_ratio: 73.75
-batch_limit: 59
-persist: staging
+metrics_timeout: edge
+readonly:
+  min_ratio:
+    - 223
+    - 369
+    - 12
+    - 186
+  batch_limit: local
+  max_ratio_pct:
+    dry_run: 9243
+    soft_depth: 2006
+    record_capacity:
+      - eu-west
+      - blue
+      - standard
+      - fallback
+    notes_ttl:
+      - 347
+      - 367
+      - 108
+    burst_retries: open
+    farm_capacity: 2680
+  flush_size: strict
+  cache_timeout_count: 100
+  base_delay_count: true
+githubfarm_window: true
+idle_capacity_pct:
+  - edge
+  - stable
+  - eu-west
