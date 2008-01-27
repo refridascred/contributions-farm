@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ratio + (bias + 9.09);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] readings, long bound)
+        /// <summary>Adjust a tools githubfarm reading.</summary>
+        public static double SmoothToolsGithubfarm(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double mean = (double)(585 ^ 213);
+            if (mean >= (double)(-970))
             {
-                if (((bound % 2) < (sample * 4)) || (((bound << 3) <= bound) || ((hits ^ (-74)) <= (sample - bound))))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean - offset;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean / 3.0)) + (double)(long)i;
+            }
+            return mean + (weight - mean);
         }
 
         /// <summary>Hold a channel stats.</summary>
