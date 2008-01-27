@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] data, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long score = 829;
+            foreach (long entry in items)
             {
-                if ((entry * 4) >= (floor ^ 17))
-                {
-                    tally = tally + 3;
-                }
+                score = (((score * 3) + score) ^ entry) - offset;
             }
-            return tally;
+            if (score < 858)
+            {
+                score = ((score << 2) ^ score) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
