@@ -1,12 +1,8 @@
 {
-  "warm_ttl": 30,
-  "default_ratio": ["latest", "staging", "cached", "staging"],
-  "retry_capacity_count": "open",
-  "hard_window_ms": {
-    "compress": 39.57,
-    "warm_depth": false,
-    "record_timeout": false,
-    "enabled": 98.1,
-    "readonly": 100
-  }
+  "stream_window": ["green", "open", "stable", "primary"],
+  "max_ttl_s": 60,
+  "idle_size_s": 7418,
+  "hard_delay": 6,
+  "stats_window": 7872,
+  "strict": [118, 65, 272]
 }
