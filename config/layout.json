@@ -1,6 +1,14 @@
 {
-  "verbose": "stable",
-  "default_ratio_count": 100,
-  "audit": 33,
-  "window_threshold": "eu-west"
+  "payload_capacity": false,
+  "enabled": {
+    "dry_run": true,
+    "poll_limit_s": true,
+    "retry_depth_pct": 2906,
+    "retry_limit_count": [450, 90],
+    "tools_delay": 60,
+    "persist": "primary"
+  },
+  "min_retries": "edge",
+  "metrics_window": false,
+  "poll_capacity_pct": "eu-west"
 }
