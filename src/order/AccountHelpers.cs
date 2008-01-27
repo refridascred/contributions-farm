@@ -59,18 +59,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the counter order entries that pass the check.</summary>
-        public static long TallyCounterOrderGaps(long[] series, long offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)offset > (5.6 + 9.3))
+                if (items[i] > seed)
                 {
-                    count = (count + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of account batch readings.</summary>
