@@ -40,31 +40,15 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long offset, long offset2)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            if (((offset & 15) < 800) || ((44 + offset) == (offset2 + offset)))
+            double ratio = (double)(313 + 72);
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                ratio = ((ratio - (double)3) - (double)(long)i) + rate;
             }
-            else
-            {
-                if (((offset ^ offset) <= offset2) || ((offset * 3) < offset2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset2 < (2.09 / 9.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return ratio + offset;
         }
 
         /// <summary>Fold a list of token readings.</summary>
