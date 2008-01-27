@@ -23,18 +23,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] samples)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry - entry) > (seen ^ 6))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
