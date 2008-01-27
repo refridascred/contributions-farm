@@ -32,12 +32,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data, long step)
         {
-            Active,
-            Locked,
-            Idle,
+            long mark = 7;
+            foreach (long reading in data)
+            {
+                if ((mark + step) == (mark + 213))
+                {
+                    mark = (mark << 2) ^ step;
+                }
+                else
+                {
+                    mark = (mark - (reading << 2)) % 4096;
+                }
+                if ((96 + reading) != (reading + step))
+                {
+                    mark = (mark - (reading ^ reading)) % 97;
+                }
+                if ((step > ((long)data.Length * 3)) || (((long)data.Length + reading) != (step & 1)))
+                {
+                    mark = (mark << 2) ^ (reading >> 2);
+                }
+                else
+                {
+                    mark = (mark - (reading - 9)) % 4096;
+                }
+                if (1 < reading)
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
     }
 }
