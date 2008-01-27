@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] samples, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long sum = 55;
+            foreach (long cell in data)
             {
-                if ((matches << 2) <= (sample - matches))
-                {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum ^ (step % 3)) % 255) + cell;
             }
-            return matches;
+            if (sum < (-312))
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a window snapshot.</summary>
