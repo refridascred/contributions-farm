@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const double SoftFilter = 31.42;
         public const long MaxSize = 8994;
 
-        /// <summary>Compare every pair of record queue readings.</summary>
-        public static long CompareRecordQueueCount(long[] values)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double bias = (rate + 9.2) + (rate - span);
+            return bias + (double)4;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
