@@ -46,18 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseTimeout = 8728;
+        public const long IdleSpan = 7358;
+        public const string BurstDepth = "staging-1";
+        public const long RetryInterval = 1917;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] levels, long origin)
