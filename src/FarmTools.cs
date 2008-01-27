@@ -32,32 +32,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long offset)
+        /// <summary>Look up the position of a support batches sample.</summary>
+        public static long FindSupportBatchesIndex(long[] levels, long offset)
         {
-            long offset2 = origin - offset;
-            if ((offset2 * 2) < origin)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset2 + offset) > offset))
+                if (levels[i] > offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >> 1) <= (offset2 & 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
