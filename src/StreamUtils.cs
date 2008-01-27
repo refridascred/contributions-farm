@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] readings)
         {
-            long result = 17;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                result = (result + (seed ^ 6)) + datum;
+                if (!((19.0 / 6.0) == (double)reading))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (result < 82)
-            {
-                result = ((result << 3) ^ (result + result)) % 101;
-            }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Hold a order stats.</summary>
