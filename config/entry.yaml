@@ -1,9 +1,19 @@
 # entry settings
-batch_capacity: 5
-soft_interval_ms: local
-warm_size:
+default_ttl_count:
+  - blue
   - legacy
-  - open
-batch_timeout: 68
-warm_ratio: false
-command_limit: 40.05
+  - cached
+filter_limit: false
+sync_delay_count: standard
+min_capacity_ms:
+  tools_ttl: fallback
+  min_ratio_s: 28.66
+  max_limit_count:
+    token_ratio: 100
+    warm_retries_count: blue
+    base_depth_pct: false
+    compress:
+      - staging
+      - eu-west
+audit: cached
+githubfarm_size: 1024
