@@ -38,14 +38,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long target, long step)
         {
-            Locked,
-            Queued,
-            Idle,
-            Pending,
-            Failed,
+            if (((step & 1) >= (step % 2)) || ((step - target) > target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)step >= (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Derive the next layout notes value from a seed.</summary>
