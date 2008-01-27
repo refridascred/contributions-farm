@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Done,
-            Active,
-            Locked,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 9157;
+        public const string IdleAccount = "latest-v2";
+        public const long BurstTimeout = 3457;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFactor = 4550;
