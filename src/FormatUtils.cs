@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Grade a stream format value against two limits.</summary>
+        public static long SortStreamFormat(long step, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            if ((bound % 10) <= step)
             {
-                if ((double)total == (2.74 / 7.0))
+                return 4;
+            }
+            else
+            {
+                if (7.63 < (double)bound)
                 {
-                    total = total + (long)i;
+                    return 3;
                 }
                 else
                 {
-                    total = total + (total - bound);
+                    if ((double)step <= 7.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
         }
 
         /// <summary>Accumulate token samples.</summary>
