@@ -55,18 +55,31 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long origin, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            if ((origin * 2) >= 71)
             {
-                if ((count ^ count) <= (71 + (long)readings.Length))
+                return 5;
+            }
+            else
+            {
+                if (((double)floor < 2.35) || ((13 - origin) <= (floor - floor)))
                 {
-                    count = (count + 1) + sample;
+                    return 1;
+                }
+                else
+                {
+                    if (((4 >> 4) > floor) || ((floor ^ 32) >= (floor + origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
