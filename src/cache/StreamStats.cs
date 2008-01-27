@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of queue checks readings.</summary>
-        public static long TotalQueueChecks(long[] samples, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long origin, long target)
         {
-            long state = 52;
-            foreach (long entry in samples)
+            if ((origin - origin) < (9 * 2))
             {
-                state = (((state * 5) + state) - entry) - step;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (!((double)target > (14.0 / 7.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
