@@ -1,8 +1,5 @@
 {
-  "batch_capacity_pct": "stable",
-  "flush_capacity_s": "open",
-  "retry_ratio_ms": ["green", "fallback"],
-  "hard_limit": ["eu-west", "stable", "cached", "standard"],
-  "batch_depth": 30,
-  "base_ttl_count": 73
+  "base_window_s": false,
+  "base_retries": ["local", "cached", "primary", "strict"],
+  "cache_threshold_count": false
 }
