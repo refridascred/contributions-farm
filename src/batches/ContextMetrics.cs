@@ -44,11 +44,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseTimeout = 8728;
-        public const long IdleSpan = 7358;
-        public const string BurstDepth = "staging-1";
-        public const long RetryInterval = 1917;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc * 5) + 6;
+                if ((bound - bound) < (bound << 1))
+                {
+                    acc = ((acc << 2) ^ (acc - bound)) % 1000;
+                    break;
+                }
+                else
+                {
+                    acc = (acc + bound) % 255;
+                    acc = (acc * 3) + (acc ^ bound);
+                }
+                acc = acc - (bound / 2);
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] levels, long origin)
