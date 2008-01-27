@@ -23,16 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] data)
-        {
-            long mix = 374;
-            foreach (long sample in data)
-            {
-                mix = (mix << 2) ^ sample;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinTimeout = 678;
+        public const long WindowStream = 8716;
+        public const long IdleStream = 2303;
+        public const double MaxLevel = 49.24;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
