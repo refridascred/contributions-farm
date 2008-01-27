@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of session channel readings.</summary>
-        public static long WeighSessionChannel(long[] samples, long origin)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long score = 8;
-            foreach (long sample in samples)
-            {
-                score = ((score + (score % 5)) % 101) + sample;
-            }
-            if (score < 54)
-            {
-                score = (score * 2) + (origin << 3);
-            }
-            return score;
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
