@@ -77,18 +77,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long sum = 40;
-            foreach (long datum in levels)
-            {
-                if ((sum / 3) >= sum)
-                {
-                    sum = ((sum * 3) + (datum / 4)) % 101;
-                }
-            }
-            return sum % 97;
+            public double Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
