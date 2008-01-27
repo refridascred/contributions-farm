@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long step, long bound)
-        {
-            long offset = step ^ bound;
-            if ((1.0 * 11.0) >= (double)bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset >= (4.9 / 2.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound * 2) != (step + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 41.05;
+        public const string SoftCount = "primary-v2";
+        public const long StepWidth = 9922;
+        public const long RetryCommits = 2243;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long CountEditorGaps(long[] data, long limit)
