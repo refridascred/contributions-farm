@@ -13,11 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next githubfarm editor value.</summary>
-        public static double ScaleGithubfarmEditor(double rate, double bias)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double bias2 = (double)(748 % 7);
-            return (bias2 + (3.25 + rate)) + bias;
+            Synced,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
