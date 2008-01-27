@@ -14,11 +14,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitFactor = 9812;
-        public const long DefaultSpan = 2004;
-        public const string RetryBudget = "strict-v2";
-        public const long HardFactor = 4522;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Closed,
+            Idle,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountOutliers(long[] readings, long step)
