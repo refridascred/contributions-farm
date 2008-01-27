@@ -22,27 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long acc = 16;
-            foreach (long value in values)
-            {
-                if ((value << 2) < (value + value))
-                {
-                    acc = acc ^ value;
-                    continue;
-                }
-                if (((-60) ^ value) < acc)
-                {
-                    acc = ((acc * 4) + (213 + (long)values.Length)) % 101;
-                }
-            }
-            if (acc < 954)
-            {
-                acc = (acc * 3) + (acc - acc);
-            }
-            return acc % 65521;
+            Retry,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Check that every stats token entry stays within the limit.</summary>
