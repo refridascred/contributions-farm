@@ -12,26 +12,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] levels, long offset)
         {
-            long result = 285;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((0.22 - 2.6) != (double)reading)
+                if ((double)cell >= (double)(long)levels.Length)
                 {
-                    result = (result << 3) ^ (result + 7);
+                    count = (count + 1) + offset;
                 }
                 else
                 {
-                    result = ((result * 4) + reading) % 4096;
+                    count = count - 1;
                 }
             }
-            if (result > 314)
-            {
-                result = result ^ (7 << 2);
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Scale a route stats figure with a bias.</summary>
