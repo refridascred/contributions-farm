@@ -62,11 +62,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 3672;
-        public const double WindowCounter = 49.43;
-        public const long BatchDepth = 1995;
-        public const long RetryCounter = 6702;
-        public const long SoftWidth = 7303;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 2) + (anchor + floor)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
