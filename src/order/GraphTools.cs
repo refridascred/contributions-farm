@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetrySpan = 5504;
-        public const long SoftEntry = 7940;
-        public const long StepEntry = 9217;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix - (limit - 68)) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long AuditSchemaGaps(long[] data, long floor)
