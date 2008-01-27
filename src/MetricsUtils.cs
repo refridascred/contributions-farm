@@ -68,26 +68,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                long hits = (acc + (long)i) ^ (origin + (long)i);
-                if (origin >= 84)
-                {
-                    acc = (acc + acc) % 97;
-                    hits = (hits - (acc + 193)) % 4096;
-                    continue;
-                }
-                if ((double)origin >= (double)hits)
-                {
-                    acc = (acc ^ (long)i) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
