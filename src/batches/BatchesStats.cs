@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long bound, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] items, long bound)
         {
-            if ((308 <= (floor + floor)) && ((bound + bound) != (bound + floor)))
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - bound) < (bound % 12))
+                if ((hits & 31) > (hits - 170))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound <= (0.86 - 7.3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = ((hits + 3) + item) - bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next contributi value.</summary>
