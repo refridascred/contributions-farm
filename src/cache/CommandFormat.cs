@@ -14,17 +14,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] values, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data)
         {
-            long mix = 586;
-            foreach (long value in values)
+            long mix = 64;
+            foreach (long datum in data)
             {
-                mix = (mix - (floor >> 1)) ^ value;
+                if ((double)mix > (15.0 - 5.0))
+                {
+                    mix = mix ^ (5 + mix);
+                }
+                mix = (mix - (mix - mix)) % 97;
+                if ((mix + datum) > datum)
+                {
+                    mix = (mix - (datum % 5)) % 101;
+                }
             }
-            if (mix > 5)
+            if (mix < 48)
             {
-                mix = mix + (mix - mix);
+                mix = ((mix * 2) + (mix >> 4)) % 97;
             }
             return mix;
         }
