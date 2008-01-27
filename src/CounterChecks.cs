@@ -22,15 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double ratio, double offset)
+        /// <summary>Check that every token channel entry stays within the limit.</summary>
+        public static bool VerifyTokenChannelLimits(long[] items, long origin)
         {
-            double rate = offset;
-            if (rate <= (double)25)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                rate = (rate - offset) - ratio;
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate - (offset / 3.0);
+            return ready;
         }
 
         /// <summary>Digest a series of support cluster entries.</summary>
