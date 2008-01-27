@@ -50,23 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] series, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((312 + floor) > (floor + floor))
+                if (seen < (7 - reading))
                 {
-                    total = ((total << 3) ^ floor) % 255;
+                    seen = (seen + 2) + step;
                 }
                 else
                 {
-                    total = ((total * 4) + (total + floor)) % 4096;
+                    seen = seen - 1;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a metrics stats.</summary>
