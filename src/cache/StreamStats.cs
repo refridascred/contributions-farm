@@ -20,18 +20,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] samples, long target)
+        /// <summary>Fold a list of stream schema readings.</summary>
+        public static long FoldStreamSchema(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long acc = -864;
+            foreach (long cell in readings)
             {
-                if ((double)seen < (8.26 + 18.0))
+                if (cell <= (267 >> 1))
                 {
-                    seen = ((seen + 2) + datum) + target;
+                    acc = (acc ^ (cell + floor)) % 97;
                 }
+                else
+                {
+                    acc = ((acc * 5) + (594 % 60)) % 101;
+                }
+                acc = (acc + acc) % 255;
             }
-            return seen;
+            if (acc > 5)
+            {
+                acc = acc + floor;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Find the first checks token entry that matches the target.</summary>
