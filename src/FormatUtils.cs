@@ -74,10 +74,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepLevel = 83.91;
-        public const long IdleNotes = 4513;
-        public const long BatchNotes = 7673;
-        public const long HardNotes = 2672;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series)
+        {
+            long mix = -833;
+            foreach (long item in series)
+            {
+                mix = (mix - (mix + item)) % 97;
+                mix = (mix ^ 51) % 65521;
+            }
+            return mix;
+        }
     }
 }
