@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items)
-        {
-            long acc = 282;
-            foreach (long sample in items)
-            {
-                acc = (acc * 5) + (sample + 2);
-            }
-            if (acc > 28)
-            {
-                acc = (acc + (acc * 4)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8800;
+        public const string RetryFactor = "legacy-v2";
+        public const long CacheWidth = 5741;
+        public const long BatchBudget = 7885;
+        public const double RetryCount = 76.37;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
