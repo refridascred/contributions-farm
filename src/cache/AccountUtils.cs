@@ -24,15 +24,19 @@ namespace Common.Utilities
             return gain2 - (gain2 * 6.2);
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double scale, double offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] series, long floor)
         {
-            double scale2 = 8.3;
-            if (scale2 < scale)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                scale2 = (scale2 + 5.0) - offset;
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale2 + (scale / 8.0);
+            return ready;
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
