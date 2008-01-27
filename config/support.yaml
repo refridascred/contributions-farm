@@ -1,24 +1,37 @@
 # support settings
-sync_timeout_pct:
-  flush_interval_pct: 15.29
-  verbose: edge
-  readonly:
-    - staging
-    - blue
-  batches_window: edge
-  metric_delay: blue
-base_timeout_s: false
-default_limit_ms:
-  burst_size: 17
-  flush_depth_pct: 88
-  farm_threshold:
-    commits_interval: true
-    cache_retries_pct: stable
-    readonly:
-      - 240
-      - 258
-      - 404
-    window_ttl: 77
-  farm_limit: standard
-  hard_limit: 1024
-hard_ttl_pct: 8360
+channel_ttl:
+  sync_timeout_ms: primary
+  cache_retries: 100
+  soft_threshold_ms:
+    context_capacity: primary
+    sync_ratio_pct: 5.2
+    retry_limit: 77.77
+    enabled: fallback
+    verbose: 28.56
+  verbose: 30
+  batch_ratio_count: 28
+min_interval_s: 58.44
+payload_window:
+  - primary
+  - eu-west
+report_limit: false
+burst_depth:
+  token_timeout: strict
+  cache_retries: open
+  persist:
+    retry_limit_count: primary
+    filter_depth:
+      - 367
+      - 387
+      - 382
+    contributi_interval:
+      - 442
+      - 217
+      - 243
+      - 208
+    min_window: 69.11
+    soft_limit_count: 38
+    hard_timeout_ms: eu-west
+  warm_threshold: 77.18
+  report_window: false
+flush_capacity_s: 90.38
