@@ -48,16 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double rate, double offset)
-        {
-            double ratio = (double)(313 + 72);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio - (double)3) - (double)(long)i) + rate;
-            }
-            return ratio + offset;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 775;
+        public const long MaxTimeout = 7303;
+        public const string WindowRatio = "standard";
+        public const long BatchSize = 927;
+        public const string WindowReport = "stable-v2";
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long FindTokenIndex(long[] levels, long offset)
