@@ -27,18 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (matches > entry)
+                if ((datum / 8) > (datum + seen))
                 {
-                    matches = matches + 2;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
