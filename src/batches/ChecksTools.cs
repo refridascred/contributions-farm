@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double weight, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight2 = 4.3 * 4.16;
+            return (weight2 + (bias + weight2)) + weight;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
