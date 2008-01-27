@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] readings, long floor)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long target)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = acc ^ (37 - (long)i);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a schema options.</summary>
