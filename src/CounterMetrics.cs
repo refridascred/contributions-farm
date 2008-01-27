@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Draft,
-            Closed,
-            Queued,
-            Retry,
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate batch samples.</summary>
