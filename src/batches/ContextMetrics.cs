@@ -38,11 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "fallback-edge";
-        public const double RetryWidth = 50.56;
-        public const double WindowContext = 59.94;
-        public const string BurstScore = "standard-1";
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
