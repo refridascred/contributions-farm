@@ -54,15 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double weight, double bias)
         {
-            double rate = gain;
-            if (rate > 1.0)
+            double ratio = (double)794;
+            if (ratio < (double)68)
             {
-                rate = rate + (gain + floor);
+                ratio = ratio - weight;
             }
-            return rate + (11.0 - gain);
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - ratio;
         }
     }
 }
