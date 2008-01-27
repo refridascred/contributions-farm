@@ -71,9 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleScore = "alpha-v2";
-        public const double IdleToken = 47.26;
-        public const long SoftScore = 2875;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (0.1 > (double)count)
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
     }
 }
