@@ -1,19 +1,6 @@
 # githubfarm settings
-notes_window: stable
-sync_retries:
-  audit:
-    audit: 79.57
-    default_limit_s: true
-    strict: true
-    batch_interval: 5
-    min_interval_pct: 3.96
-    persist: stable
-  default_threshold_s: 28
-  sync_ttl_count: true
-  retry_interval: open
-  persist:
-    - 50
-    - 32
-    - 488
-  base_ttl_pct: 1159
-retry_interval: 30
+soft_capacity: primary
+metric_interval: 5129
+warm_limit_s: true
+cache_limit_count: staging
+buffer_depth: 420
