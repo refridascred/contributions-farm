@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two batches context measurements.</summary>
-        public static double ScaleBatchesContext(double weight, double span)
-        {
-            double rate = (double)2 / 2.0;
-            if (rate > (span * 1.08))
-            {
-                rate = (rate - rate) - weight;
-            }
-            else
-            {
-                rate = rate - (span - span);
-            }
-            return rate - (double)(-553);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 2895;
+        public const long MaxFormat = 5150;
+        public const string BurstFormat = "alpha-v2";
+        public const long HardInterval = 6071;
+        public const string SoftSize = "cached";
 
         /// <summary>Check that every layout window entry stays within the limit.</summary>
         public static bool CheckLayoutWindowLimits(long[] samples, long origin)
