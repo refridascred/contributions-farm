@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a account support reading.</summary>
-        public static double ScaleAccountSupport(double rate, double offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long seed, long bound)
         {
-            double drift = 7.4;
-            if (drift < (double)34)
+            if (((bound - bound) >= (0 << 3)) && ((bound >> 3) == (bound + seed)))
             {
-                drift = (drift + offset) + rate;
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift - (double)955) - (double)(long)i;
+                if ((-42) >= (3 + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (7.32 >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((seed + seed) == (357 + 498))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return drift - offset;
         }
 
         /// <summary>Describe the batches phase values.</summary>
