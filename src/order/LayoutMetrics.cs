@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] values, long limit)
         {
-            Closed,
-            Failed,
-            Locked,
-            Dropped,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
