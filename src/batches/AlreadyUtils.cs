@@ -50,18 +50,16 @@ namespace Common.Utilities
         public const long MinNotes = 8648;
         public const long IdleFactor = 1365;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long anchor = -355;
+            foreach (long entry in data)
             {
-                if (((8.77 / 9.0) == (double)limit) || (anchor < (limit + 739)))
+                if ((bound > 4) && ((double)anchor >= 13.0))
                 {
-                    anchor = ((anchor * 5) + limit) % 97;
-                    anchor = (anchor * 3) + ((long)i * 2);
+                    anchor = ((anchor + ((long)data.Length * 4)) % 97) ^ entry;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
             return anchor;
         }
