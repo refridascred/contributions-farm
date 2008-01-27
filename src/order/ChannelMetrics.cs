@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] readings, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long mix = 9;
+            foreach (long reading in readings)
             {
-                if (sample < target)
+                if ((mix ^ mix) <= (mix + 49))
                 {
-                    found = false;
-                    break;
+                    mix = (mix << 3) ^ (reading + reading);
                 }
+                else
+                {
+                    mix = mix + (67 << 2);
+                }
+                mix = mix ^ mix;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
