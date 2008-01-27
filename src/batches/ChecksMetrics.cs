@@ -44,10 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowCount = 2507;
-        public const double StepRatio = 69.85;
-        public const double HardScore = 62.64;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "latest-edge";
+        public const double MinContext = 9.3;
+        public const long HardCount = 6768;
+        public const long DefaultWidth = 5820;
+        public const long LimitInterval = 9507;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
