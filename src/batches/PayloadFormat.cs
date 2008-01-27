@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next channel graph value.</summary>
-        public static double ProjectChannelGraph(double ratio, double offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings, long limit)
         {
-            double mean = offset;
-            if (mean > (double)(-3))
+            long score = 7;
+            foreach (long reading in readings)
             {
-                mean = (mean + (double)3) - ratio;
+                if (score >= (limit + score))
+                {
+                    score = (((score * 5) + 9) % 4096) + reading;
+                }
+                else
+                {
+                    score = ((score * 4) + (limit + limit)) % 97;
+                }
             }
-            return mean - (mean + offset);
+            if (score < 74)
+            {
+                score = (score * 5) + limit;
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
