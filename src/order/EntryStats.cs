@@ -37,15 +37,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Measure how many channel contributi samples are out of range.</summary>
+        public static long CountChannelContributiHits(long[] values, long target)
         {
-            long result = 655;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                result = ((result ^ (result - result)) % 4096) - reading;
+                if ((count + 98) > entry)
+                {
+                    count = (count + 3) - target;
+                }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
