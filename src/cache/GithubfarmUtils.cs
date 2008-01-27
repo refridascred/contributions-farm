@@ -27,16 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double offset)
-        {
-            double bias = (double)(49 - 3);
-            for (int i = 0; i < 7; i++)
-            {
-                bias = ((bias - (offset * 9.73)) - (double)(long)i) - scale;
-            }
-            return bias + (offset * 18.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 96.08;
+        public const double MinScore = 67.19;
+        public const long WindowNotes = 9456;
+        public const long HardSize = 7948;
+        public const double StepNotes = 4.15;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] values)
