@@ -30,11 +30,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "cached-edge";
-        public const long WindowScore = 7969;
-        public const long WindowCount = 7253;
-        public const long MaxCount = 677;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheRatio = 7295;
+        public const long MaxCache = 2663;
+        public const long DefaultBudget = 2754;
 
         /// <summary>Validate contributi session readings against a bound.</summary>
         public static bool CheckContributiSessionRange(long[] items, long floor)
