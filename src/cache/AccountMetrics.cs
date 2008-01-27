@@ -50,18 +50,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the channel counter entries that pass the check.</summary>
-        public static long TallyChannelCounterHits(long[] items, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (!!((floor + 5) == (floor * 3)))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                total = total - (long)i;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine entry account values into a single score.</summary>
