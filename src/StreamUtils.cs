@@ -23,17 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] series, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a filter header.</summary>
