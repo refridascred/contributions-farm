@@ -47,16 +47,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Match up profile farm samples.</summary>
+        public static long OverlapProfileFarmCount(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total - (total % 100);
-                total = ((total * 3) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
