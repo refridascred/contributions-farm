@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const double DefaultTimeout = 82.42;
         public const long LimitCounter = 4081;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] series, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Active,
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
