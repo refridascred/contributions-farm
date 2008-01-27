@@ -72,12 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] levels)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((((count + count) <= (entry >> 3)) && (entry > (count - count))) && !((double)count < (5.07 + 9.94)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
