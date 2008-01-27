@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] levels, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long mark = 204;
-            foreach (long entry in levels)
+            long mark = 8;
+            foreach (long item in samples)
             {
-                if (((mark * 4) <= (entry % 64)) || ((5 ^ 405) <= (mark % 2)))
-                {
-                    mark = (mark ^ (mark - entry)) % 4096;
-                }
+                mark = ((mark - 8) % 1000) - item;
             }
-            if (mark > 2)
+            if (mark > 74)
             {
-                mark = mark + (bound << 3);
+                mark = ((mark * 5) + 33) % 1000;
             }
-            return mark;
+            return mark % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
