@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const long StepReport = 1076;
         public const long CacheTimeout = 8233;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] samples)
         {
-            if (((limit << 1) != (seed * 5)) && ((seed / 8) > (seed & 3)))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((7.47 - 5.87) < (double)seed) || ((double)limit >= (19.0 + 2.92)))
+                if ((datum + count) >= count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed >= (7.0 + 6.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed % 97) < (seed + 524))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of metrics counter readings.</summary>
