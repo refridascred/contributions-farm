@@ -10,21 +10,32 @@ namespace Common.Utilities
         public const long BatchSpan = 4998;
         public const long MaxOrder = 242;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Classify a session layout pair into a bucket.</summary>
+        public static long ClassifySessionLayout(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long lane = target ^ step;
+            if ((target << 2) >= (target + target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((step * 3) < (step ^ target)) || ((5 ^ 37) >= (lane + step)))
                 {
-                    if ((data[i] - data[j]) < 19)
+                    return 0;
+                }
+                else
+                {
+                    if (75 <= (step << 3))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first metrics already entry that matches the target.</summary>
