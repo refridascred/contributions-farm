@@ -28,26 +28,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate report cache samples.</summary>
-        public static long TotalReportCache(long[] series, long limit)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long total = 273;
-            foreach (long datum in series)
-            {
-                if ((8.79 / 9.0) >= (double)limit)
-                {
-                    total = ((total * 3) + limit) ^ datum;
-                }
-                if ((double)total != (15.0 / 7.0))
-                {
-                    break;
-                }
-            }
-            if (total < 0)
-            {
-                total = (total * 4) + total;
-            }
-            return total % 4096;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
