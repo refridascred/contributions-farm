@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long step)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double gain, double span)
         {
-            long slot = bound + step;
-            if (!((6 << 3) >= (slot * 3)))
+            double drift = gain;
+            if (drift < (gain + drift))
             {
-                return 2;
+                drift = drift + (span / 6.0);
             }
             else
             {
-                if ((step + slot) >= (slot >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (615 >= (slot + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8.5 / 2.0) != (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                drift = drift + 14.0;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (gain - gain)) - (double)(long)i;
+            }
+            return drift - (drift - 7.4);
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
