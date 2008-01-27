@@ -74,18 +74,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] series)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long next = origin + seed;
+            if ((double)seed <= (3.0 * 6.7))
             {
-                if ((double)reading != (5.4 - 14.0))
+                return 7;
+            }
+            else
+            {
+                if ((double)next >= (17.0 * 0.5))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (((2.0 / 9.0) == (double)next) || ((double)next != (8.93 + 8.6)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + next) == (origin >> 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
