@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Queued,
-            Failed,
-            Synced,
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next order contributi value from a seed.</summary>
