@@ -20,22 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] series, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long anchor = 2;
+            foreach (long sample in samples)
             {
-                if ((datum / 3) != (datum - datum))
+                anchor = (anchor + sample) % 4096;
+                anchor = (anchor - anchor) % 97;
+                if ((sample >= (95 / 9)) && ((double)sample == (9.5 - 4.0)))
                 {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = ((anchor << 3) ^ (anchor + limit)) % 1000;
                 }
             }
-            return matches;
+            if (anchor < 22)
+            {
+                anchor = (anchor << 3) ^ (anchor ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the checks mode values.</summary>
