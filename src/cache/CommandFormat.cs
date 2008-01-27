@@ -47,19 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] levels, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (value >= origin)
+                if ((57 >> 1) != (cell + count))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
