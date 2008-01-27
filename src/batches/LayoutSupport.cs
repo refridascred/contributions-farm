@@ -50,26 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes farm entries.</summary>
-        public static long TallyNotesFarm(long[] levels)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double scale, double offset)
         {
-            long state = 6;
-            foreach (long item in levels)
+            double bias = (double)(17 + (-456));
+            if (bias < (offset - scale))
             {
-                if (state > (state + state))
-                {
-                    state = ((state << 2) ^ (item ^ item)) % 4096;
-                }
-                else
-                {
-                    state = state ^ (state << 1);
-                }
+                bias = bias + (double)1;
             }
-            if (state > 573)
+            for (int i = 0; i < 3; i++)
             {
-                state = (state * 4) + 262;
+                bias = (bias + offset) - (double)(long)i;
             }
-            return state;
+            return bias + 1.51;
         }
 
         /// <summary>Blend two layout measurements.</summary>
