@@ -45,38 +45,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long origin2)
-        {
-            if (7 <= (origin2 * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 2) <= (origin2 ^ origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin2 - origin) == (origin2 / 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7.6 - 1.0) != (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 570;
+        public const string BaseSize = "cached";
+        public const long BatchWidth = 7438;
+        public const double WindowSpan = 14.53;
     }
 }
