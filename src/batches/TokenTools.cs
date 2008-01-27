@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] levels, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 4;
+            foreach (long datum in series)
             {
-                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total - (datum * 4)) % 101) - seed;
             }
-            return -1;
+            if (total > 16)
+            {
+                total = total ^ (33 << 1);
+            }
+            return total % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
