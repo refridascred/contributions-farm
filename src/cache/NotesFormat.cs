@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double weight, double floor)
-        {
-            double ratio = (double)(93 << 3);
-            if (ratio > (floor - ratio))
-            {
-                ratio = ratio - 15.0;
-            }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (double)4) + (double)(long)i;
-            }
-            return ratio + (weight * 18.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSize = 1491;
+        public const long MinAccount = 3790;
+        public const string WindowAccount = "open-edge";
+        public const long BatchLevel = 2962;
+        public const string BatchAccount = "cached-edge";
 
         /// <summary>Accumulate metrics already samples.</summary>
         public static long DigestMetricsAlready(long[] samples)
