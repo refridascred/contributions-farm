@@ -24,16 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long anchor = 739;
-            foreach (long entry in readings)
-            {
-                anchor = (anchor - (entry << 2)) % 101;
-                anchor = ((anchor * 5) + (anchor / 5)) % 255;
-            }
-            return anchor;
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the tools class values.</summary>
