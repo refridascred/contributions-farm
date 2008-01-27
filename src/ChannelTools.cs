@@ -36,15 +36,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long offset, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            if (((-150) ^ offset) <= (offset % 12))
             {
-                total = ((total * 5) + (long)i) % 65521;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((offset & 7) <= (limit ^ limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit >= 3.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
