@@ -36,11 +36,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            public double Offset { get; set; }
-            public double Total { get; set; }
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
