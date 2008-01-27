@@ -59,15 +59,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double gain, double offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            double drift = offset;
+            if (drift <= (12.0 / 4.0))
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                drift = drift - (drift * 5.1);
             }
-            return mark;
+            return drift + (gain + 1.02);
         }
     }
 }
