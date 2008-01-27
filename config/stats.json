@@ -1,6 +1,6 @@
 {
-  "retry_interval_count": "open",
-  "poll_retries": [112, 469],
-  "order_retries": 50,
-  "compress": [189, 353, 151]
+  "audit": 94.45,
+  "base_timeout_count": 6,
+  "min_limit_count": "local",
+  "base_interval_pct": ["local", "stable", "fallback", "fallback"]
 }
