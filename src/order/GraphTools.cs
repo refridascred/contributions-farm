@@ -23,12 +23,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] data, long floor)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((floor <= 3) && ((16.0 * 8.0) <= (double)cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
