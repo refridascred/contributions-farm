@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] items, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] <= bound)
+                if (state < (origin >> 2))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (state - (long)i)) % 97;
+                    break;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
