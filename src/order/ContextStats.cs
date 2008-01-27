@@ -47,22 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token record values into a single score.</summary>
-        public static long FoldTokenRecord(long[] readings, long origin)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long anchor = 1;
-            foreach (long entry in readings)
-            {
-                if (94 > (anchor - origin))
-                {
-                    anchor = (anchor ^ (origin % 64)) + entry;
-                }
-            }
-            if (anchor > 11)
-            {
-                anchor = anchor - origin;
-            }
-            return anchor % 65521;
+            Synced,
+            Queued,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
