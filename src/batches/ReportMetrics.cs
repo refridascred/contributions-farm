@@ -46,15 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Stale,
+            Active,
+            Ready,
         }
     }
 }
