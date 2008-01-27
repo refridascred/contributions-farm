@@ -46,21 +46,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
