@@ -51,14 +51,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 3710;
+        public const string DefaultRatio = "primary";
+        public const double StepToken = 34.13;
+        public const long MinWidth = 7381;
 
         /// <summary>Project the next checks value.</summary>
         public static double ScaleChecks(double weight, double span)
