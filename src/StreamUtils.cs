@@ -42,19 +42,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] readings, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long acc = 7;
+            foreach (long cell in levels)
             {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc + acc) + cell;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
