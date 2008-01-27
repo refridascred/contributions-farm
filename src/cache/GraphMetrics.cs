@@ -30,15 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double weight, double offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] items, long step)
         {
-            double rate = (double)(0 - 89);
-            if (rate <= (double)819)
+            bool found = true;
+            foreach (long cell in items)
             {
-                rate = ((rate + 9.3) - weight) + offset;
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + (double)432;
+            return found;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
