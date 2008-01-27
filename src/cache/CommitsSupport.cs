@@ -32,39 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long limit, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] items, long target)
         {
-            long edge = limit ^ offset;
-            if ((594 <= (248 + edge)) || ((double)limit <= (6.8 * 18.0)))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 6) == (limit + 99))
+                if (reading >= target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit ^ edge) >= (edge & 15))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((edge - edge) < (offset << 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a channel entry.</summary>
