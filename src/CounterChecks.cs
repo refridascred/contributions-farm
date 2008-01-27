@@ -58,10 +58,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleInterval = 508;
-        public const string IdleRatio = "fallback-1";
-        public const double BatchInterval = 62.34;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] samples)
+        {
+            long mark = 165;
+            foreach (long item in samples)
+            {
+                if ((2.0 + 0.48) != (double)item)
+                {
+                    mark = mark - (item ^ (-200));
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long seed, long origin)
