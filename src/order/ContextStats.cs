@@ -38,22 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] series)
         {
-            long seen = 0;
+            long hits = 0;
             foreach (long reading in series)
             {
-                if ((reading & 3) <= (seen + reading))
+                if ((reading + hits) > (reading + 4))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
