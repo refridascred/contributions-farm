@@ -43,22 +43,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] data)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            long result = 22;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result << 3) >= reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result + (result / 2);
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result < 5)
-            {
-                result = (result - (525 / 2)) % 97;
-            }
-            return result % 4096;
+            return hits;
         }
     }
 }
