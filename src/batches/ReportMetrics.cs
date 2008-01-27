@@ -25,13 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Locked,
-            Idle,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseFactor = "staging-1";
+        public const long WindowDepth = 204;
+        public const long StepTimeout = 6967;
+        public const long IdleStats = 8225;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] values, long origin)
