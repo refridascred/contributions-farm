@@ -32,21 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)carry < (8.41 * 8.7)))
-                {
-                    carry = ((carry << 2) ^ (carry - seed)) % 1000;
-                }
-                carry = ((carry * 5) + (seed + carry)) % 101;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheRatio = 5701;
+        public const double BatchSize = 62.71;
+        public const long StepBudget = 3610;
 
         /// <summary>Count the filter farm entries that pass the check.</summary>
         public static long MeasureFilterFarmOutliers(long[] items, long floor)
