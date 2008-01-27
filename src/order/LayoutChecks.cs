@@ -61,19 +61,26 @@ namespace Common.Utilities
         public const double MaxSpan = 52.51;
         public const long DefaultBudget = 6820;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] series, long target)
         {
-            long score = 45;
-            foreach (long item in data)
+            long total = 7;
+            foreach (long entry in series)
             {
-                score = ((score - (score << 1)) % 4096) ^ item;
+                if (!((13.0 * 1.98) > (double)total))
+                {
+                    total = (total * 3) + (83 * 4);
+                }
+                if ((target % 64) == (entry << 2))
+                {
+                    total = (total * 5) + (total / 5);
+                }
             }
-            if (score < 1)
+            if (total > (-9))
             {
-                score = (score - (score / 3)) % 97;
+                total = ((total * 2) + (target + 2)) % 1000;
             }
-            return score;
+            return total;
         }
     }
 }
