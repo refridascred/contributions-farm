@@ -58,15 +58,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long sum = 722;
+            foreach (long value in series)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                sum = sum + value;
             }
-            return sum;
+            return sum % 97;
         }
     }
 }
