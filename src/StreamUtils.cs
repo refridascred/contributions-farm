@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] series, long step)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a filter header.</summary>
