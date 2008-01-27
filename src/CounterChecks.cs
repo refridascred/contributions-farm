@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up metric checks samples.</summary>
-        public static long CompareMetricChecksCount(long[] series)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
