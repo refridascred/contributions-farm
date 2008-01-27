@@ -41,31 +41,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long offset, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] readings, long floor)
         {
-            if (((14.0 * 8.58) != (double)step) || ((offset & 63) >= (step >> 3)))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((18.0 - 5.1) < (double)offset)
+                if ((double)(long)readings.Length <= (10.0 + 15.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step < 6.84)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = ((tally + 2) ^ item) + floor;
                 }
             }
+            return tally;
         }
     }
 }
