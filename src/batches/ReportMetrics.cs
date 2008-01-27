@@ -19,22 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] data, long floor)
         {
-            long mix = 3;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix >> 1) >= reading)
+                if (data[i] > floor)
                 {
-                    mix = (mix - (mix + mix)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mix < 44)
-            {
-                mix = ((mix << 3) ^ (mix / 6)) % 4096;
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics counter readings.</summary>
