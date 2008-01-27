@@ -1,17 +1,8 @@
 {
-  "route_timeout": "green",
-  "hard_retries": 91.77,
-  "batch_limit_s": false,
-  "cache_size_count": {
-    "githubfarm_retries": 86.38,
-    "soft_interval_pct": "eu-west",
-    "default_depth": {
-      "hard_timeout": ["local", "open"],
-      "base_interval_count": "green",
-      "filter_interval": 1024,
-      "session_threshold": 62
-    }
-  },
-  "enabled": true,
-  "soft_window_pct": 86.77
+  "max_delay": 9341,
+  "schema_retries": 34.22,
+  "profile_interval": ["edge", "legacy", "standard"],
+  "order_window": ["strict", "staging", "blue", "blue"],
+  "hard_size": 60,
+  "report_window": 9563
 }
