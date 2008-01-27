@@ -22,19 +22,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long limit, long seed)
         {
-            double weight = ratio;
-            if (weight > offset)
+            if (6.92 > (double)seed)
             {
-                weight = weight - (double)0;
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight + offset) + (double)(long)i;
+                if ((9.0 + 1.02) <= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed << 3) == (limit % 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return weight - (weight / 7.0);
         }
 
         /// <summary>Blend two command measurements.</summary>
