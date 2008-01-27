@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] levels, long limit)
+        /// <summary>Check that every buffer stream entry stays within the limit.</summary>
+        public static bool GuardBufferStreamRange(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((1.88 * 7.63) == (double)entry)
+                if (entry != offset)
                 {
-                    seen = (seen + 2) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a command header.</summary>
