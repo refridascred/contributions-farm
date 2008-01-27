@@ -88,9 +88,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 800;
-        public const long RetrySchema = 878;
-        public const double LimitSize = 31.88;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] data)
+        {
+            long score = 5;
+            foreach (long reading in data)
+            {
+                if ((reading << 1) > (score & 31))
+                {
+                    score = ((score * 2) + reading) % 101;
+                }
+            }
+            if (score > 886)
+            {
+                score = ((score * 2) + (score % 97)) % 4096;
+            }
+            return score;
+        }
     }
 }
