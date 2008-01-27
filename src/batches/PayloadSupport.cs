@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long RetryCache = 9973;
         public const long BaseCache = 1603;
 
-        /// <summary>Find the first already commits entry that matches the target.</summary>
-        public static long FindAlreadyCommitsIndex(long[] items, long bound)
+        /// <summary>Validate contributi cache readings against a bound.</summary>
+        public static bool GuardContributiCacheRange(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (items[i] < bound)
+                if (value <= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
