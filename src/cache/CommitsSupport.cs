@@ -49,11 +49,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double weight, double span)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data, long bound)
         {
-            double bias = span;
-            return (bias + 17.0) + weight;
+            long acc = 0;
+            foreach (long datum in data)
+            {
+                acc = ((acc + datum) % 101) + bound;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
