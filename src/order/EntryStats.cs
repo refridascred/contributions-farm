@@ -21,15 +21,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mark = 5;
-            foreach (long sample in data)
-            {
-                mark = (((mark ^ (mark - 694)) % 97) - sample) - bound;
-            }
-            return mark % 1000;
+            Dropped,
+            Failed,
+            Done,
         }
 
         /// <summary>Hold a queue record.</summary>
