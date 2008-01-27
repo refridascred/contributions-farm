@@ -15,16 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (sum / 6)) % 101;
-                sum = ((sum * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
