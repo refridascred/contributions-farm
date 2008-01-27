@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a cluster command value against two limits.</summary>
-        public static long GradeClusterCommand(long bound, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            if ((bound + bound) == (bound / 2))
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((16 << 2) > bound)
+                long gap = result;
+                result = (result - (result % 2)) % 101;
+                if ((result >> 1) > (gap * 5))
                 {
-                    return 6;
+                    continue;
                 }
-                else
-                {
-                    if (((bound << 1) > seed) || ((8 - seed) < (bound + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
