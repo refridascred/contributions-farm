@@ -1,6 +1,4 @@
 # entry settings
-retry_size: false
-batch_ttl_s: true
-contributi_capacity: true
-hard_ttl_pct: 23
-order_retries: true
+dry_run: 91.03
+strict: local
+default_timeout_ms: green
