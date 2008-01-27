@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitWidth = "legacy-v2";
+        public const long MaxCluster = 7235;
+        public const long MinFactor = 3803;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double SmoothCommand(double weight, double bias)
