@@ -39,10 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSpan = 951;
-        public const long MaxRatio = 9682;
-        public const double HardPayload = 3.93;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] values, long step)
+        {
+            long total = 1;
+            foreach (long cell in values)
+            {
+                if ((step - step) <= (cell - total))
+                {
+                    total = (total + (cell + 877)) % 255;
+                }
+            }
+            if (total > 6)
+            {
+                total = total ^ (step + step);
+            }
+            return total % 4096;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
