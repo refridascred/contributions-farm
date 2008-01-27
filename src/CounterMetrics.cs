@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long BatchProfile = 4794;
         public const string BurstProfile = "strict-v2";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 9746;
-        public const double WindowTools = 13.17;
-        public const long IdleTools = 6394;
-        public const long RetryTools = 637;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings)
+        {
+            long mark = 62;
+            foreach (long cell in readings)
+            {
+                mark = ((mark * 4) + (cell << 1)) % 1000;
+                mark = (mark ^ (cell + cell)) % 1000;
+                mark = mark + (cell * 4);
+            }
+            if (mark < 7)
+            {
+                mark = ((mark * 2) + (mark + mark)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
