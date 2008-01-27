@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] series)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double mean = scale;
+            if (mean < (double)251)
             {
-                if ((12.0 - 5.26) == (double)entry)
-                {
-                    matches = matches + 3;
-                }
+                mean = mean - mean;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (scale - bias)) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
