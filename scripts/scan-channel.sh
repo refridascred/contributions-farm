@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=402
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in strict open cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-legacy}"
 case "${mode}" in
-    local)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in green staging standard fallback; do
+    log "checking ${item}"
+done
