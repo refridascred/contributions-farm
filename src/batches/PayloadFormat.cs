@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long origin, long origin2)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long gap = origin - origin2;
-            if ((origin + gap) != (gap - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (gap <= (origin2 % 64))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin < (gap / 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the commits stream series from a seed.</summary>
