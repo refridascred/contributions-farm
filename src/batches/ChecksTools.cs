@@ -60,23 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double scale, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings, long floor)
         {
-            double ratio = offset;
-            if (ratio <= 5.9)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                ratio = (ratio + offset) + scale;
+                if ((5.9 * 0.7) >= (double)entry)
+                {
+                    count = (count + 1) + floor;
+                }
             }
-            else
-            {
-                ratio = ratio + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (12.0 + ratio)) + (double)(long)i;
-            }
-            return ratio + (double)6;
+            return count;
         }
     }
 }
