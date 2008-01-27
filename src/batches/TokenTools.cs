@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long floor, long limit)
+        /// <summary>Locate a contributi batches reading by value.</summary>
+        public static long SeekContributiBatchesIndex(long[] data, long floor)
         {
-            if ((1 % 5) == (floor << 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - (-14)) <= floor)
+                if (data[i] >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit - floor) > limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every report already entry stays within the limit.</summary>
