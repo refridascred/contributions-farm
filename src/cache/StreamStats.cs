@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double scale, double span)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] readings)
         {
-            double weight = scale;
-            if (weight <= (double)146)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                weight = (weight - (double)34) + span;
+                if (((4 - 87) <= (cell + cell)) || !((cell >> 5) <= 859))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight - (double)129;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
