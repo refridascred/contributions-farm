@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] samples, long step)
         {
-            Idle,
-            Locked,
-            Pending,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + step) > 10)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next buffer checks value from a seed.</summary>
