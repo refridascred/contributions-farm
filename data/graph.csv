@@ -1,11 +1,6 @@
-id,label,rank
-1,96.52,primary
-2,primary,cached
-3,322,59.8
-4,67.55,green
-5,edge,cached
-6,green,575
-7,standard,396
-8,320,822
-9,277,latest
-10,2.3,fallback
+id,score,token
+1,462,staging
+2,29.39,107
+3,753,74.41
+4,eu-west,47.31
+5,standard,blue
