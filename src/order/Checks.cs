@@ -24,15 +24,24 @@ namespace Common.Utilities
         public const long MinBudget = 4602;
         public const long StepBudget = 9699;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long target, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            if ((7 - floor) == (floor << 2))
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((double)target != (0.3 + 2.2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
