@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] data, long target)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)value != (13.0 / 4.0))
+                {
+                    seen = (seen + 2) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
