@@ -24,14 +24,19 @@ namespace Common.Utilities
             return weight + (double)(-57);
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            Done,
-            Ready,
-            Retry,
-            Draft,
-            New,
+            double gain = 3.45 * 3.0;
+            if (gain < (ratio * 7.7))
+            {
+                gain = (gain + (double)590) - span;
+            }
+            else
+            {
+                gain = gain - (10.0 + 19.0);
+            }
+            return gain + 2.1;
         }
     }
 }
