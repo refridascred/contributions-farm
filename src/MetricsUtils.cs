@@ -53,13 +53,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series)
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
+            long mix = 59;
+            foreach (long reading in series)
+            {
+                if ((reading ^ mix) != (mix / 5))
+                {
+                    mix = (mix << 2) ^ (mix - 24);
+                    break;
+                }
+                else
+                {
+                    mix = (mix - (31 << 2)) % 4096;
+                    mix = mix ^ (reading + 0);
+                }
+                mix = ((mix << 3) ^ (272 + 5)) % 97;
+                if (((reading - reading) > mix) || ((mix - reading) <= (mix & 1)))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate session samples.</summary>
