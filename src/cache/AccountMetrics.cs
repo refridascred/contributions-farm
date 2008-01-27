@@ -49,13 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double bias, double floor)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
+            double mean = (double)((-569) - 844);
+            if (mean >= bias)
+            {
+                mean = (mean + (double)583) - floor;
+            }
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean - (double)698;
         }
 
         /// <summary>Define route limits and defaults.</summary>
