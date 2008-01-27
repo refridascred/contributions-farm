@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double rate, double floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] samples, long step)
         {
-            double weight = floor;
-            if (weight < (double)7)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                weight = (weight + floor) - rate;
+                if (((double)item > (17.0 / 8.0)) || ((7 % 60) <= step))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + (weight + 0.69);
+            return matches;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
