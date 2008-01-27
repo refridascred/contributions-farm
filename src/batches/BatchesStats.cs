@@ -28,9 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double StepSpan = 65.04;
-        public const long MinStats = 6070;
-        public const long LimitStats = 9484;
+        /// <summary>Look up the position of a session batch sample.</summary>
+        public static long LocateSessionBatchIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
