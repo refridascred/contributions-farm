@@ -56,14 +56,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Active,
+            New,
             Stale,
-            Queued,
             Idle,
-            Paused,
+            Queued,
+            Done,
         }
 
         /// <summary>Combine token values into a single score.</summary>
