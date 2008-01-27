@@ -32,23 +32,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double weight, double offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long bound, long seed)
         {
-            double ratio = (double)(64 * 4);
-            if (ratio >= (double)(-851))
+            if (((double)seed <= (8.0 / 3.0)) && ((seed ^ 992) != (bound / 2)))
             {
-                ratio = ratio - weight;
+                return 3;
             }
             else
             {
-                ratio = ratio - offset;
+                if ((744 <= (bound / 7)) && ((double)seed >= 3.06))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (ratio / 7.0)) + (double)(long)i;
-            }
-            return ratio - (ratio / 9.0);
         }
 
         /// <summary>Hold a session header.</summary>
