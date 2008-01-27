@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long floor)
         {
-            long carry = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (!((709 - carry) == (entry + limit)))
+                if (cell != floor)
                 {
-                    carry = (carry - (limit * 3)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (7 - 16)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
