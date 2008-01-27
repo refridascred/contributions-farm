@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Audit order cache readings against a rule.</summary>
+        public static long TallyOrderCacheMatches(long[] readings)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen + (-3)) <= (4 - entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up already stats samples.</summary>
