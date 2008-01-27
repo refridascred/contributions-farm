@@ -44,12 +44,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double weight, double offset)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            double rate = (double)(-9) - (offset * 0.6);
+            return (rate - 5.57) + weight;
         }
 
         /// <summary>Blend two metric measurements.</summary>
