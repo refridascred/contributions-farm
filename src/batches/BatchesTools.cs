@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count % 16) <= count)
-                {
-                    count = ((count + 1) + cell) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepWidth = 6520;
+        public const long BatchSpan = 4998;
+        public const long MaxOrder = 242;
 
         /// <summary>Match up layout samples.</summary>
         public static long MatchLayoutCount(long[] data)
