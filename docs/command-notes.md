@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-Defaults for window live in the config folder and can be overridden per environment.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The already module keeps account values in sync with the tools cache.
 
 ## Guidelines
 
-- Keep tools values small
-- Log every githubfarm change
-- Review tools limits each release
-- Prefer tools defaults
+- Document new metrics fields
+- Review graph limits each release
+- Prefer cluster defaults
