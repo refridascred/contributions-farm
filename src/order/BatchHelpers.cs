@@ -25,38 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long seed, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] levels, long step)
         {
-            if (((origin % 10) <= (seed ^ seed)) && ((228 + seed) > (origin * 4)))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - seed) >= seed)
+                if (((reading + reading) >= reading) && !(729 <= (reading / 6)))
                 {
-                    return 7;
+                    matches = (matches + 2) + step;
                 }
                 else
                 {
-                    if (origin > (seed + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed & 31) <= (seed - seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit stream counter readings against a rule.</summary>
