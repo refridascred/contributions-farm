@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] series, long floor)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value < (value * 5)) && (((4 / 2) < ((-9) - floor)) && ((532 ^ matches) < (floor % 5))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the stats githubfarm series from a seed.</summary>
