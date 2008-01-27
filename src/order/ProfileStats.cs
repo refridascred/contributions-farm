@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (entry >= step)
+                if (entry <= target)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
