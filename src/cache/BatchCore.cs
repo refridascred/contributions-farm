@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] levels)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double load = gain;
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits ^ hits) != (hits ^ 564))
-                {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = ((load - load) + (double)(long)i) + bias;
             }
-            return hits;
+            return load - (double)0;
         }
 
         /// <summary>Describe the format phase values.</summary>
