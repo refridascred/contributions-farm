@@ -24,15 +24,19 @@ namespace Common.Utilities
             return ratio2 + (ratio / 6.0);
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] values, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if (value != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
