@@ -32,28 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] samples, long seed)
-        {
-            long mark = 906;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark * 2) + ((long)i + seed)) % 101;
-                    mark = (mark - (81 >> 2)) % 4096;
-                }
-                if (!(5.7 <= (double)mark))
-                {
-                    mark = (mark - mark) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 3) + cell) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchDepth = 3441;
+        public const long SoftFormat = 5852;
+        public const long StepFormat = 421;
+        public const string BurstLevel = "latest-v2";
+        public const double LimitCount = 82.21;
 
         /// <summary>Rank cache batch input into a small class.</summary>
         public static long RankCacheBatch(long origin, long limit)
