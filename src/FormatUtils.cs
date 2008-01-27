@@ -68,14 +68,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit buffer support readings against a rule.</summary>
+        public static long AuditBufferSupportHits(long[] samples, long step)
         {
-            Draft,
-            Pending,
-            Closed,
-            Done,
-            Queued,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell % 10) >= ((-61) ^ seen))
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
