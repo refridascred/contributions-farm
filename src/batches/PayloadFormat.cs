@@ -34,14 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Find the first route farm entry that matches the target.</summary>
+        public static long FindRouteFarmIndex(long[] data, long bound)
         {
-            Locked,
-            Paused,
-            Retry,
-            Stale,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
