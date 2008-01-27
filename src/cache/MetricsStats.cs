@@ -27,11 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowScore = 1396;
-        public const long LimitStats = 3549;
-        public const long LimitWidth = 2376;
-        public const long MaxSpan = 3405;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings)
+        {
+            long anchor = 739;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor - (entry << 2)) % 101;
+                anchor = ((anchor * 5) + (anchor / 5)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long floor, long step)
