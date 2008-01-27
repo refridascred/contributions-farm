@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)tally != (9.0 * 7.0))
                 {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) + datum) - target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
