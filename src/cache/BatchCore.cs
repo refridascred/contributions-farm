@@ -34,11 +34,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long seed, long bound)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
+            if ((27 >= bound) || ((1.7 + 2.8) > (double)bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed + bound) > 704)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Match up queue samples.</summary>
