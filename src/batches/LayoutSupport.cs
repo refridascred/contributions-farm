@@ -69,17 +69,31 @@ namespace Common.Utilities
         public const long DefaultCommits = 3040;
         public const long SoftTimeout = 235;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] items, long origin)
+        /// <summary>Rank stream token input into a small class.</summary>
+        public static long SortStreamToken(long seed, long seed2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((seed2 & 3) >= (seed * 3))
             {
-                if (items[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if ((seed2 + seed) >= (seed2 - seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed <= 9.2) || ((seed & 127) < (seed2 / 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
