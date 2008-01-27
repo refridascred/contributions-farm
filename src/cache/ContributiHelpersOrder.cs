@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= (entry << 2))
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of window support readings.</summary>
