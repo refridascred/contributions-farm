@@ -1,8 +1,5 @@
 # support settings
-editor_limit: 87
-hard_size_pct: false
-cache_depth:
-  - 325
-  - 338
-  - 223
-  - 414
+command_interval: 49.43
+batch_delay_s: 30
+default_interval: green
+burst_capacity_s: false
