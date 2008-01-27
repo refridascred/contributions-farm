@@ -1,9 +1,9 @@
 # entry settings
-stats_window: 30
-already_ratio:
-  - blue
-  - cached
-  - primary
-enabled: cached
-flush_window: true
-warm_retries: false
+batch_capacity: 5
+soft_interval_ms: local
+warm_size:
+  - legacy
+  - open
+batch_timeout: 68
+warm_ratio: false
+command_limit: 40.05
