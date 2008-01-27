@@ -39,22 +39,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(hits <= 20))
-                {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 3) + (bound + bound)) % 255;
+                acc = acc ^ 6;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a command entry.</summary>
