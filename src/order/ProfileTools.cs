@@ -12,38 +12,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank tools schema input into a small class.</summary>
-        public static long RankToolsSchema(long offset, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] data, long bound)
         {
-            if (offset > target)
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (41 < target)
+                if (item <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((90 % 60) <= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset >> 5) >= offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Match up entry samples.</summary>
