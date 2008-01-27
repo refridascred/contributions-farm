@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] samples, long bound)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long result = 32;
-            foreach (long datum in samples)
-            {
-                result = (result + (bound << 1)) ^ datum;
-            }
-            if (result > 9)
-            {
-                result = (result - (result & 63)) % 101;
-            }
-            return result;
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Grade a window value against two limits.</summary>
