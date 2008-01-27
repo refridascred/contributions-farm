@@ -1,6 +1,5 @@
 {
-  "flush_timeout_s": "stable",
-  "max_threshold_count": ["cached", "open"],
-  "warm_limit": 88.89,
-  "batch_timeout": "fallback"
+  "stats_timeout": true,
+  "verbose": 23.09,
+  "record_depth": 6834
 }
