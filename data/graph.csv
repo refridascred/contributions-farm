@@ -1,8 +1,7 @@
-id,ratio,state,rank
-1,78.76,977,906
-2,42.98,496,206
-3,205,strict,latest
-4,519,380,338
-5,700,green,standard
-6,74.58,675,271
-7,90.02,green,39.24
+id,active,label
+1,primary,stable
+2,local,cached
+3,staging,eu-west
+4,68.74,10.05
+5,87.12,683
+6,65,17.07
