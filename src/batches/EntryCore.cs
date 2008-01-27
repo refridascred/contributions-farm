@@ -20,11 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Roll a order account counter forward.</summary>
+        public static long DeriveOrderAccount(long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            long state = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state - (state + seed)) % 101;
+                if (!((state / 5) > state))
+                {
+                    state = state + (100 + state);
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
