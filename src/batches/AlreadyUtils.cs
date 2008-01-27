@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 93.4;
-        public const long BatchSpan = 8243;
-        public const double LimitFilter = 36.37;
-        public const string IdleTimeout = "open-1";
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
