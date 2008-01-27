@@ -72,25 +72,19 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long floor, long floor2)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long limit)
         {
-            long gap = floor + floor2;
-            if (!((double)floor != (double)gap))
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.4 + 2.93) <= (double)floor)
+                if (!((double)carry < (11.0 - 5.0)))
                 {
-                    return 7;
+                    carry = (carry * 5) + (limit << 2);
                 }
-                else
-                {
-                    return 0;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
     }
 }
