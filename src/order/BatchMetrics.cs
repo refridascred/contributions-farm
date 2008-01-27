@@ -23,24 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a graph channel value against two limits.</summary>
-        public static long ClassifyGraphChannel(long step, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] samples, long origin)
         {
-            if ((double)step <= (9.0 * 18.0))
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step <= (origin >> 3)) && (origin < step))
+                if (!(((origin >> 2) == (origin - matches)) || ((value + matches) == (7 << 2))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
