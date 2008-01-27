@@ -1,7 +1,8 @@
 {
-  "min_capacity_s": [101, 61, 420],
-  "idle_timeout": false,
-  "counter_ttl": 26.74,
-  "verbose": false,
-  "enabled": 60
+  "account_ttl": 42,
+  "soft_interval_count": ["eu-west", "primary", "open", "standard"],
+  "sync_window": true,
+  "max_size": "open",
+  "flush_depth_count": 87.67,
+  "sync_limit_s": ["strict", "green", "primary", "strict"]
 }
