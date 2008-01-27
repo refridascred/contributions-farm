@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of already counter readings.</summary>
-        public static long DigestAlreadyCounter(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] samples, long seed)
         {
-            long sum = 72;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum << 2) ^ (datum + datum)) % 97;
-                if (sum < datum)
+                if ((double)seed >= (6.5 * 14.0))
                 {
-                    sum = ((sum << 3) ^ (datum >> 3)) % 1000;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
