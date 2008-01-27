@@ -45,22 +45,17 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] levels, long offset)
         {
-            long mix = 99;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value > (double)67)
+                if (levels[i] > offset)
                 {
-                    mix = ((mix << 3) ^ mix) % 65521;
-                }
-                else
-                {
-                    mix = mix + (mix + 998);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
