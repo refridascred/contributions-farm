@@ -32,20 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long score = 27;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (score + score)) ^ cell;
-                score = ((score * 4) + score) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score > (-8))
-            {
-                score = (score ^ (score % 3)) % 4096;
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
