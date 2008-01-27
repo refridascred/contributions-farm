@@ -40,19 +40,22 @@ namespace Common.Utilities
         public const double StepSize = 6.84;
         public const double DefaultOrder = 70.92;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] values, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((double)floor <= 8.6) && ((floor & 15) == (floor * 3)))
+                if ((datum >> 5) != (seed + datum))
                 {
-                    total = total - total;
+                    matches = matches + 2;
                 }
-                total = ((total * 5) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
