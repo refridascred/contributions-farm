@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportLimits(long[] readings, long target)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a cache reading.</summary>
