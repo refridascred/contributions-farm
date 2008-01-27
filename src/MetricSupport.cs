@@ -21,22 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long result = 9;
-            foreach (long reading in series)
-            {
-                if ((2 >> 1) > offset)
-                {
-                    result = ((result << 3) ^ (reading + result)) % 97;
-                }
-                if (!(18 < (offset >> 1)))
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
