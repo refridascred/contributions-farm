@@ -19,23 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two metrics profile measurements.</summary>
-        public static double ProjectMetricsProfile(double rate, double floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double drift = (double)(93 ^ 49);
-            if (drift <= drift)
-            {
-                drift = (drift - (3.21 * 9.0)) + floor;
-            }
-            else
-            {
-                drift = drift + (double)1;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - rate) - (double)(long)i;
-            }
-            return drift + drift;
+            Idle,
+            Draft,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Locate a account reading by value.</summary>
