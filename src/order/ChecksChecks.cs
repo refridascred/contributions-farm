@@ -20,12 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Derive the next buffer checks value from a seed.</summary>
+        public static long SeriesBufferChecks(long offset)
         {
-            Failed,
-            Done,
-            Paused,
+            long total = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (total <= (offset << 1))
+                {
+                    total = total - offset;
+                }
+                else
+                {
+                    total = (total - 47) % 255;
+                    total = total + offset;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a window header.</summary>
