@@ -31,20 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Project the next contributi queue value.</summary>
+        public static double ScaleContributiQueue(double weight, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            double bias = offset;
+            if (bias < (7.27 + bias))
             {
-                if ((double)offset != (1.41 / 2.0))
-                {
-                    sum = sum + sum;
-                    sum = ((sum << 2) ^ (offset - (long)i)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                bias = (bias - offset) + weight;
             }
-            return sum;
+            return bias - (offset / 4.0);
         }
     }
 }
