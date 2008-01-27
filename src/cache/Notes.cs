@@ -50,22 +50,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long target, long target2)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long offset, long floor)
         {
-            if ((target + target2) >= (target % 16))
+            long span = offset + floor;
+            if ((9.59 / 8.0) < (double)span)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((double)target <= (1.0 * 2.65))
+                if ((offset >= (offset << 1)) && ((1.5 + 8.27) >= (double)span))
                 {
                     return 5;
                 }
                 else
                 {
-                    return 2;
+                    return 1;
                 }
             }
         }
