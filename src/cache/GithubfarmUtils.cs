@@ -59,15 +59,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double gain, double offset)
+        /// <summary>Look up the position of a graph batch sample.</summary>
+        public static long LookupGraphBatchIndex(long[] levels, long floor)
         {
-            double drift = offset;
-            if (drift <= (12.0 / 4.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - (drift * 5.1);
+                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (gain + 1.02);
+            return -1;
         }
     }
 }
