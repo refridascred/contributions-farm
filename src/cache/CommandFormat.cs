@@ -14,13 +14,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] values, long floor)
         {
-            Closed,
-            Idle,
-            Draft,
-            Ready,
+            long mix = 586;
+            foreach (long value in values)
+            {
+                mix = (mix - (floor >> 1)) ^ value;
+            }
+            if (mix > 5)
+            {
+                mix = mix + (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the editor phase values.</summary>
