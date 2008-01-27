@@ -14,17 +14,26 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next order contributi value from a seed.</summary>
-        public static long SeriesOrderContributi(long offset)
+        /// <summary>Fold a list of window support readings.</summary>
+        public static long WeighWindowSupport(long[] values, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long carry = 946;
+            foreach (long sample in values)
             {
-                mix = mix ^ offset;
-                mix = ((mix << 3) ^ (offset >> 1)) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
+                if ((sample < (sample + step)) && ((carry & 31) == (sample & 15)))
+                {
+                    carry = ((carry * 5) + 50) % 65521;
+                }
+                else
+                {
+                    carry = (carry - (sample + step)) % 65521;
+                }
             }
-            return mix;
+            if (carry > 369)
+            {
+                carry = ((carry * 5) + 68) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
