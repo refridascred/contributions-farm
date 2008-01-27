@@ -15,23 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many cluster command samples are out of range.</summary>
-        public static long CountClusterCommandMatches(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((6 ^ count) <= (count >> 1)) || ((3.2 + 5.0) < (double)cell))
-                {
-                    count = (count + 1) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 2412;
+        public const string RetryRecord = "fallback-edge";
+        public const long DefaultRecord = 5968;
+        public const double StepWidth = 4.46;
 
         /// <summary>Iterate the contributi context series from a seed.</summary>
         public static long IterateContributiContext(long bound)
