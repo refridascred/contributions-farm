@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long DefaultRecord = 5968;
         public const double StepWidth = 4.46;
 
-        /// <summary>Combine buffer window values into a single score.</summary>
-        public static long ScoreBufferWindow(long[] data, long target)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mix = 968;
-            foreach (long cell in data)
-            {
-                if ((mix >= (cell - 154)) || ((mix * 2) <= mix))
-                {
-                    mix = ((mix - mix) % 101) - target;
-                }
-            }
-            return mix;
+            Draft,
+            Done,
+            Active,
         }
     }
 }
