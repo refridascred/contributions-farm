@@ -49,13 +49,38 @@ namespace Common.Utilities
             return (bias + 17.0) + weight;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Grade a contributi window value against two limits.</summary>
+        public static long ClassifyContributiWindow(long bound, long target)
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
+            if ((double)bound <= (3.0 + 7.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((16 - bound) < bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound >= (target + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target >> 2) != (0 ^ target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first stream contributi entry that matches the target.</summary>
