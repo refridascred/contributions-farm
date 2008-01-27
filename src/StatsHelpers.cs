@@ -63,31 +63,15 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Grade a session stats value against two limits.</summary>
-        public static long ClassifySessionStats(long floor, long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double weight, double span)
         {
-            if (((offset + floor) > (2 + 399)) && (((-5) & 63) >= (floor << 3)))
+            double rate = weight - 2.74;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                rate = ((rate + rate) + (double)(long)i) + span;
             }
-            else
-            {
-                if ((double)offset < (2.5 + 1.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (38 < (offset * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return rate + 4.08;
         }
     }
 }
