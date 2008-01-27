@@ -46,11 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            New,
+            Pending,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a cluster header.</summary>
