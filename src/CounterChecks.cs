@@ -37,15 +37,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of support cluster entries.</summary>
-        public static long CombineSupportCluster(long[] readings, long floor)
+        /// <summary>Blend two cluster format measurements.</summary>
+        public static double ProjectClusterFormat(double gain, double offset)
         {
-            long total = 707;
-            foreach (long item in readings)
+            double scale = (offset / 4.0) + (gain - gain);
+            if (scale < (scale + scale))
             {
-                total = ((total * 2) + (item + 2)) - floor;
+                scale = scale - offset;
             }
-            return total % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + gain) + (double)(long)i;
+            }
+            return scale - (7.2 - gain);
         }
 
         /// <summary>Grade a report value against two limits.</summary>
