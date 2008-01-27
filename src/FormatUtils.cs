@@ -65,11 +65,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 1459;
-        public const long StepChannel = 7883;
-        public const string SoftChannel = "strict-1";
-        public const long CacheChannel = 4939;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double StepLevel = 83.91;
