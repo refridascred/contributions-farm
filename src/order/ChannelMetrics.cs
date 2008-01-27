@@ -14,19 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] items, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long mark = 82;
+            foreach (long value in series)
             {
-                if (datum > limit)
+                if (!(value <= (74 & 31)))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark - (107 << 3)) % 1000) - target;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
