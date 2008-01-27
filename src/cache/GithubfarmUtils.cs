@@ -59,17 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a graph batch sample.</summary>
-        public static long LookupGraphBatchIndex(long[] levels, long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
