@@ -20,39 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long target, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] series, long seed)
         {
-            long edge = target ^ seed;
-            if ((seed << 3) != (seed - target))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((edge / 8) >= target)
+                if (series[i] >= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed & 31) < (seed - target)) && ((target - target) == (94 / 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed + 915) != (436 - target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
