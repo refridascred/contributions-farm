@@ -35,12 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] readings, long step)
         {
-            Idle,
-            Draft,
-            Active,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a support options.</summary>
