@@ -19,17 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a editor account sample.</summary>
-        public static long LookupEditorAccountIndex(long[] readings, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = origin + target;
+            if ((7.84 / 9.0) <= (double)lane)
             {
-                if (readings[i] > target)
+                return 7;
+            }
+            else
+            {
+                if (!(origin < (target - target)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin != (double)80)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin < lane)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
