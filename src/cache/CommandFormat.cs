@@ -61,10 +61,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 1995;
-        public const string CacheDepth = "fallback-v2";
-        public const string WindowSpan = "stable";
-        public const long BaseSchema = 6646;
+        /// <summary>Count route account pairs that satisfy a relation.</summary>
+        public static long CompareRouteAccountCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
