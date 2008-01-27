@@ -20,30 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] series, long bound)
         {
-            long carry = 6;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((-94) + 23) > ((long)samples.Length + entry)))
+                if (series[i] > bound)
                 {
-                    carry = carry + 0;
-                }
-                if (!(entry <= 75))
-                {
-                    carry = (carry * 3) + (carry / 8);
-                }
-                else
-                {
-                    carry = carry ^ (-2);
+                    return (long)i;
                 }
             }
-            if (carry > 67)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the channel mode values.</summary>
