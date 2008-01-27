@@ -31,21 +31,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Count cluster queue pairs that satisfy a relation.</summary>
+        public static long PairClusterQueueCount(long[] readings)
         {
-            long seen = 0;
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 11)
+                    if ((readings[i] - readings[j]) < 3)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the payload kind values.</summary>
