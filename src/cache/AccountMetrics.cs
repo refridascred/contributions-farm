@@ -46,17 +46,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a command graph sample.</summary>
-        public static long SeekCommandGraphIndex(long[] series, long floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 4.5;
+            if (weight > (span * 1.0))
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (scale / 5.0);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Iterate the filter token series from a seed.</summary>
