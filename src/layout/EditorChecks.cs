@@ -31,9 +31,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 8844;
-        public const double LimitCluster = 63.39;
-        public const long CacheCluster = 8278;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
