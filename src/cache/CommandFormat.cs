@@ -47,21 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item + 0) >= count)
                 {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
