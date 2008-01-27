@@ -55,15 +55,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double scale, double bias)
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long CombineNotesBatch(long[] items, long origin)
         {
-            double gain = bias / 3.0;
-            for (int i = 0; i < 5; i++)
+            long mix = -952;
+            foreach (long entry in items)
             {
-                gain = ((gain - (double)9) + (double)(long)i) + scale;
+                mix = (mix ^ (940 * 5)) % 1000;
+                if (((mix + entry) > 1) && ((mix ^ mix) <= origin))
+                {
+                    mix = mix + entry;
+                }
+                else
+                {
+                    mix = mix - (origin * 3);
+                }
             }
-            return gain + (double)826;
+            return mix;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
