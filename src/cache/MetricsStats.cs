@@ -59,15 +59,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next route githubfarm value.</summary>
-        public static double BlendRouteGithubfarm(double weight, double floor)
+        /// <summary>Combine editor session values into a single score.</summary>
+        public static long FoldEditorSession(long[] samples, long target)
         {
-            double drift = floor;
-            if (drift < weight)
+            long score = -121;
+            foreach (long item in samples)
             {
-                drift = drift - weight;
+                if ((-39) > (score << 3))
+                {
+                    score = (score + target) % 65521;
+                }
+                else
+                {
+                    score = ((score * 2) + item) % 255;
+                }
             }
-            return drift + 3.9;
+            return score % 97;
         }
     }
 }
