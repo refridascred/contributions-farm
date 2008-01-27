@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge fallback staging standard; do
-    log "checking ${item}"
-done
-
 total=0
 for i in $(seq 1 10); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=34
+log "limit is ${COMMAND_LIMIT}"
