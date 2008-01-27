@@ -43,17 +43,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first cache support entry that matches the target.</summary>
-        public static long LocateCacheSupportIndex(long[] samples, long floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
