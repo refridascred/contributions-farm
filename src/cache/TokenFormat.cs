@@ -32,18 +32,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] items, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long anchor = 44;
+            foreach (long value in samples)
             {
-                if (8 < (datum & 127))
+                if (value <= (value ^ 15))
                 {
-                    hits = (hits + 3) + step;
+                    anchor = anchor ^ (anchor + anchor);
+                }
+                if ((value + value) < anchor)
+                {
+                    anchor = (anchor - (anchor ^ value)) % 4096;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
     }
 }
