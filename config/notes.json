@@ -1,6 +1,12 @@
 {
-  "verbose": "blue",
-  "audit": "staging",
-  "base_limit": 1024,
-  "counter_threshold": "latest"
+  "compress": "edge",
+  "account_ratio": {
+    "entry_ttl": true,
+    "readonly": "cached",
+    "max_limit_ms": "legacy",
+    "enabled": 30
+  },
+  "poll_delay_pct": 9752,
+  "max_ttl_s": true,
+  "verbose": true
 }
