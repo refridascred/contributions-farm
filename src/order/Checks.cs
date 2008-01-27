@@ -54,11 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitFactor = 7324;
+        public const long BurstAccount = 4001;
+        public const string WindowScore = "latest-1";
+        public const long HardAccount = 784;
     }
 }
