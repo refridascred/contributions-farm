@@ -31,21 +31,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up order tools samples.</summary>
-        public static long OverlapOrderToolsCount(long[] items)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
