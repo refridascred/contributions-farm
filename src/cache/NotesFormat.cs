@@ -29,19 +29,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every support record entry stays within the limit.</summary>
-        public static bool GuardSupportRecordBounds(long[] items, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double gain, double offset)
         {
-            bool found = true;
-            foreach (long entry in items)
+            double drift = (double)(272 + 537);
+            for (int i = 0; i < 7; i++)
             {
-                if (entry >= target)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift + gain) + (double)(long)i) + offset;
             }
-            return found;
+            return drift - 4.09;
         }
     }
 }
