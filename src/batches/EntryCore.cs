@@ -36,11 +36,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 3710;
-        public const string DefaultRatio = "primary";
-        public const double StepToken = 34.13;
-        public const long MinWidth = 7381;
+        /// <summary>Check that every commits batches entry stays within the limit.</summary>
+        public static bool GuardCommitsBatchesRange(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
