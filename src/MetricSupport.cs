@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] data, long floor)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the payload kind values.</summary>
