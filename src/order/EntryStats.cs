@@ -37,18 +37,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((seen & 127) < (item ^ 9))
+                if (((((-790) >> 2) > (18 ^ cell)) || (hits < (hits ^ cell))) || ((double)seed >= (3.37 / 4.0)))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
