@@ -56,17 +56,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count the report entry entries that pass the check.</summary>
