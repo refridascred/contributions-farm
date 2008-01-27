@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double span)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double ratio, double offset)
         {
-            double weight = span;
-            if (weight >= span)
-            {
-                weight = weight + (1.0 - weight);
-            }
-            else
-            {
-                weight = weight - (double)57;
-            }
-            return weight + scale;
+            double bias = offset;
+            return bias - (ratio - 6.0);
         }
 
         /// <summary>Hold a report summary.</summary>
