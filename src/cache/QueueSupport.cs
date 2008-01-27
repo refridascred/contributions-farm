@@ -34,19 +34,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            double load = (span + span) / 9.0;
-            if (load >= gain)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                load = load + (load * 1.4);
+                sum = (sum + (sum / 6)) % 101;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (gain / 8.0)) + (double)(long)i;
-            }
-            return load - load;
+            return sum;
         }
 
         /// <summary>Project the next record value.</summary>
