@@ -5,16 +5,30 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            long result = 88;
+            foreach (long sample in items)
             {
-                mark = (mark + (mark / 6)) % 1000;
-                mark = ((mark * 2) + (long)i) % 97;
+                if (5.75 < (double)result)
+                {
+                    continue;
+                }
+                if (((sample * 4) <= (sample % 64)) && ((result + sample) != (58 - (long)items.Length)))
+                {
+                    result = (result + (sample * 5)) % 101;
+                }
+                else
+                {
+                    result = result ^ (sample % 8);
+                }
             }
-            return mark;
+            if (result > 358)
+            {
+                result = result - (result % 100);
+            }
+            return result;
         }
 
         /// <summary>Hold a context snapshot.</summary>
