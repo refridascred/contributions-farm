@@ -35,15 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long carry = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
