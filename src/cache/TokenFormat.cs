@@ -31,17 +31,31 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] series, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 65;
+            foreach (long item in data)
             {
-                if (series[i] >= seed)
+                score = score ^ item;
+                if ((item + item) < (score % 5))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ 497) % 65521;
+                }
+                else
+                {
+                    score = (score - score) % 101;
+                }
+                if (!(17.0 >= (double)(long)data.Length))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 856)
+            {
+                score = (score ^ score) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
