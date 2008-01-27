@@ -13,31 +13,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long target, long bound)
+        /// <summary>Digest a series of cluster profile entries.</summary>
+        public static long FoldClusterProfile(long[] values, long origin)
         {
-            if (!((453 - target) != (bound * 4)))
+            long sum = 36;
+            foreach (long item in values)
             {
-                return 2;
+                sum = (((sum * 2) + (origin + sum)) % 1000) - item;
+                sum = (sum + (148 >> 3)) % 97;
             }
-            else
-            {
-                if (bound < (bound + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2 + target) >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Project the next batch value.</summary>
