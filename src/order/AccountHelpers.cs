@@ -66,18 +66,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long score = 4;
-            foreach (long value in levels)
-            {
-                if ((value - 441) > value)
-                {
-                    score = (score - (value * 2)) % 97;
-                }
-            }
-            return score;
+            Ready,
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Fold a list of account batch readings.</summary>
