@@ -30,26 +30,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long anchor = 708;
-            foreach (long value in samples)
-            {
-                if ((3 - anchor) < value)
-                {
-                    anchor = ((anchor * 3) + (anchor % 8)) % 101;
-                }
-                if ((double)value <= (4.0 - 4.8))
-                {
-                    break;
-                }
-            }
-            if (anchor > 387)
-            {
-                anchor = anchor + (94 & 31);
-            }
-            return anchor;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first cache support entry that matches the target.</summary>
