@@ -55,14 +55,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
+            Draft,
+            Retry,
+            Synced,
             Stale,
-            Idle,
-            Pending,
-            Paused,
-            Ready,
         }
     }
 }
