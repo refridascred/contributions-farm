@@ -64,12 +64,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] levels, long origin)
+        /// <summary>Look up the position of a route order sample.</summary>
+        public static long LookupRouteOrderIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < origin)
+                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
