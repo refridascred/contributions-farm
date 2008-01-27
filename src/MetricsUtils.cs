@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long seed, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long slot = seed ^ offset;
-            if ((double)offset >= (6.3 * 9.8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed - 473) <= (offset % 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed + slot) == (28 - 83)) || ((double)seed >= (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((slot + 44) <= offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Digest a series of command entries.</summary>
