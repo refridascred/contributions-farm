@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-Keep format and contributi names short and lowercase.
-Each account is validated before it reaches the session queue.
+The buffer report groups every metrics by entry.
+Use farm settings to tune how often channel data is refreshed.
+
+When a metrics fails, the batches handler retries a few times before giving up.
+Run the editor check before changing any command limits.
+When a notes fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review order limits each release
 - Document new githubfarm fields
-- Validate farm input early
-- Keep command values small
+- Keep window values small
+- Prefer buffer defaults
+- Review githubfarm limits each release
