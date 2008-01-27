@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Dropped,
+            Failed,
+            Active,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a window options.</summary>
