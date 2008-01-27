@@ -29,15 +29,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double gain, double offset)
+        /// <summary>Count queue route pairs that satisfy a relation.</summary>
+        public static long CompareQueueRouteCount(long[] values)
         {
-            double drift = (double)(272 + 537);
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift + gain) + (double)(long)i) + offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - 4.09;
+            return hits;
         }
     }
 }
