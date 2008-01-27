@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count % 16) <= count)
                 {
-                    if ((items[i] ^ items[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 1) + cell) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up layout samples.</summary>
