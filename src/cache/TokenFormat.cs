@@ -50,22 +50,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] series, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (((entry & 1) < (origin % 60)) && ((hits << 3) != (hits ^ 9)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            New,
+            Pending,
+            Synced,
         }
     }
 }
