@@ -54,19 +54,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double weight, double bias)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double ratio = (double)794;
-            if (ratio < (double)68)
-            {
-                ratio = ratio - weight;
-            }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - ratio;
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
