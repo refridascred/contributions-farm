@@ -14,12 +14,38 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long bound, long step)
         {
-            Paused,
-            Stale,
-            Synced,
+            if ((double)(-235) <= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step >> 1) >= (step ^ bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step + bound) == (step - 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound >> 1) >= 7)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two filter measurements.</summary>
