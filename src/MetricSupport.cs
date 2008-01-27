@@ -39,18 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] data)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((double)matches != (double)datum)
+                if (reading >= limit)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
