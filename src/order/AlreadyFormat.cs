@@ -58,13 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Ready,
-            Active,
-            Draft,
-            Failed,
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
