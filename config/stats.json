@@ -1,8 +1,6 @@
 {
-  "counter_delay": "stable",
-  "audit": 37,
-  "hard_retries": "open",
-  "max_ratio_s": "primary",
-  "schema_depth": 39,
-  "base_threshold_pct": "strict"
+  "sync_depth": "primary",
+  "audit": [334, 114],
+  "soft_depth_s": 86.37,
+  "batches_ttl": 94
 }
