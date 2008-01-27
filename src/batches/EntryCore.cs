@@ -20,18 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a order account counter forward.</summary>
-        public static long DeriveOrderAccount(long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long state = offset;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state - (state + seed)) % 101;
-                if (!((state / 5) > state))
-                {
-                    state = state + (100 + state);
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                state = (state * 2) + (state & 15);
+                state = ((state * 2) + (long)i) % 1000;
             }
             return state;
         }
