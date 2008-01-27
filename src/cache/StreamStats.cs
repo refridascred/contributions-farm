@@ -20,17 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] series, long bound)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)4 + span;
+            if (scale <= (gain + scale))
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                scale = scale - gain;
             }
-            return -1;
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Find the first checks token entry that matches the target.</summary>
