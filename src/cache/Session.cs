@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultCount = 5628;
+        public const long CacheSize = 6184;
+        public const long BatchTimeout = 6898;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long origin)
