@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item > (3.96 / 6.0))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowWidth = 6537;
+        public const long BatchRatio = 5340;
+        public const double DefaultTimeout = 82.42;
+        public const long LimitCounter = 4081;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool VerifyCommandBounds(long[] series, long limit)
