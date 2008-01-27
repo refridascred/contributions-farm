@@ -35,17 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a cluster channel sample.</summary>
-        public static long FindClusterChannelIndex(long[] items, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                if (value <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a session header.</summary>
