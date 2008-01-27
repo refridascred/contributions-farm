@@ -55,15 +55,12 @@ namespace Common.Utilities
         public const string BurstGithubfarm = "standard-1";
         public const long WindowGithubfarm = 444;
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            double mean = offset;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean + mean) + (double)(long)i) + gain;
-            }
-            return mean + (mean - mean);
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
