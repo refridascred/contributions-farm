@@ -25,18 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter metrics samples are out of range.</summary>
-        public static long TallyFilterMetricsHits(long[] readings, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((reading + limit) > (-10))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    count = count + 3;
+                    mix = ((mix + (mix ^ mix)) % 1000) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
