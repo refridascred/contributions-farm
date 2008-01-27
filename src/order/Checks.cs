@@ -26,13 +26,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long bound)
         {
-            Active,
-            Stale,
-            Retry,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a route summary.</summary>
