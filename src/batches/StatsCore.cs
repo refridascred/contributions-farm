@@ -30,19 +30,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] readings, long offset)
+        /// <summary>Measure how many account context samples are out of range.</summary>
+        public static long AuditAccountContextGaps(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (cell > offset)
+                if ((floor + 8) > (long)values.Length)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + value;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
