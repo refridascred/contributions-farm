@@ -61,28 +61,36 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank stream token input into a small class.</summary>
-        public static long SortStreamToken(long seed, long seed2)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long offset)
         {
-            if ((seed2 & 3) >= (seed * 3))
+            long step = floor ^ offset;
+            if (step >= (floor >> 2))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((seed2 + seed) >= (seed2 - seed))
+                if (step < (step ^ offset))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (((double)seed <= 9.2) || ((seed & 127) < (seed2 / 4)))
+                    if ((double)step == (0.7 - 0.4))
                     {
                         return 4;
                     }
                     else
                     {
-                        return 3;
+                        if ((offset + 62) <= step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
