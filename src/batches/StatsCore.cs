@@ -75,18 +75,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks report samples are out of range.</summary>
-        public static long MeasureChecksReportOutliers(long[] samples, long target)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((cell + (-46)) <= seen))
-                {
-                    seen = (seen + 2) + target;
-                }
+                mix = (mix + ((long)i >> 4)) % 101;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the profile state values.</summary>
