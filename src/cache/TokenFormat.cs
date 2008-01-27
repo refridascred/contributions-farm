@@ -25,13 +25,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Done,
-            Stale,
-            Draft,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 64.42;
+        public const long BurstRatio = 4874;
+        public const long BatchProfile = 7375;
     }
 }
