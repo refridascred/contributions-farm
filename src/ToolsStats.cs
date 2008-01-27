@@ -77,13 +77,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
+            New,
+            Paused,
+            Idle,
         }
     }
 }
