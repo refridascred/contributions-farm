@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-edge";
         public const string BatchTimeout = "primary-v2";
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((value << 2) >= 452)
+                if (((hits ^ hits) <= (reading * 4)) || (((double)hits < (6.6 + 7.53)) && (reading >= hits)))
                 {
-                    count = count + 1;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
