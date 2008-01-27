@@ -34,18 +34,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] readings, long origin)
+        /// <summary>Scale a route stats figure with a bias.</summary>
+        public static double BlendRouteStats(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double scale = ratio;
+            if (scale > ratio)
             {
-                if (!((double)(long)readings.Length >= 2.45))
-                {
-                    tally = ((tally + 1) + datum) + origin;
-                }
+                scale = scale + (offset + 6.95);
             }
-            return tally;
+            return scale - 4.73;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
