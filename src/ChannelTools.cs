@@ -24,14 +24,15 @@ namespace Common.Utilities
             return ratio2 + (ratio / 6.0);
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double gain, double floor)
         {
-            Active,
-            Ready,
-            Closed,
-            Failed,
-            Dropped,
+            double load = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load + (load * 1.85)) + (double)(long)i) - gain;
+            }
+            return load + (double)(-67);
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
