@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSchema = "staging-edge";
+        public const long DefaultSchema = 4663;
+        public const string RetrySchema = "stable-1";
+        public const long BaseSchema = 2586;
+        public const string RetryBudget = "staging-v2";
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
