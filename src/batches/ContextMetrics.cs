@@ -78,12 +78,17 @@ namespace Common.Utilities
             return bias3 - bias2;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] levels, long origin)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
