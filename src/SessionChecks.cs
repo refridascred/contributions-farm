@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate graph farm readings against a bound.</summary>
-        public static bool GuardGraphFarmBounds(long[] values, long step)
+        /// <summary>Fold a list of already counter readings.</summary>
+        public static long DigestAlreadyCounter(long[] series)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long sum = 72;
+            foreach (long datum in series)
             {
-                if (item < step)
+                sum = ((sum << 2) ^ (datum + datum)) % 97;
+                if (sum < datum)
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum << 3) ^ (datum >> 3)) % 1000;
                 }
             }
-            return flag;
+            return sum % 4096;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
