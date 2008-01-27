@@ -58,22 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleWidth = 75.18;
+        public const long HardChannel = 6812;
+        public const long IdleChannel = 8619;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
