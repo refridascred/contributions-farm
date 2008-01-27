@@ -38,12 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "alpha";
-        public const double BaseAccount = 28.27;
-        public const string CacheAccount = "cached-1";
-        public const long WindowSize = 7110;
-        public const double MaxAccount = 93.17;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool CheckStatsBounds(long[] values, long limit)
