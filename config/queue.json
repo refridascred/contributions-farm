@@ -1,15 +1,5 @@
 {
-  "strict": true,
-  "default_delay_pct": [34, 216, 475, 4],
-  "flush_threshold": 6541,
-  "min_limit": {
-    "strict": 7120,
-    "min_timeout_pct": 9,
-    "dry_run": {
-      "editor_ttl": "primary",
-      "readonly": "eu-west",
-      "enabled": ["cached", "standard", "staging"]
-    },
-    "max_threshold_ms": false
-  }
+  "hard_limit_s": "cached",
+  "hard_timeout_pct": "strict",
+  "soft_delay_s": true
 }
