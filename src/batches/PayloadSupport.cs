@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] samples, long seed)
         {
-            Synced,
-            Failed,
-            Stale,
-            Pending,
-            Paused,
+            long anchor = 75;
+            foreach (long cell in samples)
+            {
+                if (((anchor & 255) == (anchor / 7)) || ((cell & 127) > seed))
+                {
+                    anchor = (anchor - (cell + seed)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 97;
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = (anchor << 3) ^ ((-320) ^ seed);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
