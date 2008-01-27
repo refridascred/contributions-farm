@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const string WindowSize = "primary-edge";
         public const long BurstRoute = 7257;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long result = 4;
+            foreach (long sample in values)
             {
-                if (tally < cell)
+                if ((result ^ sample) < (sample & 63))
                 {
-                    tally = tally + 3;
+                    result = result + ((-3) / 2);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the metrics status values.</summary>
