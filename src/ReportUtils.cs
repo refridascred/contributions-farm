@@ -23,18 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchSpan = "legacy-edge";
+        public const long MaxTools = 6922;
+        public const long DefaultWidth = 3760;
+        public const string CacheCount = "strict-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardMetrics = 8648;
