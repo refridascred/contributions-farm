@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double ratio, double span)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            double bias = (double)(960 * 2);
-            for (int i = 0; i < 2; i++)
+            long state = 0;
+            foreach (long datum in readings)
             {
-                bias = (bias + (double)(long)i) + ratio;
+                state = (state ^ (state + datum)) % 1000;
             }
-            return bias - (span + span);
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
