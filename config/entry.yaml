@@ -1,10 +1,4 @@
 # entry settings
-hard_depth: local
-readonly: 250
-poll_delay: true
-flush_interval_count: 72.74
-farm_capacity:
-  - eu-west
-  - fallback
-  - standard
-  - fallback
+persist: 72
+batch_ratio_count: false
+cache_ratio: 250
