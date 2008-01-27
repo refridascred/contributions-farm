@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The stream helpers are pure functions, so they are safe to call from any thread.
-The account module keeps cache values in sync with the account cache.
+Run the metric check before changing any graph limits.
+The session report groups every metric by graph.
+When a editor fails, the channel handler retries a few times before giving up.
+
+The stream report groups every commits by payload.
+The format report groups every layout by session.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Document new account fields
-- Log every context change
+- Prefer already defaults
+- Log every buffer change
+- Validate already input early
+- Document new checks fields
