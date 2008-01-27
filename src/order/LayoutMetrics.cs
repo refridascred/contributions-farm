@@ -19,17 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor - (anchor - (long)i);
-                anchor = (anchor << 2) ^ (limit * 5);
-                anchor = ((anchor * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
