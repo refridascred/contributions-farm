@@ -1,5 +1,11 @@
 {
-  "layout_limit": [453, 3, 402],
-  "burst_delay_pct": ["edge", "blue", "primary"],
-  "format_interval": 19
+  "soft_window_ms": 1024,
+  "enabled": {
+    "command_timeout": "stable",
+    "warm_window": ["open", "fallback", "strict"],
+    "default_limit_ms": 100,
+    "batch_ratio_count": 500
+  },
+  "sync_interval_pct": 30,
+  "poll_depth_count": 13.12
 }
