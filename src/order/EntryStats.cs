@@ -37,22 +37,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] levels, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((((-790) >> 2) > (18 ^ cell)) || (hits < (hits ^ cell))) || ((double)seed >= (3.37 / 4.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
