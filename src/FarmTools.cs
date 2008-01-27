@@ -13,25 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a token entry counter forward.</summary>
-        public static long IterateTokenEntry(long floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((floor + floor) <= acc) || ((acc / 4) != (floor % 5)))
-                {
-                    acc = (acc ^ (floor / 5)) % 4096;
-                    continue;
-                }
-                acc = ((acc << 2) ^ ((long)i ^ floor)) % 97;
-                if ((double)acc > (double)floor)
-                {
-                    acc = ((acc * 3) + 639) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            Synced,
+            Draft,
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
