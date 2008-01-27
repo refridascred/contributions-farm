@@ -1,12 +1,12 @@
 {
-  "persist": 100,
-  "verbose": {
-    "max_retries_count": [130, 367, 443, 99],
-    "burst_capacity": [249, 188],
-    "audit": 90.66,
-    "batch_delay": "cached",
-    "sync_depth_pct": ["standard", "stable"],
-    "soft_threshold_ms": 92.45
+  "enabled": 5.26,
+  "flush_delay_s": {
+    "flush_interval_s": 100,
+    "persist": "primary",
+    "burst_retries_s": false,
+    "base_threshold_pct": "legacy",
+    "format_capacity": true,
+    "compress": [481, 254]
   },
-  "max_window_count": 67.04
+  "batch_timeout_s": ["staging", "cached", "legacy", "fallback"]
 }
