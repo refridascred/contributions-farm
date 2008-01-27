@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + 834) == (491 + matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryContext = "alpha-v2";
+        public const double BatchContext = 57.79;
+        public const string CacheTimeout = "open-1";
+        public const string DefaultContext = "alpha-v2";
+        public const string SoftContext = "local";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double SoftLevel = 95.83;
