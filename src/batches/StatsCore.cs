@@ -44,11 +44,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheScore = 80.95;
-        public const long BatchGraph = 6219;
-        public const long MaxInterval = 654;
-        public const long RetryInterval = 4891;
+        /// <summary>Classify a commits contributi pair into a bucket.</summary>
+        public static long BucketCommitsContributi(long offset, long step)
+        {
+            if ((offset - step) != (offset >> 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.7 * 2.0) > (8.4 / 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
