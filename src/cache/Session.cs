@@ -69,15 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long state = 9;
-            foreach (long reading in readings)
-            {
-                state = (state - (reading << 3)) % 1000;
-            }
-            return state;
+            Idle,
+            Queued,
+            Stale,
+            Closed,
         }
     }
 }
