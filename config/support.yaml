@@ -1,5 +1,26 @@
 # support settings
-enabled: blue
-base_retries_pct: primary
-context_delay: 5
-flush_capacity: cached
+burst_limit_pct: false
+min_timeout_count:
+  batch_timeout_s:
+    base_depth_count: strict
+    audit: latest
+    min_ttl_pct: eu-west
+    soft_ttl: 500
+    burst_depth_s: open
+    flush_ttl: green
+  batches_timeout:
+    flush_depth_s: edge
+    retry_size_pct: 9620
+    session_size: 47
+    max_window: blue
+    metrics_capacity: latest
+    payload_ttl: edge
+  soft_retries_s: standard
+  burst_delay_pct: 66.34
+  flush_ratio_count: latest
+contributi_size:
+  - green
+  - green
+  - strict
+  - cached
+flush_timeout_count: 500
