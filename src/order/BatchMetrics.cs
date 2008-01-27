@@ -93,18 +93,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((6.0 / 3.0) < (double)tally)
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstTimeout = 46.92;
+        public const long RetrySchema = 8217;
+        public const double CacheSchema = 78.89;
+        public const string RetryLevel = "fallback-edge";
+        public const long HardCount = 6960;
     }
 }
