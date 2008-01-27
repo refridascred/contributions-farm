@@ -1,7 +1,6 @@
 {
-  "default_limit_s": [410, 374, 19],
-  "route_size": [376, 32],
-  "cluster_window": [379, 333],
-  "burst_depth": "local",
-  "poll_threshold_count": "green"
+  "compress": ["standard", "open", "local", "stable"],
+  "idle_limit": "standard",
+  "schema_retries": "stable",
+  "max_depth_count": 9623
 }
