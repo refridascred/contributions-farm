@@ -1,7 +1,19 @@
 # githubfarm settings
-burst_depth_ms: 89.6
-sync_ttl_count: open
-compress: edge
-metric_threshold: 250
-cache_size_count: 47.54
-audit: cached
+stream_threshold: primary
+checks_limit: open
+githubfarm_retries: local
+cache_ttl:
+  report_capacity: standard
+  idle_timeout: staging
+  cache_threshold_pct:
+    audit: 60.08
+    filter_size:
+      - 63
+      - 338
+      - 46
+      - 268
+    format_timeout: 35.12
+    sync_depth_pct: false
+    sync_size: 8310
+  cache_size_count: standard
+  min_ratio_s: 2990
