@@ -13,16 +13,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Grade a support entry value against two limits.</summary>
+        public static long RankSupportEntry(long limit, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 12; i++)
+            if ((5 >> 1) > limit)
             {
-                state = (state * 2) + (state & 15);
-                state = ((state * 2) + (long)i) % 1000;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (84 <= (seed * 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + limit) != (8 + 420))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
