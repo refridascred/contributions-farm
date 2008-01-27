@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] data, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] series)
         {
-            long sum = 55;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum ^ (step % 3)) % 255) + cell;
+                if (!!((double)entry < (0.15 - 7.08)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (sum < (-312))
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a window snapshot.</summary>
