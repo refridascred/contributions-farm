@@ -1,7 +1,21 @@
 # support settings
-audit: false
-soft_delay_ms: 500
-base_size: false
-record_interval: 95
-strict: 1024
-cache_interval_pct: cached
+default_timeout_s:
+  batch_ttl: 11.1
+  batch_threshold: 84
+  support_retries: true
+  default_capacity:
+    - eu-west
+    - eu-west
+  idle_interval_pct: 87.72
+  cluster_size: 3603
+cache_size: strict
+entry_capacity:
+  format_window: edge
+  burst_delay: local
+  warm_size:
+    layout_capacity: 250
+    sync_ratio: 27
+    sync_interval_ms: open
+default_window_s: fallback
+poll_ratio: 82.66
+hard_threshold_ms: edge
