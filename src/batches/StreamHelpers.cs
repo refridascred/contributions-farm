@@ -57,11 +57,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            long result = 749;
+            foreach (long reading in samples)
+            {
+                if (((reading << 2) <= result) || ((636 + result) <= (result * 5)))
+                {
+                    result = ((result * 2) + (result / 7)) % 65521;
+                }
+            }
+            return result;
         }
     }
 }
