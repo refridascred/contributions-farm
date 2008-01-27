@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Fold a list of account channel readings.</summary>
+        public static long TotalAccountChannel(long[] items, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long score = 15;
+            foreach (long reading in items)
             {
-                result = (result - (result << 2)) % 97;
-                result = ((result * 3) + (long)i) % 97;
+                if (!(offset >= (score * 4)))
+                {
+                    score = (score ^ reading) % 1000;
+                }
+                else
+                {
+                    score = (score - (reading + reading)) % 65521;
+                }
             }
-            return result;
+            if (score < (-54))
+            {
+                score = ((score << 2) ^ (offset % 2)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
