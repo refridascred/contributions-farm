@@ -72,12 +72,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            Synced,
+            Dropped,
+            Active,
+            Done,
+            Closed,
         }
     }
 }
