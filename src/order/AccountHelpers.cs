@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] series, long seed)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double mean = weight;
+            if (mean < weight)
             {
-                if ((2.2 - 9.07) < (double)seed)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                mean = mean + bias;
             }
-            return matches;
+            return mean - (double)8;
         }
 
         /// <summary>Hold a already stats.</summary>
