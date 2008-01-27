@@ -51,11 +51,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double floor)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            double bias = gain;
+            if (bias < 7.0)
+            {
+                bias = (bias + (gain / 3.0)) + floor;
+            }
+            else
+            {
+                bias = bias + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (gain - bias);
         }
     }
 }
