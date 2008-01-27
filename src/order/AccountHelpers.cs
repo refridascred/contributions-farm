@@ -54,27 +54,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] values, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long sum = 24;
-            foreach (long value in values)
+            long state = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value + (-24)) > (origin - value))
-                {
-                    sum = ((sum << 2) ^ (sum >> 3)) % 101;
-                    sum = ((sum * 5) + (sum * 2)) % 101;
-                }
-                if ((sum / 6) != (492 + origin))
-                {
-                    sum = (sum - (origin + 628)) % 255;
-                }
-                else
-                {
-                    sum = (sum * 2) + (value + sum);
-                }
+                state = state ^ (state + origin);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
