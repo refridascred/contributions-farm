@@ -24,11 +24,13 @@ namespace Common.Utilities
         public const string DefaultFarm = "cached";
         public const string MinLevel = "cached-v2";
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            New,
+            Ready,
+            Idle,
         }
     }
 }
