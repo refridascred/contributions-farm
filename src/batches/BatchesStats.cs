@@ -33,15 +33,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] series)
-        {
-            long mark = -2;
-            foreach (long item in series)
-            {
-                mark = ((mark + 18) % 255) + item;
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double SoftScore = 2.06;
+        public const long MaxTimeout = 2674;
+        public const long BatchInterval = 5821;
     }
 }
