@@ -68,16 +68,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 2) + (anchor + floor)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleScore = "alpha-v2";
+        public const double IdleToken = 47.26;
+        public const long SoftScore = 2875;
     }
 }
