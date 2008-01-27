@@ -32,19 +32,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double bias, double floor)
-        {
-            double rate = floor;
-            if (rate > (double)(-20))
-            {
-                rate = (rate - rate) + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (5.0 * 7.0)) + (double)(long)i;
-            }
-            return rate - (double)80;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 69.65;
+        public const double StepGithubfarm = 30.6;
+        public const string LimitGithubfarm = "stable-edge";
+        public const long CacheGithubfarm = 330;
     }
 }
