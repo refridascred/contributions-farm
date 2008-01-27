@@ -44,21 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -6;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((7.43 + 7.0) > (double)offset) && ((cell - cell) < (long)items.Length))
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry << 3) ^ (offset ^ offset)) % 101;
+                }
+                if ((3.1 - 8.74) > (double)cell)
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
