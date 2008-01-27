@@ -1,15 +1,35 @@
 # entry settings
-sync_timeout_s: stable
-account_size:
-  max_ratio_pct: 8017
-  tools_size: cached
-  cache_threshold:
-    - primary
-    - green
-    - primary
-  cache_depth_s:
-    - 252
-    - 306
-    - 402
-batch_limit: 5264
-dry_run: 2521
+format_ratio: true
+batch_window_count: fallback
+burst_interval:
+  batch_size_s: true
+  channel_interval: 6809
+  enabled: true
+  readonly: cached
+  idle_ratio: edge
+sync_limit: primary
+dry_run: 68.75
+batch_limit_s:
+  persist:
+    burst_delay_ms:
+      - 244
+      - 163
+      - 484
+    enabled:
+      - 432
+      - 117
+    batch_limit_count: 80.7
+    strict: 939
+  burst_capacity_pct: 29.64
+  metric_retries:
+    idle_size: 5.44
+    idle_timeout_s: 4818
+    audit: 82.35
+    enabled: 30
+  warm_delay:
+    compress: 60
+    layout_capacity: staging
+    base_window_pct: 47.44
+    warm_limit: edge
+    tools_timeout: strict
+  sync_size: 62
