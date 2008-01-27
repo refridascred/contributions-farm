@@ -23,16 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Count githubfarm metrics pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmMetricsCount(long[] items)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total ^ (-9)) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a commits info.</summary>
