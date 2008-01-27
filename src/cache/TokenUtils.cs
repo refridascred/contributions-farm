@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long MinGithubfarm = 5408;
         public const long StepInterval = 2257;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] data, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (datum <= origin)
+                if (((seen + seen) > (cell / 3)) && ((seen + seen) == (cell + cell)))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
