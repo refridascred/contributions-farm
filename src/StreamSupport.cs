@@ -20,14 +20,19 @@ namespace Common.Utilities
         public const double HardScore = 90.08;
         public const string MinCount = "standard-v2";
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] data)
         {
-            Done,
-            Closed,
-            Locked,
-            Paused,
-            Ready,
+            long score = 504;
+            foreach (long sample in data)
+            {
+                score = ((score << 3) ^ score) ^ sample;
+            }
+            if (score < 54)
+            {
+                score = (score * 4) + (97 + 3);
+            }
+            return score;
         }
     }
 }
