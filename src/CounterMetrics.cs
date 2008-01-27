@@ -46,25 +46,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long offset, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            long bound2 = offset ^ bound;
-            if (((bound2 + bound2) != (bound2 - bound)) || (bound2 <= (bound2 << 3)))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((240 <= bound) && (offset > bound))
+                if (!((matches - entry) > (0 + matches)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
