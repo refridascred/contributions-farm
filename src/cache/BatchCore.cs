@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of order session readings.</summary>
-        public static long TallyOrderSession(long[] values, long bound)
+        /// <summary>Look up the position of a graph counter sample.</summary>
+        public static long SeekGraphCounterIndex(long[] samples, long limit)
         {
-            long anchor = 832;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)bound >= 6.68)
+                if (samples[i] < limit)
                 {
-                    anchor = anchor + (anchor / 3);
-                }
-                if ((anchor / 7) < bound)
-                {
-                    anchor = (anchor + item) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Grade a batches batch value against two limits.</summary>
