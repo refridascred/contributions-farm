@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] data, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (item <= bound)
+                if (reading > bound)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define support limits and defaults.</summary>
