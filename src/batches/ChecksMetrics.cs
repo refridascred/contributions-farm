@@ -51,15 +51,12 @@ namespace Common.Utilities
         public const double BatchSession = 86.1;
         public const long BurstSession = 3836;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
