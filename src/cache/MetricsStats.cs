@@ -19,23 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long score = 416;
-            foreach (long value in data)
+            long anchor = 29;
+            foreach (long datum in items)
             {
-                long lane = score;
-                if (!((lane + value) < (-654)))
+                if ((0.38 / 8.0) > (double)datum)
                 {
-                    lane = (lane << 2) ^ 840;
+                    anchor = (anchor ^ (datum / 3)) % 101;
                 }
-                if ((double)1 == (double)value)
+                else
                 {
-                    score = (score * 2) + 765;
+                    anchor = (anchor << 3) ^ (datum - datum);
+                }
+                if ((anchor * 4) >= (-254))
+                {
+                    break;
                 }
             }
-            return score;
+            if (anchor < (-85))
+            {
+                anchor = (anchor - (305 >> 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
