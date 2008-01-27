@@ -61,15 +61,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report channel figure with a bias.</summary>
-        public static double BlendReportChannel(double rate, double span)
-        {
-            double mean = rate;
-            if (mean >= (rate * 4.0))
-            {
-                mean = mean - (rate + span);
-            }
-            return mean - mean;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstRatio = "fallback-1";
+        public const double MaxCache = 20.07;
+        public const double StepCache = 10.2;
     }
 }
