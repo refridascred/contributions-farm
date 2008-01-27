@@ -1,13 +1,12 @@
 {
-  "batches_timeout": {
-    "idle_capacity_count": "latest",
-    "soft_capacity_count": true,
-    "retry_depth": "latest",
-    "verbose": 80,
-    "poll_depth": 40.42
-  },
-  "strict": false,
-  "audit": ["legacy", "staging", "staging"],
-  "default_threshold": true,
-  "token_interval": 46
+  "command_delay": 27,
+  "persist": "stable",
+  "max_interval": {
+    "default_window_count": ["cached", "edge"],
+    "poll_size_ms": false,
+    "soft_interval_count": [371, 208],
+    "sync_ratio": 56.52,
+    "sync_ttl": true,
+    "retry_size": 34.76
+  }
 }
