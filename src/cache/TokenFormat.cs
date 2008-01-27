@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] levels)
         {
-            double weight = rate;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                weight = (weight + (double)9) + (double)(long)i;
+                if (value < (value - value))
+                {
+                    matches = matches + 1;
+                }
             }
-            return weight + span;
+            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
