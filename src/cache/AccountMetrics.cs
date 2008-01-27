@@ -57,12 +57,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 6525;
+        public const string IdleFactor = "local";
+        public const long HardRoute = 3502;
+        public const long MinRoute = 9102;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double StepTimeout = 5.61;
