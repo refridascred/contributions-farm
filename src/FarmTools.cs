@@ -36,19 +36,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] items, long limit)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != limit)
+                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
