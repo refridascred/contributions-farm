@@ -32,14 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Closed,
-            Pending,
-            New,
-            Dropped,
-            Synced,
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of queue graph readings.</summary>
