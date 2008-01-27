@@ -66,26 +66,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] levels, long origin)
         {
-            long acc = 461;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((acc << 1) != (49 + acc)))
+                if (levels[i] == origin)
                 {
-                    acc = (acc + (entry & 63)) % 1000;
-                }
-                if ((16.0 > (double)entry) || ((double)entry != (3.84 / 6.0)))
-                {
-                    acc = acc + (acc + entry);
+                    return (long)i;
                 }
             }
-            if (acc < 50)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc;
+            return -1;
         }
     }
 }
