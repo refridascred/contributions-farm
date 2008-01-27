@@ -1,6 +1,12 @@
 {
-  "token_size": true,
-  "sync_delay_pct": "latest",
-  "graph_delay": ["edge", "edge", "blue", "green"],
-  "cache_delay": 49
+  "account_ttl": 3519,
+  "default_threshold_s": false,
+  "editor_capacity": "strict",
+  "window_delay": {
+    "dry_run": true,
+    "compress": "green",
+    "context_capacity": 9632,
+    "enabled": 2867,
+    "soft_interval": "staging"
+  }
 }
