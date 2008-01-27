@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict eu-west; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-RECORD_LIMIT=247
+RECORD_LIMIT=323
 log "limit is ${RECORD_LIMIT}"
