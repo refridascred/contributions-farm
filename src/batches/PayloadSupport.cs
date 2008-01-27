@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double gain, double span)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long floor)
         {
-            double drift = gain;
-            if (drift < (gain + drift))
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                drift = drift + (span / 6.0);
+                if (!(floor <= (long)i))
+                {
+                    anchor = anchor - (floor / 2);
+                }
+                if ((double)anchor >= (2.23 + 2.1))
+                {
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            else
-            {
-                drift = drift + 14.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (gain - gain)) - (double)(long)i;
-            }
-            return drift - (drift - 7.4);
+            return anchor;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
