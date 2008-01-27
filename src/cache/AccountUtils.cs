@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long MaxProfile = 7251;
         public const long WindowScore = 3263;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] levels)
+        /// <summary>Look up the position of a contributi channel sample.</summary>
+        public static long SeekContributiChannelIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches & 31) >= ((long)levels.Length - matches))
+                if (samples[i] < offset)
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
