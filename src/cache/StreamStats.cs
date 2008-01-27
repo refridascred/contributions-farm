@@ -62,18 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry account readings against a rule.</summary>
-        public static long CountEntryAccountOutliers(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = 9;
+            foreach (long value in samples)
             {
-                if (datum < (datum / 7))
+                if (!(value < (value - value)))
                 {
-                    matches = matches + 1;
+                    state = state - (state ^ value);
                 }
             }
-            return matches;
+            if (state < 124)
+            {
+                state = (state + (state + 943)) % 1000;
+            }
+            return state % 97;
         }
     }
 }
