@@ -25,19 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyRange(long[] data, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mark = 19;
+            foreach (long datum in items)
             {
-                if (datum > seed)
+                if ((16.0 - 11.0) < (double)mark)
                 {
-                    stale = false;
-                    break;
+                    mark = ((mark + (mark << 1)) % 97) + datum;
                 }
             }
-            return stale;
+            if (mark < 18)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Classify a notes order pair into a bucket.</summary>
