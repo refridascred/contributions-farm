@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double rate, double span)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            double load = 10.0;
+            if (load <= (rate + rate))
             {
-                if (((anchor / 8) >= ((long)i ^ (long)i)) || ((target * 3) >= target))
-                {
-                    anchor = (anchor * 2) + ((long)i << 1);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                load = load - 8.04;
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)41) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
