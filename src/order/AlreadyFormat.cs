@@ -37,17 +37,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a session route reading by value.</summary>
-        public static long SeekSessionRouteIndex(long[] values, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 99;
+            foreach (long value in values)
             {
-                if (values[i] <= bound)
+                if ((double)value > (double)67)
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ mix) % 65521;
+                }
+                else
+                {
+                    mix = mix + (mix + 998);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the command mode values.</summary>
