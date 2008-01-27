@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] data, long seed)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double drift = 13.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen + seed) <= (datum + seen))
-                {
-                    seen = seen + 2;
-                }
+                drift = ((drift - bias) + (double)(long)i) - gain;
             }
-            return seen;
+            return drift - (bias - bias);
         }
 
         /// <summary>Count the checks report entries that pass the check.</summary>
