@@ -44,12 +44,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftInterval = 4133;
-        public const long RetrySession = 8788;
-        public const long SoftLevel = 5046;
-        public const double BatchSession = 86.1;
-        public const long BurstSession = 3836;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowCount = 2507;
+        public const double StepRatio = 69.85;
+        public const double HardScore = 62.64;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
