@@ -57,13 +57,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] samples, long offset)
         {
-            Ready,
-            Locked,
-            Synced,
-            Pending,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
