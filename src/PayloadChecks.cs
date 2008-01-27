@@ -54,13 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Draft,
-            Stale,
-            Idle,
-            Queued,
+            public double Level { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
