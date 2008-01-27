@@ -43,12 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] levels, long step)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits + step) >= (step * 5))
+                {
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
