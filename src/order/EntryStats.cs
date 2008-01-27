@@ -19,14 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 1588;
+        public const double MinSize = 47.79;
+        public const long LimitToken = 2041;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BatchBudget = "cached-1";
