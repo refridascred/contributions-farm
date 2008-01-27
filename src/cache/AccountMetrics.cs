@@ -31,22 +31,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] series, long seed)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long anchor = 73;
-            foreach (long item in series)
-            {
-                if ((seed >= anchor) || ((anchor * 5) == (5 + item)))
-                {
-                    anchor = (anchor ^ (item ^ 403)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor ^ 25)) % 255;
-                }
-            }
-            return anchor;
+            Failed,
+            Pending,
+            Dropped,
+            Ready,
+            Paused,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
