@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Validate entry schema readings against a bound.</summary>
+        public static bool CheckEntrySchemaLimits(long[] data, long limit)
         {
-            New,
-            Paused,
-            Ready,
-            Locked,
-            Dropped,
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many window schema samples are out of range.</summary>
