@@ -1,6 +1,9 @@
 # entry settings
-token_depth: 0.06
-retry_interval: 29.57
-idle_ttl: primary
-base_capacity: edge
-default_threshold: true
+stats_window: 30
+already_ratio:
+  - blue
+  - cached
+  - primary
+enabled: cached
+flush_window: true
+warm_retries: false
