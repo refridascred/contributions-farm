@@ -1,11 +1,11 @@
 # Command notes
 
-The commits report groups every githubfarm by context.
-When a checks fails, the checks handler retries a few times before giving up.
+The cluster module keeps cache values in sync with the checks cache.
+Keep stats and layout names short and lowercase.
+A channel that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Validate batches input early
-- Review farm limits each release
-- Document new notes fields
-- Prefer contributi defaults
+- Keep editor values small
+- Review route limits each release
+- Document new schema fields
