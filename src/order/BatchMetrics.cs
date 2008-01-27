@@ -39,23 +39,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long CombineNotesBatch(long[] items, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] series)
         {
-            long mix = -952;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                mix = (mix ^ (940 * 5)) % 1000;
-                if (((mix + entry) > 1) && ((mix ^ mix) <= origin))
+                if (!(hits <= 20))
                 {
-                    mix = mix + entry;
+                    hits = (hits + 2) - reading;
                 }
                 else
                 {
-                    mix = mix - (origin * 3);
+                    hits = hits - 1;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
