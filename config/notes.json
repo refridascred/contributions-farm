@@ -1,6 +1,8 @@
 {
-  "burst_timeout": 60,
-  "retry_timeout_pct": 8.91,
-  "hard_window_count": 118,
-  "token_limit": "eu-west"
+  "record_timeout": "latest",
+  "warm_threshold_s": 21,
+  "flush_depth": 7694,
+  "session_size": [91, 499],
+  "payload_window": 100,
+  "flush_capacity_ms": 70
 }
