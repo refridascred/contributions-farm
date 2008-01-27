@@ -1,4 +1,8 @@
 # support settings
-contributi_capacity: fallback
-compress: 61
-readonly: 250
+editor_limit: 87
+hard_size_pct: false
+cache_depth:
+  - 325
+  - 338
+  - 223
+  - 414
