@@ -47,19 +47,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double bias, double floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] data, long bound)
         {
-            double mean = (double)((-569) - 844);
-            if (mean >= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (double)583) - floor;
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean - (double)698;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
