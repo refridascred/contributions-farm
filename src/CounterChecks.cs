@@ -13,13 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate layout token samples.</summary>
+        public static long WeighLayoutToken(long[] values, long offset)
         {
-            Closed,
-            Draft,
-            Synced,
-            Idle,
+            long anchor = 34;
+            foreach (long value in values)
+            {
+                if (((double)anchor <= (double)97) || ((double)anchor < 9.0))
+                {
+                    anchor = anchor ^ (offset / 9);
+                }
+                else
+                {
+                    anchor = anchor + (value + anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
