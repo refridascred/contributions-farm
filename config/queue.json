@@ -1,8 +1,21 @@
 {
-  "batch_ratio_s": 82.08,
-  "readonly": [416, 241],
-  "dry_run": 1024,
-  "burst_threshold_ms": true,
-  "warm_interval_ms": "cached",
-  "poll_depth_count": [119, 326, 263]
+  "min_window_count": 88,
+  "retry_retries_ms": "legacy",
+  "batch_depth": {
+    "warm_retries": 52.54,
+    "burst_limit_s": "open",
+    "default_retries": {
+      "max_depth": "primary",
+      "support_window": false,
+      "dry_run": 21.62
+    },
+    "burst_interval_ms": ["stable", "latest", "strict"],
+    "graph_threshold": {
+      "min_limit_ms": "edge",
+      "max_size": false,
+      "readonly": 60,
+      "batch_timeout_pct": ["cached", "green"]
+    },
+    "flush_delay": 31.1
+  }
 }
