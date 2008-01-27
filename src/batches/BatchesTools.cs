@@ -14,11 +14,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 2264;
-        public const long DefaultWidth = 63;
-        public const long LimitEntry = 2439;
-        public const long HardScore = 6635;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long step, long origin)
+        {
+            if ((origin + origin) != (step & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4 & 3) < (6 + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step ^ origin) > (origin + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
