@@ -32,18 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((7.6 < (double)tally) || (51 <= tally)) && (((1.1 + 16.0) > (double)datum) && ((8 % 97) < datum)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
