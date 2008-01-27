@@ -36,12 +36,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "strict-v2";
-        public const long CacheStats = 7408;
-        public const long MaxSize = 4129;
-        public const long HardScore = 5245;
-        public const string MaxLevel = "strict";
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool GuardToolsBounds(long[] samples, long target)
