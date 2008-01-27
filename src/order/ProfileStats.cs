@@ -45,19 +45,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data, long step)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double gain, double bias)
         {
-            long result = 81;
-            foreach (long cell in data)
-            {
-                result = ((result ^ (step + (-33))) % 1000) ^ cell;
-            }
-            if (result > 0)
-            {
-                result = (result - ((-96) >> 2)) % 97;
-            }
-            return result % 1000;
+            double gain2 = gain;
+            return (gain2 + (double)11) + bias;
         }
     }
 }
