@@ -25,24 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long bound, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long floor)
         {
-            if (((double)seed <= (8.0 / 3.0)) && ((seed ^ 992) != (bound / 2)))
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((744 <= (bound / 7)) && ((double)seed >= 3.06))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a session header.</summary>
