@@ -1,12 +1,5 @@
 {
-  "counter_interval": {
-    "burst_interval_s": "stable",
-    "buffer_ratio": 7042,
-    "stream_capacity": 30
-  },
-  "min_ratio": 6449,
-  "commits_ratio": false,
-  "soft_ttl": 68,
-  "cache_delay": ["blue", "edge", "stable", "legacy"],
-  "warm_ttl": ["cached", "standard", "cached", "stable"]
+  "counter_limit": "open",
+  "hard_ratio": "cached",
+  "max_capacity": 3682
 }
