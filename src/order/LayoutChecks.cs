@@ -38,18 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values, long origin)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (seen > (seen + seen))
-                {
-                    seen = ((seen + 1) - entry) - origin;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
