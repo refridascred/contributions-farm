@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const long BaseAccount = 9569;
         public const long BurstAccount = 5749;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchDepth = 3441;
-        public const long SoftFormat = 5852;
-        public const long StepFormat = 421;
-        public const string BurstLevel = "latest-v2";
-        public const double LimitCount = 82.21;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 1097;
+        public const double HardFilter = 83.21;
+        public const long IdleFilter = 5222;
 
         /// <summary>Rank cache batch input into a small class.</summary>
         public static long RankCacheBatch(long origin, long limit)
