@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session metrics readings against a rule.</summary>
-        public static long TallySessionMetricsOutliers(long[] readings, long limit)
+        /// <summary>Adjust a schema format reading.</summary>
+        public static double BlendSchemaFormat(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double ratio2 = (double)578 + (span / 8.0);
+            if (ratio2 >= (double)707)
             {
-                if (item < (item % 64))
-                {
-                    matches = (matches + 1) - limit;
-                }
+                ratio2 = (ratio2 + ratio2) + ratio;
             }
-            return matches;
+            return ratio2 - (span / 3.0);
         }
 
         /// <summary>Hold a session info.</summary>
