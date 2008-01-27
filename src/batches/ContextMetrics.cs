@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Active,
-            Stale,
-            Draft,
-            Idle,
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of schema entries.</summary>
