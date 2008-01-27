@@ -39,17 +39,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 3) + (bound + bound)) % 255;
-                acc = acc ^ 6;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Hold a command entry.</summary>
