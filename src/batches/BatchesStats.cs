@@ -28,17 +28,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a session batch sample.</summary>
-        public static long LocateSessionBatchIndex(long[] samples, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -2;
+            foreach (long item in series)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + 18) % 255) + item;
             }
-            return -1;
+            return mark;
         }
     }
 }
