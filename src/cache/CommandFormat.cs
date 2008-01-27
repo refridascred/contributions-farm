@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const string RetryBudget = "strict-v2";
         public const long HardFactor = 4522;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] readings, long step)
         {
             long count = 0;
-            foreach (long item in series)
+            foreach (long item in readings)
             {
-                if ((item + 0) >= count)
+                if (!((item + count) > (count * 4)))
                 {
-                    count = count + 2;
+                    count = (count + 2) + step;
                 }
             }
             return count;
