@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] data, long seed)
         {
-            Active,
-            Pending,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((seed + count) != (count & 255))
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
