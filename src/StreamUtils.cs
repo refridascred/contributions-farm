@@ -50,19 +50,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double rate, double bias)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] levels, long target)
         {
-            double ratio = rate;
-            if (ratio > bias)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                ratio = ratio - rate;
+                if ((target + matches) < 173)
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (double)288) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return matches;
         }
 
         /// <summary>Combine entry githubfarm values into a single score.</summary>
