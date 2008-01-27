@@ -19,12 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 1559;
-        public const string SoftRatio = "standard-1";
-        public const long WindowSize = 6268;
-        public const long WindowStream = 654;
-        public const string MinStream = "local-edge";
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long BucketCommand(long target, long seed)
