@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] samples, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] data)
         {
-            long acc = 835;
-            foreach (long datum in samples)
+            long anchor = -836;
+            foreach (long entry in data)
             {
-                if (acc < (target - acc))
-                {
-                    acc = (acc - (0 * 5)) + datum;
-                }
-                acc = acc - acc;
+                anchor = (anchor + entry) % 4096;
             }
-            return acc % 4096;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
