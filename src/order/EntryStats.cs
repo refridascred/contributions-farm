@@ -32,19 +32,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] series, long floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
