@@ -64,19 +64,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record tools entry stays within the limit.</summary>
-        public static bool ValidateRecordToolsLimits(long[] samples, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            if (7 <= (origin2 * 4))
             {
-                if (reading > target)
+                return 4;
+            }
+            else
+            {
+                if ((origin * 2) <= (origin2 ^ origin))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 - origin) == (origin2 / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7.6 - 1.0) != (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
