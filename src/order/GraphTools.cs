@@ -23,19 +23,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((2.71 >= (double)seen) || ((double)seen >= 15.0))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 38.01;
+        public const string SoftLevel = "primary-edge";
+        public const long LimitLayout = 1508;
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
