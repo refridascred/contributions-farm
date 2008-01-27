@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate batch batches readings against a bound.</summary>
+        public static bool GuardBatchBatchesRange(long[] levels, long target)
         {
-            Queued,
-            Idle,
-            Locked,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the profile status values.</summary>
