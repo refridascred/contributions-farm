@@ -29,11 +29,16 @@ namespace Common.Utilities
         public const string IdleTimeout = "open-1";
         public const double StepTimeout = 26.42;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total + (limit + 9)) % 4096;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit entry account readings against a rule.</summary>
