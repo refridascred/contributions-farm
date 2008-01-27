@@ -56,19 +56,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] values, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long floor, long target)
         {
-            bool ok = true;
-            foreach (long value in values)
+            if (!((floor >> 4) > target))
             {
-                if (value > offset)
+                return 5;
+            }
+            else
+            {
+                if ((target * 3) <= 595)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((target / 5) <= (target + floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the route class values.</summary>
