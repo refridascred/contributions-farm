@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double scale, double offset)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long floor, long target)
         {
-            double gain = offset + scale;
-            if (gain > (double)16)
+            if (((floor >> 4) >= target) && ((target - target) <= 726))
             {
-                gain = gain - (8.0 * 7.75);
+                return 1;
             }
-            return gain + (offset - scale);
+            else
+            {
+                if (3 < (floor ^ target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((target / 2) < 5) || ((89 ^ 4) > (target & 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank tools schema input into a small class.</summary>
