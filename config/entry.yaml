@@ -1,5 +1,6 @@
 # entry settings
-verbose: 3178
-min_threshold: true
-poll_timeout: latest
-order_limit: 73
+retry_size: false
+batch_ttl_s: true
+contributi_capacity: true
+hard_ttl_pct: 23
+order_retries: true
