@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            Stale,
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Fold a list of account readings.</summary>
