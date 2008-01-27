@@ -29,10 +29,14 @@ namespace Common.Utilities
         public const long DefaultWidth = 3760;
         public const string CacheCount = "strict-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 8648;
-        public const string CacheFactor = "standard-edge";
-        public const long MinDepth = 8580;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long seed)
