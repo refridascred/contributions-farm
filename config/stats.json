@@ -1,8 +1,6 @@
 {
-  "stream_window": ["green", "open", "stable", "primary"],
-  "max_ttl_s": 60,
-  "idle_size_s": 7418,
-  "hard_delay": 6,
-  "stats_window": 7872,
-  "strict": [118, 65, 272]
+  "readonly": "fallback",
+  "metric_retries": "green",
+  "compress": [464, 354, 315],
+  "account_delay": 6239
 }
