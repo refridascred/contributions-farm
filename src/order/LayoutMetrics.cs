@@ -24,18 +24,14 @@ namespace Common.Utilities
         public const long MaxRatio = 9682;
         public const double HardPayload = 3.93;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] readings)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 2) < (entry - entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Ready,
+            Active,
+            Paused,
+            Queued,
         }
     }
 }
