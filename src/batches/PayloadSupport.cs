@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] samples, long seed)
-        {
-            long anchor = 75;
-            foreach (long cell in samples)
-            {
-                if (((anchor & 255) == (anchor / 7)) || ((cell & 127) > seed))
-                {
-                    anchor = (anchor - (cell + seed)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor << 3) ^ ((-320) ^ seed);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitRatio = 92.92;
+        public const string SoftFactor = "stable-1";
+        public const long RetryCache = 9973;
+        public const long BaseCache = 1603;
 
         /// <summary>Find the first already commits entry that matches the target.</summary>
         public static long FindAlreadyCommitsIndex(long[] items, long bound)
