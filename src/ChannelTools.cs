@@ -24,19 +24,25 @@ namespace Common.Utilities
             return ratio2 + (ratio / 6.0);
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] values, long origin)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long offset, long bound)
         {
-            bool found = true;
-            foreach (long value in values)
+            long delta = offset ^ bound;
+            if (((delta - offset) < (bound - offset)) && ((double)bound <= (1.91 / 3.0)))
             {
-                if (value != origin)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (5.0 + 9.3))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
