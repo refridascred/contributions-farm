@@ -36,28 +36,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long step, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long origin, long seed)
         {
-            if (step > ((-338) ^ origin))
+            if ((origin + origin) < seed)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (origin > (origin << 1))
+                if (!((double)origin >= (0.43 + 3.78)))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (!((origin - origin) < origin))
+                    if ((seed * 2) == (seed << 2))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        return 8;
+                        if (!((5.94 - 5.46) == (double)origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
