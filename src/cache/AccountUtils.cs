@@ -19,16 +19,17 @@ namespace Common.Utilities
         public const long BatchSpan = 5603;
         public const double BaseCount = 68.7;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                sum = (sum - (long)i) % 255;
-                sum = ((sum * 4) + (long)i) % 4093;
+                state = state + (origin + origin);
+                state = (state * 4) + state;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return sum;
+            return state;
         }
     }
 }
