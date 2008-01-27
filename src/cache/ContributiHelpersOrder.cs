@@ -26,23 +26,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double rate, double offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] items)
         {
-            double rate2 = rate;
-            if (rate2 >= offset)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                rate2 = rate2 + (double)1;
+                if ((datum + datum) > (0 / 2))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (3.28 + 8.2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + (rate2 * 15.0)) + (double)(long)i;
-            }
-            return rate2 - (rate2 - rate);
+            return matches;
         }
     }
 }
