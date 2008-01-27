@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long StepWidth = 9922;
         public const long RetryCommits = 2243;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] data, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((long)data.Length + limit) < limit)
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a entry buffer pair into a bucket.</summary>
