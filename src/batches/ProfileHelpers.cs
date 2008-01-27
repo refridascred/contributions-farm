@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 7929;
-        public const long SoftCache = 2886;
-        public const long DefaultWidth = 7369;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
