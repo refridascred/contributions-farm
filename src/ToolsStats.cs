@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                acc = acc ^ (37 - (long)i);
-                acc = ((acc * 5) + (long)i) % 97;
+                if (count >= (value ^ value))
+                {
+                    count = count + 3;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
