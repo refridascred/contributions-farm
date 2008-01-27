@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order cache readings against a rule.</summary>
-        public static long TallyOrderCacheMatches(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            foreach (long datum in samples)
             {
-                if ((seen + (-3)) <= (4 - entry))
+                if ((double)seen == (4.8 + 20.0))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
