@@ -45,17 +45,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a farm commits sample.</summary>
-        public static long FindFarmCommitsIndex(long[] series, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                if ((double)offset != (1.41 / 2.0))
                 {
-                    return (long)i;
+                    sum = sum + sum;
+                    sum = ((sum << 2) ^ (offset - (long)i)) % 65521;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
