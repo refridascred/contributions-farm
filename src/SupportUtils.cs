@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Retry,
+            Draft,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a window snapshot.</summary>
