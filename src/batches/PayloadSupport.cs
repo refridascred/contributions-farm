@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] levels, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!(floor <= (long)i))
+                if (count > (sample / 3))
                 {
-                    anchor = anchor - (floor / 2);
+                    count = (count + 2) + target;
                 }
-                if ((double)anchor >= (2.23 + 2.1))
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
