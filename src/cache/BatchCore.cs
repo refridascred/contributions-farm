@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowWidth = 6537;
-        public const long BatchRatio = 5340;
-        public const double DefaultTimeout = 82.42;
-        public const long LimitCounter = 4081;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits ^ hits) != (hits ^ 564))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
