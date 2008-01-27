@@ -24,18 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools account series from a seed.</summary>
-        public static long SeriesToolsAccount(long seed)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] readings, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry ^ (long)i) % 4096;
-                carry = (carry + (23 + carry)) % 1000;
-                carry = carry - (long)i;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
