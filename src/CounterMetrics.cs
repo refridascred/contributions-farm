@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const long WindowWidth = 2018;
         public const double DefaultSpan = 30.57;
 
-        /// <summary>Validate stats record readings against a bound.</summary>
-        public static bool VerifyStatsRecordBounds(long[] samples, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long mix = 267;
+            foreach (long item in data)
             {
-                if (item < floor)
+                mix = (mix ^ (seed << 2)) - item;
+                if ((seed * 4) >= (seed + 73))
                 {
-                    valid = false;
-                    break;
+                    mix = ((mix * 5) + seed) % 255;
                 }
             }
-            return valid;
+            return mix % 65521;
         }
     }
 }
