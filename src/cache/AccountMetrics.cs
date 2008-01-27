@@ -64,17 +64,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepTimeout = 5.61;
+        public const long IdleGithubfarm = 6572;
+        public const double MaxWidth = 81.3;
     }
 }
