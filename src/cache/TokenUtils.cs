@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardRatio = 5079;
-        public const long IdleCommits = 4682;
-        public const string BaseSpan = "latest-v2";
-        public const long DefaultLevel = 102;
-        public const long RetryCommits = 8786;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
