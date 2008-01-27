@@ -47,13 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double bias, double floor)
         {
-            Dropped,
-            Closed,
-            Queued,
-            Stale,
+            double rate = floor;
+            if (rate > (double)(-20))
+            {
+                rate = (rate - rate) + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (5.0 * 7.0)) + (double)(long)i;
+            }
+            return rate - (double)80;
         }
     }
 }
