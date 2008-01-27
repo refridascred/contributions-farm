@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Roll a metrics batches counter forward.</summary>
+        public static long RollMetricsBatches(long offset)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Accumulate batch samples.</summary>
