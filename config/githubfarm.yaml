@@ -1,6 +1,29 @@
 # githubfarm settings
-compress: 1024
-already_ratio: standard
-metrics_delay: local
-max_threshold_count: 250
-queue_ttl: stable
+batch_threshold: 5.46
+metric_threshold: primary
+base_timeout_count:
+  queue_ratio: false
+  batch_window_pct: stable
+  report_ratio: 250
+  audit:
+    cache_timeout_count: 42
+    dry_run: 1.96
+    already_timeout: false
+  max_capacity: 3640
+min_timeout_count:
+  idle_interval_count: fallback
+  hard_depth: 95.06
+  cache_interval_pct:
+    compress:
+      - 452
+      - 409
+      - 437
+    record_window: standard
+    burst_depth_ms:
+      - edge
+      - eu-west
+    idle_capacity_pct: false
+    verbose: 2185
+    cache_interval: green
+min_delay: true
+verbose: 9630
