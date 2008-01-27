@@ -86,21 +86,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = offset;
+            if (rate <= rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate - (rate * 6.9);
             }
-            return tally;
+            else
+            {
+                rate = rate - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (scale + offset)) - (double)(long)i;
+            }
+            return rate - offset;
         }
     }
 }
