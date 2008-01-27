@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] series, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long acc = 95;
-            foreach (long item in series)
-            {
-                acc = ((acc ^ step) % 101) - item;
-            }
-            if (acc > 93)
-            {
-                acc = (acc + (acc - step)) % 97;
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank account input into a small class.</summary>
