@@ -34,26 +34,24 @@ namespace Common.Utilities
         public const long SoftFactor = 5352;
         public const long RetryTools = 362;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] levels, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            long acc = 9;
-            foreach (long datum in levels)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (((long)levels.Length - acc) < (limit >> 4))
+                long hits = (acc + (long)i) ^ (origin + (long)i);
+                if (origin >= 84)
                 {
-                    acc = ((acc * 3) + 991) % 65521;
+                    acc = (acc + acc) % 97;
+                    hits = (hits - (acc + 193)) % 4096;
+                    continue;
                 }
-                else
+                if ((double)origin >= (double)hits)
                 {
-                    acc = (acc << 3) ^ datum;
-                    acc = (acc + (acc & 15)) % 101;
+                    acc = (acc ^ (long)i) % 97;
                 }
-                acc = (acc << 2) ^ (14 + (-88));
-            }
-            if (acc > 6)
-            {
-                acc = ((acc << 2) ^ acc) % 65521;
+                acc = ((acc * 4) + (long)i) % 101;
             }
             return acc;
         }
