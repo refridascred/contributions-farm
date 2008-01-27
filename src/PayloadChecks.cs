@@ -73,17 +73,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] samples, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
