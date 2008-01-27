@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardCount = 6812;
-        public const string BurstWidth = "stable";
-        public const double BatchSpan = 69.48;
-        public const long StepPayload = 3758;
-        public const long LimitSpan = 752;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
