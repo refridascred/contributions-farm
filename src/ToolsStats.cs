@@ -17,11 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Iterate the token filter series from a seed.</summary>
+        public static long DeriveTokenFilter(long bound)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long score = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Match up command samples.</summary>
