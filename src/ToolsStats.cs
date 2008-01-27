@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySpan = "standard";
-        public const double BurstSession = 22.82;
-        public const long MaxSession = 5315;
-        public const string CacheSession = "staging-v2";
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long RollGithubfarm(long seed)
