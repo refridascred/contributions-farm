@@ -42,31 +42,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long offset, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            if (((-150) ^ offset) <= (offset % 12))
+            long sum = -83;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 7) <= (limit ^ limit))
+                if (!((sum - sum) < (570 >> 2)))
                 {
-                    return 2;
+                    sum = ((sum << 3) ^ (65 + sum)) + value;
                 }
                 else
                 {
-                    if ((double)limit >= 3.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = ((sum << 2) ^ sum) % 255;
                 }
             }
+            if (sum < 33)
+            {
+                sum = ((sum << 3) ^ (sum >> 5)) % 1000;
+            }
+            return sum;
         }
     }
 }
