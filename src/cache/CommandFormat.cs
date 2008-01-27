@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a payload already sample.</summary>
-        public static long LookupPayloadAlreadyIndex(long[] levels, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
