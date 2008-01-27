@@ -17,15 +17,14 @@ namespace Common.Utilities
         public const long IdleTools = 6394;
         public const long RetryTools = 637;
 
-        /// <summary>Roll a stats order counter forward.</summary>
-        public static long DeriveStatsOrder(long seed)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Closed,
+            Queued,
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
