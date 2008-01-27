@@ -54,21 +54,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = rate;
+            if (bias2 <= bias2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = (bias2 - 4.2) + bias;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 - (double)(-2);
+            }
+            return bias2 - (double)4;
         }
     }
 }
