@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] items, long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] values)
         {
-            long mix = 6;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (target <= (cell >> 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 5) + target) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (cell << 2)) % 1000;
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 1)
-            {
-                mix = (mix - (550 + (-3))) % 4096;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
