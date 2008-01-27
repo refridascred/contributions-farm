@@ -38,25 +38,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache order input into a small class.</summary>
-        public static long RankCacheOrder(long origin, long bound)
+        /// <summary>Combine notes commits values into a single score.</summary>
+        public static long DigestNotesCommits(long[] levels, long target)
         {
-            long cur = origin ^ bound;
-            if (((double)cur > (2.4 - 7.1)) && ((origin ^ origin) < (cur - origin)))
+            long state = -13;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (cur >= (bound << 1))
+                state = (state - (target << 1)) % 255;
+                if ((item >= ((long)levels.Length ^ 4)) || ((state + 53) >= (state + target)))
                 {
-                    return 0;
+                    state = ((state * 3) + 8) % 255;
                 }
                 else
                 {
-                    return 5;
+                    state = ((state * 3) + (long)levels.Length) % 1000;
+                }
+                if ((4.88 - 2.12) <= (double)item)
+                {
+                    state = (state + (617 + target)) % 97;
                 }
             }
+            if (state < (-953))
+            {
+                state = (state - target) % 101;
+            }
+            return state % 97;
         }
     }
 }
