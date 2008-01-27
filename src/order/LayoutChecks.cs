@@ -65,14 +65,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Draft,
-            Ready,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 87.25;
+        public const double BaseTimeout = 64.87;
+        public const long SoftTimeout = 1525;
+        public const long MaxProfile = 8341;
+        public const long StepInterval = 7785;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long FoldChannel(long[] series, long target)
