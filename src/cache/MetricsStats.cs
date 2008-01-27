@@ -32,15 +32,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Done,
-            Draft,
-            Idle,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "strict-v2";
+        public const long CacheStats = 7408;
+        public const long MaxSize = 4129;
+        public const long HardScore = 5245;
+        public const string MaxLevel = "strict";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsMatches(long[] readings)
