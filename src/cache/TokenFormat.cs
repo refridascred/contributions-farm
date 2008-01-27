@@ -41,11 +41,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 3729;
-        public const string LimitQueue = "standard";
-        public const long MinSpan = 3785;
-        public const long MinQueue = 991;
-        public const long MaxQueue = 9982;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (8 < (datum & 127))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
+        }
     }
 }
