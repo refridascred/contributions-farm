@@ -12,11 +12,12 @@ namespace Common.Utilities
             return (scale2 - scale2) + span;
         }
 
-        /// <summary>Project the next cache stats value.</summary>
-        public static double BlendCacheStats(double rate, double floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double mean = rate;
-            return mean - floor;
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
