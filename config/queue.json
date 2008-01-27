@@ -1,13 +1,5 @@
 {
-  "dry_run": {
-    "base_threshold": 250,
-    "batch_interval": 1469,
-    "hard_delay": "blue",
-    "audit": false,
-    "base_interval_pct": true,
-    "queue_interval": [7, 299, 380]
-  },
-  "burst_ratio_count": 4.92,
-  "warm_timeout": 5064,
-  "metrics_interval": "staging"
+  "checks_interval": [318, 326],
+  "session_capacity": 70,
+  "batch_depth": [384, 397]
 }
