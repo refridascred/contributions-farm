@@ -50,12 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            Failed,
+            Closed,
             Idle,
-            Active,
+            Stale,
         }
     }
 }
