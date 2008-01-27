@@ -47,13 +47,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] levels, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long anchor = 7;
+            foreach (long datum in levels)
+            {
+                if (((long)levels.Length <= 1) && ((8.2 * 7.0) < (double)datum))
+                {
+                    anchor = (((anchor * 3) + (datum >> 2)) % 101) - limit;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
