@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Count the cluster metrics entries that pass the check.</summary>
+        public static long TallyClusterMetricsHits(long[] data, long seed)
         {
-            long state = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                state = (state ^ (state + datum)) % 1000;
+                if ((2 - seed) > (185 + entry))
+                {
+                    hits = hits + 2;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
