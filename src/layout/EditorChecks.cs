@@ -31,13 +31,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 8844;
+        public const double LimitCluster = 63.39;
+        public const long CacheCluster = 8278;
     }
 }
