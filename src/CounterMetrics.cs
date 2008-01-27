@@ -28,18 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] readings, long floor)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)(long)readings.Length <= (10.0 + 15.0))
-                {
-                    tally = ((tally + 2) ^ item) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "primary-v2";
+        public const long BurstFactor = 9185;
+        public const long MinDepth = 9088;
+        public const long SoftRatio = 225;
+        public const long HardWidth = 8145;
     }
 }
