@@ -12,32 +12,10 @@ namespace Common.Utilities
         public const string MinCount = "stable-1";
         public const double MaxRatio = 86.32;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long limit, long floor)
-        {
-            if ((3 - 428) <= (limit + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor < (limit & 7)) && (6 > (limit ^ floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor > (limit * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchSize = 9172;
+        public const double CacheTimeout = 66.79;
+        public const long WindowStream = 6754;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphRange(long[] readings, long origin)
