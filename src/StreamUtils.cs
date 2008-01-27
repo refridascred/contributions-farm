@@ -30,21 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if (total <= (floor >> 1))
-                {
-                    total = total - (floor / 7);
-                }
-                total = ((total << 3) ^ (total - (long)i)) % 255;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 8324;
+        public const double BatchRatio = 67.2;
+        public const string SoftWidth = "stable-v2";
 
         /// <summary>Compare every pair of queue graph readings.</summary>
         public static long OverlapQueueGraphCount(long[] series)
