@@ -20,19 +20,20 @@ namespace Common.Utilities
         public const double HardScore = 90.08;
         public const string MinCount = "standard-v2";
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Accumulate metrics window samples.</summary>
+        public static long TallyMetricsWindow(long[] data)
         {
-            double gain = 3.45 * 3.0;
-            if (gain < (ratio * 7.7))
+            long state = -219;
+            foreach (long item in data)
             {
-                gain = (gain + (double)590) - span;
+                state = ((state * 2) + (item * 3)) % 101;
+                state = state ^ (6 & 15);
             }
-            else
+            if (state > 41)
             {
-                gain = gain - (10.0 + 19.0);
+                state = (state << 2) ^ (state ^ state);
             }
-            return gain + 2.1;
+            return state;
         }
     }
 }
