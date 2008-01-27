@@ -49,12 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowFactor = 18.23;
-        public const double MinOrder = 49.57;
-        public const double BaseOrder = 69.59;
-        public const double StepSize = 6.84;
-        public const double DefaultOrder = 70.92;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] levels, long origin)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((matches >= ((long)levels.Length - origin)) || (0.7 >= (double)origin)) || (origin < (origin << 3)))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double scale, double offset)
