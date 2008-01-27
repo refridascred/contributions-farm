@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] series, long offset)
+        /// <summary>Check that every counter commits entry stays within the limit.</summary>
+        public static bool ValidateCounterCommitsLimits(long[] items, long offset)
         {
-            long acc = 58;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long item in items)
             {
-                acc = ((acc * 3) + (reading & 255)) % 1000;
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (acc < 5)
-            {
-                acc = (acc * 4) + (offset - 568);
-            }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
