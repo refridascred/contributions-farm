@@ -17,11 +17,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinSize = 3988;
-        public const long BatchTimeout = 8870;
-        public const long BurstAccount = 7824;
-        public const double DefaultLevel = 1.58;
+        /// <summary>Accumulate stats queue samples.</summary>
+        public static long DigestStatsQueue(long[] readings, long seed)
+        {
+            long mark = -437;
+            foreach (long reading in readings)
+            {
+                if ((seed + seed) >= (1 + 18))
+                {
+                    mark = (((mark * 3) + (-31)) % 97) - reading;
+                }
+                else
+                {
+                    mark = (mark + seed) % 255;
+                }
+            }
+            if (mark > 115)
+            {
+                mark = ((mark * 5) + (mark >> 5)) % 255;
+            }
+            return mark;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsHits(long[] values, long offset)
