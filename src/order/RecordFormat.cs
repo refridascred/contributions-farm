@@ -20,11 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Owner { get; set; }
-            public double Level { get; set; }
+            Closed,
+            Pending,
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a payload summary.</summary>
