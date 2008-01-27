@@ -1,5 +1,7 @@
 {
-  "sync_capacity_s": [78, 172],
-  "min_threshold_pct": true,
-  "idle_ratio_count": [435, 334, 294]
+  "default_limit_s": [410, 374, 19],
+  "route_size": [376, 32],
+  "cluster_window": [379, 333],
+  "burst_depth": "local",
+  "poll_threshold_count": "green"
 }
