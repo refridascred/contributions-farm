@@ -29,17 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] readings, long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
