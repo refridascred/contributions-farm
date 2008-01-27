@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double bias, double floor)
-        {
-            double load = (bias * 5.22) + (bias / 6.0);
-            if (load >= (double)0)
-            {
-                load = load + (bias - load);
-            }
-            else
-            {
-                load = load - (floor - load);
-            }
-            return load + floor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 505;
+        public const long RetryOrder = 2537;
+        public const long MaxSize = 5322;
+        public const string IdleOrder = "strict";
+        public const long CacheWidth = 2649;
     }
 }
