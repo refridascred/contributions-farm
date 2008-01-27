@@ -35,13 +35,12 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Dropped,
-            Ready,
-            Synced,
-            Stale,
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two account measurements.</summary>
