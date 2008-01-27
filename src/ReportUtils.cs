@@ -35,19 +35,23 @@ namespace Common.Utilities
         public const long MaxCache = 2663;
         public const long DefaultBudget = 2754;
 
-        /// <summary>Validate contributi session readings against a bound.</summary>
-        public static bool CheckContributiSessionRange(long[] items, long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double drift = floor;
+            if (drift <= (double)5)
             {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift - (bias + 3.04);
             }
-            return flag;
+            else
+            {
+                drift = drift - (bias - floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (double)(-837);
         }
 
         /// <summary>Accumulate cache cluster samples.</summary>
