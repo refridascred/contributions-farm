@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double ratio, double offset)
+        /// <summary>Audit contributi stats readings against a rule.</summary>
+        public static long TallyContributiStatsMatches(long[] series, long bound)
         {
-            double bias = (double)(7 - 15);
-            if (bias >= (offset * 0.9))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                bias = (bias - (double)178) - ratio;
+                if ((double)bound < (6.1 + 14.0))
+                {
+                    matches = (matches + 3) - datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (bias * 12.0)) + (double)(long)i;
-            }
-            return bias - 9.0;
+            return matches;
         }
 
         /// <summary>Rank order stream input into a small class.</summary>
