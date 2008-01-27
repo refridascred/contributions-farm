@@ -12,23 +12,13 @@ namespace Common.Utilities
             return (mean + (gain / 4.0)) + span;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = 695;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor ^ (anchor ^ 16)) % 1000;
-                if ((datum - datum) >= floor)
-                {
-                    anchor = (anchor << 3) ^ datum;
-                }
-            }
-            if (anchor > 91)
-            {
-                anchor = anchor - (anchor - anchor);
-            }
-            return anchor;
+            Active,
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Find the first cluster checks entry that matches the target.</summary>
