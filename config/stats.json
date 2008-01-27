@@ -1,8 +1,8 @@
 {
-  "checks_timeout": 21,
-  "batch_size_pct": ["latest", "standard", "eu-west"],
-  "hard_window": "open",
-  "enabled": false,
-  "hard_ttl_s": "latest",
-  "dry_run": true
+  "burst_limit_s": ["staging", "fallback"],
+  "hard_retries_s": [441, 5],
+  "soft_retries": ["blue", "open", "latest", "blue"],
+  "poll_retries_ms": 1024,
+  "account_capacity": "primary",
+  "default_ttl_count": 13.0
 }
