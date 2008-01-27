@@ -17,15 +17,12 @@ namespace Common.Utilities
         public const long DefaultFormat = 795;
         public const long LimitDepth = 7371;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Synced,
-            Queued,
-            Locked,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 53.41;
+        public const string MaxSchema = "staging-edge";
+        public const long StepCount = 1326;
+        public const long HardSchema = 3741;
+        public const long LimitSpan = 9838;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long RollStats(long step)
