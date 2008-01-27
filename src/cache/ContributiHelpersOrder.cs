@@ -33,15 +33,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double ratio, double offset)
+        /// <summary>Match up order tools samples.</summary>
+        public static long OverlapOrderToolsCount(long[] items)
         {
-            double drift = 4.1;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (((drift + (drift + drift)) + (double)(long)i) - ratio) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return drift + drift;
+            return seen;
         }
     }
 }
