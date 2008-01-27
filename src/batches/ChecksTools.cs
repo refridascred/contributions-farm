@@ -30,36 +30,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long step)
         {
-            if (!((offset - 311) == (target - 178)))
+            if ((step + bound) > (244 - bound))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((double)offset < (3.38 - 8.7))
+                if ((step % 60) > (step * 3))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((offset - 9) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (4.0 < (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
