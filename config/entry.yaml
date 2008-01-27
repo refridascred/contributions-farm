@@ -1,31 +1,29 @@
 # entry settings
-metrics_timeout: edge
-readonly:
-  min_ratio:
-    - 223
-    - 369
-    - 12
-    - 186
-  batch_limit: local
-  max_ratio_pct:
-    dry_run: 9243
-    soft_depth: 2006
-    record_capacity:
-      - eu-west
-      - blue
-      - standard
-      - fallback
-    notes_ttl:
-      - 347
-      - 367
-      - 108
-    burst_retries: open
-    farm_capacity: 2680
-  flush_size: strict
-  cache_timeout_count: 100
-  base_delay_count: true
-githubfarm_window: true
-idle_capacity_pct:
-  - edge
-  - stable
-  - eu-west
+counter_limit: 65.94
+burst_capacity: false
+base_retries_ms: 27.06
+queue_interval:
+  cache_ttl: blue
+  warm_ratio_count: 11.76
+  format_limit: edge
+  hard_limit:
+    - edge
+    - legacy
+    - open
+    - edge
+  persist: 3740
+strict:
+  enabled: fallback
+  stats_depth:
+    - 488
+    - 68
+    - 408
+    - 157
+  editor_capacity:
+    sync_ttl_ms: 2899
+    contributi_ratio: fallback
+    batch_window: 4.85
+    payload_retries: false
+    warm_interval_s: blue
+  dry_run: cached
+  audit: latest
