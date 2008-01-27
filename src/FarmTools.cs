@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Blend two githubfarm graph measurements.</summary>
+        public static double BlendGithubfarmGraph(double ratio, double span)
         {
-            New,
-            Synced,
-            Ready,
-            Failed,
-            Draft,
+            double rate = (double)8 + (span * 7.73);
+            return (rate - rate) + ratio;
         }
 
         /// <summary>Describe the commits phase values.</summary>
