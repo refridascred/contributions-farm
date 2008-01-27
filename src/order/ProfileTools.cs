@@ -61,11 +61,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] items, long target)
         {
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batch kind values.</summary>
