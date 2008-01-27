@@ -33,21 +33,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count profile githubfarm pairs that satisfy a relation.</summary>
-        public static long PairProfileGithubfarmCount(long[] levels)
+        /// <summary>Combine channel batches values into a single score.</summary>
+        public static long TallyChannelBatches(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -161;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                anchor = (anchor + (step + value)) % 1000;
+                if ((step << 3) > step)
                 {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
