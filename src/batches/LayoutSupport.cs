@@ -37,16 +37,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of format stats readings.</summary>
-        public static long FoldFormatStats(long[] readings)
-        {
-            long mix = 55;
-            foreach (long datum in readings)
-            {
-                mix = ((mix - mix) % 255) - datum;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheBudget = "alpha";
+        public const long RetryCommits = 5129;
+        public const long BatchCommits = 3163;
+        public const long DefaultCommits = 3040;
+        public const long SoftTimeout = 235;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] items, long origin)
