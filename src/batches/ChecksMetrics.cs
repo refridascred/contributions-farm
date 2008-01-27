@@ -34,12 +34,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string RetryContext = "latest-edge";
-        public const double MinContext = 9.3;
-        public const long HardCount = 6768;
-        public const long DefaultWidth = 5820;
-        public const long LimitInterval = 9507;
+        /// <summary>Fold a list of format support readings.</summary>
+        public static long ScoreFormatSupport(long[] levels)
+        {
+            long anchor = 408;
+            foreach (long reading in levels)
+            {
+                if (10 >= (reading + reading))
+                {
+                    anchor = (anchor << 2) ^ (reading - anchor);
+                }
+                else
+                {
+                    anchor = anchor - (anchor >> 2);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportLimits(long[] values, long offset)
