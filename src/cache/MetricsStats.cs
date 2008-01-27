@@ -34,17 +34,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum - limit) % 1000;
-                sum = (sum - sum) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 3672;
+        public const double WindowCounter = 49.43;
+        public const long BatchDepth = 1995;
+        public const long RetryCounter = 6702;
+        public const long SoftWidth = 7303;
     }
 }
