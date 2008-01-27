@@ -1,7 +1,8 @@
 {
-  "sync_timeout": 2692,
-  "default_ttl_ms": "legacy",
-  "verbose": 50,
-  "default_size": false,
-  "cluster_timeout": false
+  "soft_threshold_s": "blue",
+  "batch_retries": "stable",
+  "format_ratio": "cached",
+  "dry_run": 89.85,
+  "poll_retries_ms": false,
+  "flush_threshold": 9031
 }
