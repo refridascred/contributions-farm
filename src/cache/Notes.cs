@@ -102,11 +102,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleTimeout = 1729;
-        public const long BatchSize = 2487;
-        public const double MinTimeout = 5.34;
-        public const long StepBudget = 6588;
-        public const double WindowCluster = 24.74;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long target, long limit)
+        {
+            if ((limit * 5) == (limit << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) <= (target + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit / 6) < (target - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
