@@ -30,22 +30,13 @@ namespace Common.Utilities
         public const string CacheStats = "primary-v2";
         public const string SoftStats = "open-edge";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] levels, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits + step) >= (step * 5))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Combine notes batch values into a single score.</summary>
