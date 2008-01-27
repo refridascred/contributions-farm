@@ -44,24 +44,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = (carry - ((long)i2 - origin)) % 101;
-                    carry = ((carry * 3) + (carry ^ origin)) % 65521;
-                }
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    carry = (carry + (origin ^ origin)) + (long)i3;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
