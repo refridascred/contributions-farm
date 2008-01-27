@@ -60,11 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
