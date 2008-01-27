@@ -50,11 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] items, long target)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the entry level values.</summary>
