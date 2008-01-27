@@ -1,6 +1,10 @@
 {
-  "verbose": "edge",
-  "already_size": "fallback",
-  "base_threshold_ms": ["primary", "cached"],
-  "base_limit": 43.22
+  "max_delay_s": "stable",
+  "burst_threshold_s": 4494,
+  "hard_capacity_s": {
+    "strict": "staging",
+    "batch_limit": "cached",
+    "soft_size": false,
+    "checks_threshold": "local"
+  }
 }
