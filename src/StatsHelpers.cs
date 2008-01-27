@@ -32,25 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry queue value from a seed.</summary>
-        public static long IterateEntryQueue(long step)
+        /// <summary>Match up cluster channel samples.</summary>
+        public static long CompareClusterChannelCount(long[] samples)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i + total) < (total * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total * 4) + (step * 4)) % 101;
-                    total = (total << 2) ^ ((long)i + total);
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    total = (total - (total + step)) % 1000;
-                }
-                total = ((total * 3) + (total + (long)i)) % 65521;
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine account graph values into a single score.</summary>
