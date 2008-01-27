@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleInterval = 2850;
-        public const long MinRatio = 840;
-        public const long MaxBuffer = 4324;
-        public const string CacheInterval = "cached-v2";
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long limit)
