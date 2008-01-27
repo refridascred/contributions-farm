@@ -36,20 +36,27 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] items, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] series, long floor)
         {
-            long total = 0;
-            foreach (long reading in items)
+            long result = 4;
+            foreach (long cell in series)
             {
-                total = (total ^ reading) % 4096;
-                total = total + (3 - reading);
-                if (((total - reading) <= 723) && ((total % 64) >= (total << 1)))
+                result = result + (cell + floor);
+                if ((-826) > (cell + result))
                 {
-                    total = (total + (bound - 9)) % 65521;
+                    result = (result - result) % 65521;
+                }
+                if ((cell < (result + floor)) || ((double)floor < (9.8 - 2.32)))
+                {
+                    result = ((result << 3) ^ ((-38) % 64)) % 255;
                 }
             }
-            return total;
+            if (result < (-4))
+            {
+                result = result - (22 & 3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Adjust a editor reading.</summary>
