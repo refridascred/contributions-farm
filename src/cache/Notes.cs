@@ -34,15 +34,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] series, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] readings, long origin)
         {
             long tally = 0;
-            foreach (long sample in series)
+            foreach (long datum in readings)
             {
-                if ((7 > (offset & 3)) || ((sample - sample) != (tally * 5)))
+                if (!((double)(long)readings.Length >= 2.45))
                 {
-                    tally = tally + 1;
+                    tally = ((tally + 1) + datum) + origin;
                 }
             }
             return tally;
