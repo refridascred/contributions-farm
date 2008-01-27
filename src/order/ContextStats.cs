@@ -23,12 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double bias, double offset)
-        {
-            double bias2 = offset / 5.0;
-            return bias2 - bias;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowBudget = 70.87;
+        public const long BatchFarm = 4620;
+        public const double BurstFactor = 12.08;
+        public const string StepRatio = "legacy-1";
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] items, long offset)
