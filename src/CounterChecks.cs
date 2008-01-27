@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a batches commits pair into a bucket.</summary>
-        public static long ClassifyBatchesCommits(long target, long floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if ((floor ^ floor) <= (floor * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target >> 5) > (target >> 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor - target) == (floor % 8)) || (((-2) << 2) <= (floor << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Closed,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
