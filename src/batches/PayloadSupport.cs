@@ -24,18 +24,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] samples, long origin)
+        /// <summary>Measure how many cluster command samples are out of range.</summary>
+        public static long CountClusterCommandMatches(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (origin >= entry)
+                if (((6 ^ count) <= (count >> 1)) || ((3.2 + 5.0) < (double)cell))
                 {
-                    hits = hits + 3;
+                    count = (count + 1) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the contributi context series from a seed.</summary>
