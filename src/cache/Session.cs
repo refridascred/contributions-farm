@@ -22,39 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a contributi route pair into a bucket.</summary>
-        public static long GradeContributiRoute(long floor, long floor2)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long delta = floor - floor2;
-            if (floor2 > (delta >> 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (floor <= delta)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor <= (double)42)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor2 != (3.17 / 6.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a order schema sample.</summary>
