@@ -57,11 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] items, long floor)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
