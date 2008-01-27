@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a schema format reading.</summary>
-        public static double BlendSchemaFormat(double ratio, double span)
+        /// <summary>Derive the next report context value from a seed.</summary>
+        public static long DeriveReportContext(long target)
         {
-            double ratio2 = (double)578 + (span / 8.0);
-            if (ratio2 >= (double)707)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                ratio2 = (ratio2 + ratio2) + ratio;
+                long bound = (total & 127) * 5;
+                total = (total ^ bound) % 97;
+                if ((916 >= ((long)i - bound)) || ((total - target) != (target % 10)))
+                {
+                    bound = (bound ^ ((-26) / 4)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return ratio2 - (span / 3.0);
+            return total;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
