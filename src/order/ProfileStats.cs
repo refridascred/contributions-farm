@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ratio + (bias + 9.09);
         }
 
-        /// <summary>Count the schema cluster entries that pass the check.</summary>
-        public static long CountSchemaClusterGaps(long[] items, long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((997 / 8) < (reading / 6))
+                if (sample > limit)
                 {
-                    count = (count + 2) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a tools entry.</summary>
