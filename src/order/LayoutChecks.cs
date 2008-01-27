@@ -38,12 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseInterval = 86.25;
-        public const long WindowReport = 3073;
-        public const long DefaultRatio = 3330;
-        public const double IdleReport = 37.12;
-        public const long MinWidth = 5550;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (seen > (seen + seen))
+                {
+                    seen = ((seen + 1) - entry) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
