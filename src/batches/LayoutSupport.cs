@@ -50,10 +50,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 31.8;
-        public const string DefaultTimeout = "legacy";
-        public const string RetryRoute = "open";
+        /// <summary>Digest a series of notes farm entries.</summary>
+        public static long TallyNotesFarm(long[] levels)
+        {
+            long state = 6;
+            foreach (long item in levels)
+            {
+                if (state > (state + state))
+                {
+                    state = ((state << 2) ^ (item ^ item)) % 4096;
+                }
+                else
+                {
+                    state = state ^ (state << 1);
+                }
+            }
+            if (state > 573)
+            {
+                state = (state * 4) + 262;
+            }
+            return state;
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double ProjectLayout(double ratio, double bias)
