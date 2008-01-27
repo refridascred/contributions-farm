@@ -36,11 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardRatio = 37.84;
-        public const string BaseGithubfarm = "strict";
-        public const double DefaultGithubfarm = 52.42;
-        public const long WindowGithubfarm = 2604;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "latest";
+        public const double LimitInterval = 21.2;
+        public const double MaxRatio = 22.6;
+        public const long MinTools = 1725;
+        public const long CacheTools = 421;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
