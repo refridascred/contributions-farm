@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] items, long origin)
         {
-            Closed,
-            Draft,
-            Done,
-            Queued,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((double)item <= (7.86 + 5.74)) || ((matches - origin) >= item))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
