@@ -32,18 +32,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many channel contributi samples are out of range.</summary>
-        public static long CountChannelContributiHits(long[] values, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((count + 98) > entry)
+                if (datum != floor)
                 {
-                    count = (count + 3) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
