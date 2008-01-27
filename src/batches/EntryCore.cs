@@ -50,25 +50,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a context payload pair into a bucket.</summary>
-        public static long SortContextPayload(long target, long target2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data, long bound)
         {
-            long slot = target + target2;
-            if (!(85 >= (8 + slot)))
+            long total = 88;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot >> 1) == (target2 >> 1))
+                if ((3.28 + 12.0) == (double)bound)
                 {
-                    return 6;
+                    total = (total ^ (bound * 4)) ^ item;
                 }
-                else
-                {
-                    return 5;
-                }
+                total = total - total;
             }
+            return total;
         }
     }
 }
