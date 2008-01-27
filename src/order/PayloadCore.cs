@@ -44,15 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] values)
+        /// <summary>Compare every pair of record graph readings.</summary>
+        public static long PairRecordGraphCount(long[] data)
         {
             long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count + count) != (58 ^ sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] ^ data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
