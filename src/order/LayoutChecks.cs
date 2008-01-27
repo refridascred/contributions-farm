@@ -61,26 +61,17 @@ namespace Common.Utilities
         public const double MaxSpan = 52.51;
         public const long DefaultBudget = 6820;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels, long step)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] readings, long target)
         {
-            long total = 5;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step + datum) <= step)
+                if ((readings[i] == target) && ((readings[i] % 3) != 0))
                 {
-                    total = ((total * 4) + (datum + total)) % 4096;
-                }
-                else
-                {
-                    total = (total + (535 - datum)) % 1000;
-                }
-                if (datum <= ((-906) & 3))
-                {
-                    total = (total - (datum & 63)) % 97;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
