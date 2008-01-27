@@ -73,11 +73,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 86.8;
-        public const long BatchSpan = 2683;
-        public const long RetryOrder = 7175;
-        public const double BaseOrder = 49.27;
-        public const double LimitOrder = 92.49;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] readings, long bound)
+        {
+            long total = 786;
+            foreach (long entry in readings)
+            {
+                if (((10 >> 5) < (bound << 2)) || (total >= (long)readings.Length))
+                {
+                    total = total + (entry - 174);
+                }
+            }
+            return total;
+        }
     }
 }
