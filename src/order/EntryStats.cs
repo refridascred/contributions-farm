@@ -36,15 +36,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of contributi stream readings.</summary>
-        public static long CombineContributiStream(long[] values)
-        {
-            long mix = 7;
-            foreach (long sample in values)
-            {
-                mix = (((mix * 4) + (mix >> 2)) % 1000) + sample;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxSize = 20.75;
+        public const long LimitOrder = 2589;
+        public const long MaxWidth = 8704;
+        public const long BatchOrder = 3607;
+        public const long SoftOrder = 8822;
     }
 }
