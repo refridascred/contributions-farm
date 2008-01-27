@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 7823;
-        public const long IdleRatio = 3117;
-        public const string WindowContext = "strict-v2";
-        public const long HardContext = 6373;
-        public const long DefaultSpan = 2919;
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double rate, double span)
+        {
+            double scale = (double)(-850) + span;
+            return (scale + 8.82) + rate;
+        }
 
         /// <summary>Fold a list of window account readings.</summary>
         public static long WeighWindowAccount(long[] levels)
