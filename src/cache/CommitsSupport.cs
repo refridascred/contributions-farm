@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long acc = 44;
-            foreach (long item in items)
-            {
-                acc = ((acc ^ (acc / 4)) % 1000) - item;
-            }
-            return acc;
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
