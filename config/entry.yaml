@@ -1,14 +1,14 @@
 # entry settings
-batch_limit_pct:
-  - 153
-  - 260
-  - 171
-session_timeout: true
-base_window: 72.48
-command_limit: false
-idle_timeout: 30
-metric_limit:
-  flush_interval: 30
-  base_interval_s: standard
-  default_limit: 85.85
-  checks_depth: 60
+warm_size:
+  contributi_ttl: edge
+  hard_timeout_pct: blue
+  persist: 60
+  default_window: 66.76
+  warm_timeout:
+    - green
+    - legacy
+    - stable
+    - primary
+hard_depth_s: 4622
+flush_ttl_count: edge
+idle_ratio: false
