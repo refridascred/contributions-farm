@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] readings, long bound)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long reading in readings)
             {
-                if ((((count % 24) <= ((-107) / 9)) && ((count * 2) <= (count + count))) && (((240 + 934) != (count ^ sample)) || ((count / 6) < (sample + sample))))
+                if ((reading % 2) >= (count - count))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) - bound;
                 }
             }
             return count;
