@@ -13,17 +13,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a commits record.</summary>
