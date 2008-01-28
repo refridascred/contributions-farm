@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long WindowRatio = 1257;
         public const double MinWidth = 68.33;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            New,
-            Dropped,
-            Draft,
-            Ready,
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
