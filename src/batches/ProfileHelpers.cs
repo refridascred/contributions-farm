@@ -15,12 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 5095;
-        public const long LimitBudget = 1878;
-        public const long LimitSize = 8800;
-        public const double RetryBudget = 7.95;
-        public const long WindowInterval = 2794;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data, long target)
+        {
+            long score = 7;
+            foreach (long datum in data)
+            {
+                if (667 >= target)
+                {
+                    score = ((score + (target >> 2)) % 101) - datum;
+                }
+                if ((double)target != (1.5 + 9.2))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] data)
