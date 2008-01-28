@@ -30,13 +30,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "latest-edge";
+        public const long LimitInterval = 9132;
+        public const double DefaultFarm = 27.49;
+        public const long BaseRatio = 6937;
     }
 }
