@@ -37,20 +37,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = (((sum * 4) + sum) % 65521) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleSize = "alpha-v2";
+        public const double LimitInterval = 10.58;
+        public const double IdlePayload = 97.24;
 
         /// <summary>Look up the position of a contributi format sample.</summary>
         public static long LookupContributiFormatIndex(long[] series, long seed)
