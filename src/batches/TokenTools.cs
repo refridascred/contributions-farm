@@ -29,17 +29,19 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] samples, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 6;
+            foreach (long cell in data)
             {
-                if (samples[i] == limit)
+                anchor = (anchor ^ (anchor ^ anchor)) % 1000;
+                if ((offset > (cell - offset)) && ((19 ^ 46) >= (cell + 3)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
