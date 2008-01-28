@@ -1,19 +1,7 @@
 # githubfarm settings
-counter_ttl: 5169
-retry_retries: 44
-stats_size:
-  strict: 1024
-  enabled:
-    - fallback
-    - open
-  max_size: 60
-  order_window: 1160
-  schema_window: 84
-burst_depth_ms:
-  warm_capacity_pct: true
-  persist: 100
-  route_window: 75
-  layout_delay: 54.48
-  retry_capacity_count: 1024
-  poll_threshold: 76
-default_timeout_count: stable
+persist:
+  - legacy
+  - open
+hard_ttl_count: true
+record_threshold: 250
+poll_depth_count: blue
