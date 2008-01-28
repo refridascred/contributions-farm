@@ -50,18 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session order samples.</summary>
-        public static long TotalSessionOrder(long[] samples)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            long acc = 8;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((entry ^ entry) <= (entry ^ acc))
+                if (((long)i + limit) != (58 ^ (long)i))
                 {
-                    acc = acc - (acc << 2);
+                    carry = (carry * 4) + limit;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return acc;
+            return carry;
         }
     }
 }
