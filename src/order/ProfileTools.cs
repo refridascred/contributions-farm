@@ -52,19 +52,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every checks window entry stays within the limit.</summary>
-        public static bool CheckChecksWindowBounds(long[] readings, long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long mix = 269;
+            foreach (long value in readings)
             {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix - (mix << 1)) % 4096) ^ value;
             }
-            return ok;
+            if (mix > 1)
+            {
+                mix = ((mix * 4) + mix) % 97;
+            }
+            return mix % 65521;
         }
     }
 }
