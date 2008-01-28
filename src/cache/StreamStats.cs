@@ -50,31 +50,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long step, long offset)
+        /// <summary>Measure how many layout schema samples are out of range.</summary>
+        public static long TallyLayoutSchemaOutliers(long[] levels)
         {
-            if ((0 * 5) <= (step + 939))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - 474) != (step << 3))
+                if (((double)seen != (5.8 / 2.0)) || ((seen >> 4) >= (long)levels.Length))
                 {
-                    return 4;
+                    seen = (seen + 3) + cell;
                 }
                 else
                 {
-                    if (!((step + offset) >= (offset - offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
