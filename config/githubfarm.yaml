@@ -1,17 +1,4 @@
 # githubfarm settings
-flush_threshold_count: 60
-base_capacity_s: 72
-default_window:
-  - 371
-  - 258
-  - 482
-  - 402
-dry_run: 16
-soft_threshold_ms:
-  layout_window: 250
-  persist: local
-  min_window_pct: blue
-  retry_capacity_ms: 56.54
-  batch_interval:
-    - standard
-    - open
+retry_ratio_s: 9336
+cache_retries_pct: false
+sync_window: true
