@@ -13,28 +13,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] levels, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long bound)
         {
-            long total = 79;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((total >> 5) < (cell + cell))
+                if (entry != bound)
                 {
-                    total = (total + (cell + 85)) % 97;
-                    continue;
-                }
-                total = total ^ limit;
-                if (total >= (total * 5))
-                {
-                    total = ((total * 4) + (cell >> 4)) % 65521;
-                }
-                if (!((double)total != (2.6 * 6.0)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
