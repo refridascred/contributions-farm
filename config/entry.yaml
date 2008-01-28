@@ -1,17 +1,13 @@
 # entry settings
-default_interval_count: blue
-soft_ratio_count:
-  - 425
-  - 378
-  - 150
-enabled: false
-compress: 500
-token_limit: 2810
-idle_threshold_pct:
-  default_interval_ms: 4796
-  max_depth_pct: 2625
-  hard_threshold:
-    - standard
-    - eu-west
-    - legacy
-  idle_size_s: eu-west
+cache_depth:
+  - blue
+  - eu-west
+  - cached
+flush_window: primary
+strict:
+  - 117
+  - 171
+  - 362
+soft_interval: 78.41
+max_threshold_pct: eu-west
+readonly: blue
