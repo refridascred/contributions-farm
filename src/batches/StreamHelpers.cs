@@ -16,19 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every channel window entry stays within the limit.</summary>
-        public static bool ValidateChannelWindowLimits(long[] data, long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Iterate the metrics route series from a seed.</summary>
