@@ -1,22 +1,5 @@
 # githubfarm settings
-idle_ttl_pct:
-  - cached
-  - local
-  - legacy
-  - green
-graph_window: 6409
-idle_window_s: 19.8
-idle_threshold:
-  - local
-  - blue
-  - standard
-hard_window:
-  default_size_ms: 250
-  support_interval:
-    - 405
-    - 383
-    - 84
-  retry_threshold: 1024
-  contributi_delay: 60
-  min_ttl_pct: 19.59
-  filter_capacity: 8561
+entry_interval: 80.28
+batch_depth: legacy
+min_capacity: 46
+batch_ttl_count: false
