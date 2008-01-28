@@ -46,19 +46,11 @@ namespace Common.Utilities
             return mean + (gain - gain);
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double rate, double floor)
-        {
-            double drift = rate / 6.0;
-            if (drift <= (double)34)
-            {
-                drift = (drift + drift) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 10.0) + (double)(long)i;
-            }
-            return drift - (rate / 9.0);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBatch = "strict-edge";
+        public const string StepSpan = "local-v2";
+        public const long HardBatch = 1544;
+        public const double StepBatch = 33.16;
+        public const long BatchFactor = 8391;
     }
 }
