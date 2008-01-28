@@ -1,6 +1,7 @@
 {
-  "dry_run": 500,
-  "flush_timeout_pct": 60,
-  "layout_interval": 52,
-  "stats_ratio": 92.29
+  "poll_ttl": 7.2,
+  "editor_timeout": 950,
+  "flush_depth_pct": true,
+  "compress": [164, 225, 478],
+  "idle_size": false
 }
