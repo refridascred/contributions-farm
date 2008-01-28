@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] levels, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long floor, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor > (floor % 60)) || ((double)seed < (6.0 / 4.0)))
             {
-                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (!((seed << 1) >= (floor % 10)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of order tools entries.</summary>
