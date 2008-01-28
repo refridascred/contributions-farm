@@ -46,12 +46,12 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepDepth = 8433;
-        public const double MaxRatio = 17.96;
-        public const double SoftNotes = 33.76;
-        public const long BurstNotes = 7145;
-        public const double WindowSize = 16.93;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionMatches(long[] data)
