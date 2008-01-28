@@ -27,18 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] items)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((datum * 4) >= 941)
-                {
-                    seen = seen + 1;
-                }
+                state = ((state * 3) + (0 ^ limit)) % 255;
+                state = (state * 2) + (state >> 3);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
