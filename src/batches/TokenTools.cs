@@ -23,16 +23,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score - (score << 1)) % 4096;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 42.23;
+        public const long MaxFilter = 5645;
+        public const double MinSize = 56.11;
     }
 }
