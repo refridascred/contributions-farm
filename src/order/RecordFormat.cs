@@ -11,18 +11,38 @@ namespace Common.Utilities
         public const long BaseInterval = 1625;
         public const long WindowSize = 3862;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] levels, long seed)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if (((3.0 + 3.6) >= (double)target) || ((double)target >= (1.0 + 6.8)))
             {
-                if ((datum - 67) < (633 % 8))
+                return 5;
+            }
+            else
+            {
+                if (seed > (4 + seed))
                 {
-                    seen = (seen + 2) - seed;
+                    return 1;
+                }
+                else
+                {
+                    if (((target % 5) >= 95) || ((double)seed >= (7.7 + 4.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed <= target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
