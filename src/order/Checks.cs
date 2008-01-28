@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] levels, long step)
         {
-            Pending,
-            Queued,
-            Stale,
-            Locked,
-            Closed,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
