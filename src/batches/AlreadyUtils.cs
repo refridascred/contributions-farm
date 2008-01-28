@@ -58,15 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings, long offset)
+        /// <summary>Derive the next cluster context value from a seed.</summary>
+        public static long SeriesClusterContext(long bound)
         {
-            long sum = 1;
-            foreach (long cell in readings)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                sum = ((sum + (cell - (long)readings.Length)) % 65521) + offset;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return sum;
+            return carry;
         }
     }
 }
