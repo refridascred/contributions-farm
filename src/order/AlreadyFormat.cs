@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Synced,
-            Done,
-            Dropped,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryInterval = 2172;
+        public const long HardWindow = 9551;
+        public const long BatchCount = 2663;
+        public const long RetryWindow = 1352;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchOutliers(long[] values)
