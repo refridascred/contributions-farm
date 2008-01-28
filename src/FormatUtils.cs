@@ -19,12 +19,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Locate a batch support reading by value.</summary>
+        public static long LookupBatchSupportIndex(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
