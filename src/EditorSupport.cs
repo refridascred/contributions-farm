@@ -18,21 +18,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 6;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum - (value / 4)) % 4096;
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
