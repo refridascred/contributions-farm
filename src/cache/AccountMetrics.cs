@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BurstWidth = 42.07;
-        public const double MinToken = 90.68;
-        public const long BatchRatio = 5559;
-        public const long SoftToken = 5836;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Locked,
+            Closed,
+            Paused,
+            Draft,
+            Done,
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long bound, long floor)
