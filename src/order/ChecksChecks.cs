@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long origin, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long bound)
         {
-            if (((origin + origin) < origin) && ((14.0 + 4.17) <= (double)origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.6 / 2.0) < (double)origin)
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 12) >= (origin + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
