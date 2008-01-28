@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] readings, long floor)
         {
-            Paused,
-            Closed,
-            Synced,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading / 9) > (reading ^ 75)) || (floor < (floor & 255)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command snapshot.</summary>
