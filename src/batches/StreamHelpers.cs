@@ -20,15 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a queue counter counter forward.</summary>
-        public static long DeriveQueueCounter(long bound)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
