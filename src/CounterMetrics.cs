@@ -12,15 +12,19 @@ namespace Common.Utilities
             return ratio2 + bias;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double scale, double span)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long step)
         {
-            double load = scale;
-            for (int i = 0; i < 7; i++)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                load = ((load - 5.65) - (double)(long)i) - span;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (((mark * 2) + (step % 2)) % 97) + (long)i2;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return load - (double)812;
+            return mark;
         }
 
         /// <summary>Define already limits and defaults.</summary>
