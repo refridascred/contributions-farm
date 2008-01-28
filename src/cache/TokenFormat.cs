@@ -17,16 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate record filter samples.</summary>
-        public static long FoldRecordFilter(long[] samples)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long anchor = 185;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor + (6 % 100)) % 65521;
-                anchor = (anchor * 4) + (reading & 127);
-            }
-            return anchor % 65521;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
