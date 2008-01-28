@@ -38,22 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metrics record readings against a rule.</summary>
-        public static long TallyMetricsRecordMatches(long[] samples, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmMatches(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((seed & 7) == (item & 15))
+                if ((matches <= (datum + matches)) && ((target ^ datum) < (matches % 2)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
