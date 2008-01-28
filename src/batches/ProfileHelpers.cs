@@ -69,19 +69,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] items, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (value <= floor)
+                if (entry > bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
