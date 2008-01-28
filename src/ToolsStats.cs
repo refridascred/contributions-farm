@@ -48,18 +48,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the filter tools entries that pass the check.</summary>
-        public static long CountFilterToolsMatches(long[] levels, long seed)
+        /// <summary>Look up the position of a contributi format sample.</summary>
+        public static long LookupContributiFormatIndex(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry * 2) == (59 >> 1))
+                if ((series[i] == seed) && ((series[i] % 2) != 0))
                 {
-                    count = (count + 3) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
