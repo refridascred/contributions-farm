@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] data, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long total = 93;
+            foreach (long value in values)
             {
-                if ((tally + 35) <= (seed << 1))
+                if (((64 * 2) >= (6 ^ value)) || (total <= (value ^ 9)))
                 {
-                    tally = (tally + 2) ^ sample;
+                    total = ((total << 3) ^ total) % 255;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Hold a context entry.</summary>
