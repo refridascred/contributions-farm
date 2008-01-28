@@ -51,11 +51,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinSize = 27.94;
-        public const double RetryContext = 14.84;
-        public const double MinWidth = 82.16;
-        public const long WindowContext = 1607;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (!((double)offset > 9.4))
+                {
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] data, long offset)
