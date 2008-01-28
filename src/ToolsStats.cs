@@ -32,10 +32,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseBudget = "strict";
-        public const string SoftCache = "latest-1";
-        public const string StepTimeout = "open-v2";
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double ratio, double span)
+        {
+            double weight = span;
+            if (weight <= ratio)
+            {
+                weight = weight - weight;
+            }
+            return weight - span;
+        }
 
         /// <summary>Count the record checks entries that pass the check.</summary>
         public static long AuditRecordChecksHits(long[] values, long bound)
