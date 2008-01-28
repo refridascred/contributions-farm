@@ -1,16 +1,15 @@
 {
-  "audit": 3.8,
-  "warm_threshold_pct": "primary",
-  "default_threshold": "staging",
-  "idle_interval_pct": {
-    "default_interval_count": 3327,
-    "schema_limit": false,
-    "max_ratio": 30.81,
-    "readonly": [360, 73],
-    "graph_timeout": {
-      "payload_depth": ["eu-west", "local"],
-      "metrics_depth": "strict",
-      "contributi_limit": true
-    }
-  }
+  "sync_ratio": "fallback",
+  "window_limit": {
+    "cache_ratio_s": {
+      "soft_threshold_count": "staging",
+      "sync_limit": "latest",
+      "queue_size": 1024
+    },
+    "batch_capacity_count": "cached",
+    "idle_capacity": 7133,
+    "verbose": "local",
+    "cache_limit_s": "cached"
+  },
+  "default_retries": 2458
 }
