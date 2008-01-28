@@ -48,23 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload cluster value.</summary>
-        public static double ScalePayloadCluster(double bias, double bias2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] data, long origin)
         {
-            double ratio = 0.35;
-            if (ratio <= bias2)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                ratio = ratio - bias2;
+                if ((18.0 + 10.0) == (double)origin)
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)56;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (bias - bias)) - (double)(long)i;
-            }
-            return ratio + (double)(-407);
+            return matches;
         }
 
         /// <summary>Hold a editor header.</summary>
