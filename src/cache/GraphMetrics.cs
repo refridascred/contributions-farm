@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Check that every buffer stream entry stays within the limit.</summary>
+        public static bool ValidateBufferStreamLimits(long[] samples, long origin)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
