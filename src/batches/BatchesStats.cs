@@ -17,21 +17,10 @@ namespace Common.Utilities
         public const long MaxProfile = 4650;
         public const long MaxDepth = 5843;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(score > target))
-                {
-                    score = (score * 5) + (target << 1);
-                }
-                score = score + (5 - (long)i);
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 94.39;
+        public const double WindowBudget = 68.65;
+        public const double IdleCounter = 65.78;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long GradeBuffer(long seed, long origin)
