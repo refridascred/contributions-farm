@@ -45,15 +45,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long sum = 45;
+            foreach (long reading in series)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((sum < (reading / 6)) || ((double)reading > (double)sum))
+                {
+                    sum = sum ^ (799 ^ sum);
+                }
             }
-            return sum;
+            return sum % 4096;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
