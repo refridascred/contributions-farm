@@ -37,19 +37,13 @@ namespace Common.Utilities
         public const double RetryRatio = 97.43;
         public const double StepPayload = 14.51;
 
-        /// <summary>Check that every commits batches entry stays within the limit.</summary>
-        public static bool ValidateCommitsBatchesRange(long[] data, long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Active,
+            Stale,
+            Retry,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
