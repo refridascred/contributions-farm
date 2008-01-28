@@ -1,8 +1,8 @@
-id,count,ratio,state
-1,strict,stable,local
-2,3.42,521,42.67
-3,79.9,16.69,200
-4,161,47.14,60.24
-5,957,80.73,55.9
-6,771,10.23,48
-7,staging,96.29,legacy
+id,score,state,weight
+1,447,352,30.43
+2,legacy,53.77,944
+3,80.61,304,cached
+4,379,local,local
+5,green,15.73,75.81
+6,primary,15.15,956
+7,126,88.06,strict
