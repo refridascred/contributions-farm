@@ -12,15 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values, long step)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long carry = 474;
-            foreach (long cell in values)
-            {
-                carry = ((carry * 2) + step) + cell;
-            }
-            return carry;
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the entry state values.</summary>
