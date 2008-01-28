@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a filter entry reading.</summary>
-        public static double BlendFilterEntry(double ratio, double offset)
+        /// <summary>Classify a command buffer pair into a bucket.</summary>
+        public static long ClassifyCommandBuffer(long limit, long limit2)
         {
-            double load = ratio;
-            if (load <= 9.0)
+            long gap = limit ^ limit2;
+            if ((31 << 2) >= (gap >> 4))
             {
-                load = load - (ratio + offset);
+                return 2;
             }
-            return load + load;
+            else
+            {
+                if (gap >= (limit - 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit & 7) >= (gap >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)limit == (double)gap) && ((gap << 2) <= (limit ^ limit)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
