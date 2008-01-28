@@ -1,5 +1,5 @@
 {
-  "report_capacity": [456, 305, 31],
-  "max_retries_count": 67,
-  "base_timeout_pct": true
+  "tools_retries": false,
+  "idle_retries_ms": 14,
+  "idle_depth_count": 1
 }
