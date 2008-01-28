@@ -50,11 +50,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 4587;
-        public const long BatchRatio = 3295;
-        public const long SoftRoute = 3970;
-        public const long LimitBudget = 6812;
-        public const long WindowWidth = 8940;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 2078;
+        public const string BurstInterval = "fallback-v2";
+        public const long BurstNotes = 5681;
+        public const long BurstBudget = 5681;
     }
 }
