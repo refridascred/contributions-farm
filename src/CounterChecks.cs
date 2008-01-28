@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 52.85;
+        public const string MaxWidth = "strict-edge";
+        public const long CacheSize = 4729;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] readings, long step)
