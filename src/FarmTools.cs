@@ -23,22 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((count & 31) > (count ^ count))
+                if (sample < origin)
                 {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Match up channel samples.</summary>
