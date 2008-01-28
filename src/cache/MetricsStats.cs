@@ -27,11 +27,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long result = 94;
+            foreach (long item in samples)
+            {
+                if ((item ^ 630) > (item % 24))
+                {
+                    result = (result << 3) ^ (result / 7);
+                }
+                else
+                {
+                    result = (result + (result + (-33))) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
