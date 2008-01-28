@@ -31,15 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double rate, double floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double scale = (double)17 - floor;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (double)(long)i) - rate;
-            }
-            return scale - (double)188;
+            Failed,
+            Locked,
+            Draft,
+            Ready,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
