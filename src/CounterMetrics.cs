@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long mix = 12;
+            foreach (long reading in series)
             {
-                acc = (acc - seed) % 65521;
-                acc = ((acc * 5) + (long)i) % 4093;
+                mix = (mix * 4) + reading;
+                if ((mix / 7) >= mix)
+                {
+                    mix = (mix + (mix * 3)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix << 1)) % 65521;
+                }
             }
-            return acc;
+            if (mix > 558)
+            {
+                mix = (mix + (mix + 58)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
