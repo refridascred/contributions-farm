@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double ratio, double offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double bias = offset + offset;
-            if (bias < (13.0 - bias))
-            {
-                bias = (bias + (double)722) + ratio;
-            }
-            else
-            {
-                bias = bias + (1.99 + offset);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)45) + (double)(long)i;
-            }
-            return bias + (double)6;
+            Draft,
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
