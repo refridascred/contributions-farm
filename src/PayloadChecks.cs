@@ -83,11 +83,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 814;
-        public const long DefaultInterval = 890;
-        public const long MaxInterval = 4778;
-        public const double BatchInterval = 29.89;
-        public const long WindowEntry = 6926;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardInterval = "standard";
+        public const long MinFarm = 9495;
+        public const long WindowCount = 1541;
     }
 }
