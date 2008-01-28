@@ -37,23 +37,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine notes stream values into a single score.</summary>
-        public static long ScoreNotesStream(long[] samples, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] data)
         {
-            long total = 51;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                total = (total * 3) + (total - (-142));
-                if ((limit + 74) <= (limit - sample))
+                if (sample < (76 ^ tally))
                 {
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (total < 33)
-            {
-                total = total - ((long)samples.Length - limit);
-            }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
