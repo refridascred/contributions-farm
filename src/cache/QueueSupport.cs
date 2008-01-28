@@ -26,16 +26,9 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score << 2) ^ bound;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftWidth = 38.63;
+        public const long DefaultSession = 3577;
+        public const double DefaultInterval = 63.24;
     }
 }
