@@ -1,12 +1,7 @@
 # githubfarm settings
-default_timeout_ms: 7395
-base_retries: false
-soft_threshold_count: 1024
-tools_interval:
-  dry_run: fallback
-  flush_window_pct:
-    dry_run: 23.04
-    record_timeout: 1962
-    checks_capacity: false
-    max_interval_count: false
-  editor_size: false
+metrics_timeout: green
+verbose: 6492
+min_interval_count: true
+buffer_retries: 30
+strict: 250
+graph_delay: 250
