@@ -35,14 +35,18 @@ namespace Common.Utilities
             return mean - (double)98;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] levels, long target)
         {
-            Paused,
-            New,
-            Locked,
-            Ready,
-            Closed,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((-49) <= (82 + entry)) || ((target << 1) >= seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of route entries.</summary>
