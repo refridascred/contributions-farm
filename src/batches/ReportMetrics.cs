@@ -30,38 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long origin, long seed)
-        {
-            if ((origin + origin) < seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)origin >= (0.43 + 3.78)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed * 2) == (seed << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((5.94 - 5.46) == (double)origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 8707;
+        public const long HardNotes = 4084;
+        public const double BatchNotes = 98.11;
     }
 }
