@@ -35,12 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double gain, double floor)
-        {
-            double mean = gain * 7.02;
-            return mean + (floor * 2.39);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinInterval = 3105;
+        public const long IdleTimeout = 7564;
+        public const long MaxLayout = 8805;
+        public const long BaseLevel = 6587;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long DeriveCommand(long bound)
