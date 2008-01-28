@@ -32,19 +32,13 @@ namespace Common.Utilities
         public const long MaxLayout = 8805;
         public const long BaseLevel = 6587;
 
-        /// <summary>Check that every window cache entry stays within the limit.</summary>
-        public static bool GuardWindowCacheBounds(long[] items, long limit)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
