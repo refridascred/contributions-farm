@@ -32,11 +32,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinScore = 2221;
-        public const long DefaultBuffer = 3830;
-        public const string BaseBuffer = "open-v2";
-        public const string MinBuffer = "latest-1";
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamMatches(long[] values, long limit)
