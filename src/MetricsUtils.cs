@@ -29,11 +29,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long offset)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)offset < (double)mark)
+                {
+                    mark = (mark + (mark - offset)) % 101;
+                    mark = ((mark * 2) + offset) % 97;
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the counter class values.</summary>
