@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double rate, double bias)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double ratio = (bias * 0.08) / 4.0;
-            return (ratio - (5.18 + ratio)) + rate;
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a queue options.</summary>
