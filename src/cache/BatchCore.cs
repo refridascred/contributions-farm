@@ -28,21 +28,12 @@ namespace Common.Utilities
         public const long BaseLayout = 8532;
         public const double BurstLayout = 73.92;
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                double scale = (4.46 * 0.5) + (0.44 - 8.6);
-                sum = (sum - ((long)i - (long)i)) % 1000;
-                if (scale < (scale / 6.0))
-                {
-                    sum = ((sum << 2) ^ 96) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
