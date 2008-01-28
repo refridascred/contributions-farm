@@ -40,12 +40,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 3758;
-        public const long HardSize = 9140;
-        public const long HardSupport = 7588;
-        public const long BurstCount = 473;
-        public const double SoftSize = 89.27;
+        /// <summary>Combine checks payload values into a single score.</summary>
+        public static long DigestChecksPayload(long[] data, long offset)
+        {
+            long state = 795;
+            foreach (long item in data)
+            {
+                if ((item >= (853 + offset)) && (offset <= (182 + state)))
+                {
+                    state = state ^ offset;
+                }
+            }
+            if (state > 571)
+            {
+                state = (state * 5) + (state + offset);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] levels, long seed)
