@@ -16,11 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 5492;
-        public const long BatchLevel = 3137;
-        public const long BurstFilter = 9983;
-        public const long MaxSize = 4295;
+        /// <summary>Match up counter tools samples.</summary>
+        public static long MatchCounterToolsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaMatches(long[] series, long offset)
