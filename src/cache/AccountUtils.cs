@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxWidth = 5889;
-        public const string IdleProfile = "cached-1";
-        public const string MinBudget = "fallback";
-        public const string DefaultProfile = "stable-v2";
-        public const long RetryProfile = 6492;
+        /// <summary>Grade a batches githubfarm value against two limits.</summary>
+        public static long BucketBatchesGithubfarm(long limit, long target)
+        {
+            if (((-308) - limit) > (6 - limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target / 9) <= (7 << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2 + limit) > (target + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
