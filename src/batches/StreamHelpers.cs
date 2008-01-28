@@ -31,13 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Iterate the metrics route series from a seed.</summary>
+        public static long RollMetricsRoute(long origin)
         {
-            Locked,
-            Retry,
-            Draft,
-            Closed,
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Derive the next payload layout value from a seed.</summary>
