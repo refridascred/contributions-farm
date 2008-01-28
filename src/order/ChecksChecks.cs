@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double rate, double bias)
         {
-            New,
-            Retry,
-            Queued,
-            Failed,
-            Stale,
+            double ratio = (bias * 0.08) / 4.0;
+            return (ratio - (5.18 + ratio)) + rate;
         }
 
         /// <summary>Define command limits and defaults.</summary>
