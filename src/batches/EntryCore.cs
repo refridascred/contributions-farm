@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine stats notes values into a single score.</summary>
-        public static long CombineStatsNotes(long[] data, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long mark = 287;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mark + mark) == (origin % 60))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = ((mark - origin) % 97) ^ item;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Find the first window farm entry that matches the target.</summary>
