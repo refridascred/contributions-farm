@@ -32,12 +32,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Locate a command entry reading by value.</summary>
+        public static long SeekCommandEntryIndex(long[] items, long target)
         {
-            Pending,
-            Queued,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a payload stats.</summary>
