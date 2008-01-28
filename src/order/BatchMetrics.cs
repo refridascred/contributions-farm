@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 8156;
-        public const string IdleChecks = "latest";
-        public const long CacheChecks = 8989;
-        public const double SoftChecks = 78.62;
+        /// <summary>Match up githubfarm already samples.</summary>
+        public static long OverlapGithubfarmAlreadyCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelOutliers(long[] data)
