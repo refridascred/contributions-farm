@@ -36,24 +36,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long floor, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double ratio, double span)
         {
-            if ((double)bound > 16.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (bound / 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double load = (double)829 + (8.0 * 5.0);
+            return ((load + (double)88) + ratio) + span;
         }
 
         /// <summary>Accumulate batch channel samples.</summary>
