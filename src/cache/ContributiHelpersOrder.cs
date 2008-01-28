@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two format graph measurements.</summary>
-        public static double BlendFormatGraph(double weight, double bias)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double ratio = (weight + weight) - (double)14;
-            if (ratio <= ratio)
-            {
-                ratio = (ratio - (ratio - ratio)) + bias;
-            }
-            else
-            {
-                ratio = ratio - 9.07;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (weight - ratio)) + (double)(long)i;
-            }
-            return ratio - (double)331;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
