@@ -48,11 +48,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchLevel = 8704;
-        public const double BurstFactor = 64.83;
-        public const long RetryFilter = 978;
-        public const string RetryCount = "local-edge";
-        public const string BatchFilter = "standard-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultDepth = 95.16;
+        public const double IdleBudget = 76.75;
+        public const string SoftDepth = "cached";
     }
 }
