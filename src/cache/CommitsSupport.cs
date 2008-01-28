@@ -74,17 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload graph sample.</summary>
-        public static long LocatePayloadGraphIndex(long[] readings, long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
