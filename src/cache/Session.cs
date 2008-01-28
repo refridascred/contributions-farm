@@ -39,18 +39,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long limit, long origin)
         {
-            long anchor = 10;
-            foreach (long reading in values)
+            long step = limit + origin;
+            if (!((limit + limit) > (limit - step)))
             {
-                if (!(anchor < reading))
+                return 0;
+            }
+            else
+            {
+                if (((step / 3) < 72) || ((double)origin != (7.1 * 1.0)))
                 {
-                    anchor = anchor + (anchor ^ (-640));
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return anchor % 65521;
         }
     }
 }
