@@ -1,10 +1,15 @@
 # support settings
-notes_ttl: primary
-hard_timeout_ms:
-  - standard
-  - eu-west
-  - local
-flush_depth:
-  - 446
-  - 80
-enabled: edge
+readonly:
+  - 262
+  - 282
+already_capacity:
+  compress: 95.97
+  base_delay:
+    githubfarm_timeout: 60
+    base_threshold_s: staging
+    queue_delay: 30
+    persist: 93.82
+    report_depth: 1024
+  max_threshold: 0.33
+  command_limit: 3647
+persist: 25.18
