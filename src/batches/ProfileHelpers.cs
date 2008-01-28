@@ -53,13 +53,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long bound)
         {
-            Locked,
-            Paused,
-            New,
-            Failed,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
