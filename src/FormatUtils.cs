@@ -33,13 +33,18 @@ namespace Common.Utilities
         public const long CacheReport = 8324;
         public const long RetryScore = 9787;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((item << 1) <= item) || (((tally + item) != (item % 16)) && ((tally >> 4) < item)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a tools header.</summary>
