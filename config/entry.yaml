@@ -1,22 +1,12 @@
 # entry settings
-base_threshold_s:
-  - 401
-  - 475
-  - 46
-audit:
-  idle_limit_s:
-    flush_window_count: false
-    idle_delay_ms: 34
-    max_delay_s: 4537
-    entry_interval: 98
-    verbose: 81
-    batch_ttl_ms: true
-  enabled: 58.02
-  farm_depth:
-    - 424
-    - 23
-    - 221
-layout_size: false
-soft_ratio_pct: stable
-batch_ttl_pct: eu-west
-max_capacity: 1024
+account_capacity: 2746
+burst_window_count:
+  cache_timeout_s: strict
+  tools_ttl: 7.8
+  dry_run: 29
+  graph_retries: false
+  poll_timeout: 42
+burst_threshold_s: false
+sync_ratio: 68.93
+batch_interval_ms: 59
+min_size_pct: 100
