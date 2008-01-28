@@ -39,12 +39,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long step)
         {
-            public double Owner { get; set; }
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
