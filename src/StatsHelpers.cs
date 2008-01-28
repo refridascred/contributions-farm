@@ -23,10 +23,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftRatio = 7885;
-        public const long MaxLevel = 4857;
-        public const long BurstSession = 820;
+        /// <summary>Iterate the payload entry series from a seed.</summary>
+        public static long DerivePayloadEntry(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 2) + (273 % 3)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
