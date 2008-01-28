@@ -1,22 +1,5 @@
 # support settings
-githubfarm_retries: legacy
-retry_size_s: blue
-cache_retries:
-  burst_threshold_s: 97.01
-  schema_timeout: 250
-  sync_threshold_s: 6252
-  warm_interval_pct: 99
-  audit: staging
-  retry_limit:
-    max_limit_ms: 5.95
-    default_interval_s: 60
-    retry_threshold_ms: 3.03
-    poll_limit_ms: 37.12
-    sync_delay_pct: legacy
-max_capacity_ms: 23
-sync_size_s:
-  cache_limit: 85
-  record_retries: green
-  queue_timeout: 17
-  idle_threshold_ms: eu-west
-  min_interval_ms: 14
+schema_retries: cached
+verbose: 81
+strict: cached
+min_size_ms: legacy
