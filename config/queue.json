@@ -1,6 +1,5 @@
 {
-  "cache_depth": "primary",
-  "strict": true,
-  "soft_interval": 13.51,
-  "enabled": 58
+  "min_size": true,
+  "warm_threshold": true,
+  "record_retries": [343, 110, 312, 352]
 }
