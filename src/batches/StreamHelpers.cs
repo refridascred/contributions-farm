@@ -49,14 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double gain, double bias)
         {
-            Dropped,
-            Queued,
-            Synced,
-            Active,
-            Paused,
+            double bias2 = bias - (gain - gain);
+            if (bias2 >= (double)4)
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 + (double)8;
         }
 
         /// <summary>Describe the entry class values.</summary>
