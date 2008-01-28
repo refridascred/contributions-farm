@@ -32,10 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardDepth = "staging-edge";
-        public const long DefaultChecks = 1516;
-        public const double SoftChecks = 26.98;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxFactor = "local-1";
+        public const long BatchContributi = 1316;
+        public const long RetryContributi = 5132;
+        public const string RetryFactor = "standard-edge";
 
         /// <summary>Project the next record value.</summary>
         public static double ScaleRecord(double gain, double bias)
