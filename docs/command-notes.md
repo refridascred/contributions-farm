@@ -1,11 +1,10 @@
 # Command notes
 
-Run the stream check before changing any editor limits.
-A context that stays idle for too long is moved to the cluster list.
+Keep counter and cluster names short and lowercase.
+Each support is validated before it reaches the route queue.
 
 ## Guidelines
 
+- Document new commits fields
+- Log every batch change
 - Validate command input early
-- Review payload limits each release
-- Prefer farm defaults
-- Keep entry values small
