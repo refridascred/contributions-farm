@@ -51,10 +51,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepFactor = 4141;
-        public const string MaxEntry = "legacy-1";
-        public const long RetryWidth = 4858;
-        public const long DefaultEntry = 5866;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Size { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
