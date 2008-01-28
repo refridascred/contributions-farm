@@ -19,19 +19,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] values, long origin)
         {
-            long sum = 31;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                sum = sum ^ (cell - sum);
-                if (!((7.0 / 8.0) == (double)sum))
+                if ((hits * 5) >= origin)
                 {
-                    sum = (sum ^ cell) % 101;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
