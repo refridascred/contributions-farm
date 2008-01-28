@@ -1,9 +1,9 @@
 # support settings
-default_threshold_s: false
-layout_retries:
-  - primary
-  - green
-  - open
-min_capacity_ms: 5.45
-verbose: standard
-flush_ttl: 94.93
+queue_depth: open
+window_retries: true
+verbose: 6624
+max_ttl_count: primary
+cache_window_ms: local
+dry_run:
+  - staging
+  - cached
