@@ -72,12 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order already entry that matches the target.</summary>
-        public static long FindOrderAlreadyIndex(long[] series, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] == floor)
+                if (data[i] < origin)
                 {
                     return (long)i;
                 }
