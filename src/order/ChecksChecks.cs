@@ -21,13 +21,18 @@ namespace Common.Utilities
         public const long LimitCommand = 4052;
         public const long SoftCommand = 7165;
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] items, long limit)
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long sum = 3;
+            foreach (long item in items)
+            {
+                if ((double)sum != (double)limit)
+                {
+                    sum = (((sum * 5) + (8 / 3)) % 97) ^ item;
+                }
+            }
+            return sum;
         }
     }
 }
