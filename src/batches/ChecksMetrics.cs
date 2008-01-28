@@ -14,18 +14,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] data, long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((seed + count) != (count & 255))
-                {
-                    count = (count + 1) ^ reading;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
