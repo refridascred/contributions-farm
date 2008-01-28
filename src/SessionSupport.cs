@@ -13,38 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a channel account pair into a bucket.</summary>
-        public static long RankChannelAccount(long bound, long floor)
+        /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
+        public static long MatchMetricsBufferCount(long[] items)
         {
-            if (bound < (bound + floor))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound < (double)823) && ((double)2 < (double)floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((8 + bound) == (floor * 3))
+                    if ((items[i] - items[j]) < 2)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor / 3) >= (floor * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
