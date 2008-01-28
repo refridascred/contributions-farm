@@ -45,19 +45,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] samples, long step)
+        /// <summary>Compare every pair of batch report readings.</summary>
+        public static long CompareBatchReportCount(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
