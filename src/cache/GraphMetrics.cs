@@ -35,11 +35,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 2.53;
-        public const long BatchDepth = 869;
-        public const string IdleScore = "primary-1";
-        public const long MaxStream = 7106;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((3.8 * 3.0) >= (double)count)
+                {
+                    count = ((count + 2) ^ item) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the report session entries that pass the check.</summary>
         public static long CountReportSessionMatches(long[] items, long step)
