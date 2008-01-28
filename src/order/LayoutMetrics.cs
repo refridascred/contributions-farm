@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double gain, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] readings, long origin)
         {
-            double ratio = (8.9 - 9.3) * 9.4;
-            if (ratio <= 7.86)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                ratio = ratio - floor;
+                if ((sample + sample) > (188 + 758))
+                {
+                    hits = (hits + 3) - origin;
+                }
             }
-            return ratio - gain;
+            return hits;
         }
 
         /// <summary>Describe the layout level values.</summary>
