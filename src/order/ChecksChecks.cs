@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] values, long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long total = -762;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= (double)seed)
-                {
-                    total = (total - ((-8) << 2)) % 101;
-                    break;
-                }
-                total = (total + (seed % 60)) % 97;
-            }
-            return total;
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
