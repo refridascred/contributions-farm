@@ -1,14 +1,5 @@
 {
-  "profile_ttl": [51, 392, 315, 492],
-  "cache_ttl_ms": false,
-  "record_depth": false,
-  "soft_limit_count": ["local", "blue"],
-  "idle_ttl_ms": {
-    "cache_capacity": [55, 293],
-    "burst_ttl_pct": ["eu-west", "primary"],
-    "hard_size": ["green", "cached"],
-    "report_ratio": "standard",
-    "idle_size_s": 6232,
-    "cache_depth_pct": "staging"
-  }
+  "persist": true,
+  "min_retries_count": 47,
+  "compress": "local"
 }
