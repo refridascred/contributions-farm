@@ -42,15 +42,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double bias, double floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values, long target)
         {
-            double weight = (double)19;
-            if (weight < (bias - floor))
+            long score = 32;
+            foreach (long reading in values)
             {
-                weight = weight + (1.2 * 4.0);
+                score = (((score * 2) + (4 % 5)) ^ reading) - target;
             }
-            return weight + (double)8;
+            return score % 65521;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
