@@ -13,18 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the farm profile entries that pass the check.</summary>
-        public static long MeasureFarmProfileHits(long[] series)
+        /// <summary>Count the metrics queue entries that pass the check.</summary>
+        public static long MeasureMetricsQueueMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((double)value >= (2.0 / 4.0))
+                if (((tally / 9) == (tally / 3)) || !((value ^ tally) < (value % 24)))
                 {
-                    count = count + 2;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a buffer record.</summary>
