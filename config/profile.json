@@ -1,28 +1,7 @@
 {
-  "cache_threshold": {
-    "hard_depth_ms": 250,
-    "dry_run": "stable",
-    "verbose": "green"
-  },
-  "soft_size_count": {
-    "audit": {
-      "sync_timeout_ms": 58.86,
-      "cache_timeout_count": "open",
-      "dry_run": "local",
-      "strict": true
-    },
-    "warm_limit": 35.91,
-    "notes_depth": {
-      "default_delay_s": 100,
-      "idle_retries_pct": 1024,
-      "layout_ttl": [76, 62],
-      "burst_capacity": ["local", "strict", "cached", "eu-west"],
-      "soft_interval_count": "cached"
-    },
-    "burst_depth_pct": ["strict", "strict", "blue", "cached"],
-    "hard_retries_pct": false
-  },
-  "cache_delay": 54,
-  "soft_limit_ms": "staging",
-  "retry_capacity_s": 500
+  "token_interval": 60,
+  "poll_retries_s": [143, 177],
+  "warm_capacity_count": true,
+  "report_threshold": 30,
+  "hard_depth": true
 }
