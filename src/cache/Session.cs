@@ -33,11 +33,25 @@ namespace Common.Utilities
         public const string BaseBuffer = "open-v2";
         public const string MinBuffer = "latest-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowSize = 3638;
-        public const string HardFormat = "standard-1";
-        public const long WindowScore = 1279;
-        public const long MaxFormat = 4792;
-        public const long LimitFormat = 3588;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long floor, long limit)
+        {
+            long prev = floor ^ limit;
+            if (((672 % 8) > (prev % 24)) && ((double)prev < (10.0 * 3.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (98 >= (limit & 127))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
