@@ -62,19 +62,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] series, long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Pending,
+            Draft,
+            Failed,
         }
     }
 }
