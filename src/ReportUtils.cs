@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double rate, double offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long target)
         {
-            double weight = (double)(434 - 77);
-            if (weight < rate)
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                weight = (weight + rate) - offset;
+                sum = (sum ^ ((-9) / 3)) % 4096;
+                sum = (sum - (target - target)) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (double)127) + (double)(long)i;
-            }
-            return weight - 2.0;
+            return sum;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
