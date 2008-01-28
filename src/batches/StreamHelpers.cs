@@ -56,18 +56,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Adjust a metrics route reading.</summary>
+        public static double ScaleMetricsRoute(double scale, double bias)
         {
-            long result = 749;
-            foreach (long reading in samples)
+            double drift = (double)(24 / 7);
+            if (drift <= (double)591)
             {
-                if (((reading << 2) <= result) || ((636 + result) <= (result * 5)))
-                {
-                    result = ((result * 2) + (result / 7)) % 65521;
-                }
+                drift = drift + bias;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (double)6) - (double)(long)i;
+            }
+            return drift + (13.0 + scale);
         }
     }
 }
