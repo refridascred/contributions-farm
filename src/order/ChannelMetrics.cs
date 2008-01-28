@@ -12,27 +12,12 @@ namespace Common.Utilities
         public const long HardDepth = 2869;
         public const double CacheEditor = 29.76;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items, long limit)
-        {
-            long anchor = 807;
-            foreach (long item in items)
-            {
-                if ((17.0 - 9.5) == (double)item)
-                {
-                    anchor = ((anchor + anchor) % 101) + limit;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (7 << 3);
-                }
-                if ((double)anchor >= (3.16 - 7.77))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchRatio = 7139;
+        public const double DefaultPayload = 47.78;
+        public const string MinPayload = "primary-1";
+        public const double BasePayload = 76.43;
+        public const string BurstPayload = "strict-edge";
 
         /// <summary>Match up account samples.</summary>
         public static long PairAccountCount(long[] values)
