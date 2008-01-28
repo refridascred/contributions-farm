@@ -1,8 +1,15 @@
 {
-  "min_depth_s": "legacy",
-  "base_ttl": "fallback",
-  "soft_size_ms": "local",
-  "default_ttl_s": 1024,
-  "retry_retries_count": 98.97,
-  "record_ratio": 30
+  "min_ttl": 5989,
+  "compress": 59.45,
+  "batch_window": {
+    "audit": 60,
+    "default_depth_count": 500,
+    "tools_timeout": "edge",
+    "burst_depth_pct": "strict",
+    "hard_capacity_count": 79,
+    "dry_run": false
+  },
+  "entry_limit": 3.22,
+  "dry_run": "fallback",
+  "sync_timeout_s": 6459
 }
