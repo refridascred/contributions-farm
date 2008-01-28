@@ -1,21 +1,25 @@
 # support settings
-burst_capacity_s: strict
-stream_window: 82
-warm_depth: 7073
-warm_threshold_ms:
-  min_interval_count: true
-  flush_limit_s: true
-  batch_window:
-    verbose: 49
-    batch_size_count: open
-    poll_capacity:
-      - 210
-      - 306
-      - 69
-    burst_capacity: local
-  batch_limit_count:
-    - 491
-    - 92
-    - 425
-burst_timeout_count: latest
-token_limit: latest
+dry_run: 43.36
+min_delay_s:
+  poll_delay_pct: 777
+  retry_size_s:
+    editor_delay:
+      - 62
+      - 329
+      - 8
+      - 448
+    editor_threshold: false
+    record_interval: cached
+    soft_threshold_s: 2912
+    sync_delay_ms:
+      - local
+      - local
+      - strict
+      - fallback
+  readonly:
+    - 441
+    - 436
+    - 310
+readonly: 3143
+stream_threshold: 5558
+flush_depth_s: 60
