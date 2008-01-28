@@ -76,13 +76,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Queued,
-            Done,
-            Closed,
-            New,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 2237;
+        public const double HardLevel = 45.62;
+        public const string IdleChannel = "primary-edge";
+        public const double BatchChannel = 53.44;
     }
 }
