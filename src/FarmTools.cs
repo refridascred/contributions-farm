@@ -23,19 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] items, long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a entry info.</summary>
