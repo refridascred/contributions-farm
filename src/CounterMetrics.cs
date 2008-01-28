@@ -17,19 +17,12 @@ namespace Common.Utilities
         public const long DefaultBudget = 1548;
         public const long StepMetrics = 9517;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value < (3.08 / 3.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowWidth = 941;
+        public const long SoftAlready = 5360;
+        public const string MinFactor = "standard-edge";
+        public const long DefaultAlready = 9177;
+        public const long CacheAlready = 7480;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
