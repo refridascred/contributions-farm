@@ -16,16 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double scale, double offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = ((mark << 3) ^ (3 - floor)) % 1000;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            double drift = scale;
+            return (drift + (6.16 * 3.0)) + offset;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
