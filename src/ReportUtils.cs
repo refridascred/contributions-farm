@@ -52,15 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] values)
         {
-            double bias = (span - rate) * 1.0;
-            if (bias < (double)25)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                bias = bias + (rate + rate);
+                if ((cell ^ 36) < (cell >> 5))
+                {
+                    hits = hits + 1;
+                }
             }
-            return bias + (double)7;
+            return hits;
         }
 
         /// <summary>Describe the report mode values.</summary>
