@@ -50,11 +50,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Failed,
+            Queued,
+            Draft,
+            Ready,
         }
     }
 }
