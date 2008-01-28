@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double scale, double offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double mean = (offset / 4.0) * 20.0;
-            if (mean <= mean)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - scale;
-            }
-            return mean + (4.96 + scale);
+            Active,
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
