@@ -34,22 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample ^ 3) <= (matches & 255))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstBudget = "strict";
+        public const string BurstMetric = "legacy-edge";
+        public const long WindowDepth = 5074;
     }
 }
