@@ -34,12 +34,11 @@ namespace Common.Utilities
         public const double StepCommand = 17.67;
         public const double BaseFactor = 95.55;
 
-        /// <summary>Blend two payload profile measurements.</summary>
-        public static double AdjustPayloadProfile(double weight, double floor)
-        {
-            double ratio = floor;
-            return (ratio - 18.0) + weight;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 2.53;
+        public const long BatchDepth = 869;
+        public const string IdleScore = "primary-1";
+        public const long MaxStream = 7106;
 
         /// <summary>Count the report session entries that pass the check.</summary>
         public static long CountReportSessionMatches(long[] items, long step)
