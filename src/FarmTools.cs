@@ -38,18 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long state = -5;
+            foreach (long entry in values)
             {
-                if (cell > (cell ^ matches))
+                if (step >= (step >> 5))
                 {
-                    matches = matches + 1;
+                    state = ((state << 3) ^ (step % 12)) + entry;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
