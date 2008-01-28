@@ -45,11 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
+            Draft,
+            Failed,
+            Dropped,
+            Done,
+            Active,
         }
     }
 }
