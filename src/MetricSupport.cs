@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long limit, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] series, long floor)
         {
-            if (((offset + offset) == (limit - offset)) && ((limit << 2) > limit))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (7.7 / 7.0))
+                if (((item * 3) <= floor) || ((double)hits < (0.4 - 4.1)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset > limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit >= (limit << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
