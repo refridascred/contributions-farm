@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long CacheDepth = 4994;
         public const string SoftCount = "standard-1";
 
-        /// <summary>Validate account order readings against a bound.</summary>
-        public static bool ValidateAccountOrderBounds(long[] levels, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (reading < limit)
+                if ((1.2 / 6.0) < (double)count)
                 {
-                    found = false;
-                    break;
+                    count = ((count + 3) - item) - floor;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate stats samples.</summary>
