@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 1325;
-        public const long HardAlready = 490;
-        public const long BatchWidth = 5066;
-        public const long MinCount = 1877;
-        public const long RetryAlready = 5310;
+        /// <summary>Audit format buffer readings against a rule.</summary>
+        public static long TallyFormatBufferHits(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (floor > (floor ^ datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long CombineProfile(long[] readings, long limit)
