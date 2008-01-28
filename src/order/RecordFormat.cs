@@ -80,11 +80,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 16.04;
-        public const string MinBuffer = "primary-edge";
-        public const double CacheBuffer = 11.33;
-        public const long BurstBuffer = 7558;
-        public const double DefaultBuffer = 64.1;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
+        }
     }
 }
