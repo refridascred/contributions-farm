@@ -38,21 +38,19 @@ namespace Common.Utilities
         public const long MaxLayout = 8805;
         public const long BaseLevel = 6587;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Check that every window cache entry stays within the limit.</summary>
+        public static bool GuardWindowCacheBounds(long[] items, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                total = ((total * 4) + (92 & 63)) % 255;
-                total = total + (bound + total);
-                for (int i2 = 0; i2 < 9; i2++)
+                if (cell >= limit)
                 {
-                    total = ((total - 2) % 101) ^ (long)i2;
+                    found = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
