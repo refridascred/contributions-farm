@@ -20,19 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long mark = 4;
+            foreach (long reading in levels)
             {
-                if ((origin << 1) != (sum & 127))
+                if ((4.6 / 5.0) >= (double)mark)
                 {
-                    sum = (sum << 3) ^ (5 >> 3);
+                    mark = ((mark * 3) + (reading - 10)) % 97;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            if (mark < 550)
+            {
+                mark = (mark - (mark - mark)) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
