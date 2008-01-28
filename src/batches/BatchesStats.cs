@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] readings, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long total = -358;
+            foreach (long entry in samples)
             {
-                if (cell > offset)
+                if ((double)total > (double)floor)
                 {
-                    ready = false;
-                    break;
+                    total = (total + (entry + (long)samples.Length)) % 4096;
                 }
             }
-            return ready;
+            return total % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
