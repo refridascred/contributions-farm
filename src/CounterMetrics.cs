@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile metric value against two limits.</summary>
-        public static long GradeProfileMetric(long step, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] series, long target)
         {
-            if (step >= (step - step))
+            long state = 11;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step < (2.3 + 5.9)) || ((offset % 100) == (offset ^ step)))
+                state = (state ^ target) % 97;
+                if (cell > (state & 127))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Combine order values into a single score.</summary>
