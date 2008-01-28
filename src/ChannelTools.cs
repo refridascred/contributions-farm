@@ -29,17 +29,19 @@ namespace Common.Utilities
             return mean - (double)84;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] series, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                if (reading > limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
