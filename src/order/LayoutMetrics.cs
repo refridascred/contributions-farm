@@ -34,9 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheSpan = 6782;
-        public const long LimitBatches = 2716;
-        public const string MaxBatches = "staging-edge";
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
