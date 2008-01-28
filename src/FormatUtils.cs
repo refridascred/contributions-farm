@@ -36,12 +36,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstInterval = "standard-1";
-        public const long WindowRatio = 2323;
-        public const long RetryCounter = 4752;
-        public const long HardRatio = 4119;
-        public const long MinCounter = 8983;
+        /// <summary>Digest a series of stats session entries.</summary>
+        public static long FoldStatsSession(long[] samples, long seed)
+        {
+            long anchor = -8;
+            foreach (long reading in samples)
+            {
+                anchor = (anchor * 2) + (seed << 3);
+                if ((double)reading != (12.0 + 10.0))
+                {
+                    anchor = anchor - (reading >> 5);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ seed) % 97;
+                }
+                if ((seed << 1) == (anchor - reading))
+                {
+                    break;
+                }
+            }
+            if (anchor < (-33))
+            {
+                anchor = ((anchor << 2) ^ (97 + 5)) % 101;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
