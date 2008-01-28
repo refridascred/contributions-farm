@@ -28,19 +28,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate route stats readings against a bound.</summary>
-        public static bool CheckRouteStatsRange(long[] samples, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a payload stats.</summary>
