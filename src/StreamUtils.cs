@@ -74,17 +74,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 9759;
+        public const double WindowFarm = 75.47;
+        public const double SoftRatio = 54.88;
+        public const long CacheFarm = 9139;
     }
 }
