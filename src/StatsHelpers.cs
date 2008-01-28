@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (((datum * 3) >= (offset >> 3)) && ((offset >= (long)data.Length) && ((double)offset <= (double)datum)))
+                if (((56 + floor) >= entry) && ((count << 3) <= (2 + count)))
                 {
-                    matches = matches + 2;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
