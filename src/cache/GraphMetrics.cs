@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 69.26;
-        public const string DefaultDepth = "fallback-1";
-        public const string MinBudget = "primary-edge";
-        public const string RetryChannel = "standard";
-        public const long IdleChannel = 1354;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSpan = 4752;
+        public const string IdleDepth = "latest";
+        public const long CacheAccount = 3690;
+        public const long WindowAccount = 9581;
+        public const string MinInterval = "staging-v2";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MaxCommand = 5704;
