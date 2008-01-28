@@ -27,12 +27,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Dropped,
-            Locked,
-            Closed,
+            Retry,
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Hold a batch summary.</summary>
