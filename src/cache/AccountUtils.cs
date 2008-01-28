@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a batches githubfarm value against two limits.</summary>
-        public static long BucketBatchesGithubfarm(long limit, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            if (((-308) - limit) > (6 - limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target / 9) <= (7 << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2 + limit) > (target + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
