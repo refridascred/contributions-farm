@@ -1,6 +1,8 @@
-id,region,label,owner
-1,5.24,strict,83.07
-2,standard,45.0,cached
-3,staging,87.63,571
-4,817,3.62,530
-5,fallback,84.45,33.5
+id,active,token
+1,97.62,444
+2,370,325
+3,424,500
+4,standard,blue
+5,802,701
+6,strict,22.46
+7,36.82,latest
