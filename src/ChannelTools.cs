@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Done,
+            Pending,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
