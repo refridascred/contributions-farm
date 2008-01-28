@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            long anchor = -18;
+            foreach (long value in values)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if ((4.42 / 2.0) >= (double)value)
+                {
+                    anchor = (anchor ^ (value + anchor)) % 255;
+                }
             }
-            return score;
+            if (anchor < 34)
+            {
+                anchor = (anchor << 3) ^ (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a graph header.</summary>
