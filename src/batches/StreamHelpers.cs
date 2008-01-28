@@ -59,21 +59,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the token class values.</summary>
