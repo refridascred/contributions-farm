@@ -51,12 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            Locked,
+            Idle,
+            Paused,
+            New,
         }
     }
 }
