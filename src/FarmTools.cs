@@ -37,13 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
