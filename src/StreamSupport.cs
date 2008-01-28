@@ -20,15 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] items, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Audit profile schema readings against a rule.</summary>
