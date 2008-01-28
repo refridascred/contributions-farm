@@ -43,12 +43,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
         {
-            Idle,
-            Ready,
-            Dropped,
+            long result = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result << 2) ^ (result + (long)i);
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
