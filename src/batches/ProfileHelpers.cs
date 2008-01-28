@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseTimeout = 2714;
-        public const string MaxBudget = "fallback-edge";
-        public const long LimitInterval = 7740;
-        public const long BurstSize = 5596;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((floor + datum) != (919 + datum))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] levels)
