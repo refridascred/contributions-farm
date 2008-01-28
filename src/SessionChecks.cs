@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate session context readings against a bound.</summary>
-        public static bool VerifySessionContextLimits(long[] items, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long limit, long offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long gap = limit + offset;
+            if ((gap + limit) == (limit + limit))
             {
-                if (sample > target)
+                return 5;
+            }
+            else
+            {
+                if ((gap + 3) > (194 / 6))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit <= (14.0 + 3.3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of context entries.</summary>
