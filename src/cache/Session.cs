@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate notes order readings against a bound.</summary>
-        public static bool ValidateNotesOrderBounds(long[] series, long seed)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
