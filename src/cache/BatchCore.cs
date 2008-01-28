@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long limit)
+        /// <summary>Audit batch support readings against a rule.</summary>
+        public static long MeasureBatchSupportGaps(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) != 0))
+                if (0.5 < (double)sample)
                 {
-                    return (long)i;
+                    matches = (matches + 2) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
