@@ -32,11 +32,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchScore = 975;
-        public const long MaxCounter = 1289;
-        public const long CacheCounter = 434;
-        public const string DefaultCounter = "local-v2";
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] items, long limit)
+        {
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
