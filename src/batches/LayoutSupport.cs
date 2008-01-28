@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "open-v2";
+        public const long CacheFactor = 100;
+        public const long SoftWidth = 3433;
+        public const string MinSize = "stable-edge";
+        public const long StepSpan = 9845;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultSpan = 3659;
