@@ -23,11 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitTimeout = 6481;
-        public const long MaxContributi = 6737;
-        public const double IdleContributi = 42.57;
-        public const double StepInterval = 66.53;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleFactor = 9343;
+        public const long CacheDepth = 8064;
+        public const long SoftInterval = 1751;
+        public const long BaseCommits = 1692;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
