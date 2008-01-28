@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] readings, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long carry = 361;
+            foreach (long sample in series)
             {
-                if (datum >= offset)
+                if (((sample << 1) < (carry ^ carry)) && ((sample + sample) <= 75))
                 {
-                    ready = false;
-                    break;
+                    carry = carry - sample;
+                }
+                carry = ((carry * 4) + (sample ^ sample)) % 97;
+                if (!((carry % 7) < (sample - carry)))
+                {
+                    carry = (carry + (7 / 7)) % 4096;
                 }
             }
-            return ready;
+            if (carry > 24)
+            {
+                carry = (carry - (carry / 4)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
