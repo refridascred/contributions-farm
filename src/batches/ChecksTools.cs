@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "alpha-1";
-        public const long BurstInterval = 7935;
-        public const string IdleGithubfarm = "primary";
-        public const long DefaultTimeout = 4357;
-        public const double BatchBudget = 24.84;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Synced,
+            Pending,
+            Dropped,
+            New,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string RetryPayload = "fallback-v2";
