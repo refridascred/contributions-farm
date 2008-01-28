@@ -57,11 +57,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardWidth = 9191;
-        public const long CacheDepth = 2535;
-        public const double WindowChecks = 24.11;
-        public const double CacheLevel = 58.78;
-        public const long BurstChecks = 5503;
+        /// <summary>Digest a series of farm queue entries.</summary>
+        public static long CombineFarmQueue(long[] readings)
+        {
+            long sum = 54;
+            foreach (long cell in readings)
+            {
+                sum = (((sum * 2) + sum) % 4096) + cell;
+                sum = (sum * 2) + (sum & 7);
+            }
+            if (sum < 179)
+            {
+                sum = (sum ^ (sum & 15)) % 1000;
+            }
+            return sum % 4096;
+        }
     }
 }
