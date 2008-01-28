@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long target)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long seed, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((4.11 + 4.45) >= (double)origin)
             {
-                if (levels[i] >= target)
+                return 8;
+            }
+            else
+            {
+                if (1 >= seed)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
