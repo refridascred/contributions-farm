@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const double BatchStats = 47.66;
         public const double SoftStats = 3.05;
 
-        /// <summary>Combine batches metrics values into a single score.</summary>
-        public static long CombineBatchesMetrics(long[] values, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double ratio, double offset)
         {
-            long state = -96;
-            foreach (long value in values)
+            double weight = (double)(8 & 127);
+            if (weight < offset)
             {
-                state = ((((state * 5) + state) % 255) ^ value) - origin;
+                weight = weight + ratio;
             }
-            if (state < 3)
-            {
-                state = (state + 79) % 65521;
-            }
-            return state % 65521;
+            return weight + (offset - offset);
         }
     }
 }
