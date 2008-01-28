@@ -15,17 +15,22 @@ namespace Common.Utilities
         public const long IdleBuffer = 9969;
         public const double RetryCount = 33.0;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] items, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 759;
+            foreach (long reading in series)
             {
-                if (items[i] > offset)
+                if ((state % 2) >= 40)
                 {
-                    return (long)i;
+                    state = state ^ reading;
                 }
             }
-            return -1;
+            if (state < 84)
+            {
+                state = (state + (limit + 42)) % 97;
+            }
+            return state;
         }
     }
 }
