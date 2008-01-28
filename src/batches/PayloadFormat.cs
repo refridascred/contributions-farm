@@ -16,19 +16,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long result = 38;
-            foreach (long entry in data)
-            {
-                result = (result - (result - result)) + entry;
-                if ((result * 4) > (origin << 3))
-                {
-                    result = (result - origin) % 101;
-                }
-            }
-            return result;
+            Locked,
+            Active,
+            Done,
+            Paused,
+            Stale,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
