@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public string Level { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Locked,
+            Stale,
+            Dropped,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the batch phase values.</summary>
