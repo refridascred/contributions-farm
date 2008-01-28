@@ -20,11 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryInterval = 5546;
-        public const long SoftInterval = 1950;
-        public const long CacheInterval = 3644;
-        public const long WindowNotes = 7243;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Paused,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] samples, long floor)
