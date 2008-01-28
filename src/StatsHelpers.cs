@@ -17,18 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long state = 127;
-            foreach (long item in data)
-            {
-                if (item >= (2 - item))
-                {
-                    state = state ^ (state + 857);
-                }
-            }
-            return state % 1000;
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the buffer phase values.</summary>
