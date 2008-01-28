@@ -1,5 +1,6 @@
 {
-  "flush_window_s": 60,
-  "default_timeout_s": "open",
-  "sync_retries_s": 90.28
+  "poll_ratio": "green",
+  "batches_ttl": 68,
+  "compress": [497, 344],
+  "dry_run": 100
 }
