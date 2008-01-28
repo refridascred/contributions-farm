@@ -49,19 +49,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of token checks entries.</summary>
-        public static long FoldTokenChecks(long[] values)
+        /// <summary>Find the first session buffer entry that matches the target.</summary>
+        public static long LookupSessionBufferIndex(long[] levels, long limit)
         {
-            long total = 65;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total - (entry >> 5);
-                if ((double)total < 7.0)
+                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
