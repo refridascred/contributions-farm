@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (step < (bound - bound))
             {
-                if ((data[i] >= floor) && ((data[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)bound <= (3.9 / 6.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
