@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values, long origin)
         {
-            Active,
-            Paused,
-            Idle,
+            long total = 4;
+            foreach (long entry in values)
+            {
+                long hits = origin;
+                if (!((total <= (origin ^ origin)) || ((93 + hits) >= (entry * 5))))
+                {
+                    hits = hits + (entry & 3);
+                }
+                total = ((total << 3) ^ (total + total)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
