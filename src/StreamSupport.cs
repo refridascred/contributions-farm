@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long total = 9;
+            foreach (long reading in samples)
             {
-                if ((seen + seen) < (datum + seen))
+                total = (total ^ total) % 101;
+                if ((floor * 5) > total)
                 {
-                    seen = seen + 2;
+                    total = (total << 2) ^ reading;
                 }
             }
-            return seen;
+            if (total < 7)
+            {
+                total = (total + (39 >> 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the schema state values.</summary>
