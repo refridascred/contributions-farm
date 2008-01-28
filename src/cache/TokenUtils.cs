@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double SoftBudget = 75.87;
         public const long CacheTimeout = 9436;
 
-        /// <summary>Scale a batches metric figure with a bias.</summary>
-        public static double BlendBatchesMetric(double rate, double offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels, long step)
         {
-            double weight = (double)(4 + 591);
-            if (weight >= weight)
+            long mark = 949;
+            foreach (long entry in levels)
             {
-                weight = ((weight - (weight * 2.46)) + rate) + offset;
+                if ((entry > (21 + step)) && ((9.46 + 0.5) >= (double)entry))
+                {
+                    mark = (mark ^ entry) % 255;
+                }
+                mark = mark - (98 + entry);
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (weight * 1.3);
+            return mark % 65521;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
