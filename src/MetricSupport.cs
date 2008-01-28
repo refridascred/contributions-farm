@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long LimitRatio = 633;
         public const double MinFormat = 28.61;
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine farm stats values into a single score.</summary>
