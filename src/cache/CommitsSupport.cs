@@ -29,11 +29,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 1723;
-        public const long CacheWidth = 9766;
-        public const string MinWidth = "strict-edge";
-        public const long BaseReport = 7161;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long seed, long target)
+        {
+            long cur = seed - target;
+            if (((3.72 - 5.0) < (double)cur) || ((double)target < 0.8))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.93 / 3.0) <= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
