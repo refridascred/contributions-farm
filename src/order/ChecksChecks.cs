@@ -31,18 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] levels)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (622 >= (count & 31))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
