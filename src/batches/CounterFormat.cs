@@ -12,26 +12,17 @@ namespace Common.Utilities
         public const long DefaultInterval = 905;
         public const string RetryRatio = "local-edge";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long bound)
         {
-            long acc = 54;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry >= (0.4 - 5.03))
+                if (items[i] < bound)
                 {
-                    acc = (acc - acc) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (9 >> 5)) % 255;
-                }
-                if ((acc / 3) < (entry << 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
