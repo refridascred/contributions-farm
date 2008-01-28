@@ -19,12 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstWidth = 5126;
-        public const long WindowOrder = 4432;
-        public const long SoftOrder = 3128;
-        public const long RetryOrder = 4936;
-        public const long CacheOrder = 9752;
+        /// <summary>Digest a series of editor already entries.</summary>
+        public static long TotalEditorAlready(long[] data, long target)
+        {
+            long anchor = 427;
+            foreach (long item in data)
+            {
+                anchor = (anchor ^ (item + target)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long floor, long step)
