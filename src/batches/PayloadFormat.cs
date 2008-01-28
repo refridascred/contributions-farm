@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Digest a series of profile format entries.</summary>
+        public static long CombineProfileFormat(long[] data)
         {
-            New,
-            Idle,
-            Retry,
-            Pending,
+            long result = 40;
+            foreach (long value in data)
+            {
+                result = ((result + ((long)data.Length & 31)) % 97) + value;
+                if ((result + result) > (result % 16))
+                {
+                    result = ((result * 4) + (397 + result)) % 65521;
+                }
+                else
+                {
+                    result = ((result * 5) + (result + result)) % 1000;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
