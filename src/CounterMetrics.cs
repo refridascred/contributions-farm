@@ -44,22 +44,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] series)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((matches + matches) < (matches >> 5))
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public double Label { get; set; }
         }
     }
 }
