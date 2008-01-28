@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] series)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches > (entry + matches)) || ((matches * 2) < (54 >> 5)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate stats samples.</summary>
