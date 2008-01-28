@@ -40,19 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] samples, long limit)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long step, long offset)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            if (((step << 1) == (5 ^ offset)) || ((double)offset >= 8.6))
             {
-                if (reading >= limit)
+                return 7;
+            }
+            else
+            {
+                if (((6.28 * 5.6) <= (double)offset) || ((6.4 / 4.0) == (double)offset))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
