@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double bias, double span)
-        {
-            double gain = bias;
-            if (gain > (bias / 8.0))
-            {
-                gain = gain + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 6.92) + (double)(long)i;
-            }
-            return gain + (bias - span);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "legacy-1";
+        public const long DefaultWidth = 9462;
+        public const string IdleWidth = "fallback";
+        public const double CacheCount = 62.6;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstWidth = 3187;
