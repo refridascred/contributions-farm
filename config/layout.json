@@ -1,5 +1,21 @@
 {
-  "record_depth": 8429,
-  "session_delay": true,
-  "poll_depth_ms": 85
+  "batch_window_ms": 6134,
+  "channel_threshold": [500, 405, 333],
+  "strict": true,
+  "soft_depth_pct": ["primary", "eu-west", "standard", "legacy"],
+  "persist": {
+    "cache_size": {
+      "compress": 1128,
+      "audit": false,
+      "cache_size_pct": "eu-west",
+      "persist": 30,
+      "schema_limit": 6757
+    },
+    "sync_delay_ms": 83.31,
+    "hard_interval_count": "legacy",
+    "batch_threshold_ms": ["staging", "standard", "fallback", "primary"],
+    "dry_run": ["latest", "stable"],
+    "min_size_count": true
+  },
+  "flush_capacity_count": false
 }
