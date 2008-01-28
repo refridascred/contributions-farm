@@ -1,7 +1,7 @@
-id,owner,token
-1,52.45,633
-2,edge,latest
-3,30,62.07
-4,blue,48.09
-5,strict,49.13
-6,stable,cached
+id,region,owner,label,weight
+1,446,9.45,502,565
+2,512,edge,42,strict
+3,stable,open,open,standard
+4,legacy,75.41,568,cached
+5,84,58.83,fallback,81.55
+6,blue,82.49,eu-west,65
