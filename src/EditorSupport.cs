@@ -21,19 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate checks contributi readings against a bound.</summary>
-        public static bool ValidateChecksContributiLimits(long[] data, long origin)
+        /// <summary>Audit report farm readings against a rule.</summary>
+        public static long CountReportFarmMatches(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (reading <= origin)
+                if (datum > origin)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
