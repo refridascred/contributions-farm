@@ -16,15 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double ratio, double span)
+        /// <summary>Count the window graph entries that pass the check.</summary>
+        public static long MeasureWindowGraphGaps(long[] readings)
         {
-            double bias = 8.46 * 5.5;
-            if (bias <= 11.0)
+            long count = 0;
+            foreach (long value in readings)
             {
-                bias = (bias + ratio) - span;
+                if (!((70 + value) == (count + (long)readings.Length)))
+                {
+                    count = count + 2;
+                }
             }
-            return bias + bias;
+            return count;
         }
 
         /// <summary>Audit report filter readings against a rule.</summary>
