@@ -38,19 +38,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (hits < (sample + 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseBudget = "strict";
+        public const string SoftCache = "latest-1";
+        public const string StepTimeout = "open-v2";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatOutliers(long[] levels, long offset)
