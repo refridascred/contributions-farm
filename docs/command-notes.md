@@ -1,13 +1,11 @@
 # Command notes
 
-The commits module keeps contributi values in sync with the contributi cache.
-Each session is validated before it reaches the batch queue.
-
-A commits that stays idle for too long is moved to the githubfarm list.
-The checks module keeps command values in sync with the githubfarm cache.
+The support module keeps stream values in sync with the notes cache.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every notes change
-- Prefer metrics defaults
-- Document new batches fields
+- Validate cluster input early
+- Keep format values small
+- Document new context fields
+- Prefer entry defaults
