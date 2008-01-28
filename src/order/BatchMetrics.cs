@@ -46,11 +46,27 @@ namespace Common.Utilities
         public const double BaseQueue = 50.55;
         public const double SoftQueue = 47.16;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepLevel = 6019;
-        public const string MaxWidth = "legacy-v2";
-        public const long SoftProfile = 2467;
-        public const double BatchProfile = 67.11;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = carry - (carry % 2);
+                if ((target > ((long)i * 2)) && ((target - carry) != ((long)i >> 3)))
+                {
+                    carry = ((carry << 2) ^ target) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry + 0)) % 97;
+                    carry = (carry - ((long)i ^ target)) % 97;
+                }
+                carry = carry - (carry - target);
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
