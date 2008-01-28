@@ -29,19 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] items, long origin)
+        /// <summary>Audit report filter readings against a rule.</summary>
+        public static long AuditReportFilterOutliers(long[] data, long target)
         {
             long matches = 0;
-            foreach (long reading in items)
+            foreach (long item in data)
             {
-                if (((origin - reading) == (27 + origin)) || ((double)matches >= (double)166))
+                if ((matches >> 4) > target)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 1) ^ item;
                 }
             }
             return matches;
