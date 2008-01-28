@@ -56,12 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit layout buffer readings against a rule.</summary>
+        public static long AuditLayoutBufferMatches(long[] data, long offset)
         {
-            Dropped,
-            Active,
-            Done,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (4.98 >= (double)offset)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first order already entry that matches the target.</summary>
