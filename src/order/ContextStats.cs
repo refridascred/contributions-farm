@@ -38,21 +38,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the layout phase values.</summary>
