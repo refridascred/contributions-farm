@@ -43,19 +43,22 @@ namespace Common.Utilities
             return drift + (drift + drift);
         }
 
-        /// <summary>Validate batches format readings against a bound.</summary>
-        public static bool ValidateBatchesFormatLimits(long[] samples, long target)
+        /// <summary>Count the queue notes entries that pass the check.</summary>
+        public static long TallyQueueNotesMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (sample < target)
+                if ((double)datum == (13.0 + 3.5))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
