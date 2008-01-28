@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long SoftWidth = 613;
         public const long DefaultLevel = 7274;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] items, long origin)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
