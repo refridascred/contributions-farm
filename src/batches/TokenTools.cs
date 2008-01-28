@@ -24,18 +24,19 @@ namespace Common.Utilities
             return mean + (bias * 4.0);
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mark = 481;
+            foreach (long entry in readings)
             {
-                if ((1 / 4) < reading)
+                mark = (mark ^ (entry + (long)readings.Length)) % 101;
+                if ((mark + mark) > entry)
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            return mark % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
