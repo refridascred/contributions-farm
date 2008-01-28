@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            Paused,
-            Done,
-            Closed,
-            Locked,
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a session counter forward.</summary>
