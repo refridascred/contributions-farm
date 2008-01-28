@@ -16,39 +16,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long bound, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] data, long floor)
         {
-            long next = bound + seed;
-            if ((823 > (next >> 3)) || ((101 << 2) < (next + next)))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((2 / 8) >= (bound >> 1)))
+                if ((double)floor != (6.6 * 19.0))
                 {
-                    return 2;
+                    hits = (hits + 1) + value;
                 }
                 else
                 {
-                    if (((8 >> 3) > (seed - 619)) || ((next << 3) < 24))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((20.0 - 0.2) > (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a notes entry.</summary>
