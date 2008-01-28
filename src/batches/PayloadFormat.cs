@@ -23,17 +23,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a command editor sample.</summary>
-        public static long LocateCommandEditorIndex(long[] readings, long limit)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Grade a stream batch value against two limits.</summary>
