@@ -1,6 +1,5 @@
 {
-  "verbose": 93.27,
-  "audit": 42.34,
-  "sync_limit": 2144,
-  "notes_depth": 64.38
+  "default_timeout_count": ["fallback", "latest"],
+  "dry_run": "standard",
+  "record_limit": 8145
 }
