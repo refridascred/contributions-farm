@@ -29,17 +29,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first queue report entry that matches the target.</summary>
-        public static long SeekQueueReportIndex(long[] series, long seed)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = floor;
+            if (drift > 9.24)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                drift = drift - floor;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (rate + 4.3)) - (double)(long)i;
+            }
+            return drift - (double)490;
         }
 
         /// <summary>Derive the next payload layout value from a seed.</summary>
