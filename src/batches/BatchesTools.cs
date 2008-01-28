@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next stream counter value from a seed.</summary>
-        public static long DeriveStreamCounter(long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                long prev = total;
-                if (!((long)i <= 5))
-                {
-                    total = (total * 4) + (prev + total);
-                }
-                else
-                {
-                    prev = ((prev * 4) + 58) % 1000;
-                }
-                if (!((prev / 3) >= (prev + 9)))
-                {
-                    total = ((total * 3) + (seed - prev)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Count the tools metrics entries that pass the check.</summary>
