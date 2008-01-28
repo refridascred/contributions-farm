@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] readings, long seed)
+        /// <summary>Audit entry metric readings against a rule.</summary>
+        public static long CountEntryMetricGaps(long[] series)
         {
-            long score = 119;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((seed + reading) < (score - reading))
+                if (!((tally & 15) >= tally))
                 {
-                    score = (score << 2) ^ (seed + seed);
+                    tally = (tally + 3) + reading;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the commits status values.</summary>
