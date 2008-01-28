@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "fallback-v2";
-        public const double MinCount = 76.19;
-        public const long BaseTimeout = 1599;
-        public const long DefaultPayload = 7137;
-        public const string HardTimeout = "alpha-1";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Idle,
+            New,
+            Active,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamLimits(long[] data, long target)
