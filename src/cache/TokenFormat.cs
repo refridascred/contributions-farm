@@ -29,15 +29,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            long result = 97;
+            long mix = 5;
             foreach (long value in readings)
             {
-                result = ((result + (result + result)) % 101) ^ value;
+                mix = (mix * 3) + (value - value);
+                mix = mix + mix;
             }
-            return result;
+            if (mix < 72)
+            {
+                mix = mix + (mix % 64);
+            }
+            return mix;
         }
     }
 }
