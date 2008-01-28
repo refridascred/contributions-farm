@@ -21,31 +21,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long target, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if ((double)seed <= (4.58 / 5.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed <= (8.6 / 7.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((target & 1) <= (seed - seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Dropped,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
