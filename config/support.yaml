@@ -1,20 +1,7 @@
 # support settings
-session_delay:
-  - 474
-  - 266
-cluster_timeout: 28.23
-soft_capacity_s:
-  warm_capacity_s: false
-  dry_run: false
-  soft_interval:
-    - 232
-    - 331
-    - 85
-  warm_ttl: green
-  sync_limit:
-    strict: 23.88
-    cache_interval_ms: blue
-    retry_interval: standard
-  default_window_ms:
-    - staging
-    - local
+cache_interval_count: 250
+filter_retries: 35.09
+dry_run: 76.85
+verbose: 45.83
+default_threshold_ms: edge
+sync_size_ms: fallback
