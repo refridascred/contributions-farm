@@ -40,13 +40,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] values, long origin)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((count - entry) == (origin & 127)) || ((489 + 55) > origin))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a notes window reading.</summary>
