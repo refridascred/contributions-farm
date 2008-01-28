@@ -19,12 +19,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 6269;
-        public const long DefaultLevel = 306;
-        public const string LimitInterval = "local-1";
-        public const double LimitContext = 38.69;
-        public const long HardContext = 3093;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 2348;
+        public const long BatchFactor = 9313;
+        public const long MaxScore = 7408;
 
         /// <summary>Digest a series of notes queue entries.</summary>
         public static long WeighNotesQueue(long[] levels, long floor)
