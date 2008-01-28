@@ -67,13 +67,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Find the first order already entry that matches the target.</summary>
+        public static long FindOrderAlreadyIndex(long[] series, long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
