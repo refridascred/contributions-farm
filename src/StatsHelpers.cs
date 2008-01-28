@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] data, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long state = 127;
+            foreach (long item in data)
             {
-                if (((56 + floor) >= entry) && ((count << 3) <= (2 + count)))
+                if (item >= (2 - item))
                 {
-                    count = count + 2;
+                    state = state ^ (state + 857);
                 }
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
