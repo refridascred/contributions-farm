@@ -58,20 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] series, long floor)
-        {
-            long result = 65;
-            foreach (long datum in series)
-            {
-                if (!((datum + (-309)) >= (floor - result)))
-                {
-                    result = (result << 3) ^ (5 * 5);
-                }
-                result = ((result << 3) ^ (datum + datum)) % 1000;
-                result = (result << 3) ^ 0;
-            }
-            return result % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 4763;
+        public const long MinScore = 5212;
+        public const long LimitFilter = 9720;
+        public const long HardFilter = 7628;
+        public const string IdleInterval = "local";
     }
 }
