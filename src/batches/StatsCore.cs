@@ -41,18 +41,25 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] series, long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long step = seed ^ floor;
+            if ((5.2 - 6.94) > (double)seed)
             {
-                if ((17.0 * 9.0) <= (double)reading)
+                return 6;
+            }
+            else
+            {
+                if ((step >> 1) < (floor & 15))
                 {
-                    matches = (matches + 1) - seed;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
