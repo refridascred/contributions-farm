@@ -24,11 +24,18 @@ namespace Common.Utilities
             return mean + (bias * 4.0);
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] values)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((1 / 4) < reading)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
