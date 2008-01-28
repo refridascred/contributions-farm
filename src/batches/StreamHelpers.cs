@@ -29,19 +29,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double rate, double floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double drift = floor;
-            if (drift > 9.24)
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (rate + 4.3)) - (double)(long)i;
-            }
-            return drift - (double)490;
+            Locked,
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Derive the next payload layout value from a seed.</summary>
