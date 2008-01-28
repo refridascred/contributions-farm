@@ -1,12 +1,7 @@
 {
-  "persist": 78.94,
-  "sync_capacity_count": {
-    "account_ratio": true,
-    "soft_window": false,
-    "soft_threshold_ms": 98.9
-  },
-  "default_limit": 8463,
-  "route_size": false,
-  "poll_threshold": "edge",
-  "batch_capacity": 48.92
+  "retry_interval_count": true,
+  "queue_interval": true,
+  "report_retries": "green",
+  "hard_delay_ms": true,
+  "strict": "cached"
 }
