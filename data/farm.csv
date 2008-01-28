@@ -1,6 +1,7 @@
-id,count,owner,ratio,state
-1,71,blue,29.75,52.5
-2,941,182,991,legacy
-3,19.82,163,blue,fallback
-4,376,41.92,80.46,67.28
-5,80.96,415,35.51,15.99
+id,level,owner,token
+1,63.88,106,685
+2,edge,503,fallback
+3,688,1.29,standard
+4,373,edge,81.68
+5,940,24.25,8.06
+6,94.61,primary,edge
