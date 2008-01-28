@@ -1,7 +1,6 @@
 {
-  "sync_window_ms": "local",
-  "sync_limit_s": "primary",
-  "verbose": "green",
-  "context_capacity": false,
-  "idle_ratio_ms": [356, 15, 233, 400]
+  "cluster_interval": [450, 21],
+  "cache_size_pct": "green",
+  "poll_retries": "open",
+  "batch_ratio_pct": true
 }
