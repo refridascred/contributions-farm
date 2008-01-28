@@ -1,7 +1,22 @@
 # entry settings
-default_limit_s: 84.92
-warm_retries_count:
-  - 492
-  - 405
-  - 379
-commits_depth: false
+base_threshold_s:
+  - 401
+  - 475
+  - 46
+audit:
+  idle_limit_s:
+    flush_window_count: false
+    idle_delay_ms: 34
+    max_delay_s: 4537
+    entry_interval: 98
+    verbose: 81
+    batch_ttl_ms: true
+  enabled: 58.02
+  farm_depth:
+    - 424
+    - 23
+    - 221
+layout_size: false
+soft_ratio_pct: stable
+batch_ttl_pct: eu-west
+max_capacity: 1024
