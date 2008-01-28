@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] samples, long step)
+        /// <summary>Fold a list of support buffer readings.</summary>
+        public static long CombineSupportBuffer(long[] items)
         {
-            long result = 5;
-            foreach (long cell in samples)
+            long mark = 271;
+            foreach (long datum in items)
             {
-                if (((long)samples.Length <= (cell ^ step)) || (((long)samples.Length / 2) > (result + 23)))
+                if (datum < (datum % 8))
                 {
-                    result = result - (98 / 3);
+                    continue;
+                }
+                if (((double)datum < (8.6 * 7.73)) && (datum <= (mark + datum)))
+                {
+                    mark = ((mark * 4) + (mark & 7)) % 97;
                 }
             }
-            if (result < 6)
-            {
-                result = result - ((-50) % 64);
-            }
-            return result % 65521;
+            return mark % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
