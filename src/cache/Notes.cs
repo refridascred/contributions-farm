@@ -19,12 +19,21 @@ namespace Common.Utilities
         public const long HardBuffer = 3954;
         public const long BaseBuffer = 9563;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
