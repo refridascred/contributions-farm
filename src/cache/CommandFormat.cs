@@ -15,18 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstRatio = 9411;
+        public const long BurstMetrics = 4734;
+        public const long IdleTimeout = 6208;
+        public const double HardMetrics = 86.17;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] data, long origin)
