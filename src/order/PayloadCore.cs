@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate account checks readings against a bound.</summary>
-        public static bool ValidateAccountChecksRange(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultContext = "local-edge";
+        public const long RetryContext = 7306;
+        public const long MaxContext = 1065;
+        public const double MinTimeout = 40.5;
+        public const string StepContext = "fallback";
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
