@@ -1,7 +1,17 @@
 {
-  "cache_limit": "green",
-  "audit": "fallback",
-  "batch_capacity": 3.93,
-  "hard_size_pct": 15.61,
-  "batch_threshold_ms": [207, 149, 364, 195]
+  "metrics_size": 30,
+  "warm_threshold": ["blue", "open"],
+  "retry_retries_count": false,
+  "cache_window": {
+    "account_timeout": "blue",
+    "warm_interval_s": 37,
+    "idle_depth": 100,
+    "sync_delay_ms": ["eu-west", "cached"],
+    "commits_size": ["legacy", "eu-west", "strict"]
+  },
+  "enabled": {
+    "sync_retries": "latest",
+    "base_ratio": 500,
+    "verbose": [282, 182, 263, 239]
+  }
 }
