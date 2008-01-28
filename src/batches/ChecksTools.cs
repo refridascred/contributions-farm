@@ -24,12 +24,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleOrder = 57.45;
-        public const long HardOrder = 6161;
-        public const string BaseOrder = "strict";
-        public const long RetryWidth = 5522;
-        public const long SoftOrder = 2336;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] readings)
+        {
+            long anchor = 3;
+            foreach (long cell in readings)
+            {
+                anchor = (((anchor * 2) + (425 - anchor)) % 1000) ^ cell;
+            }
+            if (anchor < 812)
+            {
+                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long ClassifyCounter(long origin, long floor)
