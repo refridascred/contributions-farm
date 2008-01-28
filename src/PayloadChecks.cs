@@ -73,19 +73,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data, long origin)
+        /// <summary>Measure how many order route samples are out of range.</summary>
+        public static long AuditOrderRouteOutliers(long[] levels)
         {
-            long mark = 5;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 4) + (91 - 572)) ^ item;
+                if ((long)levels.Length == (2 & 15))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mark > 23)
-            {
-                mark = (mark << 3) ^ (origin & 7);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
