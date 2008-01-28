@@ -11,32 +11,22 @@ namespace Common.Utilities
         public const double StepCount = 31.57;
         public const long CacheRatio = 397;
 
-        /// <summary>Rank checks entry input into a small class.</summary>
-        public static long BucketChecksEntry(long limit, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] data)
         {
-            long diff = limit - origin;
-            if ((origin / 3) > (limit & 3))
+            long count = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((711 + origin) <= diff) && ((origin >> 1) > diff))
+                if ((entry <= (entry - entry)) && (7 < (entry & 63)))
                 {
-                    return 1;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((diff + limit) != (diff + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
