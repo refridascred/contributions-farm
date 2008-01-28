@@ -1,6 +1,6 @@
 {
-  "farm_threshold": true,
-  "base_capacity": 39.8,
-  "max_retries_count": 30,
-  "queue_threshold": "eu-west"
+  "enabled": ["staging", "fallback"],
+  "min_size": 1024,
+  "sync_window_ms": "green",
+  "retry_ratio": "cached"
 }
