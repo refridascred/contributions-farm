@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Derive the next metric session value from a seed.</summary>
+        public static long SeriesMetricSession(long origin)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
