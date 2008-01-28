@@ -38,24 +38,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long step, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] samples)
         {
-            if ((((-24) * 5) != (84 + step)) || (step < (origin - step)))
+            long sum = 6;
+            foreach (long item in samples)
             {
-                return 6;
+                sum = (sum + (item % 8)) % 65521;
             }
-            else
-            {
-                if (origin < (origin & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return sum % 65521;
         }
 
         /// <summary>Derive the next cluster context value from a seed.</summary>
