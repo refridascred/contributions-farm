@@ -28,26 +28,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] series, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] samples, long floor)
         {
-            long result = 700;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if ((target + sample) <= result)
+                if (value >= floor)
                 {
-                    result = (result << 2) ^ (result + result);
-                }
-                if ((sample + result) <= (result & 7))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (result > 169)
-            {
-                result = (result * 5) + (-521);
-            }
-            return result % 97;
+            return valid;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
