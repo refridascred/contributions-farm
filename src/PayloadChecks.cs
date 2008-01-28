@@ -61,38 +61,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            if ((double)seed > (1.61 - 0.7))
+            long carry = 8;
+            foreach (long sample in samples)
             {
-                return 7;
+                carry = carry - (32 - sample);
+                carry = (carry + (sample + sample)) % 4096;
             }
-            else
+            if (carry < 64)
             {
-                if (!((limit * 2) <= (seed * 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit << 3) <= (seed ^ limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((-832) <= (seed - limit)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                carry = carry - (carry & 7);
             }
+            return carry;
         }
     }
 }
