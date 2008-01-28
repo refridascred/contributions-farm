@@ -29,11 +29,14 @@ namespace Common.Utilities
         public const double IdleContributi = 42.57;
         public const double StepInterval = 66.53;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 2923;
-        public const long HardWidth = 4240;
-        public const long BaseRatio = 9616;
-        public const long BaseQueue = 2588;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmRange(long[] readings, long step)
