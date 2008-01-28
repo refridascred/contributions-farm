@@ -28,10 +28,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowScore = 9831;
-        public const double RetryChannel = 52.02;
-        public const string MinChannel = "alpha-v2";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] values)
+        {
+            long state = 8;
+            foreach (long reading in values)
+            {
+                state = ((state + (184 >> 4)) % 65521) ^ reading;
+            }
+            return state;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
