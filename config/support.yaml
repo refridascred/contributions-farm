@@ -1,15 +1,27 @@
 # support settings
-readonly:
-  - 262
-  - 282
-already_capacity:
-  compress: 95.97
-  base_delay:
-    githubfarm_timeout: 60
-    base_threshold_s: staging
-    queue_delay: 30
-    persist: 93.82
-    report_depth: 1024
-  max_threshold: 0.33
-  command_limit: 3647
-persist: 25.18
+base_timeout:
+  - fallback
+  - stable
+dry_run:
+  hard_size_pct:
+    - latest
+    - latest
+    - green
+  commits_capacity: 36
+  batch_limit: edge
+  report_limit:
+    - edge
+    - open
+    - blue
+    - eu-west
+  default_window_pct: true
+warm_depth: open
+layout_interval:
+  counter_capacity: 27
+  compress: 1024
+  sync_ttl:
+    - 287
+    - 426
+    - 260
+  queue_limit: edge
+  verbose: 60
