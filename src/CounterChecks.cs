@@ -72,22 +72,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine cache editor values into a single score.</summary>
-        public static long CombineCacheEditor(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] levels, long bound)
         {
-            long anchor = 61;
-            foreach (long reading in readings)
+            long result = 20;
+            foreach (long datum in levels)
             {
-                if ((reading * 4) == (anchor + reading))
-                {
-                    anchor = ((anchor * 5) + (9 * 5)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
+                result = ((result ^ (result % 60)) % 255) - bound;
+                result = (result - (67 << 3)) % 97;
+                result = (result + datum) % 1000;
             }
-            return anchor;
+            return result;
         }
     }
 }
