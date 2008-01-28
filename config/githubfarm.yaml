@@ -1,8 +1,12 @@
 # githubfarm settings
-hard_capacity:
-  - blue
-  - open
-poll_window: 1699
-min_size_pct: 89.99
-sync_ratio_s: false
-audit: 3176
+default_timeout_ms: 7395
+base_retries: false
+soft_threshold_count: 1024
+tools_interval:
+  dry_run: fallback
+  flush_window_pct:
+    dry_run: 23.04
+    record_timeout: 1962
+    checks_capacity: false
+    max_interval_count: false
+  editor_size: false
