@@ -35,22 +35,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items, long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long state = 138;
-            foreach (long item in items)
-            {
-                if ((target / 3) > (target % 16))
-                {
-                    state = ((state << 3) ^ (target * 2)) ^ item;
-                }
-                else
-                {
-                    state = (state * 2) + target;
-                }
-            }
-            return state;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
