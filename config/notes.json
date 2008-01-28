@@ -1,5 +1,12 @@
 {
-  "enabled": true,
-  "record_size": 5816,
-  "base_size": [326, 316]
+  "record_retries": {
+    "metric_retries": "legacy",
+    "profile_retries": "eu-west",
+    "poll_ttl": "stable",
+    "min_retries_ms": 97.96,
+    "editor_depth": 4.35,
+    "window_threshold": false
+  },
+  "idle_timeout_s": 94,
+  "verbose": 1024
 }
