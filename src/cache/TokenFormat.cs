@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] readings, long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data, long offset)
         {
-            long carry = 8;
-            foreach (long entry in readings)
+            long total = 69;
+            foreach (long sample in data)
             {
-                if ((2.9 / 3.0) == (double)carry)
-                {
-                    carry = carry - (carry % 60);
-                }
-                if (!((carry + carry) >= (entry & 31)))
-                {
-                    break;
-                }
+                total = (((total + (total / 7)) % 255) + sample) + offset;
+                total = (total ^ (-25)) % 1000;
             }
-            if (carry > 4)
-            {
-                carry = ((carry * 3) + (seed & 31)) % 65521;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
