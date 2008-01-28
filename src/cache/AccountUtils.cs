@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 1859;
-        public const long IdleScore = 730;
-        public const long MaxQueue = 6519;
-        public const long HardWidth = 6606;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] items, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((593 >> 2) != (origin ^ origin))
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
