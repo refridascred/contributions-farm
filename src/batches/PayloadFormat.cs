@@ -36,21 +36,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Look up the position of a command editor sample.</summary>
+        public static long LocateCommandEditorIndex(long[] readings, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (688 - floor)) % 97;
-                if ((floor & 63) <= floor)
+                if (readings[i] >= limit)
                 {
-                    anchor = ((anchor << 2) ^ ((long)i / 5)) % 255;
-                    continue;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
