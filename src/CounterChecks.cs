@@ -66,10 +66,9 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 5125;
-        public const long CacheTimeout = 9139;
-        public const double CacheReport = 13.09;
-        public const double MaxBudget = 95.22;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 4183;
+        public const long BaseAccount = 3413;
+        public const long CacheDepth = 8008;
     }
 }
