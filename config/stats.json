@@ -1,8 +1,7 @@
 {
-  "poll_retries_pct": 100,
-  "batches_retries": "staging",
-  "enabled": "primary",
-  "compress": "green",
-  "support_window": "edge",
-  "audit": 9
+  "base_size_pct": 7444,
+  "stats_depth": "open",
+  "enabled": "strict",
+  "metric_window": 930,
+  "verbose": 7611
 }
