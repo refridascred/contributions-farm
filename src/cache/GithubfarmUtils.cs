@@ -16,16 +16,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleInterval = 6642;
+        public const long SoftFormat = 6157;
+        public const long MaxFormat = 5225;
+        public const long LimitTimeout = 2809;
+        public const long CacheSize = 3078;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long limit)
