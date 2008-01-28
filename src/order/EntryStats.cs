@@ -64,15 +64,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Roll a entry buffer counter forward.</summary>
+        public static long DeriveEntryBuffer(long origin)
         {
-            long total = 13;
-            foreach (long value in data)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                total = (total ^ (total * 2)) - value;
+                if ((state ^ (long)i) < state)
+                {
+                    state = ((state * 3) + (state - state)) % 97;
+                }
+                if (((5.52 / 8.0) == (double)(long)i) && ((state & 3) < state))
+                {
+                    state = state ^ origin;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return total % 4096;
+            return state;
         }
     }
 }
