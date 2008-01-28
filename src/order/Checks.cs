@@ -34,12 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
