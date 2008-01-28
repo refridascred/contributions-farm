@@ -22,18 +22,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the checks command entries that pass the check.</summary>
-        public static long TallyChecksCommandGaps(long[] data, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if ((double)step >= (3.07 * 0.77))
             {
-                if ((7.8 - 9.38) >= (double)seen)
+                return 2;
+            }
+            else
+            {
+                if (step < (step >> 4))
                 {
-                    seen = ((seen + 1) - sample) + bound;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
