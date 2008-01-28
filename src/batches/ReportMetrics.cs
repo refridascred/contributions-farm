@@ -23,21 +23,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Classify a command batches pair into a bucket.</summary>
+        public static long GradeCommandBatches(long step, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = step ^ seed;
+            if (((slot + seed) <= seed) || ((8.0 + 1.2) != (double)seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (seed >= (seed & 15))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed < 20.0) || ((seed - slot) < (seed << 2)))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((slot / 3) >= (seed - seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
