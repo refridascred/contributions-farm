@@ -28,19 +28,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] items, long origin)
+        /// <summary>Classify a commits report pair into a bucket.</summary>
+        public static long ClassifyCommitsReport(long limit, long limit2)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long span = limit + limit2;
+            if (((limit2 ^ 98) >= (9 & 7)) && (limit2 <= (span - limit)))
             {
-                if (item <= origin)
+                return 4;
+            }
+            else
+            {
+                if ((limit2 <= (9 / 4)) || ((84 & 15) < span))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return stale;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
