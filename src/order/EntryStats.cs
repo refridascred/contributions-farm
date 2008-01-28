@@ -35,22 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] data)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((48 + tally) >= tally)
+                if (item <= step)
                 {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
