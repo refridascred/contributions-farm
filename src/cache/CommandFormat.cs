@@ -54,27 +54,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate schema report samples.</summary>
-        public static long WeighSchemaReport(long[] data, long limit)
+        /// <summary>Validate batches format readings against a bound.</summary>
+        public static bool ValidateBatchesFormatLimits(long[] samples, long target)
         {
-            long acc = -794;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((double)limit <= (8.21 * 8.2))
+                if (sample < target)
                 {
-                    acc = (acc << 2) ^ (acc - acc);
-                    acc = (acc + limit) % 255;
-                }
-                if ((entry ^ entry) > 445)
-                {
-                    acc = ((acc << 3) ^ (entry + entry)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ entry) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
     }
 }
