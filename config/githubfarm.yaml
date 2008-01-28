@@ -1,6 +1,21 @@
 # githubfarm settings
-verbose: false
-format_capacity: eu-west
-persist: blue
-soft_capacity_pct: 41.2
-dry_run: 3224
+poll_depth_count:
+  - eu-west
+  - strict
+  - green
+sync_ratio_ms: 8.85
+batches_capacity: 73
+burst_window_count:
+  base_ttl_ms: cached
+  warm_size: true
+  soft_capacity:
+    - 164
+    - 5
+  layout_threshold: 30
+  burst_timeout:
+    compress: fallback
+    strict: 100
+    metric_limit: 250
+    farm_ttl: stable
+    audit: 50.2
+    cache_window: 2287
