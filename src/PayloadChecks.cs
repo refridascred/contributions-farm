@@ -12,13 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits - reading) > reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
