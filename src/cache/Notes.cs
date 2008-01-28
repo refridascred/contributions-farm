@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] values)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (((sample - tally) == (sample >> 2)) || ((sample + tally) <= (sample * 5)))
+                if (datum >= limit)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
