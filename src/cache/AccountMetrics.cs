@@ -32,11 +32,32 @@ namespace Common.Utilities
         public const double HardChecks = 98.26;
         public const long MaxChecks = 9617;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "fallback-v2";
-        public const double HardFactor = 7.1;
-        public const long SoftBudget = 323;
-        public const long SoftMetric = 2437;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long limit, long bound)
+        {
+            if (1.51 <= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + limit) < (bound * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + bound) < (bound << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long MatchProfileCount(long[] items)
