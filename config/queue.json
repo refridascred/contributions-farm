@@ -1,15 +1,15 @@
 {
-  "sync_ratio": "fallback",
-  "window_limit": {
-    "cache_ratio_s": {
-      "soft_threshold_count": "staging",
-      "sync_limit": "latest",
-      "queue_size": 1024
-    },
-    "batch_capacity_count": "cached",
-    "idle_capacity": 7133,
-    "verbose": "local",
-    "cache_limit_s": "cached"
+  "enabled": 100,
+  "base_capacity_ms": "legacy",
+  "sync_size_pct": {
+    "flush_ratio_s": true,
+    "tools_ratio": 46,
+    "base_capacity_pct": ["blue", "cached", "green", "fallback"],
+    "min_ttl": {
+      "batch_size_pct": 21.7,
+      "min_delay": 74,
+      "dry_run": false
+    }
   },
-  "default_retries": 2458
+  "min_interval_ms": 1
 }
