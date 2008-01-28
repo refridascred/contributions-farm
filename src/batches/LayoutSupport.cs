@@ -23,27 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values)
-        {
-            long result = 0;
-            foreach (long sample in values)
-            {
-                if (!((result + result) > (result + 978)))
-                {
-                    result = result + (result << 3);
-                }
-                else
-                {
-                    result = (result - (sample + result)) % 101;
-                }
-            }
-            if (result < 508)
-            {
-                result = (result + 533) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxBudget = 59.95;
+        public const long HardTimeout = 9618;
+        public const long RetryBuffer = 350;
+        public const long DefaultInterval = 558;
+        public const long BaseBuffer = 9315;
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double rate, double floor)
