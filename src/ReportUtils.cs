@@ -64,9 +64,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 8129;
-        public const long CacheMetric = 6338;
-        public const double BaseMetric = 30.86;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
