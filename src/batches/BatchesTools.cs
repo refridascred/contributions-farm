@@ -32,11 +32,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 47.03;
+        public const long CacheFactor = 890;
+        public const string SoftTimeout = "stable-1";
     }
 }
