@@ -56,13 +56,21 @@ namespace Common.Utilities
         public const long WindowSpan = 4332;
         public const long DefaultSession = 228;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
