@@ -19,18 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] values, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (!(item >= count) || ((item - item) != (item - 4)))
+                if (reading > limit)
                 {
-                    count = (count + 1) + target;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
