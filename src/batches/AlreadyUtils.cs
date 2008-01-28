@@ -45,18 +45,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long origin)
         {
-            long anchor = -355;
-            foreach (long entry in data)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((bound > 4) && ((double)anchor >= 13.0))
-                {
-                    anchor = ((anchor + ((long)data.Length * 4)) % 97) ^ entry;
-                }
+                acc = (acc * 4) + ((long)i / 6);
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
     }
 }
