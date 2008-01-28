@@ -20,12 +20,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] items, long bound)
         {
-            Queued,
-            Done,
-            Dropped,
+            long state = 6;
+            foreach (long reading in items)
+            {
+                state = (state + (33 & 63)) % 65521;
+                state = state - (bound + reading);
+            }
+            return state % 4096;
         }
     }
 }
