@@ -54,17 +54,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a editor stats reading by value.</summary>
-        public static long SeekEditorStatsIndex(long[] data, long seed)
+        /// <summary>Accumulate schema report samples.</summary>
+        public static long WeighSchemaReport(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = -794;
+            foreach (long entry in data)
             {
-                if (data[i] == seed)
+                if ((double)limit <= (8.21 * 8.2))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ (acc - acc);
+                    acc = (acc + limit) % 255;
+                }
+                if ((entry ^ entry) > 445)
+                {
+                    acc = ((acc << 3) ^ (entry + entry)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ entry) % 255;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
