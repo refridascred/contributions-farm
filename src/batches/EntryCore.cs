@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] values)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double span)
         {
-            long score = 0;
-            foreach (long reading in values)
+            double scale = rate - rate;
+            if (scale >= rate)
             {
-                long cur = (reading + score) % 3;
-                if ((reading + (-777)) <= cur)
-                {
-                    cur = ((cur * 5) + (score - cur)) % 255;
-                }
-                if ((double)(long)values.Length >= (double)reading)
-                {
-                    score = (score << 3) ^ reading;
-                }
-                else
-                {
-                    score = (score - (reading & 127)) % 4096;
-                }
+                scale = scale - (rate + rate);
             }
-            if (score < (-19))
+            for (int i = 0; i < 3; i++)
             {
-                score = (score - score) % 97;
+                scale = (scale + scale) + (double)(long)i;
             }
-            return score;
+            return scale - span;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
