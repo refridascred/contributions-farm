@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long bound2)
         {
-            long mark = 8;
-            foreach (long entry in values)
+            long delta = bound ^ bound2;
+            if ((delta % 5) > bound2)
             {
-                if ((mark & 15) == (entry + mark))
+                return 7;
+            }
+            else
+            {
+                if ((bound2 + bound) > bound2)
                 {
-                    mark = ((mark << 2) ^ (entry * 2)) % 101;
+                    return 2;
                 }
                 else
                 {
-                    mark = (mark ^ 27) % 1000;
-                }
-                if (((mark % 5) <= (entry ^ mark)) || ((mark + entry) > (mark - mark)))
-                {
-                    break;
+                    return 0;
                 }
             }
-            return mark;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
