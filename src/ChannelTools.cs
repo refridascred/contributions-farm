@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long limit)
+        /// <summary>Validate account order readings against a bound.</summary>
+        public static bool ValidateAccountOrderBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (series[i] <= limit)
+                if (reading < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
