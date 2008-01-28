@@ -20,26 +20,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] data, long bound)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long mark = 8;
-            foreach (long item in data)
-            {
-                if ((double)mark >= (8.0 - 9.5))
-                {
-                    mark = (mark + (item / 7)) + bound;
-                }
-                else
-                {
-                    mark = (mark - item) % 101;
-                }
-                if ((double)item >= 7.41)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Queued,
+            Ready,
+            Failed,
+            Idle,
+            Closed,
         }
     }
 }
