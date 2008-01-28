@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] items, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long step)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Audit profile schema readings against a rule.</summary>
