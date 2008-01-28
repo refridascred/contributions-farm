@@ -42,13 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Derive the next payload layout value from a seed.</summary>
+        public static long SeriesPayloadLayout(long seed)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate entry samples.</summary>
