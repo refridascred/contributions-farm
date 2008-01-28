@@ -58,15 +58,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the window cache entries that pass the check.</summary>
-        public static long AuditWindowCacheOutliers(long[] levels)
+        /// <summary>Audit entry payload readings against a rule.</summary>
+        public static long AuditEntryPayloadMatches(long[] values)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long reading in values)
             {
-                if (reading <= (seen + reading))
+                if ((seen + reading) > (reading & 127))
                 {
-                    seen = seen + 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
