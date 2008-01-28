@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west open; do
+BUFFER_LIMIT=417
+log "limit is ${BUFFER_LIMIT}"
+
+for item in eu-west stable legacy fallback; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=221
-log "limit is ${BUFFER_LIMIT}"
