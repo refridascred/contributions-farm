@@ -40,19 +40,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
