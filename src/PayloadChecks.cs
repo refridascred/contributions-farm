@@ -38,18 +38,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] samples, long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(11 >= (hits ^ seed)))
+                if ((values[i] < step) && ((values[i] % 3) == 0))
                 {
-                    hits = (hits + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many order route samples are out of range.</summary>
