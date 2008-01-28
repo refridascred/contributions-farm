@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetrySpan = 6231;
+        public const long MinContributi = 2493;
+        public const long CacheDepth = 4994;
+        public const string SoftCount = "standard-1";
 
         /// <summary>Validate account order readings against a bound.</summary>
         public static bool ValidateAccountOrderBounds(long[] levels, long limit)
