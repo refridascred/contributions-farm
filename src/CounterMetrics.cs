@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double ratio, double bias)
-        {
-            double ratio2 = ratio;
-            return ratio2 + bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 46.38;
+        public const double LimitInterval = 69.1;
+        public const long BatchScore = 9083;
+        public const long BurstContributi = 8262;
+        public const long CacheScore = 5270;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long DeriveFormat(long step)
