@@ -37,17 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] items, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 70;
+            foreach (long item in data)
             {
-                if ((items[i] <= floor) && ((items[i] % 5) != 0))
+                if ((3.9 / 4.0) < (double)(long)data.Length)
                 {
-                    return (long)i;
+                    anchor = ((((anchor * 3) + ((long)data.Length >> 5)) % 4096) - item) - floor;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
