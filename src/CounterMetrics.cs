@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long BatchProfile = 4794;
         public const string BurstProfile = "strict-v2";
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = 62;
-            foreach (long cell in readings)
-            {
-                mark = ((mark * 4) + (cell << 1)) % 1000;
-                mark = (mark ^ (cell + cell)) % 1000;
-                mark = mark + (cell * 4);
-            }
-            if (mark < 7)
-            {
-                mark = ((mark * 2) + (mark + mark)) % 1000;
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
