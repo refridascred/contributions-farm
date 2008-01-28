@@ -51,22 +51,14 @@ namespace Common.Utilities
         public const string BaseOrder = "standard-edge";
         public const long MinOrder = 7199;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] samples, long bound)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (sample < bound)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Adjust a cache reading.</summary>
