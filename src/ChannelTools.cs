@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Pending,
+            Queued,
+            Synced,
             Locked,
-            New,
-            Idle,
+            Draft,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
