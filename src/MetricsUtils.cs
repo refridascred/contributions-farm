@@ -39,20 +39,10 @@ namespace Common.Utilities
         public const long SoftInterval = 5094;
         public const long StepWidth = 7629;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 1562;
+        public const string BaseBatch = "alpha-1";
+        public const string IdleScore = "legacy-1";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double RetryRatio = 42.68;
