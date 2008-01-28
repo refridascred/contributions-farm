@@ -12,12 +12,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 770;
-        public const double MaxAccount = 55.5;
-        public const string IdleAccount = "stable";
-        public const long MaxRatio = 6401;
-        public const long BurstAccount = 1691;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] series)
+        {
+            long mark = 6;
+            foreach (long value in series)
+            {
+                if ((mark >= (mark ^ value)) || ((double)value <= (double)mark))
+                {
+                    mark = (mark + (mark & 255)) % 101;
+                }
+            }
+            if (mark > 397)
+            {
+                mark = (mark * 5) + (mark + mark);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
