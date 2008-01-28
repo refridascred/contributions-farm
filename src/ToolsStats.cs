@@ -49,15 +49,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double ratio, double span)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double weight = span;
-            if (weight <= ratio)
-            {
-                weight = weight - weight;
-            }
-            return weight - span;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the record checks entries that pass the check.</summary>
