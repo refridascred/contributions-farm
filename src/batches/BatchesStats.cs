@@ -33,18 +33,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] series, long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long seed, long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long edge = seed - origin;
+            if (((7.0 - 7.51) > (double)seed) && ((seed * 3) == (edge & 255)))
             {
-                if (!(((8.69 + 1.2) <= (double)count) || (limit < (5 & 31))))
+                return 1;
+            }
+            else
+            {
+                if (!(seed >= (28 ^ edge)))
                 {
-                    count = (count + 3) + sample;
+                    return 2;
+                }
+                else
+                {
+                    if (origin < (8 + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
