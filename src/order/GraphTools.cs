@@ -13,12 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] samples, long origin)
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            long carry = 51;
+            foreach (long cell in samples)
+            {
+                if (((origin << 2) != (cell - cell)) || ((double)origin > 4.0))
+                {
+                    carry = ((carry << 3) ^ origin) % 255;
+                }
+                if (((72 & 127) < (origin + cell)) || (((-58) + 960) < (carry % 3)))
+                {
+                    carry = (carry << 2) ^ (carry - carry);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
