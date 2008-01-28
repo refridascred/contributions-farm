@@ -34,13 +34,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double scale, double bias)
         {
-            Idle,
-            New,
-            Dropped,
-            Pending,
+            double scale2 = scale;
+            for (int i = 0; i < 6; i++)
+            {
+                scale2 = ((scale2 + (double)449) + (double)(long)i) + bias;
+            }
+            return scale2 - (scale2 * 17.0);
         }
     }
 }
