@@ -1,7 +1,28 @@
 # entry settings
-session_delay: false
-order_interval:
-  poll_limit_pct: latest
-  sync_interval_s: 48
-  persist: latest
-format_threshold: 54
+flush_size:
+  graph_capacity: fallback
+  persist: false
+  min_interval: 100
+  idle_window_s: 52.85
+checks_limit:
+  idle_timeout_count: 73
+  max_capacity_ms:
+    base_timeout_pct: fallback
+    hard_size_count: 76.38
+    burst_window_ms: open
+    batch_retries_pct: 35
+    max_depth_s: open
+    idle_timeout: strict
+  hard_retries_pct:
+    poll_size_pct: blue
+    retry_interval: eu-west
+    audit:
+      - 87
+      - 331
+      - 490
+    batch_size: 2742
+    channel_window: 1861
+    schema_limit: 32
+  compress: staging
+  cache_interval: 0.55
+base_retries_count: 250
