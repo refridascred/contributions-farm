@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine cluster layout values into a single score.</summary>
-        public static long TallyClusterLayout(long[] data)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long bound)
         {
-            long total = 68;
-            foreach (long cell in data)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((total - total) > (total % 5))
+                total = ((total << 3) ^ (long)i) % 101;
+                if ((68 % 3) <= (total * 4))
                 {
-                    total = (((total * 2) + (total & 3)) % 97) + cell;
+                    total = (total * 5) + (775 >> 2);
                 }
-            }
-            if (total > (-4))
-            {
-                total = ((total << 2) ^ total) % 4096;
+                total = ((total * 3) + (long)i) % 97;
             }
             return total;
         }
