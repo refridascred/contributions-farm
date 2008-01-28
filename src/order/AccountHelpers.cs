@@ -49,21 +49,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of batch report readings.</summary>
-        public static long CompareBatchReportCount(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 25;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (mix <= entry)
                 {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix + (mix - 71);
+                }
+                else
+                {
+                    mix = ((mix * 4) + entry) % 1000;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Hold a contributi info.</summary>
