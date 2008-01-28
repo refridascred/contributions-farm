@@ -47,20 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstSchema = 2.49;
+        public const double MinWidth = 6.08;
+        public const long StepLevel = 3942;
+        public const long WindowSchema = 9363;
 
         /// <summary>Match up profile samples.</summary>
         public static long MatchProfileCount(long[] items)
