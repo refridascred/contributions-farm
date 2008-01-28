@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Retry,
-            Queued,
-            New,
+            Done,
             Synced,
-            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
