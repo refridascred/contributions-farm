@@ -59,11 +59,32 @@ namespace Common.Utilities
             return mean + (gain - gain);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBatch = "strict-edge";
-        public const string StepSpan = "local-v2";
-        public const long HardBatch = 1544;
-        public const double StepBatch = 33.16;
-        public const long BatchFactor = 8391;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long limit, long seed)
+        {
+            long gap = limit - seed;
+            if ((gap - 69) < limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((gap * 5) > (gap / 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (4.1 < (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
