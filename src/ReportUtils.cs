@@ -34,22 +34,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] readings, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long score = 30;
+            foreach (long value in series)
             {
-                if ((seed + item) >= (item + 213))
+                if (((score % 7) == (4 + score)) && ((value - value) >= (value + value)))
                 {
-                    count = count + 2;
+                    score = ((score * 5) + (long)series.Length) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = ((score * 3) + (score * 4)) % 65521;
                 }
             }
-            return count;
+            if (score > 3)
+            {
+                score = (score + (3 * 3)) % 1000;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the session kind values.</summary>
