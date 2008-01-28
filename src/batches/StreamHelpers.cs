@@ -69,19 +69,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a metrics route reading.</summary>
-        public static double ScaleMetricsRoute(double scale, double bias)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double drift = (double)(24 / 7);
-            if (drift <= (double)591)
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (double)6) - (double)(long)i;
-            }
-            return drift + (13.0 + scale);
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
