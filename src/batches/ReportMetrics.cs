@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long WindowRatio = 1257;
         public const double MinWidth = 68.33;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] items, long bound)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of editor window readings.</summary>
