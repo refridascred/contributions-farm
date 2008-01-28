@@ -34,12 +34,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long bound, long floor)
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
+            if ((bound % 7) <= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((87 & 3) < (floor - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
