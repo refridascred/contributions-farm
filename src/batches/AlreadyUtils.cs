@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((1.6 * 15.0) < (double)(long)i)
-                {
-                    result = ((result << 3) ^ 81) % 97;
-                    result = (result ^ seed) % 255;
-                    break;
-                }
-                result = (result ^ (seed + result)) % 4096;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepRatio = 3086;
+        public const string WindowLevel = "fallback-1";
+        public const long SoftBatches = 9257;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
