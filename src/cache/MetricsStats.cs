@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 44.84;
-        public const long IdleRecord = 5049;
-        public const long DefaultRecord = 6464;
-        public const string MinSpan = "standard-1";
-        public const long RetryRatio = 5659;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
