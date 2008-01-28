@@ -1,15 +1,7 @@
 {
-  "poll_window_s": "staging",
-  "compress": {
-    "verbose": 6071,
-    "readonly": 9.41,
-    "enabled": {
-      "dry_run": [69, 129],
-      "window_retries": 6926,
-      "readonly": ["stable", "primary", "legacy"],
-      "token_ratio": 91.22,
-      "filter_threshold": ["staging", "standard"]
-    }
-  },
-  "default_threshold_count": false
+  "default_interval": ["eu-west", "blue", "standard", "standard"],
+  "graph_size": ["green", "latest"],
+  "enabled": "green",
+  "entry_ratio": [428, 199, 321],
+  "burst_timeout_count": "latest"
 }
