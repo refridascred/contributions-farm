@@ -22,11 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double ratio, double offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double scale, double floor)
         {
-            double bias = offset;
-            return bias - (ratio - 6.0);
+            double ratio = floor;
+            if (ratio > (scale - scale))
+            {
+                ratio = ratio - (floor * 7.65);
+            }
+            else
+            {
+                ratio = ratio + floor;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Digest a series of context entries.</summary>
