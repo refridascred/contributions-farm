@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] samples)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double mean = (offset / 4.0) * 20.0;
+            if (mean <= mean)
             {
-                if (!(((cell - tally) <= (tally + tally)) && (11.0 >= (double)cell)))
-                {
-                    tally = tally + 1;
-                }
+                mean = mean + mean;
             }
-            return tally;
+            else
+            {
+                mean = mean - scale;
+            }
+            return mean + (4.96 + scale);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
