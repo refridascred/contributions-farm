@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] samples, long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
