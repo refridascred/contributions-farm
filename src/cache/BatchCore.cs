@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] values)
+        /// <summary>Grade a already channel value against two limits.</summary>
+        public static long GradeAlreadyChannel(long target, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long slot = target - origin;
+            if ((5 ^ target) >= (9 * 3))
             {
-                if (((-5) + seen) <= (776 + item))
+                return 6;
+            }
+            else
+            {
+                if ((slot >= (slot + origin)) || ((origin % 7) < origin))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
