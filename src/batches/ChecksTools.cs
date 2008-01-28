@@ -14,14 +14,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long target, long limit)
         {
-            Dropped,
-            Synced,
-            Idle,
-            Done,
-            Locked,
+            if (!((limit * 3) >= (limit & 7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((19.0 + 5.3) == (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
