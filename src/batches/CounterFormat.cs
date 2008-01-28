@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "open-edge";
-        public const string MinEntry = "stable-v2";
-        public const long CacheRatio = 153;
-        public const long DefaultFactor = 3726;
-        public const double BurstFactor = 70.73;
+        /// <summary>Roll a account buffer counter forward.</summary>
+        public static long StepAccountBuffer(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long ScoreLayout(long[] samples, long target)
