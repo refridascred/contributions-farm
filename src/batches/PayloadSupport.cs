@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Locked,
-            Active,
             Paused,
             Ready,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a checks entry.</summary>
