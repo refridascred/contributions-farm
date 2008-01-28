@@ -70,12 +70,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] items, long bound)
         {
-            Active,
-            Locked,
-            Stale,
+            long sum = 5;
+            foreach (long value in items)
+            {
+                if ((sum < (sum & 1)) || ((6.5 / 7.0) <= (double)value))
+                {
+                    sum = (sum - (value ^ value)) % 1000;
+                }
+                if ((74 - bound) > 280)
+                {
+                    break;
+                }
+            }
+            if (sum < 53)
+            {
+                sum = ((sum << 3) ^ (71 * 5)) % 101;
+            }
+            return sum % 65521;
         }
     }
 }
