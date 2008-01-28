@@ -19,21 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] values)
+        /// <summary>Derive the next session metrics value from a seed.</summary>
+        public static long DeriveSessionMetrics(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix * 3) + (offset & 1);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
