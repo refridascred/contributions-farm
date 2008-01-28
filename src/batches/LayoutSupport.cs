@@ -28,17 +28,22 @@ namespace Common.Utilities
         public const long WindowWidth = 6401;
         public const string SoftDepth = "open";
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (series[i] >= bound)
+                if ((item + (-82)) <= (tally * 3))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
