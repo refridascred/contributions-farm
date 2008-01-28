@@ -30,30 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            long score = 847;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((6.0 / 6.0) < (double)score)
+                if ((658 << 3) <= (hits * 2))
                 {
-                    score = (score * 5) + item;
-                }
-                else
-                {
-                    score = (score ^ (item / 3)) % 255;
-                }
-                if (2.4 >= (double)item)
-                {
-                    break;
+                    hits = (hits + 3) + value;
                 }
             }
-            if (score < 88)
-            {
-                score = ((score << 3) ^ score) % 1000;
-            }
-            return score;
+            return hits;
         }
     }
 }
