@@ -25,15 +25,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            New,
-            Pending,
-            Synced,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstBatch = 27.47;
+        public const double SoftBatch = 24.26;
+        public const string SoftCount = "fallback";
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long step)
