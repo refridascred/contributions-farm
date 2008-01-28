@@ -16,17 +16,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)36 * 2.2;
+            if (drift > (2.9 - 8.0))
             {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
+                drift = (drift + drift) + offset;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (5.0 - scale)) + (double)(long)i;
+            }
+            return drift + 4.3;
         }
 
         /// <summary>Hold a record info.</summary>
