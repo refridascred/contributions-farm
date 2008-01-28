@@ -19,10 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowRatio = 9.38;
-        public const long SoftTimeout = 3717;
-        public const long MinNotes = 2809;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long IterateCommand(long step)
