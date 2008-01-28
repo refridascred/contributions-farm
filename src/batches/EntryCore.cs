@@ -46,19 +46,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] readings, long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
