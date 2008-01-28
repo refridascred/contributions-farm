@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double weight, double floor)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] values, long step)
         {
-            double gain = floor;
-            if (gain > (floor * 12.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + floor) - weight;
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return gain + 6.0;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
