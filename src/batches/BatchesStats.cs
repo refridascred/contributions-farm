@@ -41,16 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc - step) % 1000;
-                acc = ((acc * 3) + (long)i) % 97;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
     }
 }
