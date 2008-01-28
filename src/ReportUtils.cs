@@ -46,10 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 2312;
-        public const string BaseOrder = "standard-edge";
-        public const long MinOrder = 7199;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public double Total { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
