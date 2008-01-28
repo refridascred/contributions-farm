@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=47
+log "limit is ${BUFFER_LIMIT}"
+
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=124
-log "limit is ${BUFFER_LIMIT}"
+for item in edge eu-west strict; do
+    log "checking ${item}"
+done
