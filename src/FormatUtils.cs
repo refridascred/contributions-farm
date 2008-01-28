@@ -19,17 +19,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a batch support reading by value.</summary>
-        public static long LookupBatchSupportIndex(long[] values, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
