@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long DefaultSupport = 8508;
         public const long IdleSupport = 4067;
 
-        /// <summary>Look up the position of a commits report sample.</summary>
-        public static long SeekCommitsReportIndex(long[] data, long floor)
+        /// <summary>Digest a series of notes stats entries.</summary>
+        public static long TallyNotesStats(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 11;
+            foreach (long sample in items)
             {
-                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                if ((9.7 / 2.0) > (double)sample)
                 {
-                    return (long)i;
+                    result = ((result - sample) % 4096) - seed;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
