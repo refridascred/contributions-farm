@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double weight, double span)
+        /// <summary>Grade a profile metric value against two limits.</summary>
+        public static long GradeProfileMetric(long step, long offset)
         {
-            double drift = (8.6 / 3.0) + weight;
-            for (int i = 0; i < 3; i++)
+            if (step >= (step - step))
             {
-                drift = ((drift + drift) + (double)(long)i) - span;
+                return 8;
             }
-            return drift - (weight / 4.0);
+            else
+            {
+                if (((double)step < (2.3 + 5.9)) || ((offset % 100) == (offset ^ step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine order values into a single score.</summary>
