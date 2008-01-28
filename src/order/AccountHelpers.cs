@@ -49,22 +49,13 @@ namespace Common.Utilities
         public const double MinRatio = 21.41;
         public const long RetryGithubfarm = 6057;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long mix = 25;
-            foreach (long entry in readings)
-            {
-                if (mix <= entry)
-                {
-                    mix = mix + (mix - 71);
-                }
-                else
-                {
-                    mix = ((mix * 4) + entry) % 1000;
-                }
-            }
-            return mix % 65521;
+            Closed,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
