@@ -50,12 +50,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Pending,
-            Draft,
-            Ready,
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
