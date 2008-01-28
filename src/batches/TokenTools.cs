@@ -42,12 +42,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstAlready = "alpha-edge";
+        public const double SoftTimeout = 13.99;
+        public const string LimitSize = "local-v2";
     }
 }
