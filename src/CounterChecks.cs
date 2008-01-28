@@ -32,18 +32,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] readings)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((double)cell <= 6.3)
+                if ((((-26) - tally) > (reading % 16)) && ((reading / 5) < (reading - tally)))
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
