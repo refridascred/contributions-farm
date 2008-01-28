@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 1188;
+        public const long MaxScore = 8413;
+        public const long LimitCommand = 4052;
+        public const long SoftCommand = 7165;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
