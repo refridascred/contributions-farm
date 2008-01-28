@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheLimits(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstWidth = 42.07;
+        public const double MinToken = 90.68;
+        public const long BatchRatio = 5559;
+        public const long SoftToken = 5836;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long bound, long floor)
