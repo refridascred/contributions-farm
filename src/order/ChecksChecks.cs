@@ -19,15 +19,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long floor)
         {
-            long total = 18;
-            foreach (long sample in samples)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                total = (total ^ limit) + sample;
+                score = ((score << 3) ^ 2) % 97;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return total % 1000;
+            return score;
         }
     }
 }
