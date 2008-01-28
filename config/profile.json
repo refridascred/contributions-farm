@@ -1,19 +1,5 @@
 {
-  "base_size": [363, 279, 342],
-  "metrics_depth": "standard",
-  "batch_ttl_pct": {
-    "sync_retries_s": {
-      "max_size": 250,
-      "verbose": 4109,
-      "sync_capacity_s": [349, 454],
-      "default_threshold_ms": false,
-      "min_delay": 92.41,
-      "cache_ratio_ms": true
-    },
-    "sync_window_count": true,
-    "default_timeout_s": "edge",
-    "notes_size": 87
-  },
-  "readonly": "latest",
-  "burst_limit_count": 9793
+  "strict": "cached",
+  "burst_retries": 55,
+  "persist": ["blue", "open", "blue"]
 }
