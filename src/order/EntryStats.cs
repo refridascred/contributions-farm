@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] values, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (value < seed)
+                if (entry != bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
