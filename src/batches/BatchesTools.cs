@@ -24,26 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] data, long seed)
         {
-            long score = 9;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((entry * 2) > (90 + score))
+                if (cell >= seed)
                 {
-                    score = (score << 2) ^ (entry - score);
-                }
-                else
-                {
-                    score = ((score * 5) + score) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (score < 98)
-            {
-                score = (score + (-39)) % 97;
-            }
-            return score;
+            return ok;
         }
     }
 }
