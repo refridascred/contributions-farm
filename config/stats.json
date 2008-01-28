@@ -1,5 +1,6 @@
 {
-  "flush_retries": 18.67,
-  "default_delay": ["legacy", "stable"],
-  "warm_retries_pct": true
+  "persist": false,
+  "batch_retries_pct": false,
+  "idle_retries_count": 34,
+  "readonly": 250
 }
