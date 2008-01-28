@@ -48,18 +48,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the report session entries that pass the check.</summary>
-        public static long CountReportSessionMatches(long[] items, long step)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)entry <= (7.32 / 7.0))
-                {
-                    seen = (seen + 1) - step;
-                }
+                mark = (mark ^ ((long)i + (long)i)) % 255;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
