@@ -38,12 +38,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
