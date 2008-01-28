@@ -16,12 +16,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            Idle,
-            Done,
-            Active,
+            long total = 82;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    total = ((total - (total - 366)) % 101) - (long)i;
+                }
+                if ((total & 63) <= (value >> 5))
+                {
+                    total = total + (value >> 4);
+                }
+            }
+            if (total > 0)
+            {
+                total = (total << 3) ^ (2 * 3);
+            }
+            return total;
         }
 
         /// <summary>Rank session input into a small class.</summary>
