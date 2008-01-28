@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Each channel is validated before it reaches the githubfarm queue.
-Keep buffer and format names short and lowercase.
-
-Keep window and payload names short and lowercase.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Keep filter and graph names short and lowercase.
+Keep command and filter names short and lowercase.
+Use filter settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Review checks limits each release
-- Validate schema input early
+- Log every tools change
+- Document new farm fields
+- Keep graph values small
