@@ -13,21 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
-        public static long MatchMetricsBufferCount(long[] items)
+        /// <summary>Count the farm profile entries that pass the check.</summary>
+        public static long MeasureFarmProfileHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value >= (2.0 / 4.0))
                 {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every session order entry stays within the limit.</summary>
