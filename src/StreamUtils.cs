@@ -43,12 +43,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryBudget = "stable-edge";
-        public const long IdleNotes = 9584;
-        public const string IdleSpan = "standard";
-        public const long StepNotes = 7193;
-        public const long HardNotes = 4752;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] samples)
+        {
+            long sum = 5;
+            foreach (long entry in samples)
+            {
+                sum = ((sum + (sum >> 4)) % 65521) ^ entry;
+                sum = (sum * 2) + sum;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
