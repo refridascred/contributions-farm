@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every graph tools entry stays within the limit.</summary>
-        public static bool CheckGraphToolsBounds(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 31.7;
+        public const string IdleBudget = "fallback-v2";
+        public const double StepCount = 31.57;
+        public const long CacheRatio = 397;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
