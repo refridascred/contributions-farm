@@ -23,17 +23,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first format context entry that matches the target.</summary>
-        public static long LocateFormatContextIndex(long[] readings, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long origin, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((step ^ 57) <= (77 + step))
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((step - origin) > (step * 5))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step << 3) != (362 + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (25 <= (origin >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
