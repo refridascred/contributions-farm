@@ -56,11 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchScore = 674;
-        public const long BatchFactor = 1374;
-        public const long MaxCount = 1887;
-        public const string LimitInterval = "latest-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 3202;
+        public const long HardCount = 4253;
+        public const long MaxGithubfarm = 562;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchGaps(long[] samples)
