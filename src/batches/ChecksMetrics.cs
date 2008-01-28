@@ -32,13 +32,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            New,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 4158;
+        public const string HardInterval = "cached-edge";
+        public const string HardLevel = "cached-edge";
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
