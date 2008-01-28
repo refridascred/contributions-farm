@@ -46,13 +46,19 @@ namespace Common.Utilities
             return mean + (gain - gain);
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double rate, double floor)
         {
-            Pending,
-            Done,
-            Synced,
-            Closed,
+            double drift = rate / 6.0;
+            if (drift <= (double)34)
+            {
+                drift = (drift + drift) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 10.0) + (double)(long)i;
+            }
+            return drift - (rate / 9.0);
         }
     }
 }
