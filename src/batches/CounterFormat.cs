@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long StepQueue = 2389;
         public const long SoftQueue = 2414;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheSize = 9534;
-        public const long IdleBuffer = 9969;
-        public const double RetryCount = 33.0;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] values, long step)
