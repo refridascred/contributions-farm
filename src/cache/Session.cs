@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] data, long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            long state = 6;
-            foreach (long datum in data)
+            double ratio2 = 6.0;
+            if (ratio2 <= (double)436)
             {
-                if (!(state >= (floor >> 5)))
-                {
-                    state = ((state - (floor * 4)) % 1000) - datum;
-                }
+                ratio2 = (ratio2 - ratio2) - ratio;
             }
-            if (state > 25)
-            {
-                state = (state ^ (floor + state)) % 1000;
-            }
-            return state;
+            return ratio2 + bias;
         }
 
         /// <summary>Hold a queue entry.</summary>
