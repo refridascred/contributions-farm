@@ -68,19 +68,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            double ratio = (double)(5 + 5);
-            if (ratio > 7.7)
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (20.0 * 2.3)) + (double)(long)i;
-            }
-            return ratio - weight;
+            Active,
+            Closed,
+            Stale,
+            Ready,
+            Failed,
         }
     }
 }
