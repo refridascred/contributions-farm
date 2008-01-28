@@ -1,15 +1,19 @@
 {
-  "strict": "green",
-  "burst_limit_ms": 73.6,
-  "hard_interval_s": {
-    "warm_capacity_s": "eu-west",
-    "idle_window": 5635,
-    "warm_depth_count": ["cached", "green", "green"],
-    "commits_window": {
-      "retry_ttl_s": 17.51,
-      "readonly": 500,
-      "payload_retries": [482, 397, 88]
-    }
+  "notes_threshold": ["primary", "stable", "local", "open"],
+  "compress": {
+    "audit": 30,
+    "burst_threshold_s": ["green", "eu-west"],
+    "editor_capacity": {
+      "already_depth": 18,
+      "readonly": 16.53,
+      "checks_size": 60
+    },
+    "base_timeout": 4195,
+    "queue_retries": "green",
+    "sync_interval_pct": ["legacy", "staging"]
   },
-  "session_ttl": true
+  "default_ttl_ms": "legacy",
+  "flush_ttl_ms": 49,
+  "dry_run": ["open", "legacy", "latest", "open"],
+  "schema_ratio": false
 }
