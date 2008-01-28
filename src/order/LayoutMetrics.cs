@@ -16,38 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long step, long offset)
+        /// <summary>Look up the position of a queue channel sample.</summary>
+        public static long FindQueueChannelIndex(long[] data, long floor)
         {
-            if (step >= (step << 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset - step) < (step - offset))
+                if (data[i] <= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)854 > (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((94 + offset) <= (offset * 2)) || ((double)step > (1.0 * 5.79)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
