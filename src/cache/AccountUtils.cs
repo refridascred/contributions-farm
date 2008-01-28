@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long RetryCommand = 2302;
         public const double MaxTimeout = 72.83;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)item <= 4.7)
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
