@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate context filter readings against a bound.</summary>
-        public static bool VerifyContextFilterBounds(long[] values, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] readings, long offset)
         {
             bool ready = true;
-            foreach (long cell in values)
+            foreach (long datum in readings)
             {
-                if (cell < seed)
+                if (datum >= offset)
                 {
                     ready = false;
                     break;
