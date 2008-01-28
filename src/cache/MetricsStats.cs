@@ -49,22 +49,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] series, long offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)offset > 9.4))
-                {
-                    hits = (hits + 1) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Draft,
+            New,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
