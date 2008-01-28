@@ -29,19 +29,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double bias)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long step, long seed)
         {
-            double bias2 = 20.0;
-            if (bias2 >= (rate * 19.0))
+            if ((step < (8 ^ step)) || ((seed << 3) < (seed ^ seed)))
             {
-                bias2 = (bias2 + (double)895) - bias;
+                return 7;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias2 = (bias2 - rate) + (double)(long)i;
+                if ((7.5 + 4.0) > (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return bias2 - (rate * 7.96);
         }
     }
 }
