@@ -1,8 +1,11 @@
 # support settings
-burst_depth_count: 58.14
-enabled: 100
-stream_interval:
-  - 330
-  - 47
-counter_threshold: 82
-cache_ttl: 63
+batch_retries_s:
+  - 199
+  - 243
+  - 408
+  - 266
+max_limit_pct: 70.39
+persist: 35.02
+layout_threshold: true
+burst_ttl_ms: 85.39
+flush_window_s: 84
