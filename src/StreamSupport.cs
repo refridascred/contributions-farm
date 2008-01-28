@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] items, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((item - 57) >= (item * 2)) || !(matches > limit))
+                if (((double)(long)i > (double)(-2)) || (floor <= (floor >> 1)))
                 {
-                    matches = matches + 1;
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
