@@ -20,14 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] levels, long seed)
         {
-            Active,
-            Failed,
-            Locked,
-            Queued,
-            Stale,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!((count - 8) >= (seed + (-42))))
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a record metric value against two limits.</summary>
