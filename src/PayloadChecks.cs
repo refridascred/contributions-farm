@@ -74,11 +74,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double gain, double offset)
-        {
-            double drift = gain;
-            return drift - offset;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 48.02;
+        public const double RetryAlready = 57.08;
+        public const long MaxAlready = 124;
     }
 }
