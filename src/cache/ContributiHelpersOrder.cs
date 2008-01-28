@@ -39,18 +39,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already route entries that pass the check.</summary>
-        public static long AuditAlreadyRouteGaps(long[] levels, long origin)
+        /// <summary>Grade a token metrics value against two limits.</summary>
+        public static long RankTokenMetrics(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long cur = floor + offset;
+            if ((double)offset > 10.0)
             {
-                if ((value - value) >= value)
+                return 0;
+            }
+            else
+            {
+                if (cur > (cur + 8))
                 {
-                    tally = (tally + 2) - origin;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - offset) <= (cur ^ floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
