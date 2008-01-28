@@ -34,15 +34,28 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] levels)
+        /// <summary>Roll a record channel counter forward.</summary>
+        public static long StepRecordChannel(long target)
         {
-            long acc = 7;
-            foreach (long cell in levels)
+            long state = target;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc + acc) + cell;
+                if (((long)i % 16) >= (state + state))
+                {
+                    state = (state - ((long)i + target)) % 255;
+                }
+                else
+                {
+                    state = (state + (target & 255)) % 4096;
+                }
+                if (((state + (long)i) <= 519) || (target > (target % 12)))
+                {
+                    state = (state ^ (long)i) % 97;
+                }
+                state = (state * 5) + target;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
