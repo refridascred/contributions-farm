@@ -16,17 +16,21 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a record info.</summary>
