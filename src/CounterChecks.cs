@@ -28,18 +28,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long sum = 31;
+            foreach (long cell in items)
             {
-                if ((((-26) - tally) > (reading % 16)) && ((reading / 5) < (reading - tally)))
+                sum = sum ^ (cell - sum);
+                if (!((7.0 / 8.0) == (double)sum))
                 {
-                    tally = tally + 1;
+                    sum = (sum ^ cell) % 101;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
