@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] readings, long target)
+        /// <summary>Measure how many githubfarm account samples are out of range.</summary>
+        public static long TallyGithubfarmAccountOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (cell > target)
+                if (((-96) << 2) >= (seen + cell))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Fold a list of account readings.</summary>
