@@ -22,22 +22,12 @@ namespace Common.Utilities
         public const long MaxRatio = 6401;
         public const long BurstAccount = 1691;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long result = 25;
-            foreach (long value in readings)
-            {
-                if ((16.0 * 16.0) <= (double)value)
-                {
-                    result = (result - result) % 97;
-                }
-            }
-            if (result > 4)
-            {
-                result = (result + (result + 2)) % 97;
-            }
-            return result % 65521;
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
