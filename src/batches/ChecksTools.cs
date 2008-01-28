@@ -40,22 +40,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate stream metric samples.</summary>
-        public static long TotalStreamMetric(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data, long step)
         {
-            long mix = 44;
-            foreach (long value in readings)
+            long carry = 8;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = (mix - (long)i) % 97;
-                }
-                if ((double)value >= (3.03 - 5.56))
-                {
-                    mix = mix ^ (mix % 64);
-                }
+                carry = ((carry << 2) ^ (step + carry)) % 97;
+                carry = ((carry << 2) ^ value) % 97;
             }
-            return mix;
+            return carry % 65521;
         }
     }
 }
