@@ -37,15 +37,24 @@ namespace Common.Utilities
         public const string HardInterval = "cached-edge";
         public const string HardLevel = "cached-edge";
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long floor, long floor2)
         {
-            long score = -3;
-            foreach (long entry in samples)
+            if ((double)floor2 == (10.0 + 5.41))
             {
-                score = score - (score + entry);
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((70 - floor) > (66 + 83))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
