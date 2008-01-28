@@ -20,22 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] levels, long seed)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double weight = 7.7;
+            if (weight < (double)(-15))
             {
-                if (!((count - 8) >= (seed + (-42))))
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = (weight + (bias + bias)) - bias2;
             }
-            return count;
+            return weight - (16.0 - bias);
         }
 
         /// <summary>Grade a record metric value against two limits.</summary>
