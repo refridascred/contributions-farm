@@ -18,18 +18,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] readings, long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long score = -5;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((9.0 - 7.0) != (double)cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score << 2) ^ (target - target);
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
