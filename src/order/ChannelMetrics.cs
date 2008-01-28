@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "cached-1";
-        public const double BurstRatio = 49.64;
-        public const long CacheBudget = 7579;
-        public const string MaxNotes = "staging-1";
-        public const double BatchTimeout = 98.38;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long SortLayout(long bound, long target)
