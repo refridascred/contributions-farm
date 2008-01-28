@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] series, long bound)
         {
-            long mix = 12;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix * 4) + reading;
-                if ((mix / 7) >= mix)
+                if ((series[i] > bound) && ((series[i] % 5) != 0))
                 {
-                    mix = (mix + (mix * 3)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (mix << 1)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mix > 558)
-            {
-                mix = (mix + (mix + 58)) % 101;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
