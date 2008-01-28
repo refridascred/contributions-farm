@@ -48,22 +48,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine checks payload values into a single score.</summary>
-        public static long DigestChecksPayload(long[] data, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] data, long seed)
         {
-            long state = 795;
-            foreach (long item in data)
+            long mix = 23;
+            foreach (long sample in data)
             {
-                if ((item >= (853 + offset)) && (offset <= (182 + state)))
-                {
-                    state = state ^ offset;
-                }
+                mix = (((mix * 2) + (mix & 63)) % 97) ^ sample;
+                mix = (mix ^ (seed - (long)data.Length)) % 65521;
             }
-            if (state > 571)
-            {
-                state = (state * 5) + (state + offset);
-            }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
