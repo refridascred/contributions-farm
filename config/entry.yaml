@@ -1,26 +1,10 @@
 # entry settings
-warm_depth: true
-stats_threshold: 37.75
-soft_limit: 21.48
-flush_timeout: 93
-readonly:
-  cache_ttl_pct: true
-  record_retries: green
-  poll_threshold_count: 37.63
-  verbose:
-    - 251
-    - 424
-    - 210
-    - 284
-  persist:
-    audit: standard
-    retry_ratio_s:
-      - fallback
-      - legacy
-      - latest
-    burst_interval_pct: 74.17
-    min_ttl: false
-    contributi_limit:
-      - 479
-      - 284
-retry_ratio_pct: 61.38
+sync_size_ms: blue
+hard_ttl_count: true
+min_capacity_ms: true
+cluster_interval: 100
+base_depth_count:
+  - eu-west
+  - eu-west
+  - local
+strict: primary
