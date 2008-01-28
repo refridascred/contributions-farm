@@ -20,12 +20,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Compare every pair of commits context readings.</summary>
+        public static long MatchCommitsContextCount(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
