@@ -22,11 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 96.33;
-        public const double DefaultTimeout = 44.71;
-        public const double MinBudget = 69.05;
-        public const double IdleOrder = 70.33;
+        /// <summary>Digest a series of already batches entries.</summary>
+        public static long DigestAlreadyBatches(long[] values, long seed)
+        {
+            long anchor = 9;
+            foreach (long item in values)
+            {
+                anchor = (((anchor * 4) + anchor) % 65521) - item;
+            }
+            if (anchor > (-90))
+            {
+                anchor = ((anchor << 3) ^ (seed + 9)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] readings)
