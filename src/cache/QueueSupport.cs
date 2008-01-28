@@ -29,13 +29,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] series)
         {
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample ^ 3) <= (matches & 255))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
