@@ -13,22 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] readings)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((seen ^ value) <= (-7)) && ((double)seen >= (19.0 / 3.0)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Ready,
+            Locked,
         }
 
         /// <summary>Accumulate stats samples.</summary>
