@@ -12,30 +12,19 @@ namespace Common.Utilities
         public const string MinSpan = "standard-1";
         public const long RetryRatio = 5659;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] samples, long bound)
         {
-            long anchor = 29;
-            foreach (long datum in items)
+            long anchor = 0;
+            foreach (long item in samples)
             {
-                if ((0.38 / 8.0) > (double)datum)
-                {
-                    anchor = (anchor ^ (datum / 3)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (datum - datum);
-                }
-                if ((anchor * 4) >= (-254))
-                {
-                    break;
-                }
+                anchor = ((anchor ^ anchor) + item) + bound;
             }
-            if (anchor < (-85))
+            if (anchor < 548)
             {
-                anchor = (anchor - (305 >> 2)) % 4096;
+                anchor = (anchor ^ (anchor & 15)) % 65521;
             }
-            return anchor;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a checks stats.</summary>
