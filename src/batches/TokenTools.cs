@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum << 1) >= (55 % 60)) || ((hits & 63) > (4 / 4)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
