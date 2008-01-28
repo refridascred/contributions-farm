@@ -89,32 +89,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank token metric input into a small class.</summary>
-        public static long RankTokenMetric(long offset, long origin)
-        {
-            long span = offset - origin;
-            if ((((-27) - (-8)) == (span % 16)) && ((double)span == (double)origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + origin) < origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((span + offset) >= (offset - span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "local-edge";
+        public const long CacheScore = 6033;
+        public const string LimitPayload = "local";
+        public const long RetryPayload = 9576;
     }
 }
