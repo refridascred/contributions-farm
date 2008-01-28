@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long StepContext = 5124;
         public const long MinTimeout = 1178;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            long sum = 6;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                sum = (sum - (bound + 96)) - value;
+                if ((matches * 3) <= matches)
+                {
+                    matches = (matches + 1) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Hold a report record.</summary>
