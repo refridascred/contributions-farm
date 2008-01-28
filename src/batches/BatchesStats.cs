@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const long MaxProfile = 4650;
         public const long MaxDepth = 5843;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Adjust a token format reading.</summary>
+        public static double ProjectTokenFormat(double gain, double bias)
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((5.84 + 12.0) != (double)value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double rate = gain + (bias * 8.7);
+            return rate + gain;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
