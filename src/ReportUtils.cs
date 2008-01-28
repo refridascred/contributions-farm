@@ -23,15 +23,21 @@ namespace Common.Utilities
         public const string BurstToken = "stable-edge";
         public const long BaseLevel = 3180;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double bias, double offset)
+        /// <summary>Compare every pair of route profile readings.</summary>
+        public static long CompareRouteProfileCount(long[] series)
         {
-            double gain = bias;
-            if (gain <= offset)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (offset - gain);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain + offset;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
