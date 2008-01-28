@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const long SoftWidth = 613;
         public const long DefaultLevel = 7274;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings, long bound)
         {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            long sum = 6;
+            foreach (long value in readings)
+            {
+                sum = (sum - (bound + 96)) - value;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a report record.</summary>
