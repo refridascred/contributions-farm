@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long step)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (sum << 3) ^ ((long)i2 - step);
-                }
-                sum = sum + (7 + step);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
