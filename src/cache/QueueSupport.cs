@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                total = ((total << 3) ^ (long)i) % 101;
-                if ((68 % 3) <= (total * 4))
+                if (((long)levels.Length / 4) < 314)
                 {
-                    total = (total * 5) + (775 >> 2);
+                    seen = (seen + 1) + reading;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
