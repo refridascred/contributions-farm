@@ -1,19 +1,6 @@
 {
-  "metrics_capacity": {
-    "warm_interval_ms": 1024,
-    "queue_retries": [11, 114, 110, 89],
-    "batches_capacity": "edge",
-    "context_timeout": "strict",
-    "schema_window": "cached",
-    "cache_capacity_count": "staging"
-  },
-  "batch_capacity_ms": "standard",
-  "cache_interval": {
-    "enabled": 18,
-    "min_delay_ms": false,
-    "batch_ratio_ms": true,
-    "verbose": 54.72,
-    "profile_depth": 41,
-    "githubfarm_delay": 38.77
-  }
+  "warm_size_count": [149, 29],
+  "buffer_ttl": false,
+  "record_limit": false,
+  "cache_capacity_pct": ["latest", "blue", "green"]
 }
