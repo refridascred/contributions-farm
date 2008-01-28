@@ -88,16 +88,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Rank entry tools input into a small class.</summary>
+        public static long RankEntryTools(long step, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            if ((seed + seed) < seed)
             {
-                mix = (mix + ((long)i >> 4)) % 101;
-                mix = ((mix * 2) + (long)i) % 97;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (0 < seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed & 3) > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
