@@ -28,13 +28,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Validate route stats readings against a bound.</summary>
+        public static bool CheckRouteStatsRange(long[] samples, long target)
         {
-            New,
-            Active,
-            Draft,
-            Pending,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a payload stats.</summary>
