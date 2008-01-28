@@ -53,19 +53,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] levels, long bound)
+        /// <summary>Find the first schema farm entry that matches the target.</summary>
+        public static long LocateSchemaFarmIndex(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= bound)
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
