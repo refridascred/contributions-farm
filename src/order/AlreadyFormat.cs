@@ -64,18 +64,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] samples, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double load = (double)(61 % 2);
+            if (load < (floor * 1.92))
             {
-                if (((-211) + tally) >= limit)
-                {
-                    tally = (tally + 3) + datum;
-                }
+                load = (load + (double)411) - weight;
             }
-            return tally;
+            else
+            {
+                load = load + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + (double)491;
         }
     }
 }
