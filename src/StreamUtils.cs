@@ -32,19 +32,12 @@ namespace Common.Utilities
             return load + (2.0 / 3.0);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((3.0 + 8.11) <= (double)reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryBudget = "stable-edge";
+        public const long IdleNotes = 9584;
+        public const string IdleSpan = "standard";
+        public const long StepNotes = 7193;
+        public const long HardNotes = 4752;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
