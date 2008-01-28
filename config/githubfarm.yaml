@@ -1,31 +1,13 @@
 # githubfarm settings
-dry_run:
-  burst_depth_count:
-    cache_limit:
-      - legacy
-      - cached
-      - legacy
-      - local
-    hard_capacity_count: 500
-    persist: 45.28
-  retry_ratio_count: 60
-  burst_threshold_ms: latest
-  min_limit: fallback
-  compress:
-    persist: standard
-    base_delay_pct: 7416
-    channel_ratio: 500
-    max_ratio_pct: edge
-batch_timeout: standard
-audit:
-  record_capacity: eu-west
-  audit: eu-west
-  max_capacity_s: true
-flush_limit_pct: staging
-enabled:
-  dry_run: false
-  contributi_ratio:
-    - legacy
-    - primary
-  cache_window: 90.97
-  poll_ttl_pct: 31.25
+warm_ttl_count: staging
+base_capacity_pct:
+  persist: 81.21
+  verbose: 90.51
+  cache_capacity_ms:
+    - 345
+    - 264
+    - 431
+  graph_limit: stable
+max_window: false
+warm_threshold_count: green
+flush_ttl: 70.65
