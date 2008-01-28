@@ -37,25 +37,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long seed, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] levels, long target)
         {
-            long step = seed ^ floor;
-            if ((5.2 - 6.94) > (double)seed)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step >> 1) < (floor & 15))
+                if (reading >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
