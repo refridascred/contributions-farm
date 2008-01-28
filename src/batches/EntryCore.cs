@@ -38,12 +38,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryWidth = 1795;
-        public const long SoftFactor = 9815;
-        public const long HardCounter = 991;
-        public const long DefaultCounter = 4445;
-        public const long RetryCounter = 6063;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long limit, long step)
+        {
+            if ((limit >> 4) != (step + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step * 2) < (step << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheChannel = "legacy-edge";
