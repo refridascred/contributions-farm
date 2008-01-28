@@ -66,18 +66,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit queue format readings against a rule.</summary>
-        public static long TallyQueueFormatHits(long[] values)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double bias, double span)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double weight = span;
+            if (weight < weight)
             {
-                if ((5 << 3) >= sample)
-                {
-                    matches = matches + 2;
-                }
+                weight = weight + (bias + bias);
             }
-            return matches;
+            return weight - weight;
         }
     }
 }
