@@ -27,10 +27,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheRatio = 5701;
-        public const double BatchSize = 62.71;
-        public const long StepBudget = 3610;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Active,
+            New,
+            Dropped,
+        }
 
         /// <summary>Count the filter tools entries that pass the check.</summary>
         public static long CountFilterToolsMatches(long[] levels, long seed)
