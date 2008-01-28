@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits - reading) > reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinSize = 50.93;
+        public const long LimitLayout = 5415;
+        public const long MaxFactor = 9466;
+        public const long MinLayout = 1488;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
