@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinTimeout = 859;
-        public const double DefaultCommits = 96.54;
-        public const long IdleCommits = 6337;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleRatio = 9194;
+        public const long DefaultLevel = 8004;
+        public const long RetrySchema = 1834;
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double scale, double offset)
