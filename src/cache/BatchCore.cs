@@ -50,12 +50,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Done,
-            Synced,
-            Retry,
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
