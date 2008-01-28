@@ -1,15 +1,14 @@
 {
-  "checks_threshold": "edge",
-  "enabled": true,
-  "readonly": {
-    "warm_limit": false,
-    "compress": false,
-    "poll_threshold_ms": "eu-west",
-    "notes_size": "blue",
-    "layout_window": "standard",
-    "commits_delay": [322, 302]
-  },
-  "batch_ratio": true,
-  "verbose": false,
-  "flush_limit": true
+  "profile_ttl": [51, 392, 315, 492],
+  "cache_ttl_ms": false,
+  "record_depth": false,
+  "soft_limit_count": ["local", "blue"],
+  "idle_ttl_ms": {
+    "cache_capacity": [55, 293],
+    "burst_ttl_pct": ["eu-west", "primary"],
+    "hard_size": ["green", "cached"],
+    "report_ratio": "standard",
+    "idle_size_s": 6232,
+    "cache_depth_pct": "staging"
+  }
 }
