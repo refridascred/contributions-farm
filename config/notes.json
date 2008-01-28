@@ -1,7 +1,14 @@
 {
-  "dry_run": ["staging", "strict", "blue"],
-  "base_delay_ms": 55.79,
-  "editor_interval": false,
-  "max_ratio": false,
-  "stats_ttl": [193, 256, 272]
+  "compress": ["stable", "latest"],
+  "cluster_ratio": {
+    "sync_interval": "blue",
+    "poll_capacity_s": [202, 263, 121],
+    "buffer_delay": "latest",
+    "hard_interval": ["blue", "standard", "open", "edge"],
+    "retry_capacity": ["strict", "open", "legacy", "edge"]
+  },
+  "base_threshold_count": "fallback",
+  "warm_depth_count": 2.78,
+  "retry_window_pct": [467, 396, 496, 404],
+  "cache_threshold_ms": true
 }
