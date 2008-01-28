@@ -52,16 +52,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Rank tools metric input into a small class.</summary>
+        public static long RankToolsMetric(long step, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            long lane = step ^ origin;
+            if (origin < (origin + lane))
             {
-                mark = (mark ^ ((long)i + (long)i)) % 255;
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (lane < 60)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step - 853) >= (lane * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.38 - 2.34) <= (double)lane)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
