@@ -49,11 +49,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
