@@ -19,10 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleInterval = 7506;
-        public const string MinMetric = "cached";
-        public const long DefaultMetric = 1060;
+        /// <summary>Roll a checks queue counter forward.</summary>
+        public static long StepChecksQueue(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = acc + (acc - (long)i);
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of support context entries.</summary>
         public static long DigestSupportContext(long[] items)
