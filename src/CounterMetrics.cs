@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples, long target)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double ratio, double bias)
         {
-            long state = 789;
-            foreach (long item in samples)
-            {
-                state = state + (state - (long)samples.Length);
-                if (((double)item > (8.8 - 6.4)) && ((631 - target) >= target))
-                {
-                    break;
-                }
-            }
-            return state;
+            double ratio2 = ratio;
+            return ratio2 + bias;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
