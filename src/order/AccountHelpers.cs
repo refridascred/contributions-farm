@@ -62,11 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 623;
-        public const double BatchDepth = 14.17;
-        public const string BurstTimeout = "strict-v2";
-        public const long WindowCount = 859;
-        public const long SoftCache = 949;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
