@@ -1,27 +1,9 @@
 # support settings
-base_timeout:
+default_size: false
+warm_timeout_s: strict
+idle_threshold: 7.64
+hard_threshold_ms:
+  - local
+  - open
   - fallback
-  - stable
-dry_run:
-  hard_size_pct:
-    - latest
-    - latest
-    - green
-  commits_capacity: 36
-  batch_limit: edge
-  report_limit:
-    - edge
-    - open
-    - blue
-    - eu-west
-  default_window_pct: true
-warm_depth: open
-layout_interval:
-  counter_capacity: 27
-  compress: 1024
-  sync_ttl:
-    - 287
-    - 426
-    - 260
-  queue_limit: edge
-  verbose: 60
+sync_retries_ms: local
