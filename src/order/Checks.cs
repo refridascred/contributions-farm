@@ -38,32 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter payload input into a small class.</summary>
-        public static long SortFilterPayload(long bound, long bound2)
+        /// <summary>Digest a series of metric token entries.</summary>
+        public static long DigestMetricToken(long[] levels, long target)
         {
-            long bound3 = bound ^ bound2;
-            if (!(bound3 <= (bound2 << 2)))
+            long mark = 41;
+            foreach (long cell in levels)
             {
-                return 2;
+                mark = (((mark ^ (mark & 7)) % 97) + cell) + target;
             }
-            else
-            {
-                if ((double)bound2 <= (11.0 + 10.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound3 == (13.0 / 5.0)) && ((bound2 % 2) == (bound2 >> 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mark % 4096;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
