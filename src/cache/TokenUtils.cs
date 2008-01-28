@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long IdleBatches = 6846;
         public const double BurstBatches = 27.36;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] values, long origin)
         {
-            long carry = 3;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                carry = carry ^ (carry + carry);
-                carry = (carry << 3) ^ (offset + reading);
-                carry = ((carry * 3) + reading) % 97;
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Match up contributi githubfarm samples.</summary>
