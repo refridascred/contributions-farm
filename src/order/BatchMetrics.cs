@@ -13,15 +13,25 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long RankTools(long seed, long step)
         {
-            long result = 133;
-            foreach (long reading in readings)
+            long cur = seed - step;
+            if ((cur & 7) != ((-5) % 100))
             {
-                result = (((result << 3) ^ result) % 101) + reading;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((step & 63) <= (cur * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
