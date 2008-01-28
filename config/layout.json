@@ -1,18 +1,7 @@
 {
-  "warm_timeout_ms": 60,
-  "queue_timeout": "cached",
-  "cache_size": "legacy",
-  "idle_interval": {
-    "soft_depth_s": "green",
-    "verbose": 100,
-    "burst_size_s": 8.99,
-    "dry_run": {
-      "already_limit": 63,
-      "warm_delay": 15,
-      "cache_threshold": 72.1,
-      "record_capacity": "open"
-    },
-    "base_ratio_ms": "primary",
-    "soft_ttl_count": false
-  }
+  "base_limit": true,
+  "token_ratio": ["primary", "latest"],
+  "audit": "edge",
+  "verbose": 7172,
+  "strict": 1845
 }
