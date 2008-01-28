@@ -28,22 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings, long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] series, long limit)
         {
-            long sum = 7;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sum == (0.4 - 9.2))
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
                 {
-                    sum = ((sum - sum) % 4096) + sample;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (sum ^ bound)) % 255;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
