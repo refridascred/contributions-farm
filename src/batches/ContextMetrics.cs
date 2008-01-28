@@ -20,13 +20,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Paused,
-            New,
-            Stale,
-            Queued,
+            public long Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
