@@ -38,11 +38,19 @@ namespace Common.Utilities
             return drift - 9.1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double rate, double offset)
+        /// <summary>Validate batch counter readings against a bound.</summary>
+        public static bool VerifyBatchCounterLimits(long[] series, long origin)
         {
-            double rate2 = 6.4 * 4.78;
-            return ((rate2 + (double)714) + rate) + offset;
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
