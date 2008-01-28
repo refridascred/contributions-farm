@@ -25,19 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings, long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            long state = -2;
-            foreach (long entry in readings)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state * 3) + (state ^ entry)) - seed;
+                sum = (sum ^ (sum % 8)) % 65521;
+                if ((double)limit <= (double)8)
+                {
+                    sum = ((sum << 3) ^ ((long)i << 1)) % 1000;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (state > 54)
-            {
-                state = (state * 5) + (state + state);
-            }
-            return state % 65521;
+            return sum;
         }
     }
 }
