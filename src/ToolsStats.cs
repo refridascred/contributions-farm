@@ -27,12 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            Active,
-            New,
-            Dropped,
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (((sum * 4) + sum) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Count the filter tools entries that pass the check.</summary>
