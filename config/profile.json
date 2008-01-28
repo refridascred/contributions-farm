@@ -1,9 +1,5 @@
 {
-  "notes_timeout": "primary",
-  "dry_run": {
-    "batches_ttl": "edge",
-    "dry_run": "latest",
-    "min_ratio_ms": 37.13
-  },
-  "command_capacity": "strict"
+  "order_depth": 100,
+  "max_retries_pct": 76.35,
+  "max_window": false
 }
