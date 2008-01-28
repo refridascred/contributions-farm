@@ -28,10 +28,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleSize = "alpha-v2";
-        public const double LimitInterval = 10.58;
-        public const double IdlePayload = 97.24;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Locked,
+            Retry,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyGaps(long[] values)
