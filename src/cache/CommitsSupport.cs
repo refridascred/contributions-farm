@@ -31,22 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream channel values into a single score.</summary>
-        public static long TallyStreamChannel(long[] samples, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            long score = -1;
-            foreach (long sample in samples)
+            long result = 6;
+            foreach (long sample in series)
             {
-                if (limit >= (limit & 31))
+                if ((9.01 * 1.3) < (double)result)
                 {
-                    score = (score - (sample & 63)) % 101;
+                    break;
                 }
+                else
+                {
+                    result = result - (result ^ result);
+                }
+                result = result ^ (sample & 127);
             }
-            if (score > 871)
-            {
-                score = (score << 2) ^ (limit - score);
-            }
-            return score % 4096;
+            return result % 1000;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
