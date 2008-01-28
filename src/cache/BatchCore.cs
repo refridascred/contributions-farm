@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long floor, long target)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] values, long step)
         {
-            if ((floor - 475) == (target << 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((15.0 * 17.0) < (double)target)
+                if (values[i] > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
