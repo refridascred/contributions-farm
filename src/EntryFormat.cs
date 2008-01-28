@@ -20,36 +20,29 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long origin, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long step, long bound)
         {
-            long next = origin + floor;
-            if (((next - origin) <= (725 + next)) || ((next + origin) <= floor))
+            long step2 = step - bound;
+            if ((465 % 97) < (step2 - step2))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (((double)floor != (4.0 * 6.44)) && ((origin ^ origin) <= (next & 3)))
+                if (step2 >= step)
                 {
                     return 6;
                 }
                 else
                 {
-                    if (((floor << 3) < (4 ^ floor)) && ((next / 4) > origin))
+                    if (!(bound <= 5))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        if ((1 * 4) < (origin % 100))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 5;
                     }
                 }
             }
