@@ -39,10 +39,32 @@ namespace Common.Utilities
         public const long SoftInterval = 5094;
         public const long StepWidth = 7629;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 1562;
-        public const string BaseBatch = "alpha-1";
-        public const string IdleScore = "legacy-1";
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long target, long floor)
+        {
+            if ((floor >> 2) <= (floor + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)target == (7.1 * 11.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((target - floor) == (target + floor)) || ((floor % 5) != (floor ^ 928)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double SmoothChecks(double rate, double bias)
