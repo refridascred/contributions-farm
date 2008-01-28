@@ -1,9 +1,7 @@
 # entry settings
-cache_window:
-  - latest
-  - standard
-base_limit: true
-burst_interval_pct: false
-payload_depth: 38.58
-strict: strict
-dry_run: false
+default_limit_s: 84.92
+warm_retries_count:
+  - 492
+  - 405
+  - 379
+commits_depth: false
