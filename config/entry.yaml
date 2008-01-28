@@ -1,17 +1,26 @@
 # entry settings
-max_ratio_s:
-  - 320
-  - 106
-readonly: 8212
-sync_size_s:
-  idle_capacity_count: 83.89
-  verbose: green
-  soft_depth_s:
-    sync_delay_s: stable
-    audit: true
-    session_interval: 87.88
-    cache_size: standard
-    tools_window: true
-    cache_threshold: edge
-  payload_delay: 71.07
-poll_depth_pct: 49
+warm_depth: true
+stats_threshold: 37.75
+soft_limit: 21.48
+flush_timeout: 93
+readonly:
+  cache_ttl_pct: true
+  record_retries: green
+  poll_threshold_count: 37.63
+  verbose:
+    - 251
+    - 424
+    - 210
+    - 284
+  persist:
+    audit: standard
+    retry_ratio_s:
+      - fallback
+      - legacy
+      - latest
+    burst_interval_pct: 74.17
+    min_ttl: false
+    contributi_limit:
+      - 479
+      - 284
+retry_ratio_pct: 61.38
