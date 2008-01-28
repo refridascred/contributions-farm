@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxFactor = "local-1";
-        public const long BatchContributi = 1316;
-        public const long RetryContributi = 5132;
-        public const string RetryFactor = "standard-edge";
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 12.41;
+        public const long LimitAlready = 2729;
+        public const long BurstAlready = 8718;
+        public const long CacheLevel = 9608;
+        public const long HardAlready = 803;
 
         /// <summary>Project the next record value.</summary>
         public static double ScaleRecord(double gain, double bias)
