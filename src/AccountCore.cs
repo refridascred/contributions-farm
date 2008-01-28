@@ -33,11 +33,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a stats already reading.</summary>
-        public static double SmoothStatsAlready(double scale, double offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long offset, long seed)
         {
-            double gain = 1.0;
-            return gain - (offset + scale);
+            if ((241 >> 3) >= (offset >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed & 63) <= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)1 != (double)offset) || ((seed * 3) > (seed & 255)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
