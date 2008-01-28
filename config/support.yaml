@@ -1,17 +1,19 @@
 # support settings
-readonly: true
-window_timeout:
-  compress: 7
-  poll_ratio_s: true
-  burst_threshold_ms: green
-cache_ttl_pct:
-  - 434
-  - 89
-  - 288
-  - 81
-soft_threshold_s:
-  - eu-west
-  - cached
-  - strict
-max_delay_pct: 500
-default_interval: 100
+enabled:
+  idle_limit_ms: 16.79
+  token_window: false
+  idle_depth_pct: 5641
+poll_ttl_ms: 250
+persist: cached
+buffer_ratio:
+  soft_limit_s:
+    - latest
+    - green
+    - green
+    - standard
+  poll_delay: fallback
+  poll_size_s:
+    - 452
+    - 273
+    - 133
+retry_timeout: 30.58
