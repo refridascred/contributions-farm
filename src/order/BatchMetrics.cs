@@ -29,26 +29,18 @@ namespace Common.Utilities
         public const double BaseQueue = 50.55;
         public const double SoftQueue = 47.16;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                carry = carry - (carry % 2);
-                if ((target > ((long)i * 2)) && ((target - carry) != ((long)i >> 3)))
+                if ((value << 1) > (value * 3))
                 {
-                    carry = ((carry << 2) ^ target) % 255;
+                    count = count + 1;
                 }
-                else
-                {
-                    carry = ((carry * 3) + (carry + 0)) % 97;
-                    carry = (carry - ((long)i ^ target)) % 97;
-                }
-                carry = carry - (carry - target);
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a command entry.</summary>
