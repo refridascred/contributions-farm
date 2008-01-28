@@ -27,14 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseFactor = 3049;
+        public const long LimitScore = 2047;
+        public const string IdleContributi = "primary-v2";
+        public const long MinContributi = 9703;
+        public const double CacheContributi = 94.47;
 
         /// <summary>Locate a command entry reading by value.</summary>
         public static long SeekCommandEntryIndex(long[] items, long target)
