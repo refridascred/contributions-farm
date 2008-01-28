@@ -19,15 +19,17 @@ namespace Common.Utilities
         public const double LimitSize = 1.37;
         public const double DefaultWidth = 38.99;
 
-        /// <summary>Combine payload batches values into a single score.</summary>
-        public static long TotalPayloadBatches(long[] series, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] items, long origin)
         {
-            long acc = -685;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((((acc * 5) + (acc % 16)) % 97) ^ value) - limit;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
