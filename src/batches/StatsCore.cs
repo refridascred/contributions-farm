@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] values, long target)
+        /// <summary>Blend two contributi stream measurements.</summary>
+        public static double SmoothContributiStream(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            double bias2 = (double)48 - rate;
+            for (int i = 0; i < 2; i++)
             {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = ((bias2 + (bias2 / 8.0)) - (double)(long)i) - bias;
             }
-            return ready;
+            return bias2 + rate;
         }
 
         /// <summary>Hold a payload summary.</summary>
