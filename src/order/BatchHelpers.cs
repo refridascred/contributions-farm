@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] levels)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((32 - seen) <= seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 3) ^ sample;
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
