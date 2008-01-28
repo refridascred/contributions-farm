@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long result = 2;
+            foreach (long entry in samples)
             {
-                if (((datum << 1) >= (55 % 60)) || ((hits & 63) > (4 / 4)))
+                result = result + (entry ^ result);
+                if (entry > (result + entry))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (result < (-82))
+            {
+                result = ((result << 2) ^ ((long)samples.Length >> 1)) % 255;
+            }
+            return result % 97;
         }
 
         /// <summary>Combine format values into a single score.</summary>
