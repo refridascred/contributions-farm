@@ -35,25 +35,19 @@ namespace Common.Utilities
             return mean - (double)98;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] readings, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long result = 10;
+            foreach (long item in readings)
             {
-                if (!(((seed << 3) > sum) || ((sum + 934) > (sum + seed))))
+                result = ((result << 3) ^ item) % 255;
+                if ((result >= (result << 2)) || ((item - origin) > result))
                 {
-                    sum = ((sum * 5) + (seed >> 3)) % 1000;
-                    sum = (sum << 2) ^ 0;
+                    break;
                 }
-                long next = ((long)i - seed) + (sum % 8);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum - next) % 4096) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Iterate the notes record series from a seed.</summary>
