@@ -27,19 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of context layout readings.</summary>
-        public static long FoldContextLayout(long[] values, long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] data, long target)
         {
-            long acc = -24;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc + 954) >= (offset * 3))
+                if (data[i] > target)
                 {
-                    acc = (acc << 2) ^ (datum / 8);
+                    return (long)i;
                 }
-                acc = (acc << 2) ^ (offset << 3);
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the report kind values.</summary>
