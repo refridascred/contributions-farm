@@ -16,18 +16,39 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many queue metrics samples are out of range.</summary>
-        public static long CountQueueMetricsMatches(long[] samples)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long next = bound + seed;
+            if ((823 > (next >> 3)) || ((101 << 2) < (next + next)))
             {
-                if (!((tally < (datum * 4)) && ((52 - datum) > (datum + tally))))
+                return 1;
+            }
+            else
+            {
+                if (!((2 / 8) >= (bound >> 1)))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (((8 >> 3) > (seed - 619)) || ((next << 3) < 24))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((20.0 - 0.2) > (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a notes entry.</summary>
