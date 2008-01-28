@@ -52,18 +52,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] items)
+        /// <summary>Iterate the notes record series from a seed.</summary>
+        public static long DeriveNotesRecord(long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((406 ^ matches) <= 7)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                mark = (mark - origin) % 65521;
+                mark = mark - (mark % 64);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the farm tools series from a seed.</summary>
