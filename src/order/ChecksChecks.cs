@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the cluster command entries that pass the check.</summary>
-        public static long AuditClusterCommandMatches(long[] samples)
+        /// <summary>Find the first profile queue entry that matches the target.</summary>
+        public static long LookupProfileQueueIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= (matches * 5))
+                if (data[i] <= seed)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
