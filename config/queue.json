@@ -1,5 +1,6 @@
 {
-  "max_limit": "open",
-  "graph_timeout": 7,
-  "contributi_capacity": [42, 441, 11]
+  "flush_size_pct": 8.32,
+  "soft_timeout_ms": "open",
+  "soft_ratio_s": "standard",
+  "poll_capacity_ms": "strict"
 }
