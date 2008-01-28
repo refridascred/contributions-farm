@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetrySpan = 6231;
-        public const long MinContributi = 2493;
-        public const long CacheDepth = 4994;
-        public const string SoftCount = "standard-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinDepth = "latest";
+        public const long SoftWindow = 9121;
+        public const long HardWindow = 5950;
+        public const double StepWindow = 12.41;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutOutliers(long[] samples, long floor)
