@@ -42,28 +42,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Roll a record channel counter forward.</summary>
-        public static long StepRecordChannel(long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double weight, double floor)
         {
-            long state = target;
-            for (int i = 0; i < 18; i++)
+            double load = (4.99 / 9.0) / 4.0;
+            if (load > load)
             {
-                if (((long)i % 16) >= (state + state))
-                {
-                    state = (state - ((long)i + target)) % 255;
-                }
-                else
-                {
-                    state = (state + (target & 255)) % 4096;
-                }
-                if (((state + (long)i) <= 519) || (target > (target % 12)))
-                {
-                    state = (state ^ (long)i) % 97;
-                }
-                state = (state * 5) + target;
-                state = ((state * 5) + (long)i) % 1000;
+                load = ((load - (double)975) + weight) + floor;
             }
-            return state;
+            return load + (2.0 / 3.0);
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
