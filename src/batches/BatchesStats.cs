@@ -22,32 +22,19 @@ namespace Common.Utilities
         public const double WindowBudget = 68.65;
         public const double IdleCounter = 65.78;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long seed, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] items, long offset)
         {
-            long edge = seed - origin;
-            if (((7.0 - 7.51) > (double)seed) && ((seed * 3) == (edge & 255)))
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(seed >= (28 ^ edge)))
+                if (item != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin < (8 + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
