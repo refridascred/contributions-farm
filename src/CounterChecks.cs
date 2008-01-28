@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Closed,
-            Failed,
-            Queued,
-            Done,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultInterval = "alpha-edge";
+        public const string IdleCount = "local-edge";
+        public const string BatchCommits = "latest-1";
+        public const string LimitLevel = "open-edge";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] values, long origin)
