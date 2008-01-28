@@ -22,19 +22,14 @@ namespace Common.Utilities
         public const double WindowBudget = 68.65;
         public const double IdleCounter = 65.78;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] items, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Closed,
+            Stale,
+            Active,
+            Locked,
         }
     }
 }
