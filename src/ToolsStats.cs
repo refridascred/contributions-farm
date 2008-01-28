@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Stale,
-            Synced,
-            Pending,
-            New,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 66.27;
+        public const string CacheBuffer = "cached-1";
+        public const long RetryLevel = 9206;
+        public const long LimitBuffer = 2790;
+        public const long WindowBuffer = 2825;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] levels, long target)
