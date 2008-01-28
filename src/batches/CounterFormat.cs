@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Idle,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "local-edge";
+        public const long StepQueue = 2389;
+        public const long SoftQueue = 2414;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheSize = 9534;
