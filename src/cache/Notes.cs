@@ -44,14 +44,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Active,
-            Paused,
-            Dropped,
-            Stale,
             Pending,
+            Draft,
+            Ready,
         }
     }
 }
