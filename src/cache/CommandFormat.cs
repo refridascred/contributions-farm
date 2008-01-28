@@ -54,17 +54,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first batch context entry that matches the target.</summary>
-        public static long LookupBatchContextIndex(long[] series, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Retry,
         }
     }
 }
