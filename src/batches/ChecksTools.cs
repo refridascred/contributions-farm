@@ -31,16 +31,32 @@ namespace Common.Utilities
         public const long RetryWidth = 5522;
         public const long SoftOrder = 2336;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data, long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long origin, long floor)
         {
-            long carry = 8;
-            foreach (long value in data)
+            long prev = origin + floor;
+            if ((origin >= (-26)) && (5.59 < (double)prev))
             {
-                carry = ((carry << 2) ^ (step + carry)) % 97;
-                carry = ((carry << 2) ^ value) % 97;
+                return 2;
             }
-            return carry % 65521;
+            else
+            {
+                if ((3.54 + 1.93) > (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((64 >> 2) <= (prev / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
