@@ -14,18 +14,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = sum + ((long)i - bound);
-                sum = ((sum << 3) ^ bound) % 4096;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstCount = 2560;
+        public const long RetryRecord = 8258;
+        public const long BurstRecord = 4555;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string RetryBudget = "strict";
