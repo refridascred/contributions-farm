@@ -35,31 +35,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            if (1.51 <= (double)bound)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound + limit) < (bound * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + bound) < (bound << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Match up profile samples.</summary>
