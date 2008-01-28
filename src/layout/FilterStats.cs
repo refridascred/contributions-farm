@@ -42,5 +42,23 @@ namespace Common.Utilities
         public const double BatchLevel = 89.69;
         public const long BaseSize = 2853;
         public const string SoftReport = "strict-1";
+
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + 75) > 9)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
