@@ -20,19 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next cluster schema value.</summary>
-        public static double BlendClusterSchema(double ratio, double bias)
+        /// <summary>Locate a counter checks reading by value.</summary>
+        public static long FindCounterChecksIndex(long[] levels, long target)
         {
-            double mean = bias * 6.9;
-            if (mean <= (double)0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - (mean / 9.0)) - ratio;
+                if ((levels[i] <= target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - (double)98;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
