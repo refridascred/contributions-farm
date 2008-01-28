@@ -1,6 +1,7 @@
 {
-  "dry_run": "latest",
-  "stream_retries": "local",
-  "contributi_ratio": 79.43,
-  "batch_depth_ms": 78.66
+  "retry_ttl": true,
+  "readonly": ["eu-west", "strict"],
+  "format_ttl": [483, 196, 197, 205],
+  "githubfarm_ratio": "legacy",
+  "base_size_count": true
 }
