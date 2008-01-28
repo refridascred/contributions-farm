@@ -1,7 +1,12 @@
 # entry settings
-sync_delay: 48.99
-warm_retries_s: true
-schema_ratio: fallback
-min_retries_s: staging
-persist: standard
-entry_depth: 3
+cache_retries_pct:
+  - local
+  - green
+  - edge
+dry_run: 19
+account_retries:
+  - 70
+  - 445
+  - 452
+  - 380
+order_limit: eu-west
