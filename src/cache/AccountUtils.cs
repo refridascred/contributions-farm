@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string DefaultProfile = "stable-v2";
         public const long RetryProfile = 6492;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] levels)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item <= 4.7)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
