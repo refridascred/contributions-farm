@@ -29,16 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] data, long seed)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] data, long limit)
         {
-            long mix = 23;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix * 2) + (mix & 63)) % 97) ^ sample;
-                mix = (mix ^ (seed - (long)data.Length)) % 65521;
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the checks phase values.</summary>
