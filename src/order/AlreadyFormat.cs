@@ -37,31 +37,25 @@ namespace Common.Utilities
             return mean - (double)98;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long seed, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long seed)
         {
-            if (seed > (seed % 64))
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed >> 2) < (bound - bound)) && ((double)bound == (double)seed))
+                if (!(((seed << 3) > sum) || ((sum + 934) > (sum + seed))))
                 {
-                    return 7;
+                    sum = ((sum * 5) + (seed >> 3)) % 1000;
+                    sum = (sum << 2) ^ 0;
                 }
-                else
+                long next = ((long)i - seed) + (sum % 8);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((double)bound == (6.5 / 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = ((sum - next) % 4096) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Iterate the notes record series from a seed.</summary>
