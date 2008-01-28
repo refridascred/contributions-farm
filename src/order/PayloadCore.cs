@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Validate account checks readings against a bound.</summary>
+        public static bool ValidateAccountChecksRange(long[] data, long bound)
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a support record.</summary>
