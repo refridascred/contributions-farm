@@ -21,19 +21,11 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenBounds(long[] samples, long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Adjust a format reading.</summary>
