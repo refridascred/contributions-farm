@@ -27,15 +27,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a githubfarm already counter forward.</summary>
-        public static long StepGithubfarmAlready(long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] items, long step)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (entry >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
     }
 }
