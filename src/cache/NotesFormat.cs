@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools batches readings against a bound.</summary>
-        public static bool CheckToolsBatchesBounds(long[] readings, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long score = 50;
+            foreach (long item in data)
             {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score << 3) ^ (item >> 2)) - origin;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
