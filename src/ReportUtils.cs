@@ -46,11 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] readings, long seed)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((seed + item) >= (item + 213))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
