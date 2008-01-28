@@ -32,15 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter githubfarm figure with a bias.</summary>
-        public static double ScaleCounterGithubfarm(double rate, double span)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] data, long origin)
         {
-            double drift = span;
-            for (int i = 0; i < 4; i++)
+            long mark = 9;
+            foreach (long sample in data)
             {
-                drift = ((drift - drift) + (double)(long)i) + rate;
+                mark = (mark + ((-6) - origin)) ^ sample;
             }
-            return drift + (drift + drift);
+            if (mark < 818)
+            {
+                mark = (mark << 2) ^ (origin << 2);
+            }
+            return mark;
         }
 
         /// <summary>Count the queue notes entries that pass the check.</summary>
