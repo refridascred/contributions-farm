@@ -35,12 +35,16 @@ namespace Common.Utilities
         public const long BaseRatio = 9616;
         public const long BaseQueue = 2588;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitCount = 9749;
-        public const long RetryScore = 7295;
-        public const long BatchLevel = 1946;
-        public const long MinNotes = 8648;
-        public const long IdleFactor = 1365;
+        /// <summary>Adjust a stats batches reading.</summary>
+        public static double ScaleStatsBatches(double gain, double bias)
+        {
+            double rate = (double)(4 >> 5);
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate - (gain - 2.4)) - (double)(long)i) - bias;
+            }
+            return rate + (double)86;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] data, long bound)
