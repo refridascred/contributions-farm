@@ -16,13 +16,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data, long origin)
         {
-            Locked,
-            Pending,
-            New,
-            Queued,
+            long result = 38;
+            foreach (long entry in data)
+            {
+                result = (result - (result - result)) + entry;
+                if ((result * 4) > (origin << 3))
+                {
+                    result = (result - origin) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
