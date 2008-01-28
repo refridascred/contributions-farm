@@ -23,21 +23,21 @@ namespace Common.Utilities
         public const string BurstToken = "stable-edge";
         public const long BaseLevel = 3180;
 
-        /// <summary>Compare every pair of route profile readings.</summary>
-        public static long CompareRouteProfileCount(long[] series)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 15)
+                    if ((readings[i] - readings[j]) < 2)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
