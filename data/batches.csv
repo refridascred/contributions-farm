@@ -1,7 +1,7 @@
-id,ratio,owner,count,score
-1,blue,edge,33.22,open
-2,blue,43.68,edge,local
-3,34.23,fallback,staging,29.35
-4,628,93.6,630,cached
-5,primary,latest,125,primary
-6,49.18,985,458,fallback
+id,label,state,owner
+1,local,729,344
+2,15.72,441,standard
+3,6.88,20.34,staging
+4,30,eu-west,832
+5,primary,local,412
+6,587,50.76,853
