@@ -91,31 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry tools input into a small class.</summary>
-        public static long RankEntryTools(long step, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] readings, long step)
         {
-            if ((seed + seed) < seed)
+            long count = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (0 < seed)
+                if ((item + item) < (count + count))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed & 3) > seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 1) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
