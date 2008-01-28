@@ -22,32 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long floor)
         {
-            long diff = origin + floor;
-            if (floor > (diff % 12))
+            long score = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                score = score - ((long)i << 2);
+                score = (score << 2) ^ floor;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin + 83) <= (origin % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.2 - 4.6) >= (double)diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the profile status values.</summary>
