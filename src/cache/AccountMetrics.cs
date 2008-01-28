@@ -79,11 +79,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultSize = 77.97;
-        public const double IdleProfile = 27.5;
-        public const double BatchDepth = 67.5;
-        public const long BatchProfile = 6670;
-        public const long LimitProfile = 5315;
+        /// <summary>Compare every pair of route record readings.</summary>
+        public static long MatchRouteRecordCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
