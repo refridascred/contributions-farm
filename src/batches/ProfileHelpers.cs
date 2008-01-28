@@ -18,12 +18,21 @@ namespace Common.Utilities
             return bias - (ratio - 6.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheFactor = 2908;
-        public const long MinChecks = 9918;
-        public const long MaxChecks = 9487;
-        public const long BatchChecks = 6364;
-        public const long BaseRatio = 6636;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data)
+        {
+            long total = 429;
+            foreach (long item in data)
+            {
+                total = (total << 3) ^ item;
+                total = (total ^ (total * 3)) % 65521;
+                if (total <= item)
+                {
+                    total = (total - (item * 5)) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
