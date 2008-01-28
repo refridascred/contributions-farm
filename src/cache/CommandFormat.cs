@@ -15,12 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
             Ready,
+            Retry,
             New,
-            Dropped,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
