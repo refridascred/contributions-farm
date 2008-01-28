@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count route checks pairs that satisfy a relation.</summary>
-        public static long OverlapRouteChecksCount(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 5;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (((carry << 3) ^ reading) % 1000) + step;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Locate a schema tools reading by value.</summary>
