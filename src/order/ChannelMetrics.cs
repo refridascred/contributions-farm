@@ -18,35 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long seed, long offset)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long bound, long target)
         {
-            if ((offset + 88) <= (offset ^ offset))
+            if ((bound >> 1) >= (135 / 8))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((offset - offset) > (offset ^ offset))
+                if ((double)bound <= 18.0)
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if (!((0 % 24) >= seed))
+                    if (((bound - bound) < 589) && ((double)target <= (4.3 + 8.58)))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        if (((offset >> 4) == (seed + seed)) || ((offset & 1) >= (4 / 8)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 2;
                     }
                 }
             }
