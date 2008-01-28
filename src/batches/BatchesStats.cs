@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long floor)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (8 < result)
+                if ((data[i] >= floor) && ((data[i] % 2) == 0))
                 {
-                    result = ((result << 3) ^ (floor - (long)i)) % 4096;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
