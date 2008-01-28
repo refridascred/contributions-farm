@@ -19,16 +19,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score << 3) ^ 2) % 97;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            New,
+            Synced,
+            Retry,
         }
     }
 }
