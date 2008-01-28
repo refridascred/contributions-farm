@@ -31,18 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] data, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((limit & 7) <= hits) && (entry > (hits % 97)))
+                if ((datum * 4) >= 941)
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
