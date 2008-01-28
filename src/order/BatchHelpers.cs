@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit metrics cache readings against a rule.</summary>
-        public static long MeasureMetricsCacheMatches(long[] data, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (bound < (bound + bound))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a token options.</summary>
