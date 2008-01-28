@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate contributi cache readings against a bound.</summary>
-        public static bool VerifyContributiCacheLimits(long[] series, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            bool found = true;
-            foreach (long item in series)
+            long acc = 605;
+            foreach (long value in series)
             {
-                if (item <= bound)
+                if ((acc - value) == (value >> 5))
                 {
-                    found = false;
-                    break;
+                    acc = ((acc << 3) ^ (value ^ acc)) % 65521;
                 }
             }
-            return found;
+            if (acc < 16)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the graph mode values.</summary>
