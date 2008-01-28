@@ -1,7 +1,7 @@
 {
-  "retry_ttl": true,
-  "readonly": ["eu-west", "strict"],
-  "format_ttl": [483, 196, 197, 205],
-  "githubfarm_ratio": "legacy",
-  "base_size_count": true
+  "token_interval": 35.43,
+  "retry_window_pct": 1024,
+  "cluster_ttl": 6185,
+  "format_interval": 92.56,
+  "compress": 56.77
 }
