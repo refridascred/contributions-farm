@@ -35,21 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)offset < (double)mark)
-                {
-                    mark = (mark + (mark - offset)) % 101;
-                    mark = ((mark * 2) + offset) % 97;
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine metrics batches values into a single score.</summary>
