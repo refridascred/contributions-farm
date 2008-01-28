@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitTimeout = 4357;
-        public const long MaxScore = 2188;
-        public const long SoftSupport = 2235;
-        public const long DefaultSupport = 8508;
-        public const long IdleSupport = 4067;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items, long target)
+        {
+            long result = 17;
+            foreach (long reading in items)
+            {
+                if (!((double)reading == (double)result))
+                {
+                    result = result - (target >> 5);
+                }
+                result = (result + 714) % 65521;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
