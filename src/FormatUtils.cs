@@ -27,10 +27,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 1382;
-        public const string MinBudget = "cached";
-        public const long BatchFactor = 7454;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Dropped,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
