@@ -46,12 +46,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftWidth = "fallback-edge";
-        public const long MinSize = 4570;
-        public const long CacheContributi = 2431;
-        public const long LimitScore = 4582;
-        public const long BaseScore = 7081;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepInterval = 831;
+        public const string HardScore = "legacy-v2";
+        public const long MinRatio = 4268;
+        public const string IdleLevel = "alpha";
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
