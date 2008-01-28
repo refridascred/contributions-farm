@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long step)
+        /// <summary>Look up the position of a queue route sample.</summary>
+        public static long LocateQueueRouteIndex(long[] levels, long limit)
         {
-            long carry = 5;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (((carry << 3) ^ reading) % 1000) + step;
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the window graph entries that pass the check.</summary>
