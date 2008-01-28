@@ -16,19 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a farm report figure with a bias.</summary>
-        public static double ScaleFarmReport(double bias, double span)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            double load = span - (span / 5.0);
-            if (load < (span + 20.0))
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                load = (load - 1.0) - bias;
+                mark = ((mark << 3) ^ (3 - floor)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                load = load + (double)287;
-            }
-            return load - 5.0;
+            return mark;
         }
 
         /// <summary>Hold a graph entry.</summary>
