@@ -1,13 +1,6 @@
 {
-  "audit": "cached",
-  "hard_depth_ms": {
-    "persist": "strict",
-    "dry_run": "staging",
-    "max_window": 500,
-    "channel_ttl": true,
-    "compress": false
-  },
-  "verbose": 1643,
-  "base_limit": "stable",
-  "flush_retries_ms": 60
+  "batch_capacity_pct": 57,
+  "compress": "open",
+  "enabled": 35.66,
+  "audit": ["legacy", "primary", "blue", "standard"]
 }
