@@ -46,11 +46,40 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultDepth = 7496;
-        public const long CacheCommits = 2980;
-        public const string RetryInterval = "primary";
-        public const long LimitCount = 8727;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long origin, long floor)
+        {
+            long cur = origin + floor;
+            if (!((floor >> 4) < origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8 / 6) < floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (cur < origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((13.0 - 7.2) <= (double)floor) && ((69 + origin) > origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] items)
