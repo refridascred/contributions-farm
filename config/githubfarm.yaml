@@ -1,17 +1,8 @@
 # githubfarm settings
-burst_ttl_ms: 100
-soft_ttl_count:
-  max_timeout_pct:
-    counter_ratio: 20.8
-    poll_interval_count: eu-west
-    cache_interval: 250
-  profile_delay: latest
-  poll_size_ms: edge
-  sync_size: 500
-  enabled: false
-base_depth_s:
-  - 298
-  - 183
-  - 81
-burst_ratio: 27.2
-layout_interval: blue
+hard_capacity:
+  - blue
+  - open
+poll_window: 1699
+min_size_pct: 89.99
+sync_ratio_s: false
+audit: 3176
