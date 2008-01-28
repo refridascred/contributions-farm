@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Audit record stats readings against a rule.</summary>
+        public static long MeasureRecordStatsGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((tally - 1) > tally) || (((double)tally != (2.8 * 7.3)) && ((tally + sample) <= (tally << 3))))
                 {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Find the first window farm entry that matches the target.</summary>
