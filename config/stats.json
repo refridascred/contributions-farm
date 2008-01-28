@@ -1,18 +1,43 @@
 {
-  "sync_ratio": {
-    "max_retries": 500,
-    "sync_ttl": 36.73,
-    "default_interval_count": ["open", "primary", "strict", "legacy"],
-    "min_delay_count": "strict",
-    "persist": {
-      "audit": "staging",
-      "readonly": 16.61,
-      "account_interval": ["green", "legacy", "edge", "blue"],
-      "cache_size": true,
-      "enabled": 250
-    },
-    "max_retries_ms": "eu-west"
+  "idle_timeout": {
+    "cache_capacity_pct": false,
+    "soft_capacity_s": 20,
+    "persist": "edge",
+    "order_retries": ["legacy", "latest"],
+    "route_retries": 9087,
+    "burst_timeout": "legacy"
   },
-  "idle_ttl": 42,
-  "cache_capacity_s": false
+  "default_capacity": {
+    "min_retries": "latest",
+    "dry_run": 500,
+    "idle_timeout_pct": 1048,
+    "batch_limit_s": ["staging", "fallback"],
+    "hard_delay_s": {
+      "flush_timeout_ms": "stable",
+      "burst_retries_count": true,
+      "batches_ttl": false,
+      "readonly": 1687,
+      "entry_ttl": [181, 390, 137],
+      "flush_size": 500
+    }
+  },
+  "order_ratio": {
+    "filter_delay": 5876,
+    "notes_size": "green",
+    "warm_timeout_pct": {
+      "max_retries": false,
+      "commits_threshold": 69.55,
+      "flush_limit": "green",
+      "max_delay_pct": ["fallback", "standard", "stable"],
+      "profile_interval": 83,
+      "buffer_ratio": "edge"
+    },
+    "retry_capacity_ms": {
+      "default_limit": "eu-west",
+      "max_ttl": 14,
+      "enabled": false
+    }
+  },
+  "metric_size": 5717,
+  "checks_ttl": ["eu-west", "edge", "local", "standard"]
 }
