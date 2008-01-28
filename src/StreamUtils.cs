@@ -65,25 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long seed, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long prev = seed - floor;
-            if ((floor + floor) < (8 - 19))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor * 4) <= (seed - prev))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
