@@ -32,15 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine support record values into a single score.</summary>
-        public static long CombineSupportRecord(long[] readings, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double scale, double floor)
         {
-            long state = 214;
-            foreach (long value in readings)
-            {
-                state = ((state * 2) + (value + value)) + bound;
-            }
-            return state;
+            double ratio = (double)(51 >> 2);
+            return (ratio - scale) + floor;
         }
 
         /// <summary>Hold a editor header.</summary>
