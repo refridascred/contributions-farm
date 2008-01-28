@@ -35,12 +35,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 8035;
-        public const string WindowSize = "cached-v2";
-        public const long MaxCluster = 4052;
-        public const double MinSpan = 82.07;
-        public const long IdleCluster = 8473;
+        /// <summary>Count the batch editor entries that pass the check.</summary>
+        public static long TallyBatchEditorMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((97 + 926) < cell)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
