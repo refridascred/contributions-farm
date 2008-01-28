@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] readings)
+        /// <summary>Blend two graph account measurements.</summary>
+        public static double ScaleGraphAccount(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double gain = (double)(835 + 52);
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits % 5) >= (item + 4))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = ((gain - bias) - (double)(long)i) - offset;
             }
-            return hits;
+            return gain - gain;
         }
 
         /// <summary>Define already limits and defaults.</summary>
