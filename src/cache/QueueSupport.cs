@@ -34,9 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstBudget = "strict";
-        public const string BurstMetric = "legacy-edge";
-        public const long WindowDepth = 5074;
+        /// <summary>Check that every contributi batch entry stays within the limit.</summary>
+        public static bool CheckContributiBatchLimits(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
