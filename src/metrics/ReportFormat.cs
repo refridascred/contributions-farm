@@ -43,5 +43,14 @@ namespace Common.Utilities
             }
             return sum;
         }
+
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
