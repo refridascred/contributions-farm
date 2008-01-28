@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long carry = 17;
-            foreach (long entry in readings)
-            {
-                if ((785 % 100) >= (carry & 127))
-                {
-                    carry = (carry + carry) + entry;
-                }
-            }
-            if (carry > (-91))
-            {
-                carry = carry + (carry * 2);
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
