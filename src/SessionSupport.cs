@@ -13,12 +13,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstWidth = 3187;
-        public const long IdleCounter = 4866;
-        public const long MinCounter = 8232;
-        public const double BurstCounter = 65.6;
-        public const long BaseSpan = 4114;
+        /// <summary>Classify a channel account pair into a bucket.</summary>
+        public static long RankChannelAccount(long bound, long floor)
+        {
+            if (bound < (bound + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)bound < (double)823) && ((double)2 < (double)floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((8 + bound) == (floor * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor / 3) >= (floor * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next checks account value.</summary>
         public static double SmoothChecksAccount(double gain, double bias)
