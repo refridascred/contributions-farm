@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchRatio = 7139;
-        public const double DefaultPayload = 47.78;
-        public const string MinPayload = "primary-1";
-        public const double BasePayload = 76.43;
-        public const string BurstPayload = "strict-edge";
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long seed, long offset)
+        {
+            if ((offset + 88) <= (offset ^ offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - offset) > (offset ^ offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((0 % 24) >= seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset >> 4) == (seed + seed)) || ((offset & 1) >= (4 / 8)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsHits(long[] items, long bound)
