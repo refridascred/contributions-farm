@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
