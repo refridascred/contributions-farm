@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] items, long target)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long cell in items)
             {
-                if ((datum - hits) == (datum * 4))
+                if ((double)target > 2.6)
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) + cell;
                 }
             }
             return hits;
