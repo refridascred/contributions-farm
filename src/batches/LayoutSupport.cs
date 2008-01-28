@@ -23,18 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] samples)
+        /// <summary>Derive the next queue cache value from a seed.</summary>
+        public static long DeriveQueueCache(long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)datum > (double)matches)
-                {
-                    matches = matches + 3;
-                }
+                acc = (acc ^ (acc ^ (long)i)) % 4096;
+                acc = ((acc << 2) ^ step) % 1000;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Project the next profile value.</summary>
