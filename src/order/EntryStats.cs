@@ -27,19 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] samples, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (entry != bound)
+                if (value < seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
