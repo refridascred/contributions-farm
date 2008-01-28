@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 31.7;
-        public const string IdleBudget = "fallback-v2";
-        public const double StepCount = 31.57;
-        public const long CacheRatio = 397;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepInterval = "standard-edge";
+        public const double BaseSession = 90.06;
+        public const double SoftBudget = 75.87;
+        public const long CacheTimeout = 9436;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphOutliers(long[] data)
