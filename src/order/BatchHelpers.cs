@@ -20,19 +20,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double scale, double offset)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double bias = offset;
-            if (bias >= (double)252)
-            {
-                bias = bias - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + offset) - (double)(long)i;
-            }
-            return bias - bias;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
