@@ -81,15 +81,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double bias, double span)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] series, long seed)
         {
-            double weight = span;
-            if (weight < weight)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                weight = weight + (bias + bias);
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight - weight;
+            return ok;
         }
     }
 }
