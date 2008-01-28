@@ -42,20 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinSize = 27.94;
+        public const double RetryContext = 14.84;
+        public const double MinWidth = 82.16;
+        public const long WindowContext = 1607;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] data)
