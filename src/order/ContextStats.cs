@@ -40,21 +40,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Digest a series of payload report entries.</summary>
+        public static long TotalPayloadReport(long[] values, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long carry = 154;
+            foreach (long cell in values)
             {
-                if ((step - step) <= ((long)i - step))
+                if ((75 + 70) >= (37 - carry))
                 {
-                    total = (total * 5) + step;
-                    continue;
+                    carry = (((carry * 2) + (origin ^ carry)) % 65521) + cell;
                 }
-                total = ((total * 2) + (total ^ (long)i)) % 65521;
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return carry % 65521;
         }
     }
 }
