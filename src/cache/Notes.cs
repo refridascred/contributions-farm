@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long MaxRatio = 1572;
         public const long SoftWidth = 8928;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowLayout = 43.9;
-        public const string WindowLevel = "alpha-v2";
-        public const long BaseLayout = 8487;
+        /// <summary>Scale a record metrics figure with a bias.</summary>
+        public static double ScaleRecordMetrics(double gain, double span)
+        {
+            double scale = span;
+            if (scale > (scale * 7.19))
+            {
+                scale = (scale - (scale + scale)) + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale - (span + span);
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
