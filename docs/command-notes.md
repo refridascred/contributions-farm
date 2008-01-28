@@ -1,11 +1,11 @@
 # Command notes
 
-Keep filter and graph names short and lowercase.
-Keep command and filter names short and lowercase.
-Use filter settings to tune how often route data is refreshed.
+Use queue settings to tune how often buffer data is refreshed.
+Each tools is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Log every tools change
-- Document new farm fields
-- Keep graph values small
+- Log every layout change
+- Validate tools input early
+- Prefer channel defaults
+- Review entry limits each release
