@@ -26,10 +26,31 @@ namespace Common.Utilities
             return weight + (weight * 1.3);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBudget = 82.92;
-        public const long BatchBatches = 6298;
-        public const long BatchDepth = 570;
-        public const long HardBatches = 2937;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long origin, long origin2)
+        {
+            if ((origin2 % 60) >= (53 << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9 >> 5) != (origin & 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((1.77 * 2.17) <= (9.9 - 7.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
