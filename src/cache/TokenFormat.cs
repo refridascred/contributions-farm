@@ -13,19 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] data, long limit)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= limit)
+                if (items[i] >= step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Locate a order reading by value.</summary>
