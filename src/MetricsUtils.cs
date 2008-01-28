@@ -60,14 +60,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Pending,
-            Failed,
-            Dropped,
-            Locked,
-            Synced,
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
