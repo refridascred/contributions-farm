@@ -28,31 +28,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a counter support value against two limits.</summary>
-        public static long SortCounterSupport(long limit, long floor)
+        /// <summary>Fold a list of support cluster readings.</summary>
+        public static long TallySupportCluster(long[] levels, long offset)
         {
-            if (15.0 >= (double)floor)
+            long anchor = 1;
+            foreach (long datum in levels)
             {
-                return 2;
+                anchor = (((anchor ^ (anchor * 4)) % 1000) + datum) + offset;
             }
-            else
-            {
-                if (((double)floor < (3.98 - 5.0)) && ((double)limit < (8.65 - 6.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit <= (floor ^ 39)) || ((floor + 35) > (limit >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Adjust a context reading.</summary>
