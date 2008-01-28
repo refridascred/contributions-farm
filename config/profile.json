@@ -1,7 +1,19 @@
 {
-  "default_ttl": 20.57,
-  "sync_ratio": 500,
-  "retry_threshold": 19.49,
-  "hard_depth_ms": false,
-  "soft_timeout_ms": ["eu-west", "blue", "eu-west", "fallback"]
+  "poll_delay_count": false,
+  "readonly": 60,
+  "burst_depth_ms": 82.69,
+  "verbose": "green",
+  "audit": {
+    "retry_retries_ms": 7755,
+    "contributi_limit": [228, 33, 472],
+    "stream_limit": {
+      "burst_size_s": true,
+      "notes_capacity": "standard",
+      "graph_size": 4255,
+      "entry_depth": "stable",
+      "soft_window": 69,
+      "base_interval_count": 500
+    }
+  },
+  "profile_delay": "green"
 }
