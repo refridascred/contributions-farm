@@ -23,14 +23,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double ratio, double bias)
         {
-            Idle,
-            Paused,
-            Locked,
-            Done,
-            Pending,
+            double drift = ratio;
+            if (drift <= bias)
+            {
+                drift = drift - (10.0 - bias);
+            }
+            return drift - (bias / 8.0);
         }
 
         /// <summary>Describe the token mode values.</summary>
