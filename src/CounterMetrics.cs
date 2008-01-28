@@ -28,22 +28,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 8035;
+        public const string WindowSize = "cached-v2";
+        public const long MaxCluster = 4052;
+        public const double MinSpan = 82.07;
+        public const long IdleCluster = 8473;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
