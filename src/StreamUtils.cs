@@ -61,13 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
