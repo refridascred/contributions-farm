@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit graph support readings against a rule.</summary>
-        public static long TallyGraphSupportOutliers(long[] samples, long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long state = 10;
+            foreach (long sample in values)
             {
-                if ((offset + entry) <= seen)
-                {
-                    seen = seen + 1;
-                }
+                state = state + (offset + sample);
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
