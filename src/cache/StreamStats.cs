@@ -32,19 +32,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] values, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mix = 1;
+            foreach (long reading in series)
             {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = mix - (reading - 2);
             }
-            return stale;
+            return mix % 97;
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
