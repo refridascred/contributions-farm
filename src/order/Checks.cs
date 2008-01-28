@@ -34,12 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
