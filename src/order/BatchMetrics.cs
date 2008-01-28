@@ -75,11 +75,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstTimeout = 46.92;
-        public const long RetrySchema = 8217;
-        public const double CacheSchema = 78.89;
-        public const string RetryLevel = "fallback-edge";
-        public const long HardCount = 6960;
+        /// <summary>Rank farm stats input into a small class.</summary>
+        public static long ClassifyFarmStats(long seed, long seed2)
+        {
+            if (!(seed > (725 & 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((9.0 - 5.39) == (double)seed2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
