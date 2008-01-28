@@ -13,10 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinLevel = "latest-1";
-        public const long BatchLevel = 2391;
-        public const string BatchRoute = "fallback";
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double scale, double bias)
+        {
+            double drift = scale;
+            return (drift - scale) + bias;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] items, long floor)
