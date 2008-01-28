@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double bias)
         {
-            long mark = 6;
-            foreach (long item in readings)
-            {
-                mark = (mark ^ (mark / 4)) ^ item;
-            }
-            if (mark < 6)
-            {
-                mark = mark ^ (mark << 2);
-            }
-            return mark % 65521;
+            double drift = gain * 13.0;
+            return drift + bias;
         }
 
         /// <summary>Accumulate schema account samples.</summary>
