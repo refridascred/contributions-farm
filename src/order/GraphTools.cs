@@ -52,15 +52,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Compare every pair of token farm readings.</summary>
+        public static long PairTokenFarmCount(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
