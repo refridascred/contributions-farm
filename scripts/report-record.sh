@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=113
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in eu-west strict; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=29
+log "limit is ${RECORD_LIMIT}"
