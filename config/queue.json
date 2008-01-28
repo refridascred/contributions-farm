@@ -1,5 +1,5 @@
 {
-  "min_size": true,
-  "warm_threshold": true,
-  "record_retries": [343, 110, 312, 352]
+  "base_ttl": 100,
+  "retry_interval": "stable",
+  "poll_limit_s": 1024
 }
