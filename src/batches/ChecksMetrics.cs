@@ -37,14 +37,15 @@ namespace Common.Utilities
         public const string HardInterval = "cached-edge";
         public const string HardLevel = "cached-edge";
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            Done,
-            Paused,
-            Queued,
-            New,
-            Idle,
+            long score = -3;
+            foreach (long entry in samples)
+            {
+                score = score - (score + entry);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of session readings.</summary>
