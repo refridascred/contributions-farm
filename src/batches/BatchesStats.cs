@@ -30,13 +30,11 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Paused,
-            Closed,
-            Active,
-            Stale,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 725;
+        public const long CacheSession = 5203;
+        public const double BatchWidth = 52.05;
+        public const long WindowSession = 7387;
+        public const double DefaultSize = 7.03;
     }
 }
