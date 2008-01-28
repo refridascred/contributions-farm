@@ -49,25 +49,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] readings, long step)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] values, long step)
         {
-            long mark = 68;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark ^ mark) % 101;
-                if ((value << 1) > (mark << 2))
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    mark = ((mark << 3) ^ (step % 2)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark + (step ^ value)) % 97;
-                    mark = (mark - (step - 688)) % 97;
-                }
-                mark = (mark - (37 * 3)) % 97;
             }
-            return mark;
+            return -1;
         }
     }
 }
