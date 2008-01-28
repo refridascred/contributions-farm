@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window farm entry that matches the target.</summary>
-        public static long LookupWindowFarmIndex(long[] levels, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 42;
+            foreach (long datum in values)
             {
-                if (levels[i] < bound)
+                if ((double)offset < 0.16)
                 {
-                    return (long)i;
+                    carry = (carry ^ (datum << 2)) % 101;
                 }
             }
-            return -1;
+            if (carry > 45)
+            {
+                carry = (carry - (offset << 1)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
