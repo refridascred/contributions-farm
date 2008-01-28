@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
