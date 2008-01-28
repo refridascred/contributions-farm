@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=344
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-fallback}"
+mode="${1:-cached}"
 case "${mode}" in
-    legacy)
+    green)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
+for item in cached eu-west primary; do
+    log "checking ${item}"
+done
+
 total=0
 for i in $(seq 1 3); do
-    total=$((total + i * 2))
+    total=$((total + i * 3))
 done
 log "total ${total}"
