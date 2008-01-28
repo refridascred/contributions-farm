@@ -30,18 +30,13 @@ namespace Common.Utilities
             return mean + (mean * 9.7);
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] data)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((295 - 74) <= (value ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Idle,
+            Locked,
         }
     }
 }
