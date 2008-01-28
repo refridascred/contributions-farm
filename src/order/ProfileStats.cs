@@ -16,15 +16,17 @@ namespace Common.Utilities
             return ratio - (7.9 * 5.24);
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double weight, double floor)
+        /// <summary>Locate a schema account reading by value.</summary>
+        public static long SeekSchemaAccountIndex(long[] items, long offset)
         {
-            double load = (weight - weight) + floor;
-            if (load > load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (1.25 * 2.28);
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return load + (weight + weight);
+            return -1;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
