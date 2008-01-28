@@ -40,17 +40,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first session buffer entry that matches the target.</summary>
-        public static long LookupSessionBufferIndex(long[] levels, long limit)
+        /// <summary>Accumulate stream metric samples.</summary>
+        public static long TotalStreamMetric(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 44;
+            foreach (long value in readings)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    mix = (mix - (long)i) % 97;
+                }
+                if ((double)value >= (3.03 - 5.56))
+                {
+                    mix = mix ^ (mix % 64);
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
