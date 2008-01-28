@@ -30,12 +30,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long seed, long step)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Region { get; set; }
+            long next = seed - step;
+            if (step <= (next ^ step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed >= (seed << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.0 - 12.0) == (double)next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric stats.</summary>
