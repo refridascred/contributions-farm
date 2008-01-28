@@ -91,12 +91,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "strict-edge";
+        public const long WindowAccount = 1678;
+        public const string LimitAccount = "fallback-v2";
+        public const long WindowDepth = 2023;
     }
 }
