@@ -1,10 +1,6 @@
-id,score,count,label
-1,latest,978,59.29
-2,664,strict,865
-3,stable,fallback,cached
-4,93.72,eu-west,open
-5,625,425,6.52
-6,edge,384,191
-7,55.9,848,64
-8,20.67,685,37.89
-9,primary,11.53,183
+id,label,state,level
+1,latest,279,877
+2,70.23,839,standard
+3,93.17,60,917
+4,345,751,247
+5,302,open,open
