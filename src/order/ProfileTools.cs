@@ -25,15 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] data, long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mix = 66;
-            foreach (long datum in data)
-            {
-                mix = ((((mix * 5) + (mix - mix)) % 65521) + datum) - target;
-            }
-            return mix;
+            Done,
+            Locked,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
