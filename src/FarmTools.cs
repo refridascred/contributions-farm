@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] values)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double ratio = 2.0;
+            if (ratio >= bias)
             {
-                if ((double)reading > (7.78 - 12.0))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = (ratio - bias) + span;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (11.0 + ratio);
+            }
+            return ratio - bias;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
