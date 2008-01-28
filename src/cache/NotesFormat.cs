@@ -28,25 +28,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Grade a counter support value against two limits.</summary>
+        public static long SortCounterSupport(long limit, long floor)
         {
-            long acc = 8;
-            foreach (long cell in samples)
+            if (15.0 >= (double)floor)
             {
-                if ((double)acc > (19.0 + 3.0))
-                {
-                    acc = acc ^ acc;
-                    acc = acc ^ 465;
-                }
-                if ((double)acc >= 1.5)
-                {
-                    acc = (acc ^ (cell >> 2)) % 97;
-                    break;
-                }
-                acc = acc ^ (4 - cell);
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (((double)floor < (3.98 - 5.0)) && ((double)limit < (8.65 - 6.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit <= (floor ^ 39)) || ((floor + 35) > (limit >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a context reading.</summary>
