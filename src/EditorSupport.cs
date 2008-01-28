@@ -32,12 +32,39 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long bound, long target)
         {
-            Draft,
-            Idle,
-            New,
+            long edge = bound + target;
+            if (((target & 31) > (edge << 2)) && ((bound >> 1) == (edge << 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(bound < target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-6) ^ target) <= (bound / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound - edge) <= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a filter queue value against two limits.</summary>
