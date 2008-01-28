@@ -37,24 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long limit, long target)
+        /// <summary>Measure how many token support samples are out of range.</summary>
+        public static long AuditTokenSupportOutliers(long[] values)
         {
-            if (5.41 <= (double)target)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)target == (20.0 - 18.0)) || ((target - limit) > limit))
+                if ((double)hits == (3.0 * 5.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    hits = (hits + 1) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate schema samples.</summary>
