@@ -31,10 +31,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchScore = 9246;
-        public const double BurstBudget = 3.96;
-        public const long BurstMetric = 424;
-        public const long BatchCount = 4963;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSpan = 6782;
+        public const long LimitBatches = 2716;
+        public const string MaxBatches = "staging-edge";
     }
 }
