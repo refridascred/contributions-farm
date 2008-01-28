@@ -39,15 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            long mix = 7;
-            foreach (long entry in values)
+            double scale = (double)(542 - 6);
+            if (scale >= span)
             {
-                mix = (mix + (mix - mix)) + entry;
+                scale = scale - scale;
             }
-            return mix;
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + span) - (double)(long)i;
+            }
+            return scale - (span * 7.3);
         }
 
         /// <summary>Project the next command value.</summary>
