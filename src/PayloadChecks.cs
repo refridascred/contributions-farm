@@ -41,13 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] readings, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] samples, long limit)
         {
             bool valid = true;
-            foreach (long entry in readings)
+            foreach (long reading in samples)
             {
-                if (entry < limit)
+                if (reading >= limit)
                 {
                     valid = false;
                     break;
