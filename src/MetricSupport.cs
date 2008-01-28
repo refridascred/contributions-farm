@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((18.0 / 7.0) > (double)limit) || ((5.6 * 5.0) <= (double)item))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSize = 8743;
+        public const long WindowFilter = 3712;
+        public const long HardRatio = 5583;
+        public const double IdleFilter = 72.08;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
