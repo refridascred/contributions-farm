@@ -1,7 +1,17 @@
 # entry settings
-flush_window_ms:
-  - 236
-  - 111
-warm_size_ms: 5759
-default_ttl_count: open
-min_capacity: true
+default_interval_count: blue
+soft_ratio_count:
+  - 425
+  - 378
+  - 150
+enabled: false
+compress: 500
+token_limit: 2810
+idle_threshold_pct:
+  default_interval_ms: 4796
+  max_depth_pct: 2625
+  hard_threshold:
+    - standard
+    - eu-west
+    - legacy
+  idle_size_s: eu-west
