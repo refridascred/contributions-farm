@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            Active,
+            Paused,
+            Idle,
         }
 
         /// <summary>Combine order values into a single score.</summary>
