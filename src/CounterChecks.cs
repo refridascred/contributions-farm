@@ -42,23 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] samples, long offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] values, long bound)
         {
-            long sum = 685;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long entry in values)
             {
-                bool ready = (offset - sum) == (5 + 5);
-                if (!(((double)sum == (5.8 + 9.91)) && ready))
+                if (entry < bound)
                 {
-                    ready = (value / 7) < (82 % 12);
-                }
-                if (((value >> 3) >= (sum + 230)) || ((75 ^ value) >= (offset << 3)))
-                {
-                    sum = ((sum << 3) ^ value) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
