@@ -108,15 +108,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((0 * 3) > ((long)samples.Length - hits))
+                {
+                    hits = (hits + 1) + cell;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
