@@ -36,16 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route order samples.</summary>
-        public static long TallyRouteOrder(long[] readings, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] data)
         {
-            long total = 66;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                total = ((total + (total + 974)) % 101) + seed;
-                total = (total - (total - reading)) % 255;
+                if ((48 + tally) >= tally)
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
