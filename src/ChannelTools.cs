@@ -28,19 +28,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] items, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (datum > limit)
+                if ((origin & 15) <= (datum + count))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
