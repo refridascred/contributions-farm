@@ -70,12 +70,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Pending,
-            Ready,
-            Done,
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
