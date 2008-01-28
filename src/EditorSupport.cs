@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const double BaseCount = 75.29;
         public const long BurstSize = 187;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] readings, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long score = 820;
+            foreach (long datum in series)
             {
-                if (((0.4 * 1.97) >= (double)limit) || ((limit * 3) >= (hits - hits)))
+                if ((double)origin >= (3.2 * 5.0))
                 {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score ^ ((-891) << 1)) - datum;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Validate checks contributi readings against a bound.</summary>
