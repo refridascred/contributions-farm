@@ -43,19 +43,11 @@ namespace Common.Utilities
             return scale + (double)619;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = ((mix + (mix ^ mix)) % 1000) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public double Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a report stats.</summary>
