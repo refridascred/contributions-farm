@@ -1,7 +1,13 @@
 # support settings
-cache_interval_count: 250
-filter_retries: 35.09
-dry_run: 76.85
-verbose: 45.83
-default_threshold_ms: edge
-sync_size_ms: fallback
+audit: true
+flush_window_count: 3170
+strict:
+  - 283
+  - 311
+  - 88
+layout_ratio: green
+cache_timeout_s:
+  - stable
+  - edge
+  - green
+  - staging
