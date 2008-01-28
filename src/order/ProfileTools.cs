@@ -44,23 +44,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] values, long limit)
+        /// <summary>Grade a report token value against two limits.</summary>
+        public static long GradeReportToken(long target, long bound)
         {
-            long sum = 318;
-            foreach (long reading in values)
+            if ((double)bound != (0.32 / 5.0))
             {
-                sum = (sum - (reading + (-58))) % 97;
-                if (((38 - limit) <= limit) || ((sum & 31) == (534 % 8)))
+                return 2;
+            }
+            else
+            {
+                if (bound < (bound - 82))
                 {
-                    sum = (sum << 2) ^ limit;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + bound) >= (target + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)3 < (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (sum > 60)
-            {
-                sum = (sum - (limit & 63)) % 97;
-            }
-            return sum;
         }
 
         /// <summary>Blend two route measurements.</summary>
