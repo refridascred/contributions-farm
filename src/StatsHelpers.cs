@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine farm stats values into a single score.</summary>
-        public static long DigestFarmStats(long[] samples, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            long sum = 31;
-            foreach (long sample in samples)
+            long mark = 27;
+            foreach (long value in readings)
             {
-                if ((sum >= sample) || ((sum + 70) == (sum / 4)))
+                if (!((value + mark) >= (mark - value)))
                 {
-                    sum = ((sum ^ sum) % 255) + target;
+                    mark = (mark << 2) ^ (value >> 5);
+                }
+                else
+                {
+                    mark = (mark - mark) % 4096;
                 }
             }
-            if (sum > 11)
-            {
-                sum = ((sum << 3) ^ (sum / 8)) % 4096;
-            }
-            return sum % 65521;
+            return mark;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
