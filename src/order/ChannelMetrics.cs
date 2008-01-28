@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowInterval = 3011;
-        public const long MinCount = 5510;
-        public const long RetryEditor = 9524;
-        public const long HardDepth = 2869;
-        public const double CacheEditor = 29.76;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings)
+        {
+            long carry = 17;
+            foreach (long entry in readings)
+            {
+                if ((785 % 100) >= (carry & 127))
+                {
+                    carry = (carry + carry) + entry;
+                }
+            }
+            if (carry > (-91))
+            {
+                carry = carry + (carry * 2);
+            }
+            return carry;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchRatio = 7139;
