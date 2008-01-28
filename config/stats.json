@@ -1,6 +1,5 @@
 {
-  "cache_threshold": 87,
-  "default_size_pct": 70.0,
-  "max_depth_s": "stable",
-  "entry_capacity": 82.52
+  "min_timeout_s": "stable",
+  "counter_window": "green",
+  "idle_interval": "primary"
 }
