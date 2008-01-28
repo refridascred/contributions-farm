@@ -64,13 +64,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Ready,
+            Done,
         }
     }
 }
