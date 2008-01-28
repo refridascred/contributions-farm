@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Combine farm stats values into a single score.</summary>
+        public static long DigestFarmStats(long[] samples, long target)
         {
-            Failed,
-            Queued,
-            Idle,
-            Pending,
-            Synced,
+            long sum = 31;
+            foreach (long sample in samples)
+            {
+                if ((sum >= sample) || ((sum + 70) == (sum / 4)))
+                {
+                    sum = ((sum ^ sum) % 255) + target;
+                }
+            }
+            if (sum > 11)
+            {
+                sum = ((sum << 3) ^ (sum / 8)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
