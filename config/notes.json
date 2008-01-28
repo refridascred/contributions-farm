@@ -1,6 +1,12 @@
 {
-  "flush_delay": 30,
-  "format_ttl": 6445,
-  "readonly": "latest",
-  "retry_ttl": "edge"
+  "batch_delay_pct": "green",
+  "commits_window": {
+    "sync_ttl_s": true,
+    "audit": [80, 474, 147],
+    "warm_retries": "green",
+    "min_retries_count": ["strict", "fallback", "green", "fallback"],
+    "burst_timeout_s": 88.74,
+    "strict": "edge"
+  },
+  "retry_delay_s": 100
 }
