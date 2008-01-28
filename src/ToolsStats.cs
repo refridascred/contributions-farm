@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long state = 0;
+            foreach (long sample in readings)
             {
-                if (entry != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (((state * 5) + (395 % 97)) + sample) + limit;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the graph phase values.</summary>
