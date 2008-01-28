@@ -23,15 +23,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Idle,
-            Retry,
-            Active,
-            Done,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "fallback-1";
+        public const string MinLevel = "cached-v2";
+        public const long CacheCommits = 418;
+        public const long WindowCommits = 9957;
+        public const string HardCommits = "legacy";
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long target)
