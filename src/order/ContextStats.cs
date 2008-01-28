@@ -37,16 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] levels, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 2) + (offset << 3)) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((floor + floor) > floor)
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a editor summary.</summary>
