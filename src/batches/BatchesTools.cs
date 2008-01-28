@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a queue route sample.</summary>
-        public static long LocateQueueRouteIndex(long[] levels, long limit)
+        /// <summary>Derive the next stream counter value from a seed.</summary>
+        public static long DeriveStreamCounter(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] < limit)
+                long prev = total;
+                if (!((long)i <= 5))
                 {
-                    return (long)i;
+                    total = (total * 4) + (prev + total);
                 }
+                else
+                {
+                    prev = ((prev * 4) + 58) % 1000;
+                }
+                if (!((prev / 3) >= (prev + 9)))
+                {
+                    total = ((total * 3) + (seed - prev)) % 97;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the window graph entries that pass the check.</summary>
