@@ -1,21 +1,10 @@
 # support settings
-poll_ratio_pct:
-  soft_capacity: 2094
-  max_delay_count:
-    enabled:
-      - 239
-      - 434
-    sync_delay: 54
-    soft_timeout_count: 71.12
-    verbose: stable
-    compress: edge
-    cache_interval_s:
-      - 38
-      - 138
-  hard_interval:
-    - 290
-    - 445
-    - 438
-    - 46
-idle_window_count: fallback
-batch_interval: open
+notes_ttl: primary
+hard_timeout_ms:
+  - standard
+  - eu-west
+  - local
+flush_depth:
+  - 446
+  - 80
+enabled: edge
