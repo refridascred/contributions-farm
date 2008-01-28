@@ -50,17 +50,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -40;
+            foreach (long sample in data)
             {
-                if (items[i] > floor)
+                if (((sample >> 4) > (sample + sample)) && ((sample / 4) <= 469))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + sample) - step;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Audit layout buffer readings against a rule.</summary>
