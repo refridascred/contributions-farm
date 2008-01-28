@@ -39,18 +39,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxCommits = "latest-1";
+        public const long HardCommits = 2104;
+        public const long IdleCommits = 7028;
+        public const long BaseTimeout = 3484;
 
         /// <summary>Rank tools metric input into a small class.</summary>
         public static long RankToolsMetric(long step, long origin)
