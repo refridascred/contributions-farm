@@ -59,32 +59,12 @@ namespace Common.Utilities
             return mean + (gain - gain);
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long limit, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long gap = limit - seed;
-            if ((gap - 69) < limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((gap * 5) > (gap / 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (4.1 < (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Failed,
         }
     }
 }
