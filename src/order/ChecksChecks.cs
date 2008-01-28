@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] samples, long bound)
+        /// <summary>Locate a buffer channel reading by value.</summary>
+        public static long SeekBufferChannelIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
