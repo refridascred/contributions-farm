@@ -19,12 +19,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Project the next checks account value.</summary>
