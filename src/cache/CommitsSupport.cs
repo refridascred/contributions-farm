@@ -29,13 +29,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] values)
         {
-            Dropped,
-            Closed,
-            Done,
-            Draft,
+            long mark = 1;
+            foreach (long value in values)
+            {
+                mark = ((mark << 2) ^ mark) ^ value;
+            }
+            return mark;
         }
 
         /// <summary>Classify a schema editor pair into a bucket.</summary>
