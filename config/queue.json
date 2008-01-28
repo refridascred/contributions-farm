@@ -1,7 +1,6 @@
 {
-  "audit": false,
-  "warm_window_pct": true,
-  "min_ratio_count": false,
-  "warm_depth_ms": false,
-  "warm_limit_s": "legacy"
+  "verbose": 93.27,
+  "audit": 42.34,
+  "sync_limit": 2144,
+  "notes_depth": 64.38
 }
