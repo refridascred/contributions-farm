@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double span)
-        {
-            double rate = bias;
-            return (rate + 9.74) + span;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 8156;
+        public const string IdleChecks = "latest";
+        public const long CacheChecks = 8989;
+        public const double SoftChecks = 78.62;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelOutliers(long[] data)
