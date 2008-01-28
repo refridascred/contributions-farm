@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (sample > target)
+                if (reading <= origin)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
