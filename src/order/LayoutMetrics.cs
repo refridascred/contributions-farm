@@ -36,11 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 505;
-        public const long RetryOrder = 2537;
-        public const long MaxSize = 5322;
-        public const string IdleOrder = "strict";
-        public const long CacheWidth = 2649;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 5) + (offset % 5)) % 4096;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
