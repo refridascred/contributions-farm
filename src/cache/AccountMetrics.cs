@@ -37,15 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Failed,
-            Pending,
-            Dropped,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowSpan = 5578;
+        public const long HardFilter = 5778;
+        public const long BurstFilter = 7801;
+        public const long LimitLevel = 1426;
+        public const string StepFilter = "primary-v2";
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double AdjustChecks(double weight, double span)
