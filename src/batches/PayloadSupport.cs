@@ -28,13 +28,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
