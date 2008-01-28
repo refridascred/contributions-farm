@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long origin)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long next = floor - origin;
-            if (floor < (floor >> 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((floor + origin) > 24) && ((next / 6) >= (origin & 127)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((next > floor) && ((next + origin) > (next ^ next)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the layout status values.</summary>
