@@ -33,13 +33,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Pending,
-            Active,
-            Idle,
-            Queued,
+            New,
+            Closed,
             Stale,
         }
 
