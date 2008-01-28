@@ -48,18 +48,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long state = 23;
-            foreach (long datum in values)
+            long score = -5;
+            foreach (long value in items)
             {
-                if ((993 < (state + datum)) || ((datum ^ state) > state))
+                if ((312 - score) < score)
                 {
-                    state = (state ^ (state & 1)) % 255;
+                    score = (score + (score - value)) % 101;
+                }
+                score = (score * 2) + (score * 5);
+                if ((score / 3) >= (value & 7))
+                {
+                    score = (score << 3) ^ (value - value);
                 }
             }
-            return state % 97;
+            return score;
         }
     }
 }
