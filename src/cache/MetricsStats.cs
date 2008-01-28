@@ -49,13 +49,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] levels, long seed)
         {
-            Failed,
-            Closed,
-            Draft,
-            New,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((1 % 3) >= (hits & 15)) && (item <= (item << 1)))
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
