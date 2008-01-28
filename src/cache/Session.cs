@@ -23,13 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Draft,
-            Failed,
-            Synced,
-            Locked,
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
