@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] samples, long bound)
         {
-            New,
-            Stale,
-            Closed,
-            Synced,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
