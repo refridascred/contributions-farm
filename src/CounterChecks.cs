@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const string MaxWidth = "strict-edge";
         public const long CacheSize = 4729;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings, long step)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long anchor = 2;
-            foreach (long value in readings)
-            {
-                if ((anchor * 3) >= step)
-                {
-                    anchor = (anchor + (9 ^ 2)) - value;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 65521;
-                }
-            }
-            return anchor % 4096;
+            Closed,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
