@@ -35,12 +35,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
