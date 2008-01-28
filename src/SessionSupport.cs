@@ -41,12 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Roll a githubfarm already counter forward.</summary>
+        public static long StepGithubfarmAlready(long target)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long result = target;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
