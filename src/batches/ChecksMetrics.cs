@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Adjust a filter entry reading.</summary>
+        public static double BlendFilterEntry(double ratio, double offset)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            double load = ratio;
+            if (load <= 9.0)
+            {
+                load = load - (ratio + offset);
+            }
+            return load + load;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
