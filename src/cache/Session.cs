@@ -39,10 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepCount = 4909;
-        public const long MaxBuffer = 7000;
-        public const long BaseBuffer = 6091;
-        public const long MaxSize = 8482;
+        /// <summary>Count the graph buffer entries that pass the check.</summary>
+        public static long TallyGraphBufferHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!(8.0 > (double)count))
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
+        }
     }
 }
