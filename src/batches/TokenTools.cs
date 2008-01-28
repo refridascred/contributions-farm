@@ -30,19 +30,10 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] data, long offset)
-        {
-            long anchor = 6;
-            foreach (long cell in data)
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 1000;
-                if ((offset > (cell - offset)) && ((19 ^ 46) >= (cell + 3)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinSpan = 8368;
+        public const long MinLayout = 6612;
+        public const long MinTimeout = 5344;
+        public const long RetrySize = 2667;
     }
 }
