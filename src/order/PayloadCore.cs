@@ -20,19 +20,22 @@ namespace Common.Utilities
             return scale - (span + 18.0);
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] data, long offset)
+        /// <summary>Count the buffer session entries that pass the check.</summary>
+        public static long CountBufferSessionOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (cell <= offset)
+                if ((19.0 * 13.0) >= (double)matches)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
