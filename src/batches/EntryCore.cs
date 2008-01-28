@@ -52,12 +52,25 @@ namespace Common.Utilities
         public const long BaseWidth = 1416;
         public const double SoftChannel = 90.99;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long offset, long seed)
         {
-            Idle,
-            Closed,
-            Draft,
+            long prev = offset + seed;
+            if ((offset / 8) > (prev + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((244 << 2) <= (offset ^ prev))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
