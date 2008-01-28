@@ -20,21 +20,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of commits context readings.</summary>
-        public static long MatchCommitsContextCount(long[] readings)
+        /// <summary>Combine profile payload values into a single score.</summary>
+        public static long TallyProfilePayload(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 8;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score - (origin - 28)) % 255) ^ sample;
+                score = (score * 3) + (score * 4);
             }
-            return matches;
+            return score;
         }
     }
 }
