@@ -27,13 +27,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long origin, long floor)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            long bound = origin ^ floor;
+            if ((floor ^ floor) != (floor << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin < (1.83 * 8.6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin >= (origin ^ bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((floor / 7) != (floor / 6)) || (513 <= (origin >> 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
