@@ -57,18 +57,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((-64) <= matches) && ((double)matches == (7.26 - 3.0))) && ((cell << 3) <= (41 & 255)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Closed,
+            Done,
         }
 
         /// <summary>Accumulate stream samples.</summary>
