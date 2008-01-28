@@ -1,6 +1,11 @@
-id,owner,active
-1,584,local
-2,75.91,882
-3,53.99,eu-west
-4,391,64.54
-5,933,98.61
+id,level,rank
+1,local,edge
+2,754,latest
+3,207,stable
+4,44.46,stable
+5,69.84,66.54
+6,679,570
+7,808,19.25
+8,448,edge
+9,staging,369
+10,green,latest
