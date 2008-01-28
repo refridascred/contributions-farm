@@ -58,19 +58,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
