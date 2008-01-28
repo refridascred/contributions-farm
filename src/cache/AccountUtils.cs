@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long RetryCommand = 2302;
         public const double MaxTimeout = 72.83;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            Synced,
-            Retry,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
