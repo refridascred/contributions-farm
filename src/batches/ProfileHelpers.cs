@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const long BatchChecks = 6364;
         public const long BaseRatio = 6636;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long carry = 79;
-            foreach (long item in readings)
-            {
-                carry = carry ^ (item & 7);
-            }
-            return carry;
+            Locked,
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
