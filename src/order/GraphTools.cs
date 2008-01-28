@@ -32,22 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] levels, long origin)
+        /// <summary>Measure how many record profile samples are out of range.</summary>
+        public static long CountRecordProfileOutliers(long[] data)
         {
-            long score = -445;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((origin + 45) < ((long)levels.Length % 2))
+                if ((6.6 - 3.2) < (double)tally)
                 {
-                    score = score + (cell & 63);
+                    tally = (tally + 3) - datum;
                 }
             }
-            if (score < 6)
-            {
-                score = ((score << 3) ^ ((-133) + score)) % 65521;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of token farm readings.</summary>
