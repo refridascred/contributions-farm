@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Look up the position of a checks buffer sample.</summary>
+        public static long SeekChecksBufferIndex(long[] values, long seed)
         {
-            Queued,
-            Dropped,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a already reading by value.</summary>
