@@ -1,13 +1,14 @@
 # githubfarm settings
-dry_run:
-  idle_capacity_ms: blue
-  persist: 46.96
-  counter_threshold: edge
-  stats_window: 2802
-report_ratio:
-  - blue
-  - latest
-poll_interval_s:
+metrics_delay: true
+flush_depth_count:
+  - 269
+  - 348
+  - 241
+cache_threshold_ms: 1409
+flush_window_s: 1024
+batch_retries:
+  - standard
   - primary
-  - local
-cluster_ratio: 5540
+  - latest
+  - green
+max_ttl: 7641
