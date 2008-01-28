@@ -42,18 +42,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the order stream entries that pass the check.</summary>
-        public static long TallyOrderStreamHits(long[] samples)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((6 % 16) < item)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
