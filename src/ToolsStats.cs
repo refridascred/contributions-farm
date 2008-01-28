@@ -13,11 +13,29 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleWidth = 72.87;
-        public const double MinStream = 3.21;
-        public const long RetryStream = 6769;
-        public const long BatchRatio = 5448;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] levels, long limit)
+        {
+            long total = 79;
+            foreach (long cell in levels)
+            {
+                if ((total >> 5) < (cell + cell))
+                {
+                    total = (total + (cell + 85)) % 97;
+                    continue;
+                }
+                total = total ^ limit;
+                if (total >= (total * 5))
+                {
+                    total = ((total * 4) + (cell >> 4)) % 65521;
+                }
+                if (!((double)total != (2.6 * 6.0)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long target)
