@@ -14,11 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long bound, long offset)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            if (((-8) + offset) != (bound ^ bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((bound * 5) >= (bound - 0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
