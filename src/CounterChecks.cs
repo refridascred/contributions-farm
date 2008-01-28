@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 52.85;
-        public const string MaxWidth = "strict-edge";
-        public const long CacheSize = 4729;
+        /// <summary>Validate commits buffer readings against a bound.</summary>
+        public static bool GuardCommitsBufferBounds(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
