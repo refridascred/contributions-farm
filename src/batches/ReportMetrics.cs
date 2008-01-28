@@ -16,15 +16,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] samples, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((tally / 7) > (cell - tally))
+                {
+                    tally = (tally + 2) - limit;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Grade a record metric value against two limits.</summary>
