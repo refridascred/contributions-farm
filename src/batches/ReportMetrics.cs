@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session editor entries that pass the check.</summary>
-        public static long MeasureSessionEditorHits(long[] levels)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((((sample + count) < (count & 255)) && ((1 + sample) > (sample + sample))) && (((long)levels.Length - count) >= sample))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
