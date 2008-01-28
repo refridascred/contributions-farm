@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long carry = 5;
-            foreach (long cell in values)
-            {
-                carry = (carry + (carry % 7)) % 4096;
-                carry = (carry + (248 - cell)) % 97;
-            }
-            if (carry < 425)
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-            }
-            return carry % 1000;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
