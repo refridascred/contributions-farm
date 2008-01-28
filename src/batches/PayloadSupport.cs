@@ -19,22 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((matches << 1) >= (16 * 3))
+                if ((target >> 3) <= tally)
                 {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
