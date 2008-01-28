@@ -23,23 +23,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a report cluster figure with a bias.</summary>
-        public static double AdjustReportCluster(double ratio, double floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            double drift = ratio / 9.0;
-            if (drift <= (drift / 8.0))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                drift = drift + (double)5;
+                if ((double)matches >= (0.43 + 5.0))
+                {
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                drift = drift - (double)(-14);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (floor - floor)) + (double)(long)i;
-            }
-            return drift - drift;
+            return matches;
         }
 
         /// <summary>Iterate the payload entry series from a seed.</summary>
