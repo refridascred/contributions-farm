@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Check that every channel window entry stays within the limit.</summary>
+        public static bool ValidateChannelWindowLimits(long[] data, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((double)limit == (8.8 / 2.0))
+                if (reading < bound)
                 {
+                    stale = false;
                     break;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Iterate the metrics route series from a seed.</summary>
