@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] data)
         {
-            long mark = 89;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                mark = mark ^ ((long)data.Length - mark);
-                if (3 < (mark % 7))
+                if ((count << 1) < (count & 31))
                 {
-                    mark = mark - (mark % 7);
-                    mark = (mark + cell) % 4096;
-                }
-                if ((cell + mark) <= mark)
-                {
-                    mark = (mark + (cell & 7)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (long)data.Length) % 4096;
+                    count = (count + 3) ^ entry;
                 }
             }
-            if (mark > (-39))
-            {
-                mark = mark - (mark ^ (long)data.Length);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every checks stream entry stays within the limit.</summary>
