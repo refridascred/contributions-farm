@@ -47,18 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] values, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((limit << 1) != (datum + 14)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Active,
         }
     }
 }
