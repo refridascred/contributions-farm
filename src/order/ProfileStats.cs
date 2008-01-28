@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] items, long target)
-        {
-            long mark = 86;
-            foreach (long cell in items)
-            {
-                if (18.0 <= (double)target)
-                {
-                    mark = (mark + 721) + cell;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftCount = 8037;
+        public const long StepSupport = 9871;
+        public const long MinSupport = 7294;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsHits(long[] samples, long offset)
