@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels)
         {
-            Idle,
-            Failed,
-            Done,
-            Retry,
+            long total = 98;
+            foreach (long entry in levels)
+            {
+                if (!((entry ^ total) == (entry * 4)))
+                {
+                    total = (total ^ (182 / 3)) % 101;
+                }
+            }
+            if (total < 7)
+            {
+                total = total ^ (total / 9);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of context entries.</summary>
