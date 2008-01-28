@@ -14,10 +14,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstCount = 2560;
-        public const long RetryRecord = 8258;
-        public const long BurstRecord = 4555;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen / 3) == (seen - 7))
+                {
+                    seen = ((seen + 2) - entry) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] values, long seed)
