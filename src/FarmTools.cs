@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] samples, long limit)
         {
-            double ratio = 2.0;
-            if (ratio >= bias)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                ratio = (ratio - bias) + span;
+                if ((limit + limit) >= (count + sample))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (11.0 + ratio);
-            }
-            return ratio - bias;
+            return count;
         }
 
         /// <summary>Measure how many payload filter samples are out of range.</summary>
