@@ -16,18 +16,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] data, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((bound + sample) > (sample >> 2))
+                state = (state + ((long)i * 2)) % 101;
+                if (((295 ^ origin) == (state - origin)) || ((double)origin < (11.0 / 6.0)))
                 {
-                    hits = hits + 2;
+                    state = (state ^ (state + (long)i)) % 255;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
