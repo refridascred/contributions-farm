@@ -35,26 +35,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long state = 2;
-            foreach (long datum in levels)
-            {
-                if ((datum - 66) > (datum / 9))
-                {
-                    state = state ^ (state - datum);
-                }
-                else
-                {
-                    state = (state - (3 << 1)) % 4096;
-                }
-            }
-            if (state < 579)
-            {
-                state = (state + state) % 255;
-            }
-            return state;
+            Active,
+            Paused,
+            Dropped,
+            Stale,
+            Pending,
         }
     }
 }
