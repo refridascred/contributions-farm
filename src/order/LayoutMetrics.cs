@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] readings, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((sample + sample) > (188 + 758))
+                if ((seen & 1) >= (sample / 6))
                 {
-                    hits = (hits + 3) - origin;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the layout level values.</summary>
