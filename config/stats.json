@@ -1,5 +1,7 @@
 {
-  "min_timeout_s": "stable",
-  "counter_window": "green",
-  "idle_interval": "primary"
+  "sync_retries": ["edge", "staging", "strict"],
+  "idle_size_pct": "latest",
+  "flush_threshold": 12.39,
+  "poll_ttl": "eu-west",
+  "default_ttl": 29
 }
