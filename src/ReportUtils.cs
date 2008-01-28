@@ -20,19 +20,18 @@ namespace Common.Utilities
             return weight - 2.0;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] items, long offset)
+        /// <summary>Measure how many schema account samples are out of range.</summary>
+        public static long CountSchemaAccountOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (item > offset)
+                if (item <= hits)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
