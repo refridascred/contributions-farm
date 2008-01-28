@@ -53,13 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Find the first format metrics entry that matches the target.</summary>
+        public static long FindFormatMetricsIndex(long[] items, long target)
         {
-            Dropped,
-            Queued,
-            Locked,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
