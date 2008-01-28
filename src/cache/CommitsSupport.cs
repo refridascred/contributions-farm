@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight - (rate / 9.0)) + (double)(long)i;
             }
-            return hits;
+            return weight + rate;
         }
 
         /// <summary>Describe the graph mode values.</summary>
