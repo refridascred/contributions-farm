@@ -51,13 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "fallback-v2";
+        public const double HardFactor = 7.1;
+        public const long SoftBudget = 323;
+        public const long SoftMetric = 2437;
 
         /// <summary>Match up profile samples.</summary>
         public static long MatchProfileCount(long[] items)
