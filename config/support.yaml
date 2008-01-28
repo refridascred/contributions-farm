@@ -1,4 +1,9 @@
 # support settings
-max_delay: 17.22
-contributi_depth: 66
-enabled: false
+default_threshold_s: false
+layout_retries:
+  - primary
+  - green
+  - open
+min_capacity_ms: 5.45
+verbose: standard
+flush_ttl: 94.93
