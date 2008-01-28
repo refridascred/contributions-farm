@@ -1,7 +1,7 @@
-id,active,token,count
-1,77.85,51.23,98.94
-2,181,598,88.42
-3,standard,edge,fallback
-4,79.11,962,green
-5,764,22.67,eu-west
-6,5.66,75.04,green
+id,region,ratio,weight
+1,114,945,890
+2,918,64.82,24.41
+3,520,56.36,959
+4,668,standard,659
+5,legacy,780,17.47
+6,staging,781,32
