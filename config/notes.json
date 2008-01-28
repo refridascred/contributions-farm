@@ -1,13 +1,6 @@
 {
-  "dry_run": "standard",
-  "queue_interval": {
-    "poll_ratio_ms": {
-      "cluster_timeout": 9700,
-      "base_size_s": ["local", "fallback", "latest"],
-      "checks_ttl": false
-    },
-    "soft_capacity": 40,
-    "cache_interval_ms": "fallback"
-  },
-  "audit": [71, 119, 364]
+  "flush_delay": 30,
+  "format_ttl": 6445,
+  "readonly": "latest",
+  "retry_ttl": "edge"
 }
