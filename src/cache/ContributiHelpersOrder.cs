@@ -20,26 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of window support readings.</summary>
-        public static long WeighWindowSupport(long[] values, long step)
+        /// <summary>Match up metric command samples.</summary>
+        public static long MatchMetricCommandCount(long[] data)
         {
-            long carry = 946;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample < (sample + step)) && ((carry & 31) == (sample & 15)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry * 5) + 50) % 65521;
-                }
-                else
-                {
-                    carry = (carry - (sample + step)) % 65521;
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 369)
-            {
-                carry = ((carry * 5) + 68) % 101;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
