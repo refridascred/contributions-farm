@@ -59,15 +59,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] levels)
         {
-            double ratio = (rate - rate) - (7.72 - rate);
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                ratio = (ratio - bias) + (double)(long)i;
+                if ((value % 24) == (count / 2))
+                {
+                    count = count + 2;
+                }
             }
-            return ratio - (rate * 15.0);
+            return count;
         }
     }
 }
