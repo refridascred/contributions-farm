@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double scale, double span)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            double drift = span;
-            if (drift > scale)
-            {
-                drift = drift - scale;
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift + scale;
+            Paused,
+            Active,
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the schema state values.</summary>
