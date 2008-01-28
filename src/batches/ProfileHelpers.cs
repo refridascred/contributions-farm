@@ -49,10 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 4708;
-        public const long IdleBatches = 7015;
-        public const long WindowBatches = 5255;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((step ^ entry) > matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] values, long bound)
