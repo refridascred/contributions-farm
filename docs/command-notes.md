@@ -1,14 +1,11 @@
 # Command notes
 
-A report that stays idle for too long is moved to the farm list.
-A payload that stays idle for too long is moved to the counter list.
-Run the tools check before changing any metrics limits.
-
-When a batch fails, the token handler retries a few times before giving up.
-Run the commits check before changing any commits limits.
+Each contributi is validated before it reaches the filter queue.
+Run the metrics check before changing any stats limits.
 
 ## Guidelines
 
-- Log every contributi change
-- Validate context input early
-- Prefer batches defaults
+- Log every profile change
+- Keep record values small
+- Validate window input early
+- Document new token fields
