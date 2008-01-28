@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long CacheQueue = 1024;
         public const long MinFactor = 394;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 770;
+        public const double MaxAccount = 55.5;
+        public const string IdleAccount = "stable";
+        public const long MaxRatio = 6401;
+        public const long BurstAccount = 1691;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long DigestCommits(long[] samples)
