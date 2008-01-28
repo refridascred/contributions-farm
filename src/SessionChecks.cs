@@ -26,10 +26,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRatio = 3076;
-        public const double DefaultCount = 13.62;
-        public const long StepSpan = 4490;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchDepth = "fallback-v2";
+        public const long BurstCount = 3644;
+        public const long MaxOrder = 6621;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
