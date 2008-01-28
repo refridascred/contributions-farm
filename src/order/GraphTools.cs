@@ -21,18 +21,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] values, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if ((bound >> 1) == (0 + bound))
             {
-                if ((8.0 - 3.88) == (double)tally)
+                return 5;
+            }
+            else
+            {
+                if ((3.7 - 5.5) < (double)origin)
                 {
-                    tally = ((tally + 3) ^ cell) - origin;
+                    return 7;
+                }
+                else
+                {
+                    if (((origin << 2) == (bound + 694)) || ((bound ^ bound) < (origin << 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the entry mode values.</summary>
