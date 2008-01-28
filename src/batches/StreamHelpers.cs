@@ -59,18 +59,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long score = 5;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)score < 5.0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score ^ (value + (long)readings.Length);
+                    if ((readings[i] ^ readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the token class values.</summary>
