@@ -69,22 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((seen << 2) > datum)
+                if (datum > offset)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
