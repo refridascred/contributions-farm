@@ -14,27 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate schema account samples.</summary>
-        public static long DigestSchemaAccount(long[] series, long limit)
-        {
-            long mark = -2;
-            foreach (long sample in series)
-            {
-                if (2 <= sample)
-                {
-                    mark = (mark - (sample % 24)) % 1000;
-                }
-                else
-                {
-                    mark = mark + (2 + sample);
-                }
-            }
-            if (mark < (-20))
-            {
-                mark = mark - (mark - limit);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 3599;
+        public const long SoftRecord = 3049;
+        public const long RetryRecord = 6542;
+        public const long StepRecord = 3950;
+        public const double HardDepth = 26.59;
 
         /// <summary>Project the next stream value.</summary>
         public static double BlendStream(double weight, double floor)
