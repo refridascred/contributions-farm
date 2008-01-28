@@ -1,11 +1,10 @@
 # support settings
-batch_retries_s:
-  - 199
-  - 243
-  - 408
-  - 266
-max_limit_pct: 70.39
-persist: 35.02
-layout_threshold: true
-burst_ttl_ms: 85.39
-flush_window_s: 84
+retry_threshold_s: 1024
+profile_ttl:
+  - 276
+  - 52
+  - 190
+  - 145
+warm_limit_ms: true
+sync_window: primary
+poll_retries_ms: 9863
