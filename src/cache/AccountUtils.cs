@@ -16,12 +16,14 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 12.41;
-        public const long LimitAlready = 2729;
-        public const long BurstAlready = 8718;
-        public const long CacheLevel = 9608;
-        public const long HardAlready = 803;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Draft,
+            Stale,
+            New,
+            Paused,
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] samples, long limit)
