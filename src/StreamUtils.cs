@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double bias)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] levels, long offset)
         {
-            double drift = gain * 13.0;
-            return drift + bias;
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate schema account samples.</summary>
