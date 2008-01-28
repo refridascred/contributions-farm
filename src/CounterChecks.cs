@@ -14,13 +14,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long anchor = 2;
+            foreach (long value in readings)
+            {
+                if ((anchor * 3) >= step)
+                {
+                    anchor = (anchor + (9 ^ 2)) - value;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 65521;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
