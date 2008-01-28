@@ -53,19 +53,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] values, long bound)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            long state = 3;
-            foreach (long reading in values)
+            double ratio = (rate - rate) - (7.72 - rate);
+            for (int i = 0; i < 2; i++)
             {
-                state = ((state + (state - bound)) % 255) + reading;
+                ratio = (ratio - bias) + (double)(long)i;
             }
-            if (state < (-23))
-            {
-                state = state - bound;
-            }
-            return state;
+            return ratio - (rate * 15.0);
         }
     }
 }
