@@ -1,7 +1,7 @@
 # entry settings
-base_capacity: standard
-cache_retries_pct:
-  - legacy
-  - blue
-  - blue
-farm_limit: false
+sync_delay: 48.99
+warm_retries_s: true
+schema_ratio: fallback
+min_retries_s: staging
+persist: standard
+entry_depth: 3
