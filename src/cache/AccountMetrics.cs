@@ -42,15 +42,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] data, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Match up profile samples.</summary>
