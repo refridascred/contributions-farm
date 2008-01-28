@@ -22,10 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftDepth = "fallback-v2";
-        public const long BurstRatio = 7594;
-        public const long DefaultProfile = 1937;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Pending,
+            Done,
+            Retry,
+            Synced,
+            Active,
+        }
 
         /// <summary>Find the first checks token entry that matches the target.</summary>
         public static long LookupChecksTokenIndex(long[] samples, long limit)
