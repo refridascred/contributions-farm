@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 1323;
-        public const long DefaultLevel = 3122;
-        public const long BatchToken = 7584;
-        public const long StepToken = 6522;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmBounds(long[] items, long offset)
