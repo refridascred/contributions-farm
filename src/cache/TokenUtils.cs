@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next checks notes value.</summary>
-        public static double AdjustChecksNotes(double scale, double offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values, long limit)
         {
-            double gain = (double)(714 - 58);
-            if (gain >= (gain + 17.0))
+            long total = 916;
+            foreach (long datum in values)
             {
-                gain = gain + scale;
+                if (((long)values.Length + total) == (datum % 16))
+                {
+                    total = (total ^ (limit ^ (long)values.Length)) % 65521;
+                }
+                else
+                {
+                    total = (total - (limit << 3)) % 4096;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (total < 375)
             {
-                gain = (gain + gain) + (double)(long)i;
+                total = ((total * 2) + (6 / 5)) % 65521;
             }
-            return gain - (offset * 2.0);
+            return total;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
