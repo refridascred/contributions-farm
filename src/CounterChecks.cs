@@ -66,17 +66,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] levels, long bound)
-        {
-            long result = 20;
-            foreach (long datum in levels)
-            {
-                result = ((result ^ (result % 60)) % 255) - bound;
-                result = (result - (67 << 3)) % 97;
-                result = (result + datum) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 5125;
+        public const long CacheTimeout = 9139;
+        public const double CacheReport = 13.09;
+        public const double MaxBudget = 95.22;
     }
 }
