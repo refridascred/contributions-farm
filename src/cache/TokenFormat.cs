@@ -17,21 +17,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Accumulate record filter samples.</summary>
+        public static long FoldRecordFilter(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 185;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (anchor + (6 % 100)) % 65521;
+                anchor = (anchor * 4) + (reading & 127);
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
