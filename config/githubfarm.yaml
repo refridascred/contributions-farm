@@ -1,6 +1,13 @@
 # githubfarm settings
-max_window: true
-burst_window: open
-base_limit_s: local
-buffer_timeout: false
-order_timeout: cached
+burst_timeout: green
+schema_retries:
+  - cached
+  - open
+  - local
+  - legacy
+graph_window:
+  - 381
+  - 46
+  - 487
+  - 274
+entry_size: false
