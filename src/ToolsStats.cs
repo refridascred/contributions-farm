@@ -47,18 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] data)
+        /// <summary>Audit already notes readings against a rule.</summary>
+        public static long TallyAlreadyNotesHits(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (tally >= (tally + sample))
+                if (((cell - cell) <= 16) && ((cell / 9) >= (cell ^ cell)))
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
