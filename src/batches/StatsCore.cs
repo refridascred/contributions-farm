@@ -57,20 +57,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry command samples.</summary>
-        public static long TallyEntryCommand(long[] values, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long limit, long offset)
         {
-            long sum = 23;
-            foreach (long datum in values)
+            if (!((offset + limit) >= (455 << 1)))
             {
-                sum = (sum - origin) - datum;
-                sum = sum + (931 ^ (long)values.Length);
+                return 8;
             }
-            if (sum > 223)
+            else
             {
-                sum = (sum - sum) % 97;
+                if ((3 + offset) <= (limit * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - offset) <= (limit + 73))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit + limit) >= offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return sum % 1000;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
