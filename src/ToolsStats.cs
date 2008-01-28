@@ -79,10 +79,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 2237;
-        public const double HardLevel = 45.62;
-        public const string IdleChannel = "primary-edge";
-        public const double BatchChannel = 53.44;
+        /// <summary>Check that every stream session entry stays within the limit.</summary>
+        public static bool ValidateStreamSessionBounds(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
