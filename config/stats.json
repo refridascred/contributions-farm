@@ -1,6 +1,11 @@
 {
-  "payload_timeout": 100,
-  "warm_delay": [6, 100, 315, 176],
-  "stream_retries": "strict",
-  "checks_depth": 9531
+  "cache_threshold_ms": ["strict", "legacy"],
+  "warm_threshold_pct": "standard",
+  "hard_delay": 60,
+  "min_size_pct": {
+    "enabled": 30,
+    "soft_capacity_count": 7.42,
+    "sync_timeout_s": 1195
+  },
+  "idle_ratio_pct": 9483
 }
