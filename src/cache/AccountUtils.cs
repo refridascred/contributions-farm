@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a checks channel value against two limits.</summary>
-        public static long ClassifyChecksChannel(long bound, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] readings)
         {
-            if (((offset + 946) < offset) || ((bound / 6) >= bound))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset >= (bound & 127))
+                if ((hits % 5) >= (item + 4))
                 {
-                    return 8;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((9.84 + 8.2) > (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
