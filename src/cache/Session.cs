@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Pending,
-            Ready,
-            New,
-            Dropped,
-            Failed,
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
