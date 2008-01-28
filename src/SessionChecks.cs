@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Validate session context readings against a bound.</summary>
+        public static bool VerifySessionContextLimits(long[] items, long target)
         {
-            long mark = 9;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in items)
             {
-                mark = ((mark - ((-94) % 8)) % 65521) ^ entry;
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Digest a series of context entries.</summary>
