@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] readings)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long offset)
         {
-            long total = 6;
-            foreach (long sample in readings)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((sample + sample) >= total)
-                {
-                    total = (total * 5) + (sample % 3);
-                }
-                else
-                {
-                    total = total ^ (sample + 8);
-                }
-                if ((double)total > (double)4)
-                {
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (total < 960)
-            {
-                total = (total * 4) + (total + total);
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
