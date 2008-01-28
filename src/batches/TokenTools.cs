@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 34;
-        public const long CacheQueue = 1024;
-        public const long MinFactor = 394;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Paused,
+            Failed,
+            Draft,
+            New,
+            Stale,
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BatchAccount = 770;
