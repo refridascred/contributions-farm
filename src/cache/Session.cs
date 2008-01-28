@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples, long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = 68;
-            foreach (long value in samples)
-            {
-                total = (total ^ (value + 3)) - bound;
-                if ((5.1 <= (double)total) && ((double)total > (double)value))
-                {
-                    break;
-                }
-            }
-            return total;
+            Pending,
+            Ready,
+            New,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a queue entry.</summary>
