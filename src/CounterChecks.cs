@@ -43,18 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Roll a layout stats counter forward.</summary>
+        public static long StepLayoutStats(long offset)
         {
-            long mix = 531;
-            foreach (long sample in levels)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)sample >= (8.4 / 9.0))
+                if (!(306 <= (acc + acc)))
                 {
-                    mix = mix - (mix << 3);
+                    acc = (acc * 4) + (offset & 15);
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return mix % 97;
+            return acc;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
