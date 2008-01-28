@@ -17,17 +17,21 @@ namespace Common.Utilities
             return (drift + (6.16 * 3.0)) + offset;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long bound)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
+            long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
