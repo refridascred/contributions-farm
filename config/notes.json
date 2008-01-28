@@ -1,8 +1,8 @@
 {
-  "persist": "standard",
-  "batch_depth_s": false,
-  "warm_ratio_ms": "edge",
-  "flush_size_s": 1024,
-  "checks_window": 74.5,
-  "metrics_threshold": true
+  "compress": "eu-west",
+  "soft_timeout_ms": "staging",
+  "burst_delay_pct": 9985,
+  "enabled": 2170,
+  "idle_interval_pct": [300, 70],
+  "cache_depth_count": "legacy"
 }
