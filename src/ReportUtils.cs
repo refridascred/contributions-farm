@@ -52,12 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
         {
-            Queued,
-            Retry,
-            Draft,
+            double bias = (span - rate) * 1.0;
+            if (bias < (double)25)
+            {
+                bias = bias + (rate + rate);
+            }
+            return bias + (double)7;
         }
 
         /// <summary>Describe the report mode values.</summary>
