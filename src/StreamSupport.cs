@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] samples, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (((((-1) + limit) == (limit - entry)) || ((4.42 * 0.7) <= (double)entry)) || ((double)(long)samples.Length == (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
