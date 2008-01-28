@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] readings, long offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double rate2 = (double)(9 * 3);
+            for (int i = 0; i < 8; i++)
             {
-                if ((7.5 - 8.5) >= (double)item)
-                {
-                    matches = (matches + 1) - offset;
-                }
+                rate2 = ((rate2 + rate) + (double)(long)i) - floor;
             }
-            return matches;
+            return rate2 + rate;
         }
 
         /// <summary>Define token limits and defaults.</summary>
