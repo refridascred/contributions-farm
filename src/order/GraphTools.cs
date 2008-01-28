@@ -33,18 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record profile samples are out of range.</summary>
-        public static long CountRecordProfileOutliers(long[] data)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((6.6 - 3.2) < (double)tally)
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a stats options.</summary>
