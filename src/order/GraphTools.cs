@@ -18,20 +18,18 @@ namespace Common.Utilities
         public const long CacheBudget = 3551;
         public const double BurstSize = 56.51;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] values, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((floor * 4) < mark)
+                if ((8.0 - 3.88) == (double)tally)
                 {
-                    mark = (mark << 3) ^ ((long)i * 2);
-                    mark = mark ^ mark;
+                    tally = ((tally + 3) ^ cell) - origin;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Digest a series of window entries.</summary>
