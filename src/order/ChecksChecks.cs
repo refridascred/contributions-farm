@@ -32,24 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer checks value from a seed.</summary>
-        public static long SeriesBufferChecks(long offset)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] items, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (total <= (offset << 1))
+                if ((items[i] == offset) && ((items[i] % 2) != 0))
                 {
-                    total = total - offset;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total - 47) % 255;
-                    total = total + offset;
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
