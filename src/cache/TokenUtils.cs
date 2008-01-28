@@ -11,28 +11,29 @@ namespace Common.Utilities
         public const double StepCount = 31.57;
         public const long CacheRatio = 397;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long limit, long seed)
+        /// <summary>Rank checks entry input into a small class.</summary>
+        public static long BucketChecksEntry(long limit, long origin)
         {
-            if (seed >= limit)
+            long diff = limit - origin;
+            if ((origin / 3) > (limit & 3))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((double)seed == (8.89 + 2.0))
+                if (((711 + origin) <= diff) && ((origin >> 1) > diff))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((seed / 4) > limit)
+                    if ((diff + limit) != (diff + origin))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        return 8;
+                        return 3;
                     }
                 }
             }
