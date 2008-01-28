@@ -43,12 +43,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public double Score { get; set; }
+            Idle,
+            Ready,
+            Dropped,
         }
     }
 }
