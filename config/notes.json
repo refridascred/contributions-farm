@@ -1,28 +1,7 @@
 {
-  "compress": 95.77,
-  "burst_delay_count": {
-    "session_threshold": false,
-    "notes_limit": {
-      "flush_window_ms": 60,
-      "cluster_ttl": "latest",
-      "persist": 91,
-      "record_window": 53.57,
-      "batches_capacity": false,
-      "batch_retries": 1024
-    },
-    "cluster_window": "local",
-    "warm_interval": 2673,
-    "strict": 97.63,
-    "dry_run": {
-      "retry_timeout_s": 5.41,
-      "schema_delay": 4492,
-      "enabled": 9103,
-      "soft_ttl_ms": 80,
-      "soft_interval": 1024
-    }
-  },
-  "verbose": false,
-  "retry_interval_s": false,
-  "burst_capacity_s": "standard",
-  "support_limit": [111, 480]
+  "flush_delay_ms": "legacy",
+  "retry_size_s": true,
+  "persist": true,
+  "cluster_depth": "latest",
+  "base_delay_count": ["standard", "strict"]
 }
