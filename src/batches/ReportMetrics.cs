@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double bias, double bias2)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            double weight = 7.7;
-            if (weight < (double)(-15))
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                weight = (weight + (bias + bias)) - bias2;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return weight - (16.0 - bias);
+            return result;
         }
 
         /// <summary>Grade a record metric value against two limits.</summary>
