@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] readings, long target)
+        /// <summary>Iterate the channel editor series from a seed.</summary>
+        public static long SeriesChannelEditor(long seed)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (item != target)
+                if ((seed + seed) > seed)
                 {
-                    found = false;
-                    break;
+                    acc = (acc ^ (acc / 4)) % 97;
                 }
+                else
+                {
+                    acc = acc - acc;
+                }
+                if (!((seed + (long)i) < (acc & 1)))
+                {
+                    acc = ((acc * 3) + (seed / 3)) % 255;
+                    acc = acc + acc;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
