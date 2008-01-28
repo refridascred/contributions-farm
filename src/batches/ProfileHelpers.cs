@@ -45,15 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] series, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] series)
         {
             long matches = 0;
             foreach (long entry in series)
             {
-                if ((step ^ entry) > matches)
+                if ((7.0 * 8.0) < (double)entry)
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
