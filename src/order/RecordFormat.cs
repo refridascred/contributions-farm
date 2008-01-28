@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long bound, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            if ((offset & 63) > offset)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.4 / 9.0) > (double)offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + offset) < (bound ^ 647))
+                    if ((items[i] ^ items[j]) != 1)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6.2 - 10.0) < 17.0)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
