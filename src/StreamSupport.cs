@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long LimitWidth = 851;
         public const long BurstStats = 2323;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Idle,
-            Paused,
             Draft,
-            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a contributi summary.</summary>
