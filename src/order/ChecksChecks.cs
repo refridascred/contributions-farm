@@ -14,14 +14,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count the cluster command entries that pass the check.</summary>
+        public static long AuditClusterCommandMatches(long[] samples)
         {
-            Locked,
-            Stale,
-            Dropped,
-            Retry,
-            Active,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (entry >= (matches * 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch phase values.</summary>
