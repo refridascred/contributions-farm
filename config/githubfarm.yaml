@@ -1,6 +1,7 @@
 # githubfarm settings
-contributi_limit: primary
-context_ratio: 77
-min_capacity_s: 57.48
-burst_capacity_ms: strict
-verbose: 6596
+cluster_ratio: 1548
+cache_limit: 28.88
+soft_capacity: 30
+max_window_pct: latest
+readonly: 84.57
+cache_timeout_ms: staging
