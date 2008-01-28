@@ -39,18 +39,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] samples, long seed)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((3.8 * 3.0) >= (double)count)
-                {
-                    count = ((count + 2) ^ item) + seed;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the report session entries that pass the check.</summary>
