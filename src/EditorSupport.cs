@@ -40,22 +40,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] values, long origin)
+        /// <summary>Grade a filter queue value against two limits.</summary>
+        public static long RankFilterQueue(long seed, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if ((step % 7) == (seed * 5))
             {
-                if (!((count - entry) == (origin & 127)) || ((489 + 55) > origin))
+                return 6;
+            }
+            else
+            {
+                if ((step & 1) <= (step - step))
                 {
-                    count = count + 2;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((seed / 7) < (seed - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - 56) <= seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a notes window reading.</summary>
