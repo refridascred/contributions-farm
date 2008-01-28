@@ -1,7 +1,11 @@
 {
-  "burst_size": [295, 249, 16, 181],
-  "flush_capacity": true,
-  "schema_window": 100,
-  "flush_limit_count": 6.78,
-  "flush_ttl_pct": true
+  "retry_limit_s": {
+    "cache_timeout_s": 8670,
+    "soft_ratio_pct": 22.92,
+    "batch_threshold": "fallback",
+    "enabled": "primary"
+  },
+  "graph_window": true,
+  "compress": [103, 243, 484, 432],
+  "max_ratio": 70.63
 }
