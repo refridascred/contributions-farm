@@ -43,11 +43,16 @@ namespace Common.Utilities
             return scale + (double)619;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long offset)
         {
-            public double Level { get; set; }
-            public bool Count { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 2) + (offset << 3)) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a editor summary.</summary>
