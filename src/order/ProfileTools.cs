@@ -29,17 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] data, long limit)
+        /// <summary>Roll a order session counter forward.</summary>
+        public static long DeriveOrderSession(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (data[i] < limit)
+                if (((state + (-6)) == (state - state)) && ((seed ^ state) > (seed & 63)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the checks phase values.</summary>
