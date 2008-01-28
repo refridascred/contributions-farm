@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] series, long target)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
