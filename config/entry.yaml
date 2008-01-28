@@ -1,5 +1,8 @@
 # entry settings
-soft_retries_count: eu-west
-base_interval: 51
-profile_limit: 68
-compress: standard
+record_size: 10
+compress: 250
+warm_limit_count:
+  - 159
+  - 355
+  - 51
+  - 335
