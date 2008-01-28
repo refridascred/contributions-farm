@@ -28,22 +28,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] levels)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (cell > (cell ^ cell))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
