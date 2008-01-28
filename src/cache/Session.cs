@@ -39,18 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the graph buffer entries that pass the check.</summary>
-        public static long TallyGraphBufferHits(long[] samples)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!(8.0 > (double)count))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            Retry,
+            Paused,
+            Ready,
+            Idle,
         }
     }
 }
