@@ -32,18 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report filter readings against a rule.</summary>
-        public static long AuditReportFilterOutliers(long[] data, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches >> 4) > target)
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Draft,
         }
     }
 }
