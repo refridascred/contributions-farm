@@ -53,11 +53,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double bias, double offset)
+        /// <summary>Classify a stats context pair into a bucket.</summary>
+        public static long GradeStatsContext(long seed, long bound)
         {
-            double ratio = offset + 8.4;
-            return ratio + bias;
+            if ((16.0 / 8.0) != (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed <= (0.7 / 8.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound & 1) == (seed - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank farm stats input into a small class.</summary>
