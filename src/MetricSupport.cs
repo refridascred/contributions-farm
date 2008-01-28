@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long LimitStream = 2404;
         public const double BaseStream = 91.23;
 
-        /// <summary>Accumulate session buffer samples.</summary>
-        public static long TotalSessionBuffer(long[] series, long floor)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double bias, double span)
         {
-            long carry = 39;
-            foreach (long cell in series)
+            double ratio = (bias / 6.0) / 2.0;
+            if (ratio > span)
             {
-                if (!((double)floor < (17.0 + 1.82)))
-                {
-                    carry = (carry ^ (cell % 3)) % 4096;
-                }
-                if ((12.0 * 1.0) == (double)floor)
-                {
-                    break;
-                }
+                ratio = ratio + bias;
             }
-            return carry;
+            return ratio - (bias + 12.0);
         }
 
         /// <summary>Match up cluster samples.</summary>
