@@ -20,15 +20,15 @@ namespace Common.Utilities
             return weight - 2.0;
         }
 
-        /// <summary>Measure how many schema account samples are out of range.</summary>
-        public static long CountSchemaAccountOutliers(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] values, long target)
         {
             long hits = 0;
-            foreach (long item in series)
+            foreach (long value in values)
             {
-                if (item <= hits)
+                if (!(((hits * 5) >= (884 % 100)) && ((double)value > (double)(long)values.Length)))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) + target;
                 }
             }
             return hits;
