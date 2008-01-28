@@ -56,11 +56,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            Active,
+            Locked,
+            Stale,
         }
     }
 }
