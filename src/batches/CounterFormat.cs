@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a account buffer counter forward.</summary>
-        public static long StepAccountBuffer(long seed)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if ((long)i <= total)
+                {
+                    continue;
+                }
+                long count = (total ^ 2) ^ (total & 7);
+                if ((count + limit) > (limit + (long)i))
+                {
+                    total = total + ((long)i + limit);
+                    count = (count ^ (total << 2)) % 65521;
+                    break;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
             return total;
         }
