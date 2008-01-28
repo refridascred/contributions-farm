@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] series, long limit)
+        /// <summary>Count the already metrics entries that pass the check.</summary>
+        public static long AuditAlreadyMetricsOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (((item + tally) > (417 ^ (-39))) || ((17.0 + 7.58) >= (double)tally))
+                if (!(((-418) + 338) != (item >> 3)) && (((double)item >= 19.0) || (14.0 > (double)item)))
                 {
-                    tally = (tally + 2) - limit;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
