@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] samples, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] items, long step)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long item in items)
             {
-                if ((tally % 3) < (3 ^ (-4)))
+                if ((tally + item) < tally)
                 {
-                    tally = ((tally + 2) + datum) + offset;
+                    tally = (tally + 3) + step;
                 }
             }
             return tally;
