@@ -1,19 +1,9 @@
 {
-  "notes_threshold": ["primary", "stable", "local", "open"],
-  "compress": {
-    "audit": 30,
-    "burst_threshold_s": ["green", "eu-west"],
-    "editor_capacity": {
-      "already_depth": 18,
-      "readonly": 16.53,
-      "checks_size": 60
-    },
-    "base_timeout": 4195,
-    "queue_retries": "green",
-    "sync_interval_pct": ["legacy", "staging"]
-  },
-  "default_ttl_ms": "legacy",
-  "flush_ttl_ms": 49,
-  "dry_run": ["open", "legacy", "latest", "open"],
-  "schema_ratio": false
+  "readonly": 83,
+  "account_ttl": 80.98,
+  "batch_threshold": {
+    "burst_interval_s": 13.58,
+    "max_retries_ms": [55, 279],
+    "poll_threshold": true
+  }
 }
