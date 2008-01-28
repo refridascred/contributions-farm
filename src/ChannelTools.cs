@@ -18,14 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long origin, long floor)
         {
-            Done,
-            Pending,
-            New,
-            Draft,
-            Retry,
+            if ((5.6 / 3.0) >= (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((7.6 / 4.0) == (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - floor) <= 9)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
