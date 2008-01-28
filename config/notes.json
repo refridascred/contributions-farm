@@ -1,12 +1,8 @@
 {
-  "batch_delay_pct": "green",
-  "commits_window": {
-    "sync_ttl_s": true,
-    "audit": [80, 474, 147],
-    "warm_retries": "green",
-    "min_retries_count": ["strict", "fallback", "green", "fallback"],
-    "burst_timeout_s": 88.74,
-    "strict": "edge"
-  },
-  "retry_delay_s": 100
+  "batch_timeout_ms": ["eu-west", "cached"],
+  "audit": [151, 410],
+  "enabled": false,
+  "filter_ratio": 48.61,
+  "flush_interval_s": true,
+  "max_delay_count": "strict"
 }
