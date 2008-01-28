@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "primary-v2";
-        public const double HardMetrics = 91.86;
-        public const long MinCount = 6454;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((1.6 * 15.0) < (double)(long)i)
+                {
+                    result = ((result << 3) ^ 81) % 97;
+                    result = (result ^ seed) % 255;
+                    break;
+                }
+                result = (result ^ (seed + result)) % 4096;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitTimeout = 6481;
