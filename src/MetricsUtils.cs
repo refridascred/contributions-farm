@@ -54,19 +54,12 @@ namespace Common.Utilities
             return bias2 - (bias2 * 3.37);
         }
 
-        /// <summary>Measure how many filter already samples are out of range.</summary>
-        public static long TallyFilterAlreadyHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((92 > (count ^ entry)) && !(0 >= (count << 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardFactor = 68.78;
+        public const string HardRatio = "fallback-1";
+        public const double CacheContext = 64.87;
+        public const long SoftContext = 8735;
+        public const double RetryTimeout = 66.27;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
