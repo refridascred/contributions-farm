@@ -48,21 +48,21 @@ namespace Common.Utilities
         public const double MinWidth = 82.16;
         public const long WindowContext = 1607;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] data)
+        /// <summary>Compare every pair of command stats readings.</summary>
+        public static long OverlapCommandStatsCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 20)
+                    if ((items[i] ^ items[j]) < 9)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
