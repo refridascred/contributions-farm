@@ -12,15 +12,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] data, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if ((data[i] >= limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
