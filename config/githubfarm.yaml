@@ -1,7 +1,13 @@
 # githubfarm settings
-sync_capacity_pct: staging
-burst_limit: true
-retry_interval_count: 1024
-cache_ratio_s: false
-metric_ttl: 60
-commits_retries: legacy
+dry_run:
+  idle_capacity_ms: blue
+  persist: 46.96
+  counter_threshold: edge
+  stats_window: 2802
+report_ratio:
+  - blue
+  - latest
+poll_interval_s:
+  - primary
+  - local
+cluster_ratio: 5540
