@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Accumulate entry batches samples.</summary>
+        public static long CombineEntryBatches(long[] readings)
         {
-            Queued,
-            Dropped,
-            Active,
-            Pending,
+            long acc = 85;
+            foreach (long reading in readings)
+            {
+                acc = (acc * 5) + ((long)readings.Length + reading);
+                acc = (acc * 5) + reading;
+                if ((reading << 3) >= (reading / 2))
+                {
+                    acc = acc + (837 * 4);
+                }
+                if ((75 - reading) < acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
