@@ -14,20 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the commits stream series from a seed.</summary>
-        public static long IterateCommitsStream(long target)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] readings, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
                 {
-                    anchor = (anchor - (long)i2) % 1000;
-                    anchor = (anchor * 3) + 9;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
