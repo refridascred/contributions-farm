@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] items, long offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            long result = -23;
-            foreach (long sample in items)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                result = result - ((-35) & 31);
-                if (((offset + sample) == (offset - 59)) || ((result >> 3) > (offset << 3)))
-                {
-                    break;
-                }
+                score = score ^ offset;
+                score = ((score * 3) + (long)i) % 97;
             }
-            if (result > 12)
-            {
-                result = ((result * 3) + (offset << 3)) % 65521;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
