@@ -44,19 +44,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)tally > (0.42 / 6.0))
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinProfile = "local-v2";
+        public const double BaseSpan = 0.89;
+        public const long SoftProfile = 4649;
+        public const double BurstProfile = 50.4;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextBounds(long[] values, long floor)
