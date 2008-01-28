@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double DefaultMetrics = 10.91;
         public const long LimitDepth = 9217;
 
-        /// <summary>Look up the position of a queue channel sample.</summary>
-        public static long FindQueueChannelIndex(long[] data, long floor)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= floor)
+                if (series[i] > origin)
                 {
                     return (long)i;
                 }
