@@ -77,39 +77,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a commits editor value against two limits.</summary>
-        public static long GradeCommitsEditor(long target, long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long diff = target + step;
-            if (diff >= target)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)diff < (7.7 + 10.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) > step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (696 < (diff * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Dropped,
+            Locked,
+            Synced,
         }
     }
 }
