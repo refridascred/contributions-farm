@@ -27,11 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] data)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((double)tally > (4.0 * 0.21)) && ((cell < 8) && (7.0 > (double)cell)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a channel stats.</summary>
