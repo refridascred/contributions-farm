@@ -23,12 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 4680;
-        public const string RetryNotes = "primary-v2";
-        public const long WindowInterval = 1162;
-        public const double SoftNotes = 48.62;
-        public const long MinScore = 1169;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((671 >> 4) != (sample * 3)) || ((sample - hits) >= 67))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
