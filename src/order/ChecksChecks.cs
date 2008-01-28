@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a buffer channel reading by value.</summary>
-        public static long SeekBufferChannelIndex(long[] readings, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Retry,
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define command limits and defaults.</summary>
