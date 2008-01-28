@@ -31,17 +31,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                if (((limit & 7) <= hits) && (entry > (hits % 97)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of already entries.</summary>
