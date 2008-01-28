@@ -38,12 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] series, long seed)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)item < (14.0 * 0.7))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
