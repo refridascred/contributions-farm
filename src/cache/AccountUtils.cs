@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 5953;
-        public const long BurstCommand = 1289;
-        public const long RetryBudget = 9883;
-        public const long RetryCommand = 2302;
-        public const double MaxTimeout = 72.83;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxWidth = 5889;
+        public const string IdleProfile = "cached-1";
+        public const string MinBudget = "fallback";
+        public const string DefaultProfile = "stable-v2";
+        public const long RetryProfile = 6492;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountMatches(long[] levels)
