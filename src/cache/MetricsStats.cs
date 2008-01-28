@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 9347;
+        public const long IdleAccount = 7768;
+        public const double StepWidth = 48.26;
+        public const long SoftSpan = 4296;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double WindowRatio = 9.38;
