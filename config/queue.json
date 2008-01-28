@@ -1,6 +1,7 @@
 {
-  "flush_size_pct": 8.32,
-  "soft_timeout_ms": "open",
-  "soft_ratio_s": "standard",
-  "poll_capacity_ms": "strict"
+  "account_depth": "cached",
+  "tools_delay": "primary",
+  "batch_delay": 100,
+  "metrics_timeout": 57,
+  "verbose": true
 }
