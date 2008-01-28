@@ -25,17 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile queue entry that matches the target.</summary>
-        public static long LookupProfileQueueIndex(long[] data, long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((8.1 / 6.0) == (double)bound)
             {
-                if (data[i] <= seed)
+                return 1;
+            }
+            else
+            {
+                if ((step & 1) >= (bound % 100))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound >= (0.2 - 6.35))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)bound != (double)step) || ((58 + step) >= (step + bound)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
