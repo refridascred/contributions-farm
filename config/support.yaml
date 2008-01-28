@@ -1,9 +1,22 @@
 # support settings
-default_size: false
-warm_timeout_s: strict
-idle_threshold: 7.64
-hard_threshold_ms:
-  - local
-  - open
-  - fallback
-sync_retries_ms: local
+default_window_ms:
+  - 201
+  - 283
+base_window_s: 95.79
+schema_capacity:
+  flush_depth_pct: edge
+  layout_timeout: true
+  record_depth:
+    warm_interval_count: 250
+    githubfarm_ratio: open
+    warm_ratio: 5411
+    base_size_pct: strict
+batch_size_s:
+  - staging
+  - latest
+hard_ttl_count:
+  base_limit_count: 81
+  base_threshold_count: 89.24
+  hard_interval: cached
+  hard_depth: stable
+strict: latest
