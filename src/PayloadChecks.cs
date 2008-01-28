@@ -48,23 +48,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate counter contributi samples.</summary>
-        public static long TallyCounterContributi(long[] levels)
+        /// <summary>Accumulate queue farm samples.</summary>
+        public static long DigestQueueFarm(long[] readings)
         {
-            long total = 774;
-            foreach (long cell in levels)
+            long mix = 69;
+            foreach (long datum in readings)
             {
-                if (total < (cell + total))
-                {
-                    total = ((total * 5) + total) % 1000;
-                    continue;
-                }
-                if ((total + cell) >= total)
-                {
-                    total = (total * 3) + total;
-                }
+                mix = (mix - (mix >> 1)) % 97;
+                mix = (mix << 3) ^ (datum / 8);
+                mix = (mix + (datum ^ mix)) % 97;
             }
-            return total % 1000;
+            return mix % 97;
         }
 
         /// <summary>Measure how many order route samples are out of range.</summary>
