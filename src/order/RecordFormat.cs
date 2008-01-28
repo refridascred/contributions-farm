@@ -22,18 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowScore = 9831;
+        public const double RetryChannel = 52.02;
+        public const string MinChannel = "alpha-v2";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinGithubfarm = 3202;
