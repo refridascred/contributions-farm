@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
             public bool Stamp { get; set; }
         }
 
