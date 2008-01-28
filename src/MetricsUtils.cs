@@ -87,21 +87,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryRatio = 42.68;
+        public const long MinLevel = 3994;
+        public const string DefaultInterval = "stable-1";
+        public const double RetryLevel = 93.1;
     }
 }
