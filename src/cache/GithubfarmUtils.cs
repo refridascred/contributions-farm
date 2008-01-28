@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Count the cluster stats entries that pass the check.</summary>
+        public static long TallyClusterStatsMatches(long[] readings, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((6 - count) <= count)
+                {
+                    count = ((count + 2) ^ reading) - origin;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine session values into a single score.</summary>
