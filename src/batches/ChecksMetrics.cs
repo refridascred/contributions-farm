@@ -56,24 +56,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long floor, long floor2)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double weight, double offset)
         {
-            if ((double)floor2 == (10.0 + 5.41))
+            double load = 3.3;
+            if (load >= (load / 9.0))
             {
-                return 6;
+                load = load - (9.64 + load);
             }
-            else
-            {
-                if ((70 - floor) > (66 + 83))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return load + (offset + weight);
         }
 
         /// <summary>Count the account record entries that pass the check.</summary>
