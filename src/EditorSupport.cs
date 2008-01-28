@@ -44,19 +44,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] readings, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (value > step)
+                if ((double)tally > (0.42 / 6.0))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
