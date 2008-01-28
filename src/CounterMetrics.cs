@@ -54,15 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] series, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long reading in series)
             {
-                if ((sample << 1) < limit)
+                if ((matches + matches) < (matches >> 5))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
