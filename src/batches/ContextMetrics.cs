@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleRatio = 9194;
-        public const long DefaultLevel = 8004;
-        public const long RetrySchema = 1834;
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double rate, double bias)
+        {
+            double gain = bias + (bias + 18.0);
+            if (gain < (15.0 / 5.0))
+            {
+                gain = gain - (gain - rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - 6.6;
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double scale, double offset)
