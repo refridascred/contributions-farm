@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Audit counter tools readings against a rule.</summary>
+        public static long CountCounterToolsOutliers(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                score = score ^ offset;
-                score = ((score * 3) + (long)i) % 97;
+                if ((5.5 + 13.0) < (double)matches)
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
