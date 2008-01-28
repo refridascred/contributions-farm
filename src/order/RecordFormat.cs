@@ -73,39 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long seed, long step)
+        /// <summary>Measure how many route batch samples are out of range.</summary>
+        public static long MeasureRouteBatchMatches(long[] data)
         {
-            long diff = seed ^ step;
-            if ((diff * 5) < (8 ^ diff))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((diff + seed) == (step * 3)) && ((95 << 3) == (diff / 7)))
+                if (tally >= (value ^ value))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (4.3 <= (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step / 8) <= step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
