@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] series, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long target, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if ((double)step <= (12.0 / 3.0))
             {
-                if ((double)seen != (4.0 + 7.9))
+                return 7;
+            }
+            else
+            {
+                if (step < target)
                 {
-                    seen = ((seen + 2) ^ cell) + bound;
+                    return 1;
+                }
+                else
+                {
+                    if (((-1) - step) <= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
