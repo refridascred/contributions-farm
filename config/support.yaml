@@ -1,9 +1,12 @@
 # support settings
-retry_interval_count:
-  - legacy
-  - primary
-  - local
-  - stable
-burst_capacity_count: 84
-burst_depth_count: true
-cluster_timeout: 2.94
+warm_capacity_pct: 6559
+notes_delay: cached
+enabled: 24
+cache_limit:
+  sync_capacity: blue
+  audit: false
+  strict: 69
+  flush_size_s:
+    format_threshold: standard
+    stream_timeout: staging
+    burst_threshold_ms: fallback
