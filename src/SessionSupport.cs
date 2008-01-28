@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] samples, long step)
+        /// <summary>Scale a metric cluster figure with a bias.</summary>
+        public static double ProjectMetricCluster(double weight, double span)
         {
-            long anchor = 268;
-            foreach (long entry in samples)
-            {
-                anchor = (((anchor * 3) + (6 + anchor)) % 1000) + step;
-                anchor = ((anchor * 3) + entry) % 1000;
-            }
-            return anchor;
+            double drift = (double)0;
+            return (drift - (span / 8.0)) + weight;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
