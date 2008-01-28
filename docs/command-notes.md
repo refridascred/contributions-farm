@@ -1,11 +1,13 @@
 # Command notes
 
-The stream module keeps counter values in sync with the buffer cache.
-Defaults for context live in the config folder and can be overridden per environment.
-Defaults for batch live in the config folder and can be overridden per environment.
+When a stream fails, the record handler retries a few times before giving up.
+Each route is validated before it reaches the queue queue.
+
+Each layout is validated before it reaches the report queue.
+Use contributi settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Review layout limits each release
-- Log every batch change
-- Keep counter values small
+- Document new cluster fields
+- Prefer token defaults
+- Review token limits each release
