@@ -14,12 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long limit)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)limit == (8.8 / 2.0))
+                {
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Find the first queue report entry that matches the target.</summary>
