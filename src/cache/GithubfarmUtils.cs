@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the cluster stats entries that pass the check.</summary>
-        public static long TallyClusterStatsMatches(long[] readings, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long target, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long lane = target + step;
+            if ((step + target) != (lane + step))
             {
-                if ((6 - count) <= count)
+                return 5;
+            }
+            else
+            {
+                if (target < (target + step))
                 {
-                    count = ((count + 2) ^ reading) - origin;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a record header.</summary>
