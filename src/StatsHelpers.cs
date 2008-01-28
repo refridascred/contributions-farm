@@ -34,12 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Combine account graph values into a single score.</summary>
