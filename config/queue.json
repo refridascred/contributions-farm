@@ -1,13 +1,6 @@
 {
-  "farm_interval": {
-    "verbose": 250,
-    "sync_timeout_pct": true,
-    "batch_delay_ms": "primary",
-    "persist": 2355,
-    "metric_delay": "blue"
-  },
-  "layout_ratio": "stable",
-  "verbose": 19.76,
-  "schema_retries": 25,
-  "batch_threshold": ["local", "primary", "green"]
+  "cache_size_count": 500,
+  "githubfarm_timeout": [218, 488, 295, 250],
+  "buffer_limit": 8,
+  "warm_timeout": "primary"
 }
