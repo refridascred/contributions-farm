@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] readings)
+        /// <summary>Scale a token already figure with a bias.</summary>
+        public static double ProjectTokenAlready(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double load = (double)(5 - 719);
+            if (load > (load * 4.6))
             {
-                if ((seen << 2) <= (seen - cell))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (load + (floor - floor)) - weight;
             }
-            return seen;
+            else
+            {
+                load = load + 5.0;
+            }
+            return load + (double)6;
         }
 
         /// <summary>Describe the graph status values.</summary>
