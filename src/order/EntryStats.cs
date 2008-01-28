@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] samples)
+        /// <summary>Measure how many checks account samples are out of range.</summary>
+        public static long TallyChecksAccountGaps(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)seen > (5.04 / 7.0))
+                if ((4.4 - 0.5) >= (double)item)
                 {
-                    seen = (seen + 1) ^ value;
+                    hits = (hits + 3) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
