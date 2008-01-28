@@ -34,18 +34,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] readings, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((floor - sample) <= matches)
+                if ((cell - cell) <= 729)
                 {
-                    matches = matches + 2;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Blend two counter measurements.</summary>
