@@ -26,17 +26,10 @@ namespace Common.Utilities
             return weight + (weight * 1.3);
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBudget = 82.92;
+        public const long BatchBatches = 6298;
+        public const long BatchDepth = 570;
+        public const long HardBatches = 2937;
     }
 }
