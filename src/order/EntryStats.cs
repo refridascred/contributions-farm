@@ -33,11 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up route samples.</summary>
