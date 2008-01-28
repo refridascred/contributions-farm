@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double bias, double span)
+        /// <summary>Measure how many contributi notes samples are out of range.</summary>
+        public static long TallyContributiNotesGaps(long[] values, long origin)
         {
-            double drift = (span * 4.0) + (span - bias);
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                drift = (drift + span) - (double)(long)i;
+                if ((origin <= (35 & 255)) && ((origin ^ seen) > datum))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift + (span + span);
+            return seen;
         }
 
         /// <summary>Blend two contributi stream measurements.</summary>
