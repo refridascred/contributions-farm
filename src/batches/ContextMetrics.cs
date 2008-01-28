@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8800;
-        public const string RetryFactor = "legacy-v2";
-        public const long CacheWidth = 5741;
-        public const long BatchBudget = 7885;
-        public const double RetryCount = 76.37;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Scale a farm report figure with a bias.</summary>
         public static double ScaleFarmReport(double bias, double span)
