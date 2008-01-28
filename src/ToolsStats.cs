@@ -56,18 +56,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the record checks entries that pass the check.</summary>
-        public static long AuditRecordChecksHits(long[] values, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((entry & 63) >= (entry ^ (long)values.Length))
+                if ((((-64) <= matches) && ((double)matches == (7.26 - 3.0))) && ((cell << 3) <= (41 & 255)))
                 {
-                    seen = (seen + 1) - bound;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate stream samples.</summary>
