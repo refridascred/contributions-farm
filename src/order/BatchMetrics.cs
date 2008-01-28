@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstRatio = 5804;
-        public const long BurstFilter = 3933;
-        public const long SoftScore = 2468;
-        public const long SoftFilter = 436;
+        /// <summary>Count the token batches entries that pass the check.</summary>
+        public static long MeasureTokenBatchesMatches(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!(((bound * 5) == (item - item)) && (953 < item)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double AdjustCommand(double bias, double offset)
