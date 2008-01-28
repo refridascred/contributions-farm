@@ -1,6 +1,17 @@
 {
-  "retry_limit_s": "staging",
-  "format_ratio": "primary",
-  "max_capacity_s": "fallback",
-  "batch_delay_pct": true
+  "max_window_pct": true,
+  "record_delay": {
+    "burst_size_count": 60,
+    "graph_ratio": {
+      "filter_capacity": 23.52,
+      "soft_capacity": [329, 311, 350],
+      "commits_size": 73.64,
+      "max_ttl_ms": 46,
+      "strict": 100,
+      "default_retries_ms": true
+    },
+    "burst_size": 57.71,
+    "hard_interval_s": 14
+  },
+  "cache_size_ms": ["standard", "legacy", "primary"]
 }
