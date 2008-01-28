@@ -1,6 +1,7 @@
 {
-  "batch_capacity_pct": 57,
-  "compress": "open",
-  "enabled": 35.66,
-  "audit": ["legacy", "primary", "blue", "standard"]
+  "sync_window_ms": "local",
+  "sync_limit_s": "primary",
+  "verbose": "green",
+  "context_capacity": false,
+  "idle_ratio_ms": [356, 15, 233, 400]
 }
