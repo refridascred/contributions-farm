@@ -93,12 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] data)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count + (-91)) >= (count ^ 13))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
     }
 }
