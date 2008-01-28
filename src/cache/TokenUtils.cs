@@ -30,19 +30,39 @@ namespace Common.Utilities
             return mean + (mean * 9.7);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] items, long floor)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long target, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long step2 = target + step;
+            if ((double)step >= (1.3 - 19.0))
             {
-                if (sample >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((target + step) == (29 + 151))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step2) < ((-9) % 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step < 4.0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
