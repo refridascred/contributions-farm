@@ -1,10 +1,9 @@
 # support settings
-sync_ttl: true
-dry_run: 79
-flush_delay: cached
-strict: 500
-batch_capacity_ms:
-  - standard
+retry_interval_count:
+  - legacy
   - primary
-  - staging
-  - staging
+  - local
+  - stable
+burst_capacity_count: 84
+burst_depth_count: true
+cluster_timeout: 2.94
