@@ -39,10 +39,19 @@ namespace Common.Utilities
         public const long HardInterval = 2396;
         public const string MinTimeout = "latest-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSpan = 5787;
-        public const double BaseSchema = 70.75;
-        public const long WindowSchema = 2853;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry >= seen) || (entry <= offset))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first filter commits entry that matches the target.</summary>
         public static long LookupFilterCommitsIndex(long[] values, long step)
