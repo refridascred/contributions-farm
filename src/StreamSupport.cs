@@ -30,15 +30,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double scale, double bias)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long floor)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 6; i++)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                scale2 = ((scale2 + (double)449) + (double)(long)i) + bias;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix << 3) ^ (mix % 100)) + (long)i2;
+                }
+                mix = (mix + (floor + floor)) % 4096;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return scale2 - (scale2 * 17.0);
+            return mix;
         }
     }
 }
