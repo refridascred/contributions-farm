@@ -32,21 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cluster channel samples.</summary>
-        public static long CompareClusterChannelCount(long[] samples)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine account graph values into a single score.</summary>
