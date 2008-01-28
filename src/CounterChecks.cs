@@ -46,13 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            Done,
-            Active,
-            Stale,
-            Retry,
+            long mix = 531;
+            foreach (long sample in levels)
+            {
+                if ((double)sample >= (8.4 / 9.0))
+                {
+                    mix = mix - (mix << 3);
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
