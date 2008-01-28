@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 3726;
         public const double BurstFactor = 70.73;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long target)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
