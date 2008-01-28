@@ -16,13 +16,22 @@ namespace Common.Utilities
             return gain + 6.0;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] levels)
         {
-            Synced,
-            Pending,
-            Queued,
-            Ready,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits >> 1) == (hits % 12))
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
