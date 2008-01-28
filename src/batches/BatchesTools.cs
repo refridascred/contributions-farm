@@ -16,17 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a schema tools reading by value.</summary>
-        public static long FindSchemaToolsIndex(long[] readings, long offset)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = 8.46 * 5.5;
+            if (bias <= 11.0)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias = (bias + ratio) - span;
             }
-            return -1;
+            return bias + bias;
         }
 
         /// <summary>Audit report filter readings against a rule.</summary>
