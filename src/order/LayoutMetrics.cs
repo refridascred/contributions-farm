@@ -28,11 +28,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long bound, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            if ((-62) > (bound & 15))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((9.0 < (double)seed) && ((seed << 3) < (bound + seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + bound) >= (bound & 7)) || ((seed / 6) > seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((6.0 - 17.0) < (double)seed) || ((seed >> 1) > (bound + seed)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
