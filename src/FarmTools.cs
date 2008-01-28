@@ -38,11 +38,21 @@ namespace Common.Utilities
             return drift - 9.1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepWidth = 8405;
-        public const double MaxScore = 34.96;
-        public const long BatchInterval = 5525;
-        public const long LimitScore = 2489;
-        public const long RetryFactor = 8678;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
