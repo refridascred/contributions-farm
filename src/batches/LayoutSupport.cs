@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultSpan = 3659;
+        public const long IdleRoute = 4669;
+        public const long WindowWidth = 6401;
+        public const string SoftDepth = "open";
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
