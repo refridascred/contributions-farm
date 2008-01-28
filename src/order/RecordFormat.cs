@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 1811;
-        public const long HardMetric = 9734;
-        public const long BaseInterval = 1625;
-        public const long WindowSize = 3862;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long bound, long offset)
+        {
+            if ((offset & 63) > offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.4 / 9.0) > (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + offset) < (bound ^ 647))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6.2 - 10.0) < 17.0)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long ClassifyEditor(long target, long seed)
