@@ -40,18 +40,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] items, long offset)
+        /// <summary>Accumulate support tools samples.</summary>
+        public static long TotalSupportTools(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 7;
+            foreach (long reading in series)
             {
-                if ((entry >= seen) || (entry <= offset))
+                if (((carry % 64) < carry) || (step <= (carry << 1)))
                 {
-                    seen = seen + 2;
+                    carry = ((carry - (carry * 4)) % 65521) - reading;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (73 + step)) % 4096;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit layout buffer readings against a rule.</summary>
