@@ -25,21 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)963 / 5.0;
+            if (weight > scale)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + span;
             }
-            return count;
+            else
+            {
+                weight = weight - (scale - scale);
+            }
+            return weight + (scale / 4.0);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
