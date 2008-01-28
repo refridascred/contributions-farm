@@ -22,16 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] data, long origin)
-        {
-            long score = 50;
-            foreach (long item in data)
-            {
-                score = ((score << 3) ^ (item >> 2)) - origin;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 5981;
+        public const long MaxWidth = 1390;
+        public const double BurstWindow = 8.12;
+        public const long MaxWindow = 8587;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftAlready = 2321;
