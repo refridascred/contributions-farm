@@ -34,13 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] items)
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 8;
+            foreach (long datum in items)
+            {
+                mark = (mark + (datum << 3)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
