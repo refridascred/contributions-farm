@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "fallback-1";
-        public const string MinLevel = "cached-v2";
-        public const long CacheCommits = 418;
-        public const long WindowCommits = 9957;
-        public const string HardCommits = "legacy";
+        /// <summary>Compare every pair of graph route readings.</summary>
+        public static long MatchGraphRouteCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
