@@ -1,11 +1,6 @@
-id,score,label
-1,59.9,907
-2,local,primary
-3,26.3,local
-4,549,66.43
-5,71.6,451
-6,369,legacy
-7,554,74.35
-8,644,87.53
-9,24.15,175
-10,378,981
+id,region,label,owner
+1,5.24,strict,83.07
+2,standard,45.0,cached
+3,staging,87.63,571
+4,817,3.62,530
+5,fallback,84.45,33.5
