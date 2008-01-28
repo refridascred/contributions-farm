@@ -1,12 +1,4 @@
 # support settings
-warm_capacity_pct: 6559
-notes_delay: cached
-enabled: 24
-cache_limit:
-  sync_capacity: blue
-  audit: false
-  strict: 69
-  flush_size_s:
-    format_threshold: standard
-    stream_timeout: staging
-    burst_threshold_ms: fallback
+max_delay: 17.22
+contributi_depth: 66
+enabled: false
