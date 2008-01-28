@@ -44,11 +44,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            long score = 5;
+            foreach (long value in readings)
+            {
+                if ((double)score < 5.0)
+                {
+                    score = score ^ (value + (long)readings.Length);
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate session command samples.</summary>
