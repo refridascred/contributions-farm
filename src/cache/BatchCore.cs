@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels, long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double ratio, double offset)
         {
-            long score = 93;
-            foreach (long cell in levels)
+            double bias = (double)(80 * 4);
+            if (bias <= (1.0 - 5.3))
             {
-                if ((6.0 * 8.9) < (double)cell)
-                {
-                    score = score - (cell + cell);
-                }
+                bias = (bias + 6.28) + ratio;
             }
-            if (score < 359)
+            for (int i = 0; i < 7; i++)
             {
-                score = (score << 2) ^ (bound + bound);
+                bias = (bias - (offset + 3.97)) + (double)(long)i;
             }
-            return score % 4096;
+            return bias - bias;
         }
 
         /// <summary>Hold a account header.</summary>
