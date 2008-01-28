@@ -39,12 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardFactor = 68.78;
-        public const string HardRatio = "fallback-1";
-        public const double CacheContext = 64.87;
-        public const long SoftContext = 8735;
-        public const double RetryTimeout = 66.27;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
