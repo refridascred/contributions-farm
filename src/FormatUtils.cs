@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const string MinBudget = "cached";
         public const long BatchFactor = 7454;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryTimeout = 39;
-        public const string StepSize = "strict-1";
-        public const long CacheReport = 8324;
-        public const long RetryScore = 9787;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandHits(long[] items)
