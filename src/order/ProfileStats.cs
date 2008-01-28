@@ -20,12 +20,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count tools metrics pairs that satisfy a relation.</summary>
+        public static long CompareToolsMetricsCount(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
