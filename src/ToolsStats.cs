@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next metric session value from a seed.</summary>
-        public static long SeriesMetricSession(long origin)
+        /// <summary>Fold a list of stats editor readings.</summary>
+        public static long CombineStatsEditor(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long mark = 95;
+            foreach (long cell in levels)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if ((cell + mark) >= (2 << 3))
+                {
+                    break;
+                }
+                mark = ((mark << 2) ^ (mark - mark)) % 4096;
             }
-            return total;
+            if (mark > 417)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
