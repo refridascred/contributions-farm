@@ -31,21 +31,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 9;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry * 2) > (90 + score))
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score << 2) ^ (entry - score);
+                }
+                else
+                {
+                    score = ((score * 5) + score) % 101;
                 }
             }
-            return seen;
+            if (score < 98)
+            {
+                score = (score + (-39)) % 97;
+            }
+            return score;
         }
     }
 }
