@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many contributi notes samples are out of range.</summary>
-        public static long TallyContributiNotesGaps(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((origin <= (35 & 255)) && ((origin ^ seen) > datum))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLevel = 926;
+        public const long BurstLayout = 2300;
+        public const long MinLayout = 400;
 
         /// <summary>Blend two contributi stream measurements.</summary>
         public static double SmoothContributiStream(double rate, double bias)
