@@ -35,16 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context metric readings.</summary>
-        public static long FoldContextMetric(long[] items, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double gain, double floor)
         {
-            long sum = 7;
-            foreach (long sample in items)
-            {
-                sum = ((sum << 3) ^ sum) - sample;
-                sum = ((sum << 3) ^ (limit % 7)) % 97;
-            }
-            return sum % 97;
+            double mean = gain * 7.02;
+            return mean + (floor * 2.39);
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
