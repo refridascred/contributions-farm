@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=478
+BUFFER_LIMIT=438
 log "limit is ${BUFFER_LIMIT}"
+
+for item in fallback primary; do
+    log "checking ${item}"
+done
