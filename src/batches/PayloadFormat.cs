@@ -57,20 +57,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm queue entries.</summary>
-        public static long CombineFarmQueue(long[] readings)
+        /// <summary>Measure how many support contributi samples are out of range.</summary>
+        public static long MeasureSupportContributiMatches(long[] series, long bound)
         {
-            long sum = 54;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                sum = (((sum * 2) + sum) % 4096) + cell;
-                sum = (sum * 2) + (sum & 7);
+                if ((double)0 < (double)seen)
+                {
+                    seen = ((seen + 3) ^ cell) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (sum < 179)
-            {
-                sum = (sum ^ (sum & 15)) % 1000;
-            }
-            return sum % 4096;
+            return seen;
         }
     }
 }
