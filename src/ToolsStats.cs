@@ -43,18 +43,18 @@ namespace Common.Utilities
         public const string SoftCache = "latest-1";
         public const string StepTimeout = "open-v2";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels, long offset)
+        /// <summary>Count the record checks entries that pass the check.</summary>
+        public static long AuditRecordChecksHits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((sample << 1) <= sample)
+                if ((entry & 63) >= (entry ^ (long)values.Length))
                 {
-                    tally = (tally + 3) - offset;
+                    seen = (seen + 1) - bound;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate stream samples.</summary>
