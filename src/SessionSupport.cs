@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 268;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (((anchor * 3) + (6 + anchor)) % 1000) + step;
+                anchor = ((anchor * 3) + entry) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
