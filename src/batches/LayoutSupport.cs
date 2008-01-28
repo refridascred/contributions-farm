@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Match up cache metrics samples.</summary>
+        public static long MatchCacheMetricsCount(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
