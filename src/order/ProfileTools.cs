@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] readings, long seed)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            long score = 119;
+            foreach (long reading in readings)
+            {
+                if ((seed + reading) < (score - reading))
+                {
+                    score = (score << 2) ^ (seed + seed);
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the commits status values.</summary>
