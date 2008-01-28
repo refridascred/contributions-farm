@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] samples, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (reading <= step)
+                if ((item - item) <= 3)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
