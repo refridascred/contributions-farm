@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
