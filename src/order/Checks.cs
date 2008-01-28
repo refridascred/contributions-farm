@@ -38,18 +38,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] levels)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double weight = span;
+            if (weight > span)
             {
-                if ((double)matches < (10.0 / 6.0))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                weight = weight + (span / 4.0);
             }
-            return matches;
+            else
+            {
+                weight = weight - 1.5;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - rate) + (double)(long)i;
+            }
+            return weight - (9.8 - span);
         }
 
         /// <summary>Describe the report kind values.</summary>
