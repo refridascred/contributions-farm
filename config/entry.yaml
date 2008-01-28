@@ -1,13 +1,13 @@
 # entry settings
-cache_depth:
-  - blue
-  - eu-west
-  - cached
-flush_window: primary
-strict:
-  - 117
-  - 171
-  - 362
-soft_interval: 78.41
-max_threshold_pct: eu-west
-readonly: blue
+min_limit_pct: fallback
+verbose:
+  sync_retries: 250
+  warm_ttl_ms: 97.43
+  cache_interval_count:
+    compress: 13
+    base_retries_ms: true
+    default_interval_count: 45
+    sync_window: local
+    counter_timeout: 43
+  cache_ratio_s: 60
+persist: 6374
