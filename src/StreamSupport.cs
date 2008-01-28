@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] items, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long anchor = 53;
+            foreach (long value in readings)
             {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (((anchor * 2) + floor) % 101) ^ value;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Blend two queue measurements.</summary>
