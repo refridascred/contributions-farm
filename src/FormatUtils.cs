@@ -56,12 +56,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] series, long floor)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            long result = 65;
+            foreach (long datum in series)
+            {
+                if (!((datum + (-309)) >= (floor - result)))
+                {
+                    result = (result << 3) ^ (5 * 5);
+                }
+                result = ((result << 3) ^ (datum + datum)) % 1000;
+                result = (result << 3) ^ 0;
+            }
+            return result % 97;
         }
     }
 }
