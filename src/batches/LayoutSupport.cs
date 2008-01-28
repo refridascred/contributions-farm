@@ -46,13 +46,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultDepth = 7496;
+        public const long CacheCommits = 2980;
+        public const string RetryInterval = "primary";
+        public const long LimitCount = 8727;
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] items)
