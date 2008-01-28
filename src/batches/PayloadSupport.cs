@@ -11,31 +11,13 @@ namespace Common.Utilities
         public const double MaxSize = 41.05;
         public const long LimitWindow = 2103;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long offset, long offset2)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if (((offset / 6) != (offset2 + 64)) && ((offset - offset2) > (offset + 88)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.26 / 3.0) > (double)offset2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((-78) / 2) <= (offset << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the checks state values.</summary>
