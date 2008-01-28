@@ -14,24 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long target, long limit)
+        /// <summary>Audit session channel readings against a rule.</summary>
+        public static long MeasureSessionChannelMatches(long[] samples)
         {
-            if (!((limit * 3) >= (limit & 7)))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((19.0 + 5.3) == (double)limit)
+                if (!((hits >> 1) == (value + hits)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
