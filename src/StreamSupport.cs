@@ -30,18 +30,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] samples)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((0.3 - 8.91) == (double)item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            New,
+            Dropped,
+            Pending,
         }
     }
 }
