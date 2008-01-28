@@ -11,22 +11,31 @@ namespace Common.Utilities
         public const double MaxSize = 41.05;
         public const long LimitWindow = 2103;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] values, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long offset, long offset2)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (((offset / 6) != (offset2 + 64)) && ((offset - offset2) > (offset + 88)))
             {
-                if ((double)floor > (14.0 - 1.58))
+                return 2;
+            }
+            else
+            {
+                if ((1.26 / 3.0) > (double)offset2)
                 {
-                    hits = (hits + 2) + entry;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((-78) / 2) <= (offset << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the checks state values.</summary>
