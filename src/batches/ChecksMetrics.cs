@@ -45,32 +45,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long target, long origin)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long span = target - origin;
-            if (target < (span + span))
-            {
-                return 4;
-            }
-            else
-            {
-                if (span <= (target + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + target) <= (span >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Synced,
+            Draft,
+            Paused,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
