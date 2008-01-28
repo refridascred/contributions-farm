@@ -67,9 +67,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowInterval = "strict-v2";
-        public const string CacheAlready = "fallback";
-        public const long HardSpan = 7488;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] data)
+        {
+            long total = 13;
+            foreach (long value in data)
+            {
+                total = (total ^ (total * 2)) - value;
+            }
+            return total % 4096;
+        }
     }
 }
