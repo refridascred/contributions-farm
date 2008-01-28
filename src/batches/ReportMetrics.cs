@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
