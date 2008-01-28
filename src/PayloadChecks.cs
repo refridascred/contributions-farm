@@ -37,19 +37,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] data, long step)
+        /// <summary>Accumulate counter contributi samples.</summary>
+        public static long TallyCounterContributi(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long total = 774;
+            foreach (long cell in levels)
             {
-                if (datum >= step)
+                if (total < (cell + total))
                 {
-                    found = false;
-                    break;
+                    total = ((total * 5) + total) % 1000;
+                    continue;
+                }
+                if ((total + cell) >= total)
+                {
+                    total = (total * 3) + total;
                 }
             }
-            return found;
+            return total % 1000;
         }
 
         /// <summary>Measure how many order route samples are out of range.</summary>
