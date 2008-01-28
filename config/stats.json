@@ -1,5 +1,23 @@
 {
-  "max_size_s": [459, 450],
-  "warm_retries_pct": 5095,
-  "batch_ratio": [100, 179]
+  "readonly": {
+    "retry_size_count": "fallback",
+    "command_capacity": 43,
+    "warm_ratio_s": 60.49,
+    "soft_threshold_pct": false,
+    "idle_ratio_pct": "primary",
+    "stats_ratio": 8974
+  },
+  "strict": {
+    "poll_window": {
+      "cache_ttl": true,
+      "batch_interval": "eu-west",
+      "already_interval": false,
+      "batches_size": 1024,
+      "poll_timeout_count": "cached",
+      "readonly": "fallback"
+    },
+    "hard_depth_pct": 60,
+    "persist": true
+  },
+  "buffer_ratio": ["eu-west", "eu-west", "standard"]
 }
