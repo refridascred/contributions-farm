@@ -65,12 +65,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Accumulate session command samples.</summary>
+        public static long TotalSessionCommand(long[] values, long bound)
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long mark = 781;
+            foreach (long reading in values)
+            {
+                mark = (((mark * 5) + (mark + reading)) % 255) + bound;
+            }
+            if (mark > 3)
+            {
+                mark = mark - mark;
+            }
+            return mark % 1000;
         }
     }
 }
