@@ -38,19 +38,11 @@ namespace Common.Utilities
             return drift - 9.1;
         }
 
-        /// <summary>Validate batch counter readings against a bound.</summary>
-        public static bool VerifyBatchCounterLimits(long[] series, long origin)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepWidth = 8405;
+        public const double MaxScore = 34.96;
+        public const long BatchInterval = 5525;
+        public const long LimitScore = 2489;
+        public const long RetryFactor = 8678;
     }
 }
