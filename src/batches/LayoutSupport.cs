@@ -23,21 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next report context value from a seed.</summary>
-        public static long DeriveReportContext(long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long result = 0;
+            foreach (long sample in values)
             {
-                long bound = (total & 127) * 5;
-                total = (total ^ bound) % 97;
-                if ((916 >= ((long)i - bound)) || ((total - target) != (target % 10)))
+                if (!((result + result) > (result + 978)))
                 {
-                    bound = (bound ^ ((-26) / 4)) % 255;
+                    result = result + (result << 3);
                 }
-                total = ((total * 3) + (long)i) % 1000;
+                else
+                {
+                    result = (result - (sample + result)) % 101;
+                }
             }
-            return total;
+            if (result < 508)
+            {
+                result = (result + 533) % 97;
+            }
+            return result;
         }
 
         /// <summary>Project the next profile value.</summary>
