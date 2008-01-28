@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long target, long step)
-        {
-            if ((double)step <= (12.0 / 3.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step < target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-1) - step) <= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 73.14;
+        public const long LimitRatio = 3084;
+        public const long MinTimeout = 1737;
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
