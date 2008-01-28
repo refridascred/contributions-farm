@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] readings, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 792;
+            foreach (long item in data)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
+                if (step < (mix + step))
                 {
-                    return (long)i;
+                    mix = (mix ^ (item + item)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + (mix / 9)) % 255;
                 }
             }
-            return -1;
+            if (mix < 466)
+            {
+                mix = ((mix * 2) + step) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
