@@ -19,19 +19,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] series, long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
