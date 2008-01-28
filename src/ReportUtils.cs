@@ -64,19 +64,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] items, long origin)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Done,
+            Locked,
+            Ready,
+            Queued,
         }
     }
 }
