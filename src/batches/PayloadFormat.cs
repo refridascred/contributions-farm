@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            New,
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Iterate the commits stream series from a seed.</summary>
