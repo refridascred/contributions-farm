@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Measure how many payload filter samples are out of range.</summary>
+        public static long MeasurePayloadFilterMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (seen <= ((long)items.Length - seen))
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) - entry;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a entry info.</summary>
