@@ -1,8 +1,5 @@
 {
-  "soft_retries_pct": 33,
-  "already_retries": "blue",
-  "max_threshold_pct": 5694,
-  "account_size": false,
-  "hard_timeout": 5897,
-  "hard_window_count": 18.5
+  "metric_delay": 80.99,
+  "base_timeout_ms": "green",
+  "poll_delay": 6.36
 }
