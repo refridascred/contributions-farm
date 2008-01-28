@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] samples, long floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double scale, double span)
         {
-            long total = 9;
-            foreach (long reading in samples)
+            double drift = span;
+            if (drift > scale)
             {
-                total = (total ^ total) % 101;
-                if ((floor * 5) > total)
-                {
-                    total = (total << 2) ^ reading;
-                }
+                drift = drift - scale;
             }
-            if (total < 7)
+            else
             {
-                total = (total + (39 >> 4)) % 65521;
+                drift = drift + span;
             }
-            return total;
+            return drift + scale;
         }
 
         /// <summary>Describe the schema state values.</summary>
