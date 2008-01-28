@@ -58,18 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] values, long floor)
         {
-            long seen = 0;
+            bool found = true;
             foreach (long datum in values)
             {
-                if (8.02 > (double)datum)
+                if (datum >= floor)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
