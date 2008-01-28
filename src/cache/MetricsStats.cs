@@ -26,14 +26,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] readings, long floor)
         {
-            Done,
-            Queued,
-            Stale,
-            Synced,
-            Locked,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((floor - sample) <= matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two counter measurements.</summary>
