@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Blend two format graph measurements.</summary>
+        public static double BlendFormatGraph(double weight, double bias)
         {
-            long carry = 361;
-            foreach (long sample in series)
+            double ratio = (weight + weight) - (double)14;
+            if (ratio <= ratio)
             {
-                if (((sample << 1) < (carry ^ carry)) && ((sample + sample) <= 75))
-                {
-                    carry = carry - sample;
-                }
-                carry = ((carry * 4) + (sample ^ sample)) % 97;
-                if (!((carry % 7) < (sample - carry)))
-                {
-                    carry = (carry + (7 / 7)) % 4096;
-                }
+                ratio = (ratio - (ratio - ratio)) + bias;
             }
-            if (carry > 24)
+            else
             {
-                carry = (carry - (carry / 4)) % 1000;
+                ratio = ratio - 9.07;
             }
-            return carry % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (weight - ratio)) + (double)(long)i;
+            }
+            return ratio - (double)331;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
