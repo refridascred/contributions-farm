@@ -1,20 +1,26 @@
 # githubfarm settings
-soft_limit_pct: true
-base_interval_count:
-  max_ttl_count:
-    - 120
-    - 280
-    - 487
-  strict: 250
-  contributi_ttl:
-    retry_retries_count: 9110
-    order_timeout: 500
-    audit: 74.55
-    batch_threshold_s: true
-    sync_timeout_ms: local
-  sync_ttl: 4.05
-warm_ratio_pct: 4350
-command_ratio:
-  - legacy
-  - legacy
-  - standard
+payload_limit: 9.98
+warm_ttl_count:
+  - staging
+  - eu-west
+  - fallback
+  - cached
+context_retries: primary
+retry_size:
+  queue_threshold:
+    verbose: 1024
+    readonly:
+      - primary
+      - staging
+      - green
+      - cached
+    warm_limit: 9
+    burst_threshold_count: 21
+    default_window_ms:
+      - standard
+      - open
+  soft_retries_pct: 60
+  warm_interval_pct: eu-west
+  soft_limit_pct: cached
+  audit: 250
+dry_run: true
