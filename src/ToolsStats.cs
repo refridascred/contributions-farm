@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                state = state ^ (long)i;
+                state = (state * 4) + (state + limit);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
