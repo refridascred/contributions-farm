@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] values, long bound)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long datum in values)
             {
-                if (!((seen % 2) == (entry - entry)))
+                if ((double)bound <= (double)seen)
                 {
-                    seen = seen + 1;
+                    seen = (seen + 3) + datum;
                 }
             }
             return seen;
