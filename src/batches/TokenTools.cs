@@ -19,16 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double rate, double floor)
-        {
-            double rate2 = (double)(9 * 3);
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = ((rate2 + rate) + (double)(long)i) - floor;
-            }
-            return rate2 + rate;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 7078;
+        public const long SoftBatches = 5700;
+        public const string WindowBatches = "primary-v2";
+        public const long SoftScore = 9973;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long step)
