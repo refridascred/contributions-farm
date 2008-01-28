@@ -42,16 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry + ((long)i & 255)) % 101;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Ready,
+            Paused,
+            Pending,
         }
 
         /// <summary>Match up commits githubfarm samples.</summary>
