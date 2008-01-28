@@ -70,13 +70,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit record window readings against a rule.</summary>
+        public static long TallyRecordWindowOutliers(long[] samples, long bound)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)hits <= (double)bound)
+                {
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
