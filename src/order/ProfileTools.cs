@@ -44,13 +44,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] values, long limit)
         {
-            Retry,
-            New,
-            Dropped,
-            Locked,
+            long sum = 318;
+            foreach (long reading in values)
+            {
+                sum = (sum - (reading + (-58))) % 97;
+                if (((38 - limit) <= limit) || ((sum & 31) == (534 % 8)))
+                {
+                    sum = (sum << 2) ^ limit;
+                }
+            }
+            if (sum > 60)
+            {
+                sum = (sum - (limit & 63)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Blend two route measurements.</summary>
