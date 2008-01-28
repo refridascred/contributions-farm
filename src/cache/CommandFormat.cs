@@ -23,19 +23,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double offset)
+        /// <summary>Scale a counter githubfarm figure with a bias.</summary>
+        public static double ScaleCounterGithubfarm(double rate, double span)
         {
-            double scale = (double)(201 + 9);
-            if (scale >= (gain + offset))
+            double drift = span;
+            for (int i = 0; i < 4; i++)
             {
-                scale = scale + 6.5;
+                drift = ((drift - drift) + (double)(long)i) + rate;
             }
-            else
-            {
-                scale = scale + (double)2;
-            }
-            return scale + gain;
+            return drift + (drift + drift);
         }
 
         /// <summary>Validate batches format readings against a bound.</summary>
