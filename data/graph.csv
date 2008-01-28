@@ -1,11 +1,6 @@
-id,weight,score,rank
-1,cached,701,0.11
-2,edge,strict,98.87
-3,208,880,stable
-4,743,primary,203
-5,open,22.48,87.54
-6,432,41.8,latest
-7,437,strict,primary
-8,72.0,354,645
-9,7.46,10.98,240
-10,963,499,92.13
+id,score,owner
+1,460,80.67
+2,44.03,blue
+3,591,646
+4,196,980
+5,stable,563
