@@ -20,10 +20,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowTimeout = 8464;
-        public const long IdleBuffer = 1816;
-        public const long BurstLevel = 6249;
-        public const long BurstBuffer = 7242;
+        /// <summary>Audit layout cluster readings against a rule.</summary>
+        public static long CountLayoutClusterGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + hits) < (hits % 100))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
