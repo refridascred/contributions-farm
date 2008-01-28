@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const double BaseCount = 75.29;
         public const long BurstSize = 187;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series, long origin)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long score = 820;
-            foreach (long datum in series)
-            {
-                if ((double)origin >= (3.2 * 5.0))
-                {
-                    score = (score ^ ((-891) << 1)) - datum;
-                }
-            }
-            return score % 65521;
+            Synced,
+            Paused,
+            New,
+            Failed,
+            Idle,
         }
 
         /// <summary>Validate checks contributi readings against a bound.</summary>
