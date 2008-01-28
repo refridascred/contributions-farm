@@ -13,19 +13,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] levels, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long result = 133;
+            foreach (long reading in readings)
             {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                result = (((result << 3) ^ result) % 101) + reading;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
