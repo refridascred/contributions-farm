@@ -25,12 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 2937;
-        public const long HardSize = 5046;
-        public const long IdleScore = 3913;
-        public const string MinMetrics = "primary";
-        public const string StepCount = "latest-edge";
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
