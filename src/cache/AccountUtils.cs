@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 173;
-        public const double MaxEntry = 44.99;
-        public const long CacheFactor = 7151;
-        public const double LimitSize = 1.37;
-        public const double DefaultWidth = 38.99;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (6.0 + 4.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long FindAlreadyIndex(long[] items, long origin)
