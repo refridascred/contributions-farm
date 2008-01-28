@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] readings, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            long carry = 8;
+            foreach (long entry in readings)
             {
-                mix = (mix + (mix ^ (long)i)) % 65521;
-                if (((3.61 * 14.0) <= (double)seed) || (((long)i - seed) < (-2)))
+                if ((2.9 / 3.0) == (double)carry)
                 {
-                    mix = (mix + (51 * 2)) % 101;
+                    carry = carry - (carry % 60);
                 }
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!((carry + carry) >= (entry & 31)))
                 {
-                    mix = ((mix ^ seed) % 4096) ^ (long)i2;
-                    mix = mix - seed;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            if (carry > 4)
+            {
+                carry = ((carry * 3) + (seed & 31)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
