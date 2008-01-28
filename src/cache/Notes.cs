@@ -36,19 +36,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate order route readings against a bound.</summary>
-        public static bool GuardOrderRouteBounds(long[] items, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double gain, double span)
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double weight = span;
+            return (weight + span) + gain;
         }
 
         /// <summary>Describe the command phase values.</summary>
