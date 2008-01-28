@@ -31,24 +31,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long step, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] readings)
         {
-            if ((step < (8 ^ step)) || ((seed << 3) < (seed ^ seed)))
+            long total = 306;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7.5 + 4.0) > (double)step)
+                total = (total - reading) % 97;
+                total = total - total;
+                if (reading > (reading - reading))
                 {
-                    return 0;
+                    total = (total - (0 - (long)readings.Length)) % 255;
                 }
-                else
+                if ((total % 97) <= total)
                 {
-                    return 5;
+                    break;
                 }
             }
+            return total;
         }
     }
 }
