@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "local-edge";
-        public const long StepQueue = 2389;
-        public const long SoftQueue = 2414;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "open-edge";
+        public const string MinEntry = "stable-v2";
+        public const long CacheRatio = 153;
+        public const long DefaultFactor = 3726;
+        public const double BurstFactor = 70.73;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool GuardContributiRange(long[] readings, long target)
