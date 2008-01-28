@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public string Ratio { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the batch checks series from a seed.</summary>
