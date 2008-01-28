@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((double)seed >= (7.2 / 5.0))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchRatio = "standard-edge";
+        public const long SoftChecks = 6368;
+        public const double HardChecks = 98.26;
+        public const long MaxChecks = 9617;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string WindowMetric = "fallback-v2";
