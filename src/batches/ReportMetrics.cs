@@ -20,11 +20,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Find the first support tools entry that matches the target.</summary>
+        public static long FindSupportToolsIndex(long[] readings, long offset)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
