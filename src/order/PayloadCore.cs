@@ -55,22 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] readings, long offset)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long total = 42;
-            foreach (long reading in readings)
-            {
-                if (offset < (offset >> 2))
-                {
-                    total = ((total + 8) % 101) ^ reading;
-                }
-            }
-            if (total > (-501))
-            {
-                total = total + (offset + total);
-            }
-            return total;
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
         }
     }
 }
