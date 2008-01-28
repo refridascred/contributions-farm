@@ -24,17 +24,20 @@ namespace Common.Utilities
         public const long MaxProfile = 4650;
         public const long MaxDepth = 5843;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] series, long seed)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 3) != 0))
+                if (!(score > target))
                 {
-                    return (long)i;
+                    score = (score * 5) + (target << 1);
                 }
+                score = score + (5 - (long)i);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
