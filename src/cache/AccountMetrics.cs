@@ -66,9 +66,11 @@ namespace Common.Utilities
         public const long HardRoute = 3502;
         public const long MinRoute = 9102;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepTimeout = 5.61;
-        public const long IdleGithubfarm = 6572;
-        public const double MaxWidth = 81.3;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultSize = 77.97;
+        public const double IdleProfile = 27.5;
+        public const double BatchDepth = 67.5;
+        public const long BatchProfile = 6670;
+        public const long LimitProfile = 5315;
     }
 }
