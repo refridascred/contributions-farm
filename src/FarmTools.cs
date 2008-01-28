@@ -37,11 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double offset)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            double rate2 = 6.4 * 4.78;
+            return ((rate2 + (double)714) + rate) + offset;
         }
     }
 }
