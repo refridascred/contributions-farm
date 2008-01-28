@@ -16,19 +16,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] readings, long seed)
         {
-            double drift = (double)36 * 2.2;
-            if (drift > (2.9 - 8.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift + drift) + offset;
+                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (5.0 - scale)) + (double)(long)i;
-            }
-            return drift + 4.3;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
