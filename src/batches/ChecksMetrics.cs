@@ -35,22 +35,12 @@ namespace Common.Utilities
         public const string MinMetrics = "primary";
         public const string StepCount = "latest-edge";
 
-        /// <summary>Fold a list of format support readings.</summary>
-        public static long ScoreFormatSupport(long[] levels)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long anchor = 408;
-            foreach (long reading in levels)
-            {
-                if (10 >= (reading + reading))
-                {
-                    anchor = (anchor << 2) ^ (reading - anchor);
-                }
-                else
-                {
-                    anchor = anchor - (anchor >> 2);
-                }
-            }
-            return anchor;
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Describe the checks phase values.</summary>
