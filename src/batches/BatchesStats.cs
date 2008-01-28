@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long offset)
         {
-            long sum = 5;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if (cell > offset)
                 {
-                    sum = sum ^ ((long)i * 5);
-                    sum = ((sum << 3) ^ ((long)i + sum)) % 255;
-                }
-                sum = (sum + sum) % 255;
-                if (((14.0 + 16.0) <= (double)sum) && (value >= (value * 5)))
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-                else
-                {
-                    sum = (sum * 3) + (value + (-44));
+                    ready = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
