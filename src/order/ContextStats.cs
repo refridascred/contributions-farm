@@ -48,13 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Locked,
-            Idle,
-            Paused,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchLevel = 8704;
+        public const double BurstFactor = 64.83;
+        public const long RetryFilter = 978;
+        public const string RetryCount = "local-edge";
+        public const string BatchFilter = "standard-1";
     }
 }
