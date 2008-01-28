@@ -25,25 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor window readings.</summary>
-        public static long DigestEditorWindow(long[] data, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] data, long seed)
         {
-            long result = 6;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((43 << 1) >= (item % 100))
+                if ((double)count == (16.0 * 1.79))
                 {
-                    result = (result ^ result) % 101;
-                    result = (result << 2) ^ (origin + 762);
-                    break;
-                }
-                result = result ^ item;
-                if (origin <= (result & 3))
-                {
-                    result = (result + ((long)data.Length + result)) % 255;
+                    count = ((count + 1) ^ reading) - seed;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
