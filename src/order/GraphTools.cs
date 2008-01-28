@@ -48,11 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Project the next payload cluster value.</summary>
+        public static double ScalePayloadCluster(double bias, double bias2)
         {
-            double ratio = (double)(51 >> 2);
-            return (ratio - scale) + floor;
+            double ratio = 0.35;
+            if (ratio <= bias2)
+            {
+                ratio = ratio - bias2;
+            }
+            else
+            {
+                ratio = ratio + (double)56;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (bias - bias)) - (double)(long)i;
+            }
+            return ratio + (double)(-407);
         }
 
         /// <summary>Hold a editor header.</summary>
