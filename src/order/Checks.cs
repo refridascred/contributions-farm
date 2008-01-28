@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 5202;
-        public const long RetryRatio = 6767;
-        public const long DefaultTimeout = 9926;
-        public const long CacheBudget = 7036;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchSpan = 2899;
+        public const string HardContext = "alpha-v2";
+        public const long StepContext = 5124;
+        public const long MinTimeout = 1178;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] readings, long bound)
