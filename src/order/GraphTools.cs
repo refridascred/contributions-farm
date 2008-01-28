@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values)
         {
-            Idle,
-            Done,
-            Failed,
+            long carry = 5;
+            foreach (long cell in values)
+            {
+                carry = (carry + (carry % 7)) % 4096;
+                carry = (carry + (248 - cell)) % 97;
+            }
+            if (carry < 425)
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate tools samples.</summary>
