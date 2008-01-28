@@ -1,11 +1,5 @@
 {
-  "cache_threshold_ms": ["strict", "legacy"],
-  "warm_threshold_pct": "standard",
-  "hard_delay": 60,
-  "min_size_pct": {
-    "enabled": 30,
-    "soft_capacity_count": 7.42,
-    "sync_timeout_s": 1195
-  },
-  "idle_ratio_pct": 9483
+  "sync_limit_s": 63.08,
+  "max_timeout_pct": "eu-west",
+  "layout_capacity": 88.05
 }
