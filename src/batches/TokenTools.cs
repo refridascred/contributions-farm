@@ -22,22 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] items, long floor)
         {
-            long mark = 6;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((mark >= (mark ^ value)) || ((double)value <= (double)mark))
+                if (cell <= floor)
                 {
-                    mark = (mark + (mark & 255)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 397)
-            {
-                mark = (mark * 5) + (mark + mark);
-            }
-            return mark % 97;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
