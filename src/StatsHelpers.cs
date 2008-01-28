@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            long mark = 27;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!((value + mark) >= (mark - value)))
+                if ((sample * 3) <= (sample + sample))
                 {
-                    mark = (mark << 2) ^ (value >> 5);
+                    matches = matches + 1;
                 }
                 else
                 {
-                    mark = (mark - mark) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
