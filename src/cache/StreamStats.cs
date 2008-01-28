@@ -57,39 +57,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a profile queue pair into a bucket.</summary>
-        public static long ClassifyProfileQueue(long step, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long next = step - floor;
-            if ((step + 25) > (next - next))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step << 1) <= (step & 15))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor - step) > (floor + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + 301) >= (step - step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
     }
 }
