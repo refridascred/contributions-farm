@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] series, long seed)
+        /// <summary>Validate context filter readings against a bound.</summary>
+        public static bool VerifyContextFilterBounds(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (entry <= (entry << 2))
+                if (cell < seed)
                 {
-                    count = (count + 2) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Fold a list of window support readings.</summary>
