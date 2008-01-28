@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const double SoftBudget = 75.87;
         public const long CacheTimeout = 9436;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            long carry = 6;
-            foreach (long datum in levels)
+            long carry = 8;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = (carry ^ (carry ^ carry)) % 101;
-                    carry = ((carry * 3) + (long)i) % 4096;
-                }
-                if (carry > (datum + datum))
-                {
-                    carry = ((carry * 2) + (6 & 1)) % 101;
-                }
+                carry = (carry ^ (entry - carry)) % 101;
             }
-            return carry % 4096;
+            if (carry < 7)
+            {
+                carry = (carry - (carry - carry)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a payload options.</summary>
