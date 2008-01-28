@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] readings, long floor)
+        /// <summary>Audit metrics cache readings against a rule.</summary>
+        public static long MeasureMetricsCacheMatches(long[] data, long bound)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long item in data)
             {
-                if (((reading / 9) > (reading ^ 75)) || (floor < (floor & 255)))
+                if (bound < (bound + bound))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 2) ^ item;
                 }
             }
             return seen;
