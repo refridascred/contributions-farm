@@ -13,16 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine metric stats values into a single score.</summary>
-        public static long CombineMetricStats(long[] items, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] data, long seed)
         {
-            long total = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                total = (((total - total) % 97) + item) - seed;
-                total = ((total << 2) ^ (total << 3)) % 101;
+                if ((double)matches > (3.8 - 2.82))
+                {
+                    matches = ((matches + 3) + cell) + seed;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
