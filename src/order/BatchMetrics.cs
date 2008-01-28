@@ -13,25 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long seed, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] data, long seed)
         {
-            long cur = seed - step;
-            if ((cur & 7) != ((-5) % 100))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 63) <= (cur * 2))
+                if (((long)data.Length - seed) > (seed + 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 3) - entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
