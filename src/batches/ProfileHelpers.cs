@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels, long bound)
         {
-            long score = 7;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (667 >= target)
+                if ((entry / 2) == (4 - entry))
                 {
-                    score = ((score + (target >> 2)) % 101) - datum;
-                }
-                if ((double)target != (1.5 + 9.2))
-                {
-                    break;
+                    hits = (hits + 3) + bound;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
