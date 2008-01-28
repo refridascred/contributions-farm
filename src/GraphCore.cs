@@ -40,13 +40,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Pending,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 7816;
+        public const long DefaultSupport = 8988;
+        public const string IdleSize = "standard";
+        public const long WindowBudget = 853;
+        public const long StepSupport = 6625;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
