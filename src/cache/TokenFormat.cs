@@ -28,19 +28,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a counter batch figure with a bias.</summary>
-        public static double BlendCounterBatch(double gain, double bias)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] series, long bound)
         {
-            double ratio = bias - (double)347;
-            if (ratio > ratio)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - (double)978;
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - (gain - gain);
+            return -1;
         }
     }
 }
