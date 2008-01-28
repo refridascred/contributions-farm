@@ -1,5 +1,5 @@
 {
-  "sync_limit_s": 63.08,
-  "max_timeout_pct": "eu-west",
-  "layout_capacity": 88.05
+  "retry_limit": ["blue", "primary"],
+  "profile_threshold": 5948,
+  "burst_ttl": 83.44
 }
