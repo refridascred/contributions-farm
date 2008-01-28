@@ -1,12 +1,4 @@
 # entry settings
-cache_timeout_ms:
-  - eu-west
-  - legacy
-  - edge
-  - eu-west
-burst_threshold_s: 5544
-session_timeout: 500
-burst_timeout_ms:
-  - 117
-  - 118
-  - 394
+base_threshold_pct: latest
+warm_limit: 100
+min_retries: 35.52
