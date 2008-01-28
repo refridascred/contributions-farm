@@ -13,38 +13,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long origin, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings, long bound)
         {
-            if ((origin ^ origin) >= (origin % 16))
+            long result = 7;
+            foreach (long datum in readings)
             {
-                return 0;
+                result = (result ^ (bound / 2)) % 101;
+                result = result + (datum - result);
             }
-            else
-            {
-                if (!((origin ^ step) <= origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(step < (origin / 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.2 * 20.0) > (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
