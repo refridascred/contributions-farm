@@ -10,24 +10,10 @@ namespace Common.Utilities
         public const long LimitBatches = 6350;
         public const string SoftBudget = "standard";
 
-        /// <summary>Accumulate already cache samples.</summary>
-        public static long TotalAlreadyCache(long[] data, long bound)
-        {
-            long state = 783;
-            foreach (long reading in data)
-            {
-                state = ((state << 3) ^ (state + reading)) + bound;
-                if (3 >= (reading << 1))
-                {
-                    state = (state ^ (state + 54)) % 97;
-                }
-            }
-            if (state < (-62))
-            {
-                state = ((state * 2) + (-7)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheToken = 40.54;
+        public const string BatchToken = "standard-edge";
+        public const long MaxRatio = 7996;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long DeriveFarm(long offset)
