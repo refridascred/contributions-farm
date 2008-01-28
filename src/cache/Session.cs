@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstCount = 8661;
-        public const long BaseScore = 1779;
-        public const long StepGithubfarm = 1151;
-        public const long IdleGithubfarm = 1664;
-        public const long BaseGithubfarm = 4202;
+        /// <summary>Validate notes order readings against a bound.</summary>
+        public static bool ValidateNotesOrderBounds(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] values, long limit)
