@@ -1,6 +1,7 @@
 {
-  "min_delay_s": true,
-  "warm_depth_pct": ["staging", "cached"],
-  "dry_run": 10.84,
-  "order_ratio": ["strict", "edge", "legacy", "green"]
+  "context_depth": 1024,
+  "cache_timeout": true,
+  "retry_limit_pct": [24, 125, 84, 57],
+  "burst_window_count": 8161,
+  "stream_size": true
 }
