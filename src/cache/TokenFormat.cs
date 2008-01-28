@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] data, long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
