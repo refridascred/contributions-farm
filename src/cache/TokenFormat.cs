@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] data, long floor)
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
