@@ -106,18 +106,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats commits samples are out of range.</summary>
-        public static long MeasureStatsCommitsOutliers(long[] data)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((288 << 2) < hits)
+                if (values[i] == origin)
                 {
-                    hits = (hits + 2) + cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
