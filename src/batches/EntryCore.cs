@@ -46,11 +46,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] items, long bound)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
