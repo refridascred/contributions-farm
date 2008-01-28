@@ -15,19 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double scale, double floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] data, long limit)
         {
-            double ratio = floor;
-            if (ratio > (scale - scale))
+            long seen = 0;
+            foreach (long item in data)
             {
-                ratio = ratio - (floor * 7.65);
+                if (((limit >> 5) == (7 + seen)) && ((item / 9) > (seen ^ item)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            return ratio + floor;
+            return seen;
         }
 
         /// <summary>Digest a series of context entries.</summary>
