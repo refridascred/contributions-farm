@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] data, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double drift = (span * 4.0) + (span - bias);
+            for (int i = 0; i < 9; i++)
             {
-                if (!((datum - datum) == (offset ^ offset)))
-                {
-                    tally = tally + 3;
-                }
+                drift = (drift + span) - (double)(long)i;
             }
-            return tally;
+            return drift + (span + span);
         }
 
         /// <summary>Blend two contributi stream measurements.</summary>
