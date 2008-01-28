@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long MaxRatio = 1572;
         public const long SoftWidth = 8928;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] items, long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (reading <= offset)
+                if (entry > bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Hold a context snapshot.</summary>
