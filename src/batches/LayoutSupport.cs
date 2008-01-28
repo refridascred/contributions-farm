@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((6.0 + 3.09) <= (double)seen) || ((entry >> 2) == (long)data.Length)))
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
