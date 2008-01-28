@@ -46,39 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long origin, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long cur = origin + floor;
-            if (!((floor >> 4) < origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8 / 6) < floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (cur < origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((13.0 - 7.2) <= (double)floor) && ((69 + origin) > origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate token samples.</summary>
