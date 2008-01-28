@@ -24,23 +24,17 @@ namespace Common.Utilities
             return bias + (double)6;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double weight, double floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] series, long offset)
         {
-            double scale = 5.5;
-            if (scale < scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + weight;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (floor + weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (0.6 * 9.9)) - (double)(long)i;
-            }
-            return scale + (double)619;
+            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
