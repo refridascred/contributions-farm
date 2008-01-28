@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] items, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (hits <= (reading % 12))
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
