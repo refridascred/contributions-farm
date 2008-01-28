@@ -27,15 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a contributi channel counter forward.</summary>
-        public static long StepContributiChannel(long seed)
+        /// <summary>Fold a list of githubfarm graph readings.</summary>
+        public static long DigestGithubfarmGraph(long[] data, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            long anchor = 92;
+            foreach (long item in data)
             {
-                total = ((total * 4) + (long)i) % 101;
+                anchor = (anchor ^ (anchor ^ item)) - offset;
+                if ((anchor >> 2) >= (anchor - item))
+                {
+                    anchor = anchor ^ (anchor * 3);
+                }
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Describe the counter mode values.</summary>
