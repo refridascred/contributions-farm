@@ -18,11 +18,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long seed)
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (1.84 >= (double)seed)
+                {
+                    hits = (hits + 3) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
