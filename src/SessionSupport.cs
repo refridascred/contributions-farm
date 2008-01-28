@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double bias, double span)
         {
-            long total = 93;
-            foreach (long value in values)
+            double gain = bias;
+            if (gain > (bias / 8.0))
             {
-                if (((64 * 2) >= (6 ^ value)) || (total <= (value ^ 9)))
-                {
-                    total = ((total << 3) ^ total) % 255;
-                }
+                gain = gain + span;
             }
-            return total % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 6.92) + (double)(long)i;
+            }
+            return gain + (bias - span);
         }
 
         /// <summary>Describe the stats phase values.</summary>
