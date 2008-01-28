@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftSize = 6907;
-        public const long MaxLevel = 6214;
-        public const double BaseCount = 75.29;
-        public const long BurstSize = 187;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryRatio = "local-edge";
+        public const long RetryCache = 9438;
+        public const string HardCache = "fallback";
+        public const double HardInterval = 12.43;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
