@@ -27,21 +27,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up contributi githubfarm samples.</summary>
-        public static long OverlapContributiGithubfarmCount(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 1;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state - (59 / 4)) % 101) - floor;
+                state = state ^ (reading / 8);
             }
-            return seen;
+            if (state > 48)
+            {
+                state = state ^ (state ^ (-96));
+            }
+            return state % 97;
         }
     }
 }
