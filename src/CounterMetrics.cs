@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 46.38;
-        public const double LimitInterval = 69.1;
-        public const long BatchScore = 9083;
-        public const long BurstContributi = 8262;
-        public const long CacheScore = 5270;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = (acc - seed) % 65521;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool VerifyRecordLimits(long[] samples, long origin)
