@@ -33,13 +33,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long target, long floor)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            if ((6.4 - 6.69) <= (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor + 209) != (target - 7)) && ((double)floor <= (0.1 / 6.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
