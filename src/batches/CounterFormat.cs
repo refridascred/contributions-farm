@@ -27,27 +27,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] samples, long target)
-        {
-            long mark = 50;
-            foreach (long entry in samples)
-            {
-                if ((entry ^ 421) > (0 - target))
-                {
-                    mark = mark ^ (target ^ target);
-                }
-                if ((56 + target) > mark)
-                {
-                    mark = (mark - ((long)samples.Length % 16)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - (entry % 5)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardWidth = 98.37;
+        public const double BatchEntry = 66.88;
+        public const long DefaultEntry = 8648;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmMatches(long[] values, long target)
