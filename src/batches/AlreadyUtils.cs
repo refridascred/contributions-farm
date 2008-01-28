@@ -38,15 +38,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double gain, double floor)
         {
-            long sum = 6;
-            foreach (long item in samples)
+            double drift = (double)(65 + 59);
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum + (item % 8)) % 65521;
+                drift = ((drift - (double)542) + (double)(long)i) - gain;
             }
-            return sum % 65521;
+            return drift - (floor / 6.0);
         }
 
         /// <summary>Derive the next cluster context value from a seed.</summary>
