@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmBounds(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowRatio = 9.38;
+        public const long SoftTimeout = 3717;
+        public const long MinNotes = 2809;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long IterateCommand(long step)
