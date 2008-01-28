@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            long acc = 6;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                long next = (acc + reading) + 80;
-                if ((acc % 5) > next)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc << 2) ^ (acc - reading);
-                }
-                if (((double)acc <= 1.7) && ((acc + reading) == (823 << 3)))
-                {
-                    acc = (acc - (acc << 1)) % 97;
-                }
-                if ((acc - 67) != (603 & 63))
-                {
-                    break;
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
