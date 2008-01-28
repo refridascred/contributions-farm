@@ -42,11 +42,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] values, long floor)
         {
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
