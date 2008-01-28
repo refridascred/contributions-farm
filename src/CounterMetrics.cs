@@ -42,13 +42,12 @@ namespace Common.Utilities
         public const double MinSpan = 82.07;
         public const long IdleCluster = 8473;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            New,
-            Synced,
-            Locked,
+            Pending,
             Done,
+            Synced,
         }
     }
 }
