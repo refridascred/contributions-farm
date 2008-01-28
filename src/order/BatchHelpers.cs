@@ -20,16 +20,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine profile payload values into a single score.</summary>
-        public static long TallyProfilePayload(long[] readings, long origin)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double rate, double offset)
         {
-            long score = 8;
-            foreach (long sample in readings)
+            double scale = offset;
+            for (int i = 0; i < 2; i++)
             {
-                score = ((score - (origin - 28)) % 255) ^ sample;
-                score = (score * 3) + (score * 4);
+                scale = ((scale - scale) + (double)(long)i) + rate;
             }
-            return score;
+            return scale + (1.0 + 6.0);
         }
     }
 }
