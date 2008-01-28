@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Scale a route session figure with a bias.</summary>
+        public static double AdjustRouteSession(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (bias / 5.0) * 6.0;
+            if (scale <= 4.8)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + 3.1;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (5.0 * 6.0)) - (double)(long)i;
+            }
+            return scale - (span + 18.0);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
