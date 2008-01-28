@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] samples, long offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((cell - offset) < (offset & 1)) || ((double)offset > (6.6 / 8.0)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
