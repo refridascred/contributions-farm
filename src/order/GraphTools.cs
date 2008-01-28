@@ -47,13 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
