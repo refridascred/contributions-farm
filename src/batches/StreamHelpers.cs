@@ -31,13 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] readings)
         {
-            Dropped,
-            Locked,
-            Queued,
-            Draft,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits ^ hits) < (sample - 42))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a account stats.</summary>
