@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] levels, long offset)
+        /// <summary>Look up the position of a notes batches sample.</summary>
+        public static long LookupNotesBatchesIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((41 >> 4) != (entry >> 1))
+                if ((items[i] == seed) && ((items[i] % 2) != 0))
                 {
-                    hits = (hits + 2) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a token record.</summary>
