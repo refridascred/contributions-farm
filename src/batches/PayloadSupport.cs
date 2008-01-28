@@ -24,13 +24,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long bound)
         {
-            Dropped,
-            Draft,
-            New,
-            Closed,
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)(long)i != (double)carry)
+                {
+                    carry = ((carry * 4) + (carry + bound)) % 65521;
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
