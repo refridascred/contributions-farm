@@ -32,24 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long bound, long floor)
+        /// <summary>Measure how many route account samples are out of range.</summary>
+        public static long TallyRouteAccountGaps(long[] samples, long seed)
         {
-            if ((bound % 7) <= bound)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((87 & 3) < (floor - floor))
+                if (tally < (entry << 1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 3) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
