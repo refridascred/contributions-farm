@@ -25,15 +25,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Match up contributi githubfarm samples.</summary>
+        public static long OverlapContributiGithubfarmCount(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 12)
+                    if ((items[i] + items[j]) == 8)
                     {
                         seen = seen + 1;
                     }
