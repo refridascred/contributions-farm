@@ -1,9 +1,20 @@
 # support settings
-queue_depth: open
-window_retries: true
-verbose: 6624
-max_ttl_count: primary
-cache_window_ms: local
-dry_run:
-  - staging
-  - cached
+session_delay:
+  - 474
+  - 266
+cluster_timeout: 28.23
+soft_capacity_s:
+  warm_capacity_s: false
+  dry_run: false
+  soft_interval:
+    - 232
+    - 331
+    - 85
+  warm_ttl: green
+  sync_limit:
+    strict: 23.88
+    cache_interval_ms: blue
+    retry_interval: standard
+  default_window_ms:
+    - staging
+    - local
