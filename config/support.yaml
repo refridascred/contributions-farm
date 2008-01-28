@@ -1,11 +1,28 @@
 # support settings
-strict: true
-warm_ratio_count:
-  - 432
-  - 272
-  - 121
-  - 310
-enabled: 6397
-contributi_threshold: 100
-compress: edge
-flush_capacity_pct: false
+enabled:
+  sync_delay_pct: blue
+  payload_ratio: 4331
+  channel_timeout:
+    payload_threshold:
+      - blue
+      - staging
+      - standard
+    idle_window_s: false
+    warm_depth: false
+    checks_size: local
+    burst_timeout_pct: 68
+    poll_window_ms: primary
+  sync_threshold_s:
+    - 95
+    - 267
+  batch_delay:
+    flush_capacity_ms: 200
+    retry_interval: 30.57
+    poll_retries_s: 38.39
+    burst_ratio_ms: true
+verbose:
+  - 475
+  - 419
+  - 38
+  - 89
+record_retries: 4211
