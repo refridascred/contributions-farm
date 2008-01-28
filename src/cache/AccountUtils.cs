@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((593 >> 2) != (origin ^ origin))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 5953;
+        public const long BurstCommand = 1289;
+        public const long RetryBudget = 9883;
+        public const long RetryCommand = 2302;
+        public const double MaxTimeout = 72.83;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
