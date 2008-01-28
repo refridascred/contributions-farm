@@ -1,11 +1,6 @@
 {
-  "strict": {
-    "hard_depth": 9295,
-    "notes_delay": "strict",
-    "sync_ratio": "edge",
-    "compress": 2025,
-    "session_threshold": 75
-  },
-  "metric_retries": 4806,
-  "min_capacity_pct": false
+  "base_depth": "stable",
+  "persist": "stable",
+  "strict": 1067,
+  "audit": 264
 }
