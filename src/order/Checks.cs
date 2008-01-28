@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultFilter = 75.87;
+        public const long SoftWidth = 613;
+        public const long DefaultLevel = 7274;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool VerifyContributiBounds(long[] items, long origin)
