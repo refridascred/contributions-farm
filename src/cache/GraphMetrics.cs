@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every buffer stream entry stays within the limit.</summary>
-        public static bool ValidateBufferStreamLimits(long[] samples, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the already metrics entries that pass the check.</summary>
