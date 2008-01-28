@@ -36,18 +36,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally < (double)item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Active,
+            Done,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
