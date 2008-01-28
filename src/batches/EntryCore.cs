@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long seed, long seed2)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] items)
         {
-            if ((38 / 4) >= seed2)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 100) > seed)
+                if (!((matches % 5) < matches))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 3) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first window farm entry that matches the target.</summary>
