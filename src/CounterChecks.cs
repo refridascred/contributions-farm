@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const double RetryRatio = 97.43;
         public const double StepPayload = 14.51;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Check that every commits batches entry stays within the limit.</summary>
+        public static bool ValidateCommitsBatchesRange(long[] data, long seed)
         {
-            long mix = 642;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (((value + 178) > value) || ((double)mix >= 1.0))
+                if (entry > seed)
                 {
-                    mix = mix - (value % 64);
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
