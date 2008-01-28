@@ -105,18 +105,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Count the buffer token entries that pass the check.</summary>
+        public static long AuditBufferTokenOutliers(long[] series, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((long)series.Length < matches))
                 {
-                    if ((values[i] - values[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 2) - value) - offset;
                 }
             }
             return matches;
