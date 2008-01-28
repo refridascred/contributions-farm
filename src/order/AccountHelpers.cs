@@ -55,13 +55,19 @@ namespace Common.Utilities
             return gain2 + 6.0;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] samples, long step)
         {
-            Dropped,
-            Ready,
-            Draft,
-            Closed,
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the contributi level values.</summary>
