@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] data, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheLimits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((51 <= (reading - (-69))) || ((double)floor > (double)seen))
+                if (entry <= bound)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a context header.</summary>
