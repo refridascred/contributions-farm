@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long IdleBatches = 6846;
         public const double BurstBatches = 27.36;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] values, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Done,
+            Failed,
+            Ready,
+            Draft,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
