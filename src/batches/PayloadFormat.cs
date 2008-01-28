@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            long sum = 853;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum << 2) ^ (sample + sum);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Describe the stream state values.</summary>
