@@ -40,19 +40,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardLevel = 6041;
+        public const long IdleScore = 2216;
+        public const long CacheTimeout = 625;
     }
 }
