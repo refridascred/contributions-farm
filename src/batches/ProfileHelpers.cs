@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 2) == (4 - entry))
-                {
-                    hits = (hits + 3) + bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardBudget = 65.11;
+        public const long WindowCount = 8293;
+        public const long LimitCounter = 49;
+        public const long DefaultFactor = 1396;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] data)
