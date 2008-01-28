@@ -58,18 +58,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] values)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((770 ^ 763) != (datum + 55))
+                if (reading < target)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
