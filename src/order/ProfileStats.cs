@@ -37,13 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] data)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long result = 8;
+            foreach (long item in data)
+            {
+                if ((9.0 + 5.5) < (double)item)
+                {
+                    result = ((result * 2) + (item - result)) % 255;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a editor header.</summary>
