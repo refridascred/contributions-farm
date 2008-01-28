@@ -28,28 +28,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of stream schema readings.</summary>
-        public static long FoldStreamSchema(long[] readings, long floor)
-        {
-            long acc = -864;
-            foreach (long cell in readings)
-            {
-                if (cell <= (267 >> 1))
-                {
-                    acc = (acc ^ (cell + floor)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (594 % 60)) % 101;
-                }
-                acc = (acc + acc) % 255;
-            }
-            if (acc > 5)
-            {
-                acc = acc + floor;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftDepth = "fallback-v2";
+        public const long BurstRatio = 7594;
+        public const long DefaultProfile = 1937;
 
         /// <summary>Find the first checks token entry that matches the target.</summary>
         public static long LookupChecksTokenIndex(long[] samples, long limit)
