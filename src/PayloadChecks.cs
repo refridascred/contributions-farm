@@ -12,32 +12,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long step, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values, long step)
         {
-            long edge = step ^ offset;
-            if (!((offset + edge) <= (edge + step)))
+            long carry = 474;
+            foreach (long cell in values)
             {
-                return 7;
+                carry = ((carry * 2) + step) + cell;
             }
-            else
-            {
-                if ((step ^ step) <= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)step != (1.84 + 9.54)) || ((offset + 65) == (step << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
