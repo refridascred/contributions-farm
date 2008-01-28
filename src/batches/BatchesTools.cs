@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] series, long bound)
+        /// <summary>Count route checks pairs that satisfy a relation.</summary>
+        public static long OverlapRouteChecksCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Locate a schema tools reading by value.</summary>
