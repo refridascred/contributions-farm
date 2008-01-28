@@ -38,11 +38,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "primary-v2";
-        public const long BurstFactor = 9185;
-        public const long MinDepth = 9088;
-        public const long SoftRatio = 225;
-        public const long HardWidth = 8145;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            New,
+            Synced,
+            Locked,
+            Done,
+        }
     }
 }
