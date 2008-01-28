@@ -31,19 +31,15 @@ namespace Common.Utilities
         public const long BurstCount = 3644;
         public const long MaxOrder = 6621;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] samples, long floor)
+        /// <summary>Derive the next support channel value from a seed.</summary>
+        public static long IterateSupportChannel(long target)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
     }
 }
