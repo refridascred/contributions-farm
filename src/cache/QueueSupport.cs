@@ -26,9 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftWidth = 38.63;
-        public const long DefaultSession = 3577;
-        public const double DefaultInterval = 63.24;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] samples, long step)
+        {
+            long sum = 2;
+            foreach (long entry in samples)
+            {
+                if ((14.0 + 2.1) < (double)entry)
+                {
+                    sum = ((sum - ((-18) ^ sum)) % 255) + step;
+                }
+            }
+            if (sum > 2)
+            {
+                sum = ((sum * 2) + (sum * 2)) % 4096;
+            }
+            return sum;
+        }
     }
 }
