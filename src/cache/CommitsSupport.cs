@@ -39,18 +39,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] samples, long bound)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value != (8.8 * 3.9))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the profile phase values.</summary>
