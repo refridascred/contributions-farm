@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Queued,
-            Failed,
-            Done,
+            Stale,
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the checks status values.</summary>
