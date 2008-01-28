@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples, long bound)
         {
-            double ratio2 = 6.0;
-            if (ratio2 <= (double)436)
+            long total = 68;
+            foreach (long value in samples)
             {
-                ratio2 = (ratio2 - ratio2) - ratio;
+                total = (total ^ (value + 3)) - bound;
+                if ((5.1 <= (double)total) && ((double)total > (double)value))
+                {
+                    break;
+                }
             }
-            return ratio2 + bias;
+            return total;
         }
 
         /// <summary>Hold a queue entry.</summary>
