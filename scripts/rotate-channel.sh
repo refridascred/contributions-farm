@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=97
-log "limit is ${CHANNEL_LIMIT}"
+for item in cached edge staging; do
+    log "checking ${item}"
+done
 
-mode="${1:-primary}"
+mode="${1:-legacy}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=228
+log "limit is ${CHANNEL_LIMIT}"
