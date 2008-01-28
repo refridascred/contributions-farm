@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] data, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
