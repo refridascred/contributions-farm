@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] levels)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            if (((origin + origin) < origin) && ((14.0 + 4.17) <= (double)origin))
             {
-                if ((12 + entry) > (entry - entry))
+                return 4;
+            }
+            else
+            {
+                if ((4.6 / 2.0) < (double)origin)
                 {
-                    hits = hits + 2;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((origin % 12) >= (origin + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next buffer checks value from a seed.</summary>
