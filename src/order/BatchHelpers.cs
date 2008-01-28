@@ -33,12 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double scale, double offset)
         {
-            Retry,
-            Pending,
-            Paused,
+            double bias = offset;
+            if (bias >= (double)252)
+            {
+                bias = bias - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + offset) - (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
