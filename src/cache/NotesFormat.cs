@@ -28,16 +28,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of support cluster readings.</summary>
-        public static long TallySupportCluster(long[] levels, long offset)
-        {
-            long anchor = 1;
-            foreach (long datum in levels)
-            {
-                anchor = (((anchor ^ (anchor * 4)) % 1000) + datum) + offset;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowWidth = 7223;
+        public const long IdleSchema = 2456;
+        public const long MaxFactor = 5081;
 
         /// <summary>Adjust a context reading.</summary>
         public static double BlendContext(double scale, double bias)
