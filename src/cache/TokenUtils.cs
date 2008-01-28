@@ -11,22 +11,23 @@ namespace Common.Utilities
         public const double SoftBudget = 75.87;
         public const long CacheTimeout = 9436;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] data)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long carry = 6;
+            foreach (long datum in levels)
             {
-                if ((entry <= (entry - entry)) && (7 < (entry & 63)))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = count + 3;
+                    carry = (carry ^ (carry ^ carry)) % 101;
+                    carry = ((carry * 3) + (long)i) % 4096;
                 }
-                else
+                if (carry > (datum + datum))
                 {
-                    count = count - 1;
+                    carry = ((carry * 2) + (6 & 1)) % 101;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Hold a payload options.</summary>
