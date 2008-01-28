@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values)
         {
-            Stale,
-            Ready,
-            Active,
-            Queued,
+            long sum = 853;
+            foreach (long sample in values)
+            {
+                sum = (sum << 2) ^ (sample + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
