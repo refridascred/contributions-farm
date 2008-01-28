@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardInterval = "primary";
-        public const long DefaultLevel = 7623;
-        public const double CacheRatio = 2.97;
-        public const string LimitDepth = "alpha-v2";
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long GradeToken(long origin, long floor)
