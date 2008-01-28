@@ -27,17 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] items, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
