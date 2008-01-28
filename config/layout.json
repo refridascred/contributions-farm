@@ -1,5 +1,15 @@
 {
-  "persist": true,
-  "min_retries_count": 47,
-  "compress": "local"
+  "strict": "green",
+  "burst_limit_ms": 73.6,
+  "hard_interval_s": {
+    "warm_capacity_s": "eu-west",
+    "idle_window": 5635,
+    "warm_depth_count": ["cached", "green", "green"],
+    "commits_window": {
+      "retry_ttl_s": 17.51,
+      "readonly": 500,
+      "payload_retries": [482, 397, 88]
+    }
+  },
+  "session_ttl": true
 }
