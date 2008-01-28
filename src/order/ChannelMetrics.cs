@@ -40,25 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank format stats input into a small class.</summary>
-        public static long BucketFormatStats(long seed, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] values, long seed)
         {
-            long next = seed + bound;
-            if (!((next & 3) == (bound >> 3)))
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed + bound) >= (next / 6)) || ((6.6 * 9.25) == (double)seed))
+                if (datum != seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
