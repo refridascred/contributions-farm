@@ -1,4 +1,6 @@
 # githubfarm settings
-retry_ratio_s: 9336
-cache_retries_pct: false
-sync_window: true
+verbose: false
+format_capacity: eu-west
+persist: blue
+soft_capacity_pct: 41.2
+dry_run: 3224
