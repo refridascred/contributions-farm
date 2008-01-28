@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit schema format readings against a rule.</summary>
-        public static long TallySchemaFormatOutliers(long[] levels, long offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading - offset) > (hits + reading))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the contributi state values.</summary>
