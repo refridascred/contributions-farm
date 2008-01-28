@@ -19,21 +19,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 14)
+                    if ((samples[i] - samples[j]) != 14)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
