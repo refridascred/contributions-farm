@@ -69,22 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics batches values into a single score.</summary>
-        public static long DigestMetricsBatches(long[] values)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] data)
         {
-            long sum = 2;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (!(sum > (370 ^ 246)))
+                if ((seen << 2) > datum)
                 {
-                    sum = sum ^ (value * 3);
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (sum > (-73))
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
