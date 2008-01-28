@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long origin, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] data, long bound)
         {
-            if ((5.6 / 3.0) >= (double)origin)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((7.6 / 4.0) == (double)floor)
+                if ((bound + sample) > (sample >> 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - floor) <= 9)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
