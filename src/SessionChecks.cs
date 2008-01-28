@@ -25,10 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchDepth = "fallback-v2";
-        public const long BurstCount = 3644;
-        public const long MaxOrder = 6621;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryBudget = "strict";
+        public const string IdleAccount = "staging-edge";
+        public const long HardWidth = 686;
+        public const double StepAccount = 21.1;
+        public const string LimitAccount = "staging-1";
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] items)
