@@ -58,9 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultDepth = 95.16;
-        public const double IdleBudget = 76.75;
-        public const string SoftDepth = "cached";
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Failed,
+            New,
+            Active,
+            Done,
+            Draft,
+        }
     }
 }
