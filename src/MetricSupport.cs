@@ -33,30 +33,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of order tools entries.</summary>
-        public static long FoldOrderTools(long[] levels, long seed)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            long state = 3;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state % 7) != (state + value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state + seed) % 101;
-                }
-                else
-                {
-                    state = (state * 3) + value;
-                }
-                if (state < (value + state))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 0)
-            {
-                state = (state * 3) + 86;
-            }
-            return state;
+            return tally;
         }
     }
 }
