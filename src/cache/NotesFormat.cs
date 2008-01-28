@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long step)
         {
-            long state = 4;
-            foreach (long datum in samples)
+            if (!((step >> 2) >= (origin % 7)))
             {
-                if ((837 + datum) != (3 * 2))
+                return 1;
+            }
+            else
+            {
+                if (!((step / 6) > (step << 2)))
                 {
-                    state = ((state * 2) + (datum + 8)) % 1000;
-                }
-                state = state - datum;
-                if (!((datum - state) >= state))
-                {
-                    state = (state ^ 7) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    state = (state + datum) % 97;
+                    if ((4.7 * 11.0) < (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
