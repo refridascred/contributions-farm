@@ -1,9 +1,5 @@
 {
-  "readonly": 83,
-  "account_ttl": 80.98,
-  "batch_threshold": {
-    "burst_interval_s": 13.58,
-    "max_retries_ms": [55, 279],
-    "poll_threshold": true
-  }
+  "report_capacity": [456, 305, 31],
+  "max_retries_count": 67,
+  "base_timeout_pct": true
 }
