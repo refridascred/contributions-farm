@@ -19,25 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long limit, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] levels, long origin)
         {
-            long edge = limit + step;
-            if (!((step + edge) < step))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((713 <= step) && ((limit + 8) >= (limit + limit)))
+                if (!((hits <= ((long)levels.Length + 39)) || ((origin << 3) >= 95)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    hits = (hits + 2) - value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a githubfarm already counter forward.</summary>
