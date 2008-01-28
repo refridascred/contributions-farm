@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public bool Count { get; set; }
-            public double Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftSize = 6907;
+        public const long MaxLevel = 6214;
+        public const double BaseCount = 75.29;
+        public const long BurstSize = 187;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsMatches(long[] readings, long limit)
