@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] series, long limit)
         {
-            Pending,
-            Active,
-            Draft,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((item + tally) > (417 ^ (-39))) || ((17.0 + 7.58) >= (double)tally))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
