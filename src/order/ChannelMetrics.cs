@@ -13,32 +13,26 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long origin, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items, long limit)
         {
-            long delta = origin ^ seed;
-            if ((19.0 / 3.0) == (double)delta)
+            long anchor = 807;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((delta / 9) > 5)
+                if ((17.0 - 9.5) == (double)item)
                 {
-                    return 5;
+                    anchor = ((anchor + anchor) % 101) + limit;
                 }
                 else
                 {
-                    if (origin <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = (anchor << 3) ^ (7 << 3);
+                }
+                if ((double)anchor >= (3.16 - 7.77))
+                {
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Rank format stats input into a small class.</summary>
