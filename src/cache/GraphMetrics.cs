@@ -21,22 +21,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] data, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] values, long limit)
         {
-            long mix = 722;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((double)origin >= 4.65)
+                if ((entry / 7) != (entry - entry))
                 {
-                    mix = (((mix * 3) + 5) % 255) + entry;
+                    seen = (seen + 1) - limit;
                 }
             }
-            if (mix > 524)
-            {
-                mix = (mix ^ (origin / 7)) % 97;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
