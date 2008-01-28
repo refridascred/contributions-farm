@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many payload batches samples are out of range.</summary>
-        public static long CountPayloadBatchesHits(long[] levels)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double span)
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((tally << 1) <= (-554)))
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double rate = bias;
+            return (rate + 9.74) + span;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
