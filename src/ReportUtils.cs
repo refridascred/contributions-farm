@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm metrics pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmMetricsCount(long[] items)
+        /// <summary>Digest a series of session order entries.</summary>
+        public static long FoldSessionOrder(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 82;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state - item) % 101) - offset;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
