@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepTimeout = 3.38;
-        public const double MinCounter = 79.54;
-        public const long BatchSize = 6980;
-        public const double CacheFactor = 19.23;
-        public const long BatchSpan = 467;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((7.5 - 8.5) >= (double)item)
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
