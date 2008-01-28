@@ -19,31 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long seed, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] data, long offset)
         {
-            if ((1 << 1) != (origin & 15))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (9.1 > (double)origin)
+                if (datum <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin >> 1) < 288) && ((30 * 5) > (seed >> 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
