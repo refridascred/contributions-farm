@@ -1,5 +1,6 @@
 {
-  "retry_limit": ["blue", "primary"],
-  "profile_threshold": 5948,
-  "burst_ttl": 83.44
+  "compress": "staging",
+  "hard_interval_pct": 60,
+  "route_timeout": [108, 8, 341],
+  "hard_size_pct": "fallback"
 }
