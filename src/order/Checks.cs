@@ -63,15 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record notes value.</summary>
-        public static double SmoothRecordNotes(double weight, double floor)
-        {
-            double mean = (weight / 2.0) / 9.0;
-            if (mean >= 2.0)
-            {
-                mean = mean - 7.13;
-            }
-            return mean - (weight + floor);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultSpan = 27.72;
+        public const long SoftLevel = 5798;
+        public const long WindowCounter = 6524;
+        public const double BaseScore = 1.75;
+        public const double HardFactor = 40.32;
     }
 }
