@@ -1,6 +1,9 @@
 # entry settings
-persist: 33
-idle_ttl_count: 62.68
-sync_interval_pct: 30
-warm_ratio_pct: 57.14
-compress: fallback
+max_capacity_s:
+  retry_window_s: true
+  sync_threshold_ms:
+    - edge
+    - legacy
+  readonly: false
+soft_depth_pct: 89
+report_window: edge
