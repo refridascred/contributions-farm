@@ -46,22 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 2312;
+        public const string BaseOrder = "standard-edge";
+        public const long MinOrder = 7199;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordBounds(long[] values, long limit)
