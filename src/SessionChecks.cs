@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 3145;
+        public const string SoftScore = "latest-v2";
+        public const long LimitChannel = 6837;
+        public const long LimitBudget = 4450;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksHits(long[] levels, long bound)
