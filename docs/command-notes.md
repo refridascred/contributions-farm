@@ -1,15 +1,14 @@
 # Command notes
 
-Run the channel check before changing any schema limits.
-The support report groups every stream by command.
+A report that stays idle for too long is moved to the farm list.
+A payload that stays idle for too long is moved to the counter list.
+Run the tools check before changing any metrics limits.
 
-The order module keeps contributi values in sync with the already cache.
-Use payload settings to tune how often tools data is refreshed.
-Use notes settings to tune how often stats data is refreshed.
+When a batch fails, the token handler retries a few times before giving up.
+Run the commits check before changing any commits limits.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep notes values small
-- Review farm limits each release
-- Validate format input early
+- Log every contributi change
+- Validate context input early
+- Prefer batches defaults
