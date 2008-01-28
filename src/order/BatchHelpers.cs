@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] levels)
         {
-            Done,
-            Pending,
-            Draft,
-            Dropped,
-            Queued,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((32 - seen) <= seen)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a token options.</summary>
