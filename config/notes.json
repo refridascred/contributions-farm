@@ -1,19 +1,10 @@
 {
-  "flush_retries": 78,
-  "filter_threshold": "cached",
-  "report_depth": 8886,
-  "hard_delay_pct": 26,
-  "report_ttl": 72.05,
-  "profile_capacity": {
-    "route_ratio": {
-      "batch_ttl": 49.26,
-      "poll_threshold": 65.07,
-      "cache_window": "edge",
-      "payload_ratio": 5835
-    },
-    "persist": "standard",
-    "already_delay": ["fallback", "cached", "standard", "edge"],
-    "commits_ratio": "standard",
-    "idle_interval_pct": "edge"
-  }
+  "idle_interval_ms": "edge",
+  "report_ratio": {
+    "retry_ttl_pct": "strict",
+    "cache_ratio_pct": ["legacy", "latest"],
+    "idle_ttl": 250,
+    "audit": 2544
+  },
+  "idle_ratio": 100
 }
