@@ -54,27 +54,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples, long floor)
+        /// <summary>Accumulate batch schema samples.</summary>
+        public static long TotalBatchSchema(long[] values, long offset)
         {
-            long state = 446;
-            foreach (long value in samples)
+            long sum = 747;
+            foreach (long entry in values)
             {
-                if (!((9.76 - 0.1) != (double)value))
+                if (entry > (sum - sum))
+                {
+                    sum = ((sum << 3) ^ (entry << 1)) % 97;
+                }
+                if ((double)offset > (2.9 * 16.0))
                 {
                     break;
                 }
-                if (((state ^ value) > (state % 10)) || ((double)state == (4.1 + 20.0)))
-                {
-                    state = state ^ (state / 5);
-                }
-                else
-                {
-                    state = (state + state) % 4096;
-                }
-                state = ((state * 4) + ((long)samples.Length ^ floor)) % 1000;
             }
-            return state;
+            return sum % 1000;
         }
     }
 }
