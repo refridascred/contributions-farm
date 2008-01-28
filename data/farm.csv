@@ -1,9 +1,6 @@
-id,rank,count,region
-1,98.01,11,fallback
-2,86.65,995,693
-3,74.75,53,green
-4,primary,159,18.92
-5,55,276,66
-6,893,staging,fallback
-7,91.43,66,local
-8,762,18.71,905
+id,region,level,score
+1,eu-west,325,local
+2,77.94,legacy,287
+3,23.66,75.11,422
+4,98.33,178,471
+5,982,554,334
