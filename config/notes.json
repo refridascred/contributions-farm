@@ -1,7 +1,5 @@
 {
-  "dry_run": 1222,
-  "cluster_size": 40.51,
-  "soft_limit_pct": 79,
-  "cache_threshold_ms": "edge",
-  "sync_timeout": false
+  "flush_delay_count": true,
+  "retry_limit_s": 500,
+  "retry_size": ["standard", "blue", "blue", "green"]
 }
