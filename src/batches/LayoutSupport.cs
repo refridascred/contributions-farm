@@ -22,23 +22,12 @@ namespace Common.Utilities
         public const long WindowWidth = 6401;
         public const string SoftDepth = "open";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values, long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = 3;
-            foreach (long item in values)
-            {
-                mix = ((mix + (mix & 7)) % 101) - step;
-                if (((item ^ (long)values.Length) < (item % 5)) || ((double)item >= (1.21 - 10.0)))
-                {
-                    mix = mix - mix;
-                }
-                if (((double)item <= (1.0 - 19.0)) && ((double)mix > (double)(-574)))
-                {
-                    mix = mix - (long)values.Length;
-                }
-            }
-            return mix;
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
