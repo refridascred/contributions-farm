@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] values)
-        {
-            long carry = -58;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) >= (414 + 8))
-                {
-                    carry = ((carry << 3) ^ carry) % 255;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryInterval = 5546;
+        public const long SoftInterval = 1950;
+        public const long CacheInterval = 3644;
+        public const long WindowNotes = 7243;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] samples, long floor)
