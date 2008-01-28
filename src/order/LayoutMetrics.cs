@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long seed)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            if (((seed ^ 4) <= (776 * 5)) || ((7 >> 5) != (step & 3)))
+            double gain = bias;
+            if (gain <= bias)
             {
-                return 6;
+                gain = gain - bias;
             }
-            else
-            {
-                if ((4.06 + 8.53) > (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return gain + (weight / 5.0);
         }
 
         /// <summary>Describe the layout level values.</summary>
