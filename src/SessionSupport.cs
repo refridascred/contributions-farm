@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] levels, long origin)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((hits <= ((long)levels.Length + 39)) || ((origin << 3) >= 95)))
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a githubfarm already counter forward.</summary>
