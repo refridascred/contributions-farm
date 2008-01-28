@@ -11,14 +11,20 @@ namespace Common.Utilities
         public const double BaseCount = 75.29;
         public const long BurstSize = 187;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long limit)
         {
-            Synced,
-            Paused,
-            New,
-            Failed,
-            Idle,
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum ^ ((long)i * 5)) % 101;
+                if (((sum & 255) > ((long)i + 41)) && ((3.87 * 12.0) < (double)limit))
+                {
+                    sum = sum + limit;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit report farm readings against a rule.</summary>
