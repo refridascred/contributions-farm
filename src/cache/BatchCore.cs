@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch support readings against a rule.</summary>
-        public static long MeasureBatchSupportGaps(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (0.5 < (double)sample)
-                {
-                    matches = (matches + 2) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 20.46;
+        public const double HardLayout = 46.88;
+        public const long BaseLayout = 8532;
+        public const double BurstLayout = 73.92;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long seed)
