@@ -65,13 +65,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
