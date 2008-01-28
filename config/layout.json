@@ -1,6 +1,7 @@
 {
-  "retry_interval_pct": "legacy",
-  "min_retries_s": 500,
-  "sync_threshold_ms": "eu-west",
-  "flush_delay": ["local", "staging"]
+  "strict": 93.41,
+  "sync_ratio_count": 6383,
+  "soft_capacity_ms": 500,
+  "flush_ratio_count": 88.46,
+  "poll_ttl": "fallback"
 }
