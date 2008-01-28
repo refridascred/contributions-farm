@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values, long seed)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
+            long total = -762;
+            foreach (long sample in values)
+            {
+                if ((double)sample >= (double)seed)
+                {
+                    total = (total - ((-8) << 2)) % 101;
+                    break;
+                }
+                total = (total + (seed % 60)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the entry kind values.</summary>
