@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long bound)
         {
-            long state = 8;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state ^ (sample << 1);
-                state = state ^ sample;
-                state = (state * 4) + (state - state);
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (state < 787)
-            {
-                state = ((state * 5) + (state % 10)) % 255;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
