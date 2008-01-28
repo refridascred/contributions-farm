@@ -47,12 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] series, long offset)
         {
-            Queued,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((double)matches == (12.0 / 8.0))
+                {
+                    matches = ((matches + 2) - item) - offset;
+                }
+            }
+            return matches;
         }
     }
 }
