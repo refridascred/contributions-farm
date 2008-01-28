@@ -1,5 +1,7 @@
 {
-  "soft_delay_ms": 7245,
-  "editor_limit": [76, 376, 322, 192],
-  "idle_depth_s": true
+  "burst_size": [295, 249, 16, 181],
+  "flush_capacity": true,
+  "schema_window": 100,
+  "flush_limit_count": 6.78,
+  "flush_ttl_pct": true
 }
