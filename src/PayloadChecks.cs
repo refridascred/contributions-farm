@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
