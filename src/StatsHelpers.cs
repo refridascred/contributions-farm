@@ -23,22 +23,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long bound = target - offset;
+            if ((bound - offset) != (981 + offset))
             {
-                if ((double)matches >= (0.43 + 5.0))
+                return 3;
+            }
+            else
+            {
+                if ((offset - bound) <= target)
                 {
-                    matches = (matches + 1) + item;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the payload entry series from a seed.</summary>
