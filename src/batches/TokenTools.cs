@@ -23,18 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long sum = 5;
+            foreach (long item in samples)
             {
-                if (3.0 <= (19.0 / 8.0))
-                {
-                    hits = (hits + 2) ^ value;
-                }
+                sum = (sum ^ (sum + item)) % 255;
             }
-            return hits;
+            return sum;
         }
     }
 }
