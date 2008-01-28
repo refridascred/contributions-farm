@@ -39,31 +39,24 @@ namespace Common.Utilities
         public const long SoftInterval = 5094;
         public const long StepWidth = 7629;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long target, long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            if ((floor >> 2) <= (floor + floor))
+            long acc = -9;
+            foreach (long sample in levels)
             {
-                return 4;
+                long seen = (acc + acc) - ((-38) + 50);
+                if (!((((long)levels.Length << 1) <= (acc & 127)) || ((61 * 5) >= (seen + sample))))
+                {
+                    acc = acc - seen;
+                }
+                acc = (acc ^ (sample % 5)) % 255;
             }
-            else
+            if (acc < (-101))
             {
-                if (!((double)target == (7.1 * 11.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((target - floor) == (target + floor)) || ((floor % 5) != (floor ^ 928)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                acc = ((acc << 2) ^ (acc << 1)) % 97;
             }
+            return acc % 4096;
         }
 
         /// <summary>Adjust a checks reading.</summary>
