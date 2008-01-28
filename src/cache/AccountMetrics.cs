@@ -47,17 +47,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] data, long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = (span * 1.67) - (span + weight);
+            if (load < (double)(-1))
             {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = load + (weight - weight);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (load / 2.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
