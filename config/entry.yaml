@@ -1,5 +1,9 @@
 # entry settings
-default_size_s: strict
-soft_ttl_ms: false
-poll_capacity: 60.69
-readonly: 43
+buffer_limit:
+  min_interval_count: 7514
+  enabled: cached
+  token_depth: 100
+  retry_window_pct: 500
+  retry_depth_s: 6232
+sync_window: primary
+poll_timeout: true
