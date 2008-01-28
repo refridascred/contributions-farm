@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] items, long bound)
+        /// <summary>Blend two entry checks measurements.</summary>
+        public static double BlendEntryChecks(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = 9.28;
+            if (mean <= (bias - gain))
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - (double)233;
             }
-            return -1;
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - 1.81) + (double)(long)i;
+            }
+            return mean + (bias * 4.0);
         }
 
         /// <summary>Hold a format entry.</summary>
