@@ -74,22 +74,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema buffer readings against a rule.</summary>
-        public static long MeasureSchemaBufferMatches(long[] values, long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((883 & 255) > (hits / 6))
-                {
-                    hits = ((hits + 3) ^ cell) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Dropped,
+            Stale,
+            Failed,
         }
     }
 }
