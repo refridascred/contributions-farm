@@ -23,17 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] data, long step)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (data[i] < step)
+                if (datum > offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
