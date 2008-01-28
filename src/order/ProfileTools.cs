@@ -25,19 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] data, long bound)
+        /// <summary>Combine order profile values into a single score.</summary>
+        public static long DigestOrderProfile(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long mark = 823;
+            foreach (long reading in samples)
             {
-                if (reading > bound)
+                if ((double)reading < (0.8 + 11.0))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 2) + (mark >> 3)) % 97;
                 }
+                else
+                {
+                    mark = (mark << 3) ^ 575;
+                }
+                mark = mark - mark;
             }
-            return found;
+            if (mark > 69)
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Combine checks payload values into a single score.</summary>
