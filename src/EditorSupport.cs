@@ -67,38 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter queue value against two limits.</summary>
-        public static long RankFilterQueue(long seed, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            if ((step % 7) == (seed * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step & 1) <= (step - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed / 7) < (seed - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step - 56) <= seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Adjust a notes window reading.</summary>
