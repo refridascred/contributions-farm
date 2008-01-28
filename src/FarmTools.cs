@@ -13,18 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the cluster farm entries that pass the check.</summary>
-        public static long MeasureClusterFarmMatches(long[] levels, long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (seed >= (item + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
