@@ -69,15 +69,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the farm tools series from a seed.</summary>
-        public static long DeriveFarmTools(long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] data, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if (!((floor % 97) >= (floor & 127)))
+                {
+                    tally = (tally + 1) + sample;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
