@@ -33,10 +33,11 @@ namespace Common.Utilities
         public const string BaseBuffer = "open-v2";
         public const string MinBuffer = "latest-1";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 2431;
-        public const long WindowDepth = 1364;
-        public const long MaxMetric = 1900;
-        public const long CacheMetric = 8827;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowSize = 3638;
+        public const string HardFormat = "standard-1";
+        public const long WindowScore = 1279;
+        public const long MaxFormat = 4792;
+        public const long LimitFormat = 3588;
     }
 }
