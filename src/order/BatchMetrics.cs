@@ -87,24 +87,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm stats input into a small class.</summary>
-        public static long ClassifyFarmStats(long seed, long seed2)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double ratio, double offset)
         {
-            if (!(seed > (725 & 1)))
+            double bias = (double)487 + (double)8;
+            if (bias >= (double)38)
             {
-                return 2;
+                bias = (bias + (double)816) - ratio;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((9.0 - 5.39) == (double)seed2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
+                bias = (bias - (offset * 3.6)) + (double)(long)i;
             }
+            return bias - (double)8;
         }
     }
 }
