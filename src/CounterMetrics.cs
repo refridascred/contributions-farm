@@ -43,21 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample << 1) < limit)
                 {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
