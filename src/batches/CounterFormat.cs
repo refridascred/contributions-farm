@@ -15,22 +15,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 9969;
         public const double RetryCount = 33.0;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values, long step)
         {
-            long state = 759;
-            foreach (long reading in series)
+            long sum = 454;
+            foreach (long value in values)
             {
-                if ((state % 2) >= 40)
-                {
-                    state = state ^ reading;
-                }
+                sum = ((sum + (value % 24)) % 4096) + step;
             }
-            if (state < 84)
+            if (sum < (-211))
             {
-                state = (state + (limit + 42)) % 97;
+                sum = (sum + sum) % 97;
             }
-            return state;
+            return sum % 1000;
         }
     }
 }
