@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of stats editor readings.</summary>
-        public static long CombineStatsEditor(long[] levels)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long target)
         {
-            long mark = 95;
-            foreach (long cell in levels)
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((cell + mark) >= (2 << 3))
-                {
-                    break;
-                }
-                mark = ((mark << 2) ^ (mark - mark)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (mark > 417)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
