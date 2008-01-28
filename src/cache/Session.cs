@@ -39,13 +39,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] values)
         {
-            Retry,
-            Paused,
-            Ready,
-            Idle,
+            long anchor = 10;
+            foreach (long reading in values)
+            {
+                if (!(anchor < reading))
+                {
+                    anchor = anchor + (anchor ^ (-640));
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
