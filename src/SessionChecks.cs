@@ -14,15 +14,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long bound)
         {
-            long mark = 8;
-            foreach (long value in samples)
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark + mark) % 65521) ^ value;
+                sum = sum + ((long)i - bound);
+                sum = ((sum << 3) ^ bound) % 4096;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
