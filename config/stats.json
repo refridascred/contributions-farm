@@ -1,7 +1,7 @@
 {
-  "base_size_pct": 7444,
-  "stats_depth": "open",
-  "enabled": "strict",
-  "metric_window": 930,
-  "verbose": 7611
+  "tools_retries": ["stable", "eu-west", "eu-west", "latest"],
+  "burst_ratio_pct": 27.31,
+  "queue_delay": 46.21,
+  "strict": false,
+  "verbose": "cached"
 }
