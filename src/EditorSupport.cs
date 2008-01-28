@@ -13,25 +13,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the batch checks series from a seed.</summary>
-        public static long SeriesBatchChecks(long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] readings, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                long slot = (floor - mark) - ((long)i * 3);
-                if ((double)slot <= (0.8 / 6.0))
+                if (((0.4 * 1.97) >= (double)limit) || ((limit * 3) >= (hits - hits)))
                 {
-                    slot = ((slot * 4) + ((-6) >> 1)) % 65521;
-                    slot = ((slot * 4) + mark) % 4096;
+                    hits = (hits + 3) + value;
                 }
                 else
                 {
-                    mark = ((mark * 4) + (slot ^ slot)) % 255;
+                    hits = hits - 1;
                 }
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Validate checks contributi readings against a bound.</summary>
