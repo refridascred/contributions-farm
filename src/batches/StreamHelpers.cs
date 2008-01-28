@@ -54,11 +54,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values, long limit)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = 15;
+            foreach (long value in values)
+            {
+                mark = ((mark - (limit + limit)) % 4096) + value;
+            }
+            if (mark < 50)
+            {
+                mark = (mark ^ (mark + (long)values.Length)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Adjust a metrics route reading.</summary>
