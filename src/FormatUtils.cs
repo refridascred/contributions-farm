@@ -27,14 +27,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Retry,
-            Active,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxBudget = 4539;
+        public const string CacheTimeout = "cached-1";
+        public const double WindowLevel = 30.5;
+        public const double MinWidth = 37.71;
+        public const double HardLevel = 90.41;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
