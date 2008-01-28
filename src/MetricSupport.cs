@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long floor, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] readings)
         {
-            if ((floor > (floor % 60)) || ((double)seed < (6.0 / 4.0)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((seed << 1) >= (floor % 10)))
+                if ((hits - sample) > sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of order tools entries.</summary>
