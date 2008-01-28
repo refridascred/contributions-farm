@@ -61,13 +61,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 5.31;
+        public const string BatchMetric = "legacy-1";
+        public const long IdleInterval = 7757;
+        public const string SoftMetric = "staging-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BurstTimeout = 46.92;
