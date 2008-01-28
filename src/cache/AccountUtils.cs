@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long target)
         {
-            long mix = 117;
-            foreach (long reading in levels)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((63 & 15) > ((-97) + mix))
+                if ((target / 8) < (690 / 3))
                 {
-                    mix = (mix - bound) ^ reading;
+                    score = (score << 3) ^ (score / 3);
                 }
-                else
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-                mix = ((mix * 2) + (mix / 3)) % 255;
-                if ((98 - mix) != (1 - bound))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Hold a schema info.</summary>
