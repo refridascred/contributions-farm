@@ -1,14 +1,13 @@
 {
-  "retry_capacity": 8843,
-  "default_ttl_count": [259, 336, 102],
-  "flush_capacity": {
-    "cache_threshold": 1610,
-    "hard_threshold_s": [379, 273],
-    "retry_size_ms": "green",
-    "dry_run": 1938,
-    "soft_interval": "open",
-    "cache_timeout": false
+  "persist": {
+    "flush_capacity_pct": "legacy",
+    "dry_run": 60,
+    "metrics_threshold": ["latest", "eu-west", "primary"],
+    "batch_delay_s": "fallback",
+    "base_interval_count": 1024
   },
-  "batch_delay": 24.42,
-  "default_limit_count": "edge"
+  "strict": 54.02,
+  "base_ratio_s": 1373,
+  "min_delay_s": 30,
+  "layout_window": true
 }
