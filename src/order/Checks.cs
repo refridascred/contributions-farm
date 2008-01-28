@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultFilter = 75.87;
-        public const long SoftWidth = 613;
-        public const long DefaultLevel = 7274;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 5202;
+        public const long RetryRatio = 6767;
+        public const long DefaultTimeout = 9926;
+        public const long CacheBudget = 7036;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TallyLayout(long[] readings, long bound)
