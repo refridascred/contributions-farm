@@ -31,18 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] series, long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)969 >= (double)entry)
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a editor header.</summary>
