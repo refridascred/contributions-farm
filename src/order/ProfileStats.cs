@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up counter tools samples.</summary>
-        public static long MatchCounterToolsCount(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally % 3) < (3 ^ (-4)))
                 {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) + datum) + offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a filter header.</summary>
