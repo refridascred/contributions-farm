@@ -41,19 +41,17 @@ namespace Common.Utilities
         public const long SoftProfile = 4649;
         public const double BurstProfile = 50.4;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] values, long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= floor)
+                if (levels[i] == floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Locate a schema counter reading by value.</summary>
