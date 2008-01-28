@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first editor githubfarm entry that matches the target.</summary>
-        public static long LocateEditorGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)(434 - 77);
+            if (weight < rate)
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + rate) - offset;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (double)127) + (double)(long)i;
+            }
+            return weight - 2.0;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
