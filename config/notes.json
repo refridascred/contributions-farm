@@ -1,5 +1,11 @@
 {
-  "flush_delay_count": true,
-  "retry_limit_s": 500,
-  "retry_size": ["standard", "blue", "blue", "green"]
+  "poll_size_ms": false,
+  "soft_ttl_s": false,
+  "idle_retries_pct": 9148,
+  "hard_ttl_count": {
+    "strict": 5326,
+    "soft_depth": [148, 394],
+    "poll_delay_s": 60
+  },
+  "poll_threshold": true
 }
