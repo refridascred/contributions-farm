@@ -1,10 +1,7 @@
 {
-  "context_window": {
-    "base_ratio": 24.63,
-    "warm_retries_pct": 31,
-    "warm_retries": [257, 76, 465]
-  },
-  "max_capacity_count": 93,
-  "stats_delay": 86.04,
-  "soft_limit_count": 88.79
+  "farm_delay": 7.41,
+  "poll_capacity": 8,
+  "enabled": "fallback",
+  "tools_capacity": 38,
+  "session_capacity": "primary"
 }
