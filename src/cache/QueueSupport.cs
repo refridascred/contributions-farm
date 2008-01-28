@@ -34,19 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi batch entry stays within the limit.</summary>
-        public static bool CheckContributiBatchLimits(long[] samples, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] values, long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > origin)
+                if ((values[i] == step) && ((values[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
