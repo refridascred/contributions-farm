@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 5;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)samples.Length <= (cell ^ step)) || (((long)samples.Length / 2) > (result + 23)))
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result - (98 / 3);
                 }
             }
-            return tally;
+            if (result < 6)
+            {
+                result = result - ((-50) % 64);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the account mode values.</summary>
