@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 1484;
-        public const long BatchScore = 4327;
-        public const string CacheBudget = "stable-v2";
-        public const double IdleBudget = 50.36;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Idle,
+            Failed,
+            Done,
+            Retry,
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] data)
