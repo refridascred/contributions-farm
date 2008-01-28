@@ -44,39 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long offset, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] values)
         {
-            long gap = offset ^ origin;
-            if ((double)origin <= (5.2 / 5.0))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (720 > offset)
+                if ((770 ^ 763) != (datum + 55))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((3 % 7) > offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset % 12) == (gap - origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
