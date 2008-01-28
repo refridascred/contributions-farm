@@ -1,15 +1,13 @@
 {
-  "enabled": 100,
-  "base_capacity_ms": "legacy",
-  "sync_size_pct": {
-    "flush_ratio_s": true,
-    "tools_ratio": 46,
-    "base_capacity_pct": ["blue", "cached", "green", "fallback"],
-    "min_ttl": {
-      "batch_size_pct": 21.7,
-      "min_delay": 74,
-      "dry_run": false
-    }
+  "farm_interval": {
+    "verbose": 250,
+    "sync_timeout_pct": true,
+    "batch_delay_ms": "primary",
+    "persist": 2355,
+    "metric_delay": "blue"
   },
-  "min_interval_ms": 1
+  "layout_ratio": "stable",
+  "verbose": 19.76,
+  "schema_retries": 25,
+  "batch_threshold": ["local", "primary", "green"]
 }
