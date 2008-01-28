@@ -28,14 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Queued,
-            Ready,
-            Failed,
-            Idle,
-            Closed,
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
