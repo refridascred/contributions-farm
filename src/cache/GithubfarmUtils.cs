@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] values, long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long state = 10;
-            foreach (long sample in values)
-            {
-                state = state + (offset + sample);
-            }
-            return state % 4096;
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
