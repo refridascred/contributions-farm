@@ -61,18 +61,12 @@ namespace Common.Utilities
         public const long HardCount = 4253;
         public const long MaxGithubfarm = 562;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] samples)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((0 * 3) > ((long)samples.Length - hits))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a cluster entry.</summary>
