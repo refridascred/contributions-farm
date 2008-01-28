@@ -46,17 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload session reading by value.</summary>
-        public static long FindPayloadSessionIndex(long[] data, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -2;
+            foreach (long entry in readings)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (state ^ entry)) - seed;
             }
-            return -1;
+            if (state > 54)
+            {
+                state = (state * 5) + (state + state);
+            }
+            return state % 65521;
         }
     }
 }
