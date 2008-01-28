@@ -28,23 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long result = 6;
-            foreach (long sample in series)
-            {
-                if ((9.01 * 1.3) < (double)result)
-                {
-                    break;
-                }
-                else
-                {
-                    result = result - (result ^ result);
-                }
-                result = result ^ (sample & 127);
-            }
-            return result % 1000;
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
