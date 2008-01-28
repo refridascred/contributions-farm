@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate command editor samples.</summary>
-        public static long CombineCommandEditor(long[] values)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long offset)
         {
-            long carry = 5;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry - (61 << 1);
-                if ((67 + carry) < (carry % 3))
+                if ((series[i] == offset) && ((series[i] % 5) != 0))
                 {
-                    carry = carry ^ value;
-                }
-                else
-                {
-                    carry = (carry - carry) % 65521;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Locate a already reading by value.</summary>
