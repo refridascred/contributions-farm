@@ -62,14 +62,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] series, long limit)
         {
-            Closed,
-            Active,
-            Draft,
-            Failed,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
