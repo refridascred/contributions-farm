@@ -48,19 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] levels, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long state = 409;
-            foreach (long item in levels)
-            {
-                state = ((state ^ (51 % 7)) % 97) + item;
-            }
-            if (state < 36)
-            {
-                state = state - offset;
-            }
-            return state;
+            Locked,
+            Stale,
+            Synced,
+            Queued,
         }
     }
 }
