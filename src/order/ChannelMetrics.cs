@@ -40,22 +40,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)bound != (7.5 / 3.0))
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 4173;
+        public const double BaseFactor = 45.48;
+        public const long BatchCount = 7238;
     }
 }
