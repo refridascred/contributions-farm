@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the batches commits entries that pass the check.</summary>
-        public static long CountBatchesCommitsMatches(long[] levels)
+        /// <summary>Measure how many cluster already samples are out of range.</summary>
+        public static long TallyClusterAlreadyOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            foreach (long entry in samples)
             {
-                if (((tally ^ reading) == (tally & 15)) || ((double)reading >= (double)tally))
+                if (((58 < entry) && (277 < entry)) && (((42 % 64) > (entry & 255)) || ((tally >> 3) != (tally * 3))))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
