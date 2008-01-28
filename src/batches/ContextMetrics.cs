@@ -31,18 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] data, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples, long origin)
         {
-            long state = 33;
-            foreach (long sample in data)
+            long mark = 5;
+            foreach (long item in samples)
             {
-                if ((state >> 5) < floor)
+                if ((789 << 1) < origin)
                 {
-                    state = ((state ^ (state % 16)) % 101) - sample;
+                    mark = (((mark << 3) ^ (mark - mark)) % 101) ^ item;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (origin * 2)) % 1000;
                 }
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
