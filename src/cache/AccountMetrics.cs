@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] readings)
+        /// <summary>Accumulate notes layout samples.</summary>
+        public static long ScoreNotesLayout(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long anchor = -21;
+            foreach (long value in values)
             {
-                if ((4.52 * 9.23) == (double)hits)
-                {
-                    hits = (hits + 3) + entry;
-                }
+                anchor = anchor ^ (anchor - value);
             }
-            return hits;
+            if (anchor > 44)
+            {
+                anchor = (anchor - seed) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
