@@ -22,18 +22,22 @@ namespace Common.Utilities
         public const long MaxRatio = 6401;
         public const long BurstAccount = 1691;
 
-        /// <summary>Fold a list of metric token readings.</summary>
-        public static long FoldMetricToken(long[] levels, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings)
         {
-            long state = 705;
-            foreach (long cell in levels)
+            long result = 25;
+            foreach (long value in readings)
             {
-                if ((cell - state) < (state % 12))
+                if ((16.0 * 16.0) <= (double)value)
                 {
-                    state = ((state * 3) + (origin / 7)) % 97;
+                    result = (result - result) % 97;
                 }
             }
-            return state;
+            if (result > 4)
+            {
+                result = (result + (result + 2)) % 97;
+            }
+            return result % 65521;
         }
     }
 }
