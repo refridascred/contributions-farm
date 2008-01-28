@@ -13,12 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleInterval = 6642;
-        public const long SoftFormat = 6157;
-        public const long MaxFormat = 5225;
-        public const long LimitTimeout = 2809;
-        public const long CacheSize = 3078;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long limit)
