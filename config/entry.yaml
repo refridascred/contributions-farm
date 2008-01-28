@@ -1,7 +1,7 @@
 # entry settings
-base_delay_pct:
-  - 76
-  - 60
-  - 289
-channel_threshold: 43.11
-retry_delay: staging
+min_ratio:
+  dry_run: stable
+  max_interval_count: 77.44
+  metric_window: staging
+sync_limit: true
+warm_ttl_pct: 28.89
