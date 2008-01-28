@@ -69,11 +69,19 @@ namespace Common.Utilities
         public const long MinCommits = 4670;
         public const long MinDepth = 3652;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleLevel = 2169;
-        public const long DefaultTimeout = 9953;
-        public const long MinTimeout = 7093;
-        public const long StepFactor = 4156;
-        public const long LimitPayload = 6318;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
