@@ -1,17 +1,8 @@
 {
-  "metrics_size": 30,
-  "warm_threshold": ["blue", "open"],
-  "retry_retries_count": false,
-  "cache_window": {
-    "account_timeout": "blue",
-    "warm_interval_s": 37,
-    "idle_depth": 100,
-    "sync_delay_ms": ["eu-west", "cached"],
-    "commits_size": ["legacy", "eu-west", "strict"]
-  },
-  "enabled": {
-    "sync_retries": "latest",
-    "base_ratio": 500,
-    "verbose": [282, 182, 263, 239]
-  }
+  "persist": 2.25,
+  "cache_capacity": ["green", "eu-west", "legacy", "edge"],
+  "session_size": true,
+  "soft_depth_s": ["eu-west", "strict", "stable", "edge"],
+  "compress": 69,
+  "layout_ratio": 4351
 }
