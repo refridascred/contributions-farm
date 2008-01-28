@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] readings, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long state = 42;
+            foreach (long entry in series)
             {
-                if (datum < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state - (state - (-545))) ^ entry;
             }
-            return stale;
+            return state % 1000;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
