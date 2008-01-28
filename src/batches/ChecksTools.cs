@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 4357;
         public const double BatchBudget = 24.84;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "fallback-v2";
+        public const double MinCount = 76.19;
+        public const long BaseTimeout = 1599;
+        public const long DefaultPayload = 7137;
+        public const string HardTimeout = "alpha-1";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamLimits(long[] data, long target)
