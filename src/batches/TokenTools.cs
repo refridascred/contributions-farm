@@ -24,19 +24,22 @@ namespace Common.Utilities
             return mean + (bias * 4.0);
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] series)
         {
-            long mark = 481;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mark = (mark ^ (entry + (long)readings.Length)) % 101;
-                if ((mark + mark) > entry)
+                if ((matches - matches) <= matches)
                 {
-                    break;
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
