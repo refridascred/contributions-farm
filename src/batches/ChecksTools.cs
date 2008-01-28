@@ -39,32 +39,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long origin, long floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long prev = origin + floor;
-            if ((origin >= (-26)) && (5.59 < (double)prev))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3.54 + 1.93) > (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((64 >> 2) <= (prev / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
