@@ -60,19 +60,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 8129;
+        public const long CacheMetric = 6338;
+        public const double BaseMetric = 30.86;
     }
 }
