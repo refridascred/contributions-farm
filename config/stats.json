@@ -1,6 +1,8 @@
 {
-  "burst_ttl": "legacy",
-  "notes_capacity": false,
-  "tools_size": 60,
-  "persist": "legacy"
+  "max_window": [317, 77, 214],
+  "stream_capacity": "eu-west",
+  "base_size": "latest",
+  "cache_delay_s": "edge",
+  "account_size": "staging",
+  "checks_threshold": [57, 406, 86, 227]
 }
