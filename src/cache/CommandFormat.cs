@@ -28,10 +28,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 5267;
-        public const double MaxScore = 25.29;
-        public const string HardDepth = "fallback";
+        /// <summary>Validate already record readings against a bound.</summary>
+        public static bool CheckAlreadyRecordBounds(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the queue notes entries that pass the check.</summary>
         public static long TallyQueueNotesMatches(long[] data)
