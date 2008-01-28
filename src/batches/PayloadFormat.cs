@@ -29,19 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stream window samples are out of range.</summary>
-        public static long MeasureStreamWindowHits(long[] data, long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] series)
         {
             long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((177 + step) > (sample * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
