@@ -22,11 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 20.46;
-        public const double HardLayout = 46.88;
-        public const long BaseLayout = 8532;
-        public const double BurstLayout = 73.92;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels, long bound)
+        {
+            long score = 93;
+            foreach (long cell in levels)
+            {
+                if ((6.0 * 8.9) < (double)cell)
+                {
+                    score = score - (cell + cell);
+                }
+            }
+            if (score < 359)
+            {
+                score = (score << 2) ^ (bound + bound);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
