@@ -42,18 +42,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Count the stream route entries that pass the check.</summary>
+        public static long AuditStreamRouteMatches(long[] readings, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally + value) > (offset >> 3))
                 {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
