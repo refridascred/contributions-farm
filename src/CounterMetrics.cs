@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepCount = 3476;
+        public const long DefaultBudget = 1548;
+        public const long StepMetrics = 9517;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] levels)
