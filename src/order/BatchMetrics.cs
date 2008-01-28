@@ -51,18 +51,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit entry payload readings against a rule.</summary>
-        public static long AuditEntryPayloadMatches(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen + reading) > (reading & 127))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double ratio = offset + 8.4;
+            return ratio + bias;
         }
 
         /// <summary>Rank farm stats input into a small class.</summary>
