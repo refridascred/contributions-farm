@@ -1,25 +1,18 @@
 # support settings
-dry_run: 43.36
-min_delay_s:
-  poll_delay_pct: 777
-  retry_size_s:
-    editor_delay:
-      - 62
-      - 329
-      - 8
-      - 448
-    editor_threshold: false
-    record_interval: cached
-    soft_threshold_s: 2912
-    sync_delay_ms:
-      - local
-      - local
-      - strict
-      - fallback
-  readonly:
-    - 441
-    - 436
-    - 310
-readonly: 3143
-stream_threshold: 5558
-flush_depth_s: 60
+cache_interval_s:
+  payload_limit: 250
+  soft_depth_s: false
+  checks_ttl:
+    verbose: 9.39
+    hard_ratio: 9581
+    burst_interval_pct:
+      - standard
+      - open
+    poll_depth_count: 93.49
+  burst_delay_ms: true
+  warm_ttl_ms: cached
+idle_ratio_count: legacy
+soft_capacity_ms:
+  - 102
+  - 291
+warm_capacity_pct: 67.36
