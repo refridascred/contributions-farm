@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit stats githubfarm readings against a rule.</summary>
-        public static long CountStatsGithubfarmMatches(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)value <= (10.0 * 7.89)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
