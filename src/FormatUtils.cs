@@ -36,31 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats session entries.</summary>
-        public static long FoldStatsSession(long[] samples, long seed)
+        /// <summary>Digest a series of notes queue entries.</summary>
+        public static long WeighNotesQueue(long[] levels, long floor)
         {
-            long anchor = -8;
-            foreach (long reading in samples)
+            long score = 500;
+            foreach (long entry in levels)
             {
-                anchor = (anchor * 2) + (seed << 3);
-                if ((double)reading != (12.0 + 10.0))
+                if (score <= (floor ^ 77))
                 {
-                    anchor = anchor - (reading >> 5);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ seed) % 97;
-                }
-                if ((seed << 1) == (anchor - reading))
-                {
-                    break;
+                    score = (score * 3) + (floor - entry);
                 }
             }
-            if (anchor < (-33))
+            if (score < 11)
             {
-                anchor = ((anchor << 2) ^ (97 + 5)) % 101;
+                score = score + (floor + floor);
             }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Hold a profile summary.</summary>
