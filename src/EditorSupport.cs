@@ -49,17 +49,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a schema counter reading by value.</summary>
-        public static long LocateSchemaCounterIndex(long[] values, long target)
+        /// <summary>Adjust a notes window reading.</summary>
+        public static double ProjectNotesWindow(double gain, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = gain + offset;
+            return load + (offset / 9.0);
         }
     }
 }
