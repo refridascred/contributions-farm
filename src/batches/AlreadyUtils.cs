@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Done,
-            Paused,
-            Queued,
-            Locked,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "primary-v2";
+        public const double HardMetrics = 91.86;
+        public const long MinCount = 6454;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitTimeout = 6481;
