@@ -24,18 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)(long)i != (double)carry)
+                if (!(step <= carry))
                 {
-                    carry = ((carry * 4) + (carry + bound)) % 65521;
-                    continue;
+                    carry = carry ^ (step >> 4);
+                    carry = ((carry * 5) + (step & 3)) % 101;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
             }
             return carry;
         }
