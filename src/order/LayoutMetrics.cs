@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftTimeout = "local-1";
-        public const double WindowMetrics = 73.83;
-        public const double DefaultMetrics = 10.91;
-        public const long LimitDepth = 9217;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double gain, double floor)
+        {
+            double ratio = (8.9 - 9.3) * 9.4;
+            if (ratio <= 7.86)
+            {
+                ratio = ratio - floor;
+            }
+            return ratio - gain;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
