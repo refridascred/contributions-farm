@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] items, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (entry >= seed)
+                if ((sample ^ hits) < hits)
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
