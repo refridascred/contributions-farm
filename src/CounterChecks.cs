@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading == (9.0 - 7.82))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
