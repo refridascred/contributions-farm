@@ -1,13 +1,8 @@
 {
-  "already_size": false,
-  "sync_ratio_ms": 25.47,
-  "cache_delay_s": 30,
-  "strict": {
-    "cluster_ttl": [127, 263],
-    "graph_capacity": "strict",
-    "cache_depth_s": ["edge", "cached", "green"],
-    "sync_ratio_ms": 31
-  },
-  "default_capacity_ms": "open",
-  "schema_retries": [264, 266, 207, 347]
+  "min_depth_s": "legacy",
+  "base_ttl": "fallback",
+  "soft_size_ms": "local",
+  "default_ttl_s": 1024,
+  "retry_retries_count": 98.97,
+  "record_ratio": 30
 }
