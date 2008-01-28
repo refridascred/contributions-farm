@@ -22,12 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long limit, long step)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long edge = limit + step;
+            if (!((step + edge) < step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((713 <= step) && ((limit + 8) >= (limit + limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
