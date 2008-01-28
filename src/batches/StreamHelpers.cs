@@ -36,15 +36,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metrics route series from a seed.</summary>
-        public static long RollMetricsRoute(long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next payload layout value from a seed.</summary>
