@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long LimitWidth = 851;
         public const long BurstStats = 2323;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 91.94;
-        public const long MinScore = 4479;
-        public const double BatchWidth = 82.76;
-        public const long StepRatio = 9952;
-        public const long CacheBudget = 3581;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Idle,
+            Paused,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
