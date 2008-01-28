@@ -1,7 +1,34 @@
 # githubfarm settings
-base_size_pct: staging
-hard_depth_pct: true
-record_interval:
-  - eu-west
-  - staging
-  - legacy
+retry_threshold:
+  batch_depth_count:
+    poll_interval_count: latest
+    batch_limit: 51.78
+    burst_retries_ms: 72
+  max_size_pct: primary
+  context_ratio:
+    - 242
+    - 135
+    - 224
+  layout_timeout: 20
+batch_depth:
+  compress: 28
+  retry_limit_count:
+    readonly: standard
+    soft_window_s:
+      - 294
+      - 470
+      - 224
+      - 493
+    burst_limit_pct: eu-west
+    stream_size:
+      - legacy
+      - local
+      - staging
+      - blue
+    sync_interval_ms: 46.53
+    hard_delay_s: 3.31
+  commits_window: 2935
+base_timeout: 15.22
+batches_limit: 500
+tools_ttl: true
+audit: 500
