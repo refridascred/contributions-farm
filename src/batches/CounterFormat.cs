@@ -33,17 +33,25 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] readings, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long limit, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = limit + step;
+            if (((double)delta > (double)(-134)) && ((double)limit > (8.0 + 8.4)))
             {
-                if (readings[i] >= target)
+                return 8;
+            }
+            else
+            {
+                if ((double)limit > (double)12)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
