@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long target)
         {
-            Paused,
-            Dropped,
-            Ready,
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
