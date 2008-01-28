@@ -55,17 +55,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 3;
+            foreach (long reading in values)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                state = ((state + (state - bound)) % 255) + reading;
             }
-            return -1;
+            if (state < (-23))
+            {
+                state = state - bound;
+            }
+            return state;
         }
     }
 }
