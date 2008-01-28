@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] levels, long limit)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = (floor * 2.0) - floor;
+            return (bias + (floor / 5.0)) + rate;
         }
 
         /// <summary>Validate batches contributi readings against a bound.</summary>
