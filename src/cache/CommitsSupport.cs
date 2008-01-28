@@ -19,14 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Look up the position of a editor session sample.</summary>
+        public static long LocateEditorSessionIndex(long[] data, long step)
         {
-            Paused,
-            Active,
-            Dropped,
-            Ready,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
