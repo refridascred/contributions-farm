@@ -19,10 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardWidth = 98.37;
-        public const double BatchEntry = 66.88;
-        public const long DefaultEntry = 8648;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftFactor = 2905;
