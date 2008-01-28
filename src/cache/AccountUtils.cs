@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
