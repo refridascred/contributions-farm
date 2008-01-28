@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a metric cluster figure with a bias.</summary>
-        public static double ProjectMetricCluster(double weight, double span)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] series)
         {
-            double drift = (double)0;
-            return (drift - (span / 8.0)) + weight;
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count ^ 520) <= (datum + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
