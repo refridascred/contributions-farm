@@ -50,22 +50,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many layout schema samples are out of range.</summary>
-        public static long TallyLayoutSchemaOutliers(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = -9;
+            foreach (long item in items)
             {
-                if (((double)seen != (5.8 / 2.0)) || ((seen >> 4) >= (long)levels.Length))
+                mix = (mix - (item % 16)) % 1000;
+                if (((long)items.Length << 1) > (mix + mix))
                 {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix ^ (mix + mix)) % 101;
                 }
             }
-            return seen;
+            if (mix > 442)
+            {
+                mix = ((mix << 2) ^ (1 + mix)) % 4096;
+            }
+            return mix % 97;
         }
     }
 }
