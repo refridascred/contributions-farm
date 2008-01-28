@@ -37,21 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Ready,
+            Dropped,
         }
     }
 }
