@@ -34,18 +34,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] values, long target)
+        /// <summary>Audit metrics record readings against a rule.</summary>
+        public static long TallyMetricsRecordMatches(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((target + tally) <= (989 % 24))
+                if ((seed & 7) == (item & 15))
                 {
-                    tally = (tally + 2) + datum;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
