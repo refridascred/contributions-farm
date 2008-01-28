@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long target, long origin)
         {
-            Paused,
-            Failed,
-            Draft,
-            New,
-            Stale,
+            if (!((double)target < (8.95 / 4.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin % 60) >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
