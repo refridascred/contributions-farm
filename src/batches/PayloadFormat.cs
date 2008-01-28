@@ -23,12 +23,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long step, long step2)
         {
-            Done,
-            Paused,
-            Ready,
+            if ((double)step != (6.0 / 5.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7.8 - 14.0) != (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Grade a stream batch value against two limits.</summary>
