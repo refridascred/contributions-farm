@@ -1,7 +1,7 @@
 # githubfarm settings
-persist: stable
-poll_limit_s:
-  - 276
-  - 405
-idle_interval: true
-max_delay_count: edge
+sync_capacity_pct: staging
+burst_limit: true
+retry_interval_count: 1024
+cache_ratio_s: false
+metric_ttl: 60
+commits_retries: legacy
