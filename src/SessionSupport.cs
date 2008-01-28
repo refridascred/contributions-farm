@@ -27,19 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session order entry stays within the limit.</summary>
-        public static bool CheckSessionOrderLimits(long[] data, long seed)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < seed)
+                if (items[i] == origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
