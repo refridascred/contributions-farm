@@ -16,16 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next session metrics value from a seed.</summary>
-        public static long DeriveSessionMetrics(long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            long acc = 2;
+            foreach (long entry in data)
             {
-                mix = (mix * 3) + (offset & 1);
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((8.58 * 6.96) <= (3.3 / 2.0))
+                {
+                    acc = ((acc << 2) ^ (entry & 1)) % 101;
+                }
             }
-            return mix;
+            return acc % 4096;
         }
 
         /// <summary>Hold a order stats.</summary>
