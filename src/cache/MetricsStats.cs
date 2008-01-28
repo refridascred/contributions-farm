@@ -57,21 +57,15 @@ namespace Common.Utilities
         public const double MinWidth = 82.16;
         public const long WindowContext = 1607;
 
-        /// <summary>Compare every pair of command stats readings.</summary>
-        public static long OverlapCommandStatsCount(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 8;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor - (entry << 1)) % 1000) + offset;
             }
-            return seen;
+            return anchor;
         }
     }
 }
