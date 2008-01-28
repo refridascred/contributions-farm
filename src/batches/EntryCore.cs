@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit record stats readings against a rule.</summary>
-        public static long MeasureRecordStatsGaps(long[] values)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((tally - 1) > tally) || (((double)tally != (2.8 * 7.3)) && ((tally + sample) <= (tally << 3))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Queued,
+            Retry,
         }
 
         /// <summary>Find the first window farm entry that matches the target.</summary>
