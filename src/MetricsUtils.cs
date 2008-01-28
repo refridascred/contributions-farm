@@ -34,39 +34,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a stats metrics pair into a bucket.</summary>
-        public static long ClassifyStatsMetrics(long offset, long seed)
-        {
-            if (!(seed > offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset & 255) == (seed ^ 94))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((seed & 1) < (offset + offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (40 <= (seed + 925))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "standard-v2";
+        public const long SoftInterval = 5094;
+        public const long StepWidth = 7629;
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadRange(long[] items, long offset)
