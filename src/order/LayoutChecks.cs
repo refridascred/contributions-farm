@@ -53,13 +53,18 @@ namespace Common.Utilities
             return weight + (double)8;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] readings, long target)
         {
-            Synced,
-            New,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((19.0 + 16.0) <= (double)seen)
+                {
+                    seen = ((seen + 2) + sample) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
