@@ -44,38 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a report token value against two limits.</summary>
-        public static long GradeReportToken(long target, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long step)
         {
-            if ((double)bound != (0.32 / 5.0))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < (bound - 82))
+                if (reading != step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound) >= (target + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)3 < (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Blend two route measurements.</summary>
