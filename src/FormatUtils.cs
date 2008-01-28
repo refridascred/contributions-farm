@@ -36,12 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxBudget = 4539;
-        public const string CacheTimeout = "cached-1";
-        public const double WindowLevel = 30.5;
-        public const double MinWidth = 37.71;
-        public const double HardLevel = 90.41;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstInterval = "standard-1";
+        public const long WindowRatio = 2323;
+        public const long RetryCounter = 4752;
+        public const long HardRatio = 4119;
+        public const long MinCounter = 8983;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
