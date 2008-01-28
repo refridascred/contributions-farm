@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Synced,
-            Pending,
+            Retry,
             Dropped,
-            New,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
