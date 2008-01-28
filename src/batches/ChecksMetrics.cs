@@ -19,22 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            long anchor = -18;
-            foreach (long value in values)
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((4.42 / 2.0) >= (double)value)
+                acc = (acc + bound) % 1000;
+                if ((double)acc >= (9.0 / 3.0))
                 {
-                    anchor = (anchor ^ (value + anchor)) % 255;
+                    acc = (acc * 5) + acc;
                 }
+                else
+                {
+                    acc = (acc - (bound >> 4)) % 97;
+                }
+                acc = acc + (acc + acc);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (anchor < 34)
-            {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a graph header.</summary>
