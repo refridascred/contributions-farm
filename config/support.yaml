@@ -1,15 +1,21 @@
 # support settings
-cluster_retries: latest
-idle_interval_count:
-  readonly: false
-  burst_size_ms: 500
-  idle_interval:
-    - 123
-    - 56
-    - 365
-  context_ratio: false
-  session_retries:
-    - fallback
-    - legacy
-  verbose: 31
-route_delay: false
+poll_ratio_pct:
+  soft_capacity: 2094
+  max_delay_count:
+    enabled:
+      - 239
+      - 434
+    sync_delay: 54
+    soft_timeout_count: 71.12
+    verbose: stable
+    compress: edge
+    cache_interval_s:
+      - 38
+      - 138
+  hard_interval:
+    - 290
+    - 445
+    - 438
+    - 46
+idle_window_count: fallback
+batch_interval: open
