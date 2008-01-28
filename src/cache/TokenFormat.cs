@@ -29,9 +29,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 64.42;
-        public const long BurstRatio = 4874;
-        public const long BatchProfile = 7375;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
+        {
+            long result = 97;
+            foreach (long value in readings)
+            {
+                result = ((result + (result + result)) % 101) ^ value;
+            }
+            return result;
+        }
     }
 }
