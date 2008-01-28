@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "staging-1";
-        public const string BaseTimeout = "alpha";
-        public const long BatchSpan = 3638;
-        public const long RetryLevel = 7698;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long offset)
+        {
+            if ((limit ^ limit) > 42)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset * 3) <= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Blend two cluster support measurements.</summary>
         public static double BlendClusterSupport(double gain, double offset)
