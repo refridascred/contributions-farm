@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] values, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((hits ^ 187) >= (974 + datum)) || ((double)hits > (8.16 + 0.65)))
+                if (data[i] > step)
                 {
-                    hits = (hits + 3) - bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a token snapshot.</summary>
