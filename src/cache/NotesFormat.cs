@@ -28,14 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheTimeout = 456;
+        public const string HardSpan = "alpha-1";
+        public const long MinNotes = 9318;
+        public const long BurstFactor = 7362;
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] series, long origin)
