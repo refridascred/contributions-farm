@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double bias, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            double weight = (double)8 * 4.7;
+            if (weight > 16.0)
             {
-                result = result ^ (result - result);
-                result = ((result * 2) + (long)i) % 1000;
+                weight = (weight + 7.15) + offset;
             }
-            return result;
+            return weight + (bias + weight);
         }
 
         /// <summary>Describe the contributi mode values.</summary>
