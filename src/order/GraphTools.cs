@@ -47,14 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Pending,
-            Ready,
-            Retry,
-            Locked,
-            Done,
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
