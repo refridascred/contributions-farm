@@ -1,22 +1,17 @@
 # support settings
-default_window_ms:
-  - 201
-  - 283
-base_window_s: 95.79
-schema_capacity:
-  flush_depth_pct: edge
-  layout_timeout: true
-  record_depth:
-    warm_interval_count: 250
-    githubfarm_ratio: open
-    warm_ratio: 5411
-    base_size_pct: strict
-batch_size_s:
-  - staging
-  - latest
-hard_ttl_count:
-  base_limit_count: 81
-  base_threshold_count: 89.24
-  hard_interval: cached
-  hard_depth: stable
-strict: latest
+sync_timeout_ms:
+  stats_interval:
+    poll_size_pct: 23
+    enabled: strict
+    default_timeout_count: 250
+    cache_threshold_ms: stable
+  base_delay_pct: false
+  payload_delay:
+    - 330
+    - 72
+    - 381
+  persist: true
+  sync_threshold_pct: 6.33
+  verbose: legacy
+readonly: 250
+strict: true
