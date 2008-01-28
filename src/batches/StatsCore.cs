@@ -21,31 +21,19 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long bound, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] samples, long origin)
         {
-            if ((2.0 / 3.0) >= (double)bound)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound % 5) >= (bound / 3))
+                if (datum > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + origin) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
