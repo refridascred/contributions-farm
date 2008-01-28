@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of metrics stream entries.</summary>
-        public static long WeighMetricsStream(long[] readings, long bound)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long total = 417;
-            foreach (long entry in readings)
-            {
-                total = ((total ^ total) + entry) + bound;
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the batch checks series from a seed.</summary>
