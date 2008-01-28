@@ -21,17 +21,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] readings, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                state = ((state * 3) + (0 ^ limit)) % 255;
-                state = (state * 2) + (state >> 3);
-                state = ((state * 5) + (long)i) % 101;
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
