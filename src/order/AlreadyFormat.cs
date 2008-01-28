@@ -37,19 +37,31 @@ namespace Common.Utilities
             return mean - (double)98;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long seed, long bound)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            if (seed > (seed % 64))
             {
-                if (cell < origin)
+                return 8;
+            }
+            else
+            {
+                if (((seed >> 2) < (bound - bound)) && ((double)bound == (double)seed))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound == (6.5 / 9.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Iterate the notes record series from a seed.</summary>
