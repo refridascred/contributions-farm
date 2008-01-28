@@ -30,13 +30,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Failed,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftRatio = 7885;
+        public const long MaxLevel = 4857;
+        public const long BurstSession = 820;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string StepFormat = "latest-1";
