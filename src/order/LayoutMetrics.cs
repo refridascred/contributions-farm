@@ -24,16 +24,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] data, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            long mark = 8;
+            foreach (long item in data)
             {
-                mix = (mix ^ 1) % 1000;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((double)mark >= (8.0 - 9.5))
+                {
+                    mark = (mark + (item / 7)) + bound;
+                }
+                else
+                {
+                    mark = (mark - item) % 101;
+                }
+                if ((double)item >= 7.41)
+                {
+                    break;
+                }
             }
-            return mix;
+            return mark;
         }
     }
 }
