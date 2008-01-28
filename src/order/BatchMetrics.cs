@@ -64,11 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 5.31;
-        public const string BatchMetric = "legacy-1";
-        public const long IdleInterval = 7757;
-        public const string SoftMetric = "staging-1";
+        /// <summary>Count the window cache entries that pass the check.</summary>
+        public static long AuditWindowCacheOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (reading <= (seen + reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BurstTimeout = 46.92;
