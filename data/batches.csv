@@ -1,6 +1,7 @@
-id,level,owner,rank,state
-1,81.85,fallback,303,913
-2,cached,69.3,239,45.45
-3,646,legacy,998,stable
-4,local,85.1,eu-west,edge
-5,18.37,120,fallback,7.98
+id,region,ratio,level
+1,29.73,42.78,797
+2,97.32,476,43.06
+3,stable,legacy,508
+4,open,fallback,fallback
+5,129,681,local
+6,42.72,749,open
