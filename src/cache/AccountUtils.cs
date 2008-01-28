@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long mix = 92;
-            foreach (long datum in series)
-            {
-                if (!((948 ^ floor) <= (mix * 4)))
-                {
-                    mix = (mix + (floor + datum)) % 97;
-                }
-            }
-            return mix;
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
