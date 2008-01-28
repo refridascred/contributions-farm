@@ -1,12 +1,17 @@
 # githubfarm settings
-retry_ttl_pct: open
-already_depth:
-  - open
-  - cached
-cache_threshold_ms: strict
-audit: 9
-enabled:
-  - strict
-  - latest
-  - cached
-poll_retries: 13.39
+flush_threshold_count: 60
+base_capacity_s: 72
+default_window:
+  - 371
+  - 258
+  - 482
+  - 402
+dry_run: 16
+soft_threshold_ms:
+  layout_window: 250
+  persist: local
+  min_window_pct: blue
+  retry_capacity_ms: 56.54
+  batch_interval:
+    - standard
+    - open
