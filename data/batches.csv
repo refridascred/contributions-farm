@@ -1,6 +1,10 @@
-id,active,state,count,region
-1,latest,28.07,42.47,439
-2,472,262,791,green
-3,93.44,39.73,452,196
-4,510,574,local,primary
-5,23.16,532,green,758
+id,score,level,ratio
+1,821,915,11.51
+2,39.36,76.58,24.67
+3,local,staging,33.75
+4,574,12.79,latest
+5,staging,120,cached
+6,3.41,792,911
+7,open,663,open
+8,fallback,64.65,stable
+9,primary,legacy,769
