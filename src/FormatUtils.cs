@@ -44,19 +44,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels, long step)
+        /// <summary>Count the order stream entries that pass the check.</summary>
+        public static long TallyOrderStreamHits(long[] samples)
         {
-            long anchor = -59;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                anchor = (anchor ^ (entry % 2)) % 1000;
-                if (entry <= step)
+                if ((6 % 16) < item)
                 {
-                    anchor = anchor ^ (step & 15);
+                    seen = seen + 2;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
