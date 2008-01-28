@@ -14,22 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mix = 4;
-            foreach (long datum in levels)
-            {
-                if (483 < (datum ^ datum))
-                {
-                    mix = (mix * 3) + datum;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ mix;
-                }
-            }
-            return mix % 1000;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a farm header.</summary>
