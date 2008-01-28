@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepInterval = "standard-edge";
-        public const double BaseSession = 90.06;
-        public const double SoftBudget = 75.87;
-        public const long CacheTimeout = 9436;
+        /// <summary>Fold a list of metric editor readings.</summary>
+        public static long CombineMetricEditor(long[] items)
+        {
+            long sum = 105;
+            foreach (long sample in items)
+            {
+                sum = ((sum - (sum / 8)) % 255) + sample;
+                if (((6.8 * 5.4) < (double)sum) && ((sum % 2) >= sum))
+                {
+                    break;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = (sum << 2) ^ (sum * 3);
+            }
+            return sum;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long DigestProfile(long[] levels, long step)
