@@ -19,25 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                acc = (acc + bound) % 1000;
-                if ((double)acc >= (9.0 / 3.0))
+                if (!(((cell - tally) <= (tally + tally)) && (11.0 >= (double)cell)))
                 {
-                    acc = (acc * 5) + acc;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    acc = (acc - (bound >> 4)) % 97;
-                }
-                acc = acc + (acc + acc);
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a graph header.</summary>
