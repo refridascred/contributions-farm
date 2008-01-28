@@ -1,9 +1,8 @@
-id,count,active,token
-1,19.08,72.52,97.56
-2,95.33,509,42.89
-3,edge,171,blue
-4,stable,14.16,15.95
-5,green,80,685
-6,94.63,strict,local
-7,458,latest,432
-8,51.71,strict,121
+id,owner,label,region,score
+1,fallback,8.27,67.63,538
+2,61,30.55,482,strict
+3,84.02,89.45,898,998
+4,51.06,73.4,29.11,250
+5,primary,693,open,325
+6,standard,legacy,306,eu-west
+7,230,22.35,cached,14.02
