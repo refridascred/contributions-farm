@@ -11,12 +11,33 @@ namespace Common.Utilities
         public const double CacheRatio = 2.97;
         public const string LimitDepth = "alpha-v2";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheSpan = 89.7;
-        public const string HardWidth = "stable";
-        public const long RetryScore = 9;
-        public const long DefaultDepth = 7164;
-        public const double HardNotes = 25.55;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long floor)
+        {
+            long diff = origin + floor;
+            if (floor > (diff % 12))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + 83) <= (origin % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.2 - 4.6) >= (double)diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
