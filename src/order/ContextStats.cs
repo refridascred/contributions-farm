@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            Idle,
+            Done,
+            Active,
         }
 
         /// <summary>Rank session input into a small class.</summary>
