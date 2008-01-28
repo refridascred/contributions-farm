@@ -54,10 +54,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 9759;
-        public const double WindowFarm = 75.47;
-        public const double SoftRatio = 54.88;
-        public const long CacheFarm = 9139;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Draft,
+            New,
+            Idle,
+            Queued,
+        }
     }
 }
