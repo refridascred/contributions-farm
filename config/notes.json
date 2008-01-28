@@ -1,23 +1,5 @@
 {
-  "checks_timeout": {
-    "base_timeout_count": "primary",
-    "session_window": {
-      "max_delay_ms": 75,
-      "record_depth": true,
-      "min_depth_s": 86.73,
-      "base_ttl_ms": 5023,
-      "stream_ttl": "legacy",
-      "strict": "latest"
-    },
-    "commits_size": "stable"
-  },
-  "compress": 500,
-  "farm_ttl": {
-    "idle_timeout_count": 11,
-    "filter_window": false,
-    "min_delay_pct": 500
-  },
-  "base_limit_count": 1567,
-  "burst_depth_pct": false,
-  "batch_depth_pct": "cached"
+  "flush_window_s": 60,
+  "default_timeout_s": "open",
+  "sync_retries_s": 90.28
 }
