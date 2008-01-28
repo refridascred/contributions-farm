@@ -20,32 +20,19 @@ namespace Common.Utilities
             return weight - 2.0;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long offset, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] items, long offset)
         {
-            long lane = offset ^ origin;
-            if (origin > (34 + lane))
+            bool ok = true;
+            foreach (long item in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin - origin) >= (810 - origin))
+                if (item > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin >> 2) == (0 / 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
