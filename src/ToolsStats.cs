@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
