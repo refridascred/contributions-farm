@@ -33,19 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster window readings.</summary>
-        public static long WeighClusterWindow(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            long anchor = 44;
-            foreach (long sample in levels)
+            long anchor = 658;
+            foreach (long value in samples)
             {
-                anchor = (((anchor * 2) + (572 % 8)) % 255) - sample;
+                if ((3.49 - 7.0) != (double)(long)samples.Length)
+                {
+                    anchor = (anchor + value) % 65521;
+                }
             }
-            if (anchor > 27)
-            {
-                anchor = (anchor ^ (anchor & 15)) % 1000;
-            }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Match up route samples.</summary>
