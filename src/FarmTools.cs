@@ -23,19 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] data, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (sample < origin)
+                if (datum != bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Match up channel samples.</summary>
