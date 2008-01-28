@@ -30,18 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] values, long target)
         {
-            long total = 315;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (!((offset >> 2) <= (entry >> 4)))
+                if (entry != target)
                 {
-                    total = (total + total) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return total;
+            return ok;
         }
     }
 }
