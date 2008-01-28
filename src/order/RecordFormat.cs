@@ -45,22 +45,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] samples, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long seed, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long diff = seed ^ step;
+            if ((diff * 5) < (8 ^ diff))
             {
-                if (seen < ((long)samples.Length + origin))
+                return 5;
+            }
+            else
+            {
+                if (((diff + seed) == (step * 3)) && ((95 << 3) == (diff / 7)))
                 {
-                    seen = (seen + 2) + cell;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (4.3 <= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step / 8) <= step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
