@@ -30,11 +30,31 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long bound, long origin)
         {
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
+            if ((2.0 / 3.0) >= (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound % 5) >= (bound / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + origin) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate entry command samples.</summary>
