@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long limit)
+        /// <summary>Audit profile support readings against a rule.</summary>
+        public static long CountProfileSupportMatches(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
+                if (((91 + count) < limit) && (limit <= 0))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
