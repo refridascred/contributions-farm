@@ -35,15 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile schema readings against a rule.</summary>
-        public static long MeasureProfileSchemaOutliers(long[] readings, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] samples)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long item in samples)
             {
-                if ((double)target <= (7.93 * 4.0))
+                if ((0.3 - 8.91) == (double)item)
                 {
-                    count = (count + 2) - item;
+                    count = count + 1;
                 }
             }
             return count;
