@@ -44,15 +44,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] series, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples, long floor)
         {
-            long sum = 73;
-            foreach (long item in series)
+            long state = 446;
+            foreach (long value in samples)
             {
-                sum = ((sum << 2) ^ (item - 8)) - limit;
+                if (!((9.76 - 0.1) != (double)value))
+                {
+                    break;
+                }
+                if (((state ^ value) > (state % 10)) || ((double)state == (4.1 + 20.0)))
+                {
+                    state = state ^ (state / 5);
+                }
+                else
+                {
+                    state = (state + state) % 4096;
+                }
+                state = ((state * 4) + ((long)samples.Length ^ floor)) % 1000;
             }
-            return sum;
+            return state;
         }
     }
 }
