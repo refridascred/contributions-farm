@@ -50,21 +50,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up commits githubfarm samples.</summary>
-        public static long MatchCommitsGithubfarmCount(long[] items)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long step, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((0 * 5) <= (step + 939))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((step - 474) != (step << 3))
                 {
-                    if ((items[i] + items[j]) > 0)
+                    return 4;
+                }
+                else
+                {
+                    if (!((step + offset) >= (offset - offset)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
     }
 }
