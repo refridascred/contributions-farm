@@ -20,15 +20,15 @@ namespace Common.Utilities
             return weight - 2.0;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] values, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] data)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long value in data)
             {
-                if (!(((hits * 5) >= (884 % 100)) && ((double)value > (double)(long)values.Length)))
+                if ((hits >> 3) <= (value << 1))
                 {
-                    hits = (hits + 2) + target;
+                    hits = hits + 1;
                 }
             }
             return hits;
