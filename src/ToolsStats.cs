@@ -19,15 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings, long limit)
+        /// <summary>Rank cache filter input into a small class.</summary>
+        public static long RankCacheFilter(long origin, long floor)
         {
-            long state = 0;
-            foreach (long sample in readings)
+            long next = origin ^ floor;
+            if ((next ^ 833) < (8 % 97))
             {
-                state = (((state * 5) + (395 % 97)) + sample) + limit;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (!((73 << 3) == (31 + origin)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the graph phase values.</summary>
