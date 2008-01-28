@@ -43,31 +43,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long floor, long origin)
-        {
-            if ((floor >> 2) == (floor - origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor != (18.0 - 3.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor << 3) > (0 + origin)) && ((origin + floor) > (floor * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "strict-edge";
+        public const double MinLayout = 14.07;
+        public const long CacheLayout = 2632;
+        public const string LimitLayout = "alpha-1";
     }
 }
