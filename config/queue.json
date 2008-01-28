@@ -1,8 +1,8 @@
 {
-  "graph_interval": 250,
-  "profile_retries": "primary",
-  "max_limit_pct": false,
-  "flush_delay": 8569,
-  "max_window_count": "cached",
-  "base_threshold_pct": false
+  "max_threshold": ["open", "fallback"],
+  "verbose": "blue",
+  "schema_size": 13.26,
+  "cache_depth_s": "standard",
+  "context_delay": "blue",
+  "cluster_capacity": ["open", "open", "green", "eu-west"]
 }
