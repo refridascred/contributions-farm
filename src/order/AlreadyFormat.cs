@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long BatchSize = 927;
         public const string WindowReport = "stable-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstCount = 9291;
-        public const long CacheFilter = 6085;
-        public const long IdleFilter = 7193;
-        public const long StepCount = 3955;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((406 ^ matches) <= 7)
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the farm tools series from a seed.</summary>
         public static long DeriveFarmTools(long bound)
