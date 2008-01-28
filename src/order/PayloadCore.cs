@@ -37,26 +37,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Combine notes stream values into a single score.</summary>
+        public static long ScoreNotesStream(long[] samples, long limit)
         {
-            long state = 550;
+            long total = 51;
             foreach (long sample in samples)
             {
-                if (sample > (state + state))
+                total = (total * 3) + (total - (-142));
+                if ((limit + 74) <= (limit - sample))
                 {
-                    state = state - (state ^ 33);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (sample % 12)) % 97;
+                    break;
                 }
             }
-            if (state < 4)
+            if (total < 33)
             {
-                state = ((state * 5) + state) % 101;
+                total = total - ((long)samples.Length - limit);
             }
-            return state % 97;
+            return total % 97;
         }
 
         /// <summary>Locate a account reading by value.</summary>
