@@ -1,18 +1,6 @@
 {
-  "batch_capacity_count": 77.5,
-  "cache_size": 500,
-  "audit": {
-    "stream_limit": 36.4,
-    "entry_window": 65.01,
-    "compress": {
-      "flush_ratio_s": "eu-west",
-      "route_timeout": "fallback",
-      "compress": 4091,
-      "warm_retries_pct": "fallback",
-      "report_window": 100
-    },
-    "audit": 8993,
-    "hard_retries": 60
-  },
-  "order_window": "legacy"
+  "poll_delay": "stable",
+  "channel_depth": true,
+  "warm_ratio": 3360,
+  "compress": 8434
 }
