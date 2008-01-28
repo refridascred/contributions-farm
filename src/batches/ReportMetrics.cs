@@ -20,17 +20,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first support tools entry that matches the target.</summary>
-        public static long FindSupportToolsIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinSpan = 9580;
+        public const string WindowAlready = "legacy";
+        public const long BaseDepth = 3042;
+        public const string LimitBudget = "local-1";
+        public const long BaseInterval = 7022;
     }
 }
