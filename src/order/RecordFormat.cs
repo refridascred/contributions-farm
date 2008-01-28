@@ -73,18 +73,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route batch samples are out of range.</summary>
-        public static long MeasureRouteBatchMatches(long[] data)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (tally >= (value ^ value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Locked,
+            New,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
