@@ -1,5 +1,12 @@
 {
-  "metric_delay": 80.99,
-  "base_timeout_ms": "green",
-  "poll_delay": 6.36
+  "audit": 500,
+  "persist": {
+    "burst_size": [403, 82],
+    "payload_ratio": "edge",
+    "dry_run": "blue",
+    "stream_threshold": ["fallback", "eu-west"],
+    "max_ttl": true,
+    "idle_size_pct": 1024
+  },
+  "metrics_interval": 238
 }
