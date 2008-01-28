@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLevel = 926;
-        public const long BurstLayout = 2300;
-        public const long MinLayout = 400;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Stale,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Blend two contributi stream measurements.</summary>
         public static double SmoothContributiStream(double rate, double bias)
