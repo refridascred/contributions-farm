@@ -103,9 +103,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardInterval = "standard";
-        public const long MinFarm = 9495;
-        public const long WindowCount = 1541;
+        /// <summary>Rank token metric input into a small class.</summary>
+        public static long RankTokenMetric(long offset, long origin)
+        {
+            long span = offset - origin;
+            if ((((-27) - (-8)) == (span % 16)) && ((double)span == (double)origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + origin) < origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((span + offset) >= (offset - span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
