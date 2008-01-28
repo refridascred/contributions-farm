@@ -33,16 +33,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] items, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            long state = 6;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state + (33 & 63)) % 65521;
-                state = state - (bound + reading);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state % 4096;
+            return count;
         }
     }
 }
