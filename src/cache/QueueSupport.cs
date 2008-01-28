@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] items, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sample + count) > step)
+                long matches = ((long)i ^ floor) << 1;
+                mark = mark - (matches + (long)i);
+                if ((matches ^ 72) < (mark * 5))
                 {
-                    count = count + 2;
+                    mark = mark + (matches + mark);
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
