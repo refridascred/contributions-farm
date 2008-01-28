@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue cache value from a seed.</summary>
-        public static long DeriveQueueCache(long step)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] values, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                acc = (acc ^ (acc ^ (long)i)) % 4096;
-                acc = ((acc << 2) ^ step) % 1000;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Project the next profile value.</summary>
