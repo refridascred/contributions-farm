@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long LimitStream = 2404;
         public const double BaseStream = 91.23;
 
-        /// <summary>Validate batches contributi readings against a bound.</summary>
-        public static bool VerifyBatchesContributiRange(long[] values, long bound)
+        /// <summary>Accumulate session buffer samples.</summary>
+        public static long TotalSessionBuffer(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long carry = 39;
+            foreach (long cell in series)
             {
-                if (item >= bound)
+                if (!((double)floor < (17.0 + 1.82)))
                 {
-                    stale = false;
+                    carry = (carry ^ (cell % 3)) % 4096;
+                }
+                if ((12.0 * 1.0) == (double)floor)
+                {
                     break;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Match up cluster samples.</summary>
