@@ -46,11 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
