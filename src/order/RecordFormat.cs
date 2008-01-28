@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long mix = -39;
+            foreach (long cell in data)
+            {
+                mix = mix - mix;
+                if (((mix << 2) == (mix / 2)) && ((cell + mix) <= (mix << 1)))
+                {
+                    mix = mix + (mix - 424);
+                }
+                else
+                {
+                    mix = mix - (cell >> 3);
+                }
+            }
+            if (mix > 64)
+            {
+                mix = (mix << 2) ^ (mix % 100);
+            }
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
