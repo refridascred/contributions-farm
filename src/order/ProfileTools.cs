@@ -67,19 +67,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double span)
         {
-            long mix = 269;
-            foreach (long value in readings)
+            double bias = span;
+            for (int i = 0; i < 3; i++)
             {
-                mix = ((mix - (mix << 1)) % 4096) ^ value;
+                bias = (bias + (gain * 5.0)) + (double)(long)i;
             }
-            if (mix > 1)
-            {
-                mix = ((mix * 4) + mix) % 97;
-            }
-            return mix % 65521;
+            return bias - 7.61;
         }
     }
 }
