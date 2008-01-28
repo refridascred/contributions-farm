@@ -30,24 +30,18 @@ namespace Common.Utilities
         public const long BurstCount = 3644;
         public const long MaxOrder = 6621;
 
-        /// <summary>Rank layout stats input into a small class.</summary>
-        public static long ClassifyLayoutStats(long bound, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            if (target <= (target % 7))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target >> 5) <= (bound % 100))
+                if ((tally > 947) && (8 <= (value % 12)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
