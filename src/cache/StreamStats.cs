@@ -47,18 +47,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] data, long bound)
+        /// <summary>Classify a profile queue pair into a bucket.</summary>
+        public static long ClassifyProfileQueue(long step, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long next = step - floor;
+            if ((step + 25) > (next - next))
             {
-                if ((sample / 4) <= (bound + (-1)))
+                return 7;
+            }
+            else
+            {
+                if ((step << 1) <= (step & 15))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - step) > (floor + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + 301) >= (step - step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
