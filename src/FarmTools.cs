@@ -13,18 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] values, long limit)
+        /// <summary>Count the cluster farm entries that pass the check.</summary>
+        public static long MeasureClusterFarmMatches(long[] levels, long seed)
         {
-            long total = 697;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((limit + 2) != ((long)values.Length - limit))
+                if (seed >= (item + tally))
                 {
-                    total = ((total << 3) ^ limit) ^ item;
+                    tally = tally + 2;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
