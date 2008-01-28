@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] series)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long mix = 976;
+            foreach (long entry in series)
+            {
+                if (((482 & 3) >= (entry - 20)) || ((mix + entry) > entry))
+                {
+                    mix = (mix + (entry / 3)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
