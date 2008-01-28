@@ -33,19 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double scale, double span)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double mean = span;
-            if (mean < (span + span))
-            {
-                mean = mean - (4.12 / 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - scale) - (double)(long)i;
-            }
-            return mean - (double)52;
+            Paused,
+            Dropped,
+            Queued,
         }
     }
 }
