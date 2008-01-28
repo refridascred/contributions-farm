@@ -70,18 +70,12 @@ namespace Common.Utilities
         public const long BaseWidth = 1416;
         public const double SoftChannel = 90.99;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] levels)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading > (6 << 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Closed,
+            Draft,
         }
     }
 }
