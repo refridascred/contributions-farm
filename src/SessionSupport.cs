@@ -47,19 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks account value.</summary>
-        public static double SmoothChecksAccount(double gain, double bias)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            double bias2 = gain;
-            if (bias2 > bias)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                bias2 = bias2 - (bias * 3.94);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (sum + (sum * 2)) ^ (long)i2;
+                }
+                sum = (sum - (sum / 8)) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (bias * 8.77)) + (double)(long)i;
-            }
-            return bias2 - (double)56;
+            return sum;
         }
     }
 }
