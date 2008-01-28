@@ -42,17 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (series[i] > origin)
+                if (value > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the metric state values.</summary>
