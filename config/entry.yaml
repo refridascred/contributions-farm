@@ -1,5 +1,5 @@
 # entry settings
-cache_interval: strict
-persist: true
-counter_ratio: legacy
-soft_ratio_pct: 3410
+default_size_count: false
+poll_limit_s: 74.37
+soft_window: primary
+compress: open
