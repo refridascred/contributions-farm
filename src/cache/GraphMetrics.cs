@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the already metrics entries that pass the check.</summary>
-        public static long AuditAlreadyMetricsOutliers(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!(((-418) + 338) != (item >> 3)) && (((double)item >= 19.0) || (14.0 > (double)item)))
+                if ((6 - step) < 9)
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
