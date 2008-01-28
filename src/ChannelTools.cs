@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 2790;
-        public const long RetryDepth = 2784;
-        public const long HardGithubfarm = 7033;
-        public const double HardFactor = 28.05;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long GradeEntry(long step, long seed)
