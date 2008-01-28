@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item + 46) > (item / 9))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardInterval = "primary";
+        public const long DefaultLevel = 7623;
+        public const double CacheRatio = 2.97;
+        public const string LimitDepth = "alpha-v2";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double CacheSpan = 89.7;
