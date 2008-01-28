@@ -20,22 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] items, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] series, long target)
         {
-            long sum = 856;
-            foreach (long sample in items)
+            long result = 700;
+            foreach (long sample in series)
             {
-                if ((origin >= (origin * 5)) && (origin > sample))
+                if ((target + sample) <= result)
                 {
-                    sum = (sum - (sample - sample)) % 97;
+                    result = (result << 2) ^ (result + result);
+                }
+                if ((sample + result) <= (result & 7))
+                {
+                    break;
                 }
             }
-            if (sum > 721)
+            if (result > 169)
             {
-                sum = ((sum * 5) + (sum / 8)) % 255;
+                result = (result * 5) + (-521);
             }
-            return sum % 65521;
+            return result % 97;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
