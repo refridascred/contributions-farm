@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] samples, long offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((offset - 67) >= offset) || (((6.3 * 6.2) <= (double)hits) || ((hits ^ offset) == (offset >> 2))))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
