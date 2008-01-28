@@ -58,9 +58,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 4183;
-        public const long BaseAccount = 3413;
-        public const long CacheDepth = 8008;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
