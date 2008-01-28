@@ -53,23 +53,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] items)
-        {
-            long score = -5;
-            foreach (long value in items)
-            {
-                if ((312 - score) < score)
-                {
-                    score = (score + (score - value)) % 101;
-                }
-                score = (score * 2) + (score * 5);
-                if ((score / 3) >= (value & 7))
-                {
-                    score = (score << 3) ^ (value - value);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchInterval = 1488;
+        public const double MaxInterval = 28.82;
+        public const double BaseMetrics = 50.86;
     }
 }
