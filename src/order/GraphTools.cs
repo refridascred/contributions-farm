@@ -32,31 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long bound, long origin)
+        /// <summary>Combine support record values into a single score.</summary>
+        public static long CombineSupportRecord(long[] readings, long bound)
         {
-            if ((bound >> 1) == (0 + bound))
+            long state = 214;
+            foreach (long value in readings)
             {
-                return 5;
+                state = ((state * 2) + (value + value)) + bound;
             }
-            else
-            {
-                if ((3.7 - 5.5) < (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin << 2) == (bound + 694)) || ((bound ^ bound) < (origin << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Hold a editor header.</summary>
