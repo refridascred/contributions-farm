@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleWidth = 72.87;
+        public const double MinStream = 3.21;
+        public const long RetryStream = 6769;
+        public const long BatchRatio = 5448;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long RollRoute(long target)
