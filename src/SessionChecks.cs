@@ -16,15 +16,18 @@ namespace Common.Utilities
         public const long StepAlready = 9698;
         public const string BatchRatio = "cached-v2";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] levels)
+        /// <summary>Count report record pairs that satisfy a relation.</summary>
+        public static long OverlapReportRecordCount(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((cell - cell) < (cell * 2)) || ((3.8 + 0.83) > (double)tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
