@@ -53,17 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter commits entry that matches the target.</summary>
-        public static long LookupFilterCommitsIndex(long[] values, long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the channel mode values.</summary>
