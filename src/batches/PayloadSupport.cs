@@ -19,20 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (!(step <= carry))
+                if ((matches << 1) >= (16 * 3))
                 {
-                    carry = carry ^ (step >> 4);
-                    carry = ((carry * 5) + (step & 3)) % 101;
+                    matches = (matches + 1) + cell;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
