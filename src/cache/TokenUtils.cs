@@ -22,22 +22,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long seed, long step)
         {
-            if ((double)step >= (3.07 * 0.77))
+            if (((17.0 - 1.01) < (double)seed) || ((15.0 + 7.01) == (double)step))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (step < (step >> 4))
+                if ((32 ^ step) < step)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    return 8;
                 }
             }
         }
