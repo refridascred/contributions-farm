@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a notes batches sample.</summary>
-        public static long LookupNotesBatchesIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstCount = 8661;
+        public const long BaseScore = 1779;
+        public const long StepGithubfarm = 1151;
+        public const long IdleGithubfarm = 1664;
+        public const long BaseGithubfarm = 4202;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] values, long limit)
