@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepDepth = 10.09;
+        public const long IdleBatches = 2349;
+        public const long LimitBatches = 4654;
+        public const long BaseBatches = 8570;
+        public const long WindowLevel = 527;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
