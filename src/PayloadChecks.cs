@@ -23,23 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] readings, long floor)
         {
-            long result = 158;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                bool ok = result <= (long)values.Length;
-                if (ok)
+                if (datum < floor)
                 {
-                    ok = (bound + 481) > (bound + cell);
-                }
-                if ((result + result) != (bound ^ result))
-                {
-                    result = result ^ (cell >> 1);
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
