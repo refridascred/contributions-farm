@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            Failed,
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
