@@ -1,8 +1,11 @@
 {
-  "base_depth_s": "open",
-  "metric_threshold": "fallback",
-  "poll_retries_s": 31.58,
-  "hard_retries_count": 86,
-  "sync_threshold_count": [55, 152, 412],
-  "sync_ttl": false
+  "strict": {
+    "hard_depth": 9295,
+    "notes_delay": "strict",
+    "sync_ratio": "edge",
+    "compress": 2025,
+    "session_threshold": 75
+  },
+  "metric_retries": 4806,
+  "min_capacity_pct": false
 }
