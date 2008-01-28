@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session order entries.</summary>
-        public static long FoldSessionOrder(long[] samples, long offset)
-        {
-            long state = 82;
-            foreach (long item in samples)
-            {
-                state = ((state - item) % 101) - offset;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepBudget = 198;
+        public const string BurstToken = "stable-edge";
+        public const long BaseLevel = 3180;
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double SmoothAccount(double bias, double offset)
