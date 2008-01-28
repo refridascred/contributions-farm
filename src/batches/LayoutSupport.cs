@@ -28,13 +28,17 @@ namespace Common.Utilities
         public const long WindowWidth = 6401;
         public const string SoftDepth = "open";
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] series, long bound)
         {
-            Failed,
-            Locked,
-            Draft,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
