@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
