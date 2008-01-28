@@ -25,39 +25,11 @@ namespace Common.Utilities
         public const double BurstStream = 79.28;
         public const long BatchStream = 2070;
 
-        /// <summary>Rank cache batch input into a small class.</summary>
-        public static long RankCacheBatch(long origin, long limit)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long delta = origin - limit;
-            if ((origin >> 3) == (origin + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((delta / 2) > (limit * 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin ^ origin) <= delta) && (origin < 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + limit) <= 1)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
