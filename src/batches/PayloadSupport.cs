@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] items, long floor)
         {
-            Done,
-            Ready,
-            Active,
-            Dropped,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
