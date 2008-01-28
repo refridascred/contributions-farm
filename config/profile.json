@@ -1,19 +1,6 @@
 {
-  "poll_delay_count": false,
-  "readonly": 60,
-  "burst_depth_ms": 82.69,
-  "verbose": "green",
-  "audit": {
-    "retry_retries_ms": 7755,
-    "contributi_limit": [228, 33, 472],
-    "stream_limit": {
-      "burst_size_s": true,
-      "notes_capacity": "standard",
-      "graph_size": 4255,
-      "entry_depth": "stable",
-      "soft_window": 69,
-      "base_interval_count": 500
-    }
-  },
-  "profile_delay": "green"
+  "verbose": [284, 300],
+  "retry_size": false,
+  "flush_ttl": 7648,
+  "audit": 22.15
 }
