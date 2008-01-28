@@ -43,18 +43,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support context entries.</summary>
-        public static long DigestSupportContext(long[] items)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long carry = 66;
-            foreach (long item in items)
-            {
-                if (((-48) % 60) >= (item % 60))
-                {
-                    carry = (carry - (carry & 255)) % 1000;
-                }
-            }
-            return carry;
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
