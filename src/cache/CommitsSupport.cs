@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] items)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches + matches) >= (matches << 3))
+                if (readings[i] < limit)
                 {
-                    matches = (matches + 3) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first entry window entry that matches the target.</summary>
