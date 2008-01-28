@@ -64,12 +64,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double ratio, double span)
         {
-            Queued,
-            Ready,
-            Paused,
+            double weight = 8.8 + (span / 8.0);
+            for (int i = 0; i < 6; i++)
+            {
+                weight = ((weight - 11.0) + (double)(long)i) + ratio;
+            }
+            return weight - (double)505;
         }
     }
 }
