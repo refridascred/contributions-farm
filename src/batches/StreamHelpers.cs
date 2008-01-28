@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate already githubfarm samples.</summary>
-        public static long FoldAlreadyGithubfarm(long[] series)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long result = 9;
-            foreach (long sample in series)
-            {
-                result = (((result << 3) ^ (result >> 3)) % 65521) + sample;
-            }
-            if (result < 37)
-            {
-                result = ((result << 3) ^ result) % 97;
-            }
-            return result;
+            Paused,
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a route header.</summary>
