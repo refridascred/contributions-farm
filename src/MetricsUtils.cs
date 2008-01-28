@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheToken = 40.54;
-        public const string BatchToken = "standard-edge";
-        public const long MaxRatio = 7996;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long DeriveFarm(long offset)
