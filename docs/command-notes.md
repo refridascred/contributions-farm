@@ -1,12 +1,11 @@
 # Command notes
 
-Each channel is validated before it reaches the schema queue.
-A metric that stays idle for too long is moved to the route list.
-When a counter fails, the cluster handler retries a few times before giving up.
+The token helpers are pure functions, so they are safe to call from any thread.
+A entry that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Validate filter input early
-- Document new session fields
-- Prefer layout defaults
-- Keep route values small
+- Log every stats change
+- Validate session input early
+- Prefer contributi defaults
+- Keep filter values small
