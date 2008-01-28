@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a editor session sample.</summary>
-        public static long LocateEditorSessionIndex(long[] data, long step)
+        /// <summary>Find the first entry window entry that matches the target.</summary>
+        public static long LookupEntryWindowIndex(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] >= step)
+                if (samples[i] >= step)
                 {
                     return (long)i;
                 }
