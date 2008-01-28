@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-5) + seen) <= (776 + item))
                 {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
