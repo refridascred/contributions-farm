@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] levels, long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (((-49) <= (82 + entry)) || ((target << 1) >= seen))
+                if (cell != floor)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Digest a series of route entries.</summary>
