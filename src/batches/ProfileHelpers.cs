@@ -69,19 +69,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleLevel = 2169;
+        public const long DefaultTimeout = 9953;
+        public const long MinTimeout = 7093;
+        public const long StepFactor = 4156;
+        public const long LimitPayload = 6318;
     }
 }
