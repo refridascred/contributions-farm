@@ -53,18 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] samples)
+        /// <summary>Derive the next support farm value from a seed.</summary>
+        public static long SeriesSupportFarm(long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (((seen - seen) > (sample ^ 952)) || ((5.27 + 6.0) <= (double)sample))
+                if ((double)mark > 13.0)
                 {
-                    seen = seen + 2;
+                    mark = (mark * 2) + (long)i;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
     }
 }
