@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const double RetryRatio = 97.43;
         public const double StepPayload = 14.51;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] items, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = 642;
+            foreach (long value in readings)
             {
-                if (!(((long)items.Length % 5) >= sample))
+                if (((value + 178) > value) || ((double)mix >= 1.0))
                 {
-                    matches = (matches + 1) + offset;
+                    mix = mix - (value % 64);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
