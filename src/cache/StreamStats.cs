@@ -32,17 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a cache entry reading by value.</summary>
-        public static long FindCacheEntryIndex(long[] series, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (series[i] == target)
+                if (entry < target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
