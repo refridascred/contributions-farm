@@ -13,11 +13,32 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long origin, long seed)
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long delta = origin ^ seed;
+            if ((19.0 / 3.0) == (double)delta)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((delta / 9) > 5)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank format stats input into a small class.</summary>
