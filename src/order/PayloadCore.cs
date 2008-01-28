@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] data, long offset)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
