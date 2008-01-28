@@ -53,22 +53,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] data)
+        /// <summary>Audit queue format readings against a rule.</summary>
+        public static long TallyQueueFormatHits(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((sample - seen) > 10)
+                if ((5 << 3) >= sample)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
