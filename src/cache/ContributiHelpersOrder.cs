@@ -13,19 +13,35 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long target)
+        /// <summary>Combine contributi cluster values into a single score.</summary>
+        public static long DigestContributiCluster(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long sum = 6;
+            foreach (long item in series)
             {
-                if (datum <= target)
+                if (!(bound <= (5 - 54)))
                 {
-                    found = false;
+                    sum = sum ^ (sum / 6);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (bound ^ (long)series.Length)) % 97;
+                }
+                sum = (sum ^ (2 << 2)) % 4096;
+                if ((item & 3) != (sum - 7))
+                {
+                    sum = ((sum << 3) ^ item) % 255;
+                }
+                if (item >= (item & 63))
+                {
                     break;
                 }
             }
-            return found;
+            if (sum > 3)
+            {
+                sum = (sum + (2 - bound)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of window readings.</summary>
