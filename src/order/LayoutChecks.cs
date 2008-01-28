@@ -33,12 +33,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit editor metrics readings against a rule.</summary>
+        public static long TallyEditorMetricsMatches(long[] samples)
         {
-            New,
-            Closed,
-            Stale,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally * 4) >= (cell + 22))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of route entries.</summary>
