@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] samples, long target)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((target >> 3) <= tally)
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Locked,
+            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a checks entry.</summary>
