@@ -27,12 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] levels, long offset)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate record samples.</summary>
