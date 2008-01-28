@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "alpha-1";
+        public const long BurstInterval = 7935;
+        public const string IdleGithubfarm = "primary";
+        public const long DefaultTimeout = 4357;
+        public const double BatchBudget = 24.84;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] levels, long target)
