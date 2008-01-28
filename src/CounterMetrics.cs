@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] readings, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long state = 789;
+            foreach (long item in samples)
             {
-                if (entry > step)
+                state = state + (state - (long)samples.Length);
+                if (((double)item > (8.8 - 6.4)) && ((631 - target) >= target))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
