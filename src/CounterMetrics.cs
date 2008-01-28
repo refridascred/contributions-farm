@@ -39,19 +39,12 @@ namespace Common.Utilities
             return drift - (weight / 4.0);
         }
 
-        /// <summary>Fold a list of githubfarm graph readings.</summary>
-        public static long DigestGithubfarmGraph(long[] data, long offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long anchor = 92;
-            foreach (long item in data)
-            {
-                anchor = (anchor ^ (anchor ^ item)) - offset;
-                if ((anchor >> 2) >= (anchor - item))
-                {
-                    anchor = anchor ^ (anchor * 3);
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
