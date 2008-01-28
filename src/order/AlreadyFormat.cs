@@ -41,21 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 405;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((score & 255) < (datum * 5)) && ((52 << 1) > datum))
                 {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 3) + (score - score)) % 255;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
