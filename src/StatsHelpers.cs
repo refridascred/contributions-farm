@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double bias, double offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            double weight = (double)8 * 4.7;
-            if (weight > 16.0)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight + 7.15) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + (bias + weight);
+            return count;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
