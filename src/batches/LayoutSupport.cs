@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            Paused,
-            Ready,
-            Pending,
-            New,
-            Locked,
+            long score = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
