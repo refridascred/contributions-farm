@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 9791;
-        public const long IdleNotes = 3111;
-        public const long BurstDepth = 5376;
-        public const string BatchNotes = "stable-edge";
-        public const string DefaultScore = "strict-edge";
+        /// <summary>Validate githubfarm graph readings against a bound.</summary>
+        public static bool ValidateGithubfarmGraphBounds(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsHits(long[] samples, long offset)
