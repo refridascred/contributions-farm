@@ -63,15 +63,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data, long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long anchor = 8;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor - (entry << 1)) % 1000) + offset;
-            }
-            return anchor;
+            Queued,
+            Dropped,
+            Closed,
+            Retry,
         }
     }
 }
