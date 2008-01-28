@@ -40,23 +40,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] levels, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long acc = 63;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc << 2) ^ (sample >> 3)) - step;
-                if (((acc >> 5) < (acc - 705)) && ((double)sample > (7.0 + 16.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 35)
-            {
-                acc = ((acc * 5) + (acc % 64)) % 4096;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
