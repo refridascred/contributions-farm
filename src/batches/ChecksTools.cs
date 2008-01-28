@@ -22,14 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Idle,
-            New,
-            Active,
-            Retry,
-            Stale,
+            Ready,
+            Draft,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Hold a tools info.</summary>
