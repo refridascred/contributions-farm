@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Stale,
-            Failed,
-            Idle,
+            Closed,
+            Active,
+            Locked,
+            New,
         }
 
         /// <summary>Blend two contributi stream measurements.</summary>
