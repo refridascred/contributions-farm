@@ -35,22 +35,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((datum + datum) > (0 / 2))
+                if (!((5.9 - 6.26) < (double)seen))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 3) + entry) + seed;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
