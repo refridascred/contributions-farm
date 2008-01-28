@@ -57,22 +57,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many support contributi samples are out of range.</summary>
-        public static long MeasureSupportContributiMatches(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)0 < (double)seen)
-                {
-                    seen = ((seen + 3) ^ cell) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 6531;
+        public const long HardGraph = 8006;
+        public const string LimitBudget = "cached";
+        public const long RetryGraph = 8165;
+        public const double StepGraph = 97.07;
     }
 }
