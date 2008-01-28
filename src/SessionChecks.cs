@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long RetryRecord = 8258;
         public const long BurstRecord = 4555;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryBudget = "strict";
-        public const string IdleAccount = "staging-edge";
-        public const long HardWidth = 686;
-        public const double StepAccount = 21.1;
-        public const string LimitAccount = "staging-1";
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderOutliers(long[] items)
