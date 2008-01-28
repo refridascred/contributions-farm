@@ -29,11 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
+        public static bool CheckClusterEntryRange(long[] levels, long seed)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
