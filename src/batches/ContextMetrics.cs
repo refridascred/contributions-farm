@@ -49,11 +49,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryFactor = 4484;
-        public const double LimitWidth = 96.64;
-        public const long SoftCount = 1163;
-        public const long IdleRatio = 5323;
-        public const string IdleWidth = "local-edge";
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
