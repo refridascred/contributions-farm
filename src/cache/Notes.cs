@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftInterval = 79.73;
+        public const double SoftChannel = 3.31;
+        public const long DefaultChannel = 7778;
+        public const long MaxRatio = 1572;
+        public const long SoftWidth = 8928;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double WindowLayout = 43.9;
