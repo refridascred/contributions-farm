@@ -34,24 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long target, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long step)
         {
-            if ((6.4 - 6.69) <= (double)floor)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((floor + 209) != (target - 7)) && ((double)floor <= (0.1 / 6.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
     }
 }
