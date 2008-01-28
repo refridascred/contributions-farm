@@ -34,24 +34,17 @@ namespace Common.Utilities
         public const long MaxProfile = 4650;
         public const long MaxDepth = 5843;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long bound, long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long seed)
         {
-            if (floor <= (bound + bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.6 - 5.4) >= (double)floor)
+                if ((series[i] == seed) && ((series[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
