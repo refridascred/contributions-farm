@@ -1,19 +1,21 @@
 # support settings
-enabled:
-  idle_limit_ms: 16.79
-  token_window: false
-  idle_depth_pct: 5641
-poll_ttl_ms: 250
-persist: cached
-buffer_ratio:
-  soft_limit_s:
-    - latest
-    - green
-    - green
-    - standard
-  poll_delay: fallback
-  poll_size_s:
-    - 452
-    - 273
-    - 133
-retry_timeout: 30.58
+burst_capacity_s: strict
+stream_window: 82
+warm_depth: 7073
+warm_threshold_ms:
+  min_interval_count: true
+  flush_limit_s: true
+  batch_window:
+    verbose: 49
+    batch_size_count: open
+    poll_capacity:
+      - 210
+      - 306
+      - 69
+    burst_capacity: local
+  batch_limit_count:
+    - 491
+    - 92
+    - 425
+burst_timeout_count: latest
+token_limit: latest
