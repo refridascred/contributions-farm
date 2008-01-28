@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 8093;
-        public const long MinCount = 7569;
-        public const long LimitRoute = 9457;
-        public const long HardRoute = 2817;
-        public const string WindowSpan = "open";
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Idle,
+            Done,
+            Failed,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string HardWindow = "fallback-edge";
