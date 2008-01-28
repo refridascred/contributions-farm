@@ -65,18 +65,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit layout buffer readings against a rule.</summary>
-        public static long AuditLayoutBufferMatches(long[] data, long offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (4.98 >= (double)offset)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            Synced,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
