@@ -1,19 +1,5 @@
 {
-  "hard_ttl_s": {
-    "audit": 60,
-    "enabled": true,
-    "batch_threshold_ms": "legacy",
-    "default_limit_ms": ["eu-west", "latest"],
-    "persist": {
-      "tools_interval": false,
-      "dry_run": "standard",
-      "warm_threshold_s": [374, 101, 287]
-    },
-    "soft_window_ms": 22.74
-  },
-  "min_threshold_count": false,
-  "audit": [43, 467],
-  "poll_interval_s": 100,
-  "layout_window": "fallback",
-  "context_depth": ["eu-west", "primary", "fallback", "standard"]
+  "retry_ratio": ["cached", "legacy", "local", "blue"],
+  "session_interval": true,
+  "buffer_retries": "strict"
 }
