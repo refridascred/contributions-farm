@@ -20,13 +20,12 @@ namespace Common.Utilities
             return mean + (double)7;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Failed,
-            Done,
-            Active,
-            Pending,
+            Retry,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define context limits and defaults.</summary>
