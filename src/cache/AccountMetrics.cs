@@ -62,15 +62,15 @@ namespace Common.Utilities
             return load + (load / 2.0);
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double bias, double bias2)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double bias, double offset)
         {
-            double load = 1.5 / 2.0;
-            for (int i = 0; i < 4; i++)
+            double mean = offset * 2.76;
+            if (mean > (bias + mean))
             {
-                load = (((load - (load / 7.0)) + (double)(long)i) + bias) + bias2;
+                mean = mean - (offset * 16.0);
             }
-            return load + load;
+            return mean + (mean + bias);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
