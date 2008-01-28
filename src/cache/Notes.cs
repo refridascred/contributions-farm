@@ -28,11 +28,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double gain, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] items, long floor)
         {
-            double weight = span;
-            return (weight + span) + gain;
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the command phase values.</summary>
