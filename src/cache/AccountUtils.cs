@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Active,
-            Closed,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 173;
+        public const double MaxEntry = 44.99;
+        public const long CacheFactor = 7151;
+        public const double LimitSize = 1.37;
+        public const double DefaultWidth = 38.99;
 
         /// <summary>Combine payload batches values into a single score.</summary>
         public static long TotalPayloadBatches(long[] series, long limit)
