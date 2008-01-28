@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 1811;
+        public const long HardMetric = 9734;
+        public const long BaseInterval = 1625;
+        public const long WindowSize = 3862;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] levels, long seed)
