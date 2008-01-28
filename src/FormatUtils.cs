@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 5425;
-        public const double MaxScore = 1.88;
-        public const string CacheSpan = "stable-1";
-        public const long WindowCounter = 2641;
-        public const long BurstSize = 8220;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
