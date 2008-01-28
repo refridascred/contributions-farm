@@ -17,19 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] samples, long origin)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double weight, double span)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double drift = (8.6 / 3.0) + weight;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = ((drift + drift) + (double)(long)i) - span;
             }
-            return flag;
+            return drift - (weight / 4.0);
         }
 
         /// <summary>Fold a list of githubfarm graph readings.</summary>
