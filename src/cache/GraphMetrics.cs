@@ -33,23 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((6 - step) < 9)
-                {
-                    tally = (tally + 3) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 2428;
+        public const long BurstLayout = 5746;
+        public const long SoftWidth = 6401;
+        public const string MaxLayout = "local-v2";
+        public const double CacheLayout = 93.24;
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
