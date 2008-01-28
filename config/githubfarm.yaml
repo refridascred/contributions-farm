@@ -1,7 +1,15 @@
 # githubfarm settings
-metrics_timeout: green
-verbose: 6492
-min_interval_count: true
-buffer_retries: 30
-strict: 250
-graph_delay: 250
+batch_ttl: cached
+sync_limit_count: edge
+cache_delay:
+  buffer_capacity: 500
+  strict: 500
+  idle_capacity_pct: eu-west
+  hard_depth:
+    - 88
+    - 47
+    - 48
+base_size:
+  - legacy
+  - legacy
+graph_retries: green
