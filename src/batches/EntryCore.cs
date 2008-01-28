@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank schema profile input into a small class.</summary>
-        public static long BucketSchemaProfile(long origin, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long seed, long seed2)
         {
-            if (origin >= (9 + floor))
+            if ((38 / 4) >= seed2)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (floor >= (origin + floor))
+                if ((seed % 100) > seed)
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (!((double)origin != (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin >> 4) < (origin / 8)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
