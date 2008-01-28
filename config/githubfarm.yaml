@@ -1,11 +1,33 @@
 # githubfarm settings
-hard_ttl_ms:
+default_timeout_ms: 60
+base_threshold_pct: open
+strict:
+  - legacy
   - fallback
-  - open
-  - green
-  - stable
-soft_timeout:
   - strict
-  - blue
-  - strict
-warm_retries_pct: open
+  - standard
+poll_window_count: stable
+metric_capacity: 6444
+poll_capacity_ms:
+  enabled:
+    batches_window: 46
+    cache_capacity_ms: 29.34
+    checks_depth: 5374
+    audit: latest
+    sync_limit_s:
+      - 185
+      - 332
+    default_depth_count: 29
+  strict:
+    warm_interval_count: latest
+    poll_limit: false
+    default_ttl:
+      - eu-west
+      - staging
+      - strict
+    session_retries: false
+    min_retries_count: 80.72
+  cache_interval_s: 74.19
+  retry_size_count: edge
+  stats_delay: primary
+  warm_delay: 82.09
