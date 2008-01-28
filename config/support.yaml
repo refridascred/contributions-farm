@@ -1,28 +1,15 @@
 # support settings
-enabled:
-  sync_delay_pct: blue
-  payload_ratio: 4331
-  channel_timeout:
-    payload_threshold:
-      - blue
-      - staging
-      - standard
-    idle_window_s: false
-    warm_depth: false
-    checks_size: local
-    burst_timeout_pct: 68
-    poll_window_ms: primary
-  sync_threshold_s:
-    - 95
-    - 267
-  batch_delay:
-    flush_capacity_ms: 200
-    retry_interval: 30.57
-    poll_retries_s: 38.39
-    burst_ratio_ms: true
-verbose:
-  - 475
-  - 419
-  - 38
-  - 89
-record_retries: 4211
+cluster_retries: latest
+idle_interval_count:
+  readonly: false
+  burst_size_ms: 500
+  idle_interval:
+    - 123
+    - 56
+    - 365
+  context_ratio: false
+  session_retries:
+    - fallback
+    - legacy
+  verbose: 31
+route_delay: false
