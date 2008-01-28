@@ -53,14 +53,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] readings, long seed)
         {
-            Ready,
-            Pending,
-            New,
-            Idle,
-            Synced,
+            long carry = 1;
+            foreach (long reading in readings)
+            {
+                carry = (carry ^ (seed ^ carry)) - reading;
+            }
+            if (carry > 417)
+            {
+                carry = ((carry * 3) + (23 + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a cache reading.</summary>
