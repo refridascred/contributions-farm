@@ -50,11 +50,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 5342;
-        public const long BurstGithubfarm = 9879;
-        public const long MinSpan = 3096;
-        public const long HardFactor = 1247;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepLevel = 6019;
+        public const string MaxWidth = "legacy-v2";
+        public const long SoftProfile = 2467;
+        public const double BatchProfile = 67.11;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
