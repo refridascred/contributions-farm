@@ -1,9 +1,7 @@
 # entry settings
-max_capacity_s:
-  retry_window_s: true
-  sync_threshold_ms:
-    - edge
-    - legacy
-  readonly: false
-soft_depth_pct: 89
-report_window: edge
+flush_window_ms:
+  - 236
+  - 111
+warm_size_ms: 5759
+default_ttl_count: open
+min_capacity: true
