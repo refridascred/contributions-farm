@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Dropped,
-            Locked,
-            Active,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "staging-1";
+        public const string BaseTimeout = "alpha";
+        public const long BatchSpan = 3638;
+        public const long RetryLevel = 7698;
 
         /// <summary>Blend two cluster support measurements.</summary>
         public static double BlendClusterSupport(double gain, double offset)
