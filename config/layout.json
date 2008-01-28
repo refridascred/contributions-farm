@@ -1,24 +1,6 @@
 {
-  "metric_size": {
-    "compress": 3807,
-    "profile_timeout": {
-      "idle_delay_count": 28.4,
-      "max_ratio_s": 47.77,
-      "poll_ratio_ms": 11
-    },
-    "max_capacity": "standard"
-  },
-  "hard_capacity": {
-    "idle_timeout_count": "strict",
-    "default_timeout_s": {
-      "flush_retries": 75.6,
-      "soft_ttl_count": [198, 61, 401],
-      "queue_size": 60,
-      "max_interval_count": 1024
-    },
-    "min_limit": true,
-    "metric_retries": 14.06
-  },
-  "cache_ratio": "edge",
-  "default_limit_ms": 4053
+  "strict": 26,
+  "idle_interval_pct": "cached",
+  "max_limit": true,
+  "sync_retries_ms": 78
 }
