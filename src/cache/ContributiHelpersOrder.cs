@@ -39,18 +39,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] samples, long seed)
+        /// <summary>Count the already route entries that pass the check.</summary>
+        public static long AuditAlreadyRouteGaps(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (!((5.9 - 6.26) < (double)seen))
+                if ((value - value) >= value)
                 {
-                    seen = ((seen + 3) + entry) + seed;
+                    tally = (tally + 2) - origin;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
