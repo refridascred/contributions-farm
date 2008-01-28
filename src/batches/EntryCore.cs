@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = 0;
+            foreach (long reading in values)
             {
-                if (sample < (tally + 39))
+                long cur = (reading + score) % 3;
+                if ((reading + (-777)) <= cur)
                 {
-                    tally = tally + 3;
+                    cur = ((cur * 5) + (score - cur)) % 255;
+                }
+                if ((double)(long)values.Length >= (double)reading)
+                {
+                    score = (score << 3) ^ reading;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    score = (score - (reading & 127)) % 4096;
                 }
             }
-            return tally;
+            if (score < (-19))
+            {
+                score = (score - score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
