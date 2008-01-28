@@ -36,19 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] items, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the command phase values.</summary>
