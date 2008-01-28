@@ -29,19 +29,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
-        public static bool CheckClusterEntryRange(long[] levels, long seed)
+        /// <summary>Rank filter payload input into a small class.</summary>
+        public static long SortFilterPayload(long bound, long bound2)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long bound3 = bound ^ bound2;
+            if (!(bound3 <= (bound2 << 2)))
             {
-                if (reading >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound2 <= (11.0 + 10.0))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)bound3 == (13.0 / 5.0)) && ((bound2 % 2) == (bound2 >> 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
