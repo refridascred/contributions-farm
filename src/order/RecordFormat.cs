@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long offset)
+        /// <summary>Look up the position of a entry channel sample.</summary>
+        public static long SeekEntryChannelIndex(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= offset)
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
