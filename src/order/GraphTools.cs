@@ -64,11 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long bound)
         {
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
