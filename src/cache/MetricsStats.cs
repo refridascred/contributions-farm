@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const string MinSpan = "standard-1";
         public const long RetryRatio = 5659;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long bound)
         {
-            long anchor = 0;
-            foreach (long item in samples)
+            long edge = origin ^ bound;
+            if (!((origin ^ origin) > (bound << 3)))
             {
-                anchor = ((anchor ^ anchor) + item) + bound;
+                return 4;
             }
-            if (anchor < 548)
+            else
             {
-                anchor = (anchor ^ (anchor & 15)) % 65521;
+                if (!(edge >= (edge + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8.1 - 4.1) >= 6.63)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Hold a checks stats.</summary>
