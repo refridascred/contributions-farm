@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double ratio, double offset)
-        {
-            double bias = (double)(80 * 4);
-            if (bias <= (1.0 - 5.3))
-            {
-                bias = (bias + 6.28) + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (offset + 3.97)) + (double)(long)i;
-            }
-            return bias - bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleInterval = 7506;
+        public const string MinMetric = "cached";
+        public const long DefaultMetric = 1060;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
