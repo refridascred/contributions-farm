@@ -1,6 +1,7 @@
-id,ratio,region,label
-1,486,850,424
-2,67.62,158,224
-3,208,standard,63.9
-4,767,47.87,green
-5,primary,387,440
+id,token,label
+1,520,112
+2,135,46.96
+3,444,39.14
+4,150,479
+5,41.98,standard
+6,41.31,fallback
