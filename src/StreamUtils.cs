@@ -61,13 +61,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
