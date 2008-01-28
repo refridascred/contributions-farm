@@ -22,20 +22,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series, long floor)
+        /// <summary>Count the checks command entries that pass the check.</summary>
+        public static long TallyChecksCommandGaps(long[] data, long bound)
         {
-            long state = 1;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                state = ((state - (59 / 4)) % 101) - floor;
-                state = state ^ (reading / 8);
+                if ((7.8 - 9.38) >= (double)seen)
+                {
+                    seen = ((seen + 1) - sample) + bound;
+                }
             }
-            if (state > 48)
-            {
-                state = state ^ (state ^ (-96));
-            }
-            return state % 97;
+            return seen;
         }
     }
 }
