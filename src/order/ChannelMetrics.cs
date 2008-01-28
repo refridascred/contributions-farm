@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            Pending,
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
