@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the counter session entries that pass the check.</summary>
-        public static long CountCounterSessionGaps(long[] data, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((((matches + matches) >= ((-11) & 63)) || ((matches - matches) >= (matches << 3))) && ((floor & 1) != (matches / 7)))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
