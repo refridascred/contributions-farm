@@ -1,7 +1,6 @@
 {
-  "base_limit": true,
-  "token_ratio": ["primary", "latest"],
-  "audit": "edge",
-  "verbose": 7172,
-  "strict": 1845
+  "compress": 1024,
+  "command_delay": false,
+  "batches_ttl": 7582,
+  "strict": 39
 }
