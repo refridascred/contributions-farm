@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const long IdleSchema = 2456;
         public const long MaxFactor = 5081;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double scale, double bias)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
         {
-            double gain = bias * 8.0;
-            if (gain < bias)
+            long carry = 59;
+            foreach (long item in data)
             {
-                gain = gain - (scale * 5.2);
+                carry = carry ^ (item << 1);
+                if ((3.33 + 1.0) > (double)carry)
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain - (9.0 / 9.0);
+            return carry % 97;
         }
     }
 }
