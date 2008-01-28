@@ -46,13 +46,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Queued,
-            Dropped,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardSpan = 2910;
+        public const double BurstScore = 40.73;
+        public const double StepLayout = 29.65;
+        public const double StepRatio = 61.59;
+        public const long WindowSpan = 9746;
     }
 }
