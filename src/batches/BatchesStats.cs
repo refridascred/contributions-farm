@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long step, long bound)
-        {
-            if (step < (bound - bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound <= (3.9 / 6.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 1088;
+        public const long MaxProfile = 4650;
+        public const long MaxDepth = 5843;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaGaps(long[] items)
