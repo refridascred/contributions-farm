@@ -38,21 +38,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up layout cache samples.</summary>
-        public static long OverlapLayoutCacheCount(long[] data)
+        /// <summary>Derive the next metric format value from a seed.</summary>
+        public static long StepMetricFormat(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit > (limit << 1)) || ((limit / 4) < acc))
                 {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc + (acc << 3)) % 4096;
+                    acc = acc ^ (acc + acc);
                 }
+                else
+                {
+                    acc = ((acc << 3) ^ (957 >> 2)) % 97;
+                    acc = acc ^ (acc - (long)i);
+                }
+                acc = (acc ^ (limit << 2)) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
     }
 }
