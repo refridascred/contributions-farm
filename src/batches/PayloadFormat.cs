@@ -54,22 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch schema samples.</summary>
-        public static long TotalBatchSchema(long[] values, long offset)
-        {
-            long sum = 747;
-            foreach (long entry in values)
-            {
-                if (entry > (sum - sum))
-                {
-                    sum = ((sum << 3) ^ (entry << 1)) % 97;
-                }
-                if ((double)offset > (2.9 * 16.0))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardWidth = 9191;
+        public const long CacheDepth = 2535;
+        public const double WindowChecks = 24.11;
+        public const double CacheLevel = 58.78;
+        public const long BurstChecks = 5503;
     }
 }
