@@ -17,12 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxSpan = 6276;
+        public const long MaxWidth = 9852;
+        public const long StepRoute = 9847;
+        public const string SoftRoute = "open-v2";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TotalTools(long[] data)
