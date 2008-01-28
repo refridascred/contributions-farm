@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long step, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] data, long origin)
         {
-            if ((4 <= (step - step)) || ((target / 3) <= target))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)target == (8.5 * 6.06)) && ((step / 2) <= step))
+                if (item < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (227 >= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target + step) <= ((-72) << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Accumulate already cache samples.</summary>
