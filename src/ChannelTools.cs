@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total << 2) ^ (6 % 2)) % 65521;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a token stats.</summary>
