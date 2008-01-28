@@ -47,22 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            long score = 5;
-            foreach (long sample in series)
+            long state = 40;
+            foreach (long value in values)
             {
-                if ((score % 24) != (10 + score))
+                state = (state ^ (state << 3)) % 1000;
+                if ((5.5 * 15.0) == (double)state)
                 {
-                    score = (score - sample) % 97;
+                    state = state + (value + 10);
                 }
             }
-            if (score < 702)
-            {
-                score = score ^ (score % 16);
-            }
-            return score;
+            return state;
         }
     }
 }
