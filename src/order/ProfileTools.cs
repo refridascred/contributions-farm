@@ -25,27 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order profile values into a single score.</summary>
-        public static long DigestOrderProfile(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] data, long target)
         {
-            long mark = 823;
-            foreach (long reading in samples)
+            long mix = 66;
+            foreach (long datum in data)
             {
-                if ((double)reading < (0.8 + 11.0))
-                {
-                    mark = ((mark * 2) + (mark >> 3)) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ 575;
-                }
-                mark = mark - mark;
+                mix = ((((mix * 5) + (mix - mix)) % 65521) + datum) - target;
             }
-            if (mark > 69)
-            {
-                mark = mark ^ (mark - mark);
-            }
-            return mark % 65521;
+            return mix;
         }
 
         /// <summary>Digest a series of token entries.</summary>
