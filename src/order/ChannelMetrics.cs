@@ -20,18 +20,25 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit layout cluster readings against a rule.</summary>
-        public static long CountLayoutClusterGaps(long[] series)
+        /// <summary>Rank format stats input into a small class.</summary>
+        public static long BucketFormatStats(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long next = seed + bound;
+            if (!((next & 3) == (bound >> 3)))
             {
-                if ((datum + hits) < (hits % 100))
+                return 7;
+            }
+            else
+            {
+                if (((seed + bound) >= (next / 6)) || ((6.6 * 9.25) == (double)seed))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
