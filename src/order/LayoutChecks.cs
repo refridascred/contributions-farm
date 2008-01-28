@@ -33,22 +33,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit editor metrics readings against a rule.</summary>
-        public static long TallyEditorMetricsMatches(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((tally * 4) >= (cell + 22))
+                if (value <= offset)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of route entries.</summary>
