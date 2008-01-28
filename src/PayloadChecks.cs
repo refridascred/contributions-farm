@@ -63,9 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 48.02;
-        public const double RetryAlready = 57.08;
-        public const long MaxAlready = 124;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
