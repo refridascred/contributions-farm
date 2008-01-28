@@ -33,12 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 2428;
-        public const long BurstLayout = 5746;
-        public const long SoftWidth = 6401;
-        public const string MaxLayout = "local-v2";
-        public const double CacheLayout = 93.24;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            New,
+            Ready,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
