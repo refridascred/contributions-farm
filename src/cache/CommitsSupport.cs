@@ -40,13 +40,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] items)
         {
-            Paused,
-            Synced,
-            Active,
-            Locked,
+            long result = 133;
+            foreach (long datum in items)
+            {
+                if (((7.81 * 9.9) == (double)result) || ((result << 1) != (datum << 2)))
+                {
+                    result = (result - (datum + 18)) % 1000;
+                }
+            }
+            if (result > 2)
+            {
+                result = (result << 2) ^ (result % 10);
+            }
+            return result;
         }
 
         /// <summary>Describe the profile phase values.</summary>
