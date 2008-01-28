@@ -32,12 +32,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first checks token entry that matches the target.</summary>
-        public static long LookupChecksTokenIndex(long[] samples, long limit)
+        /// <summary>Locate a cache entry reading by value.</summary>
+        public static long FindCacheEntryIndex(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > limit)
+                if (series[i] == target)
                 {
                     return (long)i;
                 }
