@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const long MaxRatio = 6401;
         public const long BurstAccount = 1691;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Fold a list of metric token readings.</summary>
+        public static long FoldMetricToken(long[] levels, long origin)
         {
-            long sum = 5;
-            foreach (long item in samples)
+            long state = 705;
+            foreach (long cell in levels)
             {
-                sum = (sum ^ (sum + item)) % 255;
+                if ((cell - state) < (state % 12))
+                {
+                    state = ((state * 3) + (origin / 7)) % 97;
+                }
             }
-            return sum;
+            return state;
         }
     }
 }
