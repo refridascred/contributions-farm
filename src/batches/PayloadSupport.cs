@@ -29,12 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Paused,
-            Dropped,
             Queued,
+            Done,
+            Dropped,
         }
     }
 }
