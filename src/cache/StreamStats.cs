@@ -31,12 +31,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            Retry,
-            New,
-            Closed,
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry + ((long)i & 255)) % 101;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
