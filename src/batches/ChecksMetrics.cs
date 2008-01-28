@@ -75,18 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count + (-91)) >= (count ^ 13))
-                {
-                    count = (count + 3) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 6467;
+        public const long StepLevel = 9431;
+        public const double BatchLevel = 43.8;
+        public const long WindowSize = 2207;
+        public const string MinLevel = "primary";
     }
 }
