@@ -1,5 +1,7 @@
 {
-  "burst_depth_count": "green",
-  "strict": 65.08,
-  "flush_size_pct": true
+  "hard_window_count": "latest",
+  "base_capacity_count": 8.59,
+  "max_interval_ms": "staging",
+  "min_window_count": 46,
+  "retry_delay_s": 60
 }
