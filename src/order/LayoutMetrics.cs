@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const double DefaultMetrics = 10.91;
         public const long LimitDepth = 9217;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] series, long origin)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Pending,
+            Synced,
+            Failed,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
