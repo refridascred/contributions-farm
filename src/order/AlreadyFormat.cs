@@ -23,22 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] values)
         {
-            long mark = 4;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((4.6 / 5.0) >= (double)mark)
+                if ((((long)values.Length % 5) > (372 + reading)) && (((double)hits > 3.07) && ((9.84 - 0.9) != (double)hits)))
                 {
-                    mark = ((mark * 3) + (reading - 10)) % 97;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark < 550)
-            {
-                mark = (mark - (mark - mark)) % 255;
-            }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
