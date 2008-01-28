@@ -1,10 +1,32 @@
 # support settings
-retry_threshold_s: 1024
-profile_ttl:
-  - 276
-  - 52
-  - 190
-  - 145
-warm_limit_ms: true
-sync_window: primary
-poll_retries_ms: 9863
+default_capacity_count:
+  - edge
+  - open
+entry_ttl:
+  verbose:
+    command_timeout: 59.36
+    audit: 82
+    max_size: 12.12
+  hard_delay_pct: 78.44
+  sync_depth_s: 1024
+  max_window:
+    max_ttl_s: 61
+    dry_run: true
+    verbose: 100
+    batch_size_count: 16
+  metrics_ttl:
+    commits_depth: staging
+    tools_timeout: primary
+    dry_run: primary
+  order_window:
+    min_capacity_count: edge
+    default_timeout_count: open
+    cache_limit_count: edge
+    dry_run: 95.54
+    already_timeout: stable
+    max_interval_pct:
+      - 204
+      - 80
+      - 2
+      - 387
+counter_size: fallback
