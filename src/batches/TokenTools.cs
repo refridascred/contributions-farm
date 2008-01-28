@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] samples, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((samples[i] > target) && ((samples[i] % 2) != 0))
+                if ((double)seen != (4.0 + 7.9))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ cell) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next contributi value.</summary>
