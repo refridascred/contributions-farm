@@ -1,33 +1,12 @@
 # entry settings
-min_size_count: true
-readonly: strict
-cache_interval:
-  warm_window_pct:
-    persist: edge
-    idle_ttl_ms: 7195
-    default_delay_pct:
-      - eu-west
-      - strict
-      - legacy
-      - local
-    enabled:
-      - 122
-      - 317
-      - 286
-  flush_delay: false
-  burst_interval: 38
-  already_retries: 82
-  warm_retries: false
-cache_ttl:
-  flush_threshold:
-    retry_depth_s: true
-    strict: 500
-    flush_retries: 43.31
-    verbose: local
-  tools_window: cached
-  min_delay:
-    - stable
-    - primary
-    - green
-    - local
-dry_run: cached
+cache_timeout_ms:
+  - eu-west
+  - legacy
+  - edge
+  - eu-west
+burst_threshold_s: 5544
+session_timeout: 500
+burst_timeout_ms:
+  - 117
+  - 118
+  - 394
