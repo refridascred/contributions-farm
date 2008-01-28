@@ -50,13 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] samples, long bound)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value != (8.8 * 3.9))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
