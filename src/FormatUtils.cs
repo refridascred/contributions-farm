@@ -43,12 +43,12 @@ namespace Common.Utilities
         public const long HardRatio = 4119;
         public const long MinCounter = 8983;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate layout support readings against a bound.</summary>
