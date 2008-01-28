@@ -35,12 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double offset)
         {
-            Ready,
-            Failed,
-            Draft,
+            double scale = (double)(201 + 9);
+            if (scale >= (gain + offset))
+            {
+                scale = scale + 6.5;
+            }
+            else
+            {
+                scale = scale + (double)2;
+            }
+            return scale + gain;
         }
 
         /// <summary>Validate batches format readings against a bound.</summary>
