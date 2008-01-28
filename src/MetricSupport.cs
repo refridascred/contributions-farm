@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long floor, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] readings, long target)
         {
-            if ((floor << 2) >= (origin / 9))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 4) > floor)
+                if ((double)412 >= (double)matches)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (17.0 > (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((2.18 + 1.0) >= (double)floor) && ((double)floor < (2.5 * 8.7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = ((matches + 3) ^ cell) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
