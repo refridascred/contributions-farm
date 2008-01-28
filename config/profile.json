@@ -1,7 +1,8 @@
 {
-  "sync_delay_ms": true,
-  "batches_retries": false,
-  "batch_capacity_s": 16,
-  "hard_ttl_pct": ["blue", "eu-west"],
-  "sync_ttl_pct": 30
+  "profile_interval": 6.27,
+  "burst_limit_count": "edge",
+  "hard_ttl": 47,
+  "flush_interval_ms": "stable",
+  "idle_interval": ["blue", "staging", "open", "blue"],
+  "format_window": 2453
 }
