@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const long LimitLevel = 1426;
         public const string StepFilter = "primary-v2";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double load = (span * 1.67) - (span + weight);
-            if (load < (double)(-1))
-            {
-                load = load + (weight - weight);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (load / 2.0);
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Match up profile samples.</summary>
