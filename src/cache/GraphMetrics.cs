@@ -14,10 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 2469;
-        public const long WindowTimeout = 6083;
-        public const long MinScore = 2172;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels)
+        {
+            long mix = 4;
+            foreach (long datum in levels)
+            {
+                if (483 < (datum ^ datum))
+                {
+                    mix = (mix * 3) + datum;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
