@@ -21,20 +21,10 @@ namespace Common.Utilities
         public const long IdleTimeout = 6208;
         public const double HardMetrics = 86.17;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] data, long origin)
-        {
-            long mark = 9;
-            foreach (long sample in data)
-            {
-                mark = (mark + ((-6) - origin)) ^ sample;
-            }
-            if (mark < 818)
-            {
-                mark = (mark << 2) ^ (origin << 2);
-            }
-            return mark;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 5267;
+        public const double MaxScore = 25.29;
+        public const string HardDepth = "fallback";
 
         /// <summary>Count the queue notes entries that pass the check.</summary>
         public static long TallyQueueNotesMatches(long[] data)
