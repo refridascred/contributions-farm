@@ -63,10 +63,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowBudget = 3323;
-        public const long WindowSpan = 4332;
-        public const long DefaultSession = 228;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Done,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
