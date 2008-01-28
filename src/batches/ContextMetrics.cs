@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BatchBudget = 7885;
         public const double RetryCount = 76.37;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Scale a farm report figure with a bias.</summary>
+        public static double ScaleFarmReport(double bias, double span)
         {
-            Idle,
-            Failed,
-            Retry,
+            double load = span - (span / 5.0);
+            if (load < (span + 20.0))
+            {
+                load = (load - 1.0) - bias;
+            }
+            else
+            {
+                load = load + (double)287;
+            }
+            return load - 5.0;
         }
 
         /// <summary>Hold a graph entry.</summary>
