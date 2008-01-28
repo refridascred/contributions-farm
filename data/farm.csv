@@ -1,6 +1,9 @@
-id,region,level,score
-1,eu-west,325,local
-2,77.94,legacy,287
-3,23.66,75.11,422
-4,98.33,178,471
-5,982,554,334
+id,state,count,weight
+1,22.57,1.82,46.34
+2,eu-west,stable,98.35
+3,edge,93.66,eu-west
+4,latest,237,815
+5,558,24.24,primary
+6,56.26,fallback,edge
+7,47.3,554,818
+8,226,98.4,102
