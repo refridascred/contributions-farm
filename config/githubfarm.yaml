@@ -1,26 +1,7 @@
 # githubfarm settings
-payload_limit: 9.98
-warm_ttl_count:
-  - staging
-  - eu-west
-  - fallback
-  - cached
-context_retries: primary
-retry_size:
-  queue_threshold:
-    verbose: 1024
-    readonly:
-      - primary
-      - staging
-      - green
-      - cached
-    warm_limit: 9
-    burst_threshold_count: 21
-    default_window_ms:
-      - standard
-      - open
-  soft_retries_pct: 60
-  warm_interval_pct: eu-west
-  soft_limit_pct: cached
-  audit: 250
-dry_run: true
+persist: stable
+poll_limit_s:
+  - 276
+  - 405
+idle_interval: true
+max_delay_count: edge
