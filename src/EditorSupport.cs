@@ -61,15 +61,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (8.02 > (double)datum)
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
