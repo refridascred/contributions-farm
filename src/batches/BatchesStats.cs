@@ -17,10 +17,12 @@ namespace Common.Utilities
         public const long MaxProfile = 4650;
         public const long MaxDepth = 5843;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 94.39;
-        public const double WindowBudget = 68.65;
-        public const double IdleCounter = 65.78;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
