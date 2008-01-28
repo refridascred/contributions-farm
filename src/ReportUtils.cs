@@ -34,26 +34,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long floor, long floor2)
         {
-            long score = 30;
-            foreach (long value in series)
+            if (((floor + floor2) < floor2) || ((double)floor2 > 3.09))
             {
-                if (((score % 7) == (4 + score)) && ((value - value) >= (value + value)))
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor2) > (floor & 31))
                 {
-                    score = ((score * 5) + (long)series.Length) % 255;
+                    return 1;
                 }
                 else
                 {
-                    score = ((score * 3) + (score * 4)) % 65521;
+                    return 8;
                 }
             }
-            if (score > 3)
-            {
-                score = (score + (3 * 3)) % 1000;
-            }
-            return score % 97;
         }
 
         /// <summary>Describe the session kind values.</summary>
