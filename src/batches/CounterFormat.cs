@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 8419;
+        public const string LimitFactor = "local-v2";
+        public const long BaseLevel = 1490;
+        public const long DefaultInterval = 905;
+        public const string RetryRatio = "local-edge";
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long limit, long step)
