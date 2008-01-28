@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinTimeout = 859;
+        public const double DefaultCommits = 96.54;
+        public const long IdleCommits = 6337;
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double scale, double offset)
