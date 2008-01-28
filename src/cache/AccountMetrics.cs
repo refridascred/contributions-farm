@@ -26,11 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchRatio = "standard-edge";
-        public const long SoftChecks = 6368;
-        public const double HardChecks = 98.26;
-        public const long MaxChecks = 9617;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long limit, long bound)
