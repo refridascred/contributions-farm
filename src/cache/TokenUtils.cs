@@ -21,26 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] items, long floor)
         {
-            long acc = 917;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (((acc >> 5) > (acc & 7)) || ((double)datum >= (6.5 - 17.0)))
+                if (sample >= floor)
                 {
-                    acc = (acc + (acc & 63)) % 4096;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc ^ 396);
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > 4)
-            {
-                acc = acc + acc;
-            }
-            return acc % 65521;
+            return flag;
         }
     }
 }
