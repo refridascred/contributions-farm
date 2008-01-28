@@ -1,9 +1,7 @@
-id,count,token,ratio
-1,open,280,94.13
-2,legacy,staging,734
-3,2.81,851,404
-4,open,blue,497
-5,627,504,593
-6,312,cached,557
-7,370,96.92,34.4
-8,528,stable,primary
+id,ratio,owner,count,score
+1,blue,edge,33.22,open
+2,blue,43.68,edge,local
+3,34.23,fallback,staging,29.35
+4,628,93.6,630,cached
+5,primary,latest,125,primary
+6,49.18,985,458,fallback
