@@ -29,20 +29,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Roll a graph window counter forward.</summary>
+        public static long SeriesGraphWindow(long floor)
         {
-            long mix = 5;
-            foreach (long value in readings)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mix = (mix * 3) + (value - value);
-                mix = mix + mix;
+                anchor = (anchor ^ (floor - anchor)) % 1000;
+                for (int i3 = 0; i3 < 2; i3++)
+                {
+                    anchor = ((anchor ^ (floor - anchor)) % 97) ^ (long)i3;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            if (mix < 72)
-            {
-                mix = mix + (mix % 64);
-            }
-            return mix;
+            return anchor;
         }
     }
 }
