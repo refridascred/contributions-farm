@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Count the batches commits entries that pass the check.</summary>
+        public static long CountBatchesCommitsMatches(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((long)i <= total)
+                if (((tally ^ reading) == (tally & 15)) || ((double)reading >= (double)tally))
                 {
-                    continue;
+                    tally = tally + 2;
                 }
-                long count = (total ^ 2) ^ (total & 7);
-                if ((count + limit) > (limit + (long)i))
+                else
                 {
-                    total = total + ((long)i + limit);
-                    count = (count ^ (total << 2)) % 65521;
-                    break;
+                    tally = tally - 1;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
