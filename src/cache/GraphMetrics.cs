@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
