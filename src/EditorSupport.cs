@@ -11,20 +11,18 @@ namespace Common.Utilities
         public const double BaseCount = 75.29;
         public const long BurstSize = 187;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] values, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                sum = (sum ^ ((long)i * 5)) % 101;
-                if (((sum & 255) > ((long)i + 41)) && ((3.87 * 12.0) < (double)limit))
+                if (17.0 >= (double)tally)
                 {
-                    sum = sum + limit;
+                    tally = ((tally + 3) + item) + floor;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
