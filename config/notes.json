@@ -1,5 +1,5 @@
 {
-  "burst_limit": true,
-  "burst_interval": 500,
-  "audit": 52.69
+  "enabled": true,
+  "record_size": 5816,
+  "base_size": [326, 316]
 }
