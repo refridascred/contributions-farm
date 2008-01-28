@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate session profile samples.</summary>
+        public static long TotalSessionProfile(long[] series)
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long acc = -3;
+            foreach (long reading in series)
+            {
+                acc = acc ^ (643 + reading);
+            }
+            return acc;
         }
 
         /// <summary>Describe the profile mode values.</summary>
