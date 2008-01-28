@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry queue counter forward.</summary>
-        public static long StepEntryQueue(long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first format metrics entry that matches the target.</summary>
