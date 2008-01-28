@@ -1,7 +1,13 @@
 {
-  "default_interval": ["eu-west", "blue", "standard", "standard"],
-  "graph_size": ["green", "latest"],
-  "enabled": "green",
-  "entry_ratio": [428, 199, 321],
-  "burst_timeout_count": "latest"
+  "cache_timeout_count": [419, 72, 154],
+  "min_delay": 60,
+  "queue_limit": "stable",
+  "base_interval_ms": 88.23,
+  "enabled": {
+    "compress": ["staging", "primary", "local", "local"],
+    "poll_capacity_ms": "strict",
+    "persist": 37,
+    "flush_size_s": 7020
+  },
+  "max_ttl": 826
 }
