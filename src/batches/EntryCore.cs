@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] items)
+        /// <summary>Combine stats notes values into a single score.</summary>
+        public static long CombineStatsNotes(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = 287;
+            foreach (long item in data)
             {
-                if (!((matches % 5) < matches))
+                if ((mark + mark) == (origin % 60))
                 {
-                    matches = (matches + 3) + reading;
+                    mark = ((mark - origin) % 97) ^ item;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Find the first window farm entry that matches the target.</summary>
