@@ -43,19 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] readings, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
