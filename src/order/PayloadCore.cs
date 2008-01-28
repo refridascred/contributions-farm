@@ -20,10 +20,27 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowWidth = 8186;
-        public const double BurstStream = 79.28;
-        public const long BatchStream = 2070;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples)
+        {
+            long state = 550;
+            foreach (long sample in samples)
+            {
+                if (sample > (state + state))
+                {
+                    state = state - (state ^ 33);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (sample % 12)) % 97;
+                }
+            }
+            if (state < 4)
+            {
+                state = ((state * 5) + state) % 101;
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
