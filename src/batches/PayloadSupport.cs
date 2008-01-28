@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double rate, double bias)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double scale = bias + rate;
-            if (scale < bias)
-            {
-                scale = scale - (double)9;
-            }
-            else
-            {
-                scale = scale - (2.0 / 2.0);
-            }
-            return scale + 17.0;
+            Done,
+            Ready,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
