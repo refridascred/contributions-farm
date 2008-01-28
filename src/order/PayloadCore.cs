@@ -33,22 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] data)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (sample < (76 ^ tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
