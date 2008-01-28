@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long target, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            if (!((double)target < (8.95 / 4.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin % 60) >= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
