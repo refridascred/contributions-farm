@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const long HardBuffer = 3954;
         public const long BaseBuffer = 9563;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
