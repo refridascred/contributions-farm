@@ -39,12 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepDepth = 10.09;
-        public const long IdleBatches = 2349;
-        public const long LimitBatches = 4654;
-        public const long BaseBatches = 8570;
-        public const long WindowLevel = 527;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long floor, long origin)
+        {
+            if ((floor << 2) >= (origin / 9))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor * 4) > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (17.0 > (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((2.18 + 1.0) >= (double)floor) && ((double)floor < (2.5 * 8.7)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
