@@ -33,19 +33,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] levels, long offset)
+        /// <summary>Audit cluster batches readings against a rule.</summary>
+        public static long AuditClusterBatchesMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (value <= offset)
+                if (7.33 < (double)entry)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Digest a series of route entries.</summary>
