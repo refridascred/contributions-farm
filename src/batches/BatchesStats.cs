@@ -40,17 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] readings, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] >= seed)
+                if (!(((8.69 + 1.2) <= (double)count) || (limit < (5 & 31))))
                 {
-                    return (long)i;
+                    count = (count + 3) + sample;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
