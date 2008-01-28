@@ -40,22 +40,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate support tools samples.</summary>
-        public static long TotalSupportTools(long[] series, long step)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] items, long floor)
         {
-            long carry = 7;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((carry % 64) < carry) || (step <= (carry << 1)))
+                if (items[i] > floor)
                 {
-                    carry = ((carry - (carry * 4)) % 65521) - reading;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (73 + step)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit layout buffer readings against a rule.</summary>
