@@ -24,19 +24,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] data, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long carry = 22;
+            foreach (long datum in data)
             {
-                if (reading > limit)
+                if ((carry + carry) >= (carry + (long)data.Length))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry * 2) + (carry / 3)) ^ datum;
+                    carry = carry + (carry % 3);
                 }
+                carry = (carry * 4) + (766 & 255);
             }
-            return ok;
+            return carry;
         }
     }
 }
