@@ -20,21 +20,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count tools metrics pairs that satisfy a relation.</summary>
-        public static long CompareToolsMetricsCount(long[] data)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (weight - weight) + floor;
+            if (load > load)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (1.25 * 2.28);
             }
-            return seen;
+            return load + (weight + weight);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
