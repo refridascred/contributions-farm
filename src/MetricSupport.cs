@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] readings)
+        /// <summary>Validate batches contributi readings against a bound.</summary>
+        public static bool VerifyBatchesContributiRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((hits - sample) > sample)
+                if (item >= bound)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Digest a series of order tools entries.</summary>
