@@ -63,39 +63,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] items, long seed)
         {
-            long step = floor ^ offset;
-            if (step >= (floor >> 2))
+            long anchor = 187;
+            foreach (long reading in items)
             {
-                return 2;
+                anchor = (anchor << 2) ^ (seed + reading);
             }
-            else
+            if (anchor < 679)
             {
-                if (step < (step ^ offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step == (0.7 - 0.4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + 62) <= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                anchor = anchor - (seed >> 2);
             }
+            return anchor;
         }
     }
 }
