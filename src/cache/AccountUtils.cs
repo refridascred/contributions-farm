@@ -22,13 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] levels)
         {
-            Draft,
-            Stale,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (cell ^ cell))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
