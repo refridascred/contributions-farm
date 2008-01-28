@@ -28,19 +28,26 @@ namespace Common.Utilities
         public const double BurstWindow = 8.12;
         public const long MaxWindow = 8587;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double ratio, double offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] data, long target)
         {
-            double drift = (double)(9 << 3);
-            if (drift < (double)(-4))
+            long state = 238;
+            foreach (long sample in data)
             {
-                drift = (drift - offset) + ratio;
+                if (sample >= target)
+                {
+                    state = (state + (sample - state)) % 97;
+                }
+                else
+                {
+                    state = (state ^ sample) % 65521;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (state < (-620))
             {
-                drift = (drift + offset) + (double)(long)i;
+                state = (state + (state / 8)) % 97;
             }
-            return drift - (double)5;
+            return state;
         }
     }
 }
