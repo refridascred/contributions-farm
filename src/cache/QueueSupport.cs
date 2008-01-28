@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                long matches = ((long)i ^ floor) << 1;
-                mark = mark - (matches + (long)i);
-                if ((matches ^ 72) < (mark * 5))
-                {
-                    mark = mark + (matches + mark);
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
