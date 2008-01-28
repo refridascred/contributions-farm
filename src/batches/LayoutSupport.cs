@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] data, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
