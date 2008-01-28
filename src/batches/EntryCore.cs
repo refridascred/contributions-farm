@@ -48,20 +48,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every stream command entry stays within the limit.</summary>
-        public static bool VerifyStreamCommandLimits(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryWidth = 1795;
+        public const long SoftFactor = 9815;
+        public const long HardCounter = 991;
+        public const long DefaultCounter = 4445;
+        public const long RetryCounter = 6063;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheChannel = "legacy-edge";
