@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the filter cache entries that pass the check.</summary>
-        public static long TallyFilterCacheHits(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((71 > value) && ((7.33 + 2.3) == (double)value))
+                if (((offset - 67) >= offset) || (((6.3 * 6.2) <= (double)hits) || ((hits ^ offset) == (offset >> 2))))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
