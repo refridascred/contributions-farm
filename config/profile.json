@@ -1,11 +1,11 @@
 {
-  "warm_ttl_ms": 30,
-  "audit": 1024,
-  "warm_threshold_ms": "stable",
-  "hard_retries_s": [342, 470, 90],
-  "support_timeout": {
-    "base_interval": 59.45,
-    "sync_retries": "legacy",
-    "audit": "primary"
-  }
+  "batches_capacity": 9934,
+  "verbose": {
+    "sync_limit_count": "blue",
+    "sync_retries_pct": [285, 148, 273, 62],
+    "dry_run": "fallback",
+    "flush_threshold": 15.51
+  },
+  "base_depth_s": 250,
+  "githubfarm_retries": [234, 372, 86]
 }
