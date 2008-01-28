@@ -31,16 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 5) + (offset % 5)) % 4096;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinTimeout = 801;
+        public const long BurstSpan = 8345;
+        public const string LimitLevel = "staging-v2";
+        public const long BaseLevel = 3763;
+        public const long SoftFilter = 1423;
     }
 }
