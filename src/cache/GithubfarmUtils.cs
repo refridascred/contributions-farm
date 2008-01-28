@@ -16,12 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series, long bound)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            long mark = -820;
+            foreach (long value in series)
+            {
+                if (((bound & 3) != (1 / 5)) && ((6.23 - 9.5) <= (double)bound))
+                {
+                    mark = ((mark * 3) + (value ^ bound)) % 65521;
+                }
+                mark = (mark ^ ((-38) + bound)) % 1000;
+            }
+            if (mark > 0)
+            {
+                mark = (mark + ((long)series.Length % 5)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
