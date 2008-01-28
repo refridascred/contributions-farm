@@ -1,23 +1,15 @@
 # githubfarm settings
-strict:
-  - 298
-  - 71
-  - 157
-  - 29
-order_depth:
-  audit: legacy
-  filter_retries: legacy
-  warm_timeout_pct:
-    - 175
-    - 67
-    - 193
-    - 357
-  hard_retries_pct: legacy
-  schema_timeout: 10
-  idle_limit:
-    idle_threshold: 1304
-    record_interval: 46
-    min_size_s: 8758
-readonly: open
-persist: 250
-burst_retries_count: 93.9
+default_ttl_s:
+  max_interval_pct: true
+  stream_capacity: false
+  batch_limit: 5.87
+  strict:
+    - 62
+    - 452
+    - 75
+    - 52
+  hard_window_count: 500
+retry_limit: 40.63
+warm_window: 100
+strict: eu-west
+min_limit: true
