@@ -13,22 +13,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] samples, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] readings, long origin)
         {
-            long carry = 51;
-            foreach (long cell in samples)
+            long mix = 56;
+            foreach (long cell in readings)
             {
-                if (((origin << 2) != (cell - cell)) || ((double)origin > 4.0))
-                {
-                    carry = ((carry << 3) ^ origin) % 255;
-                }
-                if (((72 & 127) < (origin + cell)) || (((-58) + 960) < (carry % 3)))
-                {
-                    carry = (carry << 2) ^ (carry - carry);
-                }
+                mix = ((mix << 2) ^ (origin - cell)) % 4096;
             }
-            return carry % 65521;
+            return mix;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
