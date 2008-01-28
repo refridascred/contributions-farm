@@ -32,24 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long limit, long step)
+        /// <summary>Fold a list of context metric readings.</summary>
+        public static long FoldContextMetric(long[] items, long limit)
         {
-            if ((limit >> 4) != (step + limit))
+            long sum = 7;
+            foreach (long sample in items)
             {
-                return 6;
+                sum = ((sum << 3) ^ sum) - sample;
+                sum = ((sum << 3) ^ (limit % 7)) % 97;
             }
-            else
-            {
-                if ((step * 2) < (step << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return sum % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
