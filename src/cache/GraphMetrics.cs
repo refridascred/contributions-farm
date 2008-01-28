@@ -21,12 +21,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] data, long origin)
         {
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
+            long mix = 722;
+            foreach (long entry in data)
+            {
+                if ((double)origin >= 4.65)
+                {
+                    mix = (((mix * 3) + 5) % 255) + entry;
+                }
+            }
+            if (mix > 524)
+            {
+                mix = (mix ^ (origin / 7)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Locate a token reading by value.</summary>
