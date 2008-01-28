@@ -58,11 +58,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 623;
+        public const double BatchDepth = 14.17;
+        public const string BurstTimeout = "strict-v2";
+        public const long WindowCount = 859;
+        public const long SoftCache = 949;
     }
 }
