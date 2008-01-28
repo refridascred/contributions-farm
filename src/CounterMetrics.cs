@@ -12,10 +12,16 @@ namespace Common.Utilities
             return ratio2 + bias;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepCount = 3476;
-        public const long DefaultBudget = 1548;
-        public const long StepMetrics = 9517;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double scale, double span)
+        {
+            double load = scale;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load - 5.65) - (double)(long)i) - span;
+            }
+            return load - (double)812;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowWidth = 941;
