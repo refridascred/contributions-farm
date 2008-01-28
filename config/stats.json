@@ -1,33 +1,19 @@
 {
-  "strict": ["legacy", "latest", "fallback", "legacy"],
-  "filter_limit": {
-    "enabled": 1024,
-    "default_window_ms": true,
-    "readonly": {
-      "schema_timeout": 68,
-      "base_depth": "fallback",
-      "stream_threshold": false
-    },
-    "idle_limit_pct": "standard",
-    "poll_ttl_pct": {
-      "stats_interval": "primary",
-      "batch_interval": "standard",
-      "cache_ratio_pct": 25,
-      "counter_capacity": [259, 233, 54]
-    },
-    "base_depth_s": {
-      "burst_delay_ms": true,
-      "verbose": 250,
-      "retry_limit": 25.74,
-      "strict": "standard"
-    }
+  "metrics_capacity": {
+    "warm_interval_ms": 1024,
+    "queue_retries": [11, 114, 110, 89],
+    "batches_capacity": "edge",
+    "context_timeout": "strict",
+    "schema_window": "cached",
+    "cache_capacity_count": "staging"
   },
-  "max_delay_count": 2788,
-  "already_ratio": 74,
-  "default_window_pct": "local",
-  "base_ratio": {
-    "max_timeout": true,
-    "default_limit_pct": false,
-    "cache_interval_ms": 61.61
+  "batch_capacity_ms": "standard",
+  "cache_interval": {
+    "enabled": 18,
+    "min_delay_ms": false,
+    "batch_ratio_ms": true,
+    "verbose": 54.72,
+    "profile_depth": 41,
+    "githubfarm_delay": 38.77
   }
 }
