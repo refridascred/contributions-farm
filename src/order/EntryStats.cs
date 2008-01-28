@@ -64,23 +64,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Roll a entry buffer counter forward.</summary>
-        public static long DeriveEntryBuffer(long origin)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double ratio, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            double mean = floor;
+            if (mean < mean)
             {
-                if ((state ^ (long)i) < state)
-                {
-                    state = ((state * 3) + (state - state)) % 97;
-                }
-                if (((5.52 / 8.0) == (double)(long)i) && ((state & 3) < state))
-                {
-                    state = state ^ origin;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                mean = (mean - (double)87) + ratio;
             }
-            return state;
+            return mean + mean;
         }
     }
 }
