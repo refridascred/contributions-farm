@@ -42,11 +42,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleInterval = 7054;
-        public const long HardStats = 7558;
-        public const long DefaultStats = 3991;
-        public const double BurstTimeout = 22.07;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Locked,
+            Active,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Compare every pair of queue support readings.</summary>
         public static long OverlapQueueSupportCount(long[] levels)
