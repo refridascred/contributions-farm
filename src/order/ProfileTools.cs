@@ -47,19 +47,17 @@ namespace Common.Utilities
         public const long BurstCount = 473;
         public const double SoftSize = 89.27;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] series, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= floor)
+                if (levels[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
