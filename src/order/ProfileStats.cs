@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long DefaultSupport = 8508;
         public const long IdleSupport = 4067;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Look up the position of a commits report sample.</summary>
+        public static long SeekCommitsReportIndex(long[] data, long floor)
         {
-            Queued,
-            Draft,
-            Locked,
-            New,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
