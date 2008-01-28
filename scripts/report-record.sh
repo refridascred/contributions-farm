@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in latest green fallback; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=389
+log "limit is ${RECORD_LIMIT}"
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in latest cached strict staging; do
-    log "checking ${item}"
-done
