@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] items, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
             long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value - count) == (value + 210)) && ((double)value < (3.0 + 4.5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + bound;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
