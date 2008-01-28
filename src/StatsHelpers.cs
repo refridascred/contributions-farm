@@ -23,12 +23,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Scale a report cluster figure with a bias.</summary>
+        public static double AdjustReportCluster(double ratio, double floor)
         {
-            Paused,
-            Locked,
-            Idle,
+            double drift = ratio / 9.0;
+            if (drift <= (drift / 8.0))
+            {
+                drift = drift + (double)5;
+            }
+            else
+            {
+                drift = drift - (double)(-14);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (floor - floor)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Iterate the payload entry series from a seed.</summary>
