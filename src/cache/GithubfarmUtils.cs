@@ -13,22 +13,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long origin)
         {
-            long state = 48;
-            foreach (long value in samples)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (state < (-19))
-                {
-                    state = (state ^ 5) ^ value;
-                }
+                total = (total << 2) ^ ((long)i - origin);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (state < 821)
-            {
-                state = ((state << 2) ^ (5 << 3)) % 97;
-            }
-            return state % 4096;
+            return total;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
