@@ -33,17 +33,18 @@ namespace Common.Utilities
         public const double LimitInterval = 10.58;
         public const double IdlePayload = 97.24;
 
-        /// <summary>Look up the position of a contributi format sample.</summary>
-        public static long LookupContributiFormatIndex(long[] series, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((series[i] == seed) && ((series[i] % 2) != 0))
+                if (hits < (sample + 2))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
