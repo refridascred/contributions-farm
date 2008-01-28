@@ -61,17 +61,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] items, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
+                if ((double)bound == (9.0 + 4.93))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
