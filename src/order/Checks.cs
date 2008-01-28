@@ -41,14 +41,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] levels, long floor)
         {
-            Failed,
-            Queued,
-            Paused,
-            Dropped,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
