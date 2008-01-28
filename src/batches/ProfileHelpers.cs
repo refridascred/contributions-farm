@@ -54,12 +54,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long target)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item < (6.0 - 5.3))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
