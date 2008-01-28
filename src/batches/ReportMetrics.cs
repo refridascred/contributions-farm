@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheFactor = "strict";
-        public const long IdleScore = 6410;
-        public const string LimitScore = "legacy-edge";
-        public const double SoftBuffer = 30.14;
-        public const long BatchBuffer = 9854;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
