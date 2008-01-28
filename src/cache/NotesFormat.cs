@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 3035;
-        public const string RetryTimeout = "legacy-v2";
-        public const long BurstDepth = 6939;
-        public const string StepFarm = "strict-1";
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] samples)
+        {
+            long state = 4;
+            foreach (long datum in samples)
+            {
+                if ((837 + datum) != (3 * 2))
+                {
+                    state = ((state * 2) + (datum + 8)) % 1000;
+                }
+                state = state - datum;
+                if (!((datum - state) >= state))
+                {
+                    state = (state ^ 7) % 4096;
+                }
+                else
+                {
+                    state = (state + datum) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
