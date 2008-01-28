@@ -22,38 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long seed)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long origin)
         {
-            if (((3.0 + 3.6) >= (double)target) || ((double)target >= (1.0 + 6.8)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed > (4 + seed))
+                if (data[i] > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target % 5) >= 95) || ((double)seed >= (7.7 + 4.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed <= target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
