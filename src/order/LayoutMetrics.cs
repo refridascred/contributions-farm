@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] items)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen & 1) >= (sample / 6))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the layout level values.</summary>
