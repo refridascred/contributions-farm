@@ -55,18 +55,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] data, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((floor % 97) >= (floor & 127)))
+                if (levels[i] == step)
                 {
-                    tally = (tally + 1) + sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
