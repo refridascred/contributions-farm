@@ -20,13 +20,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowWidth = 8186;
+        public const double BurstStream = 79.28;
+        public const long BatchStream = 2070;
 
         /// <summary>Rank cache batch input into a small class.</summary>
         public static long RankCacheBatch(long origin, long limit)
