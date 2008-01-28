@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Ready,
-            Draft,
-            Done,
-            Closed,
-            Failed,
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
