@@ -27,18 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit report farm readings against a rule.</summary>
-        public static long CountReportFarmMatches(long[] series, long origin)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum > origin)
-                {
-                    matches = matches + 2;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
