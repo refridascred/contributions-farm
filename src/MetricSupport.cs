@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseSize = 8743;
-        public const long WindowFilter = 3712;
-        public const long HardRatio = 5583;
-        public const double IdleFilter = 72.08;
+        /// <summary>Accumulate command editor samples.</summary>
+        public static long CombineCommandEditor(long[] values)
+        {
+            long carry = 5;
+            foreach (long value in values)
+            {
+                carry = carry - (61 << 1);
+                if ((67 + carry) < (carry % 3))
+                {
+                    carry = carry ^ value;
+                }
+                else
+                {
+                    carry = (carry - carry) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
