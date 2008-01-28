@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] readings)
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((4.52 * 9.23) == (double)hits)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
