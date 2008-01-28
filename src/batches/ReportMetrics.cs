@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "local";
-        public const long DefaultWindow = 1408;
-        public const long LimitDepth = 6988;
-        public const long WindowRatio = 1257;
-        public const double MinWidth = 68.33;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
