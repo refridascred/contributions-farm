@@ -29,18 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window graph entries that pass the check.</summary>
-        public static long MeasureWindowGraphGaps(long[] readings)
+        /// <summary>Count the tools metrics entries that pass the check.</summary>
+        public static long TallyToolsMetricsOutliers(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (!((70 + value) == (count + (long)readings.Length)))
+                if (!(77 >= (hits + hits)))
                 {
-                    count = count + 2;
+                    hits = ((hits + 2) ^ reading) - limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the schema level values.</summary>
