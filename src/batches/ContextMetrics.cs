@@ -48,10 +48,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 2078;
-        public const string BurstInterval = "fallback-v2";
-        public const long BurstNotes = 5681;
-        public const long BurstBudget = 5681;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryFactor = 4484;
+        public const double LimitWidth = 96.64;
+        public const long SoftCount = 1163;
+        public const long IdleRatio = 5323;
+        public const string IdleWidth = "local-edge";
     }
 }
