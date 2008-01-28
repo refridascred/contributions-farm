@@ -1,6 +1,6 @@
 {
-  "verbose": [284, 300],
-  "retry_size": false,
-  "flush_ttl": 7648,
-  "audit": 22.15
+  "dry_run": 500,
+  "flush_timeout_pct": 60,
+  "layout_interval": 52,
+  "stats_ratio": 92.29
 }
