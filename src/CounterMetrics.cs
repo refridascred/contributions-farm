@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseSpan = 133;
-        public const string IdleProfile = "stable";
-        public const long BatchProfile = 4794;
-        public const string BurstProfile = "strict-v2";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
