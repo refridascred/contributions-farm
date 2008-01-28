@@ -19,13 +19,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Retry,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 5425;
+        public const double MaxScore = 1.88;
+        public const string CacheSpan = "stable-1";
+        public const long WindowCounter = 2641;
+        public const long BurstSize = 8220;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
