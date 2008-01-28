@@ -38,18 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell > (cell ^ matches))
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
