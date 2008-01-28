@@ -28,9 +28,19 @@ namespace Common.Utilities
         public const double BurstWindow = 8.12;
         public const long MaxWindow = 8587;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 2321;
-        public const long CacheInterval = 387;
-        public const long DefaultAlready = 9687;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double ratio, double offset)
+        {
+            double drift = (double)(9 << 3);
+            if (drift < (double)(-4))
+            {
+                drift = (drift - offset) + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - (double)5;
+        }
     }
 }
