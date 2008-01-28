@@ -39,12 +39,15 @@ namespace Common.Utilities
             return drift - (weight / 4.0);
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
+            long mark = 544;
+            foreach (long cell in items)
+            {
+                mark = ((mark ^ (cell / 8)) % 1000) - bound;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
