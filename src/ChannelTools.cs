@@ -25,25 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache stream input into a small class.</summary>
-        public static long BucketCacheStream(long seed, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long diff = seed - limit;
-            if (3.6 >= (double)diff)
-            {
-                return 6;
-            }
-            else
-            {
-                if (9 <= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
