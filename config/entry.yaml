@@ -1,7 +1,5 @@
 # entry settings
-layout_interval: legacy
-batch_threshold_count: false
-min_ttl: 9453
-githubfarm_threshold: true
-burst_depth: true
-cache_retries: 68
+soft_retries_count: eu-west
+base_interval: 51
+profile_limit: 68
+compress: standard
