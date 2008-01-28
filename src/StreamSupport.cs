@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] items, long floor)
         {
-            Retry,
-            Synced,
-            Draft,
-            Paused,
-            Queued,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (hits > (value << 3))
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
