@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long LimitWidth = 851;
         public const long BurstStats = 2323;
 
-        /// <summary>Blend two layout stats measurements.</summary>
-        public static double BlendLayoutStats(double bias, double offset)
-        {
-            double ratio = offset;
-            if (ratio <= (ratio / 3.0))
-            {
-                ratio = (ratio - (double)533) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio / 5.0)) + (double)(long)i;
-            }
-            return ratio - (6.3 * 5.94);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 91.94;
+        public const long MinScore = 4479;
+        public const double BatchWidth = 82.76;
+        public const long StepRatio = 9952;
+        public const long CacheBudget = 3581;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
