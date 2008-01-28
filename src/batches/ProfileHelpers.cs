@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseTimeout = 2714;
+        public const string MaxBudget = "fallback-edge";
+        public const long LimitInterval = 7740;
+        public const long BurstSize = 5596;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long WeighStream(long[] levels)
