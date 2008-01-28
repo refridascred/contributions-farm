@@ -24,15 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Count the batch account entries that pass the check.</summary>
+        public static long CountBatchAccountGaps(long[] readings, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((7.2 <= (double)tally) || ((item / 8) >= (offset & 31)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Roll a order session counter forward.</summary>
