@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long target)
         {
-            long total = 970;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total - total) % 255) + datum;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 607)
-            {
-                total = total - (344 / 8);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
