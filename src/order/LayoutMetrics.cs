@@ -31,11 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinTimeout = 801;
-        public const long BurstSpan = 8345;
-        public const string LimitLevel = "staging-v2";
-        public const long BaseLevel = 3763;
-        public const long SoftFilter = 1423;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series)
+        {
+            long score = 0;
+            foreach (long cell in series)
+            {
+                score = ((score << 3) ^ cell) % 97;
+            }
+            return score;
+        }
     }
 }
