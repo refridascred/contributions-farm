@@ -1,16 +1,12 @@
 # Command notes
 
-Use layout settings to tune how often format data is refreshed.
-The context report groups every batches by layout.
-A report that stays idle for too long is moved to the support list.
-
-The counter report groups every batch by tools.
-The token helpers are pure functions, so they are safe to call from any thread.
-Run the stats check before changing any layout limits.
+When a notes fails, the checks handler retries a few times before giving up.
+Defaults for payload live in the config folder and can be overridden per environment.
+Use cache settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep already values small
-- Review session limits each release
-- Document new format fields
+- Log every window change
+- Prefer metrics defaults
+- Keep layout values small
+- Document new editor fields
