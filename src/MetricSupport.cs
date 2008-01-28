@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 1244;
-        public const long StepStream = 5795;
-        public const long LimitStream = 2404;
-        public const double BaseStream = 91.23;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double SmoothStats(double bias, double span)
