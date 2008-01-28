@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double rate, double floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double rate2 = (double)7 + floor;
-            return (rate2 + rate2) + rate;
+            Idle,
+            Retry,
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
