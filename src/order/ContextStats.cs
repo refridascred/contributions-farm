@@ -50,13 +50,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public bool Owner { get; set; }
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
