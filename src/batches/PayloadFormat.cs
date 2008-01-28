@@ -49,11 +49,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 6531;
-        public const long HardGraph = 8006;
-        public const string LimitBudget = "cached";
-        public const long RetryGraph = 8165;
-        public const double StepGraph = 97.07;
+        /// <summary>Grade a stream batch value against two limits.</summary>
+        public static long ClassifyStreamBatch(long origin, long offset)
+        {
+            long offset2 = origin ^ offset;
+            if (((double)(-5) != (double)origin) || ((origin + (-15)) >= (origin >> 5)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (13.0 >= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset2 + offset2) < (offset2 * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((31 >> 5) > (offset2 & 1)) || ((origin >> 5) >= (origin << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
