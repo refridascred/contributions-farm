@@ -37,13 +37,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] levels, long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] series, long origin)
         {
             bool flag = true;
-            foreach (long reading in levels)
+            foreach (long datum in series)
             {
-                if (reading >= target)
+                if (datum <= origin)
                 {
                     flag = false;
                     break;
