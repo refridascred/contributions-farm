@@ -27,18 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] levels, long floor)
+        /// <summary>Find the first format context entry that matches the target.</summary>
+        public static long LocateFormatContextIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor + floor) > floor)
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
                 {
-                    seen = (seen + 1) + datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
