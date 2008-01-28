@@ -88,11 +88,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
+            double drift = gain;
+            return drift - offset;
         }
     }
 }
