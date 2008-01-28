@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] series, long seed)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (6 >= seed)
+                if (cell >= origin)
                 {
-                    count = (count + 3) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Adjust a order reading.</summary>
