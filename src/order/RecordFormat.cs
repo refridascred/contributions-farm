@@ -56,15 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Pending,
-            Locked,
-            New,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchScore = 674;
+        public const long BatchFactor = 1374;
+        public const long MaxCount = 1887;
+        public const string LimitInterval = "latest-edge";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchGaps(long[] samples)
