@@ -1,4 +1,10 @@
 # entry settings
-metric_window: 89.2
-githubfarm_depth: strict
-base_window_pct: 500
+max_ttl_ms: staging
+enabled: local
+warm_size:
+  - legacy
+  - standard
+  - cached
+batch_ratio:
+  - legacy
+  - blue
