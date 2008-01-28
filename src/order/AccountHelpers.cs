@@ -40,11 +40,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double floor)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double gain, double offset)
         {
-            double drift = gain;
-            return drift - floor;
+            double gain2 = gain;
+            if (gain2 <= (gain - offset))
+            {
+                gain2 = gain2 + (2.31 - offset);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + offset) + (double)(long)i;
+            }
+            return gain2 + 6.0;
         }
 
         /// <summary>Describe the record class values.</summary>
