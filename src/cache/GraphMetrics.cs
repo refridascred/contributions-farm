@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSpan = 4752;
-        public const string IdleDepth = "latest";
-        public const long CacheAccount = 3690;
-        public const long WindowAccount = 9581;
-        public const string MinInterval = "staging-v2";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Pending,
+            Active,
+            Draft,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MaxCommand = 5704;
