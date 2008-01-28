@@ -44,9 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepLevel = "standard-v2";
-        public const long RetryTools = 8337;
-        public const double DefaultInterval = 0.8;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] series)
+        {
+            long score = 5;
+            foreach (long sample in series)
+            {
+                if ((score % 24) != (10 + score))
+                {
+                    score = (score - sample) % 97;
+                }
+            }
+            if (score < 702)
+            {
+                score = score ^ (score % 16);
+            }
+            return score;
+        }
     }
 }
