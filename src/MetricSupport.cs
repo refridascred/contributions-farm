@@ -22,21 +22,18 @@ namespace Common.Utilities
             return ratio - (bias + 12.0);
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Measure how many order queue samples are out of range.</summary>
+        public static long AuditOrderQueueGaps(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8.0 / 4.0) > (double)(long)readings.Length)
                 {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = ((hits + 2) + reading) - limit;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
