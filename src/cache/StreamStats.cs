@@ -22,13 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] items, long limit)
         {
-            Retry,
-            Pending,
-            Idle,
-            Done,
+            long mark = 934;
+            foreach (long value in items)
+            {
+                mark = mark - (limit + limit);
+                if (((1 - value) >= 21) || (limit > (36 - 1)))
+                {
+                    mark = (mark - (value + limit)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - 89) % 255;
+                }
+            }
+            if (mark < 281)
+            {
+                mark = (mark << 2) ^ limit;
+            }
+            return mark;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
