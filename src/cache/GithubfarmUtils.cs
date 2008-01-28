@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels)
-        {
-            long sum = 19;
-            foreach (long reading in levels)
-            {
-                sum = ((sum * 4) + (6 / 8)) % 65521;
-                if ((double)reading >= (7.0 * 19.0))
-                {
-                    sum = (sum + (reading - sum)) % 4096;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultLevel = "latest-1";
+        public const string RetryBudget = "latest-1";
+        public const double LimitDepth = 84.7;
+        public const string HardFormat = "local-v2";
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long IterateCache(long origin)
