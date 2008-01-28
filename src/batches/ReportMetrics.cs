@@ -21,18 +21,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] data, long seed)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)count == (16.0 * 1.79))
-                {
-                    count = ((count + 1) ^ reading) - seed;
-                }
-            }
-            return count;
+            Draft,
+            Pending,
+            Stale,
+            Idle,
+            Active,
         }
     }
 }
