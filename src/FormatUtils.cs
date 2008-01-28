@@ -42,13 +42,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Validate layout support readings against a bound.</summary>
+        public static bool ValidateLayoutSupportLimits(long[] samples, long floor)
         {
-            Synced,
-            Retry,
-            Stale,
-            Done,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
