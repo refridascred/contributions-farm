@@ -50,13 +50,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Done,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 5342;
+        public const long BurstGithubfarm = 9879;
+        public const long MinSpan = 3096;
+        public const long HardFactor = 1247;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
