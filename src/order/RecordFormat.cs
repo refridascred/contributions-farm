@@ -25,22 +25,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] samples)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] samples, long origin)
         {
-            long tally = 0;
+            long seen = 0;
             foreach (long cell in samples)
             {
-                if ((tally / 9) > tally)
+                if (seen < ((long)samples.Length + origin))
                 {
-                    tally = (tally + 3) ^ cell;
+                    seen = (seen + 2) + cell;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
