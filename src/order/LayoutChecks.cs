@@ -41,18 +41,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] data, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            long anchor = -40;
-            foreach (long sample in data)
+            double weight = (double)19;
+            if (weight < (bias - floor))
             {
-                if (((sample >> 4) > (sample + sample)) && ((sample / 4) <= 469))
-                {
-                    anchor = ((anchor * 3) + sample) - step;
-                }
+                weight = weight + (1.2 * 4.0);
             }
-            return anchor % 65521;
+            return weight + (double)8;
         }
 
         /// <summary>Describe the stream phase values.</summary>
