@@ -1,7 +1,13 @@
 {
-  "min_size": 500,
-  "checks_timeout": "green",
-  "enabled": 84.6,
-  "entry_threshold": 500,
-  "sync_window": "edge"
+  "min_window_ms": 558,
+  "readonly": "cached",
+  "dry_run": {
+    "hard_timeout_s": "latest",
+    "channel_depth": false,
+    "max_retries": "local",
+    "default_delay_ms": 47,
+    "sync_ratio_s": 19
+  },
+  "cache_threshold_ms": true,
+  "burst_window_ms": false
 }
