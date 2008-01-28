@@ -27,12 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double gain, double floor)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            double mean = (gain - floor) / 5.0;
+            if (mean <= 7.35)
+            {
+                mean = mean + 8.0;
+            }
+            else
+            {
+                mean = mean - (mean * 16.0);
+            }
+            return mean + (gain - gain);
         }
 
         /// <summary>Describe the report kind values.</summary>
