@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] items, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Paused,
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
