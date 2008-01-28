@@ -6,20 +6,20 @@ namespace Common.Utilities
     public static class StreamStats
     {
         /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] data)
+        public static long MatchOrderCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 0)
+                    if ((levels[i] ^ levels[j]) == 3)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the format status values.</summary>
