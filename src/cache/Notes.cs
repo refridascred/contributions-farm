@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long MaxRatio = 1572;
         public const long SoftWidth = 8928;
 
-        /// <summary>Scale a record metrics figure with a bias.</summary>
-        public static double ScaleRecordMetrics(double gain, double span)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] items, long offset)
         {
-            double scale = span;
-            if (scale > (scale * 7.19))
+            bool found = true;
+            foreach (long reading in items)
             {
-                scale = (scale - (scale + scale)) + gain;
+                if (reading <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale - (span + span);
+            return found;
         }
 
         /// <summary>Hold a context snapshot.</summary>
