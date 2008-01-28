@@ -30,9 +30,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 8707;
-        public const long HardNotes = 4084;
-        public const double BatchNotes = 98.11;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels)
+        {
+            long score = 847;
+            foreach (long item in levels)
+            {
+                if ((6.0 / 6.0) < (double)score)
+                {
+                    score = (score * 5) + item;
+                }
+                else
+                {
+                    score = (score ^ (item / 3)) % 255;
+                }
+                if (2.4 >= (double)item)
+                {
+                    break;
+                }
+            }
+            if (score < 88)
+            {
+                score = ((score << 3) ^ score) % 1000;
+            }
+            return score;
+        }
     }
 }
