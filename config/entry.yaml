@@ -1,4 +1,10 @@
 # entry settings
-support_size: 16.47
-idle_retries_count: 0.31
-retry_size_pct: 10.97
+hard_delay_ms: open
+checks_ratio: 77.6
+batch_interval_pct:
+  - 434
+  - 346
+  - 11
+audit: 28.25
+hard_ratio: true
+min_capacity: true
