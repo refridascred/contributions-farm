@@ -30,14 +30,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Paused,
-            Active,
-            Done,
-            Stale,
-            Failed,
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
