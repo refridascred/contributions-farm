@@ -15,23 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((limit >> 5) == (7 + seen)) && ((item / 9) > (seen ^ item)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 5095;
+        public const long LimitBudget = 1878;
+        public const long LimitSize = 8800;
+        public const double RetryBudget = 7.95;
+        public const long WindowInterval = 2794;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] data)
