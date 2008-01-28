@@ -43,18 +43,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 3261;
+        public const long CacheScore = 9758;
+        public const double MinRatio = 21.41;
+        public const long RetryGithubfarm = 6057;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] readings)
