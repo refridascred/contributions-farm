@@ -62,11 +62,16 @@ namespace Common.Utilities
             return load + (load / 2.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 6525;
-        public const string IdleFactor = "local";
-        public const long HardRoute = 3502;
-        public const long MinRoute = 9102;
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double bias, double bias2)
+        {
+            double load = 1.5 / 2.0;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (((load - (load / 7.0)) + (double)(long)i) + bias) + bias2;
+            }
+            return load + load;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double DefaultSize = 77.97;
