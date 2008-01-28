@@ -35,15 +35,19 @@ namespace Common.Utilities
         public const long BaseRatio = 9616;
         public const long BaseQueue = 2588;
 
-        /// <summary>Adjust a stats batches reading.</summary>
-        public static double ScaleStatsBatches(double gain, double bias)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] readings, long step)
         {
-            double rate = (double)(4 >> 5);
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                rate = ((rate - (gain - 2.4)) - (double)(long)i) - bias;
+                if (sample <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + (double)86;
+            return found;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
