@@ -42,12 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            Pending,
-            Done,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
