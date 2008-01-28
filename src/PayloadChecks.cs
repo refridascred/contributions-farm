@@ -88,10 +88,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "local-edge";
-        public const long CacheScore = 6033;
-        public const string LimitPayload = "local";
-        public const long RetryPayload = 9576;
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
+        {
+            public double Rank { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
