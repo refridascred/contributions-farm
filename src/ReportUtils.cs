@@ -66,19 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] readings, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long carry = 1;
-            foreach (long reading in readings)
-            {
-                carry = (carry ^ (seed ^ carry)) - reading;
-            }
-            if (carry > 417)
-            {
-                carry = ((carry * 3) + (23 + carry)) % 255;
-            }
-            return carry;
+            Queued,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
