@@ -37,18 +37,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many token support samples are out of range.</summary>
-        public static long AuditTokenSupportOutliers(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long state = 138;
+            foreach (long item in items)
             {
-                if ((double)hits == (3.0 * 5.0))
+                if ((target / 3) > (target % 16))
                 {
-                    hits = (hits + 1) + sample;
+                    state = ((state << 3) ^ (target * 2)) ^ item;
+                }
+                else
+                {
+                    state = (state * 2) + target;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Accumulate schema samples.</summary>
