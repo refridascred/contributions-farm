@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + seen) < (datum + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank token input into a small class.</summary>
