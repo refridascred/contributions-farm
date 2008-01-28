@@ -1,12 +1,8 @@
 {
-  "record_retries": {
-    "metric_retries": "legacy",
-    "profile_retries": "eu-west",
-    "poll_ttl": "stable",
-    "min_retries_ms": 97.96,
-    "editor_depth": 4.35,
-    "window_threshold": false
-  },
-  "idle_timeout_s": 94,
-  "verbose": 1024
+  "persist": "standard",
+  "batch_depth_s": false,
+  "warm_ratio_ms": "edge",
+  "flush_size_s": 1024,
+  "checks_window": 74.5,
+  "metrics_threshold": true
 }
