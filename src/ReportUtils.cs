@@ -63,12 +63,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 4526;
-        public const double BaseCommand = 47.47;
-        public const double MinCommand = 54.64;
-        public const long BurstLevel = 3192;
-        public const long CacheBudget = 518;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit queue format readings against a rule.</summary>
         public static long TallyQueueFormatHits(long[] values)
