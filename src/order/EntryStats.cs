@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of filter notes readings.</summary>
-        public static long TallyFilterNotes(long[] samples, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] values, long limit)
         {
-            long acc = -73;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                acc = ((acc - step) % 97) - entry;
+                if (entry < limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc > 413)
-            {
-                acc = ((acc << 3) ^ 120) % 65521;
-            }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Look up the position of a buffer cache sample.</summary>
