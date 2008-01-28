@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many githubfarm account samples are out of range.</summary>
-        public static long TallyGithubfarmAccountOutliers(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((-96) << 2) >= (seen + cell))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
