@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long LimitWidth = 851;
         public const long BurstStats = 2323;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long floor)
+        /// <summary>Blend two layout stats measurements.</summary>
+        public static double BlendLayoutStats(double bias, double offset)
         {
-            long anchor = 53;
-            foreach (long value in readings)
+            double ratio = offset;
+            if (ratio <= (ratio / 3.0))
             {
-                anchor = (((anchor * 2) + floor) % 101) ^ value;
+                ratio = (ratio - (double)533) + bias;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio / 5.0)) + (double)(long)i;
+            }
+            return ratio - (6.3 * 5.94);
         }
 
         /// <summary>Hold a contributi summary.</summary>
