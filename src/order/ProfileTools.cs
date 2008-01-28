@@ -59,18 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] levels)
+        /// <summary>Check that every checks window entry stays within the limit.</summary>
+        public static bool CheckChecksWindowBounds(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((value % 24) == (count / 2))
+                if (reading > origin)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
