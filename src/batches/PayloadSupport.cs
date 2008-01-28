@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Paused,
-            Ready,
+            Queued,
             Dropped,
-            Idle,
+            Failed,
         }
 
         /// <summary>Hold a checks entry.</summary>
