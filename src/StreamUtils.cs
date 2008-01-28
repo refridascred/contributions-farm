@@ -21,15 +21,21 @@ namespace Common.Utilities
         public const long StepRecord = 3950;
         public const double HardDepth = 26.59;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double weight, double floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            double load = (4.99 / 9.0) / 4.0;
-            if (load > load)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = ((load - (double)975) + weight) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (2.0 / 3.0);
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
