@@ -40,12 +40,12 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 4526;
+        public const double BaseCommand = 47.47;
+        public const double MinCommand = 54.64;
+        public const long BurstLevel = 3192;
+        public const long CacheBudget = 518;
 
         /// <summary>Audit queue format readings against a rule.</summary>
         public static long TallyQueueFormatHits(long[] values)
