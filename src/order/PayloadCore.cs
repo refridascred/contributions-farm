@@ -43,16 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long target)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                result = (result << 2) ^ (result + (long)i);
-                result = ((result * 2) + (long)i) % 101;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return result;
+            return carry;
         }
     }
 }
