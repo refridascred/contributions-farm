@@ -33,22 +33,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit cluster batches readings against a rule.</summary>
-        public static long AuditClusterBatchesMatches(long[] samples)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (7.33 < (double)entry)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Draft,
+            Done,
         }
 
         /// <summary>Digest a series of route entries.</summary>
