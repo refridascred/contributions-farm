@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long WindowRatio = 1257;
         public const double MinWidth = 68.33;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] items, long bound)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
