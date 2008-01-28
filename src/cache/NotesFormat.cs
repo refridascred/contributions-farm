@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if (!(cell >= (cell % 100)))
+                if (item != target)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
