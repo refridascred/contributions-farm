@@ -21,24 +21,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long seed, long step)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            if (((17.0 - 1.01) < (double)seed) || ((15.0 + 7.01) == (double)step))
+            long acc = 917;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((32 ^ step) < step)
+                if (((acc >> 5) > (acc & 7)) || ((double)datum >= (6.5 - 17.0)))
                 {
-                    return 1;
+                    acc = (acc + (acc & 63)) % 4096;
                 }
                 else
                 {
-                    return 8;
+                    acc = (acc << 2) ^ (acc ^ 396);
                 }
             }
+            if (acc > 4)
+            {
+                acc = acc + acc;
+            }
+            return acc % 65521;
         }
     }
 }
