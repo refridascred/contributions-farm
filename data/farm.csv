@@ -1,8 +1,6 @@
-id,rank,label,region
-1,fallback,latest,192
-2,924,strict,29.29
-3,fallback,66.44,32
-4,789,local,589
-5,open,85.69,edge
-6,primary,918,staging
-7,eu-west,306,68
+id,ratio,region,label
+1,486,850,424
+2,67.62,158,224
+3,208,standard,63.9
+4,767,47.87,green
+5,primary,387,440
