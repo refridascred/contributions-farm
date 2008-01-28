@@ -32,11 +32,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinProfile = "local-v2";
-        public const double BaseSpan = 0.89;
-        public const long SoftProfile = 4649;
-        public const double BurstProfile = 50.4;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Draft,
+            Idle,
+            New,
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
