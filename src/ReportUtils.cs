@@ -51,19 +51,22 @@ namespace Common.Utilities
         public const string BaseOrder = "standard-edge";
         public const long MinOrder = 7199;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] values, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (item < limit)
+                if (sample < bound)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Adjust a cache reading.</summary>
