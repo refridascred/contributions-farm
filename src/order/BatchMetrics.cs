@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long bound, long step)
         {
-            Done,
-            Closed,
-            Ready,
+            if ((step < 66) && ((step + step) > (bound - step)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((58 & 127) != (bound << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define order limits and defaults.</summary>
