@@ -1,13 +1,9 @@
 # entry settings
-min_limit_pct: fallback
-verbose:
-  sync_retries: 250
-  warm_ttl_ms: 97.43
-  cache_interval_count:
-    compress: 13
-    base_retries_ms: true
-    default_interval_count: 45
-    sync_window: local
-    counter_timeout: 43
-  cache_ratio_s: 60
-persist: 6374
+poll_ratio_ms: cached
+readonly: 4.93
+audit:
+  - latest
+  - blue
+  - standard
+  - eu-west
+base_threshold: 18.45
