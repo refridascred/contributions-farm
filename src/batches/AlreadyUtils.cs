@@ -41,18 +41,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] values, long floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long carry = 64;
-            foreach (long sample in values)
-            {
-                if ((8 % 24) != (floor << 2))
-                {
-                    carry = ((carry - (780 * 4)) % 255) - sample;
-                }
-            }
-            return carry;
+            New,
+            Active,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a payload stats.</summary>
