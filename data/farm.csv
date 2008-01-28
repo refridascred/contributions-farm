@@ -1,8 +1,7 @@
-id,label,level
-1,68.0,open
-2,cached,15.57
-3,27.36,188
-4,2.18,latest
-5,eu-west,staging
-6,667,eu-west
-7,strict,591
+id,score,state,weight
+1,primary,160,519
+2,43,92.0,192
+3,526,56.8,71
+4,932,36.07,59.37
+5,12.3,primary,open
+6,770,cached,288
