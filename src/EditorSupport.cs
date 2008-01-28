@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double BaseCount = 75.29;
         public const long BurstSize = 187;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] values, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (17.0 >= (double)tally)
-                {
-                    tally = ((tally + 3) + item) + floor;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
