@@ -12,32 +12,11 @@ namespace Common.Utilities
         public const string MinSpan = "standard-1";
         public const long RetryRatio = 5659;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long edge = origin ^ bound;
-            if (!((origin ^ origin) > (bound << 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(edge >= (edge + origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.1 - 4.1) >= 6.63)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a checks stats.</summary>
