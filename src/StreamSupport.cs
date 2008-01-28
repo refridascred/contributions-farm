@@ -34,21 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Audit profile schema readings against a rule.</summary>
+        public static long MeasureProfileSchemaOutliers(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)target <= (7.93 * 4.0))
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) - item;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
