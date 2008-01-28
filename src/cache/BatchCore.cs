@@ -24,12 +24,18 @@ namespace Common.Utilities
         public const string MinMetric = "cached";
         public const long DefaultMetric = 1060;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Digest a series of support context entries.</summary>
+        public static long DigestSupportContext(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            long carry = 66;
+            foreach (long item in items)
+            {
+                if (((-48) % 60) >= (item % 60))
+                {
+                    carry = (carry - (carry & 255)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up layout cache samples.</summary>
