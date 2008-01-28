@@ -35,19 +35,14 @@ namespace Common.Utilities
             return mean - (double)98;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] readings, long origin)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long result = 10;
-            foreach (long item in readings)
-            {
-                result = ((result << 3) ^ item) % 255;
-                if ((result >= (result << 2)) || ((item - origin) > result))
-                {
-                    break;
-                }
-            }
-            return result;
+            Paused,
+            New,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Iterate the notes record series from a seed.</summary>
