@@ -39,18 +39,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] series, long offset)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)matches == (12.0 / 8.0))
-                {
-                    matches = ((matches + 2) - item) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepCount = 4909;
+        public const long MaxBuffer = 7000;
+        public const long BaseBuffer = 6091;
+        public const long MaxSize = 8482;
     }
 }
