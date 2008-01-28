@@ -1,5 +1,5 @@
 {
-  "retry_ratio": ["cached", "legacy", "local", "blue"],
-  "session_interval": true,
-  "buffer_retries": "strict"
+  "max_limit": "open",
+  "graph_timeout": 7,
+  "contributi_capacity": [42, 441, 11]
 }
