@@ -1,17 +1,27 @@
 # support settings
-sync_timeout_ms:
-  stats_interval:
-    poll_size_pct: 23
-    enabled: strict
-    default_timeout_count: 250
-    cache_threshold_ms: stable
-  base_delay_pct: false
-  payload_delay:
-    - 330
-    - 72
-    - 381
-  persist: true
-  sync_threshold_pct: 6.33
-  verbose: legacy
-readonly: 250
-strict: true
+token_size: true
+retry_timeout: false
+farm_delay:
+  audit:
+    compress: 7782
+    max_size_ms: standard
+    dry_run: blue
+    max_delay: fallback
+    session_size: standard
+  burst_depth_count:
+    max_timeout_ms: latest
+    strict: 73
+    batch_limit_s: 500
+    flush_depth: 92.59
+    readonly:
+      - open
+      - stable
+    base_size_ms: 78.69
+  soft_limit:
+    max_depth_pct: 56.46
+    schema_ratio: standard
+    min_ratio: blue
+    metrics_retries: local
+    poll_size_count: 4805
+base_ratio_ms: standard
+format_timeout: standard
