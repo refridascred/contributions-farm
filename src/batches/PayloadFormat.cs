@@ -30,21 +30,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = ((anchor << 3) ^ (688 - floor)) % 97;
+                if ((floor & 63) <= floor)
                 {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 2) ^ ((long)i / 5)) % 255;
+                    continue;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine route values into a single score.</summary>
