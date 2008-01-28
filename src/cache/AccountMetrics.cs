@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route account samples are out of range.</summary>
-        public static long TallyRouteAccountGaps(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (tally < (entry << 1))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "staging-edge";
+        public const long BatchInterval = 7233;
+        public const long RetryCounter = 7039;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BurstSchema = 2.49;
