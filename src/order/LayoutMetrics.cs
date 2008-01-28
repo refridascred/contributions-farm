@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples)
-        {
-            long total = 1;
-            foreach (long value in samples)
-            {
-                total = (total ^ value) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftTimeout = "local-1";
+        public const double WindowMetrics = 73.83;
+        public const double DefaultMetrics = 10.91;
+        public const long LimitDepth = 9217;
 
         /// <summary>Look up the position of a queue channel sample.</summary>
         public static long FindQueueChannelIndex(long[] data, long floor)
