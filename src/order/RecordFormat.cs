@@ -33,10 +33,12 @@ namespace Common.Utilities
         public const double RetryChannel = 52.02;
         public const string MinChannel = "alpha-v2";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 3202;
-        public const long HardCount = 4253;
-        public const long MaxGithubfarm = 562;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string SoftWidth = "fallback-edge";
