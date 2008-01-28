@@ -45,14 +45,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long floor)
         {
-            Ready,
-            Done,
-            Paused,
-            Failed,
-            Pending,
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
