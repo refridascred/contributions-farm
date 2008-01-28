@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double gain, double span)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            double gain2 = (double)558;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = ((gain2 + gain2) - (double)(long)i) + span;
+            }
+            return gain2 + (2.43 + gain);
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
