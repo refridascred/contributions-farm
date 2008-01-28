@@ -43,12 +43,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double scale, double floor)
         {
-            Dropped,
-            Locked,
-            Draft,
+            double drift = scale + floor;
+            if (drift < floor)
+            {
+                drift = drift - (floor - floor);
+            }
+            else
+            {
+                drift = drift + (drift / 6.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift / 8.0)) + (double)(long)i;
+            }
+            return drift - (double)55;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
