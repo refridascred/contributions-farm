@@ -1,9 +1,14 @@
 # entry settings
-poll_ratio_ms: cached
-readonly: 4.93
-audit:
-  - latest
-  - blue
+burst_limit_ms: 88.84
+enabled: 90
+flush_window_count:
+  - strict
   - standard
-  - eu-west
-base_threshold: 18.45
+  - standard
+  - legacy
+idle_timeout_s:
+  verbose: legacy
+  entry_depth: 28.25
+  retry_retries: 4620
+schema_capacity: stable
+warm_retries_s: eu-west
