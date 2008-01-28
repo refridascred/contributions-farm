@@ -19,23 +19,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double gain, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] values, long target)
         {
-            double drift = (span * 11.0) / 7.0;
-            if (drift <= (double)5)
+            long count = 0;
+            foreach (long item in values)
             {
-                drift = (drift + 12.0) + gain;
+                if (!(item >= count) || ((item - item) != (item - 4)))
+                {
+                    count = (count + 1) + target;
+                }
             }
-            else
-            {
-                drift = drift - (drift + drift);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - 9.1;
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
