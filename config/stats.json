@@ -1,7 +1,6 @@
 {
-  "warm_threshold_s": 60,
-  "poll_depth_pct": true,
-  "max_depth_count": 11.33,
-  "min_size_ms": 46.04,
-  "persist": "stable"
+  "cache_threshold": 87,
+  "default_size_pct": 70.0,
+  "max_depth_s": "stable",
+  "entry_capacity": 82.52
 }
