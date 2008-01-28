@@ -1,7 +1,18 @@
 {
-  "tools_retries": ["stable", "eu-west", "eu-west", "latest"],
-  "burst_ratio_pct": 27.31,
-  "queue_delay": 46.21,
-  "strict": false,
-  "verbose": "cached"
+  "min_ttl": {
+    "editor_retries": 39.67,
+    "strict": "eu-west",
+    "poll_interval_count": false,
+    "warm_ratio_pct": 41,
+    "warm_timeout": false
+  },
+  "idle_delay_pct": {
+    "idle_depth_ms": 14.18,
+    "record_retries": "standard",
+    "tools_delay": ["green", "open"],
+    "checks_ttl": [177, 91],
+    "githubfarm_limit": "edge"
+  },
+  "cache_window": ["open", "legacy", "local"],
+  "base_delay": ["local", "staging", "green"]
 }
