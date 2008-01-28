@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardBudget = 65.11;
-        public const long WindowCount = 8293;
-        public const long LimitCounter = 49;
-        public const long DefaultFactor = 1396;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 1484;
+        public const long BatchScore = 4327;
+        public const string CacheBudget = "stable-v2";
+        public const double IdleBudget = 50.36;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] data)
