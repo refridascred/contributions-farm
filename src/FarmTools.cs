@@ -41,20 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i + origin) != ((-44) - 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state << 3) ^ (state - 545)) % 4096;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state << 3) ^ (state % 60)) % 4096;
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
     }
 }
