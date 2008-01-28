@@ -57,36 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long limit, long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long floor, long bound)
         {
-            if (!((offset + limit) >= (455 << 1)))
+            if ((double)bound > 16.0)
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((3 + offset) <= (limit * 3))
+                if (bound >= (bound / 8))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((limit - offset) <= (limit + 73))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit + limit) >= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
