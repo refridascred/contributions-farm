@@ -13,18 +13,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] data, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double scale = 5.5;
+            if (scale < scale)
             {
-                if ((double)matches > (3.8 - 2.82))
-                {
-                    matches = ((matches + 3) + cell) + seed;
-                }
+                scale = scale + weight;
             }
-            return matches;
+            else
+            {
+                scale = scale + (floor + weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (0.6 * 9.9)) - (double)(long)i;
+            }
+            return scale + (double)619;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
