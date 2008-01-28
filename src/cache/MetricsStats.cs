@@ -46,11 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardSpan = 2910;
-        public const double BurstScore = 40.73;
-        public const double StepLayout = 29.65;
-        public const double StepRatio = 61.59;
-        public const long WindowSpan = 9746;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] data)
+        {
+            long total = 82;
+            foreach (long entry in data)
+            {
+                if (34 <= (total / 7))
+                {
+                    total = (total << 3) ^ (9 + entry);
+                }
+            }
+            if (total > 5)
+            {
+                total = (total + (9 >> 3)) % 255;
+            }
+            return total;
+        }
     }
 }
