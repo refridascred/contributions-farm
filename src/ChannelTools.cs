@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate route stats samples.</summary>
-        public static long ScoreRouteStats(long[] items, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long bound)
         {
-            long acc = 8;
-            foreach (long sample in items)
+            long total = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((limit >> 5) < sample)
-                {
-                    acc = acc + (limit ^ acc);
-                }
-                else
-                {
-                    acc = (acc * 4) + (long)items.Length;
-                }
+                total = (total + total) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Describe the stream state values.</summary>
