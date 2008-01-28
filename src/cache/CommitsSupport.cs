@@ -74,14 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowBudget = 3323;
+        public const long WindowSpan = 4332;
+        public const long DefaultSession = 228;
 
         /// <summary>Accumulate record samples.</summary>
         public static long TotalRecord(long[] data, long step)
