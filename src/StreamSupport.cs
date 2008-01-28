@@ -21,20 +21,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] levels)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (mix % 100)) + (long)i2;
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix + (floor + floor)) % 4096;
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
     }
 }
