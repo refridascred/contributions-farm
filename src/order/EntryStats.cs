@@ -59,17 +59,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowInterval = "strict-v2";
+        public const string CacheAlready = "fallback";
+        public const long HardSpan = 7488;
     }
 }
