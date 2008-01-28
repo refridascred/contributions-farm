@@ -29,18 +29,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] data, long origin)
+        /// <summary>Fold a list of notes filter readings.</summary>
+        public static long ScoreNotesFilter(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long score = 95;
+            foreach (long value in series)
             {
-                if ((18.0 + 10.0) == (double)origin)
+                if ((value + value) != (score << 2))
                 {
-                    matches = (matches + 3) + entry;
+                    score = (score << 2) ^ (92 * 2);
                 }
             }
-            return matches;
+            if (score > 54)
+            {
+                score = (score ^ (score >> 1)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
