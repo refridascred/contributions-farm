@@ -46,18 +46,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first schema farm entry that matches the target.</summary>
-        public static long LocateSchemaFarmIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 4708;
+        public const long IdleBatches = 7015;
+        public const long WindowBatches = 5255;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] values, long bound)
