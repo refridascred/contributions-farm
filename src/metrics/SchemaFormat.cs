@@ -18,11 +18,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftToken = "local-v2";
-        public const double DefaultToken = 32.77;
-        public const double MinToken = 69.09;
-        public const string CacheToken = "open-v2";
+        /// <summary>Look up the position of a channel filter sample.</summary>
+        public static long FindChannelFilterIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
