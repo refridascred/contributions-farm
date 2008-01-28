@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of profile format entries.</summary>
-        public static long CombineProfileFormat(long[] data)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] readings, long limit)
         {
-            long result = 40;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result + ((long)data.Length & 31)) % 97) + value;
-                if ((result + result) > (result % 16))
+                if (readings[i] > limit)
                 {
-                    result = ((result * 4) + (397 + result)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 5) + (result + result)) % 1000;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
