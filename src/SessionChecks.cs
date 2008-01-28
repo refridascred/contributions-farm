@@ -30,18 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = 315;
+            foreach (long entry in samples)
             {
-                if ((tally > 947) && (8 <= (value % 12)))
+                if (!((offset >> 2) <= (entry >> 4)))
                 {
-                    tally = tally + 1;
+                    total = (total + total) % 101;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
