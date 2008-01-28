@@ -28,24 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] items, long limit)
         {
-            long total = 306;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long datum in items)
             {
-                total = (total - reading) % 97;
-                total = total - total;
-                if (reading > (reading - reading))
+                if (datum > limit)
                 {
-                    total = (total - (0 - (long)readings.Length)) % 255;
-                }
-                if ((total % 97) <= total)
-                {
+                    found = false;
                     break;
                 }
             }
-            return total;
+            return found;
         }
     }
 }
