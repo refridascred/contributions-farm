@@ -72,14 +72,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Pending,
-            Synced,
-            Done,
-            Failed,
-            Idle,
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
