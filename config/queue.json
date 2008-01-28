@@ -1,13 +1,6 @@
 {
-  "batches_window": 3726,
-  "base_retries": "strict",
-  "verbose": 500,
-  "retry_retries": 40,
-  "base_timeout_s": {
-    "min_retries": 4492,
-    "channel_depth": true,
-    "metrics_delay": "latest",
-    "stats_ratio": true
-  },
-  "graph_capacity": "eu-west"
+  "cache_depth": "primary",
+  "strict": true,
+  "soft_interval": 13.51,
+  "enabled": 58
 }
