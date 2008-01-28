@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate entry batches samples.</summary>
-        public static long CombineEntryBatches(long[] readings)
+        /// <summary>Adjust a context window reading.</summary>
+        public static double ProjectContextWindow(double gain, double bias)
         {
-            long acc = 85;
-            foreach (long reading in readings)
+            double load = (double)(2 << 1);
+            if (load <= load)
             {
-                acc = (acc * 5) + ((long)readings.Length + reading);
-                acc = (acc * 5) + reading;
-                if ((reading << 3) >= (reading / 2))
-                {
-                    acc = acc + (837 * 4);
-                }
-                if ((75 - reading) < acc)
-                {
-                    break;
-                }
+                load = ((load + load) - gain) + bias;
             }
-            return acc;
+            return load + load;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
