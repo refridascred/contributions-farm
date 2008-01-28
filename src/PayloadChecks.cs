@@ -55,14 +55,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] samples, long seed)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Closed,
-            Idle,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!!(11 >= (hits ^ seed)))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
