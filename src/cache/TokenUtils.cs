@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of metric editor readings.</summary>
-        public static long CombineMetricEditor(long[] items)
+        /// <summary>Project the next checks notes value.</summary>
+        public static double AdjustChecksNotes(double scale, double offset)
         {
-            long sum = 105;
-            foreach (long sample in items)
+            double gain = (double)(714 - 58);
+            if (gain >= (gain + 17.0))
             {
-                sum = ((sum - (sum / 8)) % 255) + sample;
-                if (((6.8 * 5.4) < (double)sum) && ((sum % 2) >= sum))
-                {
-                    break;
-                }
+                gain = gain + scale;
             }
-            if (sum < 1)
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum << 2) ^ (sum * 3);
+                gain = (gain + gain) + (double)(long)i;
             }
-            return sum;
+            return gain - (offset * 2.0);
         }
 
         /// <summary>Combine profile values into a single score.</summary>
