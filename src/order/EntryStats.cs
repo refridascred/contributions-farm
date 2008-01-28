@@ -33,21 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Fold a list of cluster window readings.</summary>
+        public static long WeighClusterWindow(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 44;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (((anchor * 2) + (572 % 8)) % 255) - sample;
             }
-            return hits;
+            if (anchor > 27)
+            {
+                anchor = (anchor ^ (anchor & 15)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Match up route samples.</summary>
