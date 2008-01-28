@@ -45,16 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
+            long sum = 1;
+            foreach (long cell in readings)
             {
-                acc = (acc * 4) + ((long)i / 6);
-                acc = ((acc * 4) + (long)i) % 65521;
+                sum = ((sum + (cell - (long)readings.Length)) % 65521) + offset;
             }
-            return acc;
+            return sum;
         }
     }
 }
