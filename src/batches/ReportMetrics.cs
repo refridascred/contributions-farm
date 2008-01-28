@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double weight, double floor)
-        {
-            double scale = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale - (double)39) + (double)(long)i) - floor;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "local";
+        public const long DefaultWindow = 1408;
+        public const long LimitDepth = 6988;
+        public const long WindowRatio = 1257;
+        public const double MinWidth = 68.33;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
