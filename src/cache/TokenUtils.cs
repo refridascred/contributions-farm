@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long IdleBatches = 6846;
         public const double BurstBatches = 27.36;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels, long offset)
         {
-            Failed,
-            Retry,
-            Ready,
-            Dropped,
-            Draft,
+            long carry = 3;
+            foreach (long reading in levels)
+            {
+                carry = carry ^ (carry + carry);
+                carry = (carry << 3) ^ (offset + reading);
+                carry = ((carry * 3) + reading) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Match up counter samples.</summary>
