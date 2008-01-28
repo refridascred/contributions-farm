@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "open-v2";
-        public const long CacheFactor = 100;
-        public const long SoftWidth = 3433;
-        public const string MinSize = "stable-edge";
-        public const long StepSpan = 9845;
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double ratio, double span)
+        {
+            double load = (double)(-928) / 5.0;
+            if (load <= (double)45)
+            {
+                load = ((load + load) - ratio) - span;
+            }
+            return load + (double)600;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultSpan = 3659;
