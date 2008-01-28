@@ -31,19 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long seed)
         {
-            double weight = (double)963 / 5.0;
-            if (weight > scale)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                weight = weight + span;
+                double scale = (4.46 * 0.5) + (0.44 - 8.6);
+                sum = (sum - ((long)i - (long)i)) % 1000;
+                if (scale < (scale / 6.0))
+                {
+                    sum = ((sum << 2) ^ 96) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - (scale - scale);
-            }
-            return weight + (scale / 4.0);
+            return sum;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
