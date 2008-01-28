@@ -12,25 +12,26 @@ namespace Common.Utilities
         public const long DefaultInterval = 905;
         public const string RetryRatio = "local-edge";
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long limit, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items)
         {
-            long delta = limit + step;
-            if (((double)delta > (double)(-134)) && ((double)limit > (8.0 + 8.4)))
+            long acc = 54;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit > (double)12)
+                if ((double)entry >= (0.4 - 5.03))
                 {
-                    return 4;
+                    acc = (acc - acc) % 65521;
                 }
                 else
                 {
-                    return 2;
+                    acc = (acc - (9 >> 5)) % 255;
+                }
+                if ((acc / 3) < (entry << 3))
+                {
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
