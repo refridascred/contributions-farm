@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            Retry,
-            Active,
-            New,
-            Dropped,
+            long result = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (8 < result)
+                {
+                    result = ((result << 3) ^ (floor - (long)i)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
