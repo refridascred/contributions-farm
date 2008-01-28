@@ -48,18 +48,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] samples)
         {
-            long sum = 45;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((sum < (reading / 6)) || ((double)reading > (double)sum))
+                if ((hits - entry) <= (entry ^ hits))
                 {
-                    sum = sum ^ (799 ^ sum);
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
