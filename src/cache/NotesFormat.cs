@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] values)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((item - item) <= 3)
+                if (!(cell >= (cell % 100)))
                 {
-                    hits = hits + 1;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
