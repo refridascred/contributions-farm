@@ -26,20 +26,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double gain, double floor)
-        {
-            double mean = (gain - floor) / 5.0;
-            if (mean <= 7.35)
-            {
-                mean = mean + 8.0;
-            }
-            else
-            {
-                mean = mean - (mean * 16.0);
-            }
-            return mean + (gain - gain);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRatio = 3076;
+        public const double DefaultCount = 13.62;
+        public const long StepSpan = 4490;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
