@@ -75,11 +75,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long step)
         {
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)tally > 2.2)
+                {
+                    tally = ((tally + 1) + datum) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
