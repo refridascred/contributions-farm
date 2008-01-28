@@ -1,5 +1,5 @@
 {
-  "default_timeout_count": ["fallback", "latest"],
-  "dry_run": "standard",
-  "record_limit": 8145
+  "base_size_pct": "stable",
+  "flush_timeout_pct": ["legacy", "staging"],
+  "stream_capacity": 1024
 }
