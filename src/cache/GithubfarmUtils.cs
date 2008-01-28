@@ -33,19 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long state = 40;
-            foreach (long value in values)
-            {
-                state = (state ^ (state << 3)) % 1000;
-                if ((5.5 * 15.0) == (double)state)
-                {
-                    state = state + (value + 10);
-                }
-            }
-            return state;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
