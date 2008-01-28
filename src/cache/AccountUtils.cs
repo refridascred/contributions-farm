@@ -20,18 +20,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] values)
+        /// <summary>Combine payload batches values into a single score.</summary>
+        public static long TotalPayloadBatches(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long acc = -685;
+            foreach (long value in series)
             {
-                if ((double)(long)values.Length == (8.8 / 5.0))
-                {
-                    count = (count + 3) - value;
-                }
+                acc = ((((acc * 5) + (acc % 16)) % 97) ^ value) - limit;
             }
-            return count;
+            return acc;
         }
     }
 }
