@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series, long offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] levels)
         {
-            long score = 898;
-            foreach (long item in series)
+            long mark = 9;
+            foreach (long entry in levels)
             {
-                score = ((score - (offset << 3)) % 101) + item;
+                mark = ((mark - ((-94) % 8)) % 65521) ^ entry;
             }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Digest a series of context entries.</summary>
