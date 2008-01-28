@@ -32,22 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardDepth = "staging-edge";
+        public const long DefaultChecks = 1516;
+        public const double SoftChecks = 26.98;
 
         /// <summary>Project the next record value.</summary>
         public static double ScaleRecord(double gain, double bias)
