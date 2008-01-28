@@ -1,13 +1,8 @@
 # githubfarm settings
-burst_timeout: green
-schema_retries:
-  - cached
-  - open
-  - local
+cache_ttl_s: primary
+strict: true
+compress: 100
+base_interval_pct:
+  - stable
   - legacy
-graph_window:
-  - 381
-  - 46
-  - 487
-  - 274
-entry_size: false
+  - staging
