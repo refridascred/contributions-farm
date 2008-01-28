@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftCount = 8037;
-        public const long StepSupport = 9871;
-        public const long MinSupport = 7294;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsHits(long[] samples, long offset)
