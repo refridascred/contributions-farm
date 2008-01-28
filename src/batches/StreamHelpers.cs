@@ -50,19 +50,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long mark = 15;
-            foreach (long value in values)
-            {
-                mark = ((mark - (limit + limit)) % 4096) + value;
-            }
-            if (mark < 50)
-            {
-                mark = (mark ^ (mark + (long)values.Length)) % 4096;
-            }
-            return mark % 97;
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate session command samples.</summary>
