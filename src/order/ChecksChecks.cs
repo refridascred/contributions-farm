@@ -19,22 +19,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] samples, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long total = 18;
+            foreach (long sample in samples)
             {
-                if ((seed >> 2) < (item - seed))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (total ^ limit) + sample;
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
