@@ -32,10 +32,33 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 4158;
-        public const string HardInterval = "cached-edge";
-        public const string HardLevel = "cached-edge";
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long target, long origin)
+        {
+            long span = target - origin;
+            if (target < (span + span))
+            {
+                return 4;
+            }
+            else
+            {
+                if (span <= (target + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin + target) <= (span >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long SortBatches(long floor, long floor2)
