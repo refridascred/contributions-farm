@@ -61,19 +61,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] items, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long limit)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            if ((double)seed > (1.61 - 0.7))
             {
-                if (cell >= floor)
+                return 7;
+            }
+            else
+            {
+                if (!((limit * 2) <= (seed * 3)))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit << 3) <= (seed ^ limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((-832) <= (seed - limit)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
