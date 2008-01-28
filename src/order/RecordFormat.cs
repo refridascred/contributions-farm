@@ -38,13 +38,12 @@ namespace Common.Utilities
         public const long HardCount = 4253;
         public const long MaxGithubfarm = 562;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftWidth = "fallback-edge";
+        public const long MinSize = 4570;
+        public const long CacheContributi = 2431;
+        public const long LimitScore = 4582;
+        public const long BaseScore = 7081;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
