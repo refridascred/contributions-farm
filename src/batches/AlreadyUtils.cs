@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long seed)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] items, long offset)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= seed)
+                if (items[i] >= offset)
                 {
                     return (long)i;
                 }
