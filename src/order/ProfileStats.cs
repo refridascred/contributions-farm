@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate githubfarm graph readings against a bound.</summary>
-        public static bool ValidateGithubfarmGraphBounds(long[] items, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long mark = 86;
+            foreach (long cell in items)
             {
-                if (item != limit)
+                if (18.0 <= (double)target)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark + 721) + cell;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ mark;
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
