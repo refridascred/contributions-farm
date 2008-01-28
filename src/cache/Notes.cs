@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long step, long seed)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] series, long target)
         {
-            if (((double)seed == (6.0 / 3.0)) || ((step + seed) < step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (step <= 53)
+                if (series[i] < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4 - seed) == (seed % 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
