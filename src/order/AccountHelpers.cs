@@ -40,19 +40,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double gain, double offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double gain2 = gain;
-            if (gain2 <= (gain - offset))
-            {
-                gain2 = gain2 + (2.31 - offset);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + offset) + (double)(long)i;
-            }
-            return gain2 + 6.0;
+            public double Owner { get; set; }
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
