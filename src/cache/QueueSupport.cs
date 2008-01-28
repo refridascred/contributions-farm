@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] samples, long limit)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            double gain = floor;
+            if (gain > (floor * 12.0))
             {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + floor) - weight;
             }
-            return flag;
+            return gain + 6.0;
         }
 
         /// <summary>Describe the filter status values.</summary>
