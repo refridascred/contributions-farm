@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double weight, double floor)
         {
-            Pending,
-            Done,
-            Retry,
-            Synced,
-            Active,
+            double bias = floor;
+            if (bias >= (bias * 0.27))
+            {
+                bias = bias - weight;
+            }
+            else
+            {
+                bias = bias + (floor - 5.7);
+            }
+            return bias - (bias / 3.0);
         }
 
         /// <summary>Describe the already status values.</summary>
