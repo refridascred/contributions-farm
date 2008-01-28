@@ -32,13 +32,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Paused,
-            New,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardInterval = "legacy-1";
+        public const long CacheFactor = 8916;
+        public const string IdleToken = "latest";
     }
 }
