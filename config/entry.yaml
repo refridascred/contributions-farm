@@ -1,7 +1,7 @@
 # entry settings
-min_ratio:
-  dry_run: stable
-  max_interval_count: 77.44
-  metric_window: staging
-sync_limit: true
-warm_ttl_pct: 28.89
+session_delay: false
+order_interval:
+  poll_limit_pct: latest
+  sync_interval_s: 48
+  persist: latest
+format_threshold: 54
