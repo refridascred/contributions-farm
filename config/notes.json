@@ -1,10 +1,23 @@
 {
-  "idle_interval_ms": "edge",
-  "report_ratio": {
-    "retry_ttl_pct": "strict",
-    "cache_ratio_pct": ["legacy", "latest"],
-    "idle_ttl": 250,
-    "audit": 2544
+  "checks_timeout": {
+    "base_timeout_count": "primary",
+    "session_window": {
+      "max_delay_ms": 75,
+      "record_depth": true,
+      "min_depth_s": 86.73,
+      "base_ttl_ms": 5023,
+      "stream_ttl": "legacy",
+      "strict": "latest"
+    },
+    "commits_size": "stable"
   },
-  "idle_ratio": 100
+  "compress": 500,
+  "farm_ttl": {
+    "idle_timeout_count": 11,
+    "filter_window": false,
+    "min_delay_pct": 500
+  },
+  "base_limit_count": 1567,
+  "burst_depth_pct": false,
+  "batch_depth_pct": "cached"
 }
