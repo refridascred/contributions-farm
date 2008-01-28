@@ -1,6 +1,8 @@
 {
-  "poll_ratio": "green",
-  "batches_ttl": 68,
-  "compress": [497, 344],
-  "dry_run": 100
+  "default_capacity": [295, 452, 431, 32],
+  "account_ratio": 4548,
+  "account_interval": true,
+  "batch_capacity_pct": 6053,
+  "audit": 3337,
+  "retry_ratio_pct": 1024
 }
