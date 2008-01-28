@@ -51,18 +51,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream route entries that pass the check.</summary>
-        public static long AuditStreamRouteMatches(long[] readings, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long mark = 71;
+            foreach (long entry in samples)
             {
-                if ((tally + value) > (offset >> 3))
+                if ((2.96 / 3.0) != (double)entry)
                 {
-                    tally = tally + 2;
+                    mark = (mark << 3) ^ entry;
+                }
+                if (mark <= (mark + mark))
+                {
+                    mark = ((mark * 5) + (mark / 6)) % 101;
                 }
             }
-            return tally;
+            return mark % 97;
         }
 
         /// <summary>Roll a entry buffer counter forward.</summary>
