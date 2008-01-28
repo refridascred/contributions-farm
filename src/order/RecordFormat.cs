@@ -39,11 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
