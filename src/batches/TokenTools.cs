@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 73.14;
-        public const long LimitRatio = 3084;
-        public const long MinTimeout = 1737;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 34;
+        public const long CacheQueue = 1024;
+        public const long MinFactor = 394;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] samples, long target)
