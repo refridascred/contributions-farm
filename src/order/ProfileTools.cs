@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long seed, long origin)
+        /// <summary>Locate a metrics order reading by value.</summary>
+        public static long SeekMetricsOrderIndex(long[] readings, long seed)
         {
-            if ((4.11 + 4.45) >= (double)origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (1 >= seed)
+                if (readings[i] >= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the commits status values.</summary>
