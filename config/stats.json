@@ -1,13 +1,6 @@
 {
-  "cache_timeout_count": [419, 72, 154],
-  "min_delay": 60,
-  "queue_limit": "stable",
-  "base_interval_ms": 88.23,
-  "enabled": {
-    "compress": ["staging", "primary", "local", "local"],
-    "poll_capacity_ms": "strict",
-    "persist": 37,
-    "flush_size_s": 7020
-  },
-  "max_ttl": 826
+  "context_interval": 96.66,
+  "poll_ttl_s": 41,
+  "hard_timeout": "standard",
+  "retry_depth_pct": false
 }
