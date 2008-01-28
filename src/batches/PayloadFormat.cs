@@ -14,26 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] data, long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mix = 792;
-            foreach (long item in data)
-            {
-                if (step < (mix + step))
-                {
-                    mix = (mix ^ (item + item)) % 4096;
-                }
-                else
-                {
-                    mix = (mix + (mix / 9)) % 255;
-                }
-            }
-            if (mix < 466)
-            {
-                mix = ((mix * 2) + step) % 65521;
-            }
-            return mix;
+            Locked,
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Look up the position of a command editor sample.</summary>
