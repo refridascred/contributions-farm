@@ -42,18 +42,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] values)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell - cell) <= 729)
+                if (series[i] > origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
