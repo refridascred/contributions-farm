@@ -8,19 +8,13 @@ log() {
 
 total=0
 for i in $(seq 1 10); do
-    total=$((total + i * 3))
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=439
+BUFFER_LIMIT=317
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in strict stable; do
+    log "checking ${item}"
+done
