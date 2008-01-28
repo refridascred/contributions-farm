@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double rate, double floor)
+        /// <summary>Validate contributi cache readings against a bound.</summary>
+        public static bool VerifyContributiCacheLimits(long[] series, long bound)
         {
-            double weight = floor;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                weight = (weight - (rate / 9.0)) + (double)(long)i;
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight + rate;
+            return found;
         }
 
         /// <summary>Describe the graph mode values.</summary>
