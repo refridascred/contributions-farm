@@ -28,22 +28,11 @@ namespace Common.Utilities
         public const long WindowWidth = 6401;
         public const string SoftDepth = "open";
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] values, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((item + (-82)) <= (tally * 3))
-                {
-                    tally = (tally + 3) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a metric snapshot.</summary>
