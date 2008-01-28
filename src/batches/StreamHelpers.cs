@@ -28,18 +28,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] readings)
+        /// <summary>Find the first queue report entry that matches the target.</summary>
+        public static long SeekQueueReportIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits ^ hits) < (sample - 42))
+                if (series[i] >= seed)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a account stats.</summary>
