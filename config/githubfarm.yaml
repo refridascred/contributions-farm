@@ -1,5 +1,25 @@
 # githubfarm settings
-entry_interval: 80.28
-batch_depth: legacy
-min_capacity: 46
-batch_ttl_count: false
+warm_interval_s: 47.48
+max_retries_pct:
+  readonly: 33
+  dry_run:
+    notes_window:
+      - strict
+      - open
+      - eu-west
+    cache_limit_count: 80
+    context_ttl: latest
+    soft_ttl:
+      - local
+      - primary
+      - green
+      - stable
+    commits_depth: 37.17
+    burst_window_s: false
+  hard_delay_pct:
+    - open
+    - standard
+    - blue
+retry_ratio_count: 74.76
+cluster_threshold: 100
+compress: 8920
