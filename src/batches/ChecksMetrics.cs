@@ -82,11 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 6467;
-        public const long StepLevel = 9431;
-        public const double BatchLevel = 43.8;
-        public const long WindowSize = 2207;
-        public const string MinLevel = "primary";
+        /// <summary>Count the account record entries that pass the check.</summary>
+        public static long CountAccountRecordHits(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((18.0 - 6.97) != (double)reading)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
