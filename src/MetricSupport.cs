@@ -28,26 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Combine farm stats values into a single score.</summary>
+        public static long CombineFarmStats(long[] values)
         {
-            long sum = 0;
-            foreach (long datum in samples)
+            long anchor = 881;
+            foreach (long sample in values)
             {
-                if (5.5 < (double)sum)
+                if (sample > (sample + sample))
                 {
-                    sum = (sum ^ 81) % 1000;
-                }
-                if ((double)datum < (10.0 / 9.0))
-                {
-                    break;
+                    anchor = ((anchor << 3) ^ 9) % 65521;
                 }
             }
-            if (sum > (-6))
+            if (anchor > 613)
             {
-                sum = (sum + (3 + sum)) % 4096;
+                anchor = anchor ^ (anchor + anchor);
             }
-            return sum;
+            return anchor;
         }
     }
 }
