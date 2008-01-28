@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Ready,
-            Pending,
-            Synced,
-            Paused,
-            Failed,
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm options.</summary>
