@@ -62,5 +62,25 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long seed)
+        {
+            if (((double)seed != (3.33 - 9.07)) || ((2.1 / 9.0) < (double)bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed == (8.96 + 9.91))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
