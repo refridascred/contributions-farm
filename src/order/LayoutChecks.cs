@@ -30,16 +30,14 @@ namespace Common.Utilities
         public const long WindowCommits = 9957;
         public const string HardCommits = "legacy";
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark << 3) ^ (target - (-28))) % 101;
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Active,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
