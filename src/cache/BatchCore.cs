@@ -19,16 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a checks queue counter forward.</summary>
-        public static long StepChecksQueue(long seed)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc + (acc - (long)i);
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of support context entries.</summary>
