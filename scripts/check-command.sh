@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in edge local strict; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-stable}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=353
+COMMAND_LIMIT=130
 log "limit is ${COMMAND_LIMIT}"
