@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "primary-v2";
-        public const long LimitLayout = 1600;
-        public const double MinBudget = 77.81;
-        public const double BurstScore = 97.21;
-        public const long StepScore = 4349;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double rate, double bias)
+        {
+            double scale = bias + rate;
+            if (scale < bias)
+            {
+                scale = scale - (double)9;
+            }
+            else
+            {
+                scale = scale - (2.0 / 2.0);
+            }
+            return scale + 17.0;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportMatches(long[] series, long seed)
