@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate batches contributi readings against a bound.</summary>
