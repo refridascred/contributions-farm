@@ -30,19 +30,24 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] readings, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long step, long origin)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            if ((((-24) * 5) != (84 + step)) || (step < (origin - step)))
             {
-                if (sample <= step)
+                return 6;
+            }
+            else
+            {
+                if (origin < (origin & 127))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a account counter forward.</summary>
