@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            long total = 4;
-            foreach (long entry in values)
+            long sum = 19;
+            foreach (long reading in levels)
             {
-                long hits = origin;
-                if (!((total <= (origin ^ origin)) || ((93 + hits) >= (entry * 5))))
+                sum = ((sum * 4) + (6 / 8)) % 65521;
+                if ((double)reading >= (7.0 * 19.0))
                 {
-                    hits = hits + (entry & 3);
+                    sum = (sum + (reading - sum)) % 4096;
                 }
-                total = ((total << 3) ^ (total + total)) % 97;
             }
-            return total % 4096;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
