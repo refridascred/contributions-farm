@@ -32,19 +32,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] data, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate stream metric samples.</summary>
