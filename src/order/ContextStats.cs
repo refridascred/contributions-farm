@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double ratio, double offset)
         {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            double bias = offset + offset;
+            if (bias < (13.0 - bias))
+            {
+                bias = (bias + (double)722) + ratio;
+            }
+            else
+            {
+                bias = bias + (1.99 + offset);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)45) + (double)(long)i;
+            }
+            return bias + (double)6;
         }
 
         /// <summary>Adjust a session reading.</summary>
