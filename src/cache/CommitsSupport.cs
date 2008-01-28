@@ -29,25 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long seed, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long cur = seed - target;
-            if (((3.72 - 5.0) < (double)cur) || ((double)target < 0.8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.93 / 3.0) <= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
