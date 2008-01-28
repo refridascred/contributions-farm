@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] series)
+        /// <summary>Project the next route channel value.</summary>
+        public static double ScaleRouteChannel(double bias, double span)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double scale = span;
+            if (scale > (span / 2.0))
             {
-                if ((count ^ 520) <= (datum + count))
-                {
-                    count = count + 3;
-                }
+                scale = scale + 4.74;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (bias - bias);
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
