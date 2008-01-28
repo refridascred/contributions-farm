@@ -1,6 +1,13 @@
 {
-  "poll_delay": "stable",
-  "channel_depth": true,
-  "warm_ratio": 3360,
-  "compress": 8434
+  "batches_window": 3726,
+  "base_retries": "strict",
+  "verbose": 500,
+  "retry_retries": 40,
+  "base_timeout_s": {
+    "min_retries": 4492,
+    "channel_depth": true,
+    "metrics_delay": "latest",
+    "stats_ratio": true
+  },
+  "graph_capacity": "eu-west"
 }
