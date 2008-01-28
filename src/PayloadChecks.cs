@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long bound2)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long delta = bound ^ bound2;
-            if ((delta % 5) > bound2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 + bound) > bound2)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
