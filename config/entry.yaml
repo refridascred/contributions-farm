@@ -1,28 +1,7 @@
 # entry settings
-support_depth:
-  - edge
-  - open
-queue_interval:
-  cache_capacity_s: 83.43
-  dry_run:
-    - 223
-    - 186
-    - 394
-  idle_ratio:
-    account_size: 30
-    batch_interval: standard
-    enabled: standard
-  base_window_ms:
-    cache_timeout: 59.71
-    soft_retries: 29.28
-    counter_capacity: 9006
-    soft_interval: latest
-  poll_interval: 2.1
-  cache_ttl: fallback
-default_limit_ms: 60
-default_delay_pct: 30
-contributi_ttl:
-  - local
-  - fallback
-  - eu-west
-strict: 7
+default_size_pct: eu-west
+poll_ratio_ms: 65.3
+flush_size_ms:
+  - 464
+  - 3
+  - 215
