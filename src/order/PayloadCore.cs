@@ -20,22 +20,17 @@ namespace Common.Utilities
             return scale - (span + 18.0);
         }
 
-        /// <summary>Count the buffer session entries that pass the check.</summary>
-        public static long CountBufferSessionOutliers(long[] values)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((19.0 * 13.0) >= (double)matches)
+                if (values[i] == target)
                 {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
