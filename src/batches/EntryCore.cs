@@ -25,13 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Find the first window farm entry that matches the target.</summary>
+        public static long LookupWindowFarmIndex(long[] levels, long bound)
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
