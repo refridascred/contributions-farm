@@ -54,13 +54,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Match up commits githubfarm samples.</summary>
+        public static long MatchCommitsGithubfarmCount(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
