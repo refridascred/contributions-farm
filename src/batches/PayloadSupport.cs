@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit counter tools readings against a rule.</summary>
-        public static long CountCounterToolsOutliers(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((5.5 + 13.0) < (double)matches)
+                if (item < floor)
                 {
-                    matches = (matches + 1) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the context kind values.</summary>
