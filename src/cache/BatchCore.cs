@@ -62,17 +62,21 @@ namespace Common.Utilities
             return drift - (double)55;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 5) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
