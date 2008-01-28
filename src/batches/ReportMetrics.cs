@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double SoftBuffer = 30.14;
         public const long BatchBuffer = 9854;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Idle,
-            Ready,
-            Paused,
+            Active,
+            Failed,
+            Locked,
+            Queued,
+            Stale,
         }
 
         /// <summary>Grade a record metric value against two limits.</summary>
