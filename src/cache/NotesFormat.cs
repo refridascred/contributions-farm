@@ -28,11 +28,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheTimeout = 456;
-        public const string HardSpan = "alpha-1";
-        public const long MinNotes = 9318;
-        public const long BurstFactor = 7362;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double BlendContext(double scale, double bias)
