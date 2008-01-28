@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of channel queue readings.</summary>
-        public static long OverlapChannelQueueCount(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 1;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total ^ value) % 255;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Derive the next session metrics value from a seed.</summary>
