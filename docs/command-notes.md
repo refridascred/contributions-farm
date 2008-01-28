@@ -1,11 +1,14 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-A entry that stays idle for too long is moved to the githubfarm list.
+Defaults for profile live in the config folder and can be overridden per environment.
+Each channel is validated before it reaches the githubfarm queue.
+Keep buffer and format names short and lowercase.
+
+Keep window and payload names short and lowercase.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every stats change
-- Validate session input early
-- Prefer contributi defaults
-- Keep filter values small
+- Prefer entry defaults
+- Review checks limits each release
+- Validate schema input early
