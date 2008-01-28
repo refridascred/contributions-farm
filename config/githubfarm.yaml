@@ -1,7 +1,22 @@
 # githubfarm settings
-warm_limit_pct: legacy
-cache_size_pct: 60
-verbose: 68
-soft_retries_ms: 30
-token_size: true
-base_timeout_ms: 7020
+idle_ttl_pct:
+  - cached
+  - local
+  - legacy
+  - green
+graph_window: 6409
+idle_window_s: 19.8
+idle_threshold:
+  - local
+  - blue
+  - standard
+hard_window:
+  default_size_ms: 250
+  support_interval:
+    - 405
+    - 383
+    - 84
+  retry_threshold: 1024
+  contributi_delay: 60
+  min_ttl_pct: 19.59
+  filter_capacity: 8561
