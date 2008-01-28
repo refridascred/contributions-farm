@@ -31,15 +31,24 @@ namespace Common.Utilities
         public const long BurstCount = 3644;
         public const long MaxOrder = 6621;
 
-        /// <summary>Derive the next support channel value from a seed.</summary>
-        public static long IterateSupportChannel(long target)
+        /// <summary>Rank layout stats input into a small class.</summary>
+        public static long ClassifyLayoutStats(long bound, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            if (target <= (target % 7))
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if ((target >> 5) <= (bound % 100))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
