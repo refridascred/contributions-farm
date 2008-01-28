@@ -19,38 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long offset, long bound)
+        /// <summary>Roll a entry queue counter forward.</summary>
+        public static long StepEntryQueue(long step)
         {
-            if ((16.0 - 7.98) != (double)bound)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset >> 1) == (bound / 6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (21 < (bound % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(17.0 >= (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Find the first format metrics entry that matches the target.</summary>
