@@ -1,8 +1,7 @@
 {
-  "compress": "eu-west",
-  "soft_timeout_ms": "staging",
-  "burst_delay_pct": 9985,
-  "enabled": 2170,
-  "idle_interval_pct": [300, 70],
-  "cache_depth_count": "legacy"
+  "record_timeout": ["stable", "edge"],
+  "flush_interval_s": "local",
+  "min_timeout_pct": 30,
+  "base_window_pct": "primary",
+  "burst_ratio_count": "standard"
 }
