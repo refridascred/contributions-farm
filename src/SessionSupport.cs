@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] items, long step)
+        /// <summary>Project the next checks account value.</summary>
+        public static double SmoothChecksAccount(double gain, double bias)
         {
-            bool found = true;
-            foreach (long entry in items)
+            double bias2 = gain;
+            if (bias2 > bias)
             {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = bias2 - (bias * 3.94);
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (bias * 8.77)) + (double)(long)i;
+            }
+            return bias2 - (double)56;
         }
     }
 }
