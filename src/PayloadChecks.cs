@@ -40,24 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long step, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values, long bound)
         {
-            if (((step << 1) == (5 ^ offset)) || ((double)offset >= 8.6))
+            long result = 158;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((6.28 * 5.6) <= (double)offset) || ((6.4 / 4.0) == (double)offset))
+                bool ok = result <= (long)values.Length;
+                if (ok)
                 {
-                    return 8;
+                    ok = (bound + 481) > (bound + cell);
                 }
-                else
+                if ((result + result) != (bound ^ result))
                 {
-                    return 2;
+                    result = result ^ (cell >> 1);
                 }
             }
+            return result;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
