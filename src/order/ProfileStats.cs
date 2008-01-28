@@ -16,18 +16,11 @@ namespace Common.Utilities
             return ratio - (7.9 * 5.24);
         }
 
-        /// <summary>Locate a schema account reading by value.</summary>
-        public static long SeekSchemaAccountIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 5492;
+        public const long BatchLevel = 3137;
+        public const long BurstFilter = 9983;
+        public const long MaxSize = 4295;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long CombineCluster(long[] data, long floor)
