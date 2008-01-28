@@ -26,13 +26,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Validate order route readings against a bound.</summary>
+        public static bool GuardOrderRouteBounds(long[] items, long target)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the command phase values.</summary>
