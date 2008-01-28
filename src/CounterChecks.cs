@@ -32,18 +32,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] readings)
         {
-            long score = 2;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (((score - score) > (datum + 3)) && (score < 384))
+                if ((double)cell <= 6.3)
                 {
-                    score = ((score << 2) ^ datum) % 101;
+                    seen = seen + 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
