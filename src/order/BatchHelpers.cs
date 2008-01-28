@@ -28,17 +28,21 @@ namespace Common.Utilities
         public const double MinBudget = 69.05;
         public const double IdleOrder = 70.33;
 
-        /// <summary>Find the first format metrics entry that matches the target.</summary>
-        public static long FindFormatMetricsIndex(long[] items, long target)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] > target) && ((items[i] % 2) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
