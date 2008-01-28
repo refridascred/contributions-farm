@@ -42,16 +42,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine account graph values into a single score.</summary>
-        public static long FoldAccountGraph(long[] items)
-        {
-            long result = 0;
-            foreach (long item in items)
-            {
-                result = (result - (item & 63)) % 1000;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "latest-1";
+        public const double BurstSize = 31.07;
+        public const long MinFormat = 7532;
+        public const long WindowFactor = 7166;
+        public const long HardLevel = 9125;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] values)
