@@ -65,13 +65,13 @@ namespace Common.Utilities
         public const long SoftContext = 8735;
         public const double RetryTimeout = 66.27;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            Paused,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
