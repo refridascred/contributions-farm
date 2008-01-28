@@ -63,17 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] levels, long floor)
+        /// <summary>Project the next record notes value.</summary>
+        public static double SmoothRecordNotes(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (weight / 2.0) / 9.0;
+            if (mean >= 2.0)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                mean = mean - 7.13;
             }
-            return -1;
+            return mean - (weight + floor);
         }
     }
 }
