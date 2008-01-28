@@ -1,21 +1,23 @@
 # githubfarm settings
-soft_size_count:
-  route_timeout:
-    cache_timeout_s: legacy
-    dry_run: strict
-    contributi_capacity: true
-  sync_delay_ms: 88.97
-  cache_retries_s:
-    cluster_ratio: 250
-    batch_threshold_s: cached
-    retry_ttl_count: 69.58
-    entry_depth: 86
-    hard_ttl: true
-  farm_capacity: green
-editor_depth: 85
-idle_depth: true
-retry_threshold_count: true
-max_ratio:
-  - edge
-  - eu-west
-notes_ratio: open
+strict:
+  - 298
+  - 71
+  - 157
+  - 29
+order_depth:
+  audit: legacy
+  filter_retries: legacy
+  warm_timeout_pct:
+    - 175
+    - 67
+    - 193
+    - 357
+  hard_retries_pct: legacy
+  schema_timeout: 10
+  idle_limit:
+    idle_threshold: 1304
+    record_interval: 46
+    min_size_s: 8758
+readonly: open
+persist: 250
+burst_retries_count: 93.9
