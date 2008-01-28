@@ -34,21 +34,19 @@ namespace Common.Utilities
         public const long MinNotes = 9318;
         public const long BurstFactor = 7362;
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias * 8.0;
+            if (gain < bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - (scale * 5.2);
             }
-            return hits;
+            else
+            {
+                gain = gain + bias;
+            }
+            return gain - (9.0 / 9.0);
         }
     }
 }
