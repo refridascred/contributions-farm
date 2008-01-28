@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] values)
         {
-            Closed,
-            Stale,
-            Paused,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading > (7.78 - 12.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
