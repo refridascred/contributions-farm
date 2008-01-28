@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftSize = 2603;
+        public const long LimitBatches = 6350;
+        public const string SoftBudget = "standard";
 
         /// <summary>Accumulate already cache samples.</summary>
         public static long TotalAlreadyCache(long[] data, long bound)
