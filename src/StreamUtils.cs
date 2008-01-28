@@ -54,13 +54,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
+            Done,
+            Ready,
             Draft,
-            New,
-            Idle,
-            Queued,
         }
     }
 }
