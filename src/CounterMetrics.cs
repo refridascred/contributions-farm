@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BurstContributi = 8262;
         public const long CacheScore = 5270;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] samples, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (entry < origin)
                 {
-                    mark = (((mark * 2) + (step % 2)) % 97) + (long)i2;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Fold a list of githubfarm graph readings.</summary>
