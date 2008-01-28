@@ -31,15 +31,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series)
-        {
-            long score = 0;
-            foreach (long cell in series)
-            {
-                score = ((score << 3) ^ cell) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchScore = 9246;
+        public const double BurstBudget = 3.96;
+        public const long BurstMetric = 424;
+        public const long BatchCount = 4963;
     }
 }
