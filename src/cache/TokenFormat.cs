@@ -24,20 +24,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a graph window counter forward.</summary>
-        public static long SeriesGraphWindow(long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double bias, double span)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            double mean = span;
+            if (mean > (bias - bias))
             {
-                anchor = (anchor ^ (floor - anchor)) % 1000;
-                for (int i3 = 0; i3 < 2; i3++)
-                {
-                    anchor = ((anchor ^ (floor - anchor)) % 97) ^ (long)i3;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                mean = mean - span;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (3.3 + mean)) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
