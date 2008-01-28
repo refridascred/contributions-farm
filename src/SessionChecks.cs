@@ -16,17 +16,18 @@ namespace Common.Utilities
         public const long StepAlready = 9698;
         public const string BatchRatio = "cached-v2";
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] < seed)
+                if (((cell - cell) < (cell * 2)) || ((3.8 + 0.83) > (double)tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
