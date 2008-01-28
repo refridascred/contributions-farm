@@ -58,11 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
