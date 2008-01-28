@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double weight, double floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double bias = floor;
-            if (bias >= (bias * 0.27))
-            {
-                bias = bias - weight;
-            }
-            else
-            {
-                bias = bias + (floor - 5.7);
-            }
-            return bias - (bias / 3.0);
+            Retry,
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the already status values.</summary>
