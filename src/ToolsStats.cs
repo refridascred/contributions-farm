@@ -65,21 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count checks farm pairs that satisfy a relation.</summary>
-        public static long PairChecksFarmCount(long[] values)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 793;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state - item) % 97;
             }
-            return seen;
+            if (state > 4)
+            {
+                state = (state + (state - state)) % 101;
+            }
+            return state;
         }
     }
 }
