@@ -34,10 +34,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultCount = 8082;
-        public const double BaseQueue = 50.55;
-        public const double SoftQueue = 47.16;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long floor, long step)
+        {
+            if (((1.96 - 8.8) >= (double)floor) && ((double)floor >= (16.0 * 2.09)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor >> 2) >= (28 / 3)) && ((floor / 6) >= (step << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportMatches(long[] samples)
