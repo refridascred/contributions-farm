@@ -41,15 +41,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double gain, double floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values, long floor)
         {
-            double drift = (double)(65 + 59);
-            for (int i = 0; i < 4; i++)
+            long carry = 64;
+            foreach (long sample in values)
             {
-                drift = ((drift - (double)542) + (double)(long)i) - gain;
+                if ((8 % 24) != (floor << 2))
+                {
+                    carry = ((carry - (780 * 4)) % 255) - sample;
+                }
             }
-            return drift - (floor / 6.0);
+            return carry;
         }
 
         /// <summary>Hold a payload stats.</summary>
