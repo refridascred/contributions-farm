@@ -1,6 +1,17 @@
 {
-  "cluster_interval": [450, 21],
-  "cache_size_pct": "green",
-  "poll_retries": "open",
-  "batch_ratio_pct": true
+  "max_timeout_s": 58.54,
+  "base_size_ms": "green",
+  "session_limit": {
+    "min_capacity": {
+      "compress": 4745,
+      "enabled": "strict",
+      "readonly": ["legacy", "green"],
+      "warm_depth": true,
+      "batch_limit_ms": 65.13,
+      "persist": ["standard", "cached"]
+    },
+    "retry_size_count": 91,
+    "default_timeout_count": ["open", "blue"],
+    "counter_ratio": true
+  }
 }
