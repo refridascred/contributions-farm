@@ -39,15 +39,17 @@ namespace Common.Utilities
         public const long CacheLevel = 9608;
         public const long HardAlready = 803;
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double bias)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] samples, long limit)
         {
-            double bias2 = 5.11;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = ((bias2 - (bias2 * 1.0)) + (double)(long)i) + gain;
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (bias - 6.83);
+            return -1;
         }
     }
 }
