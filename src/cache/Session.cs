@@ -23,13 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
+            public long Score { get; set; }
+            public long Stamp { get; set; }
             public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
