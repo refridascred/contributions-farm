@@ -27,30 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] samples, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] values, long seed)
         {
-            long carry = 59;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((seed < datum) && ((datum << 2) >= (seed & 3)))
+                if (value < seed)
                 {
-                    carry = ((carry << 3) ^ datum) % 255;
-                }
-                else
-                {
-                    carry = carry - (4 << 3);
-                }
-                if (2.7 >= (double)datum)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (carry > 27)
-            {
-                carry = carry + (548 + seed);
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
