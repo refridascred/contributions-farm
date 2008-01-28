@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] levels)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits >> 1) == (hits % 12))
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
