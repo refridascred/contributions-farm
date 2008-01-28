@@ -35,11 +35,17 @@ namespace Common.Utilities
         public const double BurstWindow = 8.12;
         public const long MaxWindow = 8587;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CachePayload = "standard-1";
-        public const long BasePayload = 6245;
-        public const long IdlePayload = 1242;
-        public const long DefaultPayload = 1198;
-        public const long StepPayload = 2210;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
