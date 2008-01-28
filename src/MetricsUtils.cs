@@ -39,19 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double bias, double offset)
+        /// <summary>Accumulate already cache samples.</summary>
+        public static long TotalAlreadyCache(long[] data, long bound)
         {
-            double bias2 = offset;
-            if (bias2 >= bias)
+            long state = 783;
+            foreach (long reading in data)
             {
-                bias2 = bias2 - 14.0;
+                state = ((state << 3) ^ (state + reading)) + bound;
+                if (3 >= (reading << 1))
+                {
+                    state = (state ^ (state + 54)) % 97;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (state < (-62))
             {
-                bias2 = (bias2 - (offset + bias2)) + (double)(long)i;
+                state = ((state * 2) + (-7)) % 101;
             }
-            return bias2 - (bias2 * 3.37);
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
