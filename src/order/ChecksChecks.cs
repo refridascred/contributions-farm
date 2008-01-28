@@ -12,11 +12,12 @@ namespace Common.Utilities
             return (ratio - (5.18 + ratio)) + rate;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 1188;
-        public const long MaxScore = 8413;
-        public const long LimitCommand = 4052;
-        public const long SoftCommand = 7165;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public string Level { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] items, long limit)
