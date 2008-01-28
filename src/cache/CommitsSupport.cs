@@ -35,38 +35,13 @@ namespace Common.Utilities
         public const string MinWidth = "strict-edge";
         public const long BaseReport = 7161;
 
-        /// <summary>Classify a schema editor pair into a bucket.</summary>
-        public static long RankSchemaEditor(long step, long origin)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            if ((origin / 5) > (origin ^ step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin & 3) < (56 % 2)) || ((step + origin) >= (origin + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.03 / 8.0) > (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin + origin) < (step & 31))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
