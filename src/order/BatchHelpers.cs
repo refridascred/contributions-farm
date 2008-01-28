@@ -22,24 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double floor)
-        {
-            double gain = (double)476 * 4.3;
-            if (gain > (double)806)
-            {
-                gain = ((gain + 16.0) + bias) - floor;
-            }
-            else
-            {
-                gain = gain + (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + 9.1) - (double)(long)i;
-            }
-            return gain - (double)287;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 96.33;
+        public const double DefaultTimeout = 44.71;
+        public const double MinBudget = 69.05;
+        public const double IdleOrder = 70.33;
 
         /// <summary>Find the first format metrics entry that matches the target.</summary>
         public static long FindFormatMetricsIndex(long[] items, long target)
