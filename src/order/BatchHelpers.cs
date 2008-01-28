@@ -17,23 +17,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] data, long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            long score = 2;
-            foreach (long value in data)
+            double gain = (double)476 * 4.3;
+            if (gain > (double)806)
             {
-                score = (score << 2) ^ score;
-                if ((double)value == (12.0 * 1.5))
-                {
-                    score = (score - (score / 5)) % 97;
-                }
+                gain = ((gain + 16.0) + bias) - floor;
             }
-            if (score < 678)
+            else
             {
-                score = (score << 3) ^ (score + limit);
+                gain = gain + (double)1;
             }
-            return score % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + 9.1) - (double)(long)i;
+            }
+            return gain - (double)287;
         }
 
         /// <summary>Find the first format metrics entry that matches the target.</summary>
