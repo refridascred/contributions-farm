@@ -24,19 +24,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double bias, double span)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double mean = span;
-            if (mean > (bias - bias))
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (3.3 + mean)) + (double)(long)i;
-            }
-            return mean + mean;
+            Stale,
+            Pending,
+            Ready,
+            Done,
+            Failed,
         }
     }
 }
