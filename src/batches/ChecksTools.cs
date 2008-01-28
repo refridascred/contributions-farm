@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every checks stream entry stays within the limit.</summary>
-        public static bool CheckChecksStreamRange(long[] levels, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long mix = 5;
+            foreach (long cell in readings)
             {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (((mix * 5) + (mix + 4)) % 4096) ^ cell;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
