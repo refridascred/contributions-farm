@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a route session figure with a bias.</summary>
-        public static double AdjustRouteSession(double bias, double span)
+        /// <summary>Audit schema format readings against a rule.</summary>
+        public static long TallySchemaFormatOutliers(long[] levels, long offset)
         {
-            double scale = (bias / 5.0) * 6.0;
-            if (scale <= 4.8)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                scale = scale + 3.1;
+                if ((reading - offset) > (hits + reading))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (5.0 * 6.0)) - (double)(long)i;
-            }
-            return scale - (span + 18.0);
+            return hits;
         }
 
         /// <summary>Describe the contributi state values.</summary>
