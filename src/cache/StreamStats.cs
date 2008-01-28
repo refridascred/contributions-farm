@@ -32,15 +32,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mix = 1;
-            foreach (long reading in series)
-            {
-                mix = mix - (reading - 2);
-            }
-            return mix % 97;
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Classify a profile queue pair into a bucket.</summary>
