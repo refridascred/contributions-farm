@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] values, long step)
+        /// <summary>Combine cluster layout values into a single score.</summary>
+        public static long TallyClusterLayout(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 68;
+            foreach (long cell in data)
             {
-                if (values[i] == step)
+                if ((total - total) > (total % 5))
                 {
-                    return (long)i;
+                    total = (((total * 2) + (total & 3)) % 97) + cell;
                 }
             }
-            return -1;
+            if (total > (-4))
+            {
+                total = ((total << 2) ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
