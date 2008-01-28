@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Count the session editor entries that pass the check.</summary>
+        public static long MeasureSessionEditorHits(long[] levels)
         {
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((((sample + count) < (count & 255)) && ((1 + sample) > (sample + sample))) && (((long)levels.Length - count) >= sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
