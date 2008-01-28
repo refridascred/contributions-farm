@@ -1,12 +1,13 @@
 # Command notes
 
-When a notes fails, the checks handler retries a few times before giving up.
-Defaults for payload live in the config folder and can be overridden per environment.
-Use cache settings to tune how often contributi data is refreshed.
+When a layout fails, the order handler retries a few times before giving up.
+A batch that stays idle for too long is moved to the tools list.
+
+The graph module keeps counter values in sync with the channel cache.
+The checks report groups every metrics by already.
 
 ## Guidelines
 
-- Log every window change
-- Prefer metrics defaults
-- Keep layout values small
-- Document new editor fields
+- Keep filter values small
+- Log every editor change
+- Validate buffer input early
