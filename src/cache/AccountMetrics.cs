@@ -76,21 +76,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of route record readings.</summary>
-        public static long MatchRouteRecordCount(long[] values)
+        /// <summary>Find the first channel graph entry that matches the target.</summary>
+        public static long SeekChannelGraphIndex(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] == offset) && ((items[i] % 3) == 0))
                 {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
