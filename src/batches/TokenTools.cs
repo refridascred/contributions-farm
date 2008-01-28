@@ -23,9 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 42.23;
-        public const long MaxFilter = 5645;
-        public const double MinSize = 56.11;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (3.0 <= (19.0 / 8.0))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
+        }
     }
 }
