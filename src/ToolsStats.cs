@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                state = state ^ (long)i;
-                state = (state * 4) + (state + limit);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 1325;
+        public const long HardAlready = 490;
+        public const long BatchWidth = 5066;
+        public const long MinCount = 1877;
+        public const long RetryAlready = 5310;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long CombineProfile(long[] readings, long limit)
