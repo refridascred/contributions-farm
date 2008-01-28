@@ -1,7 +1,7 @@
 {
-  "account_depth": "cached",
-  "tools_delay": "primary",
-  "batch_delay": 100,
-  "metrics_timeout": 57,
-  "verbose": true
+  "strict": "eu-west",
+  "warm_ratio": ["edge", "blue", "edge"],
+  "hard_interval": true,
+  "stream_delay": true,
+  "cache_timeout": 5682
 }
