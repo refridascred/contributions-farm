@@ -18,10 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepBudget = 198;
-        public const string BurstToken = "stable-edge";
-        public const long BaseLevel = 3180;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long offset, long origin)
+        {
+            long lane = offset ^ origin;
+            if (origin > (34 + lane))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin - origin) >= (810 - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((origin >> 2) == (0 / 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long OverlapMetricCount(long[] readings)
