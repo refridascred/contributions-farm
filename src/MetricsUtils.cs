@@ -44,10 +44,19 @@ namespace Common.Utilities
         public const string BaseBatch = "alpha-1";
         public const string IdleScore = "legacy-1";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryRatio = 42.68;
-        public const long MinLevel = 3994;
-        public const string DefaultInterval = "stable-1";
-        public const double RetryLevel = 93.1;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double rate, double bias)
+        {
+            double bias2 = rate;
+            if (bias2 > (bias * 2.33))
+            {
+                bias2 = bias2 - (6.0 * 2.0);
+            }
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + bias2;
+        }
     }
 }
