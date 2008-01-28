@@ -28,25 +28,11 @@ namespace Common.Utilities
         public const long MaxLevel = 4857;
         public const long BurstSession = 820;
 
-        /// <summary>Rank entry cache input into a small class.</summary>
-        public static long BucketEntryCache(long limit, long origin)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long next = limit + origin;
-            if ((origin ^ limit) <= (limit - next))
-            {
-                return 5;
-            }
-            else
-            {
-                if (next <= (7 * 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
