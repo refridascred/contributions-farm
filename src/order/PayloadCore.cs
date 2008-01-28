@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultContext = "local-edge";
-        public const long RetryContext = 7306;
-        public const long MaxContext = 1065;
-        public const double MinTimeout = 40.5;
-        public const string StepContext = "fallback";
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
