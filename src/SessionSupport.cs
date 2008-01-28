@@ -20,14 +20,12 @@ namespace Common.Utilities
             return gain + (bias - span);
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Idle,
-            Failed,
-            Pending,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstWidth = 3187;
+        public const long IdleCounter = 4866;
+        public const long MinCounter = 8232;
+        public const double BurstCounter = 65.6;
+        public const long BaseSpan = 4114;
 
         /// <summary>Project the next checks account value.</summary>
         public static double SmoothChecksAccount(double gain, double bias)
