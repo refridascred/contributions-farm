@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] levels)
+        /// <summary>Measure how many queue metrics samples are out of range.</summary>
+        public static long CountQueueMetricsMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)sample <= (12.0 * 17.0))
+                if (!((tally < (datum * 4)) && ((52 - datum) > (datum + tally))))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a notes entry.</summary>
