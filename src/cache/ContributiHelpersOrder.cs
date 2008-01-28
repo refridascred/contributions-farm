@@ -13,11 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] samples, long target)
         {
-            double drift = scale;
-            return (drift - scale) + bias;
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of window readings.</summary>
