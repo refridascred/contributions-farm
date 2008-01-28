@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a counter checks reading by value.</summary>
-        public static long FindCounterChecksIndex(long[] levels, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 2) != 0))
+                if ((origin << 1) != (sum & 127))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (5 >> 3);
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
