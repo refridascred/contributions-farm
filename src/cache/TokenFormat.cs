@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] levels, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] data, long limit)
         {
-            long mix = 55;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                mix = (mix + (limit + limit)) ^ cell;
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return ok;
         }
 
         /// <summary>Hold a queue options.</summary>
