@@ -26,18 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] levels, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long step, long offset)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long edge = step ^ offset;
+            if (!((offset + edge) <= (edge + step)))
             {
-                if ((hits + sample) > (sample >> 3))
+                return 7;
+            }
+            else
+            {
+                if ((step ^ step) <= step)
                 {
-                    hits = (hits + 3) + step;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)step != (1.84 + 9.54)) || ((offset + 65) == (step << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
