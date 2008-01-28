@@ -54,12 +54,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Locate a editor stats reading by value.</summary>
+        public static long SeekEditorStatsIndex(long[] data, long seed)
         {
-            Pending,
-            Queued,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
