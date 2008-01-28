@@ -1,11 +1,11 @@
 {
-  "max_ratio": false,
-  "min_delay": ["staging", "strict", "edge"],
-  "base_limit": {
-    "batches_size": 30,
-    "token_depth": "standard",
-    "filter_depth": [367, 394],
-    "soft_limit": [264, 296, 355]
-  },
-  "profile_retries": "green"
+  "warm_ttl_ms": 30,
+  "audit": 1024,
+  "warm_threshold_ms": "stable",
+  "hard_retries_s": [342, 470, 90],
+  "support_timeout": {
+    "base_interval": 59.45,
+    "sync_retries": "legacy",
+    "audit": "primary"
+  }
 }
