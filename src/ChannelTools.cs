@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] samples, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
