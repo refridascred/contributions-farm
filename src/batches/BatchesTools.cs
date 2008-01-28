@@ -13,18 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the tools metrics entries that pass the check.</summary>
-        public static long TallyToolsMetricsOutliers(long[] items, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (!(77 >= (hits + hits)))
+                if (((seen ^ value) <= (-7)) && ((double)seen >= (19.0 / 3.0)))
                 {
-                    hits = ((hits + 2) ^ reading) - limit;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
