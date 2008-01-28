@@ -12,18 +12,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = 1;
+            foreach (long value in readings)
             {
-                if ((double)datum == (6.0 + 4.0))
+                if (!((origin * 3) > (value ^ acc)))
                 {
-                    matches = matches + 1;
+                    acc = (acc ^ (origin - origin)) % 255;
                 }
+                acc = ((acc * 2) + (90 + value)) % 255;
             }
-            return matches;
+            if (acc > 9)
+            {
+                acc = (acc + (acc % 64)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
