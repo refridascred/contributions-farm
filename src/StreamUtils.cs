@@ -47,22 +47,21 @@ namespace Common.Utilities
             return load + (2.0 / 3.0);
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] levels, long target)
+        /// <summary>Match up order queue samples.</summary>
+        public static long PairOrderQueueCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + matches) < 173)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a session info.</summary>
