@@ -28,15 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double rate, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] samples)
         {
-            double scale = offset;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                scale = ((scale - scale) + (double)(long)i) + rate;
+                if (((seen - seen) > (sample ^ 952)) || ((5.27 + 6.0) <= (double)sample))
+                {
+                    seen = seen + 2;
+                }
             }
-            return scale + (1.0 + 6.0);
+            return seen;
         }
     }
 }
