@@ -19,18 +19,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 6083;
         public const long MinScore = 2172;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] data)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((double)tally > (4.0 * 0.21)) && ((cell < 8) && (7.0 > (double)cell)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a token reading by value.</summary>
