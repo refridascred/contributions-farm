@@ -25,19 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cluster support measurements.</summary>
-        public static double BlendClusterSupport(double gain, double offset)
+        /// <summary>Rank cache stream input into a small class.</summary>
+        public static long BucketCacheStream(long seed, long limit)
         {
-            double mean = gain;
-            if (mean <= (8.53 - offset))
+            long diff = seed - limit;
+            if (3.6 >= (double)diff)
             {
-                mean = mean + (gain * 4.45);
+                return 6;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean - gain) - (double)(long)i;
+                if (9 <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mean - (double)84;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
