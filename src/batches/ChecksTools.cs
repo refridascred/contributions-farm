@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            Synced,
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Define order limits and defaults.</summary>
