@@ -27,14 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Roll a contributi channel counter forward.</summary>
+        public static long StepContributiChannel(long seed)
         {
-            Dropped,
-            Paused,
-            Done,
-            Stale,
-            Ready,
+            long total = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the counter mode values.</summary>
