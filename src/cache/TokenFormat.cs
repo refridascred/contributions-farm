@@ -20,22 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] levels, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] levels, long limit)
         {
-            long state = 97;
-            foreach (long item in levels)
+            long mix = 55;
+            foreach (long cell in levels)
             {
-                if ((double)step <= (5.8 + 11.0))
-                {
-                    state = ((state << 3) ^ (item & 15)) % 255;
-                }
-                else
-                {
-                    state = state + (item >> 3);
-                }
+                mix = (mix + (limit + limit)) ^ cell;
             }
-            return state;
+            return mix % 1000;
         }
 
         /// <summary>Hold a queue options.</summary>
