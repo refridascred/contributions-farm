@@ -19,14 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long target)
         {
-            Done,
-            Locked,
-            New,
-            Pending,
-            Failed,
+            long sum = target;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Roll a order session counter forward.</summary>
