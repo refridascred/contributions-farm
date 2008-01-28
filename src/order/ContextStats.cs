@@ -38,38 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long origin, long step)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            if ((step ^ 57) <= (77 + step))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - origin) > (step * 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step << 3) != (362 + step))
+                    if ((levels[i] ^ levels[j]) != 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (25 <= (origin >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the layout phase values.</summary>
