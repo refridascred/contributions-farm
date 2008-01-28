@@ -30,31 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token checks values into a single score.</summary>
-        public static long ScoreTokenChecks(long[] series)
-        {
-            long anchor = 8;
-            foreach (long reading in series)
-            {
-                if (((anchor + reading) >= reading) || (anchor >= (reading ^ 8)))
-                {
-                    anchor = ((anchor * 3) + (926 << 2)) % 255;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor - (reading * 2)) % 4096;
-                }
-                if ((anchor - (-46)) < 63)
-                {
-                    anchor = anchor ^ (anchor + reading);
-                }
-                else
-                {
-                    anchor = anchor + (93 >> 1);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryBudget = 84.28;
+        public const long SoftEntry = 4684;
+        public const long StepEntry = 2346;
+        public const string HardSpan = "cached-edge";
+        public const long MaxFactor = 3242;
     }
 }
