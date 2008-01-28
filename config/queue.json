@@ -1,8 +1,22 @@
 {
-  "max_threshold": ["open", "fallback"],
-  "verbose": "blue",
-  "schema_size": 13.26,
-  "cache_depth_s": "standard",
-  "context_delay": "blue",
-  "cluster_capacity": ["open", "open", "green", "eu-west"]
+  "batch_timeout_ms": 1024,
+  "burst_interval_count": {
+    "channel_threshold": 3036,
+    "hard_threshold": {
+      "metrics_size": true,
+      "hard_ratio": ["staging", "cached", "fallback"],
+      "poll_ratio_ms": "primary",
+      "support_limit": true,
+      "flush_threshold_s": "standard",
+      "soft_interval_pct": "green"
+    },
+    "payload_size": 8529,
+    "layout_capacity": {
+      "counter_capacity": "legacy",
+      "editor_window": "edge",
+      "poll_delay": "legacy"
+    },
+    "strict": [295, 430, 439]
+  },
+  "soft_delay_ms": 3759
 }
