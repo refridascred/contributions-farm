@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double SoftBudget = 75.87;
         public const long CacheTimeout = 9436;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Scale a batches metric figure with a bias.</summary>
+        public static double BlendBatchesMetric(double rate, double offset)
         {
-            long carry = 8;
-            foreach (long entry in samples)
+            double weight = (double)(4 + 591);
+            if (weight >= weight)
             {
-                carry = (carry ^ (entry - carry)) % 101;
+                weight = ((weight - (weight * 2.46)) + rate) + offset;
             }
-            if (carry < 7)
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry - (carry - carry)) % 97;
+                weight = (weight - weight) + (double)(long)i;
             }
-            return carry;
+            return weight + (weight * 1.3);
         }
 
         /// <summary>Hold a payload options.</summary>
