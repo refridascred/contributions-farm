@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowInterval = 3011;
+        public const long MinCount = 5510;
+        public const long RetryEditor = 9524;
+        public const long HardDepth = 2869;
+        public const double CacheEditor = 29.76;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] items, long limit)
