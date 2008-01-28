@@ -17,15 +17,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a token window reading.</summary>
-        public static double SmoothTokenWindow(double ratio, double span)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] levels, long bound)
         {
-            double scale = (span - span) * 3.51;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                scale = (scale - (ratio / 9.0)) + (double)(long)i;
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + (span + 6.6);
+            return ready;
         }
     }
 }
