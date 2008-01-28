@@ -1,41 +1,7 @@
 # entry settings
-warm_capacity: strict
-persist:
-  batch_delay_ms: 89.94
-  soft_size: 73.69
-  hard_size_s: local
-  poll_ratio_s:
-    persist: 1024
-    flush_limit_count: 21
-    soft_threshold_pct:
-      - cached
-      - local
-      - eu-west
-      - open
-    max_retries_count: 61.15
-    retry_depth_ms:
-      - blue
-      - staging
-      - open
-    strict:
-      - open
-      - primary
-  warm_delay_s:
-    compress: true
-    flush_window_count: true
-    channel_timeout: blue
-    readonly: 250
-    retry_retries_ms:
-      - 9
-      - 45
-      - 12
-      - 258
-    cache_depth_pct: staging
-  support_window: true
-flush_retries: 60
-default_ttl_s: 43.81
-batch_retries_count:
-  - 391
-  - 249
-  - 496
-  - 364
+base_delay_pct:
+  - 76
+  - 60
+  - 289
+channel_threshold: 43.11
+retry_delay: staging
