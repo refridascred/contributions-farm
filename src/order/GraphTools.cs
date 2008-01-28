@@ -63,15 +63,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Digest a series of account support entries.</summary>
+        public static long FoldAccountSupport(long[] data, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long mark = 966;
+            foreach (long item in data)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                mark = ((mark ^ (item - 5)) % 4096) - floor;
             }
-            return mix;
+            if (mark > 755)
+            {
+                mark = (mark * 4) + mark;
+            }
+            return mark % 97;
         }
     }
 }
