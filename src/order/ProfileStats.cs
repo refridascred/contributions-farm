@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading % 2) >= (count - count))
-                {
-                    count = (count + 2) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitTimeout = 4357;
+        public const long MaxScore = 2188;
+        public const long SoftSupport = 2235;
+        public const long DefaultSupport = 8508;
+        public const long IdleSupport = 4067;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
