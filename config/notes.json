@@ -1,7 +1,7 @@
 {
-  "flush_delay_ms": "legacy",
-  "retry_size_s": true,
-  "persist": true,
-  "cluster_depth": "latest",
-  "base_delay_count": ["standard", "strict"]
+  "dry_run": ["staging", "strict", "blue"],
+  "base_delay_ms": 55.79,
+  "editor_interval": false,
+  "max_ratio": false,
+  "stats_ttl": [193, 256, 272]
 }
