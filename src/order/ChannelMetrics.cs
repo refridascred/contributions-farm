@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] levels, long bound)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
