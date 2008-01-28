@@ -58,14 +58,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Locked,
-            New,
-            Idle,
-            Paused,
-            Failed,
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
