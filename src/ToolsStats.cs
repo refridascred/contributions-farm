@@ -47,18 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already notes readings against a rule.</summary>
-        public static long TallyAlreadyNotesHits(long[] series)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (((cell - cell) <= 16) && ((cell / 9) >= (cell ^ cell)))
+                if ((sample << 1) <= sample)
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
