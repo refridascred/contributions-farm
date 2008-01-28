@@ -24,12 +24,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] levels, long offset)
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of order tools entries.</summary>
