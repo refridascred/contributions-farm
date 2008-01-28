@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a token already figure with a bias.</summary>
-        public static double ProjectTokenAlready(double weight, double floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] series, long bound)
         {
-            double load = (double)(5 - 719);
-            if (load > (load * 4.6))
+            long acc = 804;
+            foreach (long reading in series)
             {
-                load = (load + (floor - floor)) - weight;
+                acc = ((acc - (531 >> 1)) % 255) - reading;
+                acc = ((acc << 3) ^ (bound / 4)) % 101;
             }
-            else
-            {
-                load = load + 5.0;
-            }
-            return load + (double)6;
+            return acc;
         }
 
         /// <summary>Describe the graph status values.</summary>
