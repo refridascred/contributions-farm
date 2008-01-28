@@ -1,13 +1,11 @@
 # support settings
-audit: true
-flush_window_count: 3170
-strict:
-  - 283
-  - 311
-  - 88
-layout_ratio: green
-cache_timeout_s:
-  - stable
-  - edge
-  - green
-  - staging
+strict: true
+warm_ratio_count:
+  - 432
+  - 272
+  - 121
+  - 310
+enabled: 6397
+contributi_threshold: 100
+compress: edge
+flush_capacity_pct: false
