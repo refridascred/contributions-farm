@@ -52,14 +52,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] levels)
         {
-            New,
-            Ready,
-            Dropped,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (622 >= (count & 31))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
     }
 }
