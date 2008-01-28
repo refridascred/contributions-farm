@@ -63,12 +63,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] samples, long offset)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
