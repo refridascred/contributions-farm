@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 117;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((63 & 15) > ((-97) + mix))
                 {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - bound) ^ reading;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ mix;
+                }
+                mix = ((mix * 2) + (mix / 3)) % 255;
+                if ((98 - mix) != (1 - bound))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
