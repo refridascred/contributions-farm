@@ -1,17 +1,6 @@
 {
-  "batch_ratio": 22.93,
-  "flush_threshold_ms": 100,
-  "queue_limit": false,
-  "command_interval": ["edge", "eu-west"],
-  "filter_retries": {
-    "support_delay": 77.23,
-    "cache_delay": 7445,
-    "cache_delay_pct": {
-      "strict": 73.22,
-      "persist": "green",
-      "poll_threshold": "latest",
-      "sync_ratio_s": ["stable", "strict"],
-      "poll_timeout_pct": [11, 297]
-    }
-  }
+  "payload_timeout": 100,
+  "warm_delay": [6, 100, 315, 176],
+  "stream_retries": "strict",
+  "checks_depth": 9531
 }
