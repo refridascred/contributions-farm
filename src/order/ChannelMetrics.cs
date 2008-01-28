@@ -20,18 +20,22 @@ namespace Common.Utilities
         public const double BasePayload = 76.43;
         public const string BurstPayload = "strict-edge";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((cell & 7) < (-82))
+                if ((double)bound != (7.5 / 3.0))
                 {
-                    count = count + 2;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
