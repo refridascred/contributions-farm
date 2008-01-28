@@ -28,18 +28,10 @@ namespace Common.Utilities
         public const double BatchEntry = 66.88;
         public const long DefaultEntry = 8648;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches <= (datum + matches)) && ((target ^ datum) < (matches % 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftFactor = 2905;
+        public const double BatchBuffer = 72.41;
+        public const long DefaultBuffer = 9491;
+        public const string StepInterval = "open-edge";
     }
 }
