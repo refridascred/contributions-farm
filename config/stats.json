@@ -1,6 +1,6 @@
 {
-  "persist": false,
-  "batch_retries_pct": false,
-  "idle_retries_count": 34,
-  "readonly": 250
+  "burst_ttl": "legacy",
+  "notes_capacity": false,
+  "tools_size": 60,
+  "persist": "legacy"
 }
