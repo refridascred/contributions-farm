@@ -1,13 +1,15 @@
 # Command notes
 
-When a layout fails, the order handler retries a few times before giving up.
-A batch that stays idle for too long is moved to the tools list.
+The session module keeps payload values in sync with the stats cache.
+Run the session check before changing any counter limits.
+A channel that stays idle for too long is moved to the route list.
 
-The graph module keeps counter values in sync with the channel cache.
-The checks report groups every metrics by already.
+When a editor fails, the account handler retries a few times before giving up.
+When a editor fails, the order handler retries a few times before giving up.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep filter values small
-- Log every editor change
-- Validate buffer input early
+- Review checks limits each release
+- Log every counter change
+- Keep layout values small
