@@ -50,10 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "latest-edge";
-        public const long LimitInterval = 9132;
-        public const double DefaultFarm = 27.49;
-        public const long BaseRatio = 6937;
+        /// <summary>Accumulate session order samples.</summary>
+        public static long TotalSessionOrder(long[] samples)
+        {
+            long acc = 8;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ entry) <= (entry ^ acc))
+                {
+                    acc = acc - (acc << 2);
+                }
+            }
+            return acc;
+        }
     }
 }
