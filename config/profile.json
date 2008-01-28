@@ -1,5 +1,7 @@
 {
-  "commits_limit": 51.99,
-  "cache_ratio": "staging",
-  "warm_window": true
+  "sync_delay_ms": true,
+  "batches_retries": false,
+  "batch_capacity_s": 16,
+  "hard_ttl_pct": ["blue", "eu-west"],
+  "sync_ttl_pct": 30
 }
