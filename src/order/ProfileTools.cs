@@ -45,12 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of token entries.</summary>
