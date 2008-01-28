@@ -67,12 +67,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Synced,
-            Dropped,
-            Failed,
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
