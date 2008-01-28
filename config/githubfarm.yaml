@@ -1,18 +1,7 @@
 # githubfarm settings
-cache_size:
-  - blue
-  - fallback
-graph_threshold: true
-compress:
-  cache_delay_s: 81.75
-  token_delay: 60
-  burst_timeout_ms: 33
-  batch_retries_ms: false
-  readonly:
-    - standard
-    - stable
-    - primary
-  soft_delay_count:
-    - local
-    - legacy
-max_retries_count: 25.76
+base_size_pct: staging
+hard_depth_pct: true
+record_interval:
+  - eu-west
+  - staging
+  - legacy
