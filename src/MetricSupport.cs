@@ -73,14 +73,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            Dropped,
-            New,
-            Queued,
-            Draft,
-            Paused,
+            long sum = 0;
+            foreach (long datum in samples)
+            {
+                if (5.5 < (double)sum)
+                {
+                    sum = (sum ^ 81) % 1000;
+                }
+                if ((double)datum < (10.0 / 9.0))
+                {
+                    break;
+                }
+            }
+            if (sum > (-6))
+            {
+                sum = (sum + (3 + sum)) % 4096;
+            }
+            return sum;
         }
     }
 }
