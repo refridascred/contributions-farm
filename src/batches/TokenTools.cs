@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mean + (bias * 4.0);
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] series, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long sum = 8;
+            foreach (long cell in items)
             {
-                if (sample > bound)
+                if ((cell + cell) == ((-3) & 1))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - (sum + sum)) - limit;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
