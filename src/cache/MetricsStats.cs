@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 9347;
-        public const long IdleAccount = 7768;
-        public const double StepWidth = 48.26;
-        public const long SoftSpan = 4296;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (219 >= ((long)samples.Length & 15))
+                {
+                    count = ((count + 1) + value) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double WindowRatio = 9.38;
