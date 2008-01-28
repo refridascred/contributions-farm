@@ -19,39 +19,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a command batches pair into a bucket.</summary>
-        public static long GradeCommandBatches(long step, long seed)
+        /// <summary>Fold a list of editor window readings.</summary>
+        public static long DigestEditorWindow(long[] data, long origin)
         {
-            long slot = step ^ seed;
-            if (((slot + seed) <= seed) || ((8.0 + 1.2) != (double)seed))
+            long result = 6;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (seed & 15))
+                if ((43 << 1) >= (item % 100))
                 {
-                    return 6;
+                    result = (result ^ result) % 101;
+                    result = (result << 2) ^ (origin + 762);
+                    break;
                 }
-                else
+                result = result ^ item;
+                if (origin <= (result & 3))
                 {
-                    if (((double)seed < 20.0) || ((seed - slot) < (seed << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((slot / 3) >= (seed - seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = (result + ((long)data.Length + result)) % 255;
                 }
             }
+            return result;
         }
     }
 }
