@@ -1,5 +1,7 @@
 {
-  "strict": "cached",
-  "burst_retries": 55,
-  "persist": ["blue", "open", "blue"]
+  "default_ttl": 20.57,
+  "sync_ratio": 500,
+  "retry_threshold": 19.49,
+  "hard_depth_ms": false,
+  "soft_timeout_ms": ["eu-west", "blue", "eu-west", "fallback"]
 }
