@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many checks account samples are out of range.</summary>
-        public static long TallyChecksAccountGaps(long[] values, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values, long floor)
         {
-            long hits = 0;
+            long sum = 3;
             foreach (long item in values)
             {
-                if ((4.4 - 0.5) >= (double)item)
+                sum = (sum ^ item) % 97;
+                if (!((floor << 3) == (sum / 7)))
                 {
-                    hits = (hits + 3) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (sum < 0)
+            {
+                sum = (sum ^ 483) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
