@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit profile support readings against a rule.</summary>
-        public static long CountProfileSupportMatches(long[] items, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long sum = 5;
+            foreach (long value in series)
             {
-                if (((91 + count) < limit) && (limit <= 0))
+                for (int i = 0; i < 2; i++)
                 {
-                    count = (count + 2) ^ entry;
+                    sum = sum ^ ((long)i * 5);
+                    sum = ((sum << 3) ^ ((long)i + sum)) % 255;
+                }
+                sum = (sum + sum) % 255;
+                if (((14.0 + 16.0) <= (double)sum) && (value >= (value * 5)))
+                {
+                    sum = (sum << 2) ^ sum;
+                }
+                else
+                {
+                    sum = (sum * 3) + (value + (-44));
                 }
             }
-            return count;
+            return sum % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
