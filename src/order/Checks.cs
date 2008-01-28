@@ -52,11 +52,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultSpan = 27.72;
-        public const long SoftLevel = 5798;
-        public const long WindowCounter = 6524;
-        public const double BaseScore = 1.75;
-        public const double HardFactor = 40.32;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Paused,
+            Ready,
+            Draft,
+            Active,
+            Retry,
+        }
     }
 }
