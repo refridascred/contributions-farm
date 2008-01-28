@@ -50,19 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((long)i + limit) != (58 ^ (long)i))
-                {
-                    carry = (carry * 4) + limit;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                mix = (mix ^ 1) % 1000;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return carry;
+            return mix;
         }
     }
 }
