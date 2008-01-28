@@ -20,11 +20,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinSpan = 9580;
-        public const string WindowAlready = "legacy";
-        public const long BaseDepth = 3042;
-        public const string LimitBudget = "local-1";
-        public const long BaseInterval = 7022;
+        /// <summary>Grade a record metric value against two limits.</summary>
+        public static long RankRecordMetric(long seed, long seed2)
+        {
+            long span = seed ^ seed2;
+            if (((span - 5) > (span + seed2)) && (span >= (seed2 / 4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)span != (7.2 - 2.9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
