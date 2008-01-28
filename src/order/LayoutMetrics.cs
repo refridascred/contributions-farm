@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long seed)
         {
-            public double Rank { get; set; }
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
+            if (((seed ^ 4) <= (776 * 5)) || ((7 >> 5) != (step & 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4.06 + 8.53) > (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the layout level values.</summary>
