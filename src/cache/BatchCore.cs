@@ -38,26 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next metric format value from a seed.</summary>
-        public static long StepMetricFormat(long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((limit > (limit << 1)) || ((limit / 4) < acc))
-                {
-                    acc = (acc + (acc << 3)) % 4096;
-                    acc = acc ^ (acc + acc);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (957 >> 2)) % 97;
-                    acc = acc ^ (acc - (long)i);
-                }
-                acc = (acc ^ (limit << 2)) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Synced,
+            Retry,
         }
     }
 }
