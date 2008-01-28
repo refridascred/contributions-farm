@@ -1,7 +1,13 @@
 # githubfarm settings
-persist:
-  - legacy
-  - open
-hard_ttl_count: true
-record_threshold: 250
-poll_depth_count: blue
+base_size_pct:
+  - 455
+  - 103
+  - 421
+cache_depth: 57
+batch_window: 21
+queue_capacity:
+  - standard
+  - fallback
+  - edge
+  - standard
+support_window: edge
