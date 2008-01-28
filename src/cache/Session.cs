@@ -50,21 +50,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 7995;
+        public const long BaseMetric = 2124;
+        public const string LimitFactor = "standard-1";
+        public const long IdleMetric = 1332;
     }
 }
