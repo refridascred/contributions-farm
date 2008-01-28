@@ -1,11 +1,10 @@
 # Command notes
 
-The support module keeps stream values in sync with the notes cache.
-Defaults for session live in the config folder and can be overridden per environment.
+Each contributi is validated before it reaches the stats queue.
+A profile that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Validate cluster input early
-- Keep format values small
-- Document new context fields
-- Prefer entry defaults
+- Prefer profile defaults
+- Validate token input early
+- Review farm limits each release
