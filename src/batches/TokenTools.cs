@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long LimitRatio = 3084;
         public const long MinTimeout = 1737;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long target)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
