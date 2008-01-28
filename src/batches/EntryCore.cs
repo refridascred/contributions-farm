@@ -58,14 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] readings, long floor)
         {
-            Ready,
-            Locked,
-            New,
-            Draft,
-            Done,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
