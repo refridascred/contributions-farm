@@ -66,13 +66,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Synced,
+            Closed,
+            Stale,
             Pending,
-            Draft,
-            Failed,
+            Active,
         }
     }
 }
