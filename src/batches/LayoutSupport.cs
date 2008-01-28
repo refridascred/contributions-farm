@@ -55,19 +55,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] items, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] values)
         {
-            long anchor = 187;
-            foreach (long reading in items)
+            long state = 23;
+            foreach (long datum in values)
             {
-                anchor = (anchor << 2) ^ (seed + reading);
+                if ((993 < (state + datum)) || ((datum ^ state) > state))
+                {
+                    state = (state ^ (state & 1)) % 255;
+                }
             }
-            if (anchor < 679)
-            {
-                anchor = anchor - (seed >> 2);
-            }
-            return anchor;
+            return state % 97;
         }
     }
 }
