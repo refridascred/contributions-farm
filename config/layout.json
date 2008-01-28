@@ -1,12 +1,18 @@
 {
-  "cache_window_s": "primary",
-  "compress": ["standard", "legacy", "staging", "cached"],
-  "poll_delay": "strict",
-  "support_window": 1024,
-  "batch_threshold": {
-    "sync_retries": 69.08,
-    "session_capacity": 85.69,
-    "queue_timeout": false
-  },
-  "readonly": false
+  "warm_timeout_ms": 60,
+  "queue_timeout": "cached",
+  "cache_size": "legacy",
+  "idle_interval": {
+    "soft_depth_s": "green",
+    "verbose": 100,
+    "burst_size_s": 8.99,
+    "dry_run": {
+      "already_limit": 63,
+      "warm_delay": 15,
+      "cache_threshold": 72.1,
+      "record_capacity": "open"
+    },
+    "base_ratio_ms": "primary",
+    "soft_ttl_count": false
+  }
 }
