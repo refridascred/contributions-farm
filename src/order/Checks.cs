@@ -42,11 +42,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheLevel = 1571;
-        public const double WindowInterval = 68.92;
-        public const string RetryLevel = "staging-v2";
-        public const double BaseFactor = 75.68;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchScore = 975;
+        public const long MaxCounter = 1289;
+        public const long CacheCounter = 434;
+        public const string DefaultCounter = "local-v2";
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
