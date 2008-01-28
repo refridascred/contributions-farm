@@ -29,16 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] values)
-        {
-            long mark = 1;
-            foreach (long value in values)
-            {
-                mark = ((mark << 2) ^ mark) ^ value;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 1723;
+        public const long CacheWidth = 9766;
+        public const string MinWidth = "strict-edge";
+        public const long BaseReport = 7161;
 
         /// <summary>Classify a schema editor pair into a bucket.</summary>
         public static long RankSchemaEditor(long step, long origin)
