@@ -19,12 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long step)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = (((anchor << 3) ^ (step + 265)) % 255) ^ (long)i2;
+                }
+                anchor = (anchor ^ (long)i) % 1000;
+                anchor = anchor + (anchor % 8);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first format metrics entry that matches the target.</summary>
