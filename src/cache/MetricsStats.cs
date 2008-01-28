@@ -45,24 +45,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long target, long step)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            if (((step & 1) >= (step % 2)) || ((step - target) > target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)step >= (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
