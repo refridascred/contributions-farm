@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] values, long seed)
         {
-            Done,
-            Active,
-            Synced,
+            long mix = 3;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) == (reading % 8))
+                {
+                    mix = (((mix * 4) + (reading & 15)) % 4096) + seed;
+                }
+                else
+                {
+                    mix = mix + (reading ^ mix);
+                }
+            }
+            if (mix > 47)
+            {
+                mix = mix - 4;
+            }
+            return mix;
         }
 
         /// <summary>Combine contributi cluster values into a single score.</summary>
