@@ -58,18 +58,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of payload report entries.</summary>
-        public static long TotalPayloadReport(long[] values, long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long carry = 154;
-            foreach (long cell in values)
-            {
-                if ((75 + 70) >= (37 - carry))
-                {
-                    carry = (((carry * 2) + (origin ^ carry)) % 65521) + cell;
-                }
-            }
-            return carry % 65521;
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
     }
 }
