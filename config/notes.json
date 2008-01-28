@@ -1,23 +1,7 @@
 {
-  "context_depth": {
-    "warm_threshold_ms": "standard",
-    "sync_timeout_s": 100,
-    "strict": ["green", "open", "edge", "eu-west"],
-    "cache_retries_ms": {
-      "compress": 25.96,
-      "batches_size": 86.61,
-      "editor_depth": 93,
-      "warm_timeout_ms": true,
-      "default_delay_s": 65.86
-    },
-    "sync_size": 53
-  },
-  "burst_size_count": {
-    "sync_window_count": "cached",
-    "hard_capacity_s": 13.08,
-    "idle_timeout_ms": 57.9,
-    "dry_run": 100,
-    "compress": [77, 223, 105, 44]
-  },
-  "poll_timeout_pct": 26.54
+  "dry_run": 1222,
+  "cluster_size": 40.51,
+  "soft_limit_pct": 79,
+  "cache_threshold_ms": "edge",
+  "sync_timeout": false
 }
