@@ -38,18 +38,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values, long step)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long state = -5;
-            foreach (long entry in values)
-            {
-                if (step >= (step >> 5))
-                {
-                    state = ((state << 3) ^ (step % 12)) + entry;
-                }
-            }
-            return state;
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
