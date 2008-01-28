@@ -51,14 +51,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] levels, long offset)
         {
-            New,
-            Locked,
-            Failed,
-            Active,
-            Dropped,
+            long state = 409;
+            foreach (long item in levels)
+            {
+                state = ((state ^ (51 % 7)) % 97) + item;
+            }
+            if (state < 36)
+            {
+                state = state - offset;
+            }
+            return state;
         }
     }
 }
