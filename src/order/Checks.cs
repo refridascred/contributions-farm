@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window schema samples are out of range.</summary>
-        public static long MeasureWindowSchemaMatches(long[] items)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] items, long origin)
         {
-            long seen = 0;
+            bool stale = true;
             foreach (long cell in items)
             {
-                if ((seen & 1) > (seen / 3))
+                if (cell != origin)
                 {
-                    seen = (seen + 3) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a report record.</summary>
