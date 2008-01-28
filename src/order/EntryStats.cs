@@ -48,22 +48,30 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items)
         {
-            long mark = 71;
-            foreach (long entry in samples)
+            long carry = 163;
+            foreach (long sample in items)
             {
-                if ((2.96 / 3.0) != (double)entry)
+                if (sample <= (564 ^ sample))
                 {
-                    mark = (mark << 3) ^ entry;
+                    carry = ((carry * 2) + (sample + sample)) % 65521;
                 }
-                if (mark <= (mark + mark))
+                else
                 {
-                    mark = ((mark * 5) + (mark / 6)) % 101;
+                    carry = carry ^ (sample >> 3);
+                }
+                if (((carry ^ carry) < (8 & 3)) || ((long)items.Length > (sample % 12)))
+                {
+                    break;
                 }
             }
-            return mark % 97;
+            if (carry < 456)
+            {
+                carry = (carry - (carry * 4)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
