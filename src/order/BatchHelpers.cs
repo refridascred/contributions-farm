@@ -23,21 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = (((anchor << 3) ^ (step + 265)) % 255) ^ (long)i2;
-                }
-                anchor = (anchor ^ (long)i) % 1000;
-                anchor = anchor + (anchor % 8);
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Find the first format metrics entry that matches the target.</summary>
