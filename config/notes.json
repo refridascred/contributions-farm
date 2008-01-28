@@ -1,7 +1,5 @@
 {
-  "record_timeout": ["stable", "edge"],
-  "flush_interval_s": "local",
-  "min_timeout_pct": 30,
-  "base_window_pct": "primary",
-  "burst_ratio_count": "standard"
+  "soft_delay_ms": 7245,
+  "editor_limit": [76, 376, 322, 192],
+  "idle_depth_s": true
 }
