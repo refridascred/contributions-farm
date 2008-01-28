@@ -1,13 +1,17 @@
 # githubfarm settings
-warm_ttl_count: staging
-base_capacity_pct:
-  persist: 81.21
-  verbose: 90.51
-  cache_capacity_ms:
-    - 345
-    - 264
-    - 431
-  graph_limit: stable
-max_window: false
-warm_threshold_count: green
-flush_ttl: 70.65
+burst_ttl_ms: 100
+soft_ttl_count:
+  max_timeout_pct:
+    counter_ratio: 20.8
+    poll_interval_count: eu-west
+    cache_interval: 250
+  profile_delay: latest
+  poll_size_ms: edge
+  sync_size: 500
+  enabled: false
+base_depth_s:
+  - 298
+  - 183
+  - 81
+burst_ratio: 27.2
+layout_interval: blue
