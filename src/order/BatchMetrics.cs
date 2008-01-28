@@ -41,14 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
-        {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultCount = 8082;
+        public const double BaseQueue = 50.55;
+        public const double SoftQueue = 47.16;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepLevel = 6019;
