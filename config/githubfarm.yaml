@@ -1,10 +1,21 @@
 # githubfarm settings
-compress: 79
-base_delay: 8126
-hard_capacity_pct: 19.46
-strict:
-  - legacy
-  - strict
-  - stable
-  - open
-hard_ratio: false
+soft_size_count:
+  route_timeout:
+    cache_timeout_s: legacy
+    dry_run: strict
+    contributi_capacity: true
+  sync_delay_ms: 88.97
+  cache_retries_s:
+    cluster_ratio: 250
+    batch_threshold_s: cached
+    retry_ttl_count: 69.58
+    entry_depth: 86
+    hard_ttl: true
+  farm_capacity: green
+editor_depth: 85
+idle_depth: true
+retry_threshold_count: true
+max_ratio:
+  - edge
+  - eu-west
+notes_ratio: open
