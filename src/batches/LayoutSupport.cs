@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxBudget = 59.95;
-        public const long HardTimeout = 9618;
-        public const long RetryBuffer = 350;
-        public const long DefaultInterval = 558;
-        public const long BaseBuffer = 9315;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > (double)matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double rate, double floor)
