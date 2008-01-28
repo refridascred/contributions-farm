@@ -58,10 +58,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "strict-edge";
-        public const long WindowAccount = 1678;
-        public const string LimitAccount = "fallback-v2";
-        public const long WindowDepth = 2023;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitScore = 5173;
+        public const string IdleRecord = "primary-1";
+        public const long BaseRecord = 4345;
+        public const string MinRecord = "fallback-v2";
+        public const double WindowBudget = 68.15;
     }
 }
