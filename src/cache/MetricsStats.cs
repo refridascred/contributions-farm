@@ -36,22 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            long result = 94;
-            foreach (long item in samples)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item ^ 630) > (item % 24))
+                if (!((39 / 2) < (step + step)))
                 {
-                    result = (result << 3) ^ (result / 7);
+                    anchor = (anchor * 5) + (anchor % 60);
+                    anchor = ((anchor * 5) + anchor) % 65521;
                 }
-                else
-                {
-                    result = (result + (result + (-33))) % 97;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
