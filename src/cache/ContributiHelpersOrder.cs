@@ -13,20 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinLevel = "latest-1";
+        public const long BatchLevel = 2391;
+        public const string BatchRoute = "fallback";
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] items, long floor)
