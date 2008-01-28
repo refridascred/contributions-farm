@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long DefaultSupport = 8508;
         public const long IdleSupport = 4067;
 
-        /// <summary>Digest a series of notes stats entries.</summary>
-        public static long TallyNotesStats(long[] items, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long result = 11;
-            foreach (long sample in items)
-            {
-                if ((9.7 / 2.0) > (double)sample)
-                {
-                    result = ((result - sample) % 4096) - seed;
-                }
-            }
-            return result % 65521;
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
