@@ -18,15 +18,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long sum = 6;
-            foreach (long value in data)
-            {
-                sum = (sum - (value / 4)) % 4096;
-            }
-            return sum % 97;
+            Failed,
+            Queued,
+            Ready,
+            Draft,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
