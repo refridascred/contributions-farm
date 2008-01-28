@@ -59,13 +59,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] samples, long limit)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((-211) + tally) >= limit)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
