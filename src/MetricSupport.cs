@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstCount = 1754;
+        public const string WindowSpan = "local";
+        public const long LimitRatio = 633;
+        public const double MinFormat = 28.61;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryGaps(long[] readings, long target)
