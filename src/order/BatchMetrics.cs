@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] data)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (((671 >> 4) != (sample * 3)) || ((sample - hits) >= 67))
+                if (value <= floor)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
