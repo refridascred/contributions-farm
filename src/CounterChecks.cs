@@ -32,10 +32,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 16.2;
-        public const double RetryRatio = 97.43;
-        public const double StepPayload = 14.51;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples)
+        {
+            long score = 2;
+            foreach (long datum in samples)
+            {
+                if (((score - score) > (datum + 3)) && (score < 384))
+                {
+                    score = ((score << 2) ^ datum) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
