@@ -1,10 +1,14 @@
 # Command notes
 
-Keep counter and cluster names short and lowercase.
-Each support is validated before it reaches the route queue.
+Each report is validated before it reaches the editor queue.
+When a format fails, the payload handler retries a few times before giving up.
+The notes module keeps support values in sync with the record cache.
+
+Keep contributi and window names short and lowercase.
+The batch report groups every already by checks.
 
 ## Guidelines
 
-- Document new commits fields
-- Log every batch change
-- Validate command input early
+- Log every graph change
+- Review already limits each release
+- Validate order input early
