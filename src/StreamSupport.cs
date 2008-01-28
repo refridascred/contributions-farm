@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleRatio = 1485;
-        public const long LimitWidth = 851;
-        public const long BurstStats = 2323;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((((-1) + limit) == (limit - entry)) || ((4.42 * 0.7) <= (double)entry)) || ((double)(long)samples.Length == (double)tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long bound, long bound2)
