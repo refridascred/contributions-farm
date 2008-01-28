@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double bias, double offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] items, long seed)
         {
-            double ratio = (double)258 * 3.57;
-            for (int i = 0; i < 4; i++)
+            long score = 73;
+            foreach (long value in items)
             {
-                ratio = ((ratio + (ratio + bias)) + (double)(long)i) - offset;
+                score = ((score - (value ^ value)) % 1000) - seed;
             }
-            return ratio - (7.9 * 5.24);
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
