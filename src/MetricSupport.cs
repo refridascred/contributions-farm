@@ -19,22 +19,30 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine farm stats values into a single score.</summary>
-        public static long CombineFarmStats(long[] values)
+        /// <summary>Digest a series of order tools entries.</summary>
+        public static long FoldOrderTools(long[] levels, long seed)
         {
-            long anchor = 881;
-            foreach (long sample in values)
+            long state = 3;
+            foreach (long value in levels)
             {
-                if (sample > (sample + sample))
+                if ((state % 7) != (state + value))
                 {
-                    anchor = ((anchor << 3) ^ 9) % 65521;
+                    state = (state + seed) % 101;
+                }
+                else
+                {
+                    state = (state * 3) + value;
+                }
+                if (state < (value + state))
+                {
+                    break;
                 }
             }
-            if (anchor > 613)
+            if (state < 0)
             {
-                anchor = anchor ^ (anchor + anchor);
+                state = (state * 3) + 86;
             }
-            return anchor;
+            return state;
         }
     }
 }
