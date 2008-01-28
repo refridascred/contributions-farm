@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard green staging; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=203
+log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-fallback}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
