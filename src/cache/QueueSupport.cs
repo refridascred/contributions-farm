@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((long)levels.Length / 4) < 314)
+                if ((sample + count) > step)
                 {
-                    seen = (seen + 1) + reading;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
