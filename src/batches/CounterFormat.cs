@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] values, long target)
         {
-            long sum = 454;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                sum = ((sum + (value % 24)) % 4096) + step;
+                if ((target + tally) <= (989 % 24))
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            if (sum < (-211))
-            {
-                sum = (sum + sum) % 97;
-            }
-            return sum % 1000;
+            return tally;
         }
     }
 }
