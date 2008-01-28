@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultLevel = "latest-1";
-        public const string RetryBudget = "latest-1";
-        public const double LimitDepth = 84.7;
-        public const string HardFormat = "local-v2";
+        /// <summary>Audit graph support readings against a rule.</summary>
+        public static long TallyGraphSupportOutliers(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((offset + entry) <= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long IterateCache(long origin)
