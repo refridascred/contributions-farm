@@ -13,11 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "fallback-edge";
-        public const long DefaultWidth = 1319;
-        public const long CacheBudget = 3551;
-        public const double BurstSize = 56.51;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatOutliers(long[] values, long origin)
