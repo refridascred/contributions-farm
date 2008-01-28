@@ -71,15 +71,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Classify a stream graph pair into a bucket.</summary>
+        public static long SortStreamGraph(long origin, long origin2)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long edge = origin + origin2;
+            if ((223 ^ origin2) > (edge / 7))
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((double)edge >= 0.7)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin << 1) < (origin2 & 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin <= (50 % 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stats commits samples are out of range.</summary>
