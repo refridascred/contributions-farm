@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] items, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)target > 2.6)
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
