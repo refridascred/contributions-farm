@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public bool Rank { get; set; }
+            long score = -70;
+            foreach (long item in items)
+            {
+                if (item >= (item & 1))
+                {
+                    score = (score - (7 - score)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the tools level values.</summary>
