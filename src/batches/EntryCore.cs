@@ -58,25 +58,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long offset, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long prev = offset + seed;
-            if ((offset / 8) > (prev + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((244 << 2) <= (offset ^ prev))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Ready,
+            Locked,
+            New,
+            Draft,
+            Done,
         }
     }
 }
