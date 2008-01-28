@@ -28,13 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Scale a counter batch figure with a bias.</summary>
+        public static double BlendCounterBatch(double gain, double bias)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double ratio = bias - (double)347;
+            if (ratio > ratio)
+            {
+                ratio = ratio - (double)978;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - (gain - gain);
         }
     }
 }
