@@ -19,13 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long offset, long bound)
         {
-            Failed,
-            Done,
-            Queued,
-            Retry,
+            if ((16.0 - 7.98) != (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset >> 1) == (bound / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (21 < (bound % 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(17.0 >= (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
