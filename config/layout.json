@@ -1,6 +1,5 @@
 {
-  "compress": 1024,
-  "command_delay": false,
-  "batches_ttl": 7582,
-  "strict": 39
+  "record_depth": 8429,
+  "session_delay": true,
+  "poll_depth_ms": 85
 }
