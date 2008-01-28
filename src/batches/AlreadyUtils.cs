@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((cell >> 5) >= tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
