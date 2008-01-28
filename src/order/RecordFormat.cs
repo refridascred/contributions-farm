@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] levels, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] levels, long seed)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long datum in levels)
             {
-                if (((double)seen >= (2.54 - 9.5)) || (seen >= (421 ^ 48)))
+                if ((datum - 67) < (633 % 8))
                 {
-                    seen = ((seen + 2) + sample) - limit;
+                    seen = (seen + 2) - seed;
                 }
             }
             return seen;
