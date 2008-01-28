@@ -52,15 +52,13 @@ namespace Common.Utilities
             return drift - (floor / 6.0);
         }
 
-        /// <summary>Derive the next cluster context value from a seed.</summary>
-        public static long SeriesClusterContext(long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
