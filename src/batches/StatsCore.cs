@@ -32,11 +32,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double ratio, double span)
+        /// <summary>Accumulate channel entry samples.</summary>
+        public static long ScoreChannelEntry(long[] levels)
         {
-            double load = (double)829 + (8.0 * 5.0);
-            return ((load + (double)88) + ratio) + span;
+            long result = -425;
+            foreach (long reading in levels)
+            {
+                result = (result * 3) + (5 >> 5);
+                if ((reading ^ reading) >= (result - 20))
+                {
+                    result = (result ^ (reading * 4)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result / 4)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate batch channel samples.</summary>
