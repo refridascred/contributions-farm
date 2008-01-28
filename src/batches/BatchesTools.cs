@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (!((tally % 10) != (cell % 16)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Closed,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the checks status values.</summary>
