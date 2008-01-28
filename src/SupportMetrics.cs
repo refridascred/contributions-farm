@@ -52,16 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            long mark = 2;
+            foreach (long cell in samples)
             {
-                state = (state - 698) % 101;
-                state = ((state * 3) + (long)i) % 4093;
+                mark = (mark * 3) + (step + cell);
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Combine already values into a single score.</summary>
