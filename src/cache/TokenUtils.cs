@@ -30,39 +30,18 @@ namespace Common.Utilities
             return mean + (mean * 9.7);
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long target, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] data)
         {
-            long step2 = target + step;
-            if ((double)step >= (1.3 - 19.0))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + step) == (29 + 151))
+                if ((295 - 74) <= (value ^ seen))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step2) < ((-9) % 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step < 4.0)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
