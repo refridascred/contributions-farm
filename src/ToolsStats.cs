@@ -65,19 +65,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream session entry stays within the limit.</summary>
-        public static bool ValidateStreamSessionBounds(long[] data, long target)
+        /// <summary>Count checks farm pairs that satisfy a relation.</summary>
+        public static long PairChecksFarmCount(long[] values)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
