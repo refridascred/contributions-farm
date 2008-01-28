@@ -42,13 +42,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Combine metrics batches values into a single score.</summary>
+        public static long DigestMetricsBatches(long[] values)
         {
-            Paused,
-            Locked,
-            Failed,
-            Queued,
+            long sum = 2;
+            foreach (long value in values)
+            {
+                if (!(sum > (370 ^ 246)))
+                {
+                    sum = sum ^ (value * 3);
+                }
+            }
+            if (sum > (-73))
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
