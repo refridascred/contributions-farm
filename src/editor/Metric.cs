@@ -22,14 +22,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Pending,
-            Stale,
-            Failed,
             Ready,
-            Active,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
