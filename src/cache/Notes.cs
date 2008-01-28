@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long MaxRatio = 1572;
         public const long SoftWidth = 8928;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 6337;
+        public const string RetryFactor = "open-1";
+        public const long MinWidth = 8979;
+        public const long HardBuffer = 3954;
+        public const long BaseBuffer = 9563;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
