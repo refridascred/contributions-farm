@@ -70,13 +70,18 @@ namespace Common.Utilities
         public const long BaseWidth = 1416;
         public const double SoftChannel = 90.99;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] data, long floor)
         {
-            Draft,
-            Queued,
-            New,
-            Closed,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) >= matches)
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
         }
     }
 }
