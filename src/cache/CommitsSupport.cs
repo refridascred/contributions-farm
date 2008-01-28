@@ -56,19 +56,13 @@ namespace Common.Utilities
         public const long WindowSpan = 4332;
         public const long DefaultSession = 228;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] data, long step)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long carry = 8;
-            foreach (long reading in data)
-            {
-                carry = (((carry << 3) ^ step) % 255) + reading;
-            }
-            if (carry > 19)
-            {
-                carry = (carry + (step + step)) % 97;
-            }
-            return carry % 65521;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
