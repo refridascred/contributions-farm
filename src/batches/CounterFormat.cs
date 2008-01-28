@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cluster already samples are out of range.</summary>
-        public static long TallyClusterAlreadyOutliers(long[] samples)
+        /// <summary>Fold a list of checks stats readings.</summary>
+        public static long DigestChecksStats(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long anchor = -323;
+            foreach (long item in samples)
             {
-                if (((58 < entry) && (277 < entry)) && (((42 % 64) > (entry & 255)) || ((tally >> 3) != (tally * 3))))
+                if ((anchor >= ((-41) >> 1)) || (anchor <= (item ^ 13)))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor - anchor) % 101;
+                    anchor = (anchor + (item - anchor)) % 255;
+                }
+                anchor = ((anchor * 2) + (item * 4)) % 255;
+                if (((anchor & 1) <= anchor) && ((item - anchor) <= item))
+                {
+                    anchor = (anchor - (646 << 3)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (item - 97)) % 65521;
                 }
             }
-            return tally;
+            if (anchor > 577)
+            {
+                anchor = anchor + (anchor & 15);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
