@@ -1,6 +1,5 @@
 {
-  "base_depth": "stable",
-  "persist": "stable",
-  "strict": 1067,
-  "audit": 264
+  "default_threshold": 66,
+  "enabled": true,
+  "metrics_threshold": 85
 }
