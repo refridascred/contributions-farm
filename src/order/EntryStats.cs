@@ -20,12 +20,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a buffer cache sample.</summary>
+        public static long FindBufferCacheIndex(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] < limit)
+                if (data[i] <= offset)
                 {
                     return (long)i;
                 }
