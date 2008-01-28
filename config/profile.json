@@ -1,5 +1,5 @@
 {
-  "schema_ratio": true,
-  "min_delay_count": false,
-  "persist": "green"
+  "commits_limit": 51.99,
+  "cache_ratio": "staging",
+  "warm_window": true
 }
