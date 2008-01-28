@@ -21,15 +21,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] readings, long origin)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long target, long seed)
         {
-            long mix = 56;
-            foreach (long cell in readings)
+            if ((double)seed <= (4.58 / 5.0))
             {
-                mix = ((mix << 2) ^ (origin - cell)) % 4096;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((double)seed <= (8.6 / 7.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((target & 1) <= (seed - seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
