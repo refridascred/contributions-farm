@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] items, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
+                result = result ^ (result - result);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
