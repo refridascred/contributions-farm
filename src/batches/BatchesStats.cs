@@ -24,11 +24,24 @@ namespace Common.Utilities
         public const long MaxProfile = 4650;
         public const long MaxDepth = 5843;
 
-        /// <summary>Adjust a token format reading.</summary>
-        public static double ProjectTokenFormat(double gain, double bias)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long bound, long floor)
         {
-            double rate = gain + (bias * 8.7);
-            return rate + gain;
+            if (floor <= (bound + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((9.6 - 5.4) >= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
