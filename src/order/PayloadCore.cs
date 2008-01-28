@@ -28,12 +28,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] items, long origin)
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a stats record.</summary>
