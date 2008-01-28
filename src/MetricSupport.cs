@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstCount = 1754;
-        public const string WindowSpan = "local";
-        public const long LimitRatio = 633;
-        public const double MinFormat = 28.61;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((18.0 / 7.0) > (double)limit) || ((5.6 * 5.0) <= (double)item))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
