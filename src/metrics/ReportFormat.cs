@@ -21,5 +21,27 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] readings)
+        {
+            long sum = 8;
+            foreach (long cell in readings)
+            {
+                if (((cell + cell) >= sum) && ((sum - cell) <= (cell - cell)))
+                {
+                    sum = sum - (9 >> 3);
+                }
+                else
+                {
+                    sum = sum + (8 + cell);
+                }
+                if (67 <= (sum << 2))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
