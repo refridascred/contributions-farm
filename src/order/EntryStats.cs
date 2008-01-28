@@ -60,18 +60,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] items)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)reading <= (1.6 * 1.7))
+                result = (result - (long)i) % 4096;
+                if (origin <= (result + origin))
                 {
-                    seen = seen + 1;
+                    result = result + (long)i;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
     }
 }
