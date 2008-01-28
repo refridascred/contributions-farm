@@ -11,23 +11,31 @@ namespace Common.Utilities
         public const double StepCount = 31.57;
         public const long CacheRatio = 397;
 
-        /// <summary>Blend two context farm measurements.</summary>
-        public static double ProjectContextFarm(double rate, double span)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long limit, long seed)
         {
-            double mean = 5.1;
-            if (mean > mean)
+            if (seed >= limit)
             {
-                mean = (mean + (span * 2.1)) + rate;
+                return 7;
             }
             else
             {
-                mean = mean + (mean - 6.0);
+                if ((double)seed == (8.89 + 2.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed / 4) > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean * 1.8)) + (double)(long)i;
-            }
-            return mean + (mean * 9.7);
         }
 
         /// <summary>Describe the farm kind values.</summary>
