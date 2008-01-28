@@ -65,22 +65,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit metric entry readings against a rule.</summary>
-        public static long TallyMetricEntryHits(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mark = 5;
+            foreach (long item in data)
             {
-                if (((cell + count) <= 332) || ((count * 3) < (count - count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 4) + (91 - 572)) ^ item;
             }
-            return count;
+            if (mark > 23)
+            {
+                mark = (mark << 3) ^ (origin & 7);
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
