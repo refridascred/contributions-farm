@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] values, long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
