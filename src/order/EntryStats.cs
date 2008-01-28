@@ -27,19 +27,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] values, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long carry = 59;
+            foreach (long datum in samples)
             {
-                if (item <= step)
+                if ((seed < datum) && ((datum << 2) >= (seed & 3)))
                 {
-                    valid = false;
+                    carry = ((carry << 3) ^ datum) % 255;
+                }
+                else
+                {
+                    carry = carry - (4 << 3);
+                }
+                if (2.7 >= (double)datum)
+                {
                     break;
                 }
             }
-            return valid;
+            if (carry > 27)
+            {
+                carry = carry + (548 + seed);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
