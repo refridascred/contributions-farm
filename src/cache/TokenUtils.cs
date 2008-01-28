@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 5521;
-        public const double MinBatches = 50.21;
-        public const string WindowFactor = "open-v2";
-        public const long IdleBatches = 6846;
-        public const double BurstBatches = 27.36;
+        /// <summary>Check that every graph tools entry stays within the limit.</summary>
+        public static bool CheckGraphToolsBounds(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
