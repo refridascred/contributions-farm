@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Classify a payload cache pair into a bucket.</summary>
+        public static long RankPayloadCache(long offset, long seed)
         {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            if ((9.12 + 5.2) > (double)offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset >= (13 % 100))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first profile queue entry that matches the target.</summary>
