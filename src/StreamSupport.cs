@@ -10,12 +10,38 @@ namespace Common.Utilities
         public const long LimitWidth = 851;
         public const long BurstStats = 2323;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long bound2)
         {
-            Draft,
-            Retry,
-            Stale,
+            if (!((double)bound >= (5.6 / 6.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound2 >> 2) <= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((11.0 + 2.8) <= (double)bound2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((86 * 2) < bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
