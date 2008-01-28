@@ -1,7 +1,11 @@
 {
-  "token_interval": 60,
-  "poll_retries_s": [143, 177],
-  "warm_capacity_count": true,
-  "report_threshold": 30,
-  "hard_depth": true
+  "max_ratio": false,
+  "min_delay": ["staging", "strict", "edge"],
+  "base_limit": {
+    "batches_size": 30,
+    "token_depth": "standard",
+    "filter_depth": [367, 394],
+    "soft_limit": [264, 296, 355]
+  },
+  "profile_retries": "green"
 }
