@@ -34,31 +34,18 @@ namespace Common.Utilities
         public const double BatchSize = 62.71;
         public const long StepBudget = 3610;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long bound, long step)
+        /// <summary>Count the filter tools entries that pass the check.</summary>
+        public static long CountFilterToolsMatches(long[] levels, long seed)
         {
-            if ((bound * 4) == (6 * 5))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step ^ 38) > (8 >> 2))
+                if ((entry * 2) == (59 >> 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound + step) == (9 & 31)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 3) + seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
