@@ -47,19 +47,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] data, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] data, long bound)
         {
-            long mark = 49;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                mark = (((mark << 3) ^ mark) % 97) ^ item;
-                if ((9.9 - 6.0) >= (double)floor)
+                if ((sample / 4) <= (bound + (-1)))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
