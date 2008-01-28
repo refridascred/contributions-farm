@@ -54,18 +54,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((double)item < (6.0 - 5.3))
+                if (value <= bound)
                 {
-                    hits = (hits + 2) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
