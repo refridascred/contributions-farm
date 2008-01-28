@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of record report readings.</summary>
-        public static long PairRecordReportCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseFactor = 64.48;
+        public const long SoftSpan = 7597;
+        public const string BurstSpan = "legacy-edge";
+        public const long StepWidth = 6356;
+        public const long DefaultStats = 5442;
 
         /// <summary>Count the record command entries that pass the check.</summary>
         public static long MeasureRecordCommandGaps(long[] samples, long bound)
