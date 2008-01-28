@@ -56,17 +56,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] values, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 42;
+            foreach (long reading in readings)
             {
-                if ((values[i] <= floor) && ((values[i] % 3) == 0))
+                if (offset < (offset >> 2))
                 {
-                    return (long)i;
+                    total = ((total + 8) % 101) ^ reading;
                 }
             }
-            return -1;
+            if (total > (-501))
+            {
+                total = total + (offset + total);
+            }
+            return total;
         }
     }
 }
