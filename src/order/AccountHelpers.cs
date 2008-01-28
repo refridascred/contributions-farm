@@ -30,32 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long seed, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long next = seed - step;
-            if (step <= (next ^ step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed >= (seed << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.0 - 12.0) == (double)next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a metric stats.</summary>
