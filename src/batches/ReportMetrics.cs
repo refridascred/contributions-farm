@@ -16,10 +16,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowTimeout = 13.93;
-        public const long BurstWindow = 3171;
-        public const long SoftLevel = 830;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Total { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] readings)
