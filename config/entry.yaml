@@ -1,4 +1,7 @@
 # entry settings
-base_threshold_pct: latest
-warm_limit: 100
-min_retries: 35.52
+base_capacity: standard
+cache_retries_pct:
+  - legacy
+  - blue
+  - blue
+farm_limit: false
