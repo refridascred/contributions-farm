@@ -51,18 +51,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] items, long floor)
         {
-            long anchor = 50;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (((anchor + cell) != (anchor >> 5)) && ((cell ^ anchor) > (anchor ^ anchor)))
+                if (value <= floor)
                 {
-                    anchor = (anchor << 2) ^ anchor;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
     }
 }
