@@ -20,15 +20,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((double)(long)values.Length == (8.8 / 5.0))
+                {
+                    count = (count + 3) - value;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
