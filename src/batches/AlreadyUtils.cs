@@ -23,38 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            if ((origin < (origin + origin)) && ((limit - limit) < (limit << 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit <= (limit + 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit - 97) < 64) || ((7.69 + 1.0) != (double)origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a record stats.</summary>
