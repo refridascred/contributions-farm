@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitDepth = 166;
-        public const long BaseFactor = 1344;
-        public const long BaseInterval = 5057;
-        public const long HardBudget = 5040;
+        /// <summary>Count buffer session pairs that satisfy a relation.</summary>
+        public static long PairBufferSessionCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ScaleBuffer(double ratio, double offset)
