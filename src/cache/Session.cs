@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank graph channel input into a small class.</summary>
-        public static long GradeGraphChannel(long bound, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] data, long floor)
         {
-            long edge = bound ^ floor;
-            if (((7.67 - 3.93) < (double)bound) && ((edge - bound) != (floor + 695)))
+            long state = 6;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8 - edge) != (3 + 9))
+                if (!(state >= (floor >> 5)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound == (5.1 * 5.36))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = ((state - (floor * 4)) % 1000) - datum;
                 }
             }
+            if (state > 25)
+            {
+                state = (state ^ (floor + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
