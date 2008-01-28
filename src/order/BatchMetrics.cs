@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long mix = 7;
+            foreach (long entry in values)
             {
-                if ((value << 1) > (value * 3))
-                {
-                    count = count + 1;
-                }
+                mix = (mix + (mix - mix)) + entry;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Count the window cache entries that pass the check.</summary>
