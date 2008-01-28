@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
