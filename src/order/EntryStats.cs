@@ -32,18 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Accumulate route order samples.</summary>
+        public static long TallyRouteOrder(long[] readings, long seed)
         {
-            long anchor = 658;
-            foreach (long value in samples)
+            long total = 66;
+            foreach (long reading in readings)
             {
-                if ((3.49 - 7.0) != (double)(long)samples.Length)
-                {
-                    anchor = (anchor + value) % 65521;
-                }
+                total = ((total + (total + 974)) % 101) + seed;
+                total = (total - (total - reading)) % 255;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
