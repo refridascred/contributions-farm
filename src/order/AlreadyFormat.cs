@@ -45,17 +45,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the notes record series from a seed.</summary>
-        public static long DeriveNotesRecord(long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = (mark - origin) % 65521;
-                mark = mark - (mark % 64);
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            Done,
+            Paused,
+            Failed,
+            Pending,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
