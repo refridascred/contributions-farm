@@ -30,10 +30,16 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinSpan = 8368;
-        public const long MinLayout = 6612;
-        public const long MinTimeout = 5344;
-        public const long RetrySize = 2667;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score - (score << 1)) % 4096;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
