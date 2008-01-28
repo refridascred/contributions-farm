@@ -57,18 +57,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items, long bound)
+        /// <summary>Locate a schema counter reading by value.</summary>
+        public static long LocateSchemaCounterIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)bound == (9.0 + 4.93))
+                if (values[i] == target)
                 {
-                    tally = (tally + 1) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
