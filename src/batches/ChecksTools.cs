@@ -32,12 +32,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Accumulate stats buffer samples.</summary>
+        public static long ScoreStatsBuffer(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
+            long mix = 521;
+            foreach (long item in samples)
+            {
+                mix = (mix + (938 << 2)) % 1000;
+                mix = mix + (item * 3);
+                mix = ((mix << 2) ^ (item % 64)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate queue samples.</summary>
