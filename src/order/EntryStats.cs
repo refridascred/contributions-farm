@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            long sum = 3;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum ^ item) % 97;
-                if (!((floor << 3) == (sum / 7)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < 0)
-            {
-                sum = (sum ^ 483) % 255;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
