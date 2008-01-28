@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a checks buffer sample.</summary>
-        public static long SeekChecksBufferIndex(long[] values, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a already reading by value.</summary>
