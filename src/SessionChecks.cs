@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Failed,
-            Locked,
-            New,
-            Done,
-            Retry,
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
