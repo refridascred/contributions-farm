@@ -91,18 +91,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] readings, long step)
+        /// <summary>Accumulate batch channel samples.</summary>
+        public static long DigestBatchChannel(long[] data)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long acc = 1;
+            foreach (long sample in data)
             {
-                if ((item + item) < (count + count))
-                {
-                    count = (count + 1) + step;
-                }
+                acc = (acc - acc) - sample;
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Count the buffer token entries that pass the check.</summary>
