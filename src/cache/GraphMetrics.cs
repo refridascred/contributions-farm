@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long origin)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long next = floor - origin;
+            if (floor < (floor >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor + origin) > 24) && ((next / 6) >= (origin & 127)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((next > floor) && ((next + origin) > (next ^ next)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
