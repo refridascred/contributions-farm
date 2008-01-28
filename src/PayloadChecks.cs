@@ -23,19 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] readings, long floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
