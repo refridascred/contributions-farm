@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchSpan = 2899;
-        public const string HardContext = "alpha-v2";
-        public const long StepContext = 5124;
-        public const long MinTimeout = 1178;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Pending,
+            Queued,
+            Stale,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long TallyFilterMatches(long[] levels)
