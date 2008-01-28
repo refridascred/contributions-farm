@@ -22,15 +22,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double weight, double span)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            double gain = 4.36;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - (span / 4.0)) - (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain - weight;
+            return seen;
         }
     }
 }
