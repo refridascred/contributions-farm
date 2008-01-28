@@ -1,8 +1,7 @@
 # githubfarm settings
-cache_ttl_s: primary
-strict: true
-compress: 100
-base_interval_pct:
-  - stable
-  - legacy
-  - staging
+warm_limit_pct: legacy
+cache_size_pct: 60
+verbose: 68
+soft_retries_ms: 30
+token_size: true
+base_timeout_ms: 7020
