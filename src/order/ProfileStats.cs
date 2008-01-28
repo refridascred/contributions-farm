@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] items, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] samples, long limit)
         {
-            long score = 73;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score - (value ^ value)) % 1000) - seed;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Match up counter tools samples.</summary>
