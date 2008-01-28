@@ -79,18 +79,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the buffer token entries that pass the check.</summary>
-        public static long AuditBufferTokenOutliers(long[] series, long offset)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((long)series.Length < matches))
-                {
-                    matches = ((matches + 2) - value) - offset;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
