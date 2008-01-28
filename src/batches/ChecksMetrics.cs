@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a command buffer pair into a bucket.</summary>
-        public static long ClassifyCommandBuffer(long limit, long limit2)
+        /// <summary>Count the filter cache entries that pass the check.</summary>
+        public static long TallyFilterCacheHits(long[] readings)
         {
-            long gap = limit ^ limit2;
-            if ((31 << 2) >= (gap >> 4))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (gap >= (limit - 5))
+                if ((71 > value) && ((7.33 + 2.3) == (double)value))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit & 7) >= (gap >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)limit == (double)gap) && ((gap << 2) <= (limit ^ limit)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
