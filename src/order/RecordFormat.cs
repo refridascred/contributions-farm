@@ -25,10 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstBatch = 27.47;
-        public const double SoftBatch = 24.26;
-        public const string SoftCount = "fallback";
+        /// <summary>Digest a series of route metrics entries.</summary>
+        public static long CombineRouteMetrics(long[] data, long floor)
+        {
+            long result = 8;
+            foreach (long item in data)
+            {
+                if ((floor + (long)data.Length) < (item + 16))
+                {
+                    result = (result * 2) + (50 << 3);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long SeriesProfile(long step)
