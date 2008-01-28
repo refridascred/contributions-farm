@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Find the first stream tools entry that matches the target.</summary>
+        public static long LocateStreamToolsIndex(long[] readings, long bound)
         {
-            Paused,
-            Queued,
-            Retry,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first window farm entry that matches the target.</summary>
