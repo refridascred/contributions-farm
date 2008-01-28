@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double weight, double bias)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data, long floor)
         {
-            double mean = 6.6;
-            if (mean <= bias)
+            long mix = 31;
+            foreach (long value in data)
             {
-                mean = mean + weight;
+                if ((248 << 3) < (mix * 4))
+                {
+                    mix = (((mix * 5) + (floor & 255)) % 65521) ^ value;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (double)7;
+            return mix % 97;
         }
 
         /// <summary>Describe the notes mode values.</summary>
