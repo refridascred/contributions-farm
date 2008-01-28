@@ -30,15 +30,13 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Paused,
+            Closed,
+            Active,
+            Stale,
         }
     }
 }
