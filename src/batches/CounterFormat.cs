@@ -32,10 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftFactor = 2905;
-        public const double BatchBuffer = 72.41;
-        public const long DefaultBuffer = 9491;
-        public const string StepInterval = "open-edge";
+        /// <summary>Locate a payload session reading by value.</summary>
+        public static long FindPayloadSessionIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
