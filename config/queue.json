@@ -1,23 +1,13 @@
 {
-  "audit": {
-    "base_capacity_ms": {
-      "layout_delay": 1283,
-      "token_window": "standard",
-      "min_delay_s": 82,
-      "verbose": 500,
-      "hard_retries_ms": false,
-      "notes_timeout": 39
-    },
-    "default_threshold": 86.2,
-    "format_size": {
-      "enabled": 29.87,
-      "min_delay_pct": "primary",
-      "burst_depth_ms": "staging"
-    },
-    "min_retries": 0.97,
-    "max_window_pct": "fallback",
-    "cache_ttl_s": true
+  "audit": "cached",
+  "hard_depth_ms": {
+    "persist": "strict",
+    "dry_run": "staging",
+    "max_window": 500,
+    "channel_ttl": true,
+    "compress": false
   },
-  "cache_size": false,
-  "idle_limit": 879
+  "verbose": 1643,
+  "base_limit": "stable",
+  "flush_retries_ms": 60
 }
