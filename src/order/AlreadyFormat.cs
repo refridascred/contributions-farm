@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Project the next cluster schema value.</summary>
+        public static double BlendClusterSchema(double ratio, double bias)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            double mean = bias * 6.9;
+            if (mean <= (double)0)
+            {
+                mean = (mean - (mean / 9.0)) - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - (double)98;
         }
 
         /// <summary>Define report limits and defaults.</summary>
