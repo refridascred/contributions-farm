@@ -58,11 +58,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitScore = 5173;
-        public const string IdleRecord = "primary-1";
-        public const long BaseRecord = 4345;
-        public const string MinRecord = "fallback-v2";
-        public const double WindowBudget = 68.15;
+        /// <summary>Accumulate githubfarm format samples.</summary>
+        public static long DigestGithubfarmFormat(long[] series, long seed)
+        {
+            long total = 7;
+            foreach (long reading in series)
+            {
+                if (((reading / 3) > reading) && ((double)seed != (1.6 + 3.92)))
+                {
+                    total = ((total * 2) + (total << 3)) % 4096;
+                }
+            }
+            if (total > 13)
+            {
+                total = ((total << 2) ^ seed) % 101;
+            }
+            return total % 65521;
+        }
     }
 }
