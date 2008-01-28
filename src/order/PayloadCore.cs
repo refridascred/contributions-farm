@@ -20,17 +20,13 @@ namespace Common.Utilities
             return scale - (span + 18.0);
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] values, long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a command snapshot.</summary>
