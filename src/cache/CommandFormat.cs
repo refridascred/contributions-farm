@@ -43,22 +43,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the queue notes entries that pass the check.</summary>
-        public static long TallyQueueNotesMatches(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((floor >> 2) == (floor - origin))
             {
-                if ((double)datum == (13.0 + 3.5))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor != (18.0 - 3.0))
                 {
-                    hits = hits + 2;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((floor << 3) > (0 + origin)) && ((origin + floor) > (floor * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
