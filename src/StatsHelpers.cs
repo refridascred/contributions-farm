@@ -28,12 +28,26 @@ namespace Common.Utilities
         public const long MaxLevel = 4857;
         public const long BurstSession = 820;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "latest-1";
-        public const double BurstSize = 31.07;
-        public const long MinFormat = 7532;
-        public const long WindowFactor = 7166;
-        public const long HardLevel = 9125;
+        /// <summary>Rank entry cache input into a small class.</summary>
+        public static long BucketEntryCache(long limit, long origin)
+        {
+            long next = limit + origin;
+            if ((origin ^ limit) <= (limit - next))
+            {
+                return 5;
+            }
+            else
+            {
+                if (next <= (7 * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] values)
