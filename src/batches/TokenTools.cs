@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] values)
         {
-            long result = 2;
-            foreach (long entry in samples)
+            long state = 8;
+            foreach (long sample in values)
             {
-                result = result + (entry ^ result);
-                if (entry > (result + entry))
-                {
-                    break;
-                }
+                state = state ^ (sample << 1);
+                state = state ^ sample;
+                state = (state * 4) + (state - state);
             }
-            if (result < (-82))
+            if (state < 787)
             {
-                result = ((result << 2) ^ ((long)samples.Length >> 1)) % 255;
+                state = ((state * 5) + (state % 10)) % 255;
             }
-            return result % 97;
+            return state;
         }
 
         /// <summary>Combine format values into a single score.</summary>
