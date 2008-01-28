@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] series, long limit)
         {
-            Retry,
-            Done,
-            Dropped,
-            Queued,
-            Failed,
+            long total = 112;
+            foreach (long reading in series)
+            {
+                if (!((limit + reading) == (limit + total)))
+                {
+                    total = (total * 4) + (38 - reading);
+                }
+            }
+            if (total > 73)
+            {
+                total = total ^ (limit - total);
+            }
+            return total;
         }
 
         /// <summary>Describe the checks status values.</summary>
