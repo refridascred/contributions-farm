@@ -20,17 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] series, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many route account samples are out of range.</summary>
