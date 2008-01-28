@@ -45,14 +45,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] items)
         {
-            Failed,
-            Retry,
-            Synced,
-            Draft,
-            Paused,
+            long acc = 251;
+            foreach (long entry in items)
+            {
+                if (acc <= (acc + 543))
+                {
+                    acc = ((acc - 87) % 4096) + entry;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
