@@ -27,12 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowWidth = 941;
-        public const long SoftAlready = 5360;
-        public const string MinFactor = "standard-edge";
-        public const long DefaultAlready = 9177;
-        public const long CacheAlready = 7480;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Dropped,
+            Paused,
+            Done,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
