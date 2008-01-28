@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy open primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
-
-CHANNEL_LIMIT=74
-log "limit is ${CHANNEL_LIMIT}"
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 3 ]; do
