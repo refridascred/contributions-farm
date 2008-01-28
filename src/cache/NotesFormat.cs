@@ -28,19 +28,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] values, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long acc = 8;
+            foreach (long cell in samples)
             {
-                if (value >= bound)
+                if ((double)acc > (19.0 + 3.0))
                 {
-                    valid = false;
+                    acc = acc ^ acc;
+                    acc = acc ^ 465;
+                }
+                if ((double)acc >= 1.5)
+                {
+                    acc = (acc ^ (cell >> 2)) % 97;
                     break;
                 }
+                acc = acc ^ (4 - cell);
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Adjust a context reading.</summary>
