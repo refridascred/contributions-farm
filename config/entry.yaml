@@ -1,8 +1,43 @@
 # entry settings
-record_size: 10
-compress: 250
-warm_limit_count:
-  - 159
-  - 355
-  - 51
-  - 335
+flush_delay_count: 30
+channel_ratio: 61.77
+default_capacity:
+  - 152
+  - 426
+  - 286
+  - 50
+farm_timeout:
+  max_ttl: true
+  strict: true
+  flush_window:
+    cache_ratio_pct: 22.11
+    order_retries: 93.46
+    graph_delay:
+      - 149
+      - 288
+      - 289
+      - 26
+  retry_limit_ms: green
+  max_retries_ms: latest
+  profile_ratio: 13.19
+max_retries:
+  commits_threshold: blue
+  flush_ttl_s: 15.69
+  support_interval: 82.47
+sync_limit:
+  flush_window:
+    - open
+    - cached
+    - blue
+    - staging
+  hard_ratio: 21.22
+  stats_ratio:
+    readonly: primary
+    schema_ttl: 1024
+    idle_depth_pct: latest
+    warm_ratio:
+      - 469
+      - 328
+      - 294
+      - 408
+  hard_depth_pct: 9965
