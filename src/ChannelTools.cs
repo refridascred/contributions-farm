@@ -17,11 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxSpan = 6276;
-        public const long MaxWidth = 9852;
-        public const long StepRoute = 9847;
-        public const string SoftRoute = "open-v2";
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Pending,
+            Synced,
+            Active,
+            New,
+            Ready,
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TotalTools(long[] data)
