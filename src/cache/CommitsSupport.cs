@@ -85,15 +85,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a account session figure with a bias.</summary>
-        public static double ProjectAccountSession(double rate, double bias)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] data, long step)
         {
-            double ratio = bias;
-            if (ratio <= (double)46)
+            long carry = 8;
+            foreach (long reading in data)
             {
-                ratio = ratio + (rate * 5.0);
+                carry = (((carry << 3) ^ step) % 255) + reading;
             }
-            return ratio + (bias - 3.59);
+            if (carry > 19)
+            {
+                carry = (carry + (step + step)) % 97;
+            }
+            return carry % 65521;
         }
     }
 }
