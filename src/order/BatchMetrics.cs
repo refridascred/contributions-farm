@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long bound, long step)
-        {
-            if ((step < 66) && ((step + step) > (bound - step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((58 & 127) != (bound << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardLevel = 3094;
+        public const long StepSize = 5551;
+        public const long BurstEntry = 179;
+        public const long StepEntry = 5341;
+        public const long DefaultEntry = 1549;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BurstWidth = 5126;
