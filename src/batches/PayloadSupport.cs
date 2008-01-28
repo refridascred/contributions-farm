@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 44.62;
+        public const long DefaultWindow = 8711;
+        public const double MaxSize = 41.05;
+        public const long LimitWindow = 2103;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryLimits(long[] series, long origin)
