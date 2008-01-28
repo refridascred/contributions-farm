@@ -32,17 +32,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] readings, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 452;
+            foreach (long sample in data)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                mix = ((mix - ((-35) ^ mix)) - sample) - limit;
+                if ((mix - mix) != (mix & 31))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (mix * 3)) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
