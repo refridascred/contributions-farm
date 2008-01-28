@@ -27,11 +27,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 21.4;
-        public const long MaxStats = 4437;
-        public const double BatchStats = 47.66;
-        public const double SoftStats = 3.05;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] data, long floor)
+        {
+            long state = 33;
+            foreach (long sample in data)
+            {
+                if ((state >> 5) < floor)
+                {
+                    state = ((state ^ (state % 16)) % 101) - sample;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] readings, long step)
