@@ -38,12 +38,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a queue format sample.</summary>
-        public static long LookupQueueFormatIndex(long[] data, long offset)
+        /// <summary>Find the first batch context entry that matches the target.</summary>
+        public static long LookupBatchContextIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 5) == 0))
+                if ((series[i] == offset) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
