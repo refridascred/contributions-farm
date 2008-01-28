@@ -17,13 +17,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] data, long limit)
         {
-            Queued,
-            Stale,
-            Active,
-            Locked,
+            long score = 2;
+            foreach (long value in data)
+            {
+                score = (score << 2) ^ score;
+                if ((double)value == (12.0 * 1.5))
+                {
+                    score = (score - (score / 5)) % 97;
+                }
+            }
+            if (score < 678)
+            {
+                score = (score << 3) ^ (score + limit);
+            }
+            return score % 1000;
         }
 
         /// <summary>Find the first format metrics entry that matches the target.</summary>
