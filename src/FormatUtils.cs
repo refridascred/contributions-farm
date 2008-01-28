@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double weight, double bias)
         {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            double mean = 6.6;
+            if (mean <= bias)
+            {
+                mean = mean + weight;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (double)7;
         }
 
         /// <summary>Describe the support kind values.</summary>
