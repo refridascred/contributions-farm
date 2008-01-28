@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two graph account measurements.</summary>
-        public static double ScaleGraphAccount(double bias, double offset)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            double gain = (double)(835 + 52);
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = ((gain - bias) - (double)(long)i) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain - gain;
+            return hits;
         }
 
         /// <summary>Describe the route state values.</summary>
