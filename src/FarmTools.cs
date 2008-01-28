@@ -23,18 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload filter samples are out of range.</summary>
-        public static long MeasurePayloadFilterMatches(long[] items)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double gain, double span)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double drift = (span * 11.0) / 7.0;
+            if (drift <= (double)5)
             {
-                if (seen <= ((long)items.Length - seen))
-                {
-                    seen = (seen + 3) - entry;
-                }
+                drift = (drift + 12.0) + gain;
             }
-            return seen;
+            else
+            {
+                drift = drift - (drift + drift);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - 9.1;
         }
 
         /// <summary>Adjust a editor reading.</summary>
