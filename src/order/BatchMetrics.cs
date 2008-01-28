@@ -39,24 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double span)
-        {
-            double scale = (double)(542 - 6);
-            if (scale >= span)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + span) - (double)(long)i;
-            }
-            return scale - (span * 7.3);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstRatio = 5804;
+        public const long BurstFilter = 3933;
+        public const long SoftScore = 2468;
+        public const long SoftFilter = 436;
 
         /// <summary>Project the next command value.</summary>
         public static double AdjustCommand(double bias, double offset)
