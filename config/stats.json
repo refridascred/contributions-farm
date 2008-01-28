@@ -1,8 +1,8 @@
 {
-  "persist": 2.25,
-  "cache_capacity": ["green", "eu-west", "legacy", "edge"],
-  "session_size": true,
-  "soft_depth_s": ["eu-west", "strict", "stable", "edge"],
-  "compress": 69,
-  "layout_ratio": 4351
+  "soft_retries_pct": 33,
+  "already_retries": "blue",
+  "max_threshold_pct": 5694,
+  "account_size": false,
+  "hard_timeout": 5897,
+  "hard_window_count": 18.5
 }
