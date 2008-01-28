@@ -18,15 +18,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] readings, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
+            long score = -5;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((9.0 - 7.0) != (double)cell)
+                {
+                    score = (score << 2) ^ (target - target);
+                }
             }
-            return carry;
+            return score % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
