@@ -1,7 +1,23 @@
 # entry settings
-warm_delay_pct: 5983
-burst_size_pct: 8
-notes_timeout: fallback
-cache_interval:
-  - 110
-  - 23
+default_window: 100
+flush_delay_ms: 38.44
+burst_capacity_pct: legacy
+order_timeout: primary
+channel_window:
+  audit:
+    - latest
+    - edge
+    - open
+    - edge
+  batch_window:
+    - 331
+    - 161
+    - 36
+    - 449
+  burst_capacity_count:
+    - 224
+    - 464
+  burst_capacity_ms: legacy
+  burst_delay_s:
+    - eu-west
+    - latest
