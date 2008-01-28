@@ -36,26 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            long sum = -83;
-            foreach (long value in series)
+            double bias2 = 20.0;
+            if (bias2 >= (rate * 19.0))
             {
-                if (!((sum - sum) < (570 >> 2)))
-                {
-                    sum = ((sum << 3) ^ (65 + sum)) + value;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 255;
-                }
+                bias2 = (bias2 + (double)895) - bias;
             }
-            if (sum < 33)
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum << 3) ^ (sum >> 5)) % 1000;
+                bias2 = (bias2 - rate) + (double)(long)i;
             }
-            return sum;
+            return bias2 - (rate * 7.96);
         }
     }
 }
