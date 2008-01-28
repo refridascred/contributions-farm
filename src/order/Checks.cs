@@ -28,19 +28,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] items, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (item != limit)
+                if ((double)matches < (10.0 / 6.0))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
