@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] series, long bound)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            long acc = 804;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc - (531 >> 1)) % 255) - reading;
-                acc = ((acc << 3) ^ (bound / 4)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Adjust a route reading.</summary>
