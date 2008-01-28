@@ -27,12 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long target)
         {
-            Idle,
-            Stale,
-            Draft,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
