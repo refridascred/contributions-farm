@@ -1,25 +1,5 @@
 {
-  "farm_capacity": 30,
-  "route_window": 13.9,
-  "poll_ratio_pct": {
-    "compress": {
-      "poll_retries_s": 3405,
-      "payload_threshold": 500,
-      "base_window": false,
-      "poll_delay": 41,
-      "strict": 1024,
-      "cluster_interval": "open"
-    },
-    "schema_ttl": "blue",
-    "counter_limit": {
-      "max_timeout": false,
-      "filter_depth": ["eu-west", "edge", "eu-west", "local"],
-      "compress": "blue",
-      "report_size": "latest"
-    },
-    "sync_size_count": false
-  },
-  "dry_run": false,
-  "token_ratio": 92.63,
-  "cache_delay_pct": 81
+  "burst_depth_count": "green",
+  "strict": 65.08,
+  "flush_size_pct": true
 }
