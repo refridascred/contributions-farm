@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] levels, long target)
         {
-            long mix = 5;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix * 5) + (mix + 4)) % 4096) ^ cell;
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
