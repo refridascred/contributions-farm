@@ -24,22 +24,19 @@ namespace Common.Utilities
             return mean + (bias * 4.0);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((matches - matches) <= matches)
+                if (sample > bound)
                 {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
