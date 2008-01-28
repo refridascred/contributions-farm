@@ -37,19 +37,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] series, long origin)
+        /// <summary>Accumulate entry command samples.</summary>
+        public static long TallyEntryCommand(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long sum = 23;
+            foreach (long datum in values)
             {
-                if (datum <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (sum - origin) - datum;
+                sum = sum + (931 ^ (long)values.Length);
             }
-            return flag;
+            if (sum > 223)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
