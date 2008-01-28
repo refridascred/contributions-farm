@@ -65,37 +65,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stream graph pair into a bucket.</summary>
-        public static long SortStreamGraph(long origin, long origin2)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long seed, long floor)
         {
-            long edge = origin + origin2;
-            if ((223 ^ origin2) > (edge / 7))
+            long prev = seed - floor;
+            if ((floor + floor) < (8 - 19))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((double)edge >= 0.7)
+                if ((floor * 4) <= (seed - prev))
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((origin << 1) < (origin2 & 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin <= (50 % 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
