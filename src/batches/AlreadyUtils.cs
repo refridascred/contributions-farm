@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepRatio = 3086;
-        public const string WindowLevel = "fallback-1";
-        public const long SoftBatches = 9257;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Dropped,
+            Idle,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
