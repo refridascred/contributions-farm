@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
