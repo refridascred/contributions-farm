@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "cached-1";
+        public const double BurstRatio = 49.64;
+        public const long CacheBudget = 7579;
+        public const string MaxNotes = "staging-1";
+        public const double BatchTimeout = 98.38;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long SortLayout(long bound, long target)
