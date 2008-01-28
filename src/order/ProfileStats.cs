@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const long BurstFilter = 9983;
         public const long MaxSize = 4295;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] series, long offset)
         {
-            Dropped,
-            Retry,
-            Idle,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)969 >= (double)entry)
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a editor header.</summary>
