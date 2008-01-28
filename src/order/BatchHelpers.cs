@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already batches entries.</summary>
-        public static long DigestAlreadyBatches(long[] values, long seed)
+        /// <summary>Adjust a stats filter reading.</summary>
+        public static double ProjectStatsFilter(double bias, double floor)
         {
-            long anchor = 9;
-            foreach (long item in values)
+            double bias2 = bias;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (((anchor * 4) + anchor) % 65521) - item;
+                bias2 = (bias2 + bias) + (double)(long)i;
             }
-            if (anchor > (-90))
-            {
-                anchor = ((anchor << 3) ^ (seed + 9)) % 97;
-            }
-            return anchor;
+            return bias2 - (bias2 + floor);
         }
 
         /// <summary>Describe the queue level values.</summary>
