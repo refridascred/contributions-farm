@@ -13,13 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a notes reading.</summary>
