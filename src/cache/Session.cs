@@ -45,9 +45,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 7995;
-        public const long BaseMetric = 2124;
-        public const string LimitFactor = "standard-1";
-        public const long IdleMetric = 1332;
+        public const long BaseMetric = 2431;
+        public const long WindowDepth = 1364;
+        public const long MaxMetric = 1900;
+        public const long CacheMetric = 8827;
     }
 }
