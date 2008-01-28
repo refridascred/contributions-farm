@@ -29,11 +29,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 5981;
-        public const long MaxWidth = 1390;
-        public const double BurstWindow = 8.12;
-        public const long MaxWindow = 8587;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] series, long origin)
