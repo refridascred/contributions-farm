@@ -13,13 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count & 31) > (count ^ count))
+                {
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
