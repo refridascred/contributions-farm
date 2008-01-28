@@ -7,17 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in staging green; do
+mode="${1:-eu-west}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in local blue eu-west fallback; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
