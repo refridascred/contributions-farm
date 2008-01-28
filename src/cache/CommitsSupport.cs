@@ -33,11 +33,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Accumulate graph already samples.</summary>
+        public static long ScoreGraphAlready(long[] samples, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long total = 6;
+            foreach (long datum in samples)
+            {
+                total = ((total - (origin & 7)) % 101) - datum;
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate support samples.</summary>
