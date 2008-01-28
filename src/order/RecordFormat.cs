@@ -46,11 +46,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepInterval = 831;
-        public const string HardScore = "legacy-v2";
-        public const long MinRatio = 4268;
-        public const string IdleLevel = "alpha";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftDepth = 12.12;
+        public const long StepSpan = 6925;
+        public const long WindowBatch = 2130;
+        public const string BaseBatch = "local-edge";
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
