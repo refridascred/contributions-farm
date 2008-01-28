@@ -1,12 +1,16 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Run the command check before changing any editor limits.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Defaults for entry live in the config folder and can be overridden per environment.
+The stats module keeps payload values in sync with the cache cache.
+A metric that stays idle for too long is moved to the counter list.
+
+Keep support and graph names short and lowercase.
+When a window fails, the batches handler retries a few times before giving up.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer context defaults
 - Document new already fields
-- Keep notes values small
-- Review profile limits each release
+- Log every checks change
+- Prefer cluster defaults
+- Keep schema values small
