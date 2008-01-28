@@ -44,19 +44,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every checks window entry stays within the limit.</summary>
