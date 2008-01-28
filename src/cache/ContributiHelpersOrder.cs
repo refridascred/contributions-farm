@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] data, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long sum = 856;
+            foreach (long sample in items)
             {
-                if (entry >= seed)
+                if ((origin >= (origin * 5)) && (origin > sample))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - (sample - sample)) % 97;
                 }
             }
-            return stale;
+            if (sum > 721)
+            {
+                sum = ((sum * 5) + (sum / 8)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
