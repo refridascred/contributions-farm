@@ -54,12 +54,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Done,
-            Ready,
-            Draft,
+            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
