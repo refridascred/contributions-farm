@@ -53,13 +53,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            Locked,
-            New,
-            Retry,
-            Pending,
+            long anchor = 3;
+            foreach (long entry in samples)
+            {
+                anchor = ((anchor + (225 >> 4)) % 1000) ^ entry;
+            }
+            return anchor;
         }
     }
 }
