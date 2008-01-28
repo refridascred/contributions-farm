@@ -66,18 +66,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit filter graph readings against a rule.</summary>
-        public static long MeasureFilterGraphHits(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mix = 0;
+            foreach (long item in readings)
             {
-                if ((68 % 100) >= (tally / 5))
+                if ((mix % 3) < (item ^ 26))
                 {
-                    tally = (tally + 2) + entry;
+                    mix = ((mix << 3) ^ (mix << 1)) % 101;
                 }
+                else
+                {
+                    mix = mix + mix;
+                    mix = mix - (mix + 6);
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = ((mix + (mix - mix)) % 65521) ^ (long)i;
+                }
+                mix = ((mix * 3) + mix) % 97;
             }
-            return tally;
+            return mix;
         }
     }
 }
