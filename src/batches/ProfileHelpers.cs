@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitDepth = 166;
+        public const long BaseFactor = 1344;
+        public const long BaseInterval = 5057;
+        public const long HardBudget = 5040;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ScaleBuffer(double ratio, double offset)
