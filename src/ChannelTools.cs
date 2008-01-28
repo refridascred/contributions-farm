@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Queued,
-            Synced,
+            Dropped,
             Locked,
-            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Blend two cluster support measurements.</summary>
