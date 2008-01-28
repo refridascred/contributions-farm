@@ -1,6 +1,23 @@
 {
-  "cache_size_count": 500,
-  "githubfarm_timeout": [218, 488, 295, 250],
-  "buffer_limit": 8,
-  "warm_timeout": "primary"
+  "audit": {
+    "base_capacity_ms": {
+      "layout_delay": 1283,
+      "token_window": "standard",
+      "min_delay_s": 82,
+      "verbose": 500,
+      "hard_retries_ms": false,
+      "notes_timeout": 39
+    },
+    "default_threshold": 86.2,
+    "format_size": {
+      "enabled": 29.87,
+      "min_delay_pct": "primary",
+      "burst_depth_ms": "staging"
+    },
+    "min_retries": 0.97,
+    "max_window_pct": "fallback",
+    "cache_ttl_s": true
+  },
+  "cache_size": false,
+  "idle_limit": 879
 }
