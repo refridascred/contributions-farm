@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "legacy-1";
-        public const long DefaultWidth = 9462;
-        public const string IdleWidth = "fallback";
-        public const double CacheCount = 62.6;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Done,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstWidth = 3187;
