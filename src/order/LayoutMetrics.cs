@@ -16,18 +16,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long step, long offset)
         {
-            long acc = 2;
-            foreach (long entry in data)
+            if (step >= (step << 2))
             {
-                if ((8.58 * 6.96) <= (3.3 / 2.0))
+                return 2;
+            }
+            else
+            {
+                if ((offset - step) < (step - offset))
                 {
-                    acc = ((acc << 2) ^ (entry & 1)) % 101;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)854 > (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((94 + offset) <= (offset * 2)) || ((double)step > (1.0 * 5.79)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
