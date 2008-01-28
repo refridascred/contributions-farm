@@ -1,15 +1,13 @@
 # Command notes
 
-The session module keeps payload values in sync with the stats cache.
-Run the session check before changing any counter limits.
-A channel that stays idle for too long is moved to the route list.
+The commits module keeps contributi values in sync with the contributi cache.
+Each session is validated before it reaches the batch queue.
 
-When a editor fails, the account handler retries a few times before giving up.
-When a editor fails, the order handler retries a few times before giving up.
-Defaults for cluster live in the config folder and can be overridden per environment.
+A commits that stays idle for too long is moved to the githubfarm list.
+The checks module keeps command values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Review checks limits each release
-- Log every counter change
-- Keep layout values small
+- Log every notes change
+- Prefer metrics defaults
+- Document new batches fields
