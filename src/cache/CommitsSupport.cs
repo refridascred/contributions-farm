@@ -31,12 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Combine stream channel values into a single score.</summary>
+        public static long TallyStreamChannel(long[] samples, long limit)
         {
-            Pending,
-            Locked,
-            Closed,
+            long score = -1;
+            foreach (long sample in samples)
+            {
+                if (limit >= (limit & 31))
+                {
+                    score = (score - (sample & 63)) % 101;
+                }
+            }
+            if (score > 871)
+            {
+                score = (score << 2) ^ (limit - score);
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
