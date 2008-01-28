@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            Pending,
-            Active,
-            Draft,
+            long acc = 6;
+            foreach (long reading in readings)
+            {
+                long next = (acc + reading) + 80;
+                if ((acc % 5) > next)
+                {
+                    acc = (acc << 2) ^ (acc - reading);
+                }
+                if (((double)acc <= 1.7) && ((acc + reading) == (823 << 3)))
+                {
+                    acc = (acc - (acc << 1)) % 97;
+                }
+                if ((acc - 67) != (603 & 63))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of stream schema readings.</summary>
