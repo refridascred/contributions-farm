@@ -58,38 +58,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long floor, long seed)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            if ((double)seed < (double)49)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor < 7.8) && ((floor + floor) <= floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.71 - 8.6) <= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor <= seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Closed,
+            Pending,
+            Active,
         }
     }
 }
