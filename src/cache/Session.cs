@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Rank graph channel input into a small class.</summary>
+        public static long GradeGraphChannel(long bound, long floor)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            long edge = bound ^ floor;
+            if (((7.67 - 3.93) < (double)bound) && ((edge - bound) != (floor + 695)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8 - edge) != (3 + 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound == (5.1 * 5.36))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
