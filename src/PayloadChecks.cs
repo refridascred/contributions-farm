@@ -56,13 +56,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Stale,
-            Draft,
-            Done,
-            Ready,
+            Retry,
+            Dropped,
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit metric entry readings against a rule.</summary>
