@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of checks stats readings.</summary>
-        public static long DigestChecksStats(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long step)
         {
-            long anchor = -323;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((anchor >= ((-41) >> 1)) || (anchor <= (item ^ 13)))
+                if (sample != step)
                 {
-                    anchor = (anchor - anchor) % 101;
-                    anchor = (anchor + (item - anchor)) % 255;
-                }
-                anchor = ((anchor * 2) + (item * 4)) % 255;
-                if (((anchor & 1) <= anchor) && ((item - anchor) <= item))
-                {
-                    anchor = (anchor - (646 << 3)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (item - 97)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor > 577)
-            {
-                anchor = anchor + (anchor & 15);
-            }
-            return anchor % 1000;
+            return ready;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
