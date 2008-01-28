@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] samples, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long sum = 66;
+            foreach (long value in levels)
             {
-                if ((limit + limit) >= (count + sample))
+                if ((1.0 - 7.9) <= (double)value)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = sum - (sum / 4);
                 }
             }
-            return count;
+            return sum % 97;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
