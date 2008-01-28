@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry window entry that matches the target.</summary>
-        public static long LookupEntryWindowIndex(long[] samples, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Combine account values into a single score.</summary>
