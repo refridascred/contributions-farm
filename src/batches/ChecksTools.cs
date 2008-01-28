@@ -32,18 +32,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate stats buffer samples.</summary>
-        public static long ScoreStatsBuffer(long[] samples)
-        {
-            long mix = 521;
-            foreach (long item in samples)
-            {
-                mix = (mix + (938 << 2)) % 1000;
-                mix = mix + (item * 3);
-                mix = ((mix << 2) ^ (item % 64)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 57.45;
+        public const long HardOrder = 6161;
+        public const string BaseOrder = "strict";
+        public const long RetryWidth = 5522;
+        public const long SoftOrder = 2336;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] data, long step)
