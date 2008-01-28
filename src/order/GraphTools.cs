@@ -63,19 +63,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of account support entries.</summary>
-        public static long FoldAccountSupport(long[] data, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mark = 966;
-            foreach (long item in data)
-            {
-                mark = ((mark ^ (item - 5)) % 4096) - floor;
-            }
-            if (mark > 755)
-            {
-                mark = (mark * 4) + mark;
-            }
-            return mark % 97;
+            Locked,
+            New,
+            Retry,
+            Pending,
         }
     }
 }
