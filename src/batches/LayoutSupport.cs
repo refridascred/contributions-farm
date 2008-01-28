@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!!((count % 12) <= count))
+                if (!(((6.0 + 3.09) <= (double)seen) || ((entry >> 2) == (long)data.Length)))
                 {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
