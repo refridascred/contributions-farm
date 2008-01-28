@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Derive the next batch entry value from a seed.</summary>
+        public static long DeriveBatchEntry(long step)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((sample * 3) <= (sample + sample))
+                if ((anchor << 3) < (step + (long)i))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor ^ (anchor * 5)) % 255;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor * 5) + ((long)i - (long)i);
+                anchor = anchor - step;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
