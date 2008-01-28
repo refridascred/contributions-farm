@@ -47,17 +47,13 @@ namespace Common.Utilities
         public const long SoftProfile = 4649;
         public const double BurstProfile = 50.4;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] levels, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a schema counter reading by value.</summary>
