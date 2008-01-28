@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 7078;
-        public const long SoftBatches = 5700;
-        public const string WindowBatches = "primary-v2";
-        public const long SoftScore = 9973;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Active,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long RollOrder(long step)
