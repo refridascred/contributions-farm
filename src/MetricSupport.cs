@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 686;
-        public const string StepContributi = "primary-1";
-        public const long BatchTimeout = 2324;
-        public const string DefaultContributi = "open";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 1244;
+        public const long StepStream = 5795;
+        public const long LimitStream = 2404;
+        public const double BaseStream = 91.23;
 
         /// <summary>Validate batches contributi readings against a bound.</summary>
         public static bool VerifyBatchesContributiRange(long[] values, long bound)
