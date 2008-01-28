@@ -50,14 +50,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Synced,
-            Failed,
             Queued,
-            Draft,
-            Ready,
+            Pending,
+            Done,
+            Failed,
+            Dropped,
         }
     }
 }
