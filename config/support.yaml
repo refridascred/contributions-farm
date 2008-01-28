@@ -1,6 +1,5 @@
 # support settings
-soft_threshold_pct: stable
-already_timeout: edge
-default_depth_pct:
-  - 395
-  - 71
+audit: staging
+sync_limit_ms: true
+base_retries: 6978
+flush_timeout_pct: blue
