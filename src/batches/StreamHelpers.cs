@@ -16,21 +16,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long lane = total;
+                if ((lane % 2) != (total ^ step))
                 {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total + (step << 2);
                 }
+                else
+                {
+                    total = ((total * 3) + (8 - lane)) % 97;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Iterate the metrics route series from a seed.</summary>
