@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long WindowRatio = 1257;
         public const double MinWidth = 68.33;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
