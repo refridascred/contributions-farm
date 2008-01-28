@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Fold a list of filter notes readings.</summary>
+        public static long TallyFilterNotes(long[] samples, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public double Count { get; set; }
+            long acc = -73;
+            foreach (long entry in samples)
+            {
+                acc = ((acc - step) % 97) - entry;
+            }
+            if (acc > 413)
+            {
+                acc = ((acc << 3) ^ 120) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
