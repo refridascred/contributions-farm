@@ -30,20 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Check that every session order entry stays within the limit.</summary>
+        public static bool CheckSessionOrderLimits(long[] data, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (cell < seed)
                 {
-                    sum = (sum + (sum * 2)) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                sum = (sum - (sum / 8)) % 97;
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return flag;
         }
     }
 }
