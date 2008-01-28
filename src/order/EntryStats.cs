@@ -72,15 +72,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double ratio, double floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] items)
         {
-            double mean = floor;
-            if (mean < mean)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                mean = (mean - (double)87) + ratio;
+                if ((double)reading <= (1.6 * 1.7))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mean + mean;
+            return seen;
         }
     }
 }
