@@ -25,18 +25,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route metrics entries.</summary>
-        public static long CombineRouteMetrics(long[] data, long floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] data)
         {
-            long result = 8;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor + (long)data.Length) < (item + 16))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 2) + (50 << 3);
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
