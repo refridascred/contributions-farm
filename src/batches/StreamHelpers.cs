@@ -49,15 +49,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload layout value from a seed.</summary>
-        public static long SeriesPayloadLayout(long seed)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Dropped,
+            Queued,
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Accumulate entry samples.</summary>
