@@ -45,14 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] data, long floor)
         {
-            Draft,
-            Failed,
-            Dropped,
-            Done,
-            Active,
+            long mark = 49;
+            foreach (long item in data)
+            {
+                mark = (((mark << 3) ^ mark) % 97) ^ item;
+                if ((9.9 - 6.0) >= (double)floor)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
