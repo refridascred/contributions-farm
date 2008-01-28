@@ -35,13 +35,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double bias, double offset)
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public double Region { get; set; }
-            public double Owner { get; set; }
+            double gain = bias;
+            if (gain <= offset)
+            {
+                gain = gain + (offset - gain);
+            }
+            return gain + offset;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
