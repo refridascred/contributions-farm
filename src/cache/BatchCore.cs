@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long floor, long target)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            if ((floor - 475) == (target << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((15.0 * 17.0) < (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor <= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
