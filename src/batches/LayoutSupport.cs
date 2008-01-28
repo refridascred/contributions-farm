@@ -36,12 +36,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)tally < (double)item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
