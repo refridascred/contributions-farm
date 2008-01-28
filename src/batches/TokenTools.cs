@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long LimitRatio = 3084;
         public const long MinTimeout = 1737;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Active,
-            Synced,
-            Failed,
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
