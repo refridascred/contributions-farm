@@ -1,14 +1,10 @@
 # githubfarm settings
-metrics_delay: true
-flush_depth_count:
-  - 269
-  - 348
-  - 241
-cache_threshold_ms: 1409
-flush_window_s: 1024
-batch_retries:
-  - standard
-  - primary
-  - latest
-  - green
-max_ttl: 7641
+compress: 79
+base_delay: 8126
+hard_capacity_pct: 19.46
+strict:
+  - legacy
+  - strict
+  - stable
+  - open
+hard_ratio: false
