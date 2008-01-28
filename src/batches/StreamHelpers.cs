@@ -58,19 +58,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate session command samples.</summary>
-        public static long TotalSessionCommand(long[] values, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long floor, long seed)
         {
-            long mark = 781;
-            foreach (long reading in values)
+            if ((double)seed < (double)49)
             {
-                mark = (((mark * 5) + (mark + reading)) % 255) + bound;
+                return 5;
             }
-            if (mark > 3)
+            else
             {
-                mark = mark - mark;
+                if (((double)floor < 7.8) && ((floor + floor) <= floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.71 - 8.6) <= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor <= seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mark % 1000;
         }
     }
 }
