@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] values, long step)
+        /// <summary>Count the cache route entries that pass the check.</summary>
+        public static long TallyCacheRouteMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (reading <= step)
+                if (tally >= (87 ^ entry))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
