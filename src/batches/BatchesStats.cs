@@ -30,11 +30,17 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 725;
-        public const long CacheSession = 5203;
-        public const double BatchWidth = 52.05;
-        public const long WindowSession = 7387;
-        public const double DefaultSize = 7.03;
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
