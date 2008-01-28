@@ -22,18 +22,18 @@ namespace Common.Utilities
         public const long BurstFilter = 9983;
         public const long MaxSize = 4295;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] data, long floor)
+        /// <summary>Measure how many notes stream samples are out of range.</summary>
+        public static long AuditNotesStreamHits(long[] series)
         {
-            long anchor = 70;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((3.9 / 4.0) < (double)(long)data.Length)
+                if ((reading << 2) >= hits)
                 {
-                    anchor = ((((anchor * 3) + ((long)data.Length >> 5)) % 4096) - item) - floor;
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a editor header.</summary>
