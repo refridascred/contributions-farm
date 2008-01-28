@@ -1,7 +1,8 @@
 {
-  "sync_retries": ["edge", "staging", "strict"],
-  "idle_size_pct": "latest",
-  "flush_threshold": 12.39,
-  "poll_ttl": "eu-west",
-  "default_ttl": 29
+  "poll_capacity_pct": 50.47,
+  "sync_interval": 5763,
+  "compress": 9174,
+  "base_interval": 500,
+  "base_threshold_ms": true,
+  "metrics_window": "latest"
 }
