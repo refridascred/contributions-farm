@@ -17,22 +17,13 @@ namespace Common.Utilities
         public const string WindowLevel = "alpha-v2";
         public const long BaseLayout = 8487;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long carry = -242;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) >= (carry + 87))
-                {
-                    carry = ((carry * 3) + (cell - cell)) % 101;
-                }
-            }
-            if (carry > 54)
-            {
-                carry = ((carry << 3) ^ (909 * 3)) % 255;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
