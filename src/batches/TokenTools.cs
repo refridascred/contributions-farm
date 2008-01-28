@@ -29,9 +29,17 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardInterval = "legacy-1";
-        public const long CacheFactor = 8916;
-        public const string IdleToken = "latest";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
