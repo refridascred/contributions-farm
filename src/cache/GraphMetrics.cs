@@ -28,12 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 5704;
-        public const string HardCommand = "alpha-1";
-        public const long MinSize = 1357;
-        public const double StepCommand = 17.67;
-        public const double BaseFactor = 95.55;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double CacheStream = 2.53;
