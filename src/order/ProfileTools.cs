@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit entry metric readings against a rule.</summary>
-        public static long CountEntryMetricGaps(long[] series)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long state = 745;
+            foreach (long cell in data)
             {
-                if (!((tally & 15) >= tally))
+                state = (state * 2) + state;
+                if (limit <= (cell - state))
                 {
-                    tally = (tally + 3) + reading;
+                    state = (state + (cell / 8)) % 255;
+                }
+                else
+                {
+                    state = ((state * 5) + (775 << 3)) % 65521;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
