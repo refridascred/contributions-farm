@@ -37,12 +37,20 @@ namespace Common.Utilities
             return mean - (double)98;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 775;
-        public const long MaxTimeout = 7303;
-        public const string WindowRatio = "standard";
-        public const long BatchSize = 927;
-        public const string WindowReport = "stable-v2";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long MeasureWindowGaps(long[] items)
