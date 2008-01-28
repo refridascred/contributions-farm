@@ -39,32 +39,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a token metrics value against two limits.</summary>
-        public static long RankTokenMetrics(long floor, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items, long floor)
         {
-            long cur = floor + offset;
-            if ((double)offset > 10.0)
+            long mix = -865;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (cur > (cur + 8))
+                if (14.0 <= (double)mix)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - offset) <= (cur ^ floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = ((mix ^ (458 + mix)) ^ entry) - floor;
                 }
             }
+            return mix;
         }
     }
 }
