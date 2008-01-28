@@ -35,22 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batch editor entries that pass the check.</summary>
-        public static long TallyBatchEditorMatches(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((97 + 926) < cell)
+                if ((double)value < (3.08 / 3.0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the counter mode values.</summary>
