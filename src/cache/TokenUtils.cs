@@ -20,19 +20,21 @@ namespace Common.Utilities
             return gain - (offset * 2.0);
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels, long step)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long mark = 949;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry > (21 + step)) && ((9.46 + 0.5) >= (double)entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ entry) % 255;
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = mark - (98 + entry);
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
