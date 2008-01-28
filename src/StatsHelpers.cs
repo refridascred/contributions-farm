@@ -60,11 +60,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] values)
         {
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long score = 2;
+            foreach (long value in values)
+            {
+                score = score + value;
+            }
+            return score;
         }
     }
 }
