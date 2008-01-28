@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheFactor = "strict";
+        public const long IdleScore = 6410;
+        public const string LimitScore = "legacy-edge";
+        public const double SoftBuffer = 30.14;
+        public const long BatchBuffer = 9854;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
