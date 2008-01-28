@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long LimitChannel = 6837;
         public const long LimitBudget = 4450;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen / 3) == (seen - 7))
-                {
-                    seen = ((seen + 2) - entry) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleDepth = "latest-v2";
+        public const long StepAlready = 9698;
+        public const string BatchRatio = "cached-v2";
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] values, long seed)
