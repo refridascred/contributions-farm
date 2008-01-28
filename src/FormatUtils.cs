@@ -40,18 +40,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long anchor = -59;
+            foreach (long entry in levels)
             {
-                if (((item << 1) <= item) || (((tally + item) != (item % 16)) && ((tally >> 4) < item)))
+                anchor = (anchor ^ (entry % 2)) % 1000;
+                if (entry <= step)
                 {
-                    tally = tally + 1;
+                    anchor = anchor ^ (step & 15);
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Fold a list of report readings.</summary>
