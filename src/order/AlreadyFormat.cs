@@ -64,23 +64,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double weight, double floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double load = (double)(61 % 2);
-            if (load < (floor * 1.92))
-            {
-                load = (load + (double)411) - weight;
-            }
-            else
-            {
-                load = load + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + (double)491;
+            Queued,
+            Ready,
+            Paused,
         }
     }
 }
