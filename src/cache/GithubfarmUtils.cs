@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long mark = -820;
-            foreach (long value in series)
-            {
-                if (((bound & 3) != (1 / 5)) && ((6.23 - 9.5) <= (double)bound))
-                {
-                    mark = ((mark * 3) + (value ^ bound)) % 65521;
-                }
-                mark = (mark ^ ((-38) + bound)) % 1000;
-            }
-            if (mark > 0)
-            {
-                mark = (mark + ((long)series.Length % 5)) % 1000;
-            }
-            return mark % 1000;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine already graph values into a single score.</summary>
