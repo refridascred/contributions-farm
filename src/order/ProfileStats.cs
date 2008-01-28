@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const long BurstFilter = 9983;
         public const long MaxSize = 4295;
 
-        /// <summary>Measure how many notes stream samples are out of range.</summary>
-        public static long AuditNotesStreamHits(long[] series)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading << 2) >= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a editor header.</summary>
