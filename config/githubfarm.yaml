@@ -1,15 +1,12 @@
 # githubfarm settings
-default_ttl_s:
-  max_interval_pct: true
-  stream_capacity: false
-  batch_limit: 5.87
-  strict:
-    - 62
-    - 452
-    - 75
-    - 52
-  hard_window_count: 500
-retry_limit: 40.63
-warm_window: 100
-strict: eu-west
-min_limit: true
+retry_ttl_pct: open
+already_depth:
+  - open
+  - cached
+cache_threshold_ms: strict
+audit: 9
+enabled:
+  - strict
+  - latest
+  - cached
+poll_retries: 13.39
