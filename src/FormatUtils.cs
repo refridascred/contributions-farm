@@ -66,39 +66,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long origin, long limit)
+        /// <summary>Audit filter graph readings against a rule.</summary>
+        public static long MeasureFilterGraphHits(long[] samples)
         {
-            long prev = origin + limit;
-            if (!((limit / 2) < origin))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin - 196) > limit)
+                if ((68 % 100) >= (tally / 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev - 27) <= (4 * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((3.3 + 6.7) <= (double)origin) && ((origin * 3) == (origin << 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = (tally + 2) + entry;
                 }
             }
+            return tally;
         }
     }
 }
