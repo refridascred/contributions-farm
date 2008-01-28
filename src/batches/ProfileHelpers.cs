@@ -54,20 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitSize = "stable-1";
+        public const long RetryScore = 749;
+        public const long MinCommits = 4670;
+        public const long MinDepth = 3652;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleLevel = 2169;
