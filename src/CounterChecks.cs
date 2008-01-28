@@ -58,19 +58,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] values, long bound)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
