@@ -52,18 +52,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] levels, long limit)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (limit >= (3 ^ limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + reading;
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
