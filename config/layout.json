@@ -1,7 +1,15 @@
 {
-  "retry_interval_count": true,
-  "queue_interval": true,
-  "report_retries": "green",
-  "hard_delay_ms": true,
-  "strict": "cached"
+  "checks_threshold": "edge",
+  "enabled": true,
+  "readonly": {
+    "warm_limit": false,
+    "compress": false,
+    "poll_threshold_ms": "eu-west",
+    "notes_size": "blue",
+    "layout_window": "standard",
+    "commits_delay": [322, 302]
+  },
+  "batch_ratio": true,
+  "verbose": false,
+  "flush_limit": true
 }
