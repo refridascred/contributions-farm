@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up cache metrics samples.</summary>
-        public static long MatchCacheMetricsCount(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!!((count % 12) <= count))
                 {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
