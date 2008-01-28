@@ -31,12 +31,19 @@ namespace Common.Utilities
         public const long BurstCount = 3644;
         public const long MaxOrder = 6621;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] samples, long floor)
         {
-            Active,
-            Stale,
-            Failed,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
