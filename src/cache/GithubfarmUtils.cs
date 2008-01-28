@@ -16,16 +16,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long origin)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                total = (total << 2) ^ ((long)i - origin);
-                total = ((total * 5) + (long)i) % 4093;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
