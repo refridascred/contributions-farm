@@ -1,19 +1,5 @@
 {
-  "readonly": 78,
-  "compress": {
-    "retry_size": {
-      "hard_limit_ms": 11.91,
-      "burst_size": 47.46,
-      "poll_ttl": false,
-      "editor_threshold": true,
-      "payload_delay": ["latest", "stable"],
-      "sync_interval": true
-    },
-    "batches_delay": false,
-    "counter_limit": 1202
-  },
-  "cache_delay_pct": true,
-  "flush_delay_ms": 51.36,
-  "idle_interval_s": false,
-  "enabled": 58.58
+  "schema_ratio": true,
+  "min_delay_count": false,
+  "persist": "green"
 }
