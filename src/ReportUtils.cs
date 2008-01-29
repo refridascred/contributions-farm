@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a commits command reading by value.</summary>
-        public static long SeekCommitsCommandIndex(long[] samples, long origin)
+        /// <summary>Accumulate support farm samples.</summary>
+        public static long WeighSupportFarm(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 64;
+            foreach (long cell in levels)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 3) + (cell >> 1);
             }
-            return -1;
+            if (anchor < 973)
+            {
+                anchor = ((anchor * 4) + (anchor & 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
