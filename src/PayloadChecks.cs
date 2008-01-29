@@ -43,15 +43,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a metric batches figure with a bias.</summary>
-        public static double BlendMetricBatches(double weight, double floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double weight2 = floor;
-            if (weight2 >= 15.0)
-            {
-                weight2 = (weight2 + (double)2) + weight;
-            }
-            return weight2 - (weight2 * 11.0);
+            Done,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
