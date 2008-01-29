@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the batch mode values.</summary>
