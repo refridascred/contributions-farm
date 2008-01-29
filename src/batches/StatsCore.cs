@@ -46,19 +46,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] series, long floor)
+        /// <summary>Fold a list of notes profile readings.</summary>
+        public static long CombineNotesProfile(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long state = 1;
+            foreach (long cell in items)
             {
-                if (cell <= floor)
+                state = (state - (state & 15)) % 65521;
+                if (((cell << 2) >= 817) && ((149 - (-94)) >= state))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (state > 35)
+            {
+                state = state + (offset + 17);
+            }
+            return state;
         }
 
         /// <summary>Hold a format stats.</summary>
