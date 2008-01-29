@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long step, long step2)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] levels)
         {
-            if (127 <= (step2 << 2))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step == (4.83 * 0.67))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (868 <= (step2 >> 2))
+                    if ((levels[i] ^ levels[j]) < 10)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step >= (6 >> 2)) || ((double)step2 > (6.81 + 2.72)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every payload route entry stays within the limit.</summary>
