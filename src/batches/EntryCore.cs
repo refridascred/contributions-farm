@@ -27,15 +27,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] values, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if ((8.8 - 9.6) == (double)origin)
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
