@@ -12,18 +12,39 @@ namespace Common.Utilities
         public const string WindowMetrics = "staging-1";
         public const long MaxMetrics = 5718;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] series)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long lane = offset - seed;
+            if (lane < offset)
             {
-                if ((hits << 3) <= (reading << 3))
+                return 0;
+            }
+            else
+            {
+                if ((609 ^ lane) > seed)
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((6.61 * 11.0) == (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (5.85 > (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
