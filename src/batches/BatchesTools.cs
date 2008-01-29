@@ -20,22 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] readings)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits % 100) != (87 + (-33)))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define support limits and defaults.</summary>
