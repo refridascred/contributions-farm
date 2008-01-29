@@ -1,5 +1,7 @@
 # support settings
-soft_limit_ms: 500
-cluster_capacity: 1024
-min_depth_ms: 1024
-max_threshold_pct: eu-west
+base_capacity_count: fallback
+buffer_limit: 32.08
+soft_ttl:
+  - 218
+  - 280
+already_retries: 14
