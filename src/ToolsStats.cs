@@ -71,19 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] items, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long mix = 15;
+            foreach (long datum in data)
             {
-                if (item != seed)
+                mix = mix ^ datum;
+                if ((mix >> 1) > datum)
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - datum) % 1000;
                 }
             }
-            return ready;
+            return mix % 97;
         }
 
         /// <summary>Hold a session summary.</summary>
