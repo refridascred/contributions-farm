@@ -23,19 +23,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] items, long step)
         {
-            long score = 45;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score * 2) + (23 << 2);
-                if (score >= ((long)samples.Length << 3))
+                if (items[i] <= step)
                 {
-                    score = ((score * 2) + datum) % 4096;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
