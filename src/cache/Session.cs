@@ -14,22 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate channel payload samples.</summary>
-        public static long TallyChannelPayload(long[] readings)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double ratio, double offset)
         {
-            long carry = 120;
-            foreach (long item in readings)
+            double load = (double)33 + (offset - 0.7);
+            if (load >= (offset + load))
             {
-                if (!((item + carry) != (51 << 3)))
-                {
-                    carry = (carry ^ (carry + 457)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (item & 255)) % 255;
-                }
+                load = load - (double)6;
             }
-            return carry;
+            else
+            {
+                load = load - (ratio - offset);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load - 6.0;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
