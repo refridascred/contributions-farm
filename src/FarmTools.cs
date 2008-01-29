@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
