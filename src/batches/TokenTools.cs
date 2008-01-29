@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BaseStream = 7242;
         public const long HardStream = 5678;
 
-        /// <summary>Check that every batches token entry stays within the limit.</summary>
-        public static bool GuardBatchesTokenLimits(long[] series, long bound)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a filter header.</summary>
