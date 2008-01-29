@@ -34,10 +34,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "standard-v2";
-        public const long SoftInterval = 5094;
-        public const long StepWidth = 7629;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long FoldChecks(long[] levels)
