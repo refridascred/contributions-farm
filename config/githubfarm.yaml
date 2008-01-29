@@ -1,9 +1,4 @@
 # githubfarm settings
-default_size_count: primary
-retry_delay_count: local
-metrics_threshold:
-  sync_size: 500
-  audit: fallback
-  window_ttl: 1024
-  hard_ttl_pct: 2
-  batch_threshold_pct: 6104
+entry_depth: 62.05
+idle_timeout: cached
+burst_window_pct: true
