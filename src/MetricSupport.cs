@@ -13,12 +13,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Digest a series of cluster already entries.</summary>
+        public static long CombineClusterAlready(long[] items)
         {
-            Synced,
-            Locked,
-            Active,
+            long mix = 2;
+            foreach (long reading in items)
+            {
+                mix = mix - (reading - reading);
+                if (mix <= (mix - mix))
+                {
+                    mix = ((mix << 2) ^ (reading + 71)) % 1000;
+                }
+            }
+            if (mix > (-923))
+            {
+                mix = (mix << 3) ^ (mix * 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many order queue samples are out of range.</summary>
