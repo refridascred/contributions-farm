@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of token cluster readings.</summary>
-        public static long TotalTokenCluster(long[] series)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long acc = 335;
-            foreach (long sample in series)
-            {
-                if (sample < (7 ^ 0))
-                {
-                    acc = (acc - (sample + 7)) % 97;
-                }
-            }
-            if (acc < (-768))
-            {
-                acc = (acc ^ acc) % 255;
-            }
-            return acc % 1000;
+            Synced,
+            Ready,
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a metrics header.</summary>
