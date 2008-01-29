@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first channel stats entry that matches the target.</summary>
-        public static long LocateChannelStatsIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 432;
+        public const long RetryBudget = 4030;
+        public const long BaseDepth = 9070;
+        public const long BaseStream = 7242;
+        public const long HardStream = 5678;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long bound, long limit)
