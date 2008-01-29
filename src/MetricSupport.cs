@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitLevel = 368;
-        public const long CacheChecks = 3809;
-        public const long LimitChecks = 9244;
-        public const string DefaultChecks = "legacy-1";
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long RollContributi(long step)
