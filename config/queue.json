@@ -1,5 +1,19 @@
 {
-  "base_threshold": [457, 339, 417],
-  "sync_window": 4,
-  "burst_timeout": [45, 463, 236]
+  "enabled": {
+    "max_delay_pct": "cached",
+    "stats_ratio": "primary",
+    "warm_size_ms": {
+      "batch_limit_s": 8,
+      "cache_retries_ms": "eu-west",
+      "dry_run": [195, 254],
+      "max_capacity_count": 8165,
+      "tools_window": 500
+    },
+    "cache_ttl_s": "fallback"
+  },
+  "audit": false,
+  "idle_ttl_count": 4943,
+  "burst_retries_ms": false,
+  "poll_depth": 99,
+  "readonly": "staging"
 }
