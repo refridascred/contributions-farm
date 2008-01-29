@@ -61,12 +61,9 @@ namespace Common.Utilities
             return mean + (bias / 7.0);
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinInterval = 6739;
+        public const string DefaultFactor = "fallback-1";
+        public const long CacheBatch = 3741;
     }
 }
