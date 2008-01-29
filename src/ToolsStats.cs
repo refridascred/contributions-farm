@@ -103,11 +103,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Audit support token readings against a rule.</summary>
+        public static long CountSupportTokenHits(long[] samples, long origin)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((748 >> 2) <= matches)
+                {
+                    matches = ((matches + 1) ^ item) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
