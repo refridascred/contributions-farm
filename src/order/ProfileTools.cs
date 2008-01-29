@@ -56,20 +56,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches queue counter forward.</summary>
-        public static long IterateBatchesQueue(long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                long bound = 55;
-                if ((bound + 7) <= (floor + state))
-                {
-                    bound = bound ^ (state << 3);
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
