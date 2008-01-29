@@ -1,8 +1,8 @@
-id,region,active,weight,state
-1,25.92,746,eu-west,576
-2,staging,legacy,30.65,strict
-3,93.94,84.29,690,147
-4,285,254,primary,4.19
-5,blue,454,449,local
-6,727,30.61,32.42,stable
-7,staging,795,83.12,65.92
+id,rank,region
+1,188,737
+2,10,eu-west
+3,850,fallback
+4,555,25.6
+5,376,edge
+6,60.1,staging
+7,947,18.11
