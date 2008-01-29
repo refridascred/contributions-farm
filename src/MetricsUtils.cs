@@ -48,19 +48,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long target, long bound)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            if (!((9.91 / 9.0) == (double)target))
             {
-                if (item <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound < (5.12 - 7.43))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (4.0 > (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound & 255) != (target - bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
