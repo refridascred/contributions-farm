@@ -55,13 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long step)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
