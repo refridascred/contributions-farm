@@ -1,8 +1,5 @@
 {
-  "githubfarm_ratio": true,
-  "strict": ["standard", "latest"],
-  "cluster_window": "fallback",
-  "account_threshold": 91,
-  "flush_delay_s": [314, 444],
-  "poll_size_count": true
+  "warm_delay_s": "legacy",
+  "cache_ratio": ["latest", "green", "blue"],
+  "dry_run": "latest"
 }
