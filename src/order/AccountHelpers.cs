@@ -33,19 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache contributi measurements.</summary>
-        public static double AdjustCacheContributi(double scale, double bias)
+        /// <summary>Validate editor batches readings against a bound.</summary>
+        public static bool GuardEditorBatchesRange(long[] items, long limit)
         {
-            double ratio = (14.0 + scale) / 5.0;
-            if (ratio <= (ratio * 2.0))
+            bool found = true;
+            foreach (long datum in items)
             {
-                ratio = (ratio - ratio) + bias;
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (scale * 11.0)) + (double)(long)i;
-            }
-            return ratio - (double)5;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
