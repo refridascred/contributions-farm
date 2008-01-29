@@ -15,11 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 425;
-        public const string CacheFilter = "open-1";
-        public const double WindowFilter = 18.83;
-        public const string BurstScore = "standard-edge";
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            New,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamLimits(long[] data, long bound)
