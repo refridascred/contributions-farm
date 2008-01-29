@@ -27,15 +27,11 @@ namespace Common.Utilities
         public const long MinCounter = 1371;
         public const long RetryCounter = 3612;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double gain, double offset)
-        {
-            double bias = gain;
-            if (bias >= (double)38)
-            {
-                bias = (bias - (double)396) - offset;
-            }
-            return bias - (double)(-5);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftSpan = 72.97;
+        public const long HardCommits = 4641;
+        public const long HardCount = 592;
+        public const long LimitScore = 1733;
+        public const long IdleLevel = 209;
     }
 }
