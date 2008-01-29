@@ -27,21 +27,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading <= origin)
                 {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
