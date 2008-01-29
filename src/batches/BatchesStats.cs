@@ -25,22 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster account readings against a rule.</summary>
-        public static long MeasureClusterAccountOutliers(long[] levels)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally % 12) <= (847 << 2))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
