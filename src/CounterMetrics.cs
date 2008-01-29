@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitRatio = 9630;
-        public const string LimitChannel = "open";
-        public const long MaxChannel = 5198;
-        public const long BurstTimeout = 5783;
-        public const double RetryChannel = 77.63;
+        /// <summary>Audit window graph readings against a rule.</summary>
+        public static long MeasureWindowGraphOutliers(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((hits ^ hits) >= limit) && ((double)limit == (3.52 * 5.1)))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
