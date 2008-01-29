@@ -32,13 +32,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Accumulate report order samples.</summary>
+        public static long TotalReportOrder(long[] levels, long limit)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            long anchor = 4;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor << 3) ^ (sample - anchor)) % 97;
+                if ((((long)levels.Length / 7) >= limit) || (15 > (anchor + limit)))
+                {
+                    anchor = anchor - sample;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (91 >> 5)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
