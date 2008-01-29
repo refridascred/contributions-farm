@@ -22,15 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two contributi stream measurements.</summary>
-        public static double SmoothContributiStream(double rate, double bias)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double bias2 = (double)48 - rate;
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = ((bias2 + (bias2 / 8.0)) - (double)(long)i) - bias;
-            }
-            return bias2 + rate;
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a token snapshot.</summary>
