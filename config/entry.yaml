@@ -1,16 +1,5 @@
 # entry settings
-persist:
-  - 490
-  - 78
-  - 147
-  - 381
-default_delay:
-  - standard
-  - strict
-already_capacity: latest
-graph_capacity:
-  - latest
-  - stable
-  - primary
-hard_depth_s: false
-idle_delay_pct: latest
+token_ratio: 95.44
+stats_capacity: 500
+verbose: primary
+enabled: latest
