@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const long BatchInterval = 7233;
         public const long RetryCounter = 7039;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstSchema = 2.49;
-        public const double MinWidth = 6.08;
-        public const long StepLevel = 3942;
-        public const long WindowSchema = 9363;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long MatchProfileCount(long[] items)
