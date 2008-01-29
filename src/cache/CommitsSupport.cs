@@ -16,14 +16,24 @@ namespace Common.Utilities
             return ratio + (20.0 + 3.5);
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            Draft,
-            Synced,
-            Queued,
-            Locked,
-            Closed,
+            long state = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((state ^ state) != (offset >> 3))
+                {
+                    state = state + (offset ^ state);
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state << 2) ^ (offset ^ (long)i2)) % 65521;
+                }
+                state = (state << 2) ^ (state * 2);
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Accumulate graph already samples.</summary>
