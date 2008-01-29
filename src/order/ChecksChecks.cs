@@ -30,24 +30,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry ^ ((long)i + (long)i2);
-                    carry = (carry - (offset >> 1)) % 255;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if ((offset + offset) > offset)
-                {
-                    carry = carry ^ (1 & 31);
-                }
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
     }
 }
