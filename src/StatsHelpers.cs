@@ -86,20 +86,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            long mark = 5;
-            foreach (long item in items)
+            long carry = 70;
+            foreach (long sample in levels)
             {
-                mark = (mark ^ (item * 4)) % 255;
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    mark = ((mark - 82) % 65521) + (long)i;
+                    carry = (((carry << 3) ^ (sample * 5)) % 4096) ^ (long)i;
                 }
-                mark = mark ^ (limit & 1);
+                carry = (carry * 3) + (371 & 7);
+                if (9.63 >= (double)sample)
+                {
+                    break;
+                }
             }
-            return mark;
+            if (carry < 38)
+            {
+                carry = (carry << 2) ^ (799 - carry);
+            }
+            return carry % 97;
         }
     }
 }
