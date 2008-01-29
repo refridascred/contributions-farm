@@ -50,12 +50,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSpan = 6254;
-        public const string BatchAccount = "open-edge";
-        public const long LimitAccount = 2789;
-        public const long BurstAccount = 4058;
-        public const string BurstSize = "cached-edge";
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double rate, double floor)
+        {
+            double ratio = (0.3 - floor) / 2.0;
+            if (ratio < rate)
+            {
+                ratio = ratio - 13.0;
+            }
+            return ratio - (floor - rate);
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long RollMetric(long limit)
