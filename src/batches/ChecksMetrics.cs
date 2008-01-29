@@ -13,21 +13,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 45;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score * 2) + (23 << 2);
+                if (score >= ((long)samples.Length << 3))
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 2) + datum) % 4096;
                 }
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Combine already values into a single score.</summary>
