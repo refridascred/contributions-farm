@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftTimeout = "staging";
-        public const long LimitFormat = 1027;
-        public const long HardFormat = 7445;
+        /// <summary>Check that every graph counter entry stays within the limit.</summary>
+        public static bool GuardGraphCounterLimits(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of filter commits entries.</summary>
         public static long TotalFilterCommits(long[] readings)
