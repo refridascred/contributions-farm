@@ -1,9 +1,5 @@
 # support settings
-cluster_ratio: false
-soft_limit: 60
-readonly:
-  strict: true
-  readonly: blue
-  sync_size_ms: 3748
-persist: true
-max_window_ms: local
+soft_limit_ms: 500
+cluster_capacity: 1024
+min_depth_ms: 1024
+max_threshold_pct: eu-west
