@@ -20,12 +20,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 5222;
-        public const double BurstSpan = 59.05;
-        public const long HardMetric = 1776;
-        public const long IdleSize = 1725;
-        public const double SoftCount = 18.97;
+        /// <summary>Locate a stats profile reading by value.</summary>
+        public static long LookupStatsProfileIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first account layout entry that matches the target.</summary>
         public static long SeekAccountLayoutIndex(long[] items, long origin)
