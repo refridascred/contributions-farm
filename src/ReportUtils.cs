@@ -19,16 +19,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] levels, long offset)
         {
-            long sum = 6;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long item in levels)
             {
-                sum = (sum << 2) ^ (sample - 266);
-                sum = (sum ^ (sum & 3)) % 4096;
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum % 97;
+            return found;
         }
 
         /// <summary>Count the channel filter entries that pass the check.</summary>
