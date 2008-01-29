@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of commits batch readings.</summary>
-        public static long TallyCommitsBatch(long[] levels)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long total = 174;
-            foreach (long sample in levels)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((total % 10) < (246 - total))
-                {
-                    total = (total - (total - sample)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (sample << 3)) % 255;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (total < 252)
-            {
-                total = ((total * 3) + 18) % 101;
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
