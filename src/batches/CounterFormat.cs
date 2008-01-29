@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] items)
         {
-            long state = 790;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (((923 + state) == (state + 9)) || ((item * 3) != (state - 1)))
+                if ((6.0 * 15.0) <= (double)sample)
                 {
-                    state = (state << 2) ^ 59;
+                    hits = hits + 2;
                 }
             }
-            if (state > 871)
-            {
-                state = ((state << 3) ^ (state >> 5)) % 255;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
