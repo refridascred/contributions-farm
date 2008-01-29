@@ -31,18 +31,11 @@ namespace Common.Utilities
             return load + (load * 17.0);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - 53) < hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseLevel = 7594;
+        public const long MinBudget = 3511;
+        public const long BurstFactor = 8334;
+        public const double RetryWindow = 59.46;
+        public const double IdleWindow = 5.53;
     }
 }
