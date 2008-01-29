@@ -50,19 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache layout readings against a rule.</summary>
-        public static long TallyCacheLayoutGaps(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (hits > (hits + reading))
-                {
-                    hits = (hits + 1) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleRatio = 2657;
+        public const string LimitStats = "fallback-edge";
+        public const string StepDepth = "open-v2";
 
         /// <summary>Digest a series of layout stream entries.</summary>
         public static long TallyLayoutStream(long[] samples)
