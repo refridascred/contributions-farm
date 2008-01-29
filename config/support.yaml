@@ -1,4 +1,26 @@
 # support settings
-idle_ratio: 60
-sync_window_ms: staging
-warm_capacity_pct: 38
+dry_run: false
+tools_limit:
+  poll_timeout_s: 1650
+  retry_limit_count:
+    report_threshold: 75.66
+    schema_threshold: 23
+    order_threshold: 48.87
+    strict: true
+    base_threshold_s: 82
+  command_interval:
+    - green
+    - cached
+    - edge
+    - eu-west
+  dry_run: staging
+  cache_ttl_pct: stable
+flush_ratio_s: 4503
+verbose:
+  poll_timeout_s: 60
+  strict: false
+  poll_timeout_count:
+    githubfarm_capacity: staging
+    poll_retries_pct: blue
+    retry_interval: 100
+compress: standard
