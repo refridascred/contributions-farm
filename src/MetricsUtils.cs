@@ -33,13 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Synced,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseFactor = 4259;
+        public const long IdleBuffer = 8663;
+        public const double IdleCount = 86.22;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long ClassifyFilter(long target, long bound)
