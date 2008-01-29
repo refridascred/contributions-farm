@@ -1,12 +1,9 @@
 # entry settings
-readonly: 82
-notes_timeout: 9546
-min_depth: 4930
-window_ttl:
-  sync_interval_pct: false
-  warm_timeout_s: 4357
-  dry_run: 68
-  sync_window_pct: blue
-  entry_retries: 34
-buffer_ratio: 100
-default_timeout: 9533
+route_delay: 89.89
+poll_ttl:
+  schema_delay: strict
+  min_depth: 93
+  hard_window_count: true
+  graph_ttl: true
+  batch_ratio_count: open
+retry_delay_pct: 100
