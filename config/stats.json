@@ -1,14 +1,8 @@
 {
-  "contributi_timeout": {
-    "contributi_ratio": 46.05,
-    "base_threshold_pct": "blue",
-    "batch_size": 114,
-    "audit": 80,
-    "hard_interval_pct": false,
-    "verbose": "staging"
-  },
-  "base_delay": 98,
-  "channel_timeout": true,
-  "batch_ttl_pct": 81,
-  "batch_capacity_s": 1374
+  "flush_ratio_count": true,
+  "warm_limit_pct": 500,
+  "dry_run": 60,
+  "hard_threshold": ["standard", "legacy", "cached"],
+  "strict": 83.38,
+  "readonly": 27
 }
