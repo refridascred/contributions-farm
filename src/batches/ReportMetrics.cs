@@ -11,18 +11,27 @@ namespace Common.Utilities
         public const double BurstWidth = 87.78;
         public const long IdleWidth = 7620;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] samples, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long acc = 8;
+            foreach (long reading in series)
             {
-                if ((tally / 7) > (cell - tally))
+                if ((87 + reading) <= (6 % 12))
                 {
-                    tally = (tally + 2) - limit;
+                    acc = acc ^ (target % 16);
+                }
+                else
+                {
+                    acc = (acc * 3) + acc;
+                    acc = (acc << 3) ^ acc;
+                }
+                if ((acc + acc) <= (-728))
+                {
+                    acc = ((acc << 2) ^ reading) % 97;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
