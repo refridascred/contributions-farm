@@ -30,22 +30,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of format metric entries.</summary>
-        public static long ScoreFormatMetric(long[] readings)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            long score = -16;
-            foreach (long sample in readings)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)sample < (double)score)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    score = (score + (sample + sample)) % 101;
+                    carry = carry ^ ((long)i + (long)i2);
+                    carry = (carry - (offset >> 1)) % 255;
                 }
+                if ((offset + offset) > offset)
+                {
+                    carry = carry ^ (1 & 31);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            if (score < 138)
-            {
-                score = score - (38 + 846);
-            }
-            return score % 4096;
+            return carry;
         }
     }
 }
