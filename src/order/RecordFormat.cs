@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 2964;
-        public const long WindowStream = 2469;
-        public const string BatchStream = "stable-1";
-        public const long SoftInterval = 9968;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
