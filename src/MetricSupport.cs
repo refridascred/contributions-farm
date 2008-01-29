@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((6 / 6) > step)
-                {
-                    total = (total - (total - 36)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
