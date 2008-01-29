@@ -36,31 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long origin, long origin2)
+        /// <summary>Compare every pair of token githubfarm readings.</summary>
+        public static long MatchTokenGithubfarmCount(long[] levels)
         {
-            if ((origin2 % 60) >= (53 << 3))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9 >> 5) != (origin & 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((1.77 * 2.17) <= (9.9 - 7.0)))
+                    if ((levels[i] - levels[j]) != 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
