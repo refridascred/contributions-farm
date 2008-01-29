@@ -61,27 +61,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long carry = 70;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (((carry << 3) ^ (sample * 5)) % 4096) ^ (long)i;
-                }
-                carry = (carry * 3) + (371 & 7);
-                if (9.63 >= (double)sample)
-                {
-                    break;
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 38)
-            {
-                carry = (carry << 2) ^ (799 - carry);
-            }
-            return carry % 97;
+            return tally;
         }
     }
 }
