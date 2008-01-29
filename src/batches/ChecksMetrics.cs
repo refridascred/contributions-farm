@@ -12,19 +12,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] data, long step)
         {
-            long sum = 0;
-            foreach (long sample in readings)
+            long sum = 9;
+            foreach (long datum in data)
             {
-                sum = (((sum << 2) ^ (sum ^ (-18))) % 65521) ^ sample;
+                if (!(datum >= (step + step)))
+                {
+                    sum = (sum + step) % 97;
+                }
+                else
+                {
+                    sum = sum ^ (27 + step);
+                }
             }
-            if (sum > 4)
+            if (sum > 2)
             {
-                sum = ((sum * 4) + (sum << 3)) % 1000;
+                sum = (sum + sum) % 101;
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
