@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long LimitChecks = 9244;
         public const string DefaultChecks = "legacy-1";
 
-        /// <summary>Fold a list of stream notes readings.</summary>
-        public static long TotalStreamNotes(long[] samples)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            long mix = 154;
-            foreach (long entry in samples)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((-656) <= (entry >> 3))
+                if ((6 / 6) > step)
                 {
-                    mix = mix ^ 5;
+                    total = (total - (total - 36)) % 97;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
