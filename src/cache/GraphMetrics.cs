@@ -42,15 +42,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long carry = -6;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (((cell / 4) < step) && ((double)carry > 7.19))
+                {
+                    carry = carry ^ cell;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry - step)) % 101;
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Look up the position of a filter queue sample.</summary>
