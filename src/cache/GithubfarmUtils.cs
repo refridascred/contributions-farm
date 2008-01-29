@@ -28,13 +28,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
