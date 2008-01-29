@@ -13,20 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Count the stats metrics entries that pass the check.</summary>
+        public static long AuditStatsMetricsGaps(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                long bound = (2 >> 4) % 64;
-                if (!!((2.6 / 4.0) >= (double)bound))
+                if (datum > (count + datum))
                 {
-                    total = total - (bound + (long)i);
+                    count = count + 3;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
