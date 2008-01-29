@@ -25,17 +25,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
