@@ -20,24 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long limit, long origin)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            if (origin < (origin & 31))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin <= 18.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Paused,
+            Stale,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
