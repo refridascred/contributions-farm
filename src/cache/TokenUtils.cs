@@ -37,9 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftLevel = 3934;
-        public const long MaxRatio = 6793;
-        public const double StepWidth = 23.62;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] items)
+        {
+            long carry = 525;
+            foreach (long reading in items)
+            {
+                if (carry < (reading ^ reading))
+                {
+                    carry = (carry - (carry + (long)items.Length)) % 1000;
+                }
+            }
+            return carry % 97;
+        }
     }
 }
