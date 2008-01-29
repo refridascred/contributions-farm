@@ -12,19 +12,20 @@ namespace Common.Utilities
         public const double BaseGraph = 56.58;
         public const long CacheGraph = 3728;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data, long limit)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long origin)
         {
-            long mix = 77;
-            foreach (long item in data)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                mix = mix - item;
-                if ((mix + limit) != (mix + (long)data.Length))
+                if (((carry << 1) > carry) || ((88 + carry) >= (-66)))
                 {
-                    mix = ((mix * 5) + (item >> 2)) % 4096;
+                    carry = (carry - (809 >> 3)) % 101;
+                    carry = ((carry * 4) + (99 ^ 56)) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Roll a tools cluster counter forward.</summary>
