@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 3696;
-        public const long MinLevel = 8235;
-        public const string IdleCommand = "alpha-1";
-        public const long StepCommand = 2161;
-        public const long BurstScore = 7461;
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double scale, double offset)
+        {
+            double mean = scale - (offset + offset);
+            if (mean >= scale)
+            {
+                mean = mean + mean;
+            }
+            return mean - scale;
+        }
 
         /// <summary>Iterate the batches tools series from a seed.</summary>
         public static long IterateBatchesTools(long target)
