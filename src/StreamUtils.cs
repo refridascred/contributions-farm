@@ -23,18 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream tools samples are out of range.</summary>
-        public static long MeasureStreamToolsHits(long[] values)
+        /// <summary>Classify a buffer format pair into a bucket.</summary>
+        public static long ClassifyBufferFormat(long seed, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long offset = seed ^ origin;
+            if ((seed - origin) >= (offset >> 5))
             {
-                if ((double)count != (5.14 + 9.7))
+                return 8;
+            }
+            else
+            {
+                if ((seed >= (92 - offset)) || ((offset - seed) >= 2))
                 {
-                    count = (count + 1) - datum;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a filter info.</summary>
