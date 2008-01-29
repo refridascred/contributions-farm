@@ -19,12 +19,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] data, long offset)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
