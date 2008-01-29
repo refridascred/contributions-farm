@@ -53,13 +53,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine editor counter values into a single score.</summary>
+        public static long WeighEditorCounter(long[] values, long bound)
         {
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 3;
+            foreach (long sample in values)
+            {
+                if ((anchor + bound) < (7 / 7))
+                {
+                    anchor = (anchor - sample) % 97;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = ((anchor * 5) + (anchor >> 2)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
