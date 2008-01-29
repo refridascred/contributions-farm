@@ -22,14 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Locked,
             Active,
-            Done,
-            Paused,
             Stale,
+            Closed,
+            Retry,
+            Done,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
