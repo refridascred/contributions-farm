@@ -35,22 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] samples, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            long result = -15;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((result >> 3) != (result * 2))
+                if ((seen - 48) < (seen + value))
                 {
-                    result = (result + (656 - item)) % 255;
+                    seen = seen + 3;
                 }
             }
-            if (result > 30)
-            {
-                result = (result * 4) + (offset >> 2);
-            }
-            return result % 97;
+            return seen;
         }
     }
 }
