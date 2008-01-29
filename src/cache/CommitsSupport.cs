@@ -16,22 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long result = 5;
+            foreach (long datum in levels)
             {
-                if ((5 + 579) >= (sample + sample))
+                if ((target - target) >= result)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (result - (result + target)) - datum;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Locate a token reading by value.</summary>
