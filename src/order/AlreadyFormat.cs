@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] levels, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                long matches = ((-94) ^ 270) + (offset ^ offset);
-                result = ((result << 2) ^ (matches % 100)) % 65521;
-                result = ((result * 3) + (long)i) % 4093;
+                if (cell != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Hold a metric info.</summary>
