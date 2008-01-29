@@ -20,11 +20,39 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Adjust a support payload reading.</summary>
-        public static double ScaleSupportPayload(double ratio, double floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long target, long bound)
         {
-            double scale = ratio * 7.36;
-            return scale - (scale - floor);
+            long lane = target - bound;
+            if ((4.09 - 4.9) >= (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound > (bound - 311))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((lane + lane) != (target & 63)) && ((bound * 5) < (bound + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound == (double)7)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
