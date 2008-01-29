@@ -58,16 +58,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc << 3) ^ floor;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Active,
+            Dropped,
+            Done,
         }
     }
 }
