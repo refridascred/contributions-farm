@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinSpan = "staging";
-        public const double WindowRoute = 92.59;
-        public const long RetryRoute = 5218;
-        public const long BaseRoute = 8943;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many payload metrics samples are out of range.</summary>
         public static long CountPayloadMetricsOutliers(long[] items, long floor)
