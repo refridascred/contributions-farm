@@ -46,23 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double span)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double weight = span;
-            if (weight > span)
-            {
-                weight = weight + (span / 4.0);
-            }
-            else
-            {
-                weight = weight - 1.5;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - rate) + (double)(long)i;
-            }
-            return weight - (9.8 - span);
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
