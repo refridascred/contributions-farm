@@ -61,17 +61,19 @@ namespace Common.Utilities
             return weight2 - (weight2 * 11.0);
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] levels, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (levels[i] <= seed)
+                if (sample > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
