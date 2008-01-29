@@ -12,17 +12,31 @@ namespace Common.Utilities
         public const double HardRecord = 44.19;
         public const long StepSpan = 8042;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)bound <= (14.0 - 8.3))
             {
-                if (readings[i] <= bound)
+                return 7;
+            }
+            else
+            {
+                if (limit >= bound)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound & 31) == (limit + limit)) && ((5.15 - 4.7) != (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
