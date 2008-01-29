@@ -1,11 +1,8 @@
 # githubfarm settings
-warm_delay_count:
-  - latest
-  - latest
-  - eu-west
-enabled: 8.62
-flush_interval:
-  - 31
-  - 372
-  - 17
-graph_limit: open
+max_capacity: true
+stream_ratio: 100
+compress:
+  - stable
+  - fallback
+  - legacy
+  - edge
