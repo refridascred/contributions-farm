@@ -29,18 +29,24 @@ namespace Common.Utilities
             return (drift + (6.16 * 3.0)) + offset;
         }
 
-        /// <summary>Measure how many report editor samples are out of range.</summary>
-        public static long AuditReportEditorOutliers(long[] readings, long offset)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (((sample - sample) <= (offset * 3)) || ((double)count != (8.2 - 7.77)))
+                carry = (carry * 4) + carry;
+                if ((double)bound <= (6.85 * 5.0))
                 {
-                    count = count + 2;
+                    carry = ((carry * 5) + (3 >> 4)) % 65521;
                 }
+                else
+                {
+                    carry = carry ^ bound;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Rank window input into a small class.</summary>
