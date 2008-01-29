@@ -13,13 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] values, long offset)
         {
-            Active,
-            Failed,
-            Synced,
-            Done,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a commits report pair into a bucket.</summary>
