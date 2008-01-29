@@ -20,14 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Paused,
-            Stale,
-            Retry,
-            Done,
-            Ready,
+            Active,
+            Locked,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Look up the position of a graph cache sample.</summary>
