@@ -61,21 +61,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (7.82 >= (double)reading)
                 {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - limit;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the cluster state values.</summary>
