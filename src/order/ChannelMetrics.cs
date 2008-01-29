@@ -23,14 +23,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] values, long seed)
         {
-            Locked,
-            Queued,
-            Idle,
-            Draft,
-            Active,
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
