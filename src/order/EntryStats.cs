@@ -26,10 +26,19 @@ namespace Common.Utilities
         public const long MinBudget = 4515;
         public const long WindowScore = 9082;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardTimeout = 78.79;
-        public const long IdleCount = 919;
-        public const string BurstWidth = "open-v2";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count + count) < (45 + count))
+                {
+                    count = ((count + 2) + item) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] items)
