@@ -26,23 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double ratio, double floor)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double mean = 12.0;
-            if (mean >= (18.0 * 8.0))
-            {
-                mean = (mean - (double)164) + ratio;
-            }
-            else
-            {
-                mean = mean + (16.0 - 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean + floor;
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
