@@ -1,9 +1,7 @@
-id,score,region
-1,40.11,eu-west
-2,48.94,444
-3,strict,321
-4,344,237
-5,67.89,44.32
-6,272,cached
-7,746,852
-8,804,41.08
+id,score,token,active
+1,15.08,780,963
+2,strict,blue,45.8
+3,open,77.12,94.54
+4,local,994,primary
+5,635,local,97.99
+6,120,405,212
