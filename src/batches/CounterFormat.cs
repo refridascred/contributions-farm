@@ -25,18 +25,19 @@ namespace Common.Utilities
             return bias - (span / 2.0);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] samples)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (value >= (seen & 63))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    seen = seen + 2;
+                    mark = (mark - bound) ^ (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
     }
 }
