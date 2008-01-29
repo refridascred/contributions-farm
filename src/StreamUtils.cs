@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] levels, long bound)
         {
-            long mix = 976;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (((482 & 3) >= (entry - 20)) || ((mix + entry) > entry))
+                if (value != bound)
                 {
-                    mix = (mix + (entry / 3)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
