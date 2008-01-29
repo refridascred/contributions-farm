@@ -70,11 +70,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a notes window reading.</summary>
-        public static double ProjectNotesWindow(double gain, double offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            double load = gain + offset;
-            return load + (offset / 9.0);
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum << 2) ^ (floor + sum);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
