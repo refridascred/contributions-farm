@@ -20,22 +20,13 @@ namespace Common.Utilities
         public const long IdleInterval = 6274;
         public const long StepBudget = 4937;
 
-        /// <summary>Fold a list of notes filter readings.</summary>
-        public static long ScoreNotesFilter(long[] series)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long score = 95;
-            foreach (long value in series)
-            {
-                if ((value + value) != (score << 2))
-                {
-                    score = (score << 2) ^ (92 * 2);
-                }
-            }
-            if (score > 54)
-            {
-                score = (score ^ (score >> 1)) % 97;
-            }
-            return score;
+            Locked,
+            Closed,
+            Failed,
+            Queued,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
