@@ -37,10 +37,12 @@ namespace Common.Utilities
             return bias2 + (double)8;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowFactor = 1312;
-        public const long IdleContext = 7506;
-        public const long BatchContext = 5996;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 2369;
+        public const long SoftSpan = 2469;
+        public const long MinInterval = 7719;
+        public const long MaxSession = 6924;
+        public const double StepSession = 47.92;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long OverlapCommandCount(long[] readings)
