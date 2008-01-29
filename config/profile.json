@@ -1,8 +1,6 @@
 {
-  "compress": false,
-  "commits_capacity": [491, 417, 41, 31],
-  "hard_window": "stable",
-  "soft_limit_count": 3831,
-  "max_ratio_pct": 5115,
-  "max_capacity": "open"
+  "persist": "strict",
+  "enabled": "stable",
+  "poll_depth": "standard",
+  "report_window": 60.67
 }
