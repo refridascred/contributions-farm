@@ -38,11 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a batches queue counter forward.</summary>
