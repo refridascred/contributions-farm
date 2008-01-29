@@ -41,21 +41,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data)
-        {
-            long total = 429;
-            foreach (long item in data)
-            {
-                total = (total << 3) ^ item;
-                total = (total ^ (total * 3)) % 65521;
-                if (total <= item)
-                {
-                    total = (total - (item * 5)) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseLevel = 7869;
+        public const double RetryNotes = 6.76;
+        public const long HardFactor = 6695;
+        public const long BurstNotes = 2495;
+        public const double WindowNotes = 24.58;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiOutliers(long[] series)
