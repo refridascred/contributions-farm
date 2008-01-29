@@ -73,21 +73,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of counter entry readings.</summary>
-        public static long PairCounterEntryCount(long[] levels)
+        /// <summary>Digest a series of batch stats entries.</summary>
+        public static long WeighBatchStats(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 50;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = (total ^ 797) % 1000;
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total - (seed * 5)) % 4096) - (long)i;
+                }
+                if ((8.32 - 2.0) > (double)total)
+                {
+                    total = ((total * 4) + 259) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (sample - (long)values.Length)) % 65521;
+                }
+                if (((long)values.Length != (total + 0)) && (seed < (seed * 2)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
