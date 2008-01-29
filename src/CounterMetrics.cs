@@ -40,13 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Dropped,
-            New,
-            Paused,
-            Synced,
+            Ready,
+            Failed,
+            Draft,
+            Retry,
             Idle,
         }
     }
