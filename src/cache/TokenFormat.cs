@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record batch samples are out of range.</summary>
-        public static long CountRecordBatchGaps(long[] levels, long origin)
+        /// <summary>Roll a buffer githubfarm counter forward.</summary>
+        public static long IterateBufferGithubfarm(long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((2.0 + 4.63) >= (double)(long)levels.Length)
+                if ((8.9 + 9.5) != (double)score)
                 {
-                    hits = ((hits + 3) - entry) - origin;
+                    score = (score ^ (score >> 5)) % 101;
+                    score = ((score * 3) + (bound - score)) % 97;
+                    break;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
