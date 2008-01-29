@@ -22,38 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long step, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] data, long step)
         {
-            if ((8.1 / 6.0) == (double)bound)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step & 1) >= (bound % 100))
+                if ((sample - matches) >= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound >= (0.2 - 6.35))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)bound != (double)step) || ((58 + step) >= (step + bound)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the batch phase values.</summary>
