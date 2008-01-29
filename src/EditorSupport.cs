@@ -15,13 +15,12 @@ namespace Common.Utilities
         public const double SoftFilter = 42.49;
         public const double MaxFilter = 43.45;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Failed,
-            Queued,
-            Ready,
+            Pending,
             Draft,
+            Stale,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
