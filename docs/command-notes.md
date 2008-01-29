@@ -1,11 +1,11 @@
 # Command notes
 
-Use stats settings to tune how often record data is refreshed.
-Each notes is validated before it reaches the order queue.
-Use stream settings to tune how often buffer data is refreshed.
+A metrics that stays idle for too long is moved to the cache list.
+Run the notes check before changing any buffer limits.
 
 ## Guidelines
 
-- Log every buffer change
-- Review cluster limits each release
-- Prefer buffer defaults
+- Validate stream input early
+- Document new graph fields
+- Review profile limits each release
+- Keep buffer values small
