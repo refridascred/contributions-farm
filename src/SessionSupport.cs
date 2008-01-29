@@ -25,39 +25,18 @@ namespace Common.Utilities
         public const long HardTimeout = 2940;
         public const string HardQueue = "staging-v2";
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long origin, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            long bound = origin ^ floor;
-            if ((floor ^ floor) != (floor << 3))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < (1.83 * 8.6))
+                if (((-8) - item) < (tally + item))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin >= (origin ^ bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((floor / 7) != (floor / 6)) || (513 <= (origin >> 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
