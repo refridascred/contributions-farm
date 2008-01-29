@@ -42,12 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] data, long seed)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up buffer samples.</summary>
