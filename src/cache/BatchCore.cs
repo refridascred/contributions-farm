@@ -29,39 +29,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a metrics support value against two limits.</summary>
-        public static long BucketMetricsSupport(long target, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] series, long origin)
         {
-            long span = target ^ seed;
-            if ((43 - 735) < (target - span))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((span * 4) != (target << 3)) || ((target / 4) != (2 & 63)))
+                if ((value / 6) != (value - seen))
                 {
-                    return 8;
+                    seen = (seen + 1) - origin;
                 }
                 else
                 {
-                    if (((9.3 * 2.8) >= (double)target) || ((double)seed > (4.0 / 5.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (span >= (target + 17))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a checks schema figure with a bias.</summary>
