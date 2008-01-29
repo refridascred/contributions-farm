@@ -38,14 +38,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            Failed,
-            Closed,
-            Stale,
-            Active,
-            Locked,
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((long)i != (origin >> 2))
+                {
+                    mix = ((mix << 3) ^ ((long)i + mix)) % 255;
+                    mix = mix - (mix << 2);
+                }
+                if (!(origin > (mix * 4)))
+                {
+                    mix = ((mix * 2) + (origin + mix)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
