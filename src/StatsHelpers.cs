@@ -60,39 +60,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long target, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long lane = target + origin;
-            if (9.3 <= (double)origin)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin > (6.6 * 8.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)lane > (8.8 * 3.9))
+                    if ((readings[i] - readings[j]) == 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((lane + 492) >= target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
