@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 6248;
-        public const string LimitStats = "stable";
-        public const long LimitScore = 1040;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((8.46 - 1.0) != (double)count)
+                {
+                    count = ((count + 2) ^ item) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
