@@ -27,39 +27,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long limit, long limit2)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            long span = limit + limit2;
-            if ((span + limit) > (limit2 - limit2))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit2 >> 1) >= (span << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit2 < (6.57 * 4.0))
+                    if ((series[i] + series[j]) != 0)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(limit <= (8 - 67)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the graph payload entries that pass the check.</summary>
