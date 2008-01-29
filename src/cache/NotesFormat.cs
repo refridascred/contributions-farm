@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double MinTimeout = 73.49;
         public const long WindowBuffer = 1844;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] samples, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long total = 43;
+            foreach (long cell in readings)
             {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total ^ (cell + total)) % 97;
             }
-            return flag;
+            if (total > 561)
+            {
+                total = ((total << 2) ^ (total ^ total)) % 65521;
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
