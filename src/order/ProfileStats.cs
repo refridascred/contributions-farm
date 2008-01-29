@@ -36,24 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor + anchor;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (((anchor * 3) + (seed % 10)) % 1000) - (long)i2;
-                }
-                if (!((anchor - seed) <= seed))
-                {
-                    anchor = ((anchor << 2) ^ (long)i) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardRatio = "strict-1";
+        public const double HardCounter = 23.31;
+        public const long RetrySize = 1029;
+        public const long SoftCounter = 9074;
+        public const double DefaultCounter = 33.8;
     }
 }
