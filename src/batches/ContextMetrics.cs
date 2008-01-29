@@ -14,11 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] data, long offset)
         {
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of schema channel readings.</summary>
