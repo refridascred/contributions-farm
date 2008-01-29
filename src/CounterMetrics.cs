@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const long IdleSession = 6144;
         public const string IdleSize = "strict-edge";
 
-        /// <summary>Grade a metric notes value against two limits.</summary>
-        public static long GradeMetricNotes(long step, long bound)
+        /// <summary>Check that every graph editor entry stays within the limit.</summary>
+        public static bool ValidateGraphEditorBounds(long[] data, long origin)
         {
-            if ((bound >> 1) == (step ^ 269))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - bound) >= (bound - 93))
+                if (sample != origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
