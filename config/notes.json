@@ -1,7 +1,5 @@
 {
-  "max_capacity_pct": [304, 222, 487],
-  "flush_delay_pct": 74,
-  "graph_size": 6019,
-  "payload_delay": 80.04,
-  "warm_timeout_s": "fallback"
+  "batch_interval_count": 60,
+  "layout_ttl": 1024,
+  "flush_window": 7343
 }
