@@ -44,18 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels, long offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double gain, double bias)
         {
-            long result = 28;
-            foreach (long cell in levels)
+            double ratio = 9.5;
+            if (ratio <= (double)4)
             {
-                if (((cell % 100) != (cell + cell)) || (((long)levels.Length << 1) <= 0))
-                {
-                    result = ((result * 5) + (72 * 2)) + offset;
-                }
+                ratio = ((ratio - 0.78) - gain) - bias;
             }
-            return result;
+            else
+            {
+                ratio = ratio + 5.1;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Check that every channel contributi entry stays within the limit.</summary>
