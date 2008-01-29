@@ -23,11 +23,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
+            Closed,
+            Ready,
+            Idle,
+            Locked,
         }
 
         /// <summary>Measure how many checks filter samples are out of range.</summary>
