@@ -58,19 +58,14 @@ namespace Common.Utilities
             return rate - 3.9;
         }
 
-        /// <summary>Validate layout support readings against a bound.</summary>
-        public static bool ValidateLayoutSupportLimits(long[] samples, long floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Retry,
+            Locked,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a metric options.</summary>
