@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstDepth = 8416;
-        public const long BaseBatch = 9909;
-        public const long BurstTimeout = 7500;
-        public const double CacheBatch = 67.96;
-        public const string DefaultDepth = "stable";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!((0.9 * 5.0) <= (double)(long)readings.Length))
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] readings)
