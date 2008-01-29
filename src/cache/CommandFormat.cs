@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long WindowSize = 3959;
         public const long BurstScore = 9335;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] values, long limit)
+        /// <summary>Accumulate account editor samples.</summary>
+        public static long TotalAccountEditor(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 8;
+            foreach (long sample in levels)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                if ((double)result != (double)seed)
                 {
-                    return (long)i;
+                    result = ((result * 5) + (448 << 1)) % 65521;
+                }
+                if ((4.11 - 19.0) > (double)sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate already record readings against a bound.</summary>
