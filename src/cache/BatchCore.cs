@@ -46,22 +46,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long limit)
         {
-            long carry = -142;
-            foreach (long value in levels)
+            long diff = seed - limit;
+            if ((seed * 3) >= (845 + 4))
             {
-                if (((92 >> 1) <= carry) && ((6.74 - 1.39) == (double)value))
+                return 1;
+            }
+            else
+            {
+                if (diff > (seed % 5))
                 {
-                    carry = (carry + (offset * 4)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if (((6 + limit) <= (5 - (-604))) || (2.72 > (double)diff))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (diff <= limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (carry > (-61))
-            {
-                carry = (carry ^ (carry / 8)) % 65521;
-            }
-            return carry;
         }
     }
 }
