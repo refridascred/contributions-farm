@@ -49,14 +49,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Draft,
-            Idle,
-            Locked,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleDepth = 9724;
+        public const string MinNotes = "latest-edge";
+        public const long BurstWidth = 569;
+        public const long BurstNotes = 3089;
+        public const long LimitNotes = 7458;
     }
 }
