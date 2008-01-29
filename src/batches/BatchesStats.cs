@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long target2)
         {
-            long acc = 586;
-            foreach (long entry in series)
+            long span = target - target2;
+            if ((target2 + target2) == (target << 2))
             {
-                if ((double)acc < 5.0)
+                return 7;
+            }
+            else
+            {
+                if ((target + span) <= span)
                 {
-                    acc = ((acc << 2) ^ (entry + entry)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if ((742 + target) < target2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
