@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of stream farm readings.</summary>
-        public static long WeighStreamFarm(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] samples)
         {
-            long score = 26;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((score * 5) == (value << 1))
+                if (((double)seen >= (double)reading) && ((reading / 8) != ((long)samples.Length + seen)))
                 {
-                    score = score + (8 >> 3);
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (score > (-62))
-            {
-                score = (score * 2) + (3 + score);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of stream editor readings.</summary>
