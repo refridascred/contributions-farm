@@ -66,13 +66,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double bias)
         {
-            Done,
-            Pending,
-            Active,
-            Dropped,
+            double mean = bias - bias;
+            return (mean + (double)(-1)) + weight;
         }
     }
 }
