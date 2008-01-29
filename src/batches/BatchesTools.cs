@@ -19,21 +19,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long step, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = step + offset;
+            if ((offset + lane) >= (step + 421))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!(7 <= (lane - lane)))
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a support record.</summary>
