@@ -59,19 +59,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] items, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long acc = 551;
+            foreach (long datum in values)
             {
-                if (reading != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc + datum) % 65521;
             }
-            return flag;
+            if (acc < 93)
+            {
+                acc = (acc + (acc + (-57))) % 65521;
+            }
+            return acc % 65521;
         }
     }
 }
