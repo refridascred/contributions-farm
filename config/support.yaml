@@ -1,4 +1,14 @@
 # support settings
-cluster_ratio: 89.32
-base_ttl_s: true
-batch_timeout: 87
+queue_timeout: open
+max_size_count: 69
+min_threshold: 58.32
+flush_depth_s: 6548
+graph_threshold:
+  retry_window_count: 24.87
+  entry_limit: 5
+  enabled:
+    - blue
+    - stable
+    - cached
+    - edge
+  flush_delay: 4857
