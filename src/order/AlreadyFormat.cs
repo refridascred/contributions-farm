@@ -75,23 +75,14 @@ namespace Common.Utilities
             return mean + (double)152;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long carry = 470;
-            foreach (long datum in levels)
-            {
-                carry = ((carry * 2) + (carry + datum)) % 255;
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = ((carry + datum) % 97) + (long)i;
-                }
-                if (carry < (73 << 2))
-                {
-                    carry = (carry ^ (621 + datum)) % 255;
-                }
-            }
-            return carry;
+            Done,
+            Stale,
+            Dropped,
+            Retry,
+            Synced,
         }
     }
 }
