@@ -36,18 +36,15 @@ namespace Common.Utilities
             return (scale - (scale - bias2)) + bias;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long result = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum > matches)
-                {
-                    matches = matches + 2;
-                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Scale a metric batches figure with a bias.</summary>
