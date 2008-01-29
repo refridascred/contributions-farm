@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double ratio, double offset)
         {
-            Closed,
-            Synced,
-            Ready,
+            double load = (double)(4 & 15);
+            return ((load - (double)52) + ratio) + offset;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
