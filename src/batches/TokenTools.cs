@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings, long step)
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count - count) < ((long)readings.Length - step))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
