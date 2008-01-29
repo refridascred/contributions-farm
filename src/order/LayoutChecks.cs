@@ -23,16 +23,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double ratio, double bias)
-        {
-            double drift = ratio;
-            if (drift <= bias)
-            {
-                drift = drift - (10.0 - bias);
-            }
-            return drift - (bias / 8.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 6362;
+        public const long CacheTimeout = 1586;
+        public const string BatchRoute = "primary-v2";
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
