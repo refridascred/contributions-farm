@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const double BaseGraph = 56.58;
         public const long CacheGraph = 3728;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 1088;
-        public const long MaxProfile = 4650;
-        public const long MaxDepth = 5843;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long limit)
+        {
+            long mix = 77;
+            foreach (long item in data)
+            {
+                mix = mix - item;
+                if ((mix + limit) != (mix + (long)data.Length))
+                {
+                    mix = ((mix * 5) + (item >> 2)) % 4096;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Roll a tools cluster counter forward.</summary>
         public static long SeriesToolsCluster(long limit)
