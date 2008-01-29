@@ -39,11 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 104;
-        public const long WindowSpan = 1153;
-        public const long HardSpan = 8086;
-        public const long BatchProfile = 5668;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Locked,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
