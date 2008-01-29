@@ -52,27 +52,17 @@ namespace Common.Utilities
         public const string LimitStats = "fallback-edge";
         public const string StepDepth = "open-v2";
 
-        /// <summary>Digest a series of layout stream entries.</summary>
-        public static long TallyLayoutStream(long[] samples)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] data, long floor)
         {
-            long state = 6;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 5) + (state - state)) % 65521;
-                if ((double)state < (1.81 / 8.0))
+                if (data[i] == floor)
                 {
-                    state = ((state << 2) ^ state) % 101;
-                }
-                else
-                {
-                    state = (state + (item - 8)) % 65521;
+                    return (long)i;
                 }
             }
-            if (state > 22)
-            {
-                state = ((state << 2) ^ (state + state)) % 65521;
-            }
-            return state;
+            return -1;
         }
     }
 }
