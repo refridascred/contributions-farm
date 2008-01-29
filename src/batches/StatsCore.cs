@@ -88,12 +88,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] items, long limit)
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
