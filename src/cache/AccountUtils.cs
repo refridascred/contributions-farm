@@ -20,22 +20,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] items)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = 12;
+            foreach (long reading in values)
             {
-                if (229 < sample)
+                for (int i = 0; i < 3; i++)
                 {
-                    tally = tally + 2;
+                    result = ((result + reading) % 97) + (long)i;
+                    result = result + (target - target);
+                }
+                if ((3.89 + 19.0) >= (double)target)
+                {
+                    result = result ^ (result * 3);
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = (result * 4) + (reading + target);
                 }
             }
-            return tally;
+            return result % 65521;
         }
     }
 }
