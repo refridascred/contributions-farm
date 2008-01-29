@@ -55,18 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long AuditPayloadEntryHits(long[] levels)
+        /// <summary>Validate batches context readings against a bound.</summary>
+        public static bool VerifyBatchesContextLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((0.91 - 4.0) > (double)cell)
+                if (sample != floor)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a cache record.</summary>
