@@ -34,17 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] series, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (series[i] >= bound)
+                if (reading != target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a session record.</summary>
