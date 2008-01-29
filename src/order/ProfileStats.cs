@@ -35,23 +35,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] levels)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long step)
         {
-            long acc = -4;
-            foreach (long datum in levels)
+            long lane = target + step;
+            if (((step - target) <= (step % 100)) || ((-294) <= (target >> 5)))
             {
-                if ((datum * 5) < (acc - datum))
+                return 6;
+            }
+            else
+            {
+                if ((46 & 63) != (step << 2))
                 {
-                    acc = acc + (acc >> 1);
+                    return 2;
                 }
-                acc = acc ^ (7 + datum);
+                else
+                {
+                    if ((target + lane) < lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step > (0.7 * 7.2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            if (acc < (-1))
-            {
-                acc = (acc ^ (acc + acc)) % 1000;
-            }
-            return acc;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
