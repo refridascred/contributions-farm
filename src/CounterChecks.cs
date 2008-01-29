@@ -40,19 +40,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] levels, long bound)
+        /// <summary>Locate a cluster githubfarm reading by value.</summary>
+        public static long LookupClusterGithubfarmIndex(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != bound)
+                if ((series[i] == bound) && ((series[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the entry class values.</summary>
