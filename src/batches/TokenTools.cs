@@ -27,25 +27,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long origin, long origin2)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long next = origin ^ origin2;
-            if (((4.5 * 7.54) <= (double)next) || ((origin + (-647)) < next))
-            {
-                return 5;
-            }
-            else
-            {
-                if (5.97 < (double)origin2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
