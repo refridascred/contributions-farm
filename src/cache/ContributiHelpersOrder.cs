@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of counter profile entries.</summary>
-        public static long ScoreCounterProfile(long[] levels, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] data)
         {
-            long result = 20;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((1.86 * 1.0) == (double)limit)
+                if ((long)data.Length < 383)
                 {
-                    result = ((result + 895) % 101) - item;
-                }
-                else
-                {
-                    result = result - (result >> 5);
+                    count = (count + 1) + datum;
                 }
             }
-            if (result < 9)
-            {
-                result = (result + (result + limit)) % 65521;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Hold a already info.</summary>
