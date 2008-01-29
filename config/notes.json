@@ -1,12 +1,15 @@
 {
-  "base_capacity_pct": "eu-west",
-  "audit": {
-    "strict": "legacy",
-    "audit": 70.61,
-    "warm_capacity": 8353,
-    "enabled": false,
-    "compress": false
+  "profile_capacity": "edge",
+  "max_size_ms": {
+    "entry_window": 100,
+    "account_ttl": 50,
+    "burst_depth": {
+      "account_capacity": "open",
+      "flush_timeout_ms": 47.87,
+      "compress": 9744
+    },
+    "base_depth_count": [464, 165, 14, 301],
+    "idle_timeout_s": 100
   },
-  "graph_ratio": 500,
-  "hard_ratio_count": ["eu-west", "primary", "eu-west"]
+  "readonly": [419, 187, 453, 2]
 }
