@@ -19,12 +19,31 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long target, long limit)
         {
-            Draft,
-            Synced,
-            Idle,
+            if (((-1) - limit) < (68 << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target >> 2) < ((-1) % 16))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target <= (target + 19)) && ((target + limit) < (limit ^ target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
