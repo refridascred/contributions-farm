@@ -58,15 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double weight, double offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double load = 3.3;
-            if (load >= (load / 9.0))
-            {
-                load = load - (9.64 + load);
-            }
-            return load + (offset + weight);
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the account record entries that pass the check.</summary>
