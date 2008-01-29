@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
