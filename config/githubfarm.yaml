@@ -1,11 +1,9 @@
 # githubfarm settings
-batch_ttl_count: 32.62
-min_interval: false
-base_limit_ms:
-  - cached
-  - blue
-  - strict
-  - stable
-account_capacity: cached
-idle_interval_s: 19.42
-enabled: open
+graph_limit: true
+retry_limit_ms: 500
+channel_capacity: 77.02
+enabled: 39
+sync_ttl_ms:
+  - edge
+  - open
+default_window: 5
