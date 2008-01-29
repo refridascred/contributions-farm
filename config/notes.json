@@ -1,18 +1,7 @@
 {
-  "cache_interval_ms": 15,
-  "warm_timeout_count": 723,
-  "githubfarm_depth": 84.98,
-  "min_size": 1024,
-  "burst_retries_pct": {
-    "burst_ttl": {
-      "audit": 250,
-      "contributi_depth": true,
-      "base_delay": 4447,
-      "payload_retries": false
-    },
-    "compress": false,
-    "retry_delay": true,
-    "min_ratio": 55,
-    "batch_limit_ms": [478, 429, 253]
-  }
+  "audit": 29.24,
+  "idle_delay_ms": "cached",
+  "profile_window": 5,
+  "verbose": "stable",
+  "min_depth_pct": 41.75
 }
