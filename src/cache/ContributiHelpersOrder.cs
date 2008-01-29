@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 8206;
+        public const double BaseSession = 12.3;
+        public const string CacheInterval = "stable-1";
+        public const long RetryDepth = 8266;
+        public const long DefaultInterval = 2220;
 
         /// <summary>Measure how many payload metrics samples are out of range.</summary>
         public static long CountPayloadMetricsOutliers(long[] items, long floor)
