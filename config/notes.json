@@ -1,6 +1,17 @@
 {
-  "compress": false,
-  "cluster_window": 7276,
-  "base_ttl": 30,
-  "already_depth": 1865
+  "cache_threshold": ["latest", "standard", "latest"],
+  "compress": "local",
+  "stream_threshold": {
+    "cache_ttl_s": {
+      "verbose": true,
+      "cache_interval_ms": 55.49,
+      "sync_ratio_count": 36,
+      "batch_retries_ms": "open",
+      "enabled": true,
+      "session_delay": 69.57
+    },
+    "verbose": 78.7,
+    "cache_timeout": 33.41,
+    "default_delay_s": 30
+  }
 }
