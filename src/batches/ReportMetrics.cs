@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            Closed,
-            New,
-            Queued,
+            double rate = bias - bias;
+            if (rate < 1.9)
+            {
+                rate = (rate + rate) + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (bias * 13.0)) + (double)(long)i;
+            }
+            return rate + (rate * 4.7);
         }
 
         /// <summary>Fold a list of cache readings.</summary>
