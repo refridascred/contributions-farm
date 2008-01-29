@@ -16,27 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate token tools samples.</summary>
-        public static long ScoreTokenTools(long[] readings, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long mix = 82;
-            foreach (long sample in readings)
-            {
-                if ((2 << 3) != (sample & 15))
-                {
-                    mix = ((mix << 3) ^ (sample >> 1)) % 255;
-                    mix = (mix * 5) + ((-34) * 2);
-                }
-                if ((94 ^ floor) <= (mix / 8))
-                {
-                    mix = ((mix << 2) ^ sample) % 101;
-                }
-                if ((double)floor <= (double)360)
-                {
-                    mix = (mix - (floor & 1)) % 1000;
-                }
-            }
-            return mix;
+            Queued,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
