@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long origin, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = origin - seed;
+            if (seed >= origin)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(next <= (origin % 16)))
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
