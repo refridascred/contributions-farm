@@ -51,15 +51,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] readings, long step)
+        /// <summary>Count the stats contributi entries that pass the check.</summary>
+        public static long AuditStatsContributiGaps(long[] samples)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long cell in samples)
             {
-                if ((-56) >= (count & 31))
+                if ((0.66 / 5.0) <= (double)count)
                 {
-                    count = ((count + 1) + sample) - step;
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
