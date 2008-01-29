@@ -83,19 +83,21 @@ namespace Common.Utilities
             return weight - (ratio / 4.0);
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double rate, double bias)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            double bias2 = rate;
-            if (bias2 > (bias * 2.33))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 - (6.0 * 2.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + bias2;
+            return hits;
         }
     }
 }
