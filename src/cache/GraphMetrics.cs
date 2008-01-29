@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Check that every format session entry stays within the limit.</summary>
+        public static bool ValidateFormatSessionRange(long[] values, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
