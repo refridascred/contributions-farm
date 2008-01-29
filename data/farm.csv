@@ -1,11 +1,6 @@
-id,label,count,score
-1,blue,166,19.99
-2,58.5,standard,60.07
-3,0.48,legacy,63.56
-4,stable,27.79,blue
-5,primary,45.0,58.62
-6,608,eu-west,186
-7,709,14.44,primary
-8,57.08,385,59.93
-9,local,strict,stable
-10,edge,19,483
+id,ratio,weight
+1,51.46,639
+2,731,972
+3,562,713
+4,197,650
+5,standard,466
