@@ -47,10 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinFactor = 9186;
-        public const string DefaultFactor = "primary-v2";
-        public const long SoftToken = 6151;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 4344;
