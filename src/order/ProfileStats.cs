@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long step)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long result = step;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
