@@ -14,16 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double weight, double offset)
-        {
-            double ratio = (double)(0 >> 2);
-            if (ratio > (ratio * 18.0))
-            {
-                ratio = (ratio - weight) - offset;
-            }
-            return ratio + (weight * 5.4);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 283;
+        public const string MinSchema = "staging-edge";
+        public const long MinFactor = 578;
+        public const long IdleFactor = 1646;
 
         /// <summary>Fold a list of batches account readings.</summary>
         public static long WeighBatchesAccount(long[] readings)
