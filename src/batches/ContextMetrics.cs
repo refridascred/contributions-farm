@@ -59,19 +59,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] readings, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long target, long seed)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            if (!((target * 2) <= (seed % 24)))
             {
-                if (cell > limit)
+                return 7;
+            }
+            else
+            {
+                if ((68 + 8) >= (target - seed))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
     }
 }
