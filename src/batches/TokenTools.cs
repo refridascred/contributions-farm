@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support commits sample.</summary>
-        public static long LocateSupportCommitsIndex(long[] data, long bound)
+        /// <summary>Validate counter githubfarm readings against a bound.</summary>
+        public static bool GuardCounterGithubfarmRange(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (data[i] > bound)
+                if (value != target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
