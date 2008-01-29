@@ -20,17 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a buffer cache sample.</summary>
-        public static long FindBufferCacheIndex(long[] data, long offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
