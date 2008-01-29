@@ -35,12 +35,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = (sum * 3) + (sum >> 4);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = (sum - (sum * 3)) - (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metric kind values.</summary>
