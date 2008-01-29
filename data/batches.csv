@@ -1,7 +1,8 @@
-id,score,token,active
-1,15.08,780,963
-2,strict,blue,45.8
-3,open,77.12,94.54
-4,local,994,primary
-5,635,local,97.99
-6,120,405,212
+id,active
+1,85.41
+2,571
+3,staging
+4,local
+5,legacy
+6,60.4
+7,570
