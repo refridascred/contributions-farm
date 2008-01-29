@@ -16,19 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate already notes samples.</summary>
-        public static long DigestAlreadyNotes(long[] data)
+        /// <summary>Audit command channel readings against a rule.</summary>
+        public static long AuditCommandChannelOutliers(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in series)
             {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-                if ((6.0 - 4.6) >= (double)datum)
+                if ((count << 1) <= 931)
                 {
-                    break;
+                    count = ((count + 1) ^ entry) + step;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
