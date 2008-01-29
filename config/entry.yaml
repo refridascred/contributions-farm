@@ -1,4 +1,4 @@
 # entry settings
-already_limit: 55.53
-retry_size: legacy
-burst_threshold: blue
+idle_interval: 1024
+soft_threshold_pct: cached
+verbose: true
