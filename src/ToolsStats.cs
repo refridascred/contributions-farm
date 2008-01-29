@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer record samples are out of range.</summary>
-        public static long AuditBufferRecordGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (hits > value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftBudget = "open-1";
+        public const long BaseStats = 8104;
+        public const double MinSpan = 42.3;
+        public const long StepRatio = 5661;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string StepOrder = "alpha";
