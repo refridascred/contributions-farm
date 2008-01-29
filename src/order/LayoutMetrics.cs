@@ -34,19 +34,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] levels, long seed)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultFactor = 3026;
+        public const long BaseDepth = 459;
+        public const long CacheRatio = 4691;
+        public const long BurstRecord = 671;
+        public const long BatchLevel = 1239;
     }
 }
