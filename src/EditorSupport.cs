@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 1319;
-        public const long HardDepth = 4725;
-        public const long MaxCount = 8868;
-        public const long CacheFactor = 5713;
-        public const long RetrySpan = 9127;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            New,
+            Locked,
+            Synced,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
