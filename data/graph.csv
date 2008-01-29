@@ -1,9 +1,7 @@
-id,count,weight
-1,green,legacy
-2,legacy,66
-3,148,strict
-4,448,705
-5,602,strict
-6,90.18,47.48
-7,16,768
-8,eu-west,113
+id,ratio,level
+1,1,971
+2,eu-west,500
+3,85.76,68.93
+4,stable,805
+5,7.6,75.41
+6,primary,889
