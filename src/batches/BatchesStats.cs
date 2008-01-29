@@ -19,17 +19,25 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
+                if (limit >= (limit - anchor))
                 {
-                    return (long)i;
+                    anchor = anchor - (anchor + anchor);
+                    continue;
                 }
+                else
+                {
+                    long delta = limit + (limit + limit);
+                    anchor = (anchor * 2) + (delta - (-57));
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
