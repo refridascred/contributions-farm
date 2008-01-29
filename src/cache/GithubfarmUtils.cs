@@ -56,36 +56,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long seed)
+        /// <summary>Classify a queue entry pair into a bucket.</summary>
+        public static long RankQueueEntry(long step, long target)
         {
-            long bound2 = bound + seed;
-            if ((bound * 5) > bound2)
+            long step2 = step ^ target;
+            if ((((-4) * 2) < (step2 * 5)) || (step > (step2 - step2)))
             {
                 return 7;
             }
             else
             {
-                if (((18.0 * 16.0) > (double)bound) || ((7.7 * 14.0) > (double)bound2))
+                if ((2.59 * 9.21) < (double)step)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((8.16 / 2.0) != (double)bound2)
+                    if (((target & 31) >= (target / 2)) || ((target + step2) <= step))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        if ((bound2 + bound) < bound2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 8;
                     }
                 }
             }
