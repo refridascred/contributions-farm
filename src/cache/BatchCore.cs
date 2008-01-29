@@ -22,18 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long seed, long target)
         {
-            long state = 87;
-            foreach (long value in items)
+            if ((double)target > (7.6 + 4.7))
             {
-                if (((long)items.Length << 3) > bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)target == (15.0 * 8.3))
                 {
-                    state = (((state << 3) ^ 617) % 1000) - value;
+                    return 8;
+                }
+                else
+                {
+                    if ((14.0 - 6.81) <= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((36 >> 5) < target) && ((6.0 * 9.9) < (double)seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
