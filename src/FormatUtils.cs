@@ -29,15 +29,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a command profile counter forward.</summary>
-        public static long StepCommandProfile(long origin)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] levels, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
