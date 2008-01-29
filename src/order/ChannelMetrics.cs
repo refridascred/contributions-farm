@@ -15,12 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
