@@ -1,7 +1,10 @@
 {
-  "context_depth": 1024,
-  "cache_timeout": true,
-  "retry_limit_pct": [24, 125, 84, 57],
-  "burst_window_count": 8161,
-  "stream_size": true
+  "retry_ttl_ms": 11,
+  "warm_ttl_pct": [345, 40],
+  "soft_window_s": "standard",
+  "report_ttl": {
+    "min_depth_ms": 9.66,
+    "idle_interval_ms": true,
+    "token_window": 500
+  }
 }
