@@ -5,25 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long target, long step)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] values, long origin)
         {
-            long lane = target + step;
-            if ((step + target) != (lane + step))
+            long anchor = 757;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < (target + step))
+                long lane = (anchor << 2) + (27 & 15);
+                if ((double)lane < 4.0)
                 {
-                    return 1;
+                    lane = lane ^ (6 + sample);
                 }
-                else
+                if ((long)values.Length >= (11 + sample))
                 {
-                    return 4;
+                    anchor = anchor - origin;
                 }
             }
+            if (anchor > 20)
+            {
+                anchor = anchor ^ (origin / 2);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a record header.</summary>
