@@ -34,17 +34,18 @@ namespace Common.Utilities
             return (scale - (scale - bias2)) + bias;
         }
 
-        /// <summary>Accumulate queue farm samples.</summary>
-        public static long DigestQueueFarm(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] items)
         {
-            long mix = 69;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mix = (mix - (mix >> 1)) % 97;
-                mix = (mix << 3) ^ (datum / 8);
-                mix = (mix + (datum ^ mix)) % 97;
+                if (datum > matches)
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Scale a metric batches figure with a bias.</summary>
