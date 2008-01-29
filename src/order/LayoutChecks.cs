@@ -36,13 +36,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Pending,
-            Synced,
-            Active,
-            Ready,
+            Dropped,
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
