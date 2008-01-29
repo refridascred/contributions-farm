@@ -1,5 +1,25 @@
 # githubfarm settings
-commits_delay: 89
-max_threshold_s: local
-filter_depth: primary
-idle_size_ms: cached
+entry_threshold:
+  batch_limit: 25
+  enabled: cached
+  audit: 6798
+  channel_ratio: true
+  buffer_retries:
+    default_ttl:
+      - standard
+      - eu-west
+      - eu-west
+      - eu-west
+    already_interval: 176
+    metrics_threshold: primary
+    batch_window_pct: strict
+strict: 14
+warm_delay_pct:
+  retry_capacity_count:
+    - 171
+    - 226
+    - 421
+  min_limit_pct: 30
+  min_ratio_ms: 46.85
+  burst_capacity_count: 52
+  max_retries_count: 60
