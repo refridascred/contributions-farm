@@ -20,13 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
