@@ -25,9 +25,13 @@ namespace Common.Utilities
         public const string RetryLayout = "staging-1";
         public const long IdleLayout = 9769;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryDepth = 4593;
-        public const long BurstSize = 4394;
-        public const long LimitCommand = 1849;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
