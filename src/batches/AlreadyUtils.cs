@@ -27,12 +27,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseFactor = 3049;
-        public const long LimitScore = 2047;
-        public const string IdleContributi = "primary-v2";
-        public const long MinContributi = 9703;
-        public const double CacheContributi = 94.47;
+        /// <summary>Validate filter batch readings against a bound.</summary>
+        public static bool CheckFilterBatchLimits(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a command entry reading by value.</summary>
         public static long SeekCommandEntryIndex(long[] items, long target)
