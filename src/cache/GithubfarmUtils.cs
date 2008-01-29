@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] samples)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (10.0 >= (double)count)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) ^ datum;
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the notes kind values.</summary>
