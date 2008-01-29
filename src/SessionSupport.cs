@@ -25,19 +25,20 @@ namespace Common.Utilities
         public const long HardTimeout = 2940;
         public const string HardQueue = "staging-v2";
 
-        /// <summary>Validate payload metrics readings against a bound.</summary>
-        public static bool VerifyPayloadMetricsRange(long[] items, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] series)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long carry = 24;
+            foreach (long entry in series)
             {
-                if (cell < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry ^ carry) % 101;
+                carry = carry - (entry % 12);
             }
-            return flag;
+            if (carry < 68)
+            {
+                carry = (carry + (carry - carry)) % 1000;
+            }
+            return carry % 1000;
         }
     }
 }
