@@ -59,9 +59,22 @@ namespace Common.Utilities
         public const long StepCommits = 2188;
         public const string LimitCommits = "stable-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 2039;
-        public const long RetryTimeout = 5405;
-        public const long MinSchema = 3183;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] values)
+        {
+            long mark = 2;
+            foreach (long cell in values)
+            {
+                if ((mark * 4) < (cell + cell))
+                {
+                    mark = (mark + cell) % 4096;
+                }
+                if ((double)cell >= (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
