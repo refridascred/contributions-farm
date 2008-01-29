@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long CacheFactor = 5713;
         public const long RetrySpan = 9127;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 1322;
-        public const double SoftFilter = 42.49;
-        public const double MaxFilter = 43.45;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Queued,
+            Ready,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Validate githubfarm batches readings against a bound.</summary>
         public static bool VerifyGithubfarmBatchesLimits(long[] data, long target)
