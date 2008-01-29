@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long seed, long offset)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double bias, double span)
         {
-            if ((double)seed != (1.7 + 15.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((offset / 2) <= (seed + seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed <= (offset * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double bias2 = (double)(-55);
+            return ((bias2 + (double)38) + bias) + span;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
