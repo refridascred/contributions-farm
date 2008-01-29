@@ -32,32 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster farm input into a small class.</summary>
-        public static long RankClusterFarm(long step, long seed)
-        {
-            if (!((double)step > (8.6 - 1.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((417 + 665) <= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.0 / 7.0) != (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultDepth = 1478;
+        public const long MaxFarm = 6216;
+        public const long MaxFactor = 3628;
 
         /// <summary>Validate editor graph readings against a bound.</summary>
         public static bool ValidateEditorGraphLimits(long[] items, long offset)
