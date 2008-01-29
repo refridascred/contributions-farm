@@ -53,14 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
             Paused,
-            Idle,
-            Locked,
+            Synced,
             Active,
-            Done,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
