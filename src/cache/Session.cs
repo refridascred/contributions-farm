@@ -33,22 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] series)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double weight = bias;
+            if (weight >= (scale * 9.9))
             {
-                if ((((cell - tally) > cell) && ((6 * 3) > (tally % 60))) || ((cell + cell) < (tally + cell)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight - bias;
             }
-            return tally;
+            return weight + bias;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
