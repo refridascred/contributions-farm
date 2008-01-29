@@ -31,19 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long target)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading != target)
+                if (items[i] <= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a session record.</summary>
