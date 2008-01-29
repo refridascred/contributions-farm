@@ -52,11 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinInterval = 3105;
-        public const long IdleTimeout = 7564;
-        public const long MaxLayout = 8805;
-        public const long BaseLevel = 6587;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Closed,
+            Stale,
+            New,
+            Idle,
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long SortLayout(long step, long step2)
