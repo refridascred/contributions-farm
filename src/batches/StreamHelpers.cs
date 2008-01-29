@@ -26,15 +26,17 @@ namespace Common.Utilities
         public const double LimitContext = 90.3;
         public const long WindowDepth = 1450;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double gain, double bias)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] data, long seed)
         {
-            double bias2 = bias - (gain - gain);
-            if (bias2 >= (double)4)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 + bias;
+                if ((data[i] > seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (double)8;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
