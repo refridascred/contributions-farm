@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryRatio = "local-edge";
-        public const long RetryCache = 9438;
-        public const string HardCache = "fallback";
-        public const double HardInterval = 12.43;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 9100;
+        public const string IdleBudget = "strict";
+        public const long LimitWidth = 7849;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 1322;
