@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] readings, long origin)
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
