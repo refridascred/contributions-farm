@@ -35,26 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] items)
         {
-            long result = 753;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (datum > (result % 10))
+                if ((cell - 53) < hits)
                 {
-                    result = (result * 2) + ((-1) - result);
-                }
-                if (result > (datum >> 4))
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (result < 5)
-            {
-                result = (result ^ 989) % 97;
-            }
-            return result % 65521;
+            return hits;
         }
     }
 }
