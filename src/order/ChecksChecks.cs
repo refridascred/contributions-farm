@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a payload cache pair into a bucket.</summary>
-        public static long RankPayloadCache(long offset, long seed)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            if ((9.12 + 5.2) > (double)offset)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset >= (13 % 100))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
