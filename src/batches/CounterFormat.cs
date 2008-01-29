@@ -25,21 +25,18 @@ namespace Common.Utilities
             return bias - (span / 2.0);
         }
 
-        /// <summary>Compare every pair of schema metrics readings.</summary>
-        public static long CompareSchemaMetricsCount(long[] data)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value >= (seen & 63))
                 {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
