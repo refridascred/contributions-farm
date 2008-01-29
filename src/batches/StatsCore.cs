@@ -88,22 +88,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] items, long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (item >= (tally - tally))
-                {
-                    tally = (tally + 1) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
