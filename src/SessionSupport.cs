@@ -20,19 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a session cluster figure with a bias.</summary>
-        public static double AdjustSessionCluster(double gain, double bias)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] data)
         {
-            double drift = (double)(33 / 2);
-            if (drift >= drift)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                drift = ((drift + (double)76) - gain) + bias;
+                if ((cell + cell) < hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                drift = drift + 3.62;
-            }
-            return drift + (drift * 8.0);
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
