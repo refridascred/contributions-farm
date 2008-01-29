@@ -13,12 +13,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double SoftBuffer = 28.53;
+        public const long MaxBuffer = 5626;
+        public const string BaseCount = "alpha";
+        public const long BatchFactor = 8210;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] series)
