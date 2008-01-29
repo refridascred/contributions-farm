@@ -1,12 +1,5 @@
 {
-  "retry_delay_s": 1719,
-  "verbose": false,
-  "cache_retries": "cached",
-  "retry_size": {
-    "profile_window": 43.05,
-    "graph_delay": "green",
-    "strict": true
-  },
-  "graph_interval": "strict",
-  "max_ratio": "eu-west"
+  "verbose": 33,
+  "strict": 500,
+  "context_delay": ["latest", "green", "green"]
 }
