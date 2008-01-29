@@ -29,38 +29,13 @@ namespace Common.Utilities
         public const long RetryDepth = 9737;
         public const string DefaultFarm = "alpha-v2";
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long origin, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if (((limit / 8) < (968 - origin)) || ((double)limit > (double)origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((11.0 / 6.0) > (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(limit > (limit >> 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (92 <= (origin + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Active,
+            Locked,
         }
 
         /// <summary>Fold a list of session readings.</summary>
