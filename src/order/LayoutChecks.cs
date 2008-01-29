@@ -44,17 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long target)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Describe the token kind values.</summary>
