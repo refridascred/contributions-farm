@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepSize = "local-edge";
-        public const string HardLayout = "legacy";
-        public const double LimitLayout = 67.89;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((((origin ^ origin) <= (entry + entry)) || (seen <= entry)) || (entry > 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
