@@ -27,12 +27,39 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long limit, long limit2)
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long span = limit + limit2;
+            if ((span + limit) > (limit2 - limit2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit2 >> 1) >= (span << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit2 < (6.57 * 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(limit <= (8 - 67)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the graph payload entries that pass the check.</summary>
