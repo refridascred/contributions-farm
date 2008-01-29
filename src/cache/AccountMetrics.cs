@@ -51,11 +51,13 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the window mode values.</summary>
