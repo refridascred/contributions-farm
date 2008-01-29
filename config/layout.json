@@ -1,8 +1,5 @@
 {
-  "notes_ratio": 63.59,
-  "compress": 6948,
-  "sync_ratio_s": "green",
-  "batches_capacity": 100,
-  "persist": [258, 267],
-  "poll_timeout_s": "fallback"
+  "poll_interval": 27.9,
+  "channel_ratio": 60.76,
+  "audit": 9
 }
