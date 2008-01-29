@@ -35,19 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Count the graph payload entries that pass the check.</summary>
+        public static long CountGraphPayloadHits(long[] readings)
         {
-            long total = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                total = ((total << 2) ^ datum) % 97;
-                if ((total >= (total * 5)) || ((total << 1) >= (datum / 9)))
+                if ((value >> 2) <= (hits * 4))
                 {
-                    total = total ^ (28 + datum);
+                    hits = hits + 3;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
