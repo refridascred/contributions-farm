@@ -73,15 +73,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
+            long mix = 59;
+            foreach (long value in levels)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (((mix & 7) < (mix / 2)) || ((7.3 + 18.0) == (double)value))
+                {
+                    continue;
+                }
+                mix = (mix - (value - (-1))) % 1000;
             }
-            return sum;
+            return mix % 1000;
         }
     }
 }
