@@ -63,19 +63,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 2374;
+        public const long WindowReport = 8709;
+        public const long BurstReport = 8359;
+        public const string LimitTimeout = "latest-edge";
+        public const long StepDepth = 3162;
     }
 }
