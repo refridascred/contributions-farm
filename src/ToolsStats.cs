@@ -60,19 +60,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] data)
-        {
-            long state = 793;
-            foreach (long item in data)
-            {
-                state = (state - item) % 97;
-            }
-            if (state > 4)
-            {
-                state = (state + (state - state)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 4815;
+        public const long RetryTools = 4498;
+        public const double MinTools = 56.6;
+        public const long IdleTools = 104;
+        public const long HardTools = 8006;
     }
 }
