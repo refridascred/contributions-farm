@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue; do
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+CHANNEL_LIMIT=34
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in legacy blue primary staging; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=379
-log "limit is ${CHANNEL_LIMIT}"
