@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Validate window payload readings against a bound.</summary>
+        public static bool ValidateWindowPayloadBounds(long[] data, long bound)
         {
-            Synced,
-            Ready,
-            Dropped,
-            Closed,
-            New,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a entry stats.</summary>
