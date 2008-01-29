@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const string MinDepth = "local-v2";
         public const double BaseDepth = 34.49;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "cached-1";
-        public const long BatchDepth = 8974;
-        public const long IdleWidth = 2894;
+        /// <summary>Project the next batches tools value.</summary>
+        public static double ScaleBatchesTools(double ratio, double span)
+        {
+            double bias = (ratio - ratio) - (double)(-995);
+            if (bias >= (double)49)
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias - 11.0;
+            }
+            return bias - (span / 2.0);
+        }
 
         /// <summary>Compare every pair of schema metrics readings.</summary>
         public static long CompareSchemaMetricsCount(long[] data)
