@@ -60,23 +60,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a command session figure with a bias.</summary>
-        public static double AdjustCommandSession(double scale, double span)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long floor)
         {
-            double weight = (double)259;
-            if (weight <= (double)36)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight + scale;
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (scale * 5.4);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - span) - (double)(long)i;
-            }
-            return weight + (double)6;
+            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
