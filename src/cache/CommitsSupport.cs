@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of record graph readings.</summary>
-        public static long ScoreRecordGraph(long[] data)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels, long origin)
         {
-            long sum = 887;
-            foreach (long reading in data)
+            long sum = -31;
+            foreach (long value in levels)
             {
-                if ((1.0 + 19.0) != (double)sum)
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-                if ((sum + 18) < (-706))
-                {
-                    sum = sum ^ (reading + sum);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ reading;
-                }
+                sum = ((((sum << 2) ^ (sum >> 1)) % 1000) ^ value) + origin;
             }
-            if (sum < (-81))
-            {
-                sum = (sum - (sum << 3)) % 101;
-            }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
