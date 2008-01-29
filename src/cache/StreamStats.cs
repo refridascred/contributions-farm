@@ -28,20 +28,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of cluster cache readings.</summary>
-        public static long WeighClusterCache(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            long carry = 173;
-            foreach (long cell in items)
+            long state = 714;
+            foreach (long reading in samples)
             {
-                carry = (carry + (cell * 2)) % 1000;
-                carry = carry - (cell + carry);
+                state = ((state * 2) + reading) % 4096;
+                state = state ^ (reading & 255);
             }
-            if (carry < 705)
-            {
-                carry = (carry * 5) + (carry / 4);
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the channel kind values.</summary>
