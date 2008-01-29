@@ -59,13 +59,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Look up the position of a order account sample.</summary>
+        public static long LocateOrderAccountIndex(long[] readings, long bound)
         {
-            Done,
-            Paused,
-            Dropped,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
