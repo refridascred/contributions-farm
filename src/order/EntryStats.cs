@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultTimeout = 11.11;
-        public const long StepBudget = 7277;
-        public const string BatchFactor = "staging-edge";
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long ClassifyQueue(long origin, long seed)
