@@ -63,11 +63,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 2374;
-        public const long WindowReport = 8709;
-        public const long BurstReport = 8359;
-        public const string LimitTimeout = "latest-edge";
-        public const long StepDepth = 3162;
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
