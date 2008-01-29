@@ -34,32 +34,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a token payload value against two limits.</summary>
-        public static long GradeTokenPayload(long offset, long step)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long step2 = offset ^ step;
-            if ((89 > (offset - step2)) || (step >= (offset * 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((58 << 1) <= (75 + step2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((961 & 15) > (offset / 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Synced,
+            Retry,
+            Active,
         }
     }
 }
