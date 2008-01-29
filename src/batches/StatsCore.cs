@@ -29,12 +29,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] series, long floor)
         {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a format stats.</summary>
