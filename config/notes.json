@@ -1,7 +1,15 @@
 {
-  "max_limit_ms": 73.59,
-  "format_interval": "fallback",
-  "sync_delay_count": 39.74,
-  "warm_threshold": "green",
-  "counter_size": 263
+  "warm_window": {
+    "persist": [49, 46],
+    "channel_limit": 100,
+    "metric_depth": "latest",
+    "burst_interval_ms": 56,
+    "retry_interval": ["stable", "strict", "local"],
+    "format_threshold": "stable"
+  },
+  "enabled": 31.33,
+  "idle_delay": ["staging", "blue"],
+  "base_limit_pct": true,
+  "batches_delay": "blue",
+  "hard_timeout_count": "legacy"
 }
