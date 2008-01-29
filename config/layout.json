@@ -1,12 +1,13 @@
 {
-  "idle_interval": true,
-  "notes_window": 870,
-  "burst_retries_ms": {
-    "soft_ttl_ms": ["stable", "open"],
-    "record_retries": false,
-    "min_interval": "open",
-    "retry_ratio_count": false
+  "cache_depth_count": {
+    "flush_interval_s": [75, 381],
+    "commits_window": ["blue", "stable", "staging"],
+    "max_limit": "stable",
+    "verbose": 27.74,
+    "sync_ratio_s": 100,
+    "min_capacity_ms": false
   },
-  "max_retries_count": 21,
-  "contributi_capacity": ["cached", "primary", "eu-west"]
+  "soft_retries_s": 87,
+  "stats_ttl": 1024,
+  "persist": 9273
 }
