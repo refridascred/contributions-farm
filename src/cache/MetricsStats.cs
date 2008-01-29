@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] items, long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            double ratio = (double)(81 + 39);
+            for (int i = 0; i < 3; i++)
             {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ((ratio - (ratio * 3.0)) + (double)(long)i) - rate;
             }
-            return stale;
+            return ratio - bias;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
