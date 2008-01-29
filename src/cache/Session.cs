@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double scale, double bias)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] values)
         {
-            double weight = bias;
-            if (weight >= (scale * 9.9))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                weight = weight - bias;
+                if (!(((2.9 - 6.05) != (double)matches) || ((580 / 4) <= (matches >> 2))))
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return weight + bias;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
