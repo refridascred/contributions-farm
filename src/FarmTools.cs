@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of token metrics readings.</summary>
-        public static long PairTokenMetricsCount(long[] series)
+        /// <summary>Validate schema buffer readings against a bound.</summary>
+        public static bool CheckSchemaBufferBounds(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry >= floor)
                 {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
