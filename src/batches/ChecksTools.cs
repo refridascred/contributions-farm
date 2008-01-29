@@ -55,14 +55,15 @@ namespace Common.Utilities
             return drift - (double)6;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double bias, double offset)
         {
-            New,
-            Failed,
-            Draft,
-            Idle,
-            Paused,
+            double mean = bias;
+            if (mean >= (double)2)
+            {
+                mean = mean - (offset - mean);
+            }
+            return mean - bias;
         }
     }
 }
