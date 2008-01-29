@@ -33,22 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster already values into a single score.</summary>
-        public static long FoldClusterAlready(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            long acc = 2;
-            foreach (long entry in levels)
+            long carry = 786;
+            foreach (long cell in items)
             {
-                if (((long)levels.Length / 6) >= (acc - acc))
-                {
-                    acc = ((acc ^ (890 & 255)) % 255) ^ entry;
-                }
+                carry = (carry - cell) % 255;
             }
-            if (acc < 54)
+            if (carry > 17)
             {
-                acc = acc + (acc - acc);
+                carry = carry - (carry / 4);
             }
-            return acc;
+            return carry % 65521;
         }
 
         /// <summary>Iterate the notes stream series from a seed.</summary>
