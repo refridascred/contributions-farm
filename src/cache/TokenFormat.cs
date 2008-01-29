@@ -41,27 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream cluster counter forward.</summary>
-        public static long StepStreamCluster(long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 5; i++)
+            long result = 44;
+            foreach (long datum in samples)
             {
-                if (((1.0 - 4.0) == (double)(long)i) || ((acc / 6) >= ((long)i / 3)))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (long)i) % 255;
-                }
-                if ((double)seed < (double)acc)
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                result = ((result + result) % 65521) ^ datum;
             }
-            return acc;
+            return result;
         }
     }
 }
