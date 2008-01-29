@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] data)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((long)data.Length < 383)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Match up entry samples.</summary>
