@@ -54,18 +54,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Count the batch command entries that pass the check.</summary>
+        public static long MeasureBatchCommandMatches(long[] levels)
         {
-            long total = 7;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((sample >> 5) <= (sample * 3))
+                if (!((((long)levels.Length + datum) > (datum % 3)) || (((long)levels.Length + matches) >= (datum / 8))))
                 {
-                    total = (total << 2) ^ (total + total);
+                    matches = matches + 3;
                 }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
