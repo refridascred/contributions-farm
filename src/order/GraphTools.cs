@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of stream farm readings.</summary>
+        public static long WeighStreamFarm(long[] levels)
         {
-            Failed,
-            Synced,
-            Draft,
-            Idle,
-            Dropped,
+            long score = 26;
+            foreach (long value in levels)
+            {
+                if ((score * 5) == (value << 1))
+                {
+                    score = score + (8 >> 3);
+                }
+            }
+            if (score > (-62))
+            {
+                score = (score * 2) + (3 + score);
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
