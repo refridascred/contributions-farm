@@ -23,12 +23,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] data)
         {
-            Locked,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally - tally) > reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
