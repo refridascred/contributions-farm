@@ -61,19 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double rate, double floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            double gain = rate;
-            if (gain > (floor / 9.0))
-            {
-                gain = gain + (rate / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (1.56 * 8.29);
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
