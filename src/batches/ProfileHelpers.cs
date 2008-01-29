@@ -66,18 +66,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] levels)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)reading >= (7.8 + 9.73)) && ((double)tally > (3.8 * 13.0)))
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
