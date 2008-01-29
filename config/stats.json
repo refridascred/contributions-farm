@@ -1,6 +1,24 @@
 {
-  "cache_limit_pct": 37.47,
-  "soft_ratio_count": "edge",
-  "counter_capacity": "blue",
-  "poll_ttl_count": false
+  "flush_retries_ms": "edge",
+  "retry_capacity": {
+    "audit": "eu-west",
+    "checks_size": {
+      "warm_capacity_s": 8869,
+      "base_window_count": 6661,
+      "warm_size": 60,
+      "metrics_depth": "local"
+    },
+    "commits_retries": {
+      "cache_size": [243, 216, 237, 57],
+      "batch_timeout": 60,
+      "graph_window": 11,
+      "persist": 85.13,
+      "compress": 81,
+      "sync_window": false
+    },
+    "dry_run": ["legacy", "open", "latest"]
+  },
+  "poll_interval_count": "local",
+  "sync_capacity": 142,
+  "record_ratio": [193, 159]
 }
