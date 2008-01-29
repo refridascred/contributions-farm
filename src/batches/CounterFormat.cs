@@ -18,19 +18,21 @@ namespace Common.Utilities
         public const long BatchDepth = 8974;
         public const long IdleWidth = 2894;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] readings, long offset)
+        /// <summary>Compare every pair of schema metrics readings.</summary>
+        public static long CompareSchemaMetricsCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
