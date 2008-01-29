@@ -20,12 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Derive the next context stats value from a seed.</summary>
+        public static long IterateContextStats(long seed)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a notes entry.</summary>
