@@ -13,16 +13,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] readings, long bound)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long result = 7;
-            foreach (long datum in readings)
-            {
-                result = (result ^ (bound / 2)) % 101;
-                result = result + (datum - result);
-            }
-            return result;
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
