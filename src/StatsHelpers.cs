@@ -14,19 +14,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] series, long offset)
+        /// <summary>Derive the next channel layout value from a seed.</summary>
+        public static long StepChannelLayout(long limit)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result ^ (long)i) % 101;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
