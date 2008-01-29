@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
