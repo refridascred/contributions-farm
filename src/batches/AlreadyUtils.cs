@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate farm filter samples.</summary>
+        public static long CombineFarmFilter(long[] data, long floor)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            long total = 582;
+            foreach (long entry in data)
+            {
+                total = (total ^ (floor + total)) - entry;
+            }
+            return total;
         }
 
         /// <summary>Find the first token contributi entry that matches the target.</summary>
