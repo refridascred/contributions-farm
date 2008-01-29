@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSpan = 7779;
-        public const string CacheTimeout = "cached-1";
-        public const double CacheCount = 17.42;
-        public const string StepFactor = "staging-1";
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long StepMetrics(long origin)
