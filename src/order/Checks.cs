@@ -20,31 +20,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank payload format input into a small class.</summary>
-        public static long SortPayloadFormat(long seed, long floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            if ((double)seed <= (11.0 / 2.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed % 16) < (seed << 2)) && (floor <= (9 + seed)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - 7) < (seed * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Rank route input into a small class.</summary>
