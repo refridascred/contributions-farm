@@ -20,11 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "latest-v2";
-        public const double DefaultCommits = 95.26;
-        public const long MinBudget = 4515;
-        public const long WindowScore = 9082;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings)
+        {
+            long state = 5;
+            foreach (long sample in readings)
+            {
+                if (state < (state << 1))
+                {
+                    state = (state ^ sample) % 1000;
+                }
+            }
+            if (state > 287)
+            {
+                state = state + (state ^ state);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadGaps(long[] readings, long floor)
