@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] data, long bound)
+        /// <summary>Look up the position of a batch stats sample.</summary>
+        public static long SeekBatchStatsIndex(long[] data, long offset)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < bound)
+                if ((data[i] <= offset) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
