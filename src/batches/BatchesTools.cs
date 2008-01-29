@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a payload tools counter forward.</summary>
-        public static long IteratePayloadTools(long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long total = 6;
+            foreach (long sample in values)
             {
-                if (!(((long)i / 8) >= bound))
-                {
-                    mix = ((mix << 3) ^ (mix ^ bound)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                total = ((total - (seed + total)) % 4096) + sample;
             }
-            return mix;
+            if (total < 5)
+            {
+                total = ((total * 5) + (total - seed)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the profile class values.</summary>
