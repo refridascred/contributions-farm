@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state ^ (39 << 1)) % 1000;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            New,
+            Queued,
+            Dropped,
+            Ready,
+            Idle,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
