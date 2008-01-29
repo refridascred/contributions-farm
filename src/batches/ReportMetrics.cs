@@ -20,16 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 6139;
+        public const long SoftLevel = 2159;
+        public const long SoftGraph = 8485;
+        public const long LimitGraph = 2107;
 
         /// <summary>Scale a batches window figure with a bias.</summary>
         public static double ProjectBatchesWindow(double rate, double bias)
