@@ -19,10 +19,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 2348;
-        public const long BatchFactor = 9313;
-        public const long MaxScore = 7408;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Draft,
+            Synced,
+            Dropped,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Digest a series of notes queue entries.</summary>
         public static long WeighNotesQueue(long[] levels, long floor)
