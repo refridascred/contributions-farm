@@ -60,11 +60,11 @@ namespace Common.Utilities
             return mean + (double)152;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 59.99;
-        public const long LimitNotes = 4667;
-        public const double MinNotes = 96.39;
-        public const long RetryNotes = 8555;
-        public const long HardCount = 6869;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+        }
     }
 }
