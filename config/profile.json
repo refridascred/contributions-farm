@@ -1,5 +1,6 @@
 {
-  "batch_threshold_s": [383, 8, 321, 321],
-  "soft_threshold_ms": [107, 456],
-  "default_delay": true
+  "support_ratio": 81.39,
+  "idle_capacity_count": [344, 25],
+  "warm_window_count": 89.52,
+  "filter_ttl": 9940
 }
