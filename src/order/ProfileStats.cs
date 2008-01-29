@@ -12,12 +12,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 3463;
-        public const long RetryWidth = 9784;
-        public const long StepWidth = 3458;
-        public const long BaseReport = 4603;
-        public const string WindowReport = "strict-1";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values, long floor)
+        {
+            long state = 51;
+            foreach (long item in values)
+            {
+                state = ((((state * 3) + 325) % 101) - item) - floor;
+            }
+            return state;
+        }
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
