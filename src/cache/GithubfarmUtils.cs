@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] items, long origin)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long cell in items)
             {
-                if ((item % 97) != (328 & 15))
+                if (cell < hits)
                 {
-                    hits = hits + 1;
+                    hits = (hits + 1) + origin;
                 }
             }
             return hits;
