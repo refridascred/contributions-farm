@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] data)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell + cell) < hits)
+                if ((levels[i] > target) && ((levels[i] % 3) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank tools counter input into a small class.</summary>
