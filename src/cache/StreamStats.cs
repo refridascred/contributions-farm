@@ -49,23 +49,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long bound)
         {
-            long mix = -9;
-            foreach (long item in items)
+            if ((double)seed >= 0.92)
             {
-                mix = (mix - (item % 16)) % 1000;
-                if (((long)items.Length << 1) > (mix + mix))
+                return 6;
+            }
+            else
+            {
+                if ((bound - bound) >= seed)
                 {
-                    mix = (mix ^ (mix + mix)) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed % 97) < (bound / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed << 1) > (seed + bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mix > 442)
-            {
-                mix = ((mix << 2) ^ (1 + mix)) % 4096;
-            }
-            return mix % 97;
         }
     }
 }
