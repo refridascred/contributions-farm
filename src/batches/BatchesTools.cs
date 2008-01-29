@@ -20,14 +20,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double scale, double offset)
         {
-            Active,
-            Locked,
-            Queued,
-            Closed,
-            Failed,
+            double scale2 = scale;
+            if (scale2 <= 3.59)
+            {
+                scale2 = (scale2 - scale) + offset;
+            }
+            return scale2 - scale2;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
