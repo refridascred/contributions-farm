@@ -47,17 +47,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == offset) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
