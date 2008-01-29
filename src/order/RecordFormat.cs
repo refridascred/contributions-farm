@@ -10,18 +10,39 @@ namespace Common.Utilities
         public const string MinLevel = "stable-edge";
         public const double BurstCount = 64.34;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] levels)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long edge = bound + limit;
+            if ((2.4 * 3.5) == (double)limit)
             {
-                if (((sample - count) >= (31 - sample)) && (((double)sample <= (11.0 * 9.0)) && ((count >> 4) != (sample << 3))))
+                return 6;
+            }
+            else
+            {
+                if ((bound <= (bound ^ bound)) && ((bound - bound) > (limit / 3)))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((edge & 31) <= (473 + (-50)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.0 * 0.3) <= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
