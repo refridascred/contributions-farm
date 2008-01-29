@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two payload queue measurements.</summary>
-        public static double ProjectPayloadQueue(double weight, double offset)
+        /// <summary>Adjust a checks report reading.</summary>
+        public static double BlendChecksReport(double weight, double span)
         {
-            double mean = weight;
-            if (mean >= (double)(-363))
+            double bias = (double)65 + (span * 3.93);
+            if (bias < weight)
             {
-                mean = mean - (double)276;
+                bias = bias + (span * 3.4);
             }
-            else
-            {
-                mean = mean + 8.84;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (offset + mean)) - (double)(long)i;
-            }
-            return mean - weight;
+            return bias + (15.0 * 1.2);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
