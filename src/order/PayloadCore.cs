@@ -38,18 +38,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] samples)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            long acc = 83;
-            foreach (long datum in samples)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)(long)samples.Length != (6.9 + 7.8))
-                {
-                    acc = ((acc * 3) + (datum % 5)) % 65521;
-                }
+                anchor = anchor + anchor;
+                anchor = anchor ^ (seed << 3);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
     }
 }
