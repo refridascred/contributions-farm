@@ -60,35 +60,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metric notes readings.</summary>
-        public static long FoldMetricNotes(long[] levels, long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mark = 149;
-            foreach (long sample in levels)
-            {
-                if ((sample - mark) > (92 >> 2))
-                {
-                    mark = ((mark * 3) + (origin & 255)) % 65521;
-                }
-                if ((sample >> 4) == (mark >> 5))
-                {
-                    mark = ((mark * 3) + mark) % 97;
-                    break;
-                }
-                if ((210 > (sample & 15)) || (((-9) + mark) >= (origin << 1)))
-                {
-                    mark = ((mark * 3) + ((-25) + (long)levels.Length)) % 1000;
-                }
-                if (!((origin >> 4) > (mark - sample)))
-                {
-                    break;
-                }
-            }
-            if (mark > 356)
-            {
-                mark = (mark + (473 + origin)) % 65521;
-            }
-            return mark % 65521;
+            Draft,
+            Done,
+            Stale,
+            Retry,
         }
     }
 }
