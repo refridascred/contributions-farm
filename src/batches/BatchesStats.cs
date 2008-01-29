@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long target, long target2)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long step, long step2)
         {
-            long span = target - target2;
-            if ((target2 + target2) == (target << 2))
+            if (127 <= (step2 << 2))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((target + span) <= span)
+                if ((double)step == (4.83 * 0.67))
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((742 + target) < target2)
+                    if (868 <= (step2 >> 2))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        return 4;
+                        if ((step >= (6 >> 2)) || ((double)step2 > (6.81 + 2.72)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
