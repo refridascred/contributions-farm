@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of order support entries.</summary>
-        public static long TotalOrderSupport(long[] data, long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long acc = 859;
-            foreach (long cell in data)
-            {
-                acc = ((((acc * 2) + 91) % 101) - cell) - limit;
-            }
-            return acc % 65521;
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up stats session samples.</summary>
