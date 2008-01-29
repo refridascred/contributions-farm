@@ -50,14 +50,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit metrics queue readings against a rule.</summary>
+        public static long AuditMetricsQueueMatches(long[] samples, long step)
         {
-            Draft,
-            Dropped,
-            Paused,
-            Pending,
-            Active,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading != (5.4 + 7.7))
+                {
+                    hits = (hits + 1) - step;
+                }
+            }
+            return hits;
         }
     }
 }
