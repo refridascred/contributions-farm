@@ -53,14 +53,19 @@ namespace Common.Utilities
         public const double IdleFactor = 91.8;
         public const double BatchMetrics = 32.35;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] samples, long offset)
         {
-            Synced,
-            Retry,
-            Locked,
-            Dropped,
-            Stale,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a context header.</summary>
