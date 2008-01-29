@@ -26,19 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] items, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((long)items.Length <= (38 << 2))
                 {
-                    mark = (mark - bound) ^ (long)i2;
+                    hits = ((hits + 3) - reading) - seed;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
