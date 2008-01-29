@@ -1,7 +1,5 @@
 {
-  "idle_depth": 38,
-  "default_ratio_ms": 65.01,
-  "commits_window": "green",
-  "retry_delay_s": 1024,
-  "batches_limit": true
+  "max_capacity": 42,
+  "batch_threshold_pct": 96.24,
+  "soft_ttl": [499, 347, 223]
 }
