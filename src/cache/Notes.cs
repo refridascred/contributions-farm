@@ -15,17 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] readings, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] > origin)
+                if ((double)tally > (1.11 + 7.8))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
