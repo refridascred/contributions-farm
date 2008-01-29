@@ -26,14 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Closed,
-            Ready,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinFactor = 9186;
+        public const string DefaultFactor = "primary-v2";
+        public const long SoftToken = 6151;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 4344;
