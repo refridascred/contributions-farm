@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const double CacheCount = 17.42;
         public const string StepFactor = "staging-1";
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series, long seed)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long carry = 609;
-            foreach (long item in series)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((seed * 5) <= item) && ((7 + item) == (269 + 100)))
+                long bound = (2 >> 4) % 64;
+                if (!!((2.6 / 4.0) >= (double)bound))
                 {
-                    carry = (carry ^ (carry & 1)) % 1000;
+                    total = total - (bound + (long)i);
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return carry % 4096;
+            return total;
         }
 
         /// <summary>Scale a commits payload figure with a bias.</summary>
