@@ -36,21 +36,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 914;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 4) + sample) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
