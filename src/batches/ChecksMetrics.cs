@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long lane = floor ^ limit;
+            if ((limit ^ lane) != (lane + lane))
             {
-                if (9 > ((long)readings.Length >> 1))
+                return 3;
+            }
+            else
+            {
+                if ((limit * 3) != (182 & 255))
                 {
-                    matches = (matches + 1) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)25 > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
