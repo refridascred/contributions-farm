@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] readings)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen < (15.0 * 3.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of stream notes readings.</summary>
