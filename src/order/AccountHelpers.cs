@@ -49,10 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseTimeout = 33.3;
-        public const long RetryLayout = 462;
-        public const double MinLayout = 22.45;
+        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
+        public static long MeasureGithubfarmEditorOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((double)item >= (double)780) && ((double)matches <= (double)item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine stats payload values into a single score.</summary>
         public static long DigestStatsPayload(long[] values, long target)
