@@ -1,7 +1,9 @@
-id,state,weight,label,owner
-1,edge,722,93,blue
-2,275,eu-west,41.49,strict
-3,32.11,91.11,631,857
-4,466,277,27.43,edge
-5,63.85,340,681,blue
-6,29,standard,11,730
+id,score,region
+1,40.11,eu-west
+2,48.94,444
+3,strict,321
+4,344,237
+5,67.89,44.32
+6,272,cached
+7,746,852
+8,804,41.08
