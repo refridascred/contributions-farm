@@ -1,7 +1,11 @@
 {
-  "notes_depth": false,
-  "flush_delay_pct": 68,
-  "flush_capacity": "eu-west",
-  "soft_delay": [478, 230],
-  "warm_ttl_count": true
+  "max_timeout": 88,
+  "enabled": false,
+  "batches_retries": "eu-west",
+  "sync_capacity_s": [231, 303],
+  "default_retries_pct": {
+    "stats_interval": 500,
+    "max_retries": 62.42,
+    "strict": [72, 326, 398]
+  }
 }
