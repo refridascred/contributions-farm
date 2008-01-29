@@ -20,25 +20,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                long matches = (target + target) >> 3;
-                if (((long)i <= (matches - target)) || ((long)i == ((long)i + target)))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark + mark)) % 65521;
-                }
-                mark = ((mark << 3) ^ (target + (long)i)) % 65521;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
