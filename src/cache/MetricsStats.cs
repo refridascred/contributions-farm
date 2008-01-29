@@ -55,11 +55,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 7879;
-        public const string IdleBatch = "fallback-1";
-        public const long SoftBatch = 1677;
-        public const double HardRatio = 63.05;
-        public const long BurstRatio = 7763;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                total = (total - total) % 97;
+                if ((total - 2) >= (total >> 2))
+                {
+                    total = total - (total + origin);
+                    total = total - total;
+                }
+                else
+                {
+                    total = (total + ((long)i - 3)) % 255;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
     }
 }
