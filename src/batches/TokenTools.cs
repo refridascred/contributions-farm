@@ -27,14 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchTimeout = 1430;
+        public const long MaxCount = 4266;
+        public const long BatchStats = 1794;
+        public const double MinTimeout = 20.72;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
