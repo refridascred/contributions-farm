@@ -43,19 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits tools samples.</summary>
-        public static long WeighCommitsTools(long[] values, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long limit)
         {
-            long state = 580;
-            foreach (long datum in values)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                state = ((state << 3) ^ datum) % 101;
-                if ((limit & 255) > (limit + state))
-                {
-                    state = (state << 3) ^ datum;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return state % 4096;
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
