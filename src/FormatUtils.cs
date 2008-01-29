@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit githubfarm format readings against a rule.</summary>
-        public static long MeasureGithubfarmFormatMatches(long[] values)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen / 8) < (seen ^ seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) ^ entry;
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
