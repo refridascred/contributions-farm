@@ -33,10 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryDepth = 5555;
-        public const double LimitContext = 90.3;
-        public const long WindowDepth = 1450;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long limit, long origin)
+        {
+            if ((limit * 3) < limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit > (origin + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TotalSession(long[] levels, long limit)
