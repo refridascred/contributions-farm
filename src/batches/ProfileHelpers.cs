@@ -16,11 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next tools account value.</summary>
-        public static double ScaleToolsAccount(double scale, double span)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double weight = span * 9.63;
-            return (weight + 5.0) + scale;
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Rank counter queue input into a small class.</summary>
