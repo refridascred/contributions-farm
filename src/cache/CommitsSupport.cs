@@ -16,11 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((5 + 579) >= (sample + sample))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a token reading by value.</summary>
