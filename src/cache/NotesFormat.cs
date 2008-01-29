@@ -25,18 +25,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (11 <= matches)
+                if (cell < bound)
                 {
-                    matches = (matches + 3) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
