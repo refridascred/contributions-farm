@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
-        public static long DeriveGithubfarmCounter(long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] levels, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((score - (long)i) >= (score / 9))
+                if ((datum ^ (long)levels.Length) > (limit << 3))
                 {
-                    score = score ^ (floor * 4);
+                    tally = tally + 2;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
