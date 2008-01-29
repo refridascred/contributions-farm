@@ -56,32 +56,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue entry pair into a bucket.</summary>
-        public static long RankQueueEntry(long step, long target)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long step2 = step ^ target;
-            if ((((-4) * 2) < (step2 * 5)) || (step > (step2 - step2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.59 * 9.21) < (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target & 31) >= (target / 2)) || ((target + step2) <= step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Paused,
+            Pending,
+            Failed,
         }
     }
 }
