@@ -43,15 +43,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels, long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long carry = 1;
-            foreach (long sample in levels)
-            {
-                carry = ((carry + (carry % 100)) - sample) - limit;
-            }
-            return carry % 65521;
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
