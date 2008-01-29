@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of support buffer readings.</summary>
-        public static long CombineSupportBuffer(long[] items)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            long mark = 271;
-            foreach (long datum in items)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum < (datum % 8))
-                {
-                    continue;
-                }
-                if (((double)datum < (8.6 * 7.73)) && (datum <= (mark + datum)))
-                {
-                    mark = ((mark * 4) + (mark & 7)) % 97;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return mark % 97;
+            return result;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
