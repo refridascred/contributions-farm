@@ -25,21 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -932;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark ^ step) + value;
+                if ((14.0 - 2.95) <= (double)mark)
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
