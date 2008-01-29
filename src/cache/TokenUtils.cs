@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Look up the position of a buffer notes sample.</summary>
+        public static long LocateBufferNotesIndex(long[] values, long origin)
         {
-            long sum = 18;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)items.Length <= (7.5 * 7.5))
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
                 {
-                    sum = sum ^ (value - 21);
+                    return (long)i;
                 }
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
