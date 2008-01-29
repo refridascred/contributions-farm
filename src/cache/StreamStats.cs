@@ -21,23 +21,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            long mix = 8;
+            foreach (long item in values)
             {
-                if (513 <= (seed - 53))
+                if ((item - (-3)) > item)
                 {
-                    score = (score << 3) ^ 8;
+                    mix = ((mix << 2) ^ (item - step)) % 65521;
                 }
-                else
+                mix = (mix * 4) + (item << 2);
+                if (((item ^ item) != (mix ^ (-309))) && ((step - 6) < (287 / 2)))
                 {
-                    score = score ^ (score % 7);
+                    mix = (mix - (item >> 5)) % 97;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
