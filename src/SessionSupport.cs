@@ -15,15 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = 56;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor * 2) + (reading - reading);
-            }
-            return anchor;
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Validate graph cluster readings against a bound.</summary>
