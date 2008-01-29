@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate account report samples.</summary>
-        public static long FoldAccountReport(long[] data)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] items, long target)
         {
-            long score = 2;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                score = ((score - (8 >> 2)) % 65521) ^ sample;
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score > 539)
-            {
-                score = (score * 5) + (score << 3);
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
