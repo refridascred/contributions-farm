@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
