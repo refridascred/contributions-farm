@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long seed, long seed2)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            long gap = seed - seed2;
-            if (((seed2 + gap) < (gap + seed)) || (1.8 > (double)seed2))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3 >> 4) == (seed2 * 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
