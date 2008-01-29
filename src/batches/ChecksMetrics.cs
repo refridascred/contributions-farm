@@ -64,12 +64,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public double Count { get; set; }
-            public double Size { get; set; }
-            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
