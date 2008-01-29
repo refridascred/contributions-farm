@@ -22,19 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account batch entry stays within the limit.</summary>
-        public static bool GuardAccountBatchRange(long[] data, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double mean = 12.0;
+            if (mean >= (18.0 * 8.0))
             {
-                if (sample <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean - (double)164) + ratio;
             }
-            return valid;
+            else
+            {
+                mean = mean + (16.0 - 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Hold a metric record.</summary>
