@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell <= (cell + count))
                 {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the format state values.</summary>
