@@ -23,33 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long step)
-        {
-            long step2 = offset ^ step;
-            if ((17 >= (step / 5)) || ((step - step2) >= ((-509) - offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset > step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step > (step2 + step2)) && ((double)step >= (3.3 + 6.24)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardBudget = "strict-v2";
+        public const string StepToken = "cached";
+        public const double HardToken = 41.23;
+        public const long SoftToken = 6566;
+        public const long WindowFactor = 8007;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
