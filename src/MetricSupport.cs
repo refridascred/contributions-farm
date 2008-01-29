@@ -19,12 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxScore = "alpha";
-        public const long SoftRatio = 5786;
-        public const string BurstSpan = "fallback-edge";
-        public const long CacheLevel = 1827;
-        public const double LimitRatio = 4.74;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] values)
+        {
+            long score = 71;
+            foreach (long cell in values)
+            {
+                score = (score + (score / 5)) + cell;
+            }
+            return score;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferOutliers(long[] values)
