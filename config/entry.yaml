@@ -1,18 +1,16 @@
 # entry settings
-schema_depth: primary
-audit: standard
-batch_ratio_ms:
-  - cached
+persist:
+  - 490
+  - 78
+  - 147
+  - 381
+default_delay:
+  - standard
+  - strict
+already_capacity: latest
+graph_capacity:
   - latest
-poll_retries_s: local
-enabled:
-  audit: cached
-  notes_depth: fallback
-  persist:
-    - 145
-    - 266
-    - 59
-  min_capacity:
-    - 17
-    - 403
-checks_window: 1024
+  - stable
+  - primary
+hard_depth_s: false
+idle_delay_pct: latest
