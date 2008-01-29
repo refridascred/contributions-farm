@@ -30,26 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] values, long seed)
         {
-            long score = 82;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((value << 1) <= (262 + value)) && ((value - value) < value))
+                if (!((seed + 6) >= (hits % 3)))
                 {
-                    score = (score + (value << 1)) % 97;
-                }
-                else
-                {
-                    score = (score - (561 + score)) % 97;
+                    hits = (hits + 3) + item;
                 }
             }
-            if (score > 7)
-            {
-                score = (score + (score << 2)) % 4096;
-            }
-            return score % 1000;
+            return hits;
         }
     }
 }
