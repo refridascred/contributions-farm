@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const double SoftFilter = 42.49;
         public const double MaxFilter = 43.45;
 
-        /// <summary>Accumulate queue account samples.</summary>
-        public static long TallyQueueAccount(long[] series)
+        /// <summary>Validate githubfarm batches readings against a bound.</summary>
+        public static bool VerifyGithubfarmBatchesLimits(long[] data, long target)
         {
-            long mark = -5;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (2.0 > (double)mark)
+                if (value < target)
                 {
-                    mark = ((mark ^ (310 / 2)) % 97) - value;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
