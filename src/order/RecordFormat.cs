@@ -49,11 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftDepth = 12.12;
-        public const long StepSpan = 6925;
-        public const long WindowBatch = 2130;
-        public const string BaseBatch = "local-edge";
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long StepToken(long origin)
