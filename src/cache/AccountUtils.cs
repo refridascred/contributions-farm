@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a checks report reading.</summary>
-        public static double BlendChecksReport(double weight, double span)
+        /// <summary>Measure how many support checks samples are out of range.</summary>
+        public static long TallySupportChecksGaps(long[] samples)
         {
-            double bias = (double)65 + (span * 3.93);
-            if (bias < weight)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                bias = bias + (span * 3.4);
+                if (tally <= (value / 5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return bias + (15.0 * 1.2);
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
