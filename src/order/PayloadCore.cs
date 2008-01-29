@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            New,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
