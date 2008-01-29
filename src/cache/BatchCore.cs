@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((entry << 2) <= seen)
+                if (tally < (tally << 1))
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
