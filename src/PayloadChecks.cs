@@ -22,10 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 2018;
-        public const long IdleSize = 8088;
-        public const long DefaultSize = 8739;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ProjectWindow(double bias, double bias2)
