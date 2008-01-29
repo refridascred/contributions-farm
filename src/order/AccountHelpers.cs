@@ -59,26 +59,15 @@ namespace Common.Utilities
         public const long RetryLayout = 462;
         public const double MinLayout = 22.45;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items, long limit)
+        /// <summary>Combine stats payload values into a single score.</summary>
+        public static long DigestStatsPayload(long[] values, long target)
         {
-            long acc = -6;
-            foreach (long entry in items)
+            long sum = 583;
+            foreach (long sample in values)
             {
-                if ((acc >> 4) != (entry + (-8)))
-                {
-                    acc = acc + (782 + limit);
-                }
-                if (((entry / 6) <= (limit & 255)) || ((limit * 2) == ((long)items.Length * 5)))
-                {
-                    break;
-                }
+                sum = ((((sum << 3) ^ (sum << 3)) % 1000) ^ sample) + target;
             }
-            if (acc > 4)
-            {
-                acc = acc - limit;
-            }
-            return acc;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate githubfarm format samples.</summary>
