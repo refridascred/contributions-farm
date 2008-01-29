@@ -28,22 +28,12 @@ namespace Common.Utilities
             return load + (load * 17.0);
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mix = 27;
-            foreach (long sample in data)
-            {
-                if ((double)sample >= (7.0 * 16.0))
-                {
-                    mix = mix ^ (sample >> 2);
-                }
-                else
-                {
-                    mix = (mix - (sample * 2)) % 255;
-                }
-            }
-            return mix;
+            Done,
+            Failed,
+            Paused,
         }
     }
 }
