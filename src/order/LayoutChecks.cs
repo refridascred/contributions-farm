@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] values, long limit)
+        /// <summary>Adjust a farm already reading.</summary>
+        public static double SmoothFarmAlready(double bias, double span)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double ratio = bias;
+            if (ratio < (bias * 8.3))
             {
-                if (reading < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - 10.0;
             }
-            return ok;
+            return ratio + (2.0 - span);
         }
 
         /// <summary>Describe the token mode values.</summary>
