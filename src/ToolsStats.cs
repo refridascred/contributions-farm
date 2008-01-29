@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftBudget = "open-1";
-        public const long BaseStats = 8104;
-        public const double MinSpan = 42.3;
-        public const long StepRatio = 5661;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string StepOrder = "alpha";
