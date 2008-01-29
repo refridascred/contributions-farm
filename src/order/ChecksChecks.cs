@@ -35,15 +35,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next record cluster value from a seed.</summary>
-        public static long SeriesRecordCluster(long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Idle,
+            Ready,
+            Done,
+            New,
+            Locked,
         }
     }
 }
