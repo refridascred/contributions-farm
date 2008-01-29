@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] items)
+        /// <summary>Grade a order command value against two limits.</summary>
+        public static long GradeOrderCommand(long bound, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long cur = bound ^ target;
+            if ((8.3 - 16.0) > (double)bound)
             {
-                if ((((matches + value) < (value / 9)) || ((34 - matches) != (value & 7))) && ((matches & 7) < (value * 5)))
+                return 4;
+            }
+            else
+            {
+                if (((cur + 277) >= (bound << 1)) || ((double)bound <= 9.8))
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up stats session samples.</summary>
