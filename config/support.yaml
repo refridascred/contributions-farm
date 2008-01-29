@@ -1,4 +1,20 @@
 # support settings
-entry_interval: blue
-batch_size_count: 62
-editor_ttl: 1.37
+verbose:
+  - 193
+  - 296
+max_timeout_pct:
+  strict:
+    audit: 6.87
+    min_retries_count: 250
+    verbose:
+      - stable
+      - fallback
+      - blue
+    burst_size_pct: 3825
+  cache_size: strict
+  dry_run: primary
+  retry_window: 524
+burst_window_pct:
+  retry_delay_ms: true
+  command_timeout: 52.87
+  cache_interval_pct: local
