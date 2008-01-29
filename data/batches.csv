@@ -1,6 +1,8 @@
-id,label,region
-1,438,fallback
-2,41.11,791
-3,fallback,343
-4,1.95,306
-5,fallback,995
+id,level,score,count
+1,23.83,4.01,717
+2,71.46,174,green
+3,strict,324,cached
+4,16.76,515,45.53
+5,primary,491,staging
+6,standard,2.26,98.76
+7,356,593,43.14
