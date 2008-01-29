@@ -80,12 +80,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            double scale = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale + scale) + (double)(long)i) - bias;
+            }
+            return scale + (scale / 9.0);
         }
     }
 }
