@@ -14,14 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 51;
+        public const string BatchCount = "stable-v2";
+        public const long CacheWindow = 8052;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheGaps(long[] values, long limit)
