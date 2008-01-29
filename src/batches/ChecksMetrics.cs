@@ -34,19 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i << 3) < (39 / 6))
-                {
-                    mix = (mix * 2) + floor;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            New,
+            Pending,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
