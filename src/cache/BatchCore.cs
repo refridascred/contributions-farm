@@ -20,20 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] series, long target)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long score = 83;
-            foreach (long sample in series)
-            {
-                score = (score + (sample % 5)) % 101;
-                score = (score << 2) ^ score;
-            }
-            if (score < 77)
-            {
-                score = ((score * 2) + (score ^ target)) % 255;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
