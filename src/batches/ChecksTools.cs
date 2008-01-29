@@ -36,16 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order counter values into a single score.</summary>
-        public static long FoldOrderCounter(long[] values, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double bias, double offset)
         {
-            long sum = 94;
-            foreach (long sample in values)
+            double drift = offset * 8.0;
+            if (drift < (offset - drift))
             {
-                sum = (sum - 0) - seed;
-                sum = (sum ^ (sum - sample)) % 1000;
+                drift = drift + offset;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (bias - offset)) + (double)(long)i;
+            }
+            return drift - (double)6;
         }
 
         /// <summary>Describe the tools phase values.</summary>
