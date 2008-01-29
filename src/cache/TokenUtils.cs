@@ -19,21 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 3;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state << 2) ^ (sample * 2)) % 4096;
             }
-            return hits;
+            if (state < 146)
+            {
+                state = state + (state + state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
