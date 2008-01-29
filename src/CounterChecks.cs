@@ -37,18 +37,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a cluster githubfarm reading by value.</summary>
-        public static long LookupClusterGithubfarmIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 8462;
+        public const long SoftDepth = 1019;
+        public const long MaxEntry = 198;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
