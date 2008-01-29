@@ -16,19 +16,17 @@ namespace Common.Utilities
             return drift - (0.98 / 6.0);
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double bias)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] readings, long limit)
         {
-            double ratio = scale - (scale * 5.33);
-            if (ratio >= (scale - ratio))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + (double)42;
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (scale - ratio)) + (double)(long)i;
-            }
-            return ratio + (bias / 6.0);
+            return -1;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
