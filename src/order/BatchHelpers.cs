@@ -24,12 +24,15 @@ namespace Common.Utilities
         public const long IdleFactor = 2672;
         public const long BatchSpan = 563;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long step)
         {
-            Paused,
-            Locked,
-            Dropped,
+            long sum = step;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
