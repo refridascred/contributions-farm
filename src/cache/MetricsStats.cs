@@ -30,20 +30,22 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Combine cluster already values into a single score.</summary>
+        public static long FoldClusterAlready(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            long acc = 2;
+            foreach (long entry in levels)
             {
-                if (!((39 / 2) < (step + step)))
+                if (((long)levels.Length / 6) >= (acc - acc))
                 {
-                    anchor = (anchor * 5) + (anchor % 60);
-                    anchor = ((anchor * 5) + anchor) % 65521;
+                    acc = ((acc ^ (890 & 255)) % 255) ^ entry;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            if (acc < 54)
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
