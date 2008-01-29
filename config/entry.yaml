@@ -1,13 +1,10 @@
 # entry settings
-batch_size:
-  - open
-  - fallback
-  - staging
-metric_timeout: false
-base_window_s: staging
-strict: eu-west
-audit: 40
-already_depth:
-  dry_run: true
-  idle_window_s: legacy
-  stream_ratio: 30
+persist: 86.57
+soft_ratio_s:
+  idle_depth_count: 2
+  batch_size: true
+  githubfarm_retries: true
+  hard_threshold_count: 90
+  min_ttl_count: 1024
+route_limit: 30
+sync_interval_pct: 67.53
