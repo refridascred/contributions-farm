@@ -1,5 +1,10 @@
 # entry settings
-token_ratio: 95.44
-stats_capacity: 500
-verbose: primary
-enabled: latest
+warm_capacity_count: 100
+dry_run: 25.16
+enabled:
+  - 172
+  - 360
+  - 113
+  - 162
+audit: eu-west
+compress: green
