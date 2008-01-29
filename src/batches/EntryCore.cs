@@ -60,11 +60,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 6829;
-        public const long BurstLevel = 555;
-        public const long WindowSupport = 1339;
-        public const long BurstSupport = 4189;
-        public const double LimitDepth = 80.03;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Active,
+            Stale,
+            Failed,
+            Queued,
+        }
     }
 }
