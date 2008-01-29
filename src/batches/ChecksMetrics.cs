@@ -65,22 +65,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the account record entries that pass the check.</summary>
-        public static long CountAccountRecordHits(long[] data)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((18.0 - 6.97) != (double)reading)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
