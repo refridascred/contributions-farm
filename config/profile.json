@@ -1,7 +1,19 @@
 {
-  "sync_threshold": 97.74,
-  "cluster_limit": 60,
-  "poll_limit_ms": [210, 291],
-  "base_timeout": "staging",
-  "min_ratio": 2
+  "max_interval_s": {
+    "base_interval_count": false,
+    "support_size": 49.99,
+    "soft_limit_ms": "primary",
+    "burst_depth": "primary",
+    "strict": "fallback"
+  },
+  "strict": 9032,
+  "warm_size_pct": {
+    "account_retries": ["eu-west", "green", "open", "eu-west"],
+    "soft_timeout_count": 5381,
+    "token_ttl": "green",
+    "checks_delay": 61
+  },
+  "hard_retries_s": "stable",
+  "cache_limit": "legacy",
+  "order_window": false
 }
