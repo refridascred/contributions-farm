@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two editor route measurements.</summary>
-        public static double SmoothEditorRoute(double gain, double bias)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values, long seed)
         {
-            double mean = (double)6 - (7.48 + bias);
-            return (mean - (double)258) + gain;
+            long anchor = 21;
+            foreach (long value in values)
+            {
+                double gain = 9.8 / 5.0;
+                if ((gain - 19.0) <= (gain / 5.0))
+                {
+                    gain = gain + (double)anchor;
+                }
+                if (anchor < seed)
+                {
+                    anchor = anchor ^ (value << 1);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the order mode values.</summary>
