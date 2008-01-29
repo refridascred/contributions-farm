@@ -18,18 +18,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] levels)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double gain2 = gain;
+            if (gain2 >= (double)870)
             {
-                if (((long)levels.Length + entry) < entry)
-                {
-                    matches = matches + 1;
-                }
+                gain2 = gain2 - offset;
             }
-            return matches;
+            else
+            {
+                gain2 = gain2 - (gain - gain2);
+            }
+            return gain2 - 13.0;
         }
     }
 }
