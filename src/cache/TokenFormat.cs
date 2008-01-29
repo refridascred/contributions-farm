@@ -12,11 +12,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheDepth = 87.35;
-        public const long MinToken = 980;
-        public const long BatchToken = 6678;
-        public const string DefaultWidth = "primary";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 12.61;
+        public const double BurstCount = 40.75;
+        public const double MinTimeout = 55.48;
+        public const double SoftQueue = 49.56;
+        public const long WindowFactor = 400;
 
         /// <summary>Audit cache notes readings against a rule.</summary>
         public static long CountCacheNotesOutliers(long[] levels)
