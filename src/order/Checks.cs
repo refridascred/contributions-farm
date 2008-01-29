@@ -39,24 +39,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long floor, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] values, long bound)
         {
-            if (floor <= (offset + floor))
+            long anchor = 5;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8.0 > (double)floor) || (offset < (floor * 5)))
+                if (!((double)bound < (double)entry))
                 {
-                    return 5;
+                    anchor = (anchor - entry) % 4096;
                 }
-                else
+                anchor = anchor - bound;
+                if (7 < (entry + bound))
                 {
-                    return 1;
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a cluster stats.</summary>
