@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            long mix = 59;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix * 3) + (2 >> 2)) % 97) ^ datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
