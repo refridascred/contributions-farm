@@ -44,12 +44,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            Active,
-            Paused,
-            Stale,
+            double drift = (double)(9 - 74);
+            return ((drift - (double)701) + gain) + offset;
         }
 
         /// <summary>Describe the token kind values.</summary>
