@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Measure how many report account samples are out of range.</summary>
+        public static long AuditReportAccountHits(long[] data, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((double)target != (7.2 - 3.59))
                 {
-                    mix = (mix + (bound >> 3)) + (long)i2;
+                    tally = (tally + 2) - reading;
                 }
-                if (!((mix / 9) >= mix))
-                {
-                    mix = mix ^ (99 << 3);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
