@@ -20,13 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Ready,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultWidth = 46.26;
+        public const long RetryFactor = 9634;
+        public const double CacheTools = 44.59;
+        public const string LimitCount = "primary";
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long bound)
