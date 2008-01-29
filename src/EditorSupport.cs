@@ -37,23 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] items, long offset)
         {
-            long total = 4;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total ^ (value ^ 73)) % 97;
-                if ((value + total) <= total)
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
                 {
-                    total = (total ^ (total << 3)) % 65521;
+                    return (long)i;
                 }
             }
-            if (total > 7)
-            {
-                total = total ^ (total % 8);
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
