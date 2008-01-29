@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Roll a filter githubfarm counter forward.</summary>
+        public static long SeriesFilterGithubfarm(long target)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Queued,
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = ((state << 2) ^ ((long)i - (long)i2)) % 101;
+                }
+                state = (state ^ (state + state)) % 1000;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
