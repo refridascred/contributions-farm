@@ -43,12 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
