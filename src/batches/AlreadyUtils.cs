@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Find the first already editor entry that matches the target.</summary>
+        public static long FindAlreadyEditorIndex(long[] levels, long floor)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate filter batch readings against a bound.</summary>
