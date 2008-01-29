@@ -22,23 +22,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long target, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long target, long step)
         {
-            long bound = target - offset;
-            if ((bound - offset) != (981 + offset))
+            if (!((target + target) < target))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((offset - bound) <= target)
+                if ((2.0 / 7.0) < (double)target)
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    return 5;
                 }
             }
         }
