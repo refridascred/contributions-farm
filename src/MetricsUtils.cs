@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const double RetryCache = 41.22;
         public const long HardScore = 7426;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinDepth = 6150;
-        public const long SoftSupport = 1912;
-        public const long HardSupport = 8361;
-        public const long MaxSupport = 9188;
-        public const string DefaultCount = "stable-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultInterval = 7254;
+        public const double StepWidth = 25.61;
+        public const long MaxAccount = 6316;
+        public const long HardAccount = 4576;
+        public const long BaseBudget = 4866;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long MeasureBatchesHits(long[] levels)
