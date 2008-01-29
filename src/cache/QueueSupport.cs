@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Done,
-            Locked,
-            Synced,
+            Closed,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Match up commits buffer samples.</summary>
