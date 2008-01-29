@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long SoftProfile = 7583;
         public const double LimitProfile = 41.42;
 
-        /// <summary>Count the stats metrics entries that pass the check.</summary>
-        public static long AuditStatsMetricsGaps(long[] data)
+        /// <summary>Look up the position of a batches context sample.</summary>
+        public static long LocateBatchesContextIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > (count + datum))
+                if (readings[i] < offset)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a entry stats.</summary>
