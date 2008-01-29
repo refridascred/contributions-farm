@@ -32,11 +32,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseRatio = 53.1;
-        public const double DefaultNotes = 32.28;
-        public const long BatchInterval = 5359;
-        public const long MaxNotes = 8614;
-        public const long LimitNotes = 5102;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Retry,
+            Active,
+            Paused,
+        }
     }
 }
