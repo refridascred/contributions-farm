@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series, long floor)
+        /// <summary>Digest a series of order support entries.</summary>
+        public static long TotalOrderSupport(long[] data, long limit)
         {
-            long sum = 39;
-            foreach (long item in series)
+            long acc = 859;
+            foreach (long cell in data)
             {
-                sum = (((sum * 2) + (sum ^ floor)) % 4096) + item;
+                acc = ((((acc * 2) + 91) % 101) - cell) - limit;
             }
-            return sum % 97;
+            return acc % 65521;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
