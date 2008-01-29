@@ -33,11 +33,12 @@ namespace Common.Utilities
             return bias2 + rate;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
