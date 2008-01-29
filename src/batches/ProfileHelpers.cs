@@ -30,22 +30,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine editor counter values into a single score.</summary>
-        public static long WeighEditorCounter(long[] values, long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long anchor = 3;
-            foreach (long sample in values)
-            {
-                if ((anchor + bound) < (7 / 7))
-                {
-                    anchor = (anchor - sample) % 97;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = ((anchor * 5) + (anchor >> 2)) % 101;
-            }
-            return anchor;
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
