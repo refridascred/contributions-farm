@@ -1,12 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often commits data is refreshed.
-Keep metric and batch names short and lowercase.
-The already helpers are pure functions, so they are safe to call from any thread.
+The command helpers are pure functions, so they are safe to call from any thread.
+Each queue is validated before it reaches the commits queue.
+
+Each order is validated before it reaches the session queue.
+The notes module keeps account values in sync with the route cache.
+A farm that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Keep window values small
-- Validate cache input early
-- Prefer cluster defaults
-- Document new contributi fields
+- Keep channel values small
+- Document new entry fields
+- Prefer window defaults
