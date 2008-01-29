@@ -31,12 +31,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            Ready,
-            Synced,
-            Active,
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc * 5) + (acc + acc);
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
