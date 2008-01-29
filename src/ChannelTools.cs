@@ -20,18 +20,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] samples, long step)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample % 12) < (seen - (long)samples.Length))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
