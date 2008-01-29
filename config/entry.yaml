@@ -1,14 +1,6 @@
 # entry settings
-batch_limit_s: true
-counter_interval: 60
-poll_window_s:
-  metrics_ratio: 43.59
-  verbose: blue
-  soft_size:
-    - stable
-    - fallback
-  sync_interval: legacy
-  soft_ttl_count: false
-  sync_size_count: 9157
-sync_ttl_ms: primary
-strict: 2
+base_capacity: true
+batch_capacity_count: 4997
+max_ttl: 24.06
+retry_interval_count: 66.06
+compress: 42
