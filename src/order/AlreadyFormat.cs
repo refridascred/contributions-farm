@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] series)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long anchor = 91;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= anchor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (anchor >> 2)) % 97;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 75)
-            {
-                anchor = (anchor * 5) + (anchor + anchor);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the batch status values.</summary>
