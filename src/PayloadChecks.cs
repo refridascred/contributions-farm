@@ -21,11 +21,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double bias, double bias2)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] samples, long origin)
         {
-            double scale = (bias2 * 2.61) - (8.14 - bias2);
-            return (scale - (scale - bias2)) + bias;
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (origin < (datum ^ 90))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
