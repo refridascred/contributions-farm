@@ -26,12 +26,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitScore = 2387;
+        public const string SoftTimeout = "legacy-v2";
+        public const string DefaultScore = "latest-edge";
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long DeriveFormat(long seed)
