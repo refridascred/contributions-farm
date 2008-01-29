@@ -1,4 +1,12 @@
 # support settings
-max_threshold_count: 8082
-command_depth: latest
-notes_window: 30
+default_size: 500
+dry_run:
+  - legacy
+  - legacy
+  - blue
+base_threshold_ms:
+  - primary
+  - staging
+  - standard
+account_window: 79.33
+poll_delay: 500
