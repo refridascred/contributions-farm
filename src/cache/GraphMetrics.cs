@@ -43,21 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
