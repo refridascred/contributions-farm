@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowCount = 8305;
-        public const long BurstDepth = 3131;
-        public const double CacheProfile = 8.84;
-        public const long HardInterval = 9594;
-        public const string CacheBudget = "standard";
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Idle,
+            New,
+            Draft,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
