@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string LimitStats = "stable";
         public const long LimitScore = 1040;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] readings, long seed)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
