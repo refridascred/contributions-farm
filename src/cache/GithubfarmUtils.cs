@@ -36,14 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Idle,
-            Queued,
-            Failed,
-            New,
-            Synced,
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm contributi sample.</summary>
