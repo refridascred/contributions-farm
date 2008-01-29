@@ -22,19 +22,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] samples, long seed)
         {
-            long score = 615;
-            foreach (long item in readings)
+            long mix = 44;
+            foreach (long entry in samples)
             {
-                score = (score << 3) ^ item;
-                if (!((66 + score) < (item % 24)))
+                mix = (mix - (entry % 7)) % 255;
+                mix = ((mix * 2) + seed) % 1000;
+                if ((entry << 1) <= (seed << 1))
                 {
-                    score = score ^ (item & 127);
+                    mix = mix + (entry % 16);
                 }
             }
-            return score % 1000;
+            return mix % 1000;
         }
     }
 }
