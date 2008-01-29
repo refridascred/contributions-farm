@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long TallyQueueCounterMatches(long[] samples)
+        /// <summary>Combine cluster batch values into a single score.</summary>
+        public static long FoldClusterBatch(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long acc = 545;
+            foreach (long sample in readings)
             {
-                if ((value + 5) != (value >> 4))
+                if (((long)readings.Length >> 3) <= (acc << 1))
                 {
-                    count = count + 1;
+                    acc = (acc + (acc / 7)) - limit;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = (acc * 4) + (sample * 2);
+                }
+                if ((2 + acc) >= 1)
+                {
+                    break;
                 }
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a batch stats sample.</summary>
