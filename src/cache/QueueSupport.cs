@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string DefaultEntry = "local-v2";
         public const long StepTimeout = 1894;
 
-        /// <summary>Audit command channel readings against a rule.</summary>
-        public static long AuditCommandChannelOutliers(long[] series, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count << 1) <= 931)
+                if (readings[i] >= offset)
                 {
-                    count = ((count + 1) ^ entry) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
