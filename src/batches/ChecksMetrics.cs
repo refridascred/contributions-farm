@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of record already readings.</summary>
-        public static long TallyRecordAlready(long[] samples)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long target)
         {
-            long total = 337;
-            foreach (long value in samples)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (value > (168 * 2))
-                {
-                    total = (total << 2) ^ total;
-                }
-                else
-                {
-                    total = total ^ (6 & 127);
-                }
+                sum = ((sum << 2) ^ (sum ^ sum)) % 97;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
