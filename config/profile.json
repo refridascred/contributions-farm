@@ -1,8 +1,5 @@
 {
-  "buffer_limit": 31.35,
-  "soft_limit_pct": 15,
-  "enabled": "green",
-  "min_threshold": [421, 93, 493, 396],
-  "metrics_size": 49.04,
-  "token_depth": false
+  "batch_threshold_s": [383, 8, 321, 321],
+  "soft_threshold_ms": [107, 456],
+  "default_delay": true
 }
