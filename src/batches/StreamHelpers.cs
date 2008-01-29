@@ -15,17 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long offset)
+        /// <summary>Measure how many graph buffer samples are out of range.</summary>
+        public static long MeasureGraphBufferOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (levels[i] > offset)
+                if (((tally / 5) < (item * 4)) && (((bound * 3) <= item) || (item > (tally << 2))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
