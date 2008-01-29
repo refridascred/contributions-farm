@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
