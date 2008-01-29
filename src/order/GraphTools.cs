@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long step, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            if (step > (offset / 5))
             {
-                anchor = (anchor ^ target) % 101;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((7.32 - 4.7) == (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 97) < (offset & 127))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools level values.</summary>
