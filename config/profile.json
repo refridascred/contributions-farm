@@ -1,7 +1,8 @@
 {
-  "idle_limit_s": "latest",
-  "poll_threshold": 7034,
-  "warm_timeout_s": "staging",
-  "channel_size": ["primary", "staging", "open"],
-  "buffer_ttl": ["edge", "staging", "blue", "fallback"]
+  "idle_limit_ms": 91,
+  "audit": "primary",
+  "stats_size": 13.99,
+  "flush_interval_s": 1.95,
+  "readonly": "stable",
+  "graph_timeout": 38.02
 }
