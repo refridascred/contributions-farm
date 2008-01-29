@@ -88,11 +88,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 4124;
-        public const double CacheSession = 81.58;
-        public const long SoftSession = 3989;
-        public const long BaseSession = 6581;
-        public const double SoftInterval = 78.39;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((sum >> 3) != (sum - limit)) && (((long)i * 3) <= (long)i))
+                {
+                    sum = (sum - (limit % 10)) % 255;
+                    sum = (sum + (long)i) % 1000;
+                }
+                sum = sum + sum;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
