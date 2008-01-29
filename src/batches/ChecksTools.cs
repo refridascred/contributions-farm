@@ -56,15 +56,17 @@ namespace Common.Utilities
             return drift - (double)6;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double bias, double offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            double mean = bias;
-            if (mean >= (double)2)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                mean = mean - (offset - mean);
+                mix = (mix ^ (seed - mix)) % 97;
+                mix = ((mix * 3) + seed) % 4096;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mean - bias;
+            return mix;
         }
     }
 }
