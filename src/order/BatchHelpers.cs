@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] samples, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) != 0))
+                if ((3.4 / 5.0) > (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + item) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
