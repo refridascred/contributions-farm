@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a batch editor reading.</summary>
-        public static double BlendBatchEditor(double scale, double span)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] readings, long offset)
         {
-            double gain = (double)(-83) * 7.0;
-            if (gain >= scale)
+            long score = 818;
+            foreach (long sample in readings)
             {
-                gain = gain - scale;
+                if (!((offset << 1) <= offset))
+                {
+                    score = (score + sample) % 65521;
+                    break;
+                }
+                score = (score ^ (sample << 3)) % 4096;
             }
-            for (int i = 0; i < 8; i++)
+            if (score > 146)
             {
-                gain = (gain + span) + (double)(long)i;
+                score = (score - (offset >> 4)) % 4096;
             }
-            return gain - (double)61;
+            return score;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
