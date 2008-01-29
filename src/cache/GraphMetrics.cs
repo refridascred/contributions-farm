@@ -47,32 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long limit, long target)
-        {
-            if ((limit + target) != (limit + limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3.0 + 7.0) == (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target << 3) <= ((-2) ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinSpan = 5452;
+        public const string StepBudget = "local-v2";
+        public const long BasePayload = 2516;
+        public const string WindowPayload = "legacy-v2";
+        public const string CachePayload = "latest";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long IdleDepth = 9724;
