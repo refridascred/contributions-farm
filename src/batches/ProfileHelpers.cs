@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] samples, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((floor + datum) != (919 + datum))
+                if (((hits * 4) != (entry & 127)) || !((entry - entry) > hits))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
