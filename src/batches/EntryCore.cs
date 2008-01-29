@@ -36,12 +36,32 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long floor)
         {
-            Dropped,
-            Stale,
-            Active,
+            long offset = target + floor;
+            if ((double)floor == (2.48 - 0.6))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target != (14.0 + 6.5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset >> 5) >= (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter class values.</summary>
