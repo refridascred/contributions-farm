@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (long)i) % 1000;
-                mark = ((mark * 3) + (mark ^ 5)) % 97;
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
