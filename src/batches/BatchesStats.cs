@@ -12,20 +12,17 @@ namespace Common.Utilities
         public const double BaseGraph = 56.58;
         public const long CacheGraph = 3728;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] samples, long seed)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((carry << 1) > carry) || ((88 + carry) >= (-66)))
+                if ((samples[i] < seed) && ((samples[i] % 2) == 0))
                 {
-                    carry = (carry - (809 >> 3)) % 101;
-                    carry = ((carry * 4) + (99 ^ 56)) % 97;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Roll a tools cluster counter forward.</summary>
