@@ -31,16 +31,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc * 5) + (acc + acc);
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheDepth = "legacy-v2";
+        public const long StepWindow = 2868;
+        public const double BurstWindow = 62.43;
+        public const string IdleBudget = "open-1";
+        public const long RetryWindow = 8890;
     }
 }
