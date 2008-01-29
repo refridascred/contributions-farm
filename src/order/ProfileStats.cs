@@ -41,11 +41,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Derive the next cluster command value from a seed.</summary>
+        public static long RollClusterCommand(long floor)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long total = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (total >= (floor << 1))
+                {
+                    total = ((total << 2) ^ total) % 97;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
