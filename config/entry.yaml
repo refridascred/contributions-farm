@@ -1,9 +1,16 @@
 # entry settings
-cluster_limit: fallback
-dry_run: 30
-metrics_timeout:
-  - cached
-  - blue
-  - latest
-  - latest
-flush_delay: legacy
+commits_delay:
+  - 195
+  - 267
+  - 202
+soft_ratio_s:
+  buffer_limit: edge
+  verbose: open
+  hard_window_pct: false
+  readonly: 41.2
+warm_interval: strict
+poll_threshold_pct:
+  - local
+  - eu-west
+  - green
+commits_depth: green
