@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next context stats value from a seed.</summary>
-        public static long IterateContextStats(long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (entry > 9)
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Digest a series of filter commits entries.</summary>
