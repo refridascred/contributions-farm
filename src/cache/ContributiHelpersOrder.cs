@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long RetryRoute = 5218;
         public const long BaseRoute = 8943;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] items, long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
             long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed ^ 1) < (hits / 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
