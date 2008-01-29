@@ -16,18 +16,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] readings)
+        /// <summary>Match up stats session samples.</summary>
+        public static long CompareStatsSessionCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((0.9 * 5.0) <= (double)(long)readings.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + entry;
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
