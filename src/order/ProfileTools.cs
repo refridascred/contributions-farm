@@ -40,22 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm payload readings against a rule.</summary>
-        public static long TallyFarmPayloadOutliers(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long state = 70;
+            foreach (long value in series)
             {
-                if (7.2 >= (double)(long)readings.Length)
+                if (((long)series.Length << 1) >= state)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = ((state * 5) + (state >> 4)) + value;
                 }
             }
-            return hits;
+            if (state < (-10))
+            {
+                state = (state * 5) + ((-876) - state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
