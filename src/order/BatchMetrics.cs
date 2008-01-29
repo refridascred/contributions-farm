@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every graph channel entry stays within the limit.</summary>
-        public static bool ValidateGraphChannelBounds(long[] readings, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (entry < step)
+                if (entry >= bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
