@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            Closed,
-            Pending,
-            New,
-            Stale,
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Classify a report batches pair into a bucket.</summary>
