@@ -28,21 +28,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally * 3) != (tally / 7))
                 {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 1) ^ value) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
