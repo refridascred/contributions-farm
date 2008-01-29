@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchWidth = 2040;
+        public const double HardMetrics = 14.77;
+        public const long RetryTimeout = 5804;
+        public const string WindowMetrics = "staging-1";
+        public const long MaxMetrics = 5718;
 
         /// <summary>Project the next cache order value.</summary>
         public static double AdjustCacheOrder(double weight, double offset)
