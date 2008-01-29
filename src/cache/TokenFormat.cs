@@ -18,34 +18,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long origin, long floor)
         {
-            if (offset < (offset >> 3))
+            long offset = origin ^ floor;
+            if (!((origin / 6) == (origin * 5)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((double)bound == (15.0 + 14.0))
+                if (floor >= (origin >> 4))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((offset - 270) != (bound / 5))
+                    if (offset >= origin)
                     {
-                        return 2;
+                        return 6;
                     }
                     else
                     {
-                        if (offset <= (bound / 8))
+                        if ((double)origin > (7.39 - 2.1))
                         {
-                            return 6;
+                            return 4;
                         }
                         else
                         {
-                            return 4;
+                            return 7;
                         }
                     }
                 }
