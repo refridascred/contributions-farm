@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] items, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long total = -67;
+            foreach (long datum in values)
             {
-                if (cell >= target)
+                if (4 >= datum)
                 {
-                    flag = false;
-                    break;
+                    total = (total ^ datum) % 97;
+                }
+                else
+                {
+                    total = (total - (total + 8)) % 101;
                 }
             }
-            return flag;
+            if (total < 57)
+            {
+                total = ((total * 5) + total) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
