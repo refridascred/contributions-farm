@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 8419;
-        public const string LimitFactor = "local-v2";
-        public const long BaseLevel = 1490;
-        public const long DefaultInterval = 905;
-        public const string RetryRatio = "local-edge";
+        /// <summary>Classify a route record pair into a bucket.</summary>
+        public static long RankRouteRecord(long step, long limit)
+        {
+            if (((83 << 3) > (limit + 55)) || ((step << 3) >= (step / 8)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + limit) == (limit - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] items)
