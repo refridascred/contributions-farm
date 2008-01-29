@@ -29,16 +29,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Grade a metrics support value against two limits.</summary>
+        public static long BucketMetricsSupport(long target, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            long span = target ^ seed;
+            if ((43 - 735) < (target - span))
             {
-                sum = (sum - ((long)i * 5)) % 255;
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (((span * 4) != (target << 3)) || ((target / 4) != (2 & 63)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((9.3 * 2.8) >= (double)target) || ((double)seed > (4.0 / 5.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (span >= (target + 17))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a checks schema figure with a bias.</summary>
