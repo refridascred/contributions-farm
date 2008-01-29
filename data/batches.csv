@@ -1,8 +1,7 @@
-id,weight,rank,ratio
-1,open,eu-west,eu-west
-2,73.73,69.36,373
-3,fallback,77.96,blue
-4,29.88,335,latest
-5,42.32,strict,cached
-6,5.11,60.55,111
-7,268,43.81,37.2
+id,state,weight,label,owner
+1,edge,722,93,blue
+2,275,eu-west,41.49,strict
+3,32.11,91.11,631,857
+4,466,277,27.43,edge
+5,63.85,340,681,blue
+6,29,standard,11,730
