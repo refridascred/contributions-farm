@@ -31,12 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] data, long seed)
         {
-            Locked,
-            Stale,
-            Failed,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item + seed) <= (seed - seed))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
