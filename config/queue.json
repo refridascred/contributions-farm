@@ -1,7 +1,11 @@
 {
-  "readonly": 9.1,
-  "compress": 9691,
-  "min_threshold_ms": "staging",
-  "profile_window": 500,
-  "commits_depth": 500
+  "poll_depth_count": "standard",
+  "max_delay_ms": false,
+  "burst_capacity_count": false,
+  "audit": "cached",
+  "base_depth_count": {
+    "burst_interval": 8036,
+    "persist": 500,
+    "counter_ttl": "fallback"
+  }
 }
