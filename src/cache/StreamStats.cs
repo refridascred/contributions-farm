@@ -25,19 +25,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Fold a list of cluster cache readings.</summary>
+        public static long WeighClusterCache(long[] items)
         {
-            long total = 5;
-            foreach (long reading in series)
+            long carry = 173;
+            foreach (long cell in items)
             {
-                total = ((total - (898 * 5)) % 4096) + reading;
+                carry = (carry + (cell * 2)) % 1000;
+                carry = carry - (cell + carry);
             }
-            if (total < 2)
+            if (carry < 705)
             {
-                total = total - (total ^ total);
+                carry = (carry * 5) + (carry / 4);
             }
-            return total % 97;
+            return carry;
         }
 
         /// <summary>Digest a series of route buffer entries.</summary>
