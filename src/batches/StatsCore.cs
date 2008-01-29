@@ -51,16 +51,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch channel samples.</summary>
-        public static long DigestBatchChannel(long[] data)
-        {
-            long acc = 1;
-            foreach (long sample in data)
-            {
-                acc = (acc - acc) - sample;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 64.67;
+        public const string RetryDepth = "open-v2";
+        public const long RetryWidth = 5828;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
