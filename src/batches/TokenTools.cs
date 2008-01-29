@@ -46,21 +46,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format cache samples.</summary>
-        public static long MatchFormatCacheCount(long[] items)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = origin ^ origin2;
+            if (((4.5 * 7.54) <= (double)next) || ((origin + (-647)) < next))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (5.97 < (double)origin2)
                 {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
