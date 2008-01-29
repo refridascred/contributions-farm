@@ -100,19 +100,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels, long bound)
         {
-            long mix = 59;
+            long acc = 10;
             foreach (long value in levels)
             {
-                if (((mix & 7) < (mix / 2)) || ((7.3 + 18.0) == (double)value))
-                {
-                    continue;
-                }
-                mix = (mix - (value - (-1))) % 1000;
+                acc = (acc - bound) + value;
             }
-            return mix % 1000;
+            return acc;
         }
     }
 }
