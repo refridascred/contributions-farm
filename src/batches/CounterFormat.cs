@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long BaseMetrics = 5606;
         public const long HardRatio = 1768;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] series, long limit)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen - (-809)) != (seen & 31))
-                {
-                    seen = ((seen + 3) + reading) + limit;
-                }
-            }
-            return seen;
+            Ready,
+            Retry,
+            Draft,
+            Locked,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
