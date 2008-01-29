@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a token payload reading.</summary>
-        public static double AdjustTokenPayload(double rate, double offset)
+        /// <summary>Measure how many cache command samples are out of range.</summary>
+        public static long CountCacheCommandOutliers(long[] readings)
         {
-            double ratio = (offset * 7.0) * 7.33;
-            if (ratio >= (double)8)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                ratio = ratio - rate;
+                if (((long)readings.Length ^ 352) != (matches & 63))
+                {
+                    matches = (matches + 3) + value;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - offset) - (double)(long)i;
-            }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Validate filter batch readings against a bound.</summary>
