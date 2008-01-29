@@ -29,25 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long slot = bound - offset;
-            if (((double)offset > (18.0 - 19.0)) && ((slot / 6) != (offset + offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((86 & 127) >= (offset - offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
