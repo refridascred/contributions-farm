@@ -48,18 +48,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] levels, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long bound, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if ((bound >> 4) > (89 + target))
             {
-                if (((1 % 3) >= (hits & 15)) && (item <= (item << 1)))
+                return 6;
+            }
+            else
+            {
+                if ((double)target <= (2.0 - 1.92))
                 {
-                    hits = (hits + 2) - seed;
+                    return 4;
+                }
+                else
+                {
+                    if ((7.4 + 5.55) <= (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate metric samples.</summary>
