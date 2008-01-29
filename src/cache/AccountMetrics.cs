@@ -38,12 +38,21 @@ namespace Common.Utilities
         public const long BatchInterval = 7233;
         public const long RetryCounter = 7039;
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up profile samples.</summary>
