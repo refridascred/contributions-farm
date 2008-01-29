@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                mix = ((mix * 2) + (983 - (-808))) % 101;
-                if ((origin << 2) >= mix)
+                state = ((state << 2) ^ 987) % 65521;
+                if ((double)target > (double)state)
                 {
-                    break;
+                    state = (state - 31) % 97;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
+                state = (state ^ (479 + target)) % 101;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the format state values.</summary>
