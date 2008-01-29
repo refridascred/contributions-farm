@@ -49,14 +49,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Digest a series of filter metrics entries.</summary>
+        public static long TotalFilterMetrics(long[] series, long limit)
         {
-            Draft,
-            Locked,
-            Ready,
-            Done,
-            Idle,
+            long acc = 135;
+            foreach (long item in series)
+            {
+                if (acc > (item + item))
+                {
+                    acc = acc ^ (acc - limit);
+                }
+                else
+                {
+                    acc = (acc ^ ((-2) >> 5)) % 255;
+                }
+                if ((double)acc < (18.0 + 3.0))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
