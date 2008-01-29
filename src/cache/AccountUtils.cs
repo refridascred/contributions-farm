@@ -24,20 +24,11 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Project the next stats route value.</summary>
-        public static double BlendStatsRoute(double ratio, double floor)
-        {
-            double rate = 3.64 + (floor - floor);
-            if (rate >= rate)
-            {
-                rate = rate - (double)858;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - ratio;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryRatio = 6436;
+        public const double MinTimeout = 15.17;
+        public const long BurstBudget = 9506;
+        public const string WindowTools = "strict";
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
