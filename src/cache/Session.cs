@@ -14,23 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Iterate the commits contributi series from a seed.</summary>
+        public static long SeriesCommitsContributi(long step)
         {
-            double load = (double)33 + (offset - 0.7);
-            if (load >= (offset + load))
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                load = load - (double)6;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = ((total + total) % 65521) + (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                load = load - (ratio - offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load - 6.0;
+            return total;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
