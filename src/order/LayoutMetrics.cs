@@ -22,15 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Synced,
-            Active,
-            Done,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitLevel = 4814;
+        public const long IdleSpan = 1519;
+        public const string DefaultSpan = "staging";
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
