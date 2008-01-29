@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long sum = 28;
-            foreach (long value in series)
-            {
-                if ((sum & 31) >= (sum >> 1))
-                {
-                    sum = (sum * 3) + (limit ^ limit);
-                }
-                else
-                {
-                    sum = (sum * 5) + (78 * 5);
-                }
-                if (((sum / 7) > (limit / 6)) && ((value * 3) >= (sum - 83)))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
