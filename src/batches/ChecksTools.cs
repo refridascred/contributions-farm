@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long origin, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] data, long bound)
         {
-            long next = origin - seed;
-            if (seed >= origin)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(next <= (origin % 16)))
+                if (data[i] == bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
