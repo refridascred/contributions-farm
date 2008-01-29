@@ -37,17 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] readings, long offset)
+        /// <summary>Count the graph filter entries that pass the check.</summary>
+        public static long MeasureGraphFilterMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (readings[i] > offset)
+                if ((long)readings.Length >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
