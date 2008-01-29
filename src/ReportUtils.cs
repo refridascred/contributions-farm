@@ -47,14 +47,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Queued,
+            Active,
+            Closed,
             Draft,
-            Idle,
-            New,
-            Dropped,
+            Failed,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
