@@ -22,10 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCount = "local-1";
-        public const long MinCounter = 1371;
-        public const long RetryCounter = 3612;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Closed,
+            Ready,
+            Active,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double SoftSpan = 72.97;
