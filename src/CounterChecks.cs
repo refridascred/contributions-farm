@@ -63,13 +63,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double gain, double floor)
         {
-            Closed,
-            Stale,
-            Pending,
-            Active,
+            double bias = gain;
+            if (bias < bias)
+            {
+                bias = (bias + gain) - floor;
+            }
+            else
+            {
+                bias = bias + (gain / 6.0);
+            }
+            return bias - bias;
         }
     }
 }
