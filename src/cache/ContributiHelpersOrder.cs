@@ -23,23 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report window series from a seed.</summary>
-        public static long RollReportWindow(long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((step % 100) < ((long)i / 6))
+                if ((double)seen >= (double)(long)readings.Length)
                 {
-                    continue;
+                    seen = (seen + 3) ^ cell;
                 }
-                if (!(sum <= (775 + (long)i)))
-                {
-                    sum = (sum - (step & 1)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a account stats.</summary>
