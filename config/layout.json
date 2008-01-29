@@ -1,6 +1,9 @@
 {
-  "route_interval": [349, 227, 179, 288],
-  "persist": 46,
-  "notes_capacity": [387, 80, 438],
-  "hard_limit": "standard"
+  "strict": {
+    "batch_ttl": 27,
+    "burst_limit": 48,
+    "flush_ttl_pct": 30.47
+  },
+  "audit": 58.33,
+  "verbose": 60.7
 }
