@@ -23,12 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardBudget = "strict-v2";
-        public const string StepToken = "cached";
-        public const double HardToken = 41.23;
-        public const long SoftToken = 6566;
-        public const long WindowFactor = 8007;
+        /// <summary>Scale a session cluster figure with a bias.</summary>
+        public static double AdjustSessionCluster(double gain, double bias)
+        {
+            double drift = (double)(33 / 2);
+            if (drift >= drift)
+            {
+                drift = ((drift + (double)76) - gain) + bias;
+            }
+            else
+            {
+                drift = drift + 3.62;
+            }
+            return drift + (drift * 8.0);
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
