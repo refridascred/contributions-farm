@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix - ((long)i + 809);
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
