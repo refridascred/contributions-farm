@@ -28,16 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] levels, long offset)
         {
-            long state = 714;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                state = ((state * 2) + reading) % 4096;
-                state = state ^ (reading & 255);
+                if (!((0.3 + 20.0) < (double)cell))
+                {
+                    tally = (tally + 3) - offset;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the channel kind values.</summary>
