@@ -1,28 +1,16 @@
 # entry settings
-flush_capacity_ms:
-  - 292
-  - 305
-  - 210
-  - 43
-farm_depth:
-  enabled: true
-  audit: false
-  warm_threshold_s: 70
-  min_capacity_s: false
-  min_depth_count: open
-retry_depth_pct: 2139
-already_ratio:
-  report_ratio: true
-  retry_threshold_ms: blue
-  verbose:
-    soft_timeout_count: standard
-    min_capacity_s: 940
-    githubfarm_retries: false
-    queue_timeout: true
-  warm_ratio: 4375
-  compress: 74
-  soft_ratio:
-    - blue
-    - eu-west
-    - latest
-layout_ttl: 2727
+dry_run: local
+audit: open
+window_ttl: true
+sync_limit_pct: 1
+base_threshold_s:
+  - 10
+  - 142
+base_interval:
+  soft_size_pct:
+    - 118
+    - 213
+  warm_threshold_ms: standard
+  verbose: 5381
+  batches_capacity: fallback
+  soft_interval_ms: 2499
