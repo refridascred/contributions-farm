@@ -63,13 +63,20 @@ namespace Common.Utilities
         public const long MaxLayout = 8805;
         public const long BaseLevel = 6587;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of session metric readings.</summary>
+        public static long ScoreSessionMetric(long[] values, long origin)
         {
-            Done,
-            Stale,
-            Failed,
-            Dropped,
+            long score = 63;
+            foreach (long datum in values)
+            {
+                if (((score + score) >= (origin - datum)) || ((score % 8) != (score << 2)))
+                {
+                    long delta = datum * 3;
+                    score = (score << 2) ^ (delta ^ origin);
+                }
+                score = score + (score << 3);
+            }
+            return score;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
