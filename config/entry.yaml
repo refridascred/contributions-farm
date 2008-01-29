@@ -1,4 +1,13 @@
 # entry settings
-min_ratio_ms: true
-dry_run: 92.53
-default_timeout: strict
+retry_depth_pct: 2085
+idle_ratio_s: open
+burst_ttl_count: blue
+max_retries_s:
+  audit: false
+  batch_limit_ms: true
+  poll_window: standard
+  entry_interval: 63
+  queue_limit:
+    - standard
+    - latest
+queue_depth: 320
