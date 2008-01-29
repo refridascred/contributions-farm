@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] values, long bound)
+        /// <summary>Fold a list of record already readings.</summary>
+        public static long CombineRecordAlready(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long carry = 2;
+            foreach (long datum in data)
             {
-                if ((double)bound <= (double)seen)
+                carry = ((carry * 4) + datum) % 65521;
+                if ((datum > (2 & 31)) && (carry > (datum - target)))
                 {
-                    seen = (seen + 3) + datum;
+                    carry = carry + (datum & 1);
+                }
+                if ((carry / 7) <= target)
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
