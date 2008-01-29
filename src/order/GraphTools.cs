@@ -60,18 +60,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long total = 7;
+            foreach (long sample in values)
             {
-                if (!((double)matches == (12.0 * 8.97)) && ((reading & 63) <= (matches & 1)))
+                if ((sample >> 5) <= (sample * 3))
                 {
-                    matches = matches + 2;
+                    total = (total << 2) ^ (total + total);
                 }
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
