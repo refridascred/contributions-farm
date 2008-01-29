@@ -64,13 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double scale, double span)
         {
-            Active,
-            Stale,
-            Failed,
-            Queued,
+            double load = (span * 7.33) + scale;
+            if (load >= scale)
+            {
+                load = load - 8.4;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (span / 5.0)) + (double)(long)i;
+            }
+            return load + (load - load);
         }
     }
 }
