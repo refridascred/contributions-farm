@@ -60,18 +60,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] samples)
         {
-            long total = 7;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((total % 64) <= (value + 226))
+                if (!((double)matches == (12.0 * 8.97)) && ((reading & 63) <= (matches & 1)))
                 {
-                    total = (total << 2) ^ (58 % 7);
+                    matches = matches + 2;
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
