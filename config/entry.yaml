@@ -1,8 +1,9 @@
 # entry settings
-retry_size_s: fallback
-command_ttl:
-  - 286
-  - 351
-  - 455
-poll_depth_s: false
-report_limit: blue
+max_interval_count: strict
+warm_limit_pct:
+  - 432
+  - 343
+  - 32
+verbose:
+  - 400
+  - 474
