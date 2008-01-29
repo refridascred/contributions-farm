@@ -47,18 +47,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] series, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            long count = 0;
-            foreach (long item in series)
+            long carry = 85;
+            foreach (long datum in samples)
             {
-                if ((double)item < (14.0 * 0.7))
+                if (((double)datum != (14.0 * 2.9)) && (carry <= (carry / 2)))
                 {
-                    count = (count + 3) - seed;
+                    carry = ((carry * 4) + (215 + datum)) % 65521;
                 }
             }
-            return count;
+            if (carry > 7)
+            {
+                carry = ((carry << 2) ^ (carry ^ carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
