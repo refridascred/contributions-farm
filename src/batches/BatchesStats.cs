@@ -33,12 +33,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
