@@ -25,22 +25,9 @@ namespace Common.Utilities
         public const string RetryLayout = "staging-1";
         public const long IdleLayout = 9769;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell < (seen - 3)) || ((seed ^ seed) <= (seen % 100)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryDepth = 4593;
+        public const long BurstSize = 4394;
+        public const long LimitCommand = 1849;
     }
 }
