@@ -31,20 +31,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long step, long bound)
         {
-            long carry = 24;
-            foreach (long entry in series)
+            long bound2 = step - bound;
+            if ((double)step < (double)2)
             {
-                carry = (carry ^ carry) % 101;
-                carry = carry - (entry % 12);
+                return 4;
             }
-            if (carry < 68)
+            else
             {
-                carry = (carry + (carry - carry)) % 1000;
+                if ((bound2 - step) != (bound * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return carry % 1000;
         }
     }
 }
