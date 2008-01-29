@@ -64,22 +64,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowTimeout = 7024;
+        public const long BaseBudget = 911;
+        public const long RetryBudget = 6659;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
