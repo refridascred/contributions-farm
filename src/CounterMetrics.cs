@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] series, long target)
+        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
+        public static bool CheckToolsBufferRange(long[] levels, long target)
         {
-            long state = 11;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                state = (state ^ target) % 97;
-                if (cell > (state & 127))
+                if (cell >= target)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return state % 65521;
+            return flag;
         }
 
         /// <summary>Combine order values into a single score.</summary>
