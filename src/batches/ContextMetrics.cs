@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double scale, double offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            double drift = scale;
-            return (drift + (6.16 * 3.0)) + offset;
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
