@@ -58,17 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache stream reading by value.</summary>
-        public static long FindCacheStreamIndex(long[] samples, long offset)
+        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
+        public static long CompareChecksCounterCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] >= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
