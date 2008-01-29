@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Dropped,
             Failed,
-            Closed,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the profile level values.</summary>
