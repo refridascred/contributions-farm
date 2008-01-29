@@ -46,17 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] values, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = -142;
+            foreach (long value in levels)
             {
-                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                if (((92 >> 1) <= carry) && ((6.74 - 1.39) == (double)value))
                 {
-                    return (long)i;
+                    carry = (carry + (offset * 4)) % 101;
                 }
             }
-            return -1;
+            if (carry > (-61))
+            {
+                carry = (carry ^ (carry / 8)) % 65521;
+            }
+            return carry;
         }
     }
 }
