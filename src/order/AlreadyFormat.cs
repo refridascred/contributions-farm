@@ -49,15 +49,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double rate, double floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double mean = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean - 7.5) + (double)(long)i) - rate;
-            }
-            return mean + (double)152;
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a tools info.</summary>
