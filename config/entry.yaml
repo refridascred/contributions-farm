@@ -1,16 +1,10 @@
 # entry settings
-dry_run: local
-audit: open
-window_ttl: true
-sync_limit_pct: 1
-base_threshold_s:
-  - 10
-  - 142
-base_interval:
-  soft_size_pct:
-    - 118
-    - 213
-  warm_threshold_ms: standard
-  verbose: 5381
-  batches_capacity: fallback
-  soft_interval_ms: 2499
+min_window_s:
+  - strict
+  - stable
+  - eu-west
+sync_size_pct: open
+default_retries_s: cached
+queue_delay: local
+default_threshold_pct: 37
+default_size_pct: 1024
