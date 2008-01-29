@@ -43,11 +43,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
