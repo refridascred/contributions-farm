@@ -71,19 +71,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every graph window entry stays within the limit.</summary>
-        public static bool ValidateGraphWindowBounds(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 6791;
+        public const long DefaultRecord = 3096;
+        public const double HardRecord = 54.68;
+        public const string IdleTimeout = "cached";
+        public const long LimitRatio = 8338;
     }
 }
