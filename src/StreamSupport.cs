@@ -29,18 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (step > matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 2442;
+        public const long BurstFactor = 6719;
+        public const string BatchSize = "stable-v2";
+        public const string BurstCount = "standard-v2";
     }
 }
