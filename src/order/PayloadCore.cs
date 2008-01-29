@@ -32,15 +32,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            long acc = 83;
+            foreach (long datum in samples)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((double)(long)samples.Length != (6.9 + 7.8))
+                {
+                    acc = ((acc * 3) + (datum % 5)) % 65521;
+                }
             }
-            return carry;
+            return acc;
         }
     }
 }
