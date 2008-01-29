@@ -36,19 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two token schema measurements.</summary>
-        public static double SmoothTokenSchema(double weight, double span)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] data, long origin)
         {
-            double ratio = span;
-            if (ratio < weight)
+            bool flag = true;
+            foreach (long value in data)
             {
-                ratio = ratio + span;
+                if (value != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - 3.1) + (double)(long)i;
-            }
-            return ratio + weight;
+            return flag;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
