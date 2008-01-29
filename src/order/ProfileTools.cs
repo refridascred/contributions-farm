@@ -38,11 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit farm payload readings against a rule.</summary>
+        public static long TallyFarmPayloadOutliers(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (7.2 >= (double)(long)readings.Length)
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a batches queue counter forward.</summary>
