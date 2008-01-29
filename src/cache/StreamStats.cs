@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
