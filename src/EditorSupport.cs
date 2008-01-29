@@ -27,19 +27,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] levels, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc + (limit - 9)) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Count the metric stream entries that pass the check.</summary>
