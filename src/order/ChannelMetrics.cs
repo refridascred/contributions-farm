@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Active,
-            New,
-            Paused,
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the already status values.</summary>
