@@ -29,18 +29,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] levels, long floor)
+        /// <summary>Roll a command profile counter forward.</summary>
+        public static long StepCommandProfile(long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (18.0 <= (double)floor)
-                {
-                    tally = (tally + 1) + reading;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
