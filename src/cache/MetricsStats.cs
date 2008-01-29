@@ -59,10 +59,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstBudget = 9965;
-        public const long MaxCommits = 6943;
-        public const long BatchLevel = 181;
-        public const long SoftTimeout = 3184;
+        /// <summary>Derive the next batch account value from a seed.</summary>
+        public static long RollBatchAccount(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = (result * 3) + (long)i;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
