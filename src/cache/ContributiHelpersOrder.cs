@@ -19,12 +19,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 8206;
-        public const double BaseSession = 12.3;
-        public const string CacheInterval = "stable-1";
-        public const long RetryDepth = 8266;
-        public const long DefaultInterval = 2220;
+        /// <summary>Rank context metrics input into a small class.</summary>
+        public static long RankContextMetrics(long target, long bound)
+        {
+            long span = target - bound;
+            if ((target >= (target & 63)) || ((5.69 / 6.0) >= (double)bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(bound > target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.21 + 9.19) >= (double)span)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many payload metrics samples are out of range.</summary>
         public static long CountPayloadMetricsOutliers(long[] items, long floor)
