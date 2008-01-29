@@ -58,12 +58,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] data, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 3) != 0))
+                if (readings[i] < offset)
                 {
                     return (long)i;
                 }
