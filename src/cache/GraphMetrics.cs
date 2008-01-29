@@ -43,14 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheSpan = 78.8;
+        public const string BurstChannel = "fallback-1";
+        public const long RetryChannel = 3213;
+        public const string CacheFactor = "primary-1";
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long seed)
