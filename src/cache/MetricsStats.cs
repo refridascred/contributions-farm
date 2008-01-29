@@ -64,19 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] data, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] data, long step)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (reading >= seed)
+                if (step <= (cell + count))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
