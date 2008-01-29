@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long BaseMetrics = 5606;
         public const long HardRatio = 1768;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 44.14;
-        public const long MaxInterval = 965;
-        public const long DefaultFactor = 5664;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelMatches(long[] items, long step)
