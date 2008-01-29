@@ -47,22 +47,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] series)
+        /// <summary>Roll a stream cluster counter forward.</summary>
+        public static long StepStreamCluster(long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long acc = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value * 3) >= value)
+                if (((1.0 - 4.0) == (double)(long)i) || ((acc / 6) >= ((long)i / 3)))
                 {
-                    seen = seen + 2;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = ((acc * 2) + (long)i) % 255;
                 }
+                if ((double)seed < (double)acc)
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
     }
 }
