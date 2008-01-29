@@ -22,18 +22,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] readings)
+        /// <summary>Digest a series of filter commits entries.</summary>
+        public static long TotalFilterCommits(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long sum = 78;
+            foreach (long value in readings)
             {
-                if (((reading ^ seen) < (reading >> 1)) || ((reading ^ reading) > (seen + reading)))
-                {
-                    seen = seen + 2;
-                }
+                sum = sum - (170 + value);
             }
-            return seen;
+            if (sum > 154)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
         }
     }
 }
