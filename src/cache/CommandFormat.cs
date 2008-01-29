@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long WindowSize = 3959;
         public const long BurstScore = 9335;
 
-        /// <summary>Look up the position of a batch stats sample.</summary>
-        public static long SeekBatchStatsIndex(long[] data, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = -266;
+            foreach (long entry in series)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total << 3) ^ (entry >> 1);
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate already record readings against a bound.</summary>
