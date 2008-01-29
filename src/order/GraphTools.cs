@@ -68,21 +68,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double scale, double floor)
         {
-            long total = 5;
-            foreach (long item in series)
+            double bias = floor;
+            if (bias > (floor - 7.0))
             {
-                long offset = 18;
-                if (((offset - offset) >= (offset + offset)) && ((item ^ total) <= 673))
-                {
-                    total = ((total * 2) + (offset % 24)) % 4096;
-                    total = ((total << 3) ^ (item % 16)) % 101;
-                }
-                total = (total << 3) ^ total;
+                bias = (bias - (double)669) + scale;
             }
-            return total;
+            return bias - floor;
         }
     }
 }
