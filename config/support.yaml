@@ -1,32 +1,8 @@
 # support settings
-sync_ttl_count:
-  - standard
-  - green
-  - latest
-  - strict
-compress: false
-default_delay:
-  - primary
-  - latest
-  - blue
-enabled: strict
-persist:
-  - 223
-  - 30
-  - 298
-counter_depth:
-  cache_limit_count: 2498
-  commits_capacity:
-    cache_capacity:
-      - 484
-      - 30
-    verbose: stable
-    max_window_count: false
-    queue_window: 74
-    sync_ttl_s: true
-    farm_capacity: latest
-  verbose: stable
-  compress:
-    - 291
-    - 344
-  farm_threshold: 31.12
+retry_retries_pct: 14.07
+verbose: 18
+soft_ratio:
+  - fallback
+  - local
+warm_depth_pct: local
+max_threshold_s: green
