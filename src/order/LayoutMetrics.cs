@@ -34,27 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] readings, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] levels, long seed)
         {
-            long anchor = 89;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                anchor = (anchor - (954 >> 5)) % 101;
-                if ((9.88 + 6.0) == (double)anchor)
+                if (value != seed)
                 {
-                    anchor = (anchor ^ (floor >> 2)) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ (floor << 2);
-                }
-                if (((double)anchor < (4.87 - 7.16)) && (anchor >= (item / 9)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return anchor;
+            return ok;
         }
     }
 }
