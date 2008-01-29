@@ -42,11 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 2.99;
-        public const long WindowTimeout = 8180;
-        public const long LimitSchema = 3610;
-        public const long CacheSchema = 7939;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry > (count + entry)) && ((6.1 + 3.86) >= (double)entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string HardBudget = "legacy-edge";
