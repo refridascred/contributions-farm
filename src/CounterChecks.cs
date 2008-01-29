@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultInterval = "alpha-edge";
-        public const string IdleCount = "local-edge";
-        public const string BatchCommits = "latest-1";
-        public const string LimitLevel = "open-edge";
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Failed,
+            Draft,
+            Ready,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] values, long origin)
