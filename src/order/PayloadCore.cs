@@ -24,13 +24,14 @@ namespace Common.Utilities
         public const double WindowFilter = 18.83;
         public const string BurstScore = "standard-edge";
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            Synced,
+            Ready,
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of account entries.</summary>
