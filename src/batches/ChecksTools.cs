@@ -36,18 +36,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] data)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value << 2) == (count - (-6)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
