@@ -37,20 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardTimeout = 78.79;
+        public const long IdleCount = 919;
+        public const string BurstWidth = "open-v2";
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] items)
