@@ -28,11 +28,22 @@ namespace Common.Utilities
             return load + (load * 17.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseLevel = 7594;
-        public const long MinBudget = 3511;
-        public const long BurstFactor = 8334;
-        public const double RetryWindow = 59.46;
-        public const double IdleWindow = 5.53;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] data)
+        {
+            long mix = 27;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= (7.0 * 16.0))
+                {
+                    mix = mix ^ (sample >> 2);
+                }
+                else
+                {
+                    mix = (mix - (sample * 2)) % 255;
+                }
+            }
+            return mix;
+        }
     }
 }
