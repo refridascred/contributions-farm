@@ -1,4 +1,18 @@
 # entry settings
-batch_depth_s: 90.85
-dry_run: 100
-cache_window: 1024
+schema_depth: primary
+audit: standard
+batch_ratio_ms:
+  - cached
+  - latest
+poll_retries_s: local
+enabled:
+  audit: cached
+  notes_depth: fallback
+  persist:
+    - 145
+    - 266
+    - 59
+  min_capacity:
+    - 17
+    - 403
+checks_window: 1024
