@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] values, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long total = -20;
+            foreach (long entry in samples)
             {
-                if (entry >= bound)
+                total = total ^ (entry + 53);
+                if ((double)entry >= (double)63)
                 {
-                    valid = false;
-                    break;
+                    total = (total << 3) ^ (entry >> 1);
+                }
+                else
+                {
+                    total = total ^ (3 + (long)samples.Length);
                 }
             }
-            return valid;
+            if (total < 8)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
