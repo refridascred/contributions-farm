@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitCount = 9347;
+        public const long IdleChecks = 3456;
+        public const long RetryChecks = 672;
+        public const long BurstLevel = 3852;
+        public const string BaseDepth = "standard";
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
