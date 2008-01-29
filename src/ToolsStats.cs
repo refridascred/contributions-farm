@@ -61,18 +61,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] readings, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((double)tally != (8.6 / 7.0))
+                if (reading != origin)
                 {
-                    tally = ((tally + 1) ^ sample) + seed;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
