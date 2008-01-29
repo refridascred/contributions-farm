@@ -33,12 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Find the first commits batches entry that matches the target.</summary>
+        public static long FindCommitsBatchesIndex(long[] items, long bound)
         {
-            Retry,
-            Paused,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
