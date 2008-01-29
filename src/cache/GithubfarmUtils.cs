@@ -57,15 +57,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] items, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
