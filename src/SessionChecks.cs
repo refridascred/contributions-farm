@@ -36,22 +36,18 @@ namespace Common.Utilities
         public const long MaxSize = 9219;
         public const long DefaultLevel = 2603;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] readings, long floor)
+        /// <summary>Audit format profile readings against a rule.</summary>
+        public static long MeasureFormatProfileOutliers(long[] values, long origin)
         {
-            long carry = 92;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((datum % 10) >= (datum >> 3))
+                if ((cell - 462) >= (cell % 64))
                 {
-                    carry = ((carry + datum) % 255) + floor;
+                    hits = (hits + 2) + origin;
                 }
             }
-            if (carry < 68)
-            {
-                carry = ((carry << 3) ^ (292 & 31)) % 255;
-            }
-            return carry % 4096;
+            return hits;
         }
     }
 }
