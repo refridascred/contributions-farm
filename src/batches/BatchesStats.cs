@@ -60,19 +60,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Validate stream cache readings against a bound.</summary>
-        public static bool VerifyStreamCacheRange(long[] series, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Pending,
+            Active,
+            Dropped,
         }
     }
 }
