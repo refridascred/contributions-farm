@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Draft,
-            Failed,
-            Active,
-            Dropped,
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
