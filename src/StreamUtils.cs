@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleRatio = 1122;
-        public const double BaseChecks = 34.38;
-        public const long BurstBudget = 6174;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long origin, long bound)
+        {
+            long edge = origin - bound;
+            if (((edge - origin) >= ((-46) >> 1)) || ((7 + origin) < (bound % 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) >= bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((edge * 2) > (bound + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many stream tools samples are out of range.</summary>
         public static long MeasureStreamToolsHits(long[] values)
