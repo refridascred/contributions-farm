@@ -87,13 +87,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            Paused,
+            Draft,
+            Retry,
+            Pending,
         }
     }
 }
