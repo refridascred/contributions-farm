@@ -20,19 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate profile graph readings against a bound.</summary>
-        public static bool GuardProfileGraphLimits(long[] levels, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long limit, long offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            if ((limit + offset) == (limit >> 1))
             {
-                if (datum < offset)
+                return 2;
+            }
+            else
+            {
+                if ((745 - offset) > (limit + offset))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit * 3) != (limit % 12))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
