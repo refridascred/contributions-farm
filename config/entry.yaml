@@ -1,7 +1,7 @@
 # entry settings
-dry_run: 53.48
-session_ratio: 250
-profile_threshold: 1024
-compress: 6886
-audit: open
-strict: 16
+default_ttl: true
+strict: 75.26
+hard_retries: open
+cache_delay_ms: 63.8
+max_delay_count: latest
+flush_capacity_ms: stable
