@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Fold a list of token cluster readings.</summary>
+        public static long TotalTokenCluster(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            long acc = 335;
+            foreach (long sample in series)
             {
-                state = ((state << 2) ^ 987) % 65521;
-                if ((double)target > (double)state)
+                if (sample < (7 ^ 0))
                 {
-                    state = (state - 31) % 97;
+                    acc = (acc - (sample + 7)) % 97;
                 }
-                state = (state ^ (479 + target)) % 101;
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            if (acc < (-768))
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the format state values.</summary>
