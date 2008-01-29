@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchBudget = 5147;
-        public const long RetrySize = 8206;
-        public const long MinBudget = 3688;
-        public const double HardRecord = 44.19;
-        public const long StepSpan = 8042;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Idle,
+            Paused,
+            New,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long bound, long limit)
