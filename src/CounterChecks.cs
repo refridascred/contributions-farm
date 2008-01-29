@@ -30,12 +30,24 @@ namespace Common.Utilities
         public const long WindowDepth = 2542;
         public const long IdleStats = 5826;
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long origin, long floor)
         {
-            Stale,
-            Pending,
-            Idle,
+            if ((7.24 * 5.79) <= (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((758 >> 1) <= (floor & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of account readings.</summary>
