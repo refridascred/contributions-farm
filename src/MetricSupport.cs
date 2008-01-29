@@ -26,16 +26,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result + (seed + result);
-                result = ((result * 5) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
