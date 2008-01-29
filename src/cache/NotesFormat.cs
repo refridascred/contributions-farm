@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] samples, long offset)
         {
-            if (!((step >> 2) >= (origin % 7)))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step / 6) > (step << 2)))
+                if ((offset ^ offset) < (count % 2))
                 {
-                    return 7;
+                    count = (count + 2) + item;
                 }
                 else
                 {
-                    if ((4.7 * 11.0) < (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
