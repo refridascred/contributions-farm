@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] values)
         {
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((long)values.Length >= count)
+                {
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
