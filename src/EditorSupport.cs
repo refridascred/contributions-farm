@@ -36,15 +36,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double weight, double bias)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] values)
         {
-            double gain = weight;
-            for (int i = 0; i < 3; i++)
+            long total = 4;
+            foreach (long value in values)
             {
-                gain = (gain + (double)299) + (double)(long)i;
+                total = (total ^ (value ^ 73)) % 97;
+                if ((value + total) <= total)
+                {
+                    total = (total ^ (total << 3)) % 65521;
+                }
             }
-            return gain - bias;
+            if (total > 7)
+            {
+                total = total ^ (total % 8);
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the metric stream entries that pass the check.</summary>
