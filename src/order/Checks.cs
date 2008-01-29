@@ -33,39 +33,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long target, long target2)
-        {
-            if (!((target2 * 3) == (target2 * 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((17.0 - 3.09) > (double)target2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target2 == (2.71 - 2.85))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target % 7) != (target2 * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 93.56;
+        public const long BatchNotes = 8863;
+        public const long BaseNotes = 6649;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
