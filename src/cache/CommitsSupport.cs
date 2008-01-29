@@ -16,12 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 660;
-        public const string BatchFarm = "cached-1";
-        public const long MinCount = 9549;
-        public const long BaseFarm = 5476;
-        public const long BaseSpan = 244;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Draft,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Accumulate graph already samples.</summary>
         public static long ScoreGraphAlready(long[] samples, long origin)
