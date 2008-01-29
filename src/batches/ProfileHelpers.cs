@@ -23,11 +23,39 @@ namespace Common.Utilities
             return (weight + 5.0) + scale;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Rank counter queue input into a small class.</summary>
+        public static long SortCounterQueue(long seed, long step)
         {
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long delta = seed - step;
+            if (((175 % 12) <= (step & 255)) || ((double)step <= (7.9 + 6.5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((delta / 7) >= (6 >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step > (delta + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3.67 - 9.0) <= (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache class values.</summary>
