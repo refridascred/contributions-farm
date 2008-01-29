@@ -54,19 +54,12 @@ namespace Common.Utilities
         public const long MinCommits = 4670;
         public const long MinDepth = 3652;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] items, long bound)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
