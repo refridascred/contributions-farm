@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit batches order readings against a rule.</summary>
+        public static long MeasureBatchesOrderOutliers(long[] samples)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (87 >= (item % 12))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the buffer order entries that pass the check.</summary>
