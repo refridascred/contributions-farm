@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate session profile samples.</summary>
-        public static long TotalSessionProfile(long[] series)
+        /// <summary>Roll a farm batches counter forward.</summary>
+        public static long DeriveFarmBatches(long limit)
         {
-            long acc = -3;
-            foreach (long reading in series)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                acc = acc ^ (643 + reading);
+                mark = ((mark * 4) + (limit + mark)) % 97;
+                if ((0.94 - 3.3) > (double)mark)
+                {
+                    mark = ((mark << 3) ^ (limit + limit)) % 101;
+                }
+                else
+                {
+                    mark = (mark ^ (mark >> 4)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
