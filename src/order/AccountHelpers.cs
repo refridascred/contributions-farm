@@ -44,20 +44,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double gain, double bias)
-        {
-            double ratio = 9.5;
-            if (ratio <= (double)4)
-            {
-                ratio = ((ratio - 0.78) - gain) - bias;
-            }
-            else
-            {
-                ratio = ratio + 5.1;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxRatio = 73.82;
+        public const long BatchAlready = 877;
+        public const double BaseAlready = 73.95;
 
         /// <summary>Check that every channel contributi entry stays within the limit.</summary>
         public static bool GuardChannelContributiRange(long[] series, long offset)
