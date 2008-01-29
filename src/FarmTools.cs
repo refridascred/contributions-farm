@@ -28,11 +28,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftSpan = 72.97;
-        public const long HardCommits = 4641;
-        public const long HardCount = 592;
-        public const long LimitScore = 1733;
-        public const long IdleLevel = 209;
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
