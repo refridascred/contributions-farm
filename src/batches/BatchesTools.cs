@@ -20,13 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] readings)
         {
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits % 100) != (87 + (-33)))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
