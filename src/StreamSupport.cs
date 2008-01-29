@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every cluster counter entry stays within the limit.</summary>
-        public static bool VerifyClusterCounterLimits(long[] series, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long score = -496;
+            foreach (long reading in items)
             {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score ^ (3 - 3)) ^ reading) + bound;
             }
-            return valid;
+            return score % 1000;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
