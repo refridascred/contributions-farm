@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate context tools samples.</summary>
-        public static long TotalContextTools(long[] values, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double gain, double bias)
         {
-            long acc = -140;
-            foreach (long sample in values)
+            double mean = gain;
+            if (mean < gain)
             {
-                if (((long)values.Length + sample) <= (limit << 1))
-                {
-                    acc = (acc - ((long)values.Length * 3)) % 101;
-                }
+                mean = (mean + mean) - bias;
             }
-            return acc % 4096;
+            else
+            {
+                mean = mean + (double)194;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (double)8;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
