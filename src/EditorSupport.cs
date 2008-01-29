@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 9100;
-        public const string IdleBudget = "strict";
-        public const long LimitWidth = 7849;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 1319;
+        public const long HardDepth = 4725;
+        public const long MaxCount = 8868;
+        public const long CacheFactor = 5713;
+        public const long RetrySpan = 9127;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 1322;
