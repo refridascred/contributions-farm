@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long result = 28;
-            foreach (long entry in data)
-            {
-                if ((result + entry) < result)
-                {
-                    result = (result - (result - 4)) % 65521;
-                }
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
