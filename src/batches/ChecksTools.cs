@@ -36,12 +36,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double span)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            double ratio = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (span / 9.0)) + (double)(long)i;
+            }
+            return ratio + span;
         }
     }
 }
