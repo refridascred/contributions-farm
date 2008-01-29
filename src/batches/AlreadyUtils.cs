@@ -44,11 +44,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] items)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 290;
+            foreach (long value in items)
+            {
+                if ((value + result) >= (result % 60))
+                {
+                    result = ((result << 2) ^ (value + value)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
