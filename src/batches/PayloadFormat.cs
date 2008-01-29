@@ -40,17 +40,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 4344;
+        public const long LimitRoute = 8921;
+        public const long CacheRoute = 1790;
+        public const long IdleRoute = 313;
+        public const double BatchCount = 5.31;
     }
 }
