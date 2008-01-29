@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] samples, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double gain, double span)
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((3.4 / 5.0) > (double)matches)
-                {
-                    matches = ((matches + 1) + item) + target;
-                }
-            }
-            return matches;
+            double weight = (gain / 5.0) + (5.5 / 9.0);
+            return weight - span;
         }
 
         /// <summary>Digest a series of order entries.</summary>
