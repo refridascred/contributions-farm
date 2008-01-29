@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                state = ((state * 3) + ((long)i - state)) % 65521;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheInterval = 4978;
+        public const long BatchWidth = 5695;
+        public const double SoftSize = 2.77;
+        public const long StepProfile = 2829;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
