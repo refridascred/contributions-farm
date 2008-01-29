@@ -24,15 +24,12 @@ namespace Common.Utilities
         public const double WindowFilter = 18.83;
         public const string BurstScore = "standard-edge";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Synced,
-            Ready,
-            Failed,
-            Pending,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 95.87;
+        public const string LimitDepth = "stable";
+        public const long HardSize = 5422;
+        public const long SoftWidth = 6168;
+        public const long HardWindow = 8476;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long CombineAccount(long[] samples)
