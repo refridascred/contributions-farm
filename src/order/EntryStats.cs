@@ -68,20 +68,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result - (long)i) % 4096;
-                if (origin <= (result + origin))
-                {
-                    result = result + (long)i;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 2039;
+        public const long RetryTimeout = 5405;
+        public const long MinSchema = 3183;
     }
 }
