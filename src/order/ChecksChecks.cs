@@ -28,18 +28,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] values, long seed)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!((seed + 6) >= (hits % 3)))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
