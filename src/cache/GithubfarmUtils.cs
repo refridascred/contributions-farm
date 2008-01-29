@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const long HardInterval = 9594;
         public const string CacheBudget = "standard";
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
