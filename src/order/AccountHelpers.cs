@@ -68,22 +68,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate githubfarm format samples.</summary>
-        public static long DigestGithubfarmFormat(long[] series, long seed)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] readings)
         {
-            long total = 7;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((reading / 3) > reading) && ((double)seed != (1.6 + 3.92)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total * 2) + (total << 3)) % 4096;
+                    if ((readings[i] + readings[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 13)
-            {
-                total = ((total << 2) ^ seed) % 101;
-            }
-            return total % 65521;
+            return tally;
         }
     }
 }
