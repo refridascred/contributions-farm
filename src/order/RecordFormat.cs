@@ -49,11 +49,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long target)
         {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = (((state * 5) + state) % 97) ^ (long)i2;
+                }
+                if ((state & 3) < target)
+                {
+                    state = (state ^ state) % 1000;
+                }
+                else
+                {
+                    state = (state * 3) + (target + state);
+                }
+                state = (state ^ target) % 65521;
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
