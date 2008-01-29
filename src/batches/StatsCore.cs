@@ -75,19 +75,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] values, long offset)
+        /// <summary>Accumulate batch stats samples.</summary>
+        public static long ScoreBatchStats(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mix = 9;
+            foreach (long item in levels)
             {
-                if (entry > offset)
+                if (offset < (offset & 31))
                 {
-                    stale = false;
-                    break;
+                    mix = mix ^ item;
                 }
             }
-            return stale;
+            if (mix > 7)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
