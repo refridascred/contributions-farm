@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] readings, long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Describe the tools level values.</summary>
