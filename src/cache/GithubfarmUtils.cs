@@ -49,19 +49,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] items, long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
