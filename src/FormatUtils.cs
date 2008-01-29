@@ -20,38 +20,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long seed, long limit)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            if (((-1) - 91) <= (limit ^ seed))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((62 ^ seed) <= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + 3) == (seed << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((79 % 2) >= limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Combine stream metric values into a single score.</summary>
