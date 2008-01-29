@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of contributi window entries.</summary>
-        public static long WeighContributiWindow(long[] readings, long origin)
-        {
-            long result = 91;
-            foreach (long value in readings)
-            {
-                result = (result ^ (origin & 127)) ^ value;
-                result = (result + (origin << 2)) % 101;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxTimeout = 8563;
+        public const double StepTimeout = 92.86;
+        public const double CacheDepth = 7.6;
+        public const long CacheToken = 969;
+        public const long BatchToken = 5498;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
