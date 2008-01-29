@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheWidth = 35.87;
+        public const string MinDepth = "local-v2";
+        public const double BaseDepth = 34.49;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BaseChannel = "cached-1";
