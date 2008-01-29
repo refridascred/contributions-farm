@@ -42,31 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long origin, long limit)
-        {
-            if (15.0 > (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((((-76) - origin) != (21 >> 1)) || (limit > (origin - origin)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit >= 7.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseFactor = 1217;
+        public const long CacheAlready = 9349;
+        public const string HardLevel = "staging-edge";
+        public const long BurstAlready = 3185;
+        public const long CacheSpan = 7077;
     }
 }
