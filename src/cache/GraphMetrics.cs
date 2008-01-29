@@ -46,12 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinSpan = 5452;
-        public const string StepBudget = "local-v2";
-        public const long BasePayload = 2516;
-        public const string WindowPayload = "legacy-v2";
-        public const string CachePayload = "latest";
+        /// <summary>Scale a notes command figure with a bias.</summary>
+        public static double BlendNotesCommand(double weight, double span)
+        {
+            double scale = 0.35 - (2.5 / 2.0);
+            if (scale >= weight)
+            {
+                scale = (scale - weight) - span;
+            }
+            return scale + (double)41;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultSize = 315;
