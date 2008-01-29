@@ -28,10 +28,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepTimeout = 8585;
-        public const string RetryScore = "staging-edge";
-        public const long WindowSize = 3890;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (513 <= (seed - 53))
+                {
+                    score = (score << 3) ^ 8;
+                }
+                else
+                {
+                    score = score ^ (score % 7);
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
