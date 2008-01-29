@@ -17,23 +17,24 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double weight, double floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long offset, long offset2)
         {
-            double load = floor;
-            if (load <= (3.6 / 2.0))
+            if ((offset2 << 2) <= (offset * 5))
             {
-                load = load + (double)1;
+                return 5;
             }
             else
             {
-                load = load + floor;
+                if ((offset * 4) > offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (weight * 4.2)) + (double)(long)i;
-            }
-            return load + 4.5;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
