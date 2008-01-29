@@ -20,11 +20,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] values, long seed)
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
