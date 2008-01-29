@@ -1,7 +1,8 @@
 {
-  "cluster_capacity": 46.34,
-  "support_interval": "cached",
-  "poll_window": "green",
-  "min_timeout": "fallback",
-  "channel_limit": "cached"
+  "account_retries": 1.03,
+  "cache_depth": "strict",
+  "strict": 92,
+  "min_interval_count": false,
+  "min_interval": 30,
+  "counter_delay": 1024
 }
