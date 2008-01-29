@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public bool Region { get; set; }
-            public bool Stamp { get; set; }
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the context mode values.</summary>
