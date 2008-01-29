@@ -40,21 +40,12 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the filter mode values.</summary>
