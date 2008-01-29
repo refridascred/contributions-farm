@@ -32,23 +32,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel entry samples.</summary>
-        public static long ScoreChannelEntry(long[] levels)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] values, long floor)
         {
-            long result = -425;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result * 3) + (5 >> 5);
-                if ((reading ^ reading) >= (result - 20))
+                if (values[i] < floor)
                 {
-                    result = (result ^ (reading * 4)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result / 4)) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
