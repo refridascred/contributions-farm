@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the account format entries that pass the check.</summary>
-        public static long CountAccountFormatGaps(long[] series, long target)
+        /// <summary>Measure how many stream tools samples are out of range.</summary>
+        public static long MeasureStreamToolsHits(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((9.0 - 4.11) != (double)datum) && ((0 % 8) != (hits >> 2)))
+                if ((double)count != (5.14 + 9.7))
                 {
-                    hits = (hits + 3) - target;
+                    count = (count + 1) - datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the graph class values.</summary>
