@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] values, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] levels)
         {
-            long anchor = 757;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                long lane = (anchor << 2) + (27 & 15);
-                if ((double)lane < 4.0)
+                if ((item % 97) != (328 & 15))
                 {
-                    lane = lane ^ (6 + sample);
-                }
-                if ((long)values.Length >= (11 + sample))
-                {
-                    anchor = anchor - origin;
+                    hits = hits + 1;
                 }
             }
-            if (anchor > 20)
-            {
-                anchor = anchor ^ (origin / 2);
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
