@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long floor)
+        /// <summary>Measure how many context stats samples are out of range.</summary>
+        public static long CountContextStatsOutliers(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (readings[i] > floor)
+                if ((item + step) >= step)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a entry support reading by value.</summary>
