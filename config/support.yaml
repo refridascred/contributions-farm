@@ -1,27 +1,5 @@
 # support settings
-soft_retries_s:
-  - 127
-  - 302
-cache_threshold_pct: true
-base_ttl:
-  flush_ratio_ms:
-    soft_depth_count: true
-    hard_interval:
-      - green
-      - cached
-      - edge
-    persist:
-      - blue
-      - strict
-      - edge
-      - fallback
-    token_retries:
-      - fallback
-      - blue
-      - local
-    queue_size: 76.01
-  format_ratio: true
-  token_delay: 100
-  poll_depth_ms: 704
-poll_ratio: 68.67
-readonly: standard
+already_ratio: 86.59
+flush_timeout_count: cached
+compress: 250
+stats_window: staging
