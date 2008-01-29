@@ -12,39 +12,13 @@ namespace Common.Utilities
         public const string WindowMetrics = "staging-1";
         public const long MaxMetrics = 5718;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long seed)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long lane = offset - seed;
-            if (lane < offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((609 ^ lane) > seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.61 * 11.0) == (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (5.85 > (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a window stats.</summary>
