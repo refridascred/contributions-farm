@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] series)
-        {
-            long state = 42;
-            foreach (long entry in series)
-            {
-                state = (state - (state - (-545))) ^ entry;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "alpha-edge";
+        public const long WindowFactor = 4130;
+        public const double BurstWidth = 87.78;
+        public const long IdleWidth = 7620;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesGaps(long[] samples, long limit)
