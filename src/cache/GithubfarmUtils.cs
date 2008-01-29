@@ -49,21 +49,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound2 = bound + seed;
+            if ((bound * 5) > bound2)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((18.0 * 16.0) > (double)bound) || ((7.7 * 14.0) > (double)bound2))
                 {
-                    if ((readings[i] + readings[j]) != 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((8.16 / 2.0) != (double)bound2)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound2 + bound) < bound2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
