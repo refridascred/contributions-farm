@@ -76,18 +76,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many channel report samples are out of range.</summary>
-        public static long TallyChannelReportGaps(long[] levels, long seed)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)seed <= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
