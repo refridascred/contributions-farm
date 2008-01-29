@@ -17,13 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] data)
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
