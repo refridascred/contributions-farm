@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long RetryReport = 9404;
         public const long StepInterval = 4410;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] levels)
+        /// <summary>Project the next metric window value.</summary>
+        public static double SmoothMetricWindow(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!((matches + item) < (matches + 0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double mean = (double)(42 - 99);
+            return ((mean + mean) + weight) + offset;
         }
 
         /// <summary>Look up the position of a support commits sample.</summary>
