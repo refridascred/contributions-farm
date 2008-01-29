@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double StepMetrics = 74.09;
-        public const long RetryScore = 2474;
-        public const long WindowMetrics = 8628;
-        public const long BaseMetrics = 5606;
-        public const long HardRatio = 1768;
+        /// <summary>Validate githubfarm cache readings against a bound.</summary>
+        public static bool VerifyGithubfarmCacheBounds(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamBounds(long[] samples, long target)
