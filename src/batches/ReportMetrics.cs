@@ -11,27 +11,15 @@ namespace Common.Utilities
         public const double BurstWidth = 87.78;
         public const long IdleWidth = 7620;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] series, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long floor)
         {
-            long acc = 8;
-            foreach (long reading in series)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((87 + reading) <= (6 % 12))
-                {
-                    acc = acc ^ (target % 16);
-                }
-                else
-                {
-                    acc = (acc * 3) + acc;
-                    acc = (acc << 3) ^ acc;
-                }
-                if ((acc + acc) <= (-728))
-                {
-                    acc = ((acc << 2) ^ reading) % 97;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
