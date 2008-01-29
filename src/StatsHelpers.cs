@@ -10,21 +10,39 @@ namespace Common.Utilities
         public const string SoftLevel = "strict-v2";
         public const long CacheAccount = 1552;
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long floor, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = floor + seed;
+            if ((87 & 63) == (floor + seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed < (2.75 + 2.5))
                 {
-                    if ((readings[i] - readings[j]) > 14)
+                    return 2;
+                }
+                else
+                {
+                    if (((double)edge != (8.02 - 2.9)) || (floor >= (floor >> 2)))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (edge <= (edge / 7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
