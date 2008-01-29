@@ -20,17 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a batches context sample.</summary>
-        public static long LocateBatchesContextIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] < offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a entry stats.</summary>
