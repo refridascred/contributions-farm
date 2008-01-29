@@ -13,13 +13,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
