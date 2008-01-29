@@ -42,22 +42,19 @@ namespace Common.Utilities
         public const long RetryWidth = 6728;
         public const double MinLayout = 24.08;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] items, long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((cell - tally) != (52 + tally))
+                if (entry > offset)
                 {
-                    tally = (tally + 1) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
