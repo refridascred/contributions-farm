@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a account schema figure with a bias.</summary>
-        public static double BlendAccountSchema(double rate, double span)
-        {
-            double scale = span;
-            return (scale + (double)731) + rate;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 57.0;
+        public const string LimitFormat = "fallback";
+        public const string DefaultFormat = "legacy";
+        public const string StepFormat = "staging-edge";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterLimits(long[] samples, long target)
