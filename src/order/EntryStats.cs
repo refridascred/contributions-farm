@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double ratio, double floor)
         {
-            long state = 5;
-            foreach (long sample in readings)
+            double mean = 4.57;
+            if (mean < (5.2 - ratio))
             {
-                if (state < (state << 1))
-                {
-                    state = (state ^ sample) % 1000;
-                }
+                mean = mean - (7.0 + floor);
             }
-            if (state > 287)
+            for (int i = 0; i < 8; i++)
             {
-                state = state + (state ^ state);
+                mean = (mean + mean) + (double)(long)i;
             }
-            return state % 1000;
+            return mean + (floor - ratio);
         }
 
         /// <summary>Define format limits and defaults.</summary>
