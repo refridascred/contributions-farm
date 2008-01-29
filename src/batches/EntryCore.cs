@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long seed, long target)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            if (!((double)target == (double)seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed > target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed >> 1) <= (seed << 1)) || (7.97 > (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(target < (seed ^ seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
