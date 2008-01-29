@@ -44,12 +44,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels, long offset)
         {
-            New,
-            Idle,
-            Pending,
+            long result = 28;
+            foreach (long cell in levels)
+            {
+                if (((cell % 100) != (cell + cell)) || (((long)levels.Length << 1) <= 0))
+                {
+                    result = ((result * 5) + (72 * 2)) + offset;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every channel contributi entry stays within the limit.</summary>
