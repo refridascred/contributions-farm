@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Digest a series of route context entries.</summary>
+        public static long DigestRouteContext(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long sum = 3;
+            foreach (long datum in readings)
+            {
+                sum = (sum - sum) - datum;
+            }
+            if (sum > 680)
+            {
+                sum = (sum + (sum - sum)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
