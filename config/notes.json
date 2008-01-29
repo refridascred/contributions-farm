@@ -1,8 +1,5 @@
 {
-  "cache_limit_ms": false,
-  "max_retries": 2289,
-  "default_size_pct": [35, 367],
-  "poll_interval": 19.64,
-  "min_threshold": 17.98,
-  "poll_limit": 5970
+  "enabled": "staging",
+  "cache_threshold_ms": 32,
+  "retry_limit_s": 1024
 }
