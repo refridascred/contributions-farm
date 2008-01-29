@@ -30,27 +30,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] values, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long step)
         {
-            long state = 9;
-            foreach (long value in values)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state * 3) + (value / 3)) % 255;
-                if ((((long)values.Length / 8) >= (value - 68)) || ((7.39 / 3.0) < (8.0 * 4.09)))
+                carry = ((carry << 3) ^ (carry ^ (long)i)) % 65521;
+                if ((step % 7) > (step << 3))
                 {
-                    state = ((state << 2) ^ (bound % 16)) % 101;
+                    carry = ((carry * 5) + carry) % 1000;
                 }
                 else
                 {
-                    state = state + (state + bound);
+                    carry = ((carry << 2) ^ (7 + step)) % 255;
                 }
-                if ((double)value == (4.5 - 4.57))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return state % 1000;
+            return carry;
         }
 
         /// <summary>Combine editor counter values into a single score.</summary>
