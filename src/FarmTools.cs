@@ -38,38 +38,14 @@ namespace Common.Utilities
         public const string BatchBuffer = "fallback-edge";
         public const string MinCount = "staging-edge";
 
-        /// <summary>Grade a channel cluster value against two limits.</summary>
-        public static long SortChannelCluster(long bound, long bound2)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if (!((bound / 2) <= (bound ^ bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (2 >= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound > (bound / 7)) && ((double)bound2 != (double)bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound >> 4) >= (631 >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Closed,
+            Active,
+            Dropped,
+            Pending,
         }
     }
 }
