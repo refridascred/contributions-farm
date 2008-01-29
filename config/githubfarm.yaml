@@ -1,13 +1,5 @@
 # githubfarm settings
-base_size_pct:
-  - 455
-  - 103
-  - 421
-cache_depth: 57
-batch_window: 21
-queue_capacity:
-  - standard
-  - fallback
-  - edge
-  - standard
-support_window: edge
+commits_delay: 89
+max_threshold_s: local
+filter_depth: primary
+idle_size_ms: cached
