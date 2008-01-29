@@ -25,13 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Accumulate report record samples.</summary>
+        public static long DigestReportRecord(long[] data)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 6;
+            foreach (long entry in data)
+            {
+                if (((entry ^ sum) == ((long)data.Length + entry)) && ((long)data.Length != (sum + entry)))
+                {
+                    sum = sum ^ (sum << 3);
+                }
+                else
+                {
+                    sum = (sum * 2) + entry;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the batches mode values.</summary>
