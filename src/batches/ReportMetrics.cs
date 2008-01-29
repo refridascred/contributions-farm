@@ -37,15 +37,23 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double ratio, double floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long seed)
         {
-            double bias = (double)(40 << 1);
-            if (bias >= (double)9)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                bias = (bias - (bias - ratio)) - floor;
+                if ((seed + mix) <= (seed >> 4))
+                {
+                    mix = mix - ((long)i ^ mix);
+                }
+                if (((long)i + mix) >= (seed - 2))
+                {
+                    mix = (mix << 2) ^ (mix - seed);
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return bias + (ratio - bias);
+            return mix;
         }
     }
 }
