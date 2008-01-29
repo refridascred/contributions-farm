@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a githubfarm order pair into a bucket.</summary>
-        public static long GradeGithubfarmOrder(long limit, long origin)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long offset)
         {
-            if ((limit >= (limit + origin)) && (limit < (limit - origin)))
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                long matches = ((-94) ^ 270) + (offset ^ offset);
+                result = ((result << 2) ^ (matches % 100)) % 65521;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin % 12) == (origin % 60))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((1 / 8) >= (limit - 34)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a metric info.</summary>
