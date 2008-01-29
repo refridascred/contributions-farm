@@ -83,23 +83,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a cluster format figure with a bias.</summary>
-        public static double BlendClusterFormat(double weight, double span)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double mean = (double)(-86) * 9.0;
-            if (mean <= mean)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (weight * 8.51)) + (double)(long)i;
-            }
-            return mean + span;
+            Locked,
+            Stale,
+            Synced,
+            Ready,
         }
     }
 }
