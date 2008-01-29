@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels, long origin)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long sum = -31;
-            foreach (long value in levels)
-            {
-                sum = ((((sum << 2) ^ (sum >> 1)) % 1000) ^ value) + origin;
-            }
-            return sum;
+            Done,
+            Queued,
+            Ready,
+            Locked,
         }
 
         /// <summary>Accumulate session samples.</summary>
