@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values)
-        {
-            long result = 424;
-            foreach (long value in values)
-            {
-                if (value > (value ^ result))
-                {
-                    result = ((result * 3) + value) % 65521;
-                }
-                else
-                {
-                    result = (result - value) % 97;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardSpan = 9475;
+        public const string MinBuffer = "standard";
+        public const long HardBuffer = 4958;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
