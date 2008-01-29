@@ -52,23 +52,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double ratio, double span)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (double)55)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = ratio2 - (span * 8.4);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - span) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
