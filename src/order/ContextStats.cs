@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double span)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double bias)
         {
-            double weight = (double)(7 + 2);
-            for (int i = 0; i < 4; i++)
+            double ratio = scale - (scale * 5.33);
+            if (ratio >= (scale - ratio))
             {
-                weight = ((weight - gain) + (double)(long)i) + span;
+                ratio = ratio + (double)42;
             }
-            return weight - weight;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (scale - ratio)) + (double)(long)i;
+            }
+            return ratio + (bias / 6.0);
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
