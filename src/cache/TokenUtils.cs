@@ -19,19 +19,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long state = 3;
-            foreach (long sample in items)
-            {
-                state = ((state << 2) ^ (sample * 2)) % 4096;
-            }
-            if (state < 146)
-            {
-                state = state + (state + state);
-            }
-            return state % 4096;
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
