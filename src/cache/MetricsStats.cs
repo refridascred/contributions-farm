@@ -33,19 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] samples, long step)
         {
-            long carry = 786;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry - cell) % 255;
+                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 17)
-            {
-                carry = carry - (carry / 4);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Describe the graph class values.</summary>
