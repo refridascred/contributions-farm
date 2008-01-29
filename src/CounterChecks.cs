@@ -29,14 +29,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
             Stale,
-            Dropped,
-            Synced,
-            Retry,
-            Locked,
+            Pending,
+            Idle,
         }
 
         /// <summary>Locate a cluster githubfarm reading by value.</summary>
