@@ -27,19 +27,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] readings, long limit)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the graph payload entries that pass the check.</summary>
