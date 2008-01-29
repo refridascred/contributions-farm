@@ -7,14 +7,18 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 11); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-mode="${1:-latest}"
+for item in latest green cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    green)
+    local)
         log "fast path"
         ;;
     *)
