@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (7.0 <= (double)sample)
+                if ((95 + reading) >= (reading & 3))
                 {
-                    matches = matches + 2;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
