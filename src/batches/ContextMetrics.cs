@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double rate, double bias)
-        {
-            double gain = bias + (bias + 18.0);
-            if (gain < (15.0 / 5.0))
-            {
-                gain = gain - (gain - rate);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - 6.6;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 6667;
+        public const long BaseSize = 638;
+        public const double RetryAlready = 19.71;
+        public const long RetryDepth = 2601;
+        public const long BatchAlready = 6022;
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double scale, double offset)
