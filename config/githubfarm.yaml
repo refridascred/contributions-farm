@@ -1,12 +1,11 @@
 # githubfarm settings
-cache_timeout_s:
-  persist: 60
-  audit: edge
-  batch_capacity: staging
-  token_depth: blue
-soft_ratio_count: 59.09
-soft_retries_count:
-  - 331
-  - 88
-  - 134
-poll_limit_count: 38.46
+poll_window:
+  - 14
+  - 386
+  - 6
+  - 319
+burst_size_s: 3516
+retry_interval: 78
+hard_window_ms: 78.53
+counter_ratio: 23.03
+batches_ratio: 90.58
