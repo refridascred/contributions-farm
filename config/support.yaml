@@ -1,13 +1,6 @@
 # support settings
-cache_ratio:
-  flush_limit: 25
-  commits_depth: local
-  persist: open
-batch_ttl_pct: 30
-hard_timeout_count:
-  contributi_window: true
-  soft_threshold: true
-  verbose: 63.04
-  max_threshold: 6849
-  max_size_count: eu-west
-  hard_retries: 1.44
+retry_timeout_s: false
+compress: staging
+contributi_ttl: true
+sync_delay: fallback
+entry_delay: false
