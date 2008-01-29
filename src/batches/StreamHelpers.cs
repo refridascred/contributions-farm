@@ -38,17 +38,19 @@ namespace Common.Utilities
         public const double LimitContext = 90.3;
         public const long WindowDepth = 1450;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] data, long seed)
+        /// <summary>Validate commits channel readings against a bound.</summary>
+        public static bool GuardCommitsChannelLimits(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((data[i] > seed) && ((data[i] % 2) != 0))
+                if (datum >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
