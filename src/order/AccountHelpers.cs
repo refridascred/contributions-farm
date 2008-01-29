@@ -33,15 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batches counter value from a seed.</summary>
-        public static long StepBatchesCounter(long offset)
+        /// <summary>Blend two cache contributi measurements.</summary>
+        public static double AdjustCacheContributi(double scale, double bias)
         {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
+            double ratio = (14.0 + scale) / 5.0;
+            if (ratio <= (ratio * 2.0))
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                ratio = (ratio - ratio) + bias;
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (scale * 11.0)) + (double)(long)i;
+            }
+            return ratio - (double)5;
         }
 
         /// <summary>Define already limits and defaults.</summary>
