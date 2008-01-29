@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] data)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally + tally) <= (tally * 3))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
