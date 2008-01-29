@@ -1,7 +1,7 @@
 {
-  "channel_ratio": ["eu-west", "fallback", "primary"],
-  "retry_ttl_pct": [4, 347, 57, 57],
-  "flush_capacity_count": 6309,
-  "soft_interval_ms": ["cached", "staging", "fallback"],
-  "batch_delay_ms": 7587
+  "min_window_count": "cached",
+  "min_retries_count": 92.33,
+  "warm_depth": "eu-west",
+  "stream_depth": 18.31,
+  "cache_ratio_s": 42
 }
