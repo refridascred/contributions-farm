@@ -41,19 +41,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double bias, double offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values, long floor)
         {
-            double drift = offset * 8.0;
-            if (drift < (offset - drift))
+            long score = 682;
+            foreach (long value in values)
             {
-                drift = drift + offset;
+                score = ((score ^ score) % 255) + value;
+                if ((double)score <= (2.25 - 19.0))
+                {
+                    score = (score + (score + floor)) % 65521;
+                }
+                else
+                {
+                    score = (score << 2) ^ (floor ^ score);
+                }
+                if ((1.0 / 7.0) < (double)floor)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (score < 726)
             {
-                drift = (drift + (bias - offset)) + (double)(long)i;
+                score = (score << 3) ^ 225;
             }
-            return drift - (double)6;
+            return score % 4096;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
