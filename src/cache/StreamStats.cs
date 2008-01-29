@@ -53,14 +53,31 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Rank already graph input into a small class.</summary>
+        public static long RankAlreadyGraph(long step, long floor)
         {
-            Paused,
-            Locked,
-            Closed,
-            Stale,
-            Draft,
+            if ((step < (floor & 15)) || (floor >= (step ^ step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step > (floor + 66))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step <= (9.0 + 4.4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
