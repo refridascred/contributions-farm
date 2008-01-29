@@ -20,23 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Roll a batch already counter forward.</summary>
+        public static long StepBatchAlready(long bound)
         {
-            long mark = -888;
-            foreach (long datum in items)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark - (57 ^ mark)) % 65521;
-                if ((mark + datum) > (datum + 21))
-                {
-                    mark = ((mark << 3) ^ (datum - mark)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (datum - datum)) % 255;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
