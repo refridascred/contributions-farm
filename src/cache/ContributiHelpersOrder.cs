@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] samples, long offset)
         {
-            long mix = 3;
-            foreach (long reading in values)
+            long acc = 3;
+            foreach (long value in samples)
             {
-                if ((reading - reading) == (reading % 8))
+                if (192 < (value ^ offset))
                 {
-                    mix = (((mix * 4) + (reading & 15)) % 4096) + seed;
+                    acc = (acc << 3) ^ (acc / 3);
                 }
                 else
                 {
-                    mix = mix + (reading ^ mix);
+                    acc = ((acc * 4) + (acc & 255)) % 101;
                 }
             }
-            if (mix > 47)
+            if (acc < 50)
             {
-                mix = mix - 4;
+                acc = acc ^ (46 + acc);
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Combine contributi cluster values into a single score.</summary>
