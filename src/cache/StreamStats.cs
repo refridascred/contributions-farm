@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] readings)
         {
-            long carry = 49;
-            foreach (long value in levels)
+            long anchor = 51;
+            foreach (long sample in readings)
             {
-                carry = (((carry << 3) ^ (carry / 3)) % 65521) + value;
+                if ((-59) > (4 + anchor))
+                {
+                    anchor = (anchor + sample) % 101;
+                }
+                else
+                {
+                    anchor = anchor + (sample >> 1);
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a account entry.</summary>
