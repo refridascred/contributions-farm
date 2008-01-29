@@ -16,26 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] readings)
         {
-            long total = 82;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total - (total - 366)) % 101) - (long)i;
-                }
-                if ((total & 63) <= (value >> 5))
-                {
-                    total = total + (value >> 4);
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 0)
-            {
-                total = (total << 3) ^ (2 * 3);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Match up profile tools samples.</summary>
