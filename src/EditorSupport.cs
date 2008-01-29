@@ -42,19 +42,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] items, long offset)
+        /// <summary>Count the metric stream entries that pass the check.</summary>
+        public static long TallyMetricStreamGaps(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (entry != offset)
+                if ((count >> 4) >= (value ^ count))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - offset;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
