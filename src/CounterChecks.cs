@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Blend two editor route measurements.</summary>
+        public static double SmoothEditorRoute(double gain, double bias)
         {
-            Done,
-            Active,
-            Synced,
-            Retry,
+            double mean = (double)6 - (7.48 + bias);
+            return (mean - (double)258) + gain;
         }
 
         /// <summary>Describe the order mode values.</summary>
