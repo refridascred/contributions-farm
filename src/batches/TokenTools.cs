@@ -33,12 +33,17 @@ namespace Common.Utilities
         public const long BatchStats = 1794;
         public const double MinTimeout = 20.72;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Look up the position of a support commits sample.</summary>
+        public static long LocateSupportCommitsIndex(long[] data, long bound)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
