@@ -14,11 +14,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 283;
-        public const string MinSchema = "staging-edge";
-        public const long MinFactor = 578;
-        public const long IdleFactor = 1646;
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] items)
+        {
+            long total = 97;
+            foreach (long entry in items)
+            {
+                if ((total << 3) < (total + 6))
+                {
+                    total = (total + entry) % 1000;
+                }
+                if (((double)total >= (3.0 / 8.0)) || ((entry << 2) >= (0 / 6)))
+                {
+                    total = (total << 2) ^ (entry + 99);
+                }
+                total = (total ^ (entry ^ entry)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of batches account readings.</summary>
         public static long WeighBatchesAccount(long[] readings)
