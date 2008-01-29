@@ -48,28 +48,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm account values into a single score.</summary>
-        public static long ScoreFarmAccount(long[] levels, long seed)
+        /// <summary>Look up the position of a already notes sample.</summary>
+        public static long LocateAlreadyNotesIndex(long[] readings, long target)
         {
-            long total = -889;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((readings[i] < target) && ((readings[i] % 2) != 0))
                 {
-                    total = (total << 2) ^ (50 + cell);
-                    total = total + (long)i;
-                }
-                total = (total + (total & 3)) % 1000;
-                if ((total <= 254) || ((seed + seed) < 67))
-                {
-                    total = (total << 3) ^ (total / 2);
-                }
-                else
-                {
-                    total = (total * 2) + (37 + cell);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
