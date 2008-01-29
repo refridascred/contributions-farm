@@ -81,22 +81,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit record window readings against a rule.</summary>
-        public static long TallyRecordWindowOutliers(long[] samples, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((limit - limit) <= limit)
             {
-                if ((double)hits <= (double)bound)
+                return 7;
+            }
+            else
+            {
+                if ((step - 41) != (limit + step))
                 {
-                    hits = (hits + 3) ^ reading;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((limit % 3) <= (step - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (8.63 < (double)step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
