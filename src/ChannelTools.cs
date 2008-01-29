@@ -12,14 +12,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Pending,
-            Synced,
-            Active,
-            New,
-            Ready,
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
