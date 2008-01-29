@@ -19,18 +19,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] data, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((item + seed) <= (seed - seed))
+                if (datum != floor)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Blend two support payload measurements.</summary>
