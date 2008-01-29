@@ -1,6 +1,16 @@
 {
-  "burst_delay_pct": "legacy",
-  "flush_delay": 4,
-  "layout_size": true,
-  "cache_window": 30
+  "dry_run": "local",
+  "cache_interval_count": 36,
+  "min_timeout": {
+    "strict": [118, 376, 174, 176],
+    "idle_limit_pct": true,
+    "sync_size": "open",
+    "cache_ttl": [399, 367, 385],
+    "readonly": "eu-west"
+  },
+  "contributi_limit": {
+    "support_retries": 250,
+    "base_delay_pct": 30,
+    "min_interval": 93
+  }
 }
