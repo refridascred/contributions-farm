@@ -59,25 +59,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] series, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = 658;
+            foreach (long sample in series)
             {
-                total = (total - total) % 97;
-                if ((total - 2) >= (total >> 2))
+                if (mix < (sample ^ sample))
                 {
-                    total = total - (total + origin);
-                    total = total - total;
+                    mix = ((mix * 4) + (15 - floor)) % 255;
                 }
-                else
+                if ((mix % 24) >= (mix + sample))
                 {
-                    total = (total + ((long)i - 3)) % 255;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
     }
 }
