@@ -53,18 +53,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] samples, long floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long mark = 61;
-            foreach (long datum in samples)
-            {
-                if ((9.2 * 20.0) != (double)datum)
-                {
-                    mark = (mark - datum) - floor;
-                }
-            }
-            return mark;
+            Draft,
+            Dropped,
+            Done,
+            Idle,
+            Paused,
         }
     }
 }
