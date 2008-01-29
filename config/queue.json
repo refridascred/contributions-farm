@@ -1,9 +1,5 @@
 {
-  "poll_timeout_s": {
-    "audit": ["staging", "staging", "blue", "eu-west"],
-    "hard_window_s": 31.49,
-    "burst_ttl": [370, 64, 421, 222]
-  },
-  "soft_delay_s": 43,
-  "token_window": 93.83
+  "audit": 68.39,
+  "soft_ttl_ms": "primary",
+  "soft_delay_count": "strict"
 }
