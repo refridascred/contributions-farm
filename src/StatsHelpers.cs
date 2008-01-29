@@ -41,11 +41,39 @@ namespace Common.Utilities
         public const string MinChecks = "open-edge";
         public const long DefaultRatio = 4106;
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long target, long origin)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
+            long lane = target + origin;
+            if (9.3 <= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin > (6.6 * 8.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)lane > (8.8 * 3.9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((lane + 492) >= target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate farm samples.</summary>
