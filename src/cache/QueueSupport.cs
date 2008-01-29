@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] samples, long floor)
         {
-            Failed,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((floor + floor) != (328 & 1))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
