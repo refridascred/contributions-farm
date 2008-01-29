@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-                carry = ((carry << 3) ^ step) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSize = 9238;
+        public const double MinTimeout = 73.49;
+        public const long WindowBuffer = 1844;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterLimits(long[] samples, long target)
