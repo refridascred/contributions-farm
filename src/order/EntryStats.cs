@@ -20,21 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long step, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound > (4 + bound)) || ((step - bound) > bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((0.15 / 2.0) < (double)bound)
                 {
-                    if ((data[i] + data[j]) < 19)
+                    return 6;
+                }
+                else
+                {
+                    if (!(step > (572 >> 2)))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step > (1 & 31))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
