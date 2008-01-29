@@ -59,18 +59,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (step <= (cell + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstBudget = 9965;
+        public const long MaxCommits = 6943;
+        public const long BatchLevel = 181;
+        public const long SoftTimeout = 3184;
     }
 }
