@@ -32,19 +32,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate window payload readings against a bound.</summary>
-        public static bool CheckWindowPayloadBounds(long[] values, long origin)
+        /// <summary>Find the first format editor entry that matches the target.</summary>
+        public static long FindFormatEditorIndex(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= origin)
+                if (samples[i] == step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
