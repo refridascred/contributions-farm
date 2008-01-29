@@ -1,7 +1,11 @@
 {
-  "min_window_count": "cached",
-  "min_retries_count": 92.33,
-  "warm_depth": "eu-west",
-  "stream_depth": 18.31,
-  "cache_ratio_s": 42
+  "already_delay": ["stable", "eu-west", "fallback"],
+  "min_delay_count": "fallback",
+  "order_window": ["legacy", "cached", "edge"],
+  "enabled": {
+    "profile_ratio": 47.91,
+    "counter_ttl": ["fallback", "fallback", "blue", "cached"],
+    "flush_size_count": "local"
+  },
+  "default_depth": [69, 420, 120]
 }
