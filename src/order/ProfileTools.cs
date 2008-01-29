@@ -52,21 +52,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)entry >= (19.0 / 9.0)) || ((entry - 8) != (entry + (long)samples.Length)))
                 {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next checks value.</summary>
