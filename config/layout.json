@@ -1,6 +1,5 @@
 {
-  "cache_threshold_count": 250,
-  "record_depth": 500,
-  "max_ratio_pct": 15,
-  "strict": "open"
+  "soft_threshold": 56,
+  "poll_ttl": 60,
+  "audit": 39
 }
