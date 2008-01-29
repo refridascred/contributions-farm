@@ -41,17 +41,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] readings, long bound)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
