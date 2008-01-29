@@ -47,18 +47,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] samples, long seed)
+        /// <summary>Iterate the record cluster series from a seed.</summary>
+        public static long DeriveRecordCluster(long seed)
         {
-            long carry = -9;
-            foreach (long cell in samples)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)cell <= (19.0 - 1.99))
-                {
-                    carry = (carry ^ (seed * 3)) % 101;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
