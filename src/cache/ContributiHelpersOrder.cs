@@ -22,11 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 32.18;
-        public const double IdleBudget = 21.66;
-        public const long BaseDepth = 5416;
-        public const long BatchFormat = 8140;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinSpan = "staging";
+        public const double WindowRoute = 92.59;
+        public const long RetryRoute = 5218;
+        public const long BaseRoute = 8943;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphOutliers(long[] items, long seed)
