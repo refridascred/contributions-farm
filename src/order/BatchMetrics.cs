@@ -83,14 +83,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Synced,
-            Paused,
-            Draft,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 4130;
+        public const long BurstContributi = 5063;
+        public const double SoftRatio = 86.82;
     }
 }
