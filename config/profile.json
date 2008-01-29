@@ -1,8 +1,16 @@
 {
-  "idle_limit_ms": 91,
-  "audit": "primary",
-  "stats_size": 13.99,
-  "flush_interval_s": 1.95,
-  "readonly": "stable",
-  "graph_timeout": 38.02
+  "poll_retries": 58.94,
+  "retry_threshold": {
+    "payload_ttl": 9.0,
+    "batch_ttl": {
+      "account_capacity": true,
+      "verbose": "blue",
+      "hard_window_ms": 37.98,
+      "poll_size_pct": [383, 376, 186],
+      "hard_interval_s": false,
+      "sync_window": "primary"
+    },
+    "persist": [34, 347]
+  },
+  "hard_window_pct": false
 }
