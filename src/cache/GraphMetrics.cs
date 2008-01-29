@@ -49,13 +49,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
             Draft,
-            Done,
-            Stale,
+            Idle,
+            Locked,
             Retry,
+            Failed,
         }
     }
 }
