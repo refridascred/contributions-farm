@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Queued,
-            Idle,
-            Done,
-            New,
+            Pending,
+            Closed,
+            Draft,
+            Active,
         }
 
         /// <summary>Blend two cluster measurements.</summary>
