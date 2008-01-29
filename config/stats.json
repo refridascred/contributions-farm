@@ -1,24 +1,32 @@
 {
-  "flush_retries_ms": "edge",
-  "retry_capacity": {
-    "audit": "eu-west",
-    "checks_size": {
-      "warm_capacity_s": 8869,
-      "base_window_count": 6661,
-      "warm_size": 60,
-      "metrics_depth": "local"
+  "githubfarm_timeout": 30.86,
+  "retry_size_pct": "cached",
+  "persist": 70,
+  "compress": "staging",
+  "soft_delay_count": {
+    "retry_limit": {
+      "order_size": false,
+      "commits_ttl": "staging",
+      "audit": "standard",
+      "token_window": [287, 460, 71, 170],
+      "enabled": 50.05,
+      "already_ttl": true
     },
-    "commits_retries": {
-      "cache_size": [243, 216, 237, 57],
-      "batch_timeout": 60,
-      "graph_window": 11,
-      "persist": 85.13,
-      "compress": 81,
-      "sync_window": false
+    "persist": "open",
+    "contributi_timeout": "legacy",
+    "payload_interval": [136, 244, 386, 476],
+    "max_interval_count": {
+      "verbose": ["standard", "standard", "staging"],
+      "retry_ratio": 52.46,
+      "burst_size_count": false
     },
-    "dry_run": ["legacy", "open", "latest"]
-  },
-  "poll_interval_count": "local",
-  "sync_capacity": 142,
-  "record_ratio": [193, 159]
+    "batch_threshold": {
+      "flush_ratio": "staging",
+      "flush_depth": false,
+      "hard_ratio": ["standard", "primary", "legacy", "fallback"],
+      "session_delay": 4556,
+      "default_ratio_count": "fallback",
+      "batch_interval_ms": ["eu-west", "staging", "latest"]
+    }
+  }
 }
