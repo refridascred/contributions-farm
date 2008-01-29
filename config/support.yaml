@@ -1,21 +1,8 @@
 # support settings
-layout_limit: 20
-session_timeout: cached
-base_retries_pct:
-  cache_threshold_ms: 65.1
-  enabled:
-    - 258
-    - 63
-  min_delay_count: 13.85
-  default_capacity_ms: fallback
-  min_size: false
-  flush_capacity:
-    compress: true
-    batch_delay_s: 93.97
-    cache_size_count: open
-flush_retries_pct:
-  soft_limit_count: false
-  token_size: 72
-  hard_ttl_pct: 6848
-stream_ttl: true
-min_timeout: 3626
+stream_timeout: false
+verbose:
+  - 236
+  - 247
+  - 328
+  - 467
+metric_interval: 54.65
