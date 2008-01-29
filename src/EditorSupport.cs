@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const string HardCache = "fallback";
         public const double HardInterval = 12.43;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public long Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 1322;
+        public const double SoftFilter = 42.49;
+        public const double MaxFilter = 43.45;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
