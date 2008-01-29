@@ -77,22 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] data)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] levels, long target)
         {
-            long total = 82;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (34 <= (total / 7))
+                if (cell <= target)
                 {
-                    total = (total << 3) ^ (9 + entry);
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 5)
-            {
-                total = (total + (9 >> 3)) % 255;
-            }
-            return total;
+            return ok;
         }
     }
 }
