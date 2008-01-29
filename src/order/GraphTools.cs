@@ -63,14 +63,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Stale,
-            Synced,
-            Queued,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 27.03;
+        public const double MinSize = 60.35;
+        public const long BatchFactor = 9753;
+        public const long BurstSize = 9874;
     }
 }
