@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryCount = 7980;
-        public const long MaxDepth = 910;
-        public const long HardSpan = 4494;
-        public const long SoftAccount = 77;
-        public const long BaseTimeout = 9211;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (target < (seen + target))
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
