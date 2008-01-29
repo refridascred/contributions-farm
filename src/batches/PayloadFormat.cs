@@ -38,18 +38,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks filter samples are out of range.</summary>
-        public static long MeasureChecksFilterMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((-8) >> 3) != (value - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 447;
+        public const long LimitBudget = 7082;
+        public const long CacheGithubfarm = 2823;
+        public const double StepGithubfarm = 87.85;
+        public const double StepFactor = 40.11;
     }
 }
