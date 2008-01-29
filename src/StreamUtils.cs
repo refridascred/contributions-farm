@@ -39,14 +39,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] items, long limit)
         {
-            Paused,
-            Locked,
-            Pending,
-            Failed,
-            New,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((((double)limit <= 9.74) && (5 <= (matches - matches))) && ((matches + limit) == (191 - matches)))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the profile kind values.</summary>
