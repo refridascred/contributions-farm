@@ -23,22 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((5.34 / 9.0) > (double)hits)
-                {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Validate notes format readings against a bound.</summary>
