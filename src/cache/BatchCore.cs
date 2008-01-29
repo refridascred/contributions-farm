@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of stats metric readings.</summary>
-        public static long OverlapStatsMetricCount(long[] data)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 8)
+                    if ((levels[i] + levels[j]) == 9)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
