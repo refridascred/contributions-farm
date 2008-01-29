@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((6.0 * 15.0) <= (double)sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double StepMetrics = 74.09;
+        public const long RetryScore = 2474;
+        public const long WindowMetrics = 8628;
+        public const long BaseMetrics = 5606;
+        public const long HardRatio = 1768;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long CountCommandGaps(long[] series, long limit)
