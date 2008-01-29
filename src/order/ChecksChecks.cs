@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] data, long step)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - matches) >= step)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Paused,
+            Active,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
