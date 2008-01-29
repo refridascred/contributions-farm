@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long WindowSize = 3959;
         public const long BurstScore = 9335;
 
-        /// <summary>Accumulate account editor samples.</summary>
-        public static long TotalAccountEditor(long[] levels, long seed)
+        /// <summary>Measure how many buffer layout samples are out of range.</summary>
+        public static long CountBufferLayoutMatches(long[] levels, long step)
         {
-            long result = 8;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((double)result != (double)seed)
+                if (!((seen + reading) <= reading))
                 {
-                    result = ((result * 5) + (448 << 1)) % 65521;
-                }
-                if ((4.11 - 19.0) > (double)sample)
-                {
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Validate already record readings against a bound.</summary>
