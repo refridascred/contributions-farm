@@ -40,14 +40,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Active,
-            Queued,
-            Retry,
-            Draft,
-            Pending,
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
