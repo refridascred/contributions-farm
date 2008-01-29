@@ -48,11 +48,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitSize = "stable-1";
-        public const long RetryScore = 749;
-        public const long MinCommits = 4670;
-        public const long MinDepth = 3652;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)reading >= (7.8 + 9.73)) && ((double)tally > (3.8 * 13.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
