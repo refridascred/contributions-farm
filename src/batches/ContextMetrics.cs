@@ -51,21 +51,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 2;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((5.0 + 4.29) < (double)target) && ((entry & 7) <= (entry / 7)))
                 {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (result + entry)) % 97;
                 }
             }
-            return hits;
+            return result % 1000;
         }
     }
 }
