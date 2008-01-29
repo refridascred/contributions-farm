@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two entry checks measurements.</summary>
-        public static double BlendEntryChecks(double gain, double bias)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data)
         {
-            double mean = 9.28;
-            if (mean <= (bias - gain))
+            long result = 28;
+            foreach (long entry in data)
             {
-                mean = mean - (double)233;
+                if ((result + entry) < result)
+                {
+                    result = (result - (result - 4)) % 65521;
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 1.81) + (double)(long)i;
-            }
-            return mean + (bias * 4.0);
+            return result;
         }
 
         /// <summary>Fold a list of record readings.</summary>
