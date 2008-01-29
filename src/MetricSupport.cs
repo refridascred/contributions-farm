@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] levels, long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
