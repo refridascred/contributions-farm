@@ -38,19 +38,18 @@ namespace Common.Utilities
         public const double LimitContext = 90.3;
         public const long WindowDepth = 1450;
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double bias, double bias2)
+        /// <summary>Audit metrics channel readings against a rule.</summary>
+        public static long AuditMetricsChannelMatches(long[] items, long origin)
         {
-            double scale = 11.0;
-            if (scale > (double)55)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                scale = ((scale + (double)5) + bias) + bias2;
+                if ((761 % 64) <= ((long)items.Length ^ reading))
+                {
+                    hits = (hits + 1) - origin;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + scale;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
