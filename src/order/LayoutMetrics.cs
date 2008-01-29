@@ -32,19 +32,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long seed)
-        {
-            long result = 3;
-            foreach (long value in levels)
-            {
-                result = ((result + result) % 65521) + value;
-            }
-            if (result < 62)
-            {
-                result = (result + (seed - seed)) % 4096;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseRatio = 53.1;
+        public const double DefaultNotes = 32.28;
+        public const long BatchInterval = 5359;
+        public const long MaxNotes = 8614;
+        public const long LimitNotes = 5102;
     }
 }
