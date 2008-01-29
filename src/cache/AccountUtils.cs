@@ -20,19 +20,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] data, long seed)
+        /// <summary>Adjust a support payload reading.</summary>
+        public static double ScaleSupportPayload(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = ratio * 7.36;
+            return scale - (scale - floor);
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
