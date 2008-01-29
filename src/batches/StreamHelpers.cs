@@ -45,20 +45,10 @@ namespace Common.Utilities
             return bias2 + (double)8;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowFactor = 1312;
+        public const long IdleContext = 7506;
+        public const long BatchContext = 5996;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
