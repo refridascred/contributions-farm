@@ -19,14 +19,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Done,
-            Queued,
-            Pending,
-            Synced,
-            Retry,
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine stream metric values into a single score.</summary>
