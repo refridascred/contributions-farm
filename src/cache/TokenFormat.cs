@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            long total = 69;
-            foreach (long sample in data)
+            long carry = 739;
+            foreach (long sample in readings)
             {
-                total = (((total + (total / 7)) % 255) + sample) + offset;
-                total = (total ^ (-25)) % 1000;
+                if ((carry << 2) >= carry)
+                {
+                    carry = ((carry ^ 6) % 97) ^ sample;
+                }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Match up token samples.</summary>
