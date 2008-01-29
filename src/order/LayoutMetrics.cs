@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 1004;
-        public const long StepProfile = 4750;
-        public const string CacheProfile = "strict";
-        public const long DefaultProfile = 1992;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchFactor = "stable-1";
+        public const string DefaultContext = "staging";
+        public const long CacheContext = 7294;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
