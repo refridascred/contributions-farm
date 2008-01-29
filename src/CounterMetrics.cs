@@ -19,11 +19,15 @@ namespace Common.Utilities
         public const long CacheWidth = 3872;
         public const long SoftWindow = 2837;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Roll a account filter counter forward.</summary>
+        public static long SeriesAccountFilter(long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long result = step;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload mode values.</summary>
