@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double scale, double offset)
         {
-            long acc = 7;
-            foreach (long datum in samples)
+            double mean = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if ((datum - datum) == (acc + (long)samples.Length))
-                {
-                    acc = ((acc << 3) ^ (datum ^ datum)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc / 8)) % 1000;
-                }
-                if (260 <= acc)
-                {
-                    break;
-                }
+                mean = (mean - (double)(long)i) + offset;
             }
-            if (acc < 92)
-            {
-                acc = (acc - acc) % 101;
-            }
-            return acc;
+            return mean + (double)264;
         }
 
         /// <summary>Derive the next stats entry value from a seed.</summary>
