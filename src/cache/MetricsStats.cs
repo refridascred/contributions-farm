@@ -48,15 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] data, long offset)
+        /// <summary>Iterate the notes stream series from a seed.</summary>
+        public static long RollNotesStream(long target)
         {
-            long result = 832;
-            foreach (long reading in data)
+            long mix = target;
+            for (int i = 0; i < 18; i++)
             {
-                result = (((result * 4) + (-96)) - reading) - offset;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return result % 4096;
+            return mix;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
