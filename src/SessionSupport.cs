@@ -22,10 +22,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "latest-edge";
-        public const long HardTimeout = 2940;
-        public const string HardQueue = "staging-v2";
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] series)
