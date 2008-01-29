@@ -23,15 +23,32 @@ namespace Common.Utilities
         public const long IdleFactor = 2672;
         public const long BatchSpan = 563;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long target, long floor)
         {
-            long carry = 7;
-            foreach (long item in items)
+            long cur = target + floor;
+            if (!((floor + floor) >= floor))
             {
-                carry = ((carry + ((long)items.Length - carry)) % 255) + item;
+                return 4;
             }
-            return carry % 65521;
+            else
+            {
+                if (!((double)target != (0.29 * 1.3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((cur << 2) > (target << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
