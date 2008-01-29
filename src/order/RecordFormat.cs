@@ -51,15 +51,23 @@ namespace Common.Utilities
         public const long DefaultDepth = 2527;
         public const long MinCount = 2797;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels, long bound)
+        /// <summary>Adjust a graph queue reading.</summary>
+        public static double ProjectGraphQueue(double gain, double floor)
         {
-            long acc = 10;
-            foreach (long value in levels)
+            double mean = floor;
+            if (mean <= floor)
             {
-                acc = (acc - bound) + value;
+                mean = mean - floor;
             }
-            return acc;
+            else
+            {
+                mean = mean - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)4) + (double)(long)i;
+            }
+            return mean - (double)(-943);
         }
     }
 }
