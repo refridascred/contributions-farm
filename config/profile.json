@@ -1,18 +1,7 @@
 {
-  "audit": {
-    "soft_timeout": 6885,
-    "persist": "fallback",
-    "metrics_window": "latest",
-    "soft_ratio": {
-      "default_ratio_s": true,
-      "metric_limit": [385, 198, 434],
-      "poll_size_count": 97.84,
-      "batches_ttl": 67
-    },
-    "idle_timeout_count": ["legacy", "green"],
-    "compress": 500
-  },
-  "tools_limit": "cached",
-  "default_delay_pct": ["latest", "cached"],
-  "strict": 3705
+  "notes_depth": false,
+  "flush_delay_pct": 68,
+  "flush_capacity": "eu-west",
+  "soft_delay": [478, 230],
+  "warm_ttl_count": true
 }
