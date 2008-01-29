@@ -26,31 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long bound, long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            if ((0.83 / 6.0) == (double)bound)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (568 <= step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step < (step + 68))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the filter kind values.</summary>
