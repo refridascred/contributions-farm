@@ -1,6 +1,7 @@
 {
-  "poll_capacity": "strict",
-  "min_window_ms": "green",
-  "sync_ratio": "legacy",
-  "retry_size_pct": "primary"
+  "cache_delay": 100,
+  "warm_ratio_s": ["standard", "staging", "strict", "local"],
+  "verbose": "fallback",
+  "layout_window": true,
+  "readonly": 30
 }
