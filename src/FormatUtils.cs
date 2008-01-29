@@ -47,12 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public bool Limit { get; set; }
             public long Score { get; set; }
-            public double Flag { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate layout support readings against a bound.</summary>
