@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] data, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            long total = 85;
-            foreach (long value in data)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(total < (bound - value)))
-                {
-                    total = (total - (bound / 2)) % 65521;
-                    break;
-                }
-                if ((13.0 / 3.0) <= (9.1 - 6.0))
-                {
-                    total = (total ^ (860 * 5)) % 101;
-                }
-                if ((value + 6) > (bound % 64))
-                {
-                    total = (total + (total - value)) % 1000;
-                }
+                total = (total - offset) % 1000;
+                total = ((total * 5) + (long)i) % 97;
             }
             return total;
         }
