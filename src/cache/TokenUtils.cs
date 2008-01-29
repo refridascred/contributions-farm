@@ -35,21 +35,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of token githubfarm readings.</summary>
-        public static long MatchTokenGithubfarmCount(long[] levels)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 753;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum > (result % 10))
                 {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 2) + ((-1) - result);
+                }
+                if (result > (datum >> 4))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result < 5)
+            {
+                result = (result ^ 989) % 97;
+            }
+            return result % 65521;
         }
     }
 }
