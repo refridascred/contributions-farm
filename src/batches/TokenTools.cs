@@ -19,17 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] levels, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = bound ^ limit;
+            if (limit > (bound & 3))
             {
-                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((double)cur <= (3.44 + 5.0)) || ((0.5 + 4.0) >= (double)limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (cur > (bound / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a support commits sample.</summary>
