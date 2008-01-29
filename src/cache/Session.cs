@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] readings, long target)
         {
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (hits <= (target / 4))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate channel payload samples.</summary>
