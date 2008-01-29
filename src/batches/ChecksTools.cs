@@ -26,18 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats session samples.</summary>
-        public static long CompareStatsSessionCount(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] values, long step)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((step >> 2) <= (41 * 3))
                 {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) ^ entry;
                 }
             }
             return count;
