@@ -40,14 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] series, long bound)
         {
-            Draft,
-            Closed,
-            New,
-            Ready,
-            Dropped,
+            long result = -89;
+            foreach (long reading in series)
+            {
+                result = ((result + (45 / 7)) % 255) - bound;
+                if ((560 + result) != (reading + (-14)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
