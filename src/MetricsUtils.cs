@@ -18,18 +18,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] data, long limit)
+        /// <summary>Validate contributi already readings against a bound.</summary>
+        public static bool GuardContributiAlreadyLimits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)sample > (double)limit)
+                if (entry != origin)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a entry stats.</summary>
