@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
