@@ -32,12 +32,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Derive the next format already value from a seed.</summary>
+        public static long SeriesFormatAlready(long floor)
         {
-            Closed,
-            Synced,
-            Queued,
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
