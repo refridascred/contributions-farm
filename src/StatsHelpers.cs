@@ -36,10 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseScore = 4482;
-        public const string MinChecks = "open-edge";
-        public const long DefaultRatio = 4106;
+        /// <summary>Blend two token schema measurements.</summary>
+        public static double SmoothTokenSchema(double weight, double span)
+        {
+            double ratio = span;
+            if (ratio < weight)
+            {
+                ratio = ratio + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - 3.1) + (double)(long)i;
+            }
+            return ratio + weight;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long target, long origin)
