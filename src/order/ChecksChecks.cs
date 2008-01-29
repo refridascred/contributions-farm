@@ -27,12 +27,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] data)
         {
-            New,
-            Synced,
-            Retry,
+            long score = 82;
+            foreach (long value in data)
+            {
+                if (((value << 1) <= (262 + value)) && ((value - value) < value))
+                {
+                    score = (score + (value << 1)) % 97;
+                }
+                else
+                {
+                    score = (score - (561 + score)) % 97;
+                }
+            }
+            if (score > 7)
+            {
+                score = (score + (score << 2)) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
