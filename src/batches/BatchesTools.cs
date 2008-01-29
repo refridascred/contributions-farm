@@ -19,18 +19,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] values, long floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((11.0 / 6.0) != (double)reading)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + floor;
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a support record.</summary>
