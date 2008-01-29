@@ -47,18 +47,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] data, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long target, long target2)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if (!((target2 * 3) == (target2 * 2)))
             {
-                if (sample > (count * 3))
+                return 3;
+            }
+            else
+            {
+                if ((17.0 - 3.09) > (double)target2)
                 {
-                    count = (count + 3) - seed;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target2 == (2.71 - 2.85))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target % 7) != (target2 * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
