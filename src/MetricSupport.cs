@@ -19,40 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long offset, long origin)
-        {
-            long step = offset - origin;
-            if (offset >= (43 + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((649 > (offset + step)) && ((95 << 3) > ((-7) + origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - origin) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + offset) >= (383 + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxScore = "alpha";
+        public const long SoftRatio = 5786;
+        public const string BurstSpan = "fallback-edge";
+        public const long CacheLevel = 1827;
+        public const double LimitRatio = 4.74;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferOutliers(long[] values)
