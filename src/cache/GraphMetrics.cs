@@ -46,15 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a notes command figure with a bias.</summary>
-        public static double BlendNotesCommand(double weight, double span)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            double scale = 0.35 - (2.5 / 2.0);
-            if (scale >= weight)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - weight) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale + (double)41;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
