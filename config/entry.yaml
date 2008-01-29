@@ -1,7 +1,13 @@
 # entry settings
-default_ttl: true
-strict: 75.26
-hard_retries: open
-cache_delay_ms: 63.8
-max_delay_count: latest
-flush_capacity_ms: stable
+batch_size:
+  - open
+  - fallback
+  - staging
+metric_timeout: false
+base_window_s: staging
+strict: eu-west
+audit: 40
+already_depth:
+  dry_run: true
+  idle_window_s: legacy
+  stream_ratio: 30
