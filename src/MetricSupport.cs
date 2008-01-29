@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long seed)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
