@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long IdleAccount = 7794;
         public const double IdleLevel = 3.79;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] values, long limit)
+        /// <summary>Locate a farm commits reading by value.</summary>
+        public static long LookupFarmCommitsIndex(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= limit)
+                if (levels[i] < origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the graph filter entries that pass the check.</summary>
