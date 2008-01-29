@@ -38,23 +38,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] readings)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long mark = 74;
-            foreach (long entry in readings)
-            {
-                if (((entry - mark) < (45 / 4)) || ((63 + mark) > (mark + 8)))
-                {
-                    mark = ((mark * 5) + entry) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ (mark << 1)) % 97;
-                }
-                mark = ((mark * 5) + (3 << 2)) % 65521;
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
