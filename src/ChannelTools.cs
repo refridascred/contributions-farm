@@ -27,22 +27,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many window editor samples are out of range.</summary>
-        public static long CountWindowEditorOutliers(long[] samples, long floor)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long limit, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if ((2.15 + 1.2) <= (double)limit)
             {
-                if (((long)samples.Length ^ sample) < 8)
+                return 8;
+            }
+            else
+            {
+                if (((7.0 + 2.0) > (double)bound) || ((bound + bound) == (bound % 7)))
                 {
-                    matches = (matches + 2) + floor;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (bound < 351)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
