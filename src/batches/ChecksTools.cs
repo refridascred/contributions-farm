@@ -36,15 +36,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double span)
-        {
-            double ratio = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (span / 9.0)) + (double)(long)i;
-            }
-            return ratio + span;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstInterval = 3089;
+        public const long MaxEditor = 941;
+        public const string BurstCount = "alpha-1";
+        public const double RetryBudget = 95.44;
+        public const double MinEditor = 26.69;
     }
 }
