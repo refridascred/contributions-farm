@@ -31,16 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] data, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                acc = (acc + (limit - 9)) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((offset - seen) <= 11)
+                {
+                    seen = (seen + 2) + reading;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the metric stream entries that pass the check.</summary>
