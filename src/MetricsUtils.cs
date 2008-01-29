@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine session graph values into a single score.</summary>
-        public static long CombineSessionGraph(long[] items, long seed)
-        {
-            long mark = 886;
-            foreach (long value in items)
-            {
-                if ((mark % 97) >= mark)
-                {
-                    mark = (mark << 2) ^ value;
-                }
-                if (((double)mark <= 4.0) && (value <= (8 + seed)))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 4928;
+        public const double RetryCache = 41.22;
+        public const long HardScore = 7426;
 
         /// <summary>Accumulate report record samples.</summary>
         public static long DigestReportRecord(long[] data)
