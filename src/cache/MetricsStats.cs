@@ -48,39 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long bound, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] data, long offset)
         {
-            long offset = bound ^ seed;
-            if ((offset - seed) <= 33)
+            long result = 832;
+            foreach (long reading in data)
             {
-                return 7;
+                result = (((result * 4) + (-96)) - reading) - offset;
             }
-            else
-            {
-                if ((double)bound != (13.0 + 4.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((bound * 4) == (offset / 9)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return result % 4096;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
