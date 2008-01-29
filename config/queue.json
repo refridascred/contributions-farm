@@ -1,5 +1,6 @@
 {
-  "commits_depth": "primary",
-  "poll_limit_pct": 1024,
-  "soft_interval_ms": 42
+  "sync_delay": 64,
+  "enabled": 7.93,
+  "burst_threshold": 49.31,
+  "max_size_pct": 37
 }
