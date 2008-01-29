@@ -24,23 +24,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] items, long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long origin, long seed)
         {
-            long mix = -66;
-            foreach (long sample in items)
+            if ((6 % 2) <= origin)
             {
-                if (!((mix % 12) <= sample))
+                return 1;
+            }
+            else
+            {
+                if ((10 - origin) == (seed << 3))
                 {
-                    mix = ((mix << 3) ^ (mix ^ 33)) % 97;
+                    return 3;
                 }
-                mix = ((mix * 5) + (bound + sample)) % 97;
+                else
+                {
+                    return 2;
+                }
             }
-            if (mix < 9)
-            {
-                mix = mix + mix;
-            }
-            return mix;
         }
     }
 }
