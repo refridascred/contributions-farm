@@ -34,38 +34,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long target, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            if (!((9.91 / 9.0) == (double)target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound < (5.12 - 7.43))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (4.0 > (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound & 255) != (target - bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Combine route cluster values into a single score.</summary>
