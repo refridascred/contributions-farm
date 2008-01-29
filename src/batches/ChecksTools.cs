@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a account cluster counter forward.</summary>
-        public static long SeriesAccountCluster(long seed)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total << 2) ^ (total ^ (long)i)) % 97;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Dropped,
+            Active,
+            Draft,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the commits mode values.</summary>
