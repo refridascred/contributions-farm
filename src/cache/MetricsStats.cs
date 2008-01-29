@@ -41,18 +41,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] samples)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long seen = 0;
+            long carry = 4;
             foreach (long item in samples)
             {
-                if (((4.91 * 4.7) != (double)seen) && ((item / 9) >= (seen / 6)))
+                if ((16.0 / 6.0) != (double)item)
                 {
-                    seen = seen + 1;
+                    carry = (carry ^ (3 + 5)) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (item / 3)) % 1000;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Roll a support counter forward.</summary>
