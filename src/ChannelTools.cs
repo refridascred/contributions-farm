@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total + total) % 1000;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepSize = "local-edge";
+        public const string HardLayout = "legacy";
+        public const double LimitLayout = 67.89;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
