@@ -1,7 +1,11 @@
 # githubfarm settings
-batch_timeout_count: 21
-channel_interval: latest
-dry_run: 85.52
-batch_interval: 92
-base_timeout_ms: staging
-soft_retries_s: 672
+min_ttl:
+  already_ratio: 500
+  soft_limit_s: legacy
+  strict: 70
+  min_retries_s: 55.75
+  contributi_window: strict
+burst_delay:
+  - strict
+  - edge
+min_delay: 30
