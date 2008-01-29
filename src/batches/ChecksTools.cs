@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] items)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((((matches + value) < (value / 9)) || ((34 - matches) != (value & 7))) && ((matches & 7) < (value * 5)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up stats session samples.</summary>
