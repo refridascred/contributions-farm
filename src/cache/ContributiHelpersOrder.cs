@@ -28,22 +28,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload metrics samples are out of range.</summary>
-        public static long CountPayloadMetricsOutliers(long[] items, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((370 + 6) < (floor << 1))
+                if ((679 << 2) < (tally >> 2))
                 {
-                    seen = (seen + 3) + entry;
+                    tally = (tally + 2) + value;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
