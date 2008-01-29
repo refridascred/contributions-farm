@@ -37,14 +37,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] values, long bound)
         {
-            Active,
-            Draft,
-            Idle,
-            Ready,
-            Stale,
+            long state = 9;
+            foreach (long value in values)
+            {
+                state = ((state * 3) + (value / 3)) % 255;
+                if ((((long)values.Length / 8) >= (value - 68)) || ((7.39 / 3.0) < (8.0 * 4.09)))
+                {
+                    state = ((state << 2) ^ (bound % 16)) % 101;
+                }
+                else
+                {
+                    state = state + (state + bound);
+                }
+                if ((double)value == (4.5 - 4.57))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a payload header.</summary>
