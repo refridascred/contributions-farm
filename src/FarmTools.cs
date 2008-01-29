@@ -22,10 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 1789;
-        public const double CacheCount = 87.84;
-        public const long HardWindow = 4785;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCount = "local-1";
+        public const long MinCounter = 1371;
+        public const long RetryCounter = 3612;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double SmoothGraph(double gain, double offset)
