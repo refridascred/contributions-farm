@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
