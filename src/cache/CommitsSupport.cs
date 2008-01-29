@@ -68,9 +68,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheFactor = 5864;
-        public const long RetryScore = 4070;
-        public const double HardGithubfarm = 9.12;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
