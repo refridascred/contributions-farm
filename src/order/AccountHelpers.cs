@@ -56,15 +56,19 @@ namespace Common.Utilities
             return scale + 15.0;
         }
 
-        /// <summary>Combine stats payload values into a single score.</summary>
-        public static long DigestStatsPayload(long[] values, long target)
+        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
+        public static bool GuardChannelContributiRange(long[] series, long offset)
         {
-            long sum = 583;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in series)
             {
-                sum = ((((sum << 3) ^ (sum << 3)) % 1000) ^ sample) + target;
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Accumulate githubfarm format samples.</summary>
