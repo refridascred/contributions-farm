@@ -59,13 +59,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultSize = 8994;
+        public const long WindowFactor = 818;
+        public const long BatchSpan = 9460;
+        public const double StepBudget = 50.88;
     }
 }
