@@ -1,7 +1,8 @@
 {
-  "default_size_ms": "latest",
-  "payload_interval": 94.88,
-  "dry_run": 4,
-  "poll_timeout": "fallback",
-  "schema_window": 28
+  "soft_depth": 3.75,
+  "context_depth": true,
+  "readonly": [377, 492, 454],
+  "hard_timeout_s": 500,
+  "account_timeout": ["standard", "standard", "primary", "latest"],
+  "strict": 33
 }
