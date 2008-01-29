@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a context format value against two limits.</summary>
-        public static long ClassifyContextFormat(long bound, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            if (((limit - bound) <= (222 >> 1)) && ((limit + limit) >= (limit ^ limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((limit / 6) >= bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound > 18.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
