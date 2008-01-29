@@ -1,9 +1,12 @@
 # entry settings
-max_interval_count: strict
-warm_limit_pct:
-  - 432
-  - 343
-  - 32
-verbose:
-  - 400
-  - 474
+readonly: 82
+notes_timeout: 9546
+min_depth: 4930
+window_ttl:
+  sync_interval_pct: false
+  warm_timeout_s: 4357
+  dry_run: 68
+  sync_window_pct: blue
+  entry_retries: 34
+buffer_ratio: 100
+default_timeout: 9533
