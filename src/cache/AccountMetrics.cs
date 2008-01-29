@@ -57,21 +57,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] items)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            New,
+            Draft,
+            Synced,
+            Failed,
         }
 
         /// <summary>Audit record window readings against a rule.</summary>
