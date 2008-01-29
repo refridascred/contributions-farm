@@ -19,18 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            long sum = 8;
-            foreach (long cell in items)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell + cell) == ((-3) & 1))
-                {
-                    sum = (sum - (sum + sum)) - limit;
-                }
+                acc = (acc + acc) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
