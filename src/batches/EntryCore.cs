@@ -44,32 +44,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] levels, long seed)
         {
-            long offset = target + floor;
-            if ((double)floor == (2.48 - 0.6))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target != (14.0 + 6.5))
+                if ((3.9 / 6.0) > (double)datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset >> 5) >= (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 3) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a cache stream reading by value.</summary>
