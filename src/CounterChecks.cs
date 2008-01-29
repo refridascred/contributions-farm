@@ -60,19 +60,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double gain, double floor)
+        /// <summary>Find the first commits entry entry that matches the target.</summary>
+        public static long SeekCommitsEntryIndex(long[] series, long step)
         {
-            double bias = gain;
-            if (bias < bias)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (bias + gain) - floor;
+                if ((series[i] == step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (gain / 6.0);
-            }
-            return bias - bias;
+            return -1;
         }
     }
 }
