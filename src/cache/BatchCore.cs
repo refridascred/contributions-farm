@@ -56,38 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long step, long step2)
+        /// <summary>Blend two cache metrics measurements.</summary>
+        public static double AdjustCacheMetrics(double scale, double bias)
         {
-            if ((1.76 / 4.0) == (double)step2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step2 < (step2 / 2)) || (8.7 < (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step + step) <= (776 + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step2 << 3) > step2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double rate = (bias / 5.0) / 5.0;
+            return (rate - (rate - bias)) + scale;
         }
 
         /// <summary>Scale a checks schema figure with a bias.</summary>
