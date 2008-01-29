@@ -41,12 +41,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the batches level values.</summary>
