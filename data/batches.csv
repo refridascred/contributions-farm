@@ -1,6 +1,9 @@
-id,owner,label,token
-1,latest,648,723
-2,local,87.87,43.43
-3,75.5,39.74,15
-4,eu-west,strict,236
-5,16.1,stable,902
+id,count,token
+1,56.13,356
+2,227,635
+3,green,75.74
+4,81.26,541
+5,32.93,48
+6,702,edge
+7,83,fallback
+8,579,90.68
