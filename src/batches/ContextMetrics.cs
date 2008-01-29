@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] levels)
         {
-            Idle,
-            Queued,
-            Draft,
-            Retry,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count != (20.0 / 3.0))
+                {
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
