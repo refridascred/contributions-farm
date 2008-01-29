@@ -1,4 +1,37 @@
 # entry settings
-flush_threshold: blue
-enabled: false
-token_size: 96.82
+sync_interval_s:
+  flush_delay_count:
+    cache_limit: 100
+    enabled:
+      - 282
+      - 454
+    base_ratio_count: 30
+    filter_delay:
+      - 323
+      - 188
+    default_window_pct: 30
+  warm_threshold_s: staging
+  base_window_pct: stable
+  format_threshold:
+    flush_delay_s: 351
+    poll_limit: cached
+    batch_capacity_count: stable
+    burst_size_pct: 7961
+    cache_threshold_count: 2190
+  base_interval: edge
+  burst_retries_count:
+    context_retries: 81.34
+    notes_delay: legacy
+    metrics_depth: 28
+    enabled:
+      - 270
+      - 91
+      - 403
+soft_size_s: 89.27
+retry_capacity_pct: staging
+sync_ratio: stable
+enabled:
+  cluster_ratio: 30
+  flush_window_ms: 35.56
+  retry_ttl_count: stable
+  cluster_retries: cached
