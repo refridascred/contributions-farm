@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long bound, long origin)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            if ((origin & 1) < (30 & 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)(-1) <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
