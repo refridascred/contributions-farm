@@ -43,25 +43,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long limit, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long step = limit + origin;
-            if (!((limit + limit) > (limit - step)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step / 3) < 72) || ((double)origin != (7.1 * 1.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Active,
+            Locked,
+            Pending,
         }
     }
 }
