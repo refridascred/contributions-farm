@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many support checks samples are out of range.</summary>
-        public static long TallySupportChecksGaps(long[] samples)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long state = 7;
+            foreach (long datum in levels)
             {
-                if (tally <= (value / 5))
+                if ((state & 31) > (state & 63))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (state + state) ^ datum;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
