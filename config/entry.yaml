@@ -1,19 +1,10 @@
 # entry settings
-commits_depth: 100
-report_delay:
-  burst_limit:
-    - 109
-    - 228
-    - 327
-  cache_limit: fallback
-  order_window: standard
-  batch_timeout_count:
-    already_interval: blue
-    idle_ratio: 61.56
-    counter_ttl:
-      - 465
-      - 239
-min_interval: 86
-batch_timeout: 21.49
-cache_threshold: legacy
-retry_capacity: true
+strict: true
+base_threshold_count: strict
+window_size:
+  - cached
+  - green
+  - cached
+  - edge
+support_limit: 93
+base_delay: false
