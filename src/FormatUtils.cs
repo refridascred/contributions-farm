@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 104;
-        public const long HardRoute = 6888;
-        public const double HardScore = 60.74;
+        /// <summary>Audit githubfarm format readings against a rule.</summary>
+        public static long MeasureGithubfarmFormatMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen / 8) < (seen ^ seen))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
