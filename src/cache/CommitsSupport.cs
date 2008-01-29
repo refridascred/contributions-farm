@@ -60,23 +60,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] series, long offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double scale, double floor)
         {
-            long mark = 0;
-            foreach (long value in series)
+            double load = (17.0 - floor) - floor;
+            if (load <= (double)12)
             {
-                mark = (mark - mark) % 4096;
-                if ((37 >> 1) > (offset + mark))
-                {
-                    mark = mark + (value << 1);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark + value);
-                }
+                load = (load + (floor - load)) - scale;
             }
-            return mark;
+            else
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
