@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] samples)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long target, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long gap = target ^ bound;
+            if ((bound >> 3) != (gap - bound))
             {
-                if ((95 + reading) >= (reading & 3))
+                return 2;
+            }
+            else
+            {
+                if (((target << 3) >= (87 * 5)) && (bound < target))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
