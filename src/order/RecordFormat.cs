@@ -58,12 +58,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
