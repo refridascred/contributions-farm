@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 3145;
-        public const string SoftScore = "latest-v2";
-        public const long LimitChannel = 6837;
-        public const long LimitBudget = 4450;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleCount = "legacy";
+        public const long LimitScore = 9281;
+        public const double BatchWidth = 48.73;
+        public const long CacheBatches = 8469;
+        public const long StepBatches = 608;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string IdleDepth = "latest-v2";
