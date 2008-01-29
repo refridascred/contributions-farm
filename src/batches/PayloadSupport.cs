@@ -20,12 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 8166;
+        public const string RetryLayout = "staging-1";
+        public const long IdleLayout = 9769;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheGaps(long[] levels, long seed)
