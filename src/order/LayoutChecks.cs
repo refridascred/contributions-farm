@@ -34,12 +34,18 @@ namespace Common.Utilities
             return ratio + (2.0 - span);
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count the route cache entries that pass the check.</summary>
+        public static long CountRouteCacheOutliers(long[] readings)
         {
-            New,
-            Draft,
-            Done,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item / 8) > 234)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
