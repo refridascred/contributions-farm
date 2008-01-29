@@ -1,8 +1,8 @@
 {
-  "soft_window": true,
-  "retry_window": true,
-  "editor_ratio": "legacy",
-  "tools_timeout": true,
-  "window_ttl": ["eu-west", "cached", "local", "open"],
-  "flush_window_s": 97
+  "strict": 100,
+  "sync_interval": 18,
+  "checks_limit": "latest",
+  "retry_ratio": 48.48,
+  "cache_timeout_pct": 61.31,
+  "layout_ttl": "stable"
 }
