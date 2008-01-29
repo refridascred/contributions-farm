@@ -49,16 +49,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] values, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long sum = 28;
+            foreach (long cell in values)
             {
-                state = state - (state - origin);
-                state = ((state * 4) + (long)i) % 4093;
+                if (!((cell & 63) > cell))
+                {
+                    sum = sum - 14;
+                }
+                if (target < (cell + target))
+                {
+                    sum = (sum - cell) % 97;
+                }
             }
-            return state;
+            return sum;
         }
     }
 }
