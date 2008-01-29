@@ -29,12 +29,15 @@ namespace Common.Utilities
         public const long BurstBudget = 9506;
         public const string WindowTools = "strict";
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double offset)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            double ratio = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio + (double)2) + (double)(long)i) - offset;
+            }
+            return ratio + (double)(-850);
         }
     }
 }
