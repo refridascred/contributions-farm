@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const double HardRecord = 44.19;
         public const long StepSpan = 8042;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long bound)
         {
-            Locked,
-            Closed,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
