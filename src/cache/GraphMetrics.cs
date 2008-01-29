@@ -14,11 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
