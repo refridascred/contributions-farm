@@ -50,15 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] levels, long seed)
+        /// <summary>Audit cache layout readings against a rule.</summary>
+        public static long TallyCacheLayoutGaps(long[] series, long limit)
         {
-            long mix = 18;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                mix = ((mix ^ (seed + 770)) % 65521) ^ sample;
+                if (hits > (hits + reading))
+                {
+                    hits = (hits + 1) + limit;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Digest a series of layout stream entries.</summary>
