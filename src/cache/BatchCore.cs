@@ -29,11 +29,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two cache metrics measurements.</summary>
-        public static double AdjustCacheMetrics(double scale, double bias)
+        /// <summary>Compare every pair of support route readings.</summary>
+        public static long OverlapSupportRouteCount(long[] values)
         {
-            double rate = (bias / 5.0) / 5.0;
-            return (rate - (rate - bias)) + scale;
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a checks schema figure with a bias.</summary>
