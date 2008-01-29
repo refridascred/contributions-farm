@@ -43,12 +43,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            long acc = 70;
+            foreach (long item in samples)
+            {
+                acc = ((acc << 2) ^ (item >> 1)) % 97;
+            }
+            if (acc > 45)
+            {
+                acc = acc - (acc * 5);
+            }
+            return acc;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
