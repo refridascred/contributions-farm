@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit format buffer readings against a rule.</summary>
-        public static long TallyFormatBufferHits(long[] items, long floor)
+        /// <summary>Compare every pair of context route readings.</summary>
+        public static long PairContextRouteCount(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (floor > (floor ^ datum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] + readings[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank cache filter input into a small class.</summary>
