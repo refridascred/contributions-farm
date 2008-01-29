@@ -11,32 +11,11 @@ namespace Common.Utilities
         public const double BurstFarm = 35.95;
         public const string DefaultFarm = "staging-v2";
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long target, long limit)
-        {
-            if (((-1) - limit) < (68 << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 2) < ((-1) % 16))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target <= (target + 19)) && ((target + limit) < (limit ^ target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 48.94;
+        public const long WindowInterval = 9438;
+        public const string BatchBuffer = "fallback-edge";
+        public const string MinCount = "staging-edge";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] items, long limit)
