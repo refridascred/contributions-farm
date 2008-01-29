@@ -25,13 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values)
         {
-            Failed,
-            Synced,
-            Done,
-            Closed,
+            long result = 7;
+            foreach (long cell in values)
+            {
+                result = (result - (cell & 31)) % 4096;
+            }
+            if (result < 360)
+            {
+                result = (result - (result & 7)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Describe the token status values.</summary>
