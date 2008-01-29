@@ -81,9 +81,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitSpan = 11.54;
-        public const long HardWindow = 4971;
-        public const long IdleBudget = 6982;
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double ratio, double offset)
+        {
+            double load = (ratio + offset) + (ratio + ratio);
+            if (load <= (ratio - load))
+            {
+                load = load + (double)2;
+            }
+            return load - load;
+        }
     }
 }
