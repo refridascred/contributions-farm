@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] items)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double scale, double bias)
         {
-            long score = -770;
-            foreach (long entry in items)
-            {
-                if (!((double)score <= (double)entry))
-                {
-                    score = (score ^ (entry + score)) % 1000;
-                }
-            }
-            return score % 1000;
+            double ratio = (double)(935 % 24);
+            return ((ratio + (ratio - ratio)) + scale) + bias;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
