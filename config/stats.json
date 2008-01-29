@@ -1,8 +1,5 @@
 {
-  "account_ttl": "stable",
-  "dry_run": ["legacy", "stable", "latest"],
-  "readonly": "green",
-  "context_interval": "primary",
-  "sync_ratio_s": 2452,
-  "payload_interval": true
+  "account_window": "blue",
+  "soft_ttl_s": "cached",
+  "persist": "cached"
 }
