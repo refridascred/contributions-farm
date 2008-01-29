@@ -1,10 +1,6 @@
 {
-  "retry_ttl_ms": 11,
-  "warm_ttl_pct": [345, 40],
-  "soft_window_s": "standard",
-  "report_ttl": {
-    "min_depth_ms": 9.66,
-    "idle_interval_ms": true,
-    "token_window": 500
-  }
+  "base_ttl": 1024,
+  "flush_capacity": 58.26,
+  "audit": 64,
+  "route_ttl": 2719
 }
