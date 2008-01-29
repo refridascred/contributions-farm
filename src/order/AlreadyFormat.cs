@@ -23,22 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] values)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((((long)values.Length % 5) > (372 + reading)) && (((double)hits > 3.07) && ((9.84 - 0.9) != (double)hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
