@@ -1,12 +1,12 @@
 {
-  "base_retries": 40.33,
-  "hard_ratio": 100,
-  "buffer_window": {
-    "batches_limit": false,
-    "command_depth": true,
-    "cache_size": false
+  "base_capacity_pct": "eu-west",
+  "audit": {
+    "strict": "legacy",
+    "audit": 70.61,
+    "warm_capacity": 8353,
+    "enabled": false,
+    "compress": false
   },
-  "support_timeout": 6,
-  "stats_capacity": [298, 183, 34],
-  "cache_window_count": 61
+  "graph_ratio": 500,
+  "hard_ratio_count": ["eu-west", "primary", "eu-west"]
 }
