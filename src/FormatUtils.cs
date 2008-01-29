@@ -51,19 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long mix = 1;
-            foreach (long value in samples)
+            long mark = 0;
+            foreach (long datum in items)
             {
-                if ((value ^ value) >= (value + mix))
-                {
-                    break;
-                }
-                mix = (mix - (value - 4)) % 101;
+                mark = (mark ^ (datum - (long)items.Length)) % 1000;
             }
-            return mix % 97;
+            return mark % 65521;
         }
 
         /// <summary>Describe the stream state values.</summary>
