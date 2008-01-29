@@ -38,11 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultFactor = 3026;
-        public const long BaseDepth = 459;
-        public const long CacheRatio = 4691;
-        public const long BurstRecord = 671;
-        public const long BatchLevel = 1239;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long seed)
+        {
+            long result = 3;
+            foreach (long value in levels)
+            {
+                result = ((result + result) % 65521) + value;
+            }
+            if (result < 62)
+            {
+                result = (result + (seed - seed)) % 4096;
+            }
+            return result % 1000;
+        }
     }
 }
