@@ -16,18 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] series)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((reading ^ reading) > ((-2) << 2)) && (((-4) >> 4) >= (reading & 3))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
