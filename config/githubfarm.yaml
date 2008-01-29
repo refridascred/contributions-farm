@@ -1,9 +1,9 @@
 # githubfarm settings
-profile_capacity:
-  - 460
-  - 421
-  - 176
-  - 69
-batch_retries_s: 13
-hard_retries_s: legacy
-warm_ttl_pct: fallback
+warm_threshold_ms: eu-west
+editor_threshold: 63
+compress: true
+sync_retries_pct: open
+sync_threshold: 84
+default_depth_ms:
+  - 332
+  - 3
