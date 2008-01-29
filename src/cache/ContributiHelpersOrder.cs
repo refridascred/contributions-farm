@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] samples, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] samples)
         {
-            long acc = 3;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (192 < (value ^ offset))
+                if (((sample % 8) < (hits - (long)samples.Length)) && (sample > (hits + hits)))
                 {
-                    acc = (acc << 3) ^ (acc / 3);
+                    hits = hits + 2;
                 }
                 else
                 {
-                    acc = ((acc * 4) + (acc & 255)) % 101;
+                    hits = hits - 1;
                 }
             }
-            if (acc < 50)
-            {
-                acc = acc ^ (46 + acc);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Iterate the report window series from a seed.</summary>
