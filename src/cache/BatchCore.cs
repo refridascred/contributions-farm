@@ -46,15 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a checks schema figure with a bias.</summary>
-        public static double AdjustChecksSchema(double ratio, double bias)
+        /// <summary>Check that every profile token entry stays within the limit.</summary>
+        public static bool ValidateProfileTokenBounds(long[] series, long origin)
         {
-            double rate = ratio;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                rate = (rate - bias) - (double)(long)i;
+                if (reading != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate + ratio;
+            return valid;
         }
     }
 }
