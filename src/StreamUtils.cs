@@ -26,28 +26,18 @@ namespace Common.Utilities
         public const long StepRecord = 3950;
         public const double HardDepth = 26.59;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] data)
+        /// <summary>Count the already route entries that pass the check.</summary>
+        public static long CountAlreadyRouteGaps(long[] readings)
         {
-            long anchor = 520;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if ((datum + count) <= datum)
                 {
-                    anchor = ((anchor ^ anchor) % 4096) + (long)i;
-                    anchor = (anchor + (anchor >> 2)) % 101;
-                }
-                anchor = anchor + anchor;
-                if (((4 + item) >= (anchor * 4)) || (anchor >= (item % 60)))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (anchor > 13)
-            {
-                anchor = (anchor << 2) ^ (anchor - anchor);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
