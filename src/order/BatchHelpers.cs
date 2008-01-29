@@ -12,19 +12,17 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Find the first editor stream entry that matches the target.</summary>
+        public static long LookupEditorStreamIndex(long[] values, long origin)
         {
-            long sum = 1;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum & 255) != (5 - entry))
+                if (values[i] >= origin)
                 {
-                    break;
+                    return (long)i;
                 }
-                sum = ((sum << 3) ^ (entry >> 5)) % 65521;
             }
-            return sum % 97;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
