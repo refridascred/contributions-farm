@@ -14,17 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next channel layout value from a seed.</summary>
-        public static long StepChannelLayout(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result ^ (long)i) % 101;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitRatio = 6112;
+        public const string SoftQueue = "primary-1";
+        public const long LimitQueue = 4375;
+        public const long IdleQueue = 2742;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool CheckGithubfarmRange(long[] levels, long limit)
