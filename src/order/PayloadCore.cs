@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long bound, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            if ((floor & 7) > (floor >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (583 <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a report header.</summary>
