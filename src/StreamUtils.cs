@@ -48,23 +48,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next format profile value.</summary>
-        public static double ProjectFormatProfile(double rate, double floor)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double load = (rate * 3.04) / 7.0;
-            if (load < load)
-            {
-                load = load - (load + rate);
-            }
-            else
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)(-989)) + (double)(long)i;
-            }
-            return load - (double)851;
+            New,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define account limits and defaults.</summary>
