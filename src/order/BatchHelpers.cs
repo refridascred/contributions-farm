@@ -28,18 +28,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels)
-        {
-            long sum = 12;
-            foreach (long sample in levels)
-            {
-                if ((9 * 5) < sum)
-                {
-                    sum = sum + (sample << 1);
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryRatio = 4395;
+        public const long BaseDepth = 9108;
+        public const double SoftRatio = 26.36;
+        public const string MaxTimeout = "stable-1";
     }
 }
