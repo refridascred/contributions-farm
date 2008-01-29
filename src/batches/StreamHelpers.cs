@@ -60,13 +60,19 @@ namespace Common.Utilities
             return bias2 + (double)8;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] samples, long seed)
         {
-            Failed,
-            Draft,
-            Paused,
-            Done,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the token class values.</summary>
