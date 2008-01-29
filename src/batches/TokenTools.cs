@@ -27,11 +27,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 8411;
-        public const long LimitContributi = 2320;
-        public const long StepDepth = 9392;
-        public const double CacheContributi = 44.97;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((long)i - mark) == (long)i)
+                {
+                    mark = (mark + (0 % 100)) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
