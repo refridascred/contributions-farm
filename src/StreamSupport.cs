@@ -25,19 +25,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
