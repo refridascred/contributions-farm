@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long step)
+        /// <summary>Combine session graph values into a single score.</summary>
+        public static long CombineSessionGraph(long[] items, long seed)
         {
-            if (((7.8 - 4.2) >= (double)offset) || ((6 << 3) <= (offset % 16)))
+            long mark = 886;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step < offset) && ((offset - 678) != (offset - 611)))
+                if ((mark % 97) >= mark)
                 {
-                    return 1;
+                    mark = (mark << 2) ^ value;
                 }
-                else
+                if (((double)mark <= 4.0) && (value <= (8 + seed)))
                 {
-                    return 3;
+                    break;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate report record samples.</summary>
