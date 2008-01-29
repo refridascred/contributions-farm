@@ -32,25 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits report pair into a bucket.</summary>
-        public static long ClassifyCommitsReport(long limit, long limit2)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long span = limit + limit2;
-            if (((limit2 ^ 98) >= (9 & 7)) && (limit2 <= (span - limit)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit2 <= (9 / 4)) || ((84 & 15) < span))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
