@@ -1,8 +1,7 @@
 {
-  "audit": "primary",
-  "flush_ratio_count": 13.74,
-  "hard_threshold_ms": 69,
-  "queue_capacity": 500,
-  "persist": [343, 89, 75],
-  "max_ttl_count": "strict"
+  "channel_ratio": ["eu-west", "fallback", "primary"],
+  "retry_ttl_pct": [4, 347, 57, 57],
+  "flush_capacity_count": 6309,
+  "soft_interval_ms": ["cached", "staging", "fallback"],
+  "batch_delay_ms": 7587
 }
