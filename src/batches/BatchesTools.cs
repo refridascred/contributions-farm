@@ -20,11 +20,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultWidth = 46.26;
-        public const long RetryFactor = 9634;
-        public const double CacheTools = 44.59;
-        public const string LimitCount = "primary";
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long limit, long origin)
+        {
+            if (origin < (origin & 31))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin <= 18.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatGaps(long[] samples)
