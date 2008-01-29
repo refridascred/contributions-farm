@@ -38,15 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Derive the next batches counter value from a seed.</summary>
+        public static long StepBatchesCounter(long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Adjust a window schema reading.</summary>
