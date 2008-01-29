@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] series)
+        /// <summary>Scale a account schema figure with a bias.</summary>
+        public static double BlendAccountSchema(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((((cell * 5) <= (1 >> 5)) || ((422 + cell) >= count)) && ((39 + cell) > 22))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            double scale = span;
+            return (scale + (double)731) + rate;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
