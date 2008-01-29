@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a context window reading.</summary>
-        public static double ProjectContextWindow(double gain, double bias)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            double load = (double)(2 << 1);
-            if (load <= load)
+            long total = 7;
+            foreach (long cell in series)
             {
-                load = ((load + load) - gain) + bias;
+                if ((523 & 7) <= (cell * 4))
+                {
+                    total = ((total << 3) ^ (total + total)) % 255;
+                }
+                if (!((total * 3) != (cell - cell)))
+                {
+                    total = (total - (855 << 3)) % 1000;
+                }
             }
-            return load + load;
+            return total;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
