@@ -20,35 +20,34 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] series, long offset)
+        /// <summary>Fold a list of buffer filter readings.</summary>
+        public static long WeighBufferFilter(long[] levels, long target)
         {
-            long acc = -65;
-            foreach (long item in series)
+            long total = 122;
+            foreach (long datum in levels)
             {
-                if ((371 + offset) < (526 % 100))
+                if (!(((target + 0) >= (total >> 2)) && ((long)levels.Length < (total << 2))))
                 {
-                    acc = ((acc << 3) ^ (acc - item)) % 255;
-                    acc = acc - acc;
+                    total = (total ^ (total - datum)) % 65521;
+                }
+                if (((double)total != (6.0 + 6.5)) || ((double)391 < (double)datum))
+                {
+                    total = ((total * 5) + target) % 65521;
                 }
                 else
                 {
-                    acc = (acc ^ (item - acc)) % 255;
+                    total = (total ^ (349 * 3)) % 97;
                 }
-                if ((7 < offset) || ((double)2 < (double)acc))
+                if (15.0 > (double)datum)
                 {
-                    acc = (acc - (offset >> 2)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ 612) % 4096;
+                    break;
                 }
             }
-            if (acc > 36)
+            if (total < (-61))
             {
-                acc = acc + 0;
+                total = (total - target) % 97;
             }
-            return acc % 97;
+            return total % 65521;
         }
 
         /// <summary>Hold a already stats.</summary>
