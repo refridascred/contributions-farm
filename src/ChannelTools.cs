@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many report account samples are out of range.</summary>
-        public static long AuditReportAccountHits(long[] data, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mark = 309;
+            foreach (long datum in items)
             {
-                if ((double)target != (7.2 - 3.59))
-                {
-                    tally = (tally + 2) - reading;
-                }
+                mark = ((mark - ((long)items.Length / 2)) % 1000) + datum;
             }
-            return tally;
+            if (mark > 83)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define token limits and defaults.</summary>
