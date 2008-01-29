@@ -56,22 +56,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor counter readings.</summary>
-        public static long WeighEditorCounter(long[] samples)
-        {
-            long acc = -958;
-            foreach (long reading in samples)
-            {
-                if (((double)reading <= (0.54 * 5.9)) || (((long)samples.Length % 2) < (reading & 3)))
-                {
-                    acc = ((acc * 5) + acc) % 65521;
-                }
-            }
-            if (acc < (-91))
-            {
-                acc = ((acc * 5) + (326 * 4)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "open";
+        public const string MaxSpan = "legacy-v2";
+        public const long WindowTimeout = 3378;
     }
 }
