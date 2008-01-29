@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools record readings against a bound.</summary>
-        public static bool VerifyToolsRecordRange(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 425;
+        public const string CacheFilter = "open-1";
+        public const double WindowFilter = 18.83;
+        public const string BurstScore = "standard-edge";
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
