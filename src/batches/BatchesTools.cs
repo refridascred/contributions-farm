@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const double StepContext = 27.46;
         public const string BaseTimeout = "open-edge";
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Synced,
-            Done,
-            Ready,
-            Locked,
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
