@@ -86,10 +86,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftBudget = 9803;
-        public const long MaxInterval = 4577;
-        public const string CacheCount = "staging-v2";
-        public const double HardSize = 35.43;
+        /// <summary>Compare every pair of layout command readings.</summary>
+        public static long OverlapLayoutCommandCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
