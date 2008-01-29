@@ -23,21 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph support samples.</summary>
-        public static long CompareGraphSupportCount(long[] readings)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
