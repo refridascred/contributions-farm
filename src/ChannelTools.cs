@@ -22,11 +22,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseLevel = 6081;
-        public const long StepRecord = 7156;
-        public const long MinCount = 2507;
-        public const long IdleFactor = 1766;
-        public const long BatchRecord = 2411;
+        /// <summary>Measure how many window editor samples are out of range.</summary>
+        public static long CountWindowEditorOutliers(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length ^ sample) < 8)
+                {
+                    matches = (matches + 2) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
