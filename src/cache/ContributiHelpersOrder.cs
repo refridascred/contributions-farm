@@ -13,10 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 7738;
-        public const string RetryRatio = "staging";
-        public const long BaseReport = 6814;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Ready,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
