@@ -22,12 +22,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm contributi sample.</summary>
