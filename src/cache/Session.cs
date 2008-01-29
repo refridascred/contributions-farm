@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long step, long target)
         {
-            Pending,
-            Closed,
-            Draft,
-            Active,
+            long slot = step + target;
+            if ((target > (slot << 3)) || ((slot << 2) < (82 + step)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((slot << 1) != (step + target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step <= (slot - target)) || (step <= (target & 127)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the commits contributi series from a seed.</summary>
