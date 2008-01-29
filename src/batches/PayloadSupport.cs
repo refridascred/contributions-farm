@@ -29,13 +29,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((40 + item) >= item) || ((double)seen != (2.88 + 7.7)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
