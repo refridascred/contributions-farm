@@ -25,22 +25,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (1.84 >= (double)seed)
+                if (sample > offset)
                 {
-                    hits = (hits + 3) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
