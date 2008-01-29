@@ -21,23 +21,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values, long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            long mix = 8;
-            foreach (long item in values)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((item - (-3)) > item)
+                long matches = (target + target) >> 3;
+                if (((long)i <= (matches - target)) || ((long)i == ((long)i + target)))
                 {
-                    mix = ((mix << 2) ^ (item - step)) % 65521;
+                    break;
                 }
-                mix = (mix * 4) + (item << 2);
-                if (((item ^ item) != (mix ^ (-309))) && ((step - 6) < (287 / 2)))
+                else
                 {
-                    mix = (mix - (item >> 5)) % 97;
+                    mark = ((mark * 4) + (mark + mark)) % 65521;
                 }
+                mark = ((mark << 3) ^ (target + (long)i)) % 65521;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mix % 97;
+            return mark;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
