@@ -51,19 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry > (count + entry)) && ((6.1 + 3.86) >= (double)entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseScore = 4482;
+        public const string MinChecks = "open-edge";
+        public const long DefaultRatio = 4106;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string HardBudget = "legacy-edge";
