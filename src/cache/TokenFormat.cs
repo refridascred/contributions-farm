@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long limit, long origin)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if (origin >= (origin % 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit == (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit / 7) < (limit + 6)) && ((limit + limit) <= (limit << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin & 63) != (limit - 44))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
