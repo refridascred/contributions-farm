@@ -43,19 +43,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            long sum = 203;
-            foreach (long item in series)
+            long anchor = 703;
+            foreach (long cell in readings)
             {
-                sum = (sum - item) % 97;
+                if (anchor >= (anchor % 24))
+                {
+                    anchor = (anchor + cell) % 101;
+                }
             }
-            if (sum > 7)
-            {
-                sum = (sum - sum) % 4096;
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a profile entry.</summary>
