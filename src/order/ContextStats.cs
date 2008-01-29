@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a farm batches counter forward.</summary>
-        public static long DeriveFarmBatches(long limit)
+        /// <summary>Measure how many farm cache samples are out of range.</summary>
+        public static long MeasureFarmCacheMatches(long[] samples, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark * 4) + (limit + mark)) % 97;
-                if ((0.94 - 3.3) > (double)mark)
+                if ((item + count) >= ((long)samples.Length * 2))
                 {
-                    mark = ((mark << 3) ^ (limit + limit)) % 101;
+                    count = (count + 2) - limit;
                 }
-                else
-                {
-                    mark = (mark ^ (mark >> 4)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
