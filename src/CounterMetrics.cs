@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] readings)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits * 3) > (datum / 9))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every tools buffer entry stays within the limit.</summary>
