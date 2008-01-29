@@ -52,18 +52,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metrics queue readings against a rule.</summary>
-        public static long AuditMetricsQueueMatches(long[] samples, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading != (5.4 + 7.7))
+                if (items[i] >= origin)
                 {
-                    hits = (hits + 1) - step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
