@@ -27,15 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric token entries.</summary>
-        public static long DigestMetricToken(long[] levels, long target)
+        /// <summary>Locate a record token reading by value.</summary>
+        public static long LocateRecordTokenIndex(long[] values, long floor)
         {
-            long mark = 41;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (((mark ^ (mark & 7)) % 97) + cell) + target;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Project the next context value.</summary>
