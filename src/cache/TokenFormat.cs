@@ -41,15 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] samples)
+        /// <summary>Audit cache notes readings against a rule.</summary>
+        public static long CountCacheNotesOutliers(long[] levels)
         {
-            long result = 44;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                result = ((result + result) % 65521) ^ datum;
+                if (((867 + seen) > (seen << 2)) || !(seen < (reading >> 2)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
