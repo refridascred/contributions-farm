@@ -1,11 +1,15 @@
 {
-  "already_delay": ["stable", "eu-west", "fallback"],
-  "min_delay_count": "fallback",
-  "order_window": ["legacy", "cached", "edge"],
-  "enabled": {
-    "profile_ratio": 47.91,
-    "counter_ttl": ["fallback", "fallback", "blue", "cached"],
-    "flush_size_count": "local"
+  "min_size_pct": {
+    "burst_capacity": {
+      "tools_size": true,
+      "counter_limit": 52.11,
+      "payload_ratio": 60
+    },
+    "already_delay": "green",
+    "verbose": "local",
+    "poll_timeout": 65.77,
+    "sync_size_s": true
   },
-  "default_depth": [69, 420, 120]
+  "dry_run": false,
+  "poll_capacity_ms": 77
 }
