@@ -37,12 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] series, long origin)
         {
-            Paused,
-            Synced,
-            Active,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
