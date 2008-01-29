@@ -50,24 +50,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((floor + total) == (total * 5)))
-                {
-                    total = (total + (floor * 2)) % 4096;
-                }
-                if ((3.0 * 7.95) <= (double)total)
-                {
-                    total = (total << 3) ^ (floor >> 4);
-                    total = (total - (-86)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Draft,
+            Dropped,
+            Paused,
+            Pending,
+            Active,
         }
     }
 }
