@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Failed,
+            Synced,
+            Done,
+            Stale,
+            Pending,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
