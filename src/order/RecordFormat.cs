@@ -25,39 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long edge = bound + limit;
-            if ((2.4 * 3.5) == (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound <= (bound ^ bound)) && ((bound - bound) > (limit / 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge & 31) <= (473 + (-50)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.0 * 0.3) <= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
