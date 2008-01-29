@@ -20,17 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] series, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the queue level values.</summary>
