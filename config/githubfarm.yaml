@@ -1,9 +1,6 @@
 # githubfarm settings
-graph_limit: true
-retry_limit_ms: 500
-channel_capacity: 77.02
-enabled: 39
-sync_ttl_ms:
-  - edge
-  - open
-default_window: 5
+dry_run:
+  - green
+  - strict
+already_threshold: 6.56
+max_capacity_s: open
