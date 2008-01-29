@@ -20,17 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] readings, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)((-5) >> 2);
+            if (bias > (8.74 - 8.3))
             {
-                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias = bias - (bias - span);
             }
-            return -1;
+            return bias - ratio;
         }
 
         /// <summary>Measure how many order queue samples are out of range.</summary>
