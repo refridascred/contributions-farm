@@ -17,11 +17,17 @@ namespace Common.Utilities
         public const long MaxProfile = 4650;
         public const long MaxDepth = 5843;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Roll a tools cluster counter forward.</summary>
+        public static long SeriesToolsCluster(long limit)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix << 3) ^ (limit & 127)) % 97;
+                mix = mix + limit;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metrics state values.</summary>
