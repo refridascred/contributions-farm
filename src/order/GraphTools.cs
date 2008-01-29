@@ -65,15 +65,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] samples)
-        {
-            long anchor = 3;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor + (225 >> 4)) % 1000) ^ entry;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 1645;
+        public const string BaseMetric = "cached-1";
+        public const long LimitMetric = 8291;
+        public const long RetryMetric = 1732;
+        public const long HardInterval = 3479;
     }
 }
