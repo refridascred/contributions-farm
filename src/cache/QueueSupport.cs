@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] samples)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)count >= (5.7 / 6.0))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Match up commits buffer samples.</summary>
