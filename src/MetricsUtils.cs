@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double RetryCache = 41.22;
         public const long HardScore = 7426;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Synced,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinDepth = 6150;
+        public const long SoftSupport = 1912;
+        public const long HardSupport = 8361;
+        public const long MaxSupport = 9188;
+        public const string DefaultCount = "stable-1";
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long MeasureBatchesHits(long[] levels)
