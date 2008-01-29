@@ -35,19 +35,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] series, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the filter class values.</summary>
