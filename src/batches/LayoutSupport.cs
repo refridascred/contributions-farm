@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (entry > (79 ^ hits))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardLevel = 986;
+        public const double HardAccount = 69.08;
+        public const long SoftCount = 6619;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double SoftBuffer = 28.53;
