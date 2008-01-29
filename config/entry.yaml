@@ -1,12 +1,11 @@
 # entry settings
-cache_limit_pct:
-  poll_capacity_ms: green
-  poll_threshold: 30
-  counter_ratio: 1024
-queue_depth:
-  - eu-west
-  - open
-base_capacity_ms:
-  - 6
-  - 151
-idle_ratio_pct: 36.34
+idle_ratio: 16.37
+compress: 60
+idle_interval_s: 1024
+already_ttl: true
+cache_limit_ms:
+  - fallback
+  - cached
+  - latest
+  - staging
+dry_run: eu-west
