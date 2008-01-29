@@ -32,9 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 47.03;
-        public const long CacheFactor = 890;
-        public const string SoftTimeout = "stable-1";
+        /// <summary>Validate window payload readings against a bound.</summary>
+        public static bool CheckWindowPayloadBounds(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
