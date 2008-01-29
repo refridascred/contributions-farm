@@ -41,17 +41,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long floor)
+        /// <summary>Count the counter order entries that pass the check.</summary>
+        public static long AuditCounterOrderMatches(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (values[i] < floor)
+                if (!((cell & 7) >= (cell - cell)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
