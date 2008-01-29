@@ -1,11 +1,5 @@
 {
-  "report_threshold": 19.96,
-  "notes_depth": 3409,
-  "base_limit": {
-    "buffer_interval": false,
-    "profile_limit": [286, 9, 63, 22],
-    "default_delay_count": "staging",
-    "readonly": 8964
-  },
-  "compress": false
+  "burst_capacity_count": "stable",
+  "strict": true,
+  "max_window_pct": 88.13
 }
