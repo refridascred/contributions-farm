@@ -53,22 +53,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long mark = 61;
+            foreach (long datum in samples)
             {
-                if ((24 + matches) > (9 >> 5))
+                if ((9.2 * 20.0) != (double)datum)
                 {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mark = (mark - datum) - floor;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
