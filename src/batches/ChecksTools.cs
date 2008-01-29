@@ -33,31 +33,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values, long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long score = 682;
-            foreach (long value in values)
-            {
-                score = ((score ^ score) % 255) + value;
-                if ((double)score <= (2.25 - 19.0))
-                {
-                    score = (score + (score + floor)) % 65521;
-                }
-                else
-                {
-                    score = (score << 2) ^ (floor ^ score);
-                }
-                if ((1.0 / 7.0) < (double)floor)
-                {
-                    break;
-                }
-            }
-            if (score < 726)
-            {
-                score = (score << 3) ^ 225;
-            }
-            return score % 4096;
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
