@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "cached-1";
-        public const long LimitInterval = 7665;
-        public const long MinDepth = 2095;
-        public const double BurstDepth = 51.1;
-        public const long MaxLevel = 2698;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitRatio = 6112;
