@@ -16,22 +16,21 @@ namespace Common.Utilities
         public const string BaseCount = "alpha";
         public const long BatchFactor = 8210;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] series)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen <= (3.15 * 15.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
