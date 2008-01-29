@@ -31,39 +31,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long seed, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long delta = seed - limit;
-            if (!(seed < ((-54) / 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.0 * 9.0) != (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit * 3) == (857 / 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (4.8 > (double)delta)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Synced,
+            Active,
         }
     }
 }
