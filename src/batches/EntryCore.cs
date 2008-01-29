@@ -39,22 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] values, long offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] data, long offset)
         {
-            long carry = 42;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)offset < 0.16)
+                if (data[i] < offset)
                 {
-                    carry = (carry ^ (datum << 2)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry > 45)
-            {
-                carry = (carry - (offset << 1)) % 255;
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
