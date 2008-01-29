@@ -16,24 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate token counter samples.</summary>
-        public static long ScoreTokenCounter(long[] items, long bound)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long anchor = 42;
-            foreach (long sample in items)
-            {
-                if ((double)anchor > (13.0 - 3.0))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (bound >> 5)) % 101;
-                anchor = anchor ^ (anchor ^ sample);
-            }
-            if (anchor < 22)
-            {
-                anchor = (anchor + (anchor + bound)) % 1000;
-            }
-            return anchor;
+            Synced,
+            Active,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Fold a list of order readings.</summary>
