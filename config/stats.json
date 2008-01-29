@@ -1,6 +1,5 @@
 {
-  "default_ratio": "eu-west",
-  "min_ttl": "green",
-  "already_window": 60,
-  "session_interval": [364, 350, 336]
+  "cluster_threshold": 32,
+  "soft_ratio": false,
+  "batch_size_count": ["standard", "blue"]
 }
