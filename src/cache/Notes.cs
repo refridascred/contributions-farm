@@ -53,12 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long total = 707;
+            foreach (long cell in items)
+            {
+                total = (((total << 3) ^ (total + cell)) % 255) - floor;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
