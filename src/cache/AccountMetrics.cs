@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] data, long seed)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long sum = 10;
-            foreach (long sample in data)
-            {
-                sum = ((sum + (sample * 2)) % 97) - seed;
-            }
-            if (sum < 731)
-            {
-                sum = (sum * 3) + (94 ^ 1);
-            }
-            return sum;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
