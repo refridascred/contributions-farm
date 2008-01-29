@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging legacy open stable; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=115
+COMMAND_LIMIT=347
 log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
