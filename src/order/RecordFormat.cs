@@ -51,23 +51,21 @@ namespace Common.Utilities
         public const long DefaultDepth = 2527;
         public const long MinCount = 2797;
 
-        /// <summary>Adjust a graph queue reading.</summary>
-        public static double ProjectGraphQueue(double gain, double floor)
+        /// <summary>Compare every pair of entry schema readings.</summary>
+        public static long MatchEntrySchemaCount(long[] data)
         {
-            double mean = floor;
-            if (mean <= floor)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)4) + (double)(long)i;
-            }
-            return mean - (double)(-943);
+            return seen;
         }
     }
 }
