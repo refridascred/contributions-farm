@@ -29,17 +29,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] levels, long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long seed, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((-1) - 91) <= (limit ^ seed))
             {
-                if (levels[i] >= step)
+                return 5;
+            }
+            else
+            {
+                if ((62 ^ seed) <= seed)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + 3) == (seed << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((79 % 2) >= limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
