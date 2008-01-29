@@ -59,12 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches % 3) > entry)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a route counter forward.</summary>
