@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] series, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark + (long)i) % 1000;
+                mark = ((mark * 3) + (mark ^ 5)) % 97;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
