@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] data, long origin)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            long mix = 35;
+            foreach (long datum in data)
+            {
+                if (!(7.4 <= (double)datum))
+                {
+                    mix = mix + (origin % 7);
+                }
+            }
+            if (mix > 226)
+            {
+                mix = (mix ^ (mix + origin)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
