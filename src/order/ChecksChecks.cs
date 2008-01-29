@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate filter metric readings against a bound.</summary>
-        public static bool GuardFilterMetricRange(long[] values, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (entry != floor)
+                if (datum >= origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Derive the next context stats value from a seed.</summary>
