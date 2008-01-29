@@ -1,26 +1,30 @@
 # support settings
-dry_run: false
-tools_limit:
-  poll_timeout_s: 1650
-  retry_limit_count:
-    report_threshold: 75.66
-    schema_threshold: 23
-    order_threshold: 48.87
-    strict: true
-    base_threshold_s: 82
-  command_interval:
-    - green
-    - cached
-    - edge
-    - eu-west
-  dry_run: staging
-  cache_ttl_pct: stable
-flush_ratio_s: 4503
-verbose:
-  poll_timeout_s: 60
-  strict: false
-  poll_timeout_count:
-    githubfarm_capacity: staging
-    poll_retries_pct: blue
-    retry_interval: 100
-compress: standard
+order_interval:
+  editor_depth: eu-west
+  default_limit_count: 7848
+  soft_window_count: 9.78
+  audit:
+    compress: false
+    verbose: 250
+    sync_ttl: 3936
+    strict: local
+    batch_threshold_s: 250
+    hard_interval_pct: 812
+sync_retries_pct: true
+min_depth_ms:
+  sync_depth_count: false
+  already_ratio: false
+  metric_window: eu-west
+  batch_interval_s: 500
+  verbose: 500
+  warm_capacity: fallback
+poll_retries_pct:
+  warm_limit_count:
+    - 243
+    - 183
+    - 174
+    - 491
+  max_interval_pct: legacy
+  window_limit: false
+  poll_threshold_pct: 73.99
+batches_ttl: false
