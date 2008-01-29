@@ -53,11 +53,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 6829;
+        public const long BurstLevel = 555;
+        public const long WindowSupport = 1339;
+        public const long BurstSupport = 4189;
+        public const double LimitDepth = 80.03;
     }
 }
