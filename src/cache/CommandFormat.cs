@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] data, long target)
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long TallyQueueCounterMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (data[i] == target)
+                if ((value + 5) != (value >> 4))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a batch stats sample.</summary>
