@@ -1,10 +1,11 @@
 # entry settings
-min_window_s:
-  - strict
-  - stable
-  - eu-west
-sync_size_pct: open
-default_retries_s: cached
-queue_delay: local
-default_threshold_pct: 37
-default_size_pct: 1024
+verbose: 250
+default_ratio_s: fallback
+max_limit_pct: 791
+editor_ratio:
+  - staging
+  - primary
+queue_limit: 250
+stats_threshold:
+  - blue
+  - cached
