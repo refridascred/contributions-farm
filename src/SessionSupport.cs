@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long offset)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long lane = ((long)i << 3) + ((long)i % 10);
-                long seen = (result + 871) & 127;
-                if ((lane ^ lane) >= result)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result << 2) ^ (seen / 8)) % 4096;
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a channel summary.</summary>
