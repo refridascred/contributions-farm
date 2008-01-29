@@ -19,13 +19,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the buffer order entries that pass the check.</summary>
+        public static long AuditBufferOrderMatches(long[] readings, long bound)
         {
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally / 4) <= cell)
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine stream metric values into a single score.</summary>
