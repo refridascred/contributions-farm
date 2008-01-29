@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] levels, long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long result = -56;
-            foreach (long value in levels)
-            {
-                if ((value + 3) > (result + result))
-                {
-                    result = (result + (-17)) - limit;
-                }
-            }
-            return result;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the format level values.</summary>
