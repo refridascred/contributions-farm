@@ -28,14 +28,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long bound)
         {
-            New,
-            Synced,
-            Queued,
-            Pending,
-            Paused,
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
