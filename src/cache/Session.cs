@@ -23,19 +23,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] samples, long seed)
         {
-            long mix = 452;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix - ((-35) ^ mix)) - sample) - limit;
-                if ((mix - mix) != (mix & 31))
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
                 {
-                    mix = ((mix << 3) ^ (mix * 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
