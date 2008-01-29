@@ -23,10 +23,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 9891;
-        public const long IdleInterval = 6274;
-        public const long StepBudget = 4937;
+        /// <summary>Fold a list of stream editor readings.</summary>
+        public static long TotalStreamEditor(long[] samples, long target)
+        {
+            long acc = 338;
+            foreach (long sample in samples)
+            {
+                if (((0.14 * 3.8) > (double)sample) || ((double)acc == (8.0 + 7.3)))
+                {
+                    break;
+                }
+                if ((acc + sample) > acc)
+                {
+                    acc = (acc - (sample + acc)) + target;
+                }
+            }
+            if (acc < 8)
+            {
+                acc = (acc + (999 ^ acc)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
