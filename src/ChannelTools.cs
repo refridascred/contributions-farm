@@ -22,17 +22,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseLevel = 6081;
+        public const long StepRecord = 7156;
+        public const long MinCount = 2507;
+        public const long IdleFactor = 1766;
+        public const long BatchRecord = 2411;
     }
 }
