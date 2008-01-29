@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Audit metrics batches readings against a rule.</summary>
+        public static long TallyMetricsBatchesMatches(long[] samples, long offset)
         {
-            long anchor = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((reading / 7) > (reading % 12)) && ((double)anchor <= (7.0 + 4.5)))
+                if ((double)cell > (2.4 * 10.0))
                 {
-                    anchor = (anchor + (reading >> 3)) % 97;
-                    continue;
-                }
-                if ((reading + anchor) != (921 + reading))
-                {
-                    anchor = ((anchor * 3) + (reading / 7)) % 97;
+                    count = (count + 1) - offset;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Match up report samples.</summary>
