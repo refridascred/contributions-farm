@@ -36,17 +36,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] data, long target)
+        /// <summary>Combine order counter values into a single score.</summary>
+        public static long FoldOrderCounter(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 94;
+            foreach (long sample in values)
             {
-                if ((data[i] > target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum - 0) - seed;
+                sum = (sum ^ (sum - sample)) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the tools phase values.</summary>
