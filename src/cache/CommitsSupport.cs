@@ -14,19 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] data, long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double ratio = (double)(0 >> 2);
+            if (ratio > (ratio * 18.0))
             {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (ratio - weight) - offset;
             }
-            return found;
+            return ratio + (weight * 5.4);
         }
 
         /// <summary>Fold a list of batches account readings.</summary>
