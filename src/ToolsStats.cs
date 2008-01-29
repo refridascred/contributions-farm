@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of notes payload readings.</summary>
-        public static long TotalNotesPayload(long[] data, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] values, long bound)
         {
-            long result = -53;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (step ^ result)) + item;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 9)
-            {
-                result = result ^ ((long)data.Length - step);
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Hold a route record.</summary>
