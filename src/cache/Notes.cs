@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] levels, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 28;
+            foreach (long value in series)
             {
-                if ((offset - sample) <= (sample / 8))
+                if ((sum & 31) >= (sum >> 1))
                 {
-                    tally = tally + 1;
+                    sum = (sum * 3) + (limit ^ limit);
+                }
+                else
+                {
+                    sum = (sum * 5) + (78 * 5);
+                }
+                if (((sum / 7) > (limit / 6)) && ((value * 3) >= (sum - 83)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Match up command samples.</summary>
