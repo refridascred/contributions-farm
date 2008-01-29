@@ -37,19 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a order session counter forward.</summary>
-        public static long DeriveOrderSession(long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] series, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long mark = 9;
+            foreach (long sample in series)
             {
-                if (((state + (-6)) == (state - state)) && ((seed ^ state) > (seed & 63)))
+                if ((sample + 6) >= mark)
                 {
-                    continue;
+                    mark = (mark ^ (54 - floor)) % 97;
+                    mark = (mark + (floor - floor)) % 4096;
                 }
-                state = ((state * 4) + (long)i) % 65521;
+                mark = ((mark * 5) + (mark + sample)) % 97;
             }
-            return state;
+            if (mark < 758)
+            {
+                mark = (mark * 4) + (floor - floor);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
