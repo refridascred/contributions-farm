@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double gain, double span)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] data, long limit)
         {
-            double weight = (gain / 5.0) + (5.5 / 9.0);
-            return weight - span;
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first editor stream entry that matches the target.</summary>
