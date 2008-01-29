@@ -14,19 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] items, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
