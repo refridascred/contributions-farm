@@ -20,17 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first editor stream entry that matches the target.</summary>
-        public static long LookupEditorStreamIndex(long[] values, long origin)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] >= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
