@@ -1,9 +1,32 @@
 # support settings
-hard_capacity: 82
-default_depth_count:
-  - 332
-  - 169
-metric_limit: staging
-filter_ttl:
-  - cached
+sync_ttl_count:
+  - standard
+  - green
   - latest
+  - strict
+compress: false
+default_delay:
+  - primary
+  - latest
+  - blue
+enabled: strict
+persist:
+  - 223
+  - 30
+  - 298
+counter_depth:
+  cache_limit_count: 2498
+  commits_capacity:
+    cache_capacity:
+      - 484
+      - 30
+    verbose: stable
+    max_window_count: false
+    queue_window: 74
+    sync_ttl_s: true
+    farm_capacity: latest
+  verbose: stable
+  compress:
+    - 291
+    - 344
+  farm_threshold: 31.12
