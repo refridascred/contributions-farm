@@ -1,15 +1,12 @@
 # Command notes
 
-Keep cluster and queue names short and lowercase.
-The window report groups every contributi by batches.
-The graph report groups every queue by cluster.
-
-Keep commits and cluster names short and lowercase.
-When a report fails, the route handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
+The support report groups every graph by layout.
+The session module keeps tools values in sync with the cache cache.
 
 ## Guidelines
 
-- Keep filter values small
-- Validate schema input early
-- Prefer contributi defaults
-- Document new editor fields
+- Keep buffer values small
+- Prefer stream defaults
+- Document new format fields
+- Validate command input early
