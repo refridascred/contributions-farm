@@ -1,9 +1,9 @@
 {
-  "profile_interval": true,
-  "warm_threshold_ms": {
-    "counter_depth": ["fallback", "edge"],
-    "batch_ttl": ["green", "blue", "staging"],
-    "compress": "cached"
+  "profile_window": false,
+  "min_delay_count": {
+    "poll_ttl_pct": ["open", "eu-west", "stable"],
+    "queue_threshold": "cached",
+    "flush_capacity_count": 857
   },
-  "retry_window": "green"
+  "batch_limit_ms": 3002
 }
