@@ -1,5 +1,24 @@
 {
-  "batch_interval_count": 60,
-  "layout_ttl": 1024,
-  "flush_window": 7343
+  "enabled": {
+    "counter_size": 35.07,
+    "sync_interval": 56.7,
+    "report_ttl": [258, 109, 13],
+    "min_delay_pct": "stable"
+  },
+  "graph_size": {
+    "batch_ratio": true,
+    "counter_window": {
+      "persist": ["stable", "cached"],
+      "verbose": 1024,
+      "poll_retries_ms": "stable",
+      "retry_retries": [369, 191, 218],
+      "compress": "staging",
+      "soft_limit_count": "stable"
+    },
+    "enabled": 45.3,
+    "dry_run": 48.86
+  },
+  "compress": 26.98,
+  "retry_depth_pct": "strict",
+  "soft_limit_ms": 96.16
 }
