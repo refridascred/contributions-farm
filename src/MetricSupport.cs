@@ -49,18 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order queue samples are out of range.</summary>
-        public static long AuditOrderQueueGaps(long[] readings, long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.0 / 4.0) > (double)(long)readings.Length)
+                if ((values[i] == target) && ((values[i] % 5) != 0))
                 {
-                    hits = ((hits + 2) + reading) - limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
