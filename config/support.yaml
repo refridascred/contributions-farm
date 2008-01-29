@@ -1,7 +1,14 @@
 # support settings
-base_capacity_count: fallback
-buffer_limit: 32.08
-soft_ttl:
-  - 218
-  - 280
-already_retries: 14
+max_size_s:
+  - 467
+  - 222
+  - 15
+soft_delay_s: green
+audit:
+  - 111
+  - 407
+  - 120
+  - 469
+context_timeout: 79.44
+default_timeout_count: edge
+sync_threshold_count: 3635
