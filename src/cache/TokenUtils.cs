@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 18;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)(long)items.Length <= (7.5 * 7.5))
                 {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = sum ^ (value - 21);
                 }
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
