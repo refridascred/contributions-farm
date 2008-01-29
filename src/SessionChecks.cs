@@ -14,14 +14,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of tools contributi readings.</summary>
+        public static long TallyToolsContributi(long[] values, long floor)
         {
-            Pending,
-            Draft,
-            Failed,
-            Retry,
-            Paused,
+            long score = -7;
+            foreach (long sample in values)
+            {
+                if ((score >= (floor + score)) && ((double)sample > (2.16 * 14.0)))
+                {
+                    score = ((score << 3) ^ sample) % 4096;
+                }
+                else
+                {
+                    score = (score ^ score) % 101;
+                }
+            }
+            if (score > 23)
+            {
+                score = ((score * 4) + (score + 5)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
