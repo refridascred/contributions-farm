@@ -14,39 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long floor, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] series, long offset)
         {
-            long edge = floor + seed;
-            if ((87 & 63) == (floor + seed))
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed < (2.75 + 2.5))
+                if (reading != offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)edge != (8.02 - 2.9)) || (floor >= (floor >> 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (edge <= (edge / 7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
