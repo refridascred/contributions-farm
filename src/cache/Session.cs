@@ -36,10 +36,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
             public long Label { get; set; }
         }
 
