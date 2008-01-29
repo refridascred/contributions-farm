@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the batch metric entries that pass the check.</summary>
+        public static long AuditBatchMetricMatches(long[] readings)
         {
-            Ready,
-            Pending,
-            Idle,
-            Closed,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)sample < (4.0 - 16.0)) || (matches >= (matches - sample)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
