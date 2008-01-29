@@ -1,5 +1,9 @@
 {
-  "batch_window": [27, 51, 345, 394],
-  "cache_size": [426, 421],
-  "cluster_ratio": 6316
+  "poll_timeout_s": {
+    "audit": ["staging", "staging", "blue", "eu-west"],
+    "hard_window_s": 31.49,
+    "burst_ttl": [370, 64, 421, 222]
+  },
+  "soft_delay_s": 43,
+  "token_window": 93.83
 }
