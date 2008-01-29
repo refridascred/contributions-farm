@@ -1,6 +1,7 @@
 {
-  "dry_run": 6161,
-  "payload_delay": true,
-  "idle_size_pct": 29.04,
-  "poll_retries_count": "eu-west"
+  "cluster_capacity": 46.34,
+  "support_interval": "cached",
+  "poll_window": "green",
+  "min_timeout": "fallback",
+  "channel_limit": "cached"
 }
