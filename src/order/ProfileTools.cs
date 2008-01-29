@@ -57,10 +57,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultSize = 8994;
-        public const long WindowFactor = 818;
-        public const long BatchSpan = 9460;
-        public const double StepBudget = 50.88;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
