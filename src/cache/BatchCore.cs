@@ -65,11 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
+            Idle,
+            Ready,
+            Paused,
         }
     }
 }
