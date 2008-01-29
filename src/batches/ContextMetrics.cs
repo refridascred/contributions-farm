@@ -64,23 +64,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double ratio, double span)
-        {
-            double rate = (double)(628 % 97);
-            if (rate > (5.4 / 9.0))
-            {
-                rate = ((rate + (double)70) - ratio) - span;
-            }
-            else
-            {
-                rate = rate - (double)6;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate * 14.0)) + (double)(long)i;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseInterval = 9786;
+        public const string SoftFarm = "standard-v2";
+        public const long BaseBudget = 3343;
+        public const long StepFarm = 4711;
     }
 }
