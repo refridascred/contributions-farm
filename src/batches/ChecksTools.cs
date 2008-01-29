@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] items)
         {
-            long carry = 2;
-            foreach (long datum in series)
+            long mix = 59;
+            foreach (long datum in items)
             {
-                if (((datum + 5) > datum) || ((carry + datum) > (9 << 2)))
-                {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = (carry - ((long)series.Length ^ datum)) % 65521;
-                }
+                mix = (((mix * 3) + (2 >> 2)) % 97) ^ datum;
             }
-            return carry;
+            return mix % 97;
         }
 
         /// <summary>Describe the commits mode values.</summary>
