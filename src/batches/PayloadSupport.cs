@@ -20,13 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Iterate the context order series from a seed.</summary>
+        public static long StepContextOrder(long bound)
         {
-            Pending,
-            Queued,
-            Paused,
-            Closed,
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                long hits = acc;
+                acc = (acc ^ (hits + bound)) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
