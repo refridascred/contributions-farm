@@ -29,14 +29,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of format metric entries.</summary>
+        public static long ScoreFormatMetric(long[] readings)
         {
-            Idle,
-            Ready,
-            Done,
-            New,
-            Locked,
+            long score = -16;
+            foreach (long sample in readings)
+            {
+                if ((double)sample < (double)score)
+                {
+                    score = (score + (sample + sample)) % 101;
+                }
+            }
+            if (score < 138)
+            {
+                score = score - (38 + 846);
+            }
+            return score % 4096;
         }
     }
 }
