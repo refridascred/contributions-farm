@@ -37,22 +37,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Accumulate checks token samples.</summary>
+        public static long ScoreChecksToken(long[] series)
         {
-            long result = 133;
-            foreach (long datum in items)
+            long anchor = 86;
+            foreach (long item in series)
             {
-                if (((7.81 * 9.9) == (double)result) || ((result << 1) != (datum << 2)))
-                {
-                    result = (result - (datum + 18)) % 1000;
-                }
+                anchor = (((anchor << 3) ^ 6) % 65521) ^ item;
             }
-            if (result > 2)
-            {
-                result = (result << 2) ^ (result % 10);
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the profile phase values.</summary>
