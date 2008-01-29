@@ -1,7 +1,7 @@
-id,state,token
-1,edge,626
-2,open,53.3
-3,fallback,742
-4,green,325
-5,986,66.39
-6,173,latest
+id,level,token,state
+1,14.77,758,local
+2,285,68.25,587
+3,765,0.1,973
+4,692,54.87,stable
+5,green,207,131
+6,776,edge,666
