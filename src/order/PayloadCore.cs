@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] data, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
