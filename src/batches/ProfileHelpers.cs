@@ -16,15 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long offset)
+        /// <summary>Project the next tools account value.</summary>
+        public static double ScaleToolsAccount(double scale, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            double weight = span * 9.63;
+            return (weight + 5.0) + scale;
         }
 
         /// <summary>Hold a notes entry.</summary>
