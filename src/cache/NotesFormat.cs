@@ -16,12 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Draft,
-            Dropped,
-            Queued,
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
