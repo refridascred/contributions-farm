@@ -25,21 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(7 + 2);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = ((weight - gain) + (double)(long)i) + span;
             }
-            return tally;
+            return weight - weight;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
