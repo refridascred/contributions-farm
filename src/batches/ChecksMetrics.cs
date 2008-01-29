@@ -22,19 +22,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] levels, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long sum = 6;
+            foreach (long item in items)
             {
-                if (reading <= offset)
+                if ((0.5 * 4.1) >= (double)bound)
                 {
-                    valid = false;
+                    sum = ((sum + sum) % 1000) ^ item;
+                }
+                if ((sum - bound) != (sum ^ 41))
+                {
+                    sum = (sum * 5) + (sum + 7);
+                }
+                if ((double)sum < (double)(long)items.Length)
+                {
                     break;
                 }
             }
-            return valid;
+            return sum % 65521;
         }
 
         /// <summary>Audit cluster layout readings against a rule.</summary>
