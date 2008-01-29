@@ -11,12 +11,10 @@ namespace Common.Utilities
         public const string BaseScore = "stable";
         public const long BurstTimeout = 9083;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 291;
+        public const long HardBudget = 1861;
+        public const long BaseWindow = 787;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryRatio = 4395;
