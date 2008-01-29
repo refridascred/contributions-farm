@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] data, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long sum = 1;
+            foreach (long entry in values)
             {
-                if (reading > (239 + origin))
+                if ((sum & 255) != (5 - entry))
                 {
-                    matches = matches + 2;
+                    break;
                 }
+                sum = ((sum << 3) ^ (entry >> 5)) % 65521;
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
