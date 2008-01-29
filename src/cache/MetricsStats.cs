@@ -48,15 +48,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the notes stream series from a seed.</summary>
-        public static long RollNotesStream(long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Derive the next batch account value from a seed.</summary>
