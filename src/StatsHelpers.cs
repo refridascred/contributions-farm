@@ -78,19 +78,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] samples, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Retry,
+            Queued,
         }
     }
 }
