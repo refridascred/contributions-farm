@@ -46,22 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] samples)
+        /// <summary>Audit context queue readings against a rule.</summary>
+        public static long CountContextQueueOutliers(long[] levels)
         {
-            long score = 71;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (score >= (value & 7))
+                if ((0 + matches) <= matches)
                 {
-                    score = (score << 2) ^ (score ^ value);
+                    matches = (matches + 3) ^ sample;
                 }
                 else
                 {
-                    score = (score << 2) ^ (value / 3);
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
