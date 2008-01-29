@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double bias, double span)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            double bias2 = (double)(-55);
-            return ((bias2 + (double)38) + bias) + span;
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
