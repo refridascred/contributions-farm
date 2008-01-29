@@ -61,18 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] items)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double gain = rate;
+            if (gain > (floor / 9.0))
             {
-                if ((item + matches) > (204 / 9))
-                {
-                    matches = matches + 2;
-                }
+                gain = gain + (rate / 4.0);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (1.56 * 8.29);
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
