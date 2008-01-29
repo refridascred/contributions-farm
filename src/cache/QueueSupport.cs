@@ -13,11 +13,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] readings, long seed)
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((seed <= ((long)readings.Length + hits)) || ((double)hits == (5.1 + 12.0)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
