@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double gain, double bias)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] series, long seed)
         {
-            double mean = gain;
-            if (mean < gain)
+            long anchor = 80;
+            foreach (long cell in series)
             {
-                mean = (mean + mean) - bias;
+                if (seed >= (8 - anchor))
+                {
+                    anchor = ((anchor * 4) + (cell * 4)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor ^ seed)) % 101;
+                }
+                if ((double)seed < (0.4 + 1.38))
+                {
+                    break;
+                }
             }
-            else
+            if (anchor > 322)
             {
-                mean = mean + (double)194;
+                anchor = ((anchor * 2) + (anchor % 97)) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (double)8;
+            return anchor % 1000;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
