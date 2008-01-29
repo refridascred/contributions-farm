@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
             Queued,
-            Closed,
-            Stale,
-            Retry,
-            Paused,
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Accumulate channel payload samples.</summary>
