@@ -34,19 +34,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            long carry = 129;
-            foreach (long sample in levels)
+            long result = 8;
+            foreach (long item in data)
             {
-                carry = carry ^ (sample - carry);
+                if ((result + result) >= result)
+                {
+                    result = (result * 2) + result;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (item + (long)data.Length)) % 97;
+                }
             }
-            if (carry < 6)
+            if (result > 1)
             {
-                carry = (carry + (carry + carry)) % 4096;
+                result = (result - (result - result)) % 97;
             }
-            return carry;
+            return result;
         }
     }
 }
