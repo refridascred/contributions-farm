@@ -13,12 +13,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] items, long floor)
         {
-            Synced,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((5.0 * 6.55) < (double)seen)
+                {
+                    seen = ((seen + 1) ^ reading) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
