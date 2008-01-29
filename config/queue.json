@@ -1,7 +1,5 @@
 {
-  "min_threshold_ms": true,
-  "audit": false,
-  "strict": "local",
-  "idle_size": ["stable", "eu-west"],
-  "max_size": "standard"
+  "default_ratio": 64.94,
+  "graph_size": false,
+  "max_delay": 6.84
 }
