@@ -14,24 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long bound, long offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if (((-8) + offset) != (bound ^ bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((bound * 5) >= (bound - 0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
