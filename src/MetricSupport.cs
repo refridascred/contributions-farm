@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
+            Locked,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
