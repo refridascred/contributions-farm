@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            long acc = 47;
+            foreach (long sample in samples)
+            {
+                if (!((acc + sample) <= sample))
+                {
+                    acc = ((acc * 2) + (82 >> 3)) % 97;
+                }
+                else
+                {
+                    acc = (acc - sample) % 101;
+                }
+                if ((double)sample > 9.0)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a counter info.</summary>
