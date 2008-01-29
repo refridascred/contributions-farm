@@ -20,11 +20,27 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate token tools samples.</summary>
+        public static long ScoreTokenTools(long[] readings, long floor)
         {
-            public double Weight { get; set; }
-            public string Score { get; set; } = "";
+            long mix = 82;
+            foreach (long sample in readings)
+            {
+                if ((2 << 3) != (sample & 15))
+                {
+                    mix = ((mix << 3) ^ (sample >> 1)) % 255;
+                    mix = (mix * 5) + ((-34) * 2);
+                }
+                if ((94 ^ floor) <= (mix / 8))
+                {
+                    mix = ((mix << 2) ^ sample) % 101;
+                }
+                if ((double)floor <= (double)360)
+                {
+                    mix = (mix - (floor & 1)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Rank route input into a small class.</summary>
