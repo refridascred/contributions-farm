@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a batch editor value against two limits.</summary>
-        public static long BucketBatchEditor(long limit, long limit2)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long step)
         {
-            long prev = limit + limit2;
-            if (7.51 >= (double)limit)
+            if (((7.8 - 4.2) >= (double)offset) || ((6 << 3) <= (offset % 16)))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (((limit2 & 31) >= (789 % 5)) && ((double)limit2 >= 6.16))
+                if ((step < offset) && ((offset - 678) != (offset - 611)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((limit + limit2) == (prev + limit2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 3;
                 }
             }
         }
