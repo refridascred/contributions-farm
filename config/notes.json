@@ -1,6 +1,7 @@
 {
-  "default_delay": "blue",
-  "cache_retries": true,
-  "warm_size": "green",
-  "audit": [315, 266]
+  "max_limit_ms": 73.59,
+  "format_interval": "fallback",
+  "sync_delay_count": 39.74,
+  "warm_threshold": "green",
+  "counter_size": 263
 }
