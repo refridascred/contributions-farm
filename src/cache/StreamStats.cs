@@ -19,28 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] items, long limit)
-        {
-            long mark = 934;
-            foreach (long value in items)
-            {
-                mark = mark - (limit + limit);
-                if (((1 - value) >= 21) || (limit > (36 - 1)))
-                {
-                    mark = (mark - (value + limit)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - 89) % 255;
-                }
-            }
-            if (mark < 281)
-            {
-                mark = (mark << 2) ^ limit;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCount = 6380;
+        public const string BurstCount = "staging-edge";
+        public const long BatchSpan = 8515;
+        public const string BaseCommand = "standard-1";
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
