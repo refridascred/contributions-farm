@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (entry > 9)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftTimeout = "staging";
+        public const long LimitFormat = 1027;
+        public const long HardFormat = 7445;
 
         /// <summary>Digest a series of filter commits entries.</summary>
         public static long TotalFilterCommits(long[] readings)
