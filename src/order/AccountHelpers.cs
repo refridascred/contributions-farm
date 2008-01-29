@@ -38,19 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor batches readings against a bound.</summary>
-        public static bool GuardEditorBatchesRange(long[] items, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
