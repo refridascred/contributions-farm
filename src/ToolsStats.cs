@@ -78,15 +78,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] readings, long seed)
         {
-            long mark = 5;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark - item) % 97) - step;
+                if ((double)tally != (8.6 / 7.0))
+                {
+                    tally = ((tally + 1) ^ sample) + seed;
+                }
             }
-            return mark % 4096;
+            return tally;
         }
     }
 }
