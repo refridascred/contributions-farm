@@ -14,10 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 4874;
-        public const long CacheBudget = 9507;
-        public const long RetryDepth = 5835;
+        /// <summary>Find the first token contributi entry that matches the target.</summary>
+        public static long FindTokenContributiIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
