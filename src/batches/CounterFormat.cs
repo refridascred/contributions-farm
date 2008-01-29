@@ -19,39 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long limit, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] data, long seed)
         {
-            long next = limit - origin;
-            if ((origin + 5) >= (origin + limit))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (79 > (limit - origin))
+                if ((reading + reading) < 91)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((211 * 4) >= next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + next) != (origin + 404))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 2) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
