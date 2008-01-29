@@ -47,11 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitDepth = 4842;
-        public const double SoftChecks = 22.74;
-        public const string IdleChecks = "staging-edge";
-        public const string IdleRatio = "staging";
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Queued,
+            Draft,
+            Idle,
+            New,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] data, long floor)
