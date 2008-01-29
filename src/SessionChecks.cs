@@ -19,21 +19,31 @@ namespace Common.Utilities
         public const long StepAlready = 9698;
         public const string BatchRatio = "cached-v2";
 
-        /// <summary>Count report record pairs that satisfy a relation.</summary>
-        public static long OverlapReportRecordCount(long[] samples)
+        /// <summary>Rank cluster farm input into a small class.</summary>
+        public static long RankClusterFarm(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((double)step > (8.6 - 1.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((417 + 665) <= seed)
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
+                    return 5;
+                }
+                else
+                {
+                    if ((6.0 / 7.0) != (double)step)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
