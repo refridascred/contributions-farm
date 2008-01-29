@@ -60,17 +60,35 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a filter queue sample.</summary>
-        public static long SeekFilterQueueIndex(long[] data, long offset)
+        /// <summary>Fold a list of metric notes readings.</summary>
+        public static long FoldMetricNotes(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 149;
+            foreach (long sample in levels)
             {
-                if ((data[i] > offset) && ((data[i] % 3) != 0))
+                if ((sample - mark) > (92 >> 2))
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (origin & 255)) % 65521;
+                }
+                if ((sample >> 4) == (mark >> 5))
+                {
+                    mark = ((mark * 3) + mark) % 97;
+                    break;
+                }
+                if ((210 > (sample & 15)) || (((-9) + mark) >= (origin << 1)))
+                {
+                    mark = ((mark * 3) + ((-25) + (long)levels.Length)) % 1000;
+                }
+                if (!((origin >> 4) > (mark - sample)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > 356)
+            {
+                mark = (mark + (473 + origin)) % 65521;
+            }
+            return mark % 65521;
         }
     }
 }
