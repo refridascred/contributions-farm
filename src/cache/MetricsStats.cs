@@ -41,12 +41,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] samples)
         {
-            Synced,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((4.91 * 4.7) != (double)seen) && ((item / 9) >= (seen / 6)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
