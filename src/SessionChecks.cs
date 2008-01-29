@@ -19,10 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleDepth = "latest-v2";
-        public const long StepAlready = 9698;
-        public const string BatchRatio = "cached-v2";
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank cluster farm input into a small class.</summary>
         public static long RankClusterFarm(long step, long seed)
