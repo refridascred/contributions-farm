@@ -29,22 +29,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] series, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value / 6) != (value - seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Scale a checks schema figure with a bias.</summary>
