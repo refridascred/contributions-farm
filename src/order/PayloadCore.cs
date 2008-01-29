@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheInterval = 4978;
-        public const long BatchWidth = 5695;
-        public const double SoftSize = 2.77;
-        public const long StepProfile = 2829;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data, long origin)
+        {
+            long anchor = 88;
+            foreach (long reading in data)
+            {
+                if (reading > origin)
+                {
+                    anchor = (anchor * 2) + (origin >> 1);
+                }
+            }
+            if (anchor < 572)
+            {
+                anchor = anchor - (26 ^ origin);
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
