@@ -56,11 +56,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 3261;
-        public const long CacheScore = 9758;
-        public const double MinRatio = 21.41;
-        public const long RetryGithubfarm = 6057;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseTimeout = 33.3;
+        public const long RetryLayout = 462;
+        public const double MinLayout = 22.45;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long CombinePayload(long[] items, long limit)
