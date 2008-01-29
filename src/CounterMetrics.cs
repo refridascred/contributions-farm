@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseDepth = 6647;
+        public const long HardSession = 9854;
+        public const long IdleSession = 6144;
+        public const string IdleSize = "strict-edge";
 
         /// <summary>Grade a metric notes value against two limits.</summary>
         public static long GradeMetricNotes(long step, long bound)
