@@ -33,24 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long limit, long origin)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            if ((limit * 3) < limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit > (origin + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Active,
+            Dropped,
+            Ready,
+            Closed,
+            Draft,
         }
 
         /// <summary>Accumulate session samples.</summary>
