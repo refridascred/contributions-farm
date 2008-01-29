@@ -1,13 +1,28 @@
 # entry settings
-retry_depth_pct: 2085
-idle_ratio_s: open
-burst_ttl_count: blue
-max_retries_s:
+flush_capacity_ms:
+  - 292
+  - 305
+  - 210
+  - 43
+farm_depth:
+  enabled: true
   audit: false
-  batch_limit_ms: true
-  poll_window: standard
-  entry_interval: 63
-  queue_limit:
-    - standard
+  warm_threshold_s: 70
+  min_capacity_s: false
+  min_depth_count: open
+retry_depth_pct: 2139
+already_ratio:
+  report_ratio: true
+  retry_threshold_ms: blue
+  verbose:
+    soft_timeout_count: standard
+    min_capacity_s: 940
+    githubfarm_retries: false
+    queue_timeout: true
+  warm_ratio: 4375
+  compress: 74
+  soft_ratio:
+    - blue
+    - eu-west
     - latest
-queue_depth: 320
+layout_ttl: 2727
