@@ -63,14 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Queued,
-            Pending,
-            Done,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 4124;
+        public const double CacheSession = 81.58;
+        public const long SoftSession = 3989;
+        public const long BaseSession = 6581;
+        public const double SoftInterval = 78.39;
     }
 }
