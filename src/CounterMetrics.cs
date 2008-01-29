@@ -34,15 +34,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] items, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] series, long bound)
         {
-            long mark = 544;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark ^ (cell / 8)) % 1000) - bound;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Hold a session record.</summary>
