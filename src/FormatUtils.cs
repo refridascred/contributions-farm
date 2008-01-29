@@ -81,12 +81,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
