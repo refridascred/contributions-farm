@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -56;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (anchor << 3)) - reading;
             }
-            return hits;
+            if (anchor < (-42))
+            {
+                anchor = (anchor - (origin << 2)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up context samples.</summary>
