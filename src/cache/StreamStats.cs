@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] readings, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of cluster cache readings.</summary>
