@@ -29,19 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a commits payload figure with a bias.</summary>
-        public static double ScaleCommitsPayload(double bias, double bias2)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] readings, long step)
         {
-            double ratio = bias / 8.0;
-            if (ratio < bias2)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                ratio = ratio + bias2;
+                if (step > matches)
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - 4.0;
+            return matches;
         }
     }
 }
