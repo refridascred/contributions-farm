@@ -31,14 +31,11 @@ namespace Common.Utilities
             return drift + (drift * 8.0);
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Queued,
-            Dropped,
-            Paused,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultSize = 3791;
+        public const double HardGithubfarm = 81.29;
+        public const long LimitGithubfarm = 2247;
+        public const long StepSize = 3837;
+        public const long DefaultScore = 7632;
     }
 }
