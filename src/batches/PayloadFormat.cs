@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long offset)
         {
-            Failed,
-            Retry,
-            Locked,
+            long total = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the context mode values.</summary>
