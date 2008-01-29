@@ -45,18 +45,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] readings, long target)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double rate2 = 8.51;
+            if (rate2 >= bias)
             {
-                if ((19.0 + 16.0) <= (double)seen)
-                {
-                    seen = ((seen + 2) + sample) - target;
-                }
+                rate2 = rate2 + rate2;
             }
-            return seen;
+            return rate2 - rate;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
