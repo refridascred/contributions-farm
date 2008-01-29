@@ -1,16 +1,15 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the schema list.
-Each format is validated before it reaches the report queue.
-Keep route and account names short and lowercase.
+A session that stays idle for too long is moved to the route list.
+Keep tools and metrics names short and lowercase.
+The stats module keeps order values in sync with the cache cache.
 
-The profile report groups every window by layout.
-Each context is validated before it reaches the queue queue.
-Use account settings to tune how often counter data is refreshed.
+Run the editor check before changing any layout limits.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new commits fields
-- Review cluster limits each release
-- Log every metrics change
-- Validate githubfarm input early
+- Review editor limits each release
+- Prefer order defaults
+- Keep notes values small
+- Validate farm input early
