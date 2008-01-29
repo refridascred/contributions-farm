@@ -39,18 +39,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)limit < (double)(long)data.Length)
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCount = 1262;
+        public const long BatchCache = 8616;
+        public const string RetryCache = "alpha";
+        public const long BaseCache = 3580;
     }
 }
