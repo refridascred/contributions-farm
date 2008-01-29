@@ -66,17 +66,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] readings, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + target) % 1000;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
