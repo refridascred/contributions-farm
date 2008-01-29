@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] series, long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up commits buffer samples.</summary>
