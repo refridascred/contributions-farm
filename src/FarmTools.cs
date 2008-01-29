@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] readings, long limit)
         {
-            Closed,
-            Ready,
-            Active,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
