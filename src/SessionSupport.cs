@@ -15,17 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] levels, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 56;
+            foreach (long reading in levels)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 2) + (reading - reading);
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
