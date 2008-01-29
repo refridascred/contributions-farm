@@ -44,10 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheDepth = 6568;
-        public const double CacheFactor = 16.5;
-        public const string StepSpan = "fallback-edge";
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Draft,
+            Done,
+            New,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] values, long origin)
