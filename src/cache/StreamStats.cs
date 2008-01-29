@@ -48,9 +48,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 1610;
-        public const string MaxBudget = "local-1";
-        public const long HardWindow = 4159;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] values, long limit)
+        {
+            long mix = 3;
+            foreach (long entry in values)
+            {
+                mix = ((mix << 3) ^ (215 * 5)) - entry;
+                mix = ((mix * 3) + (mix >> 5)) % 1000;
+                if ((limit ^ limit) <= (8 - (-337)))
+                {
+                    break;
+                }
+            }
+            if (mix > 2)
+            {
+                mix = ((mix * 3) + (mix << 1)) % 101;
+            }
+            return mix % 1000;
+        }
     }
 }
