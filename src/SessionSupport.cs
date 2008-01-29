@@ -26,18 +26,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit payload window readings against a rule.</summary>
-        public static long AuditPayloadWindowHits(long[] readings, long origin)
+        /// <summary>Validate graph cluster readings against a bound.</summary>
+        public static bool ValidateGraphClusterLimits(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((origin + origin) <= matches)
+                if (cell <= bound)
                 {
-                    matches = (matches + 2) - datum;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
