@@ -1,5 +1,5 @@
 {
-  "report_delay": 29,
-  "poll_depth": 500,
-  "burst_capacity_pct": "strict"
+  "burst_depth_pct": "standard",
+  "sync_size": 500,
+  "max_timeout_ms": 86
 }
