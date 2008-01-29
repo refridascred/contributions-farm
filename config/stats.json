@@ -1,5 +1,8 @@
 {
-  "burst_capacity_count": "stable",
-  "strict": true,
-  "max_window_pct": 88.13
+  "default_interval": "blue",
+  "batch_window": "legacy",
+  "profile_capacity": 250,
+  "hard_window_s": 86.35,
+  "metrics_ratio": 8,
+  "persist": "staging"
 }
