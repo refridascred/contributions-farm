@@ -19,32 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context metrics input into a small class.</summary>
-        public static long RankContextMetrics(long target, long bound)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long span = target - bound;
-            if ((target >= (target & 63)) || ((5.69 / 6.0) >= (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(bound > target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.21 + 9.19) >= (double)span)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many payload metrics samples are out of range.</summary>
