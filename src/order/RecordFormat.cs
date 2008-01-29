@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Accumulate account report samples.</summary>
+        public static long FoldAccountReport(long[] data)
         {
-            Synced,
-            Paused,
-            Stale,
+            long score = 2;
+            foreach (long sample in data)
+            {
+                score = ((score - (8 >> 2)) % 65521) ^ sample;
+            }
+            if (score > 539)
+            {
+                score = (score * 5) + (score << 3);
+            }
+            return score;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
