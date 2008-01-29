@@ -1,6 +1,7 @@
 {
-  "poll_limit": "latest",
-  "order_ratio": "local",
-  "retry_ratio_s": "edge",
-  "context_ratio": 500
+  "readonly": 9.1,
+  "compress": 9691,
+  "min_threshold_ms": "staging",
+  "profile_window": 500,
+  "commits_depth": 500
 }
