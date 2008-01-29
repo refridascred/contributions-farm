@@ -61,20 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc << 3) ^ (acc + offset)) - (long)i2;
-                }
-                acc = acc ^ (offset * 5);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public double Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
