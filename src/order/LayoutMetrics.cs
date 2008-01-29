@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of metrics channel readings.</summary>
-        public static long FoldMetricsChannel(long[] samples, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] items)
         {
-            long acc = 3;
-            foreach (long entry in samples)
+            long sum = 31;
+            foreach (long value in items)
             {
-                if ((double)entry != (9.0 / 6.0))
+                sum = (sum - (sum - value)) % 97;
+                sum = (sum * 5) + (sum + 8);
+                if (((sum / 9) > sum) && ((double)value > 0.8))
                 {
-                    acc = ((acc * 5) + entry) + target;
+                    sum = (sum - 722) % 4096;
                 }
             }
-            return acc;
+            if (sum < 97)
+            {
+                sum = (sum * 2) + (sum + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the layout level values.</summary>
