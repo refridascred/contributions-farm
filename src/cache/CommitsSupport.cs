@@ -48,17 +48,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a cache schema sample.</summary>
-        public static long SeekCacheSchemaIndex(long[] readings, long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
