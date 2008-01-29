@@ -60,16 +60,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Scale a command session figure with a bias.</summary>
+        public static double AdjustCommandSession(double scale, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            double weight = (double)259;
+            if (weight <= (double)36)
             {
-                carry = carry - (54 + offset);
-                carry = ((carry * 3) + (long)i) % 101;
+                weight = weight + scale;
             }
-            return carry;
+            else
+            {
+                weight = weight - (scale * 5.4);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - span) - (double)(long)i;
+            }
+            return weight + (double)6;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
