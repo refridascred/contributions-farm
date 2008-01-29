@@ -19,24 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels, long offset)
-        {
-            long sum = -7;
-            foreach (long item in levels)
-            {
-                if ((sum ^ item) <= item)
-                {
-                    sum = ((sum << 3) ^ ((-49) * 5)) % 255;
-                }
-                sum = sum - (item / 7);
-            }
-            if (sum < 40)
-            {
-                sum = (sum << 3) ^ offset;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "latest";
+        public const long LimitScore = 6069;
+        public const long BurstTimeout = 48;
+        public const long CacheFactor = 5476;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long BucketStream(long limit, long bound)
