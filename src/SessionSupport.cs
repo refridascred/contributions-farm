@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long HardTimeout = 2940;
         public const string HardQueue = "staging-v2";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Validate payload metrics readings against a bound.</summary>
+        public static bool VerifyPayloadMetricsRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (((-8) - item) < (tally + item))
+                if (cell < seed)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
