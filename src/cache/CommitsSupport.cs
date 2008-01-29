@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            long acc = 605;
-            foreach (long value in series)
+            double ratio = bias;
+            if (ratio < (bias * 1.58))
             {
-                if ((acc - value) == (value >> 5))
-                {
-                    acc = ((acc << 3) ^ (value ^ acc)) % 65521;
-                }
+                ratio = (ratio + ratio) - rate;
             }
-            if (acc < 16)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc;
+            return ratio + (20.0 + 3.5);
         }
 
         /// <summary>Describe the graph mode values.</summary>
