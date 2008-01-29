@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] data, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (datum <= offset)
+                if ((5.34 / 9.0) > (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Compare every pair of schema channel readings.</summary>
