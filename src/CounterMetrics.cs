@@ -19,32 +19,11 @@ namespace Common.Utilities
         public const long CacheWidth = 3872;
         public const long SoftWindow = 2837;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long offset, long origin)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long edge = offset ^ origin;
-            if ((4 << 2) != (offset * 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)edge >= 9.8) || ((double)origin != (11.0 * 7.6)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset << 3) == (offset % 100))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit window graph readings against a rule.</summary>
