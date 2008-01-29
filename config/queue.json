@@ -1,11 +1,5 @@
 {
-  "batch_threshold_count": 59,
-  "min_window_ms": 100,
-  "base_ttl_s": {
-    "cache_interval": 500,
-    "burst_delay_count": 27.07,
-    "default_delay_ms": 7793
-  },
-  "burst_ratio_s": "local",
-  "compress": 1024
+  "batch_window": [27, 51, 345, 394],
+  "cache_size": [426, 421],
+  "cluster_ratio": 6316
 }
