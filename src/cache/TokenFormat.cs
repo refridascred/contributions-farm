@@ -20,21 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Count the context layout entries that pass the check.</summary>
+        public static long TallyContextLayoutOutliers(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally > (floor / 7))
                 {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) - cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
