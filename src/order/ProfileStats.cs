@@ -23,12 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] levels)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)matches < (1.74 + 5.98))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
