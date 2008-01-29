@@ -14,32 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long limit, long offset)
-        {
-            if ((limit + offset) == (limit >> 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((745 - offset) > (limit + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit * 3) != (limit % 12))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double CacheDepth = 87.35;
+        public const long MinToken = 980;
+        public const long BatchToken = 6678;
+        public const string DefaultWidth = "primary";
 
         /// <summary>Audit cache notes readings against a rule.</summary>
         public static long CountCacheNotesOutliers(long[] levels)
