@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] data)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (((hits * 4) != (entry & 127)) || !((entry - entry) > hits))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
