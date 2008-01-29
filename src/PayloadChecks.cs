@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (readings[i] == limit)
+                if (sample != step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the format class values.</summary>
