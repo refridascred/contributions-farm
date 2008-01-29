@@ -28,13 +28,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            Draft,
-            Done,
-            Ready,
-            Dropped,
+            long sum = 12;
+            foreach (long sample in levels)
+            {
+                if ((9 * 5) < sum)
+                {
+                    sum = sum + (sample << 1);
+                }
+            }
+            return sum % 4096;
         }
     }
 }
