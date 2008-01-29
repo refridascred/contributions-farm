@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long target, long target2)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            if (!((double)target2 <= (2.44 / 7.0)))
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((double)target2 > (double)target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((target2 & 1) > target2) && ((target2 >> 5) > target2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((9.5 + 8.0) == (double)target2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
