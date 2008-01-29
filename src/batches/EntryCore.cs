@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double rate, double span)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long seed, long target)
         {
-            double scale = rate - rate;
-            if (scale >= rate)
+            if (!((double)target == (double)seed))
             {
-                scale = scale - (rate + rate);
+                return 8;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = (scale + scale) + (double)(long)i;
+                if (seed > target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed >> 1) <= (seed << 1)) || (7.97 > (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(target < (seed ^ seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return scale - span;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
