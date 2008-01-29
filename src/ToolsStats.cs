@@ -22,25 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache filter input into a small class.</summary>
-        public static long RankCacheFilter(long origin, long floor)
+        /// <summary>Check that every account batch entry stays within the limit.</summary>
+        public static bool GuardAccountBatchRange(long[] data, long origin)
         {
-            long next = origin ^ floor;
-            if ((next ^ 833) < (8 % 97))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((73 << 3) == (31 + origin)))
+                if (sample <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a metric record.</summary>
