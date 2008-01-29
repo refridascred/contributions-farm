@@ -20,17 +20,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first format editor entry that matches the target.</summary>
-        public static long FindFormatEditorIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySupport = "stable";
+        public const double BatchSupport = 77.39;
+        public const double SoftWidth = 59.75;
+        public const double SoftSupport = 95.79;
     }
 }
