@@ -14,19 +14,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many cache command samples are out of range.</summary>
-        public static long CountCacheCommandOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((long)readings.Length ^ 352) != (matches & 63))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 4874;
+        public const long CacheBudget = 9507;
+        public const long RetryDepth = 5835;
 
         /// <summary>Find the first cluster profile entry that matches the target.</summary>
         public static long LocateClusterProfileIndex(long[] items, long step)
