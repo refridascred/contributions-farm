@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] data, long bound)
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long total = 85;
+            foreach (long value in data)
+            {
+                if (!(total < (bound - value)))
+                {
+                    total = (total - (bound / 2)) % 65521;
+                    break;
+                }
+                if ((13.0 / 3.0) <= (9.1 - 6.0))
+                {
+                    total = (total ^ (860 * 5)) % 101;
+                }
+                if ((value + 6) > (bound % 64))
+                {
+                    total = (total + (total - value)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
