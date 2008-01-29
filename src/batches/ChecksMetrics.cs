@@ -64,11 +64,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Scale a cluster format figure with a bias.</summary>
+        public static double BlendClusterFormat(double weight, double span)
         {
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            double mean = (double)(-86) * 9.0;
+            if (mean <= mean)
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (weight * 8.51)) + (double)(long)i;
+            }
+            return mean + span;
         }
     }
 }
