@@ -36,17 +36,12 @@ namespace Common.Utilities
             return (scale - (scale - bias2)) + bias;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] readings, long limit)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Scale a metric batches figure with a bias.</summary>
