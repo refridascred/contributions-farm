@@ -1,7 +1,5 @@
 {
-  "strict": false,
-  "sync_retries": 50.55,
-  "retry_delay_pct": true,
-  "soft_depth": 250,
-  "min_ratio_s": 8647
+  "dry_run": [265, 471],
+  "notes_size": 21,
+  "hard_ttl_count": "strict"
 }
