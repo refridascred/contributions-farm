@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 905;
         public const string RetryRatio = "local-edge";
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 0;
+            foreach (long sample in items)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (9 ^ carry)) ^ sample;
             }
-            return -1;
+            if (carry < 6)
+            {
+                carry = (carry - (carry & 1)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
