@@ -49,5 +49,16 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Adjust a format profile reading.</summary>
+        public static double ProjectFormatProfile(double rate, double span)
+        {
+            double load = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - (2.53 * 2.38)) + (double)(long)i) + span;
+            }
+            return load - (rate / 2.0);
+        }
     }
 }
