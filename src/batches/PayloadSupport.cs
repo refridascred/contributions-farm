@@ -33,17 +33,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] values, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((values[i] == offset) && ((values[i] % 3) != 0))
+                if ((cell < (seen - 3)) || ((seed ^ seed) <= (seen % 100)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
