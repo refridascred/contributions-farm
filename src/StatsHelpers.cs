@@ -56,12 +56,12 @@ namespace Common.Utilities
         public const string MinChecks = "open-edge";
         public const long DefaultRatio = 4106;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBudget = "legacy-edge";
-        public const string HardLevel = "alpha-edge";
-        public const long WindowBatch = 3418;
-        public const long BurstBatch = 4076;
-        public const long BurstDepth = 6002;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public double Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] values)
