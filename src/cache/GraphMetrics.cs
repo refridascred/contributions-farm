@@ -64,11 +64,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultSize = 315;
-        public const string LimitCommand = "latest";
-        public const long DefaultInterval = 29;
-        public const double BaseFactor = 66.49;
-        public const long DefaultCount = 8439;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
