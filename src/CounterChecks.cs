@@ -38,11 +38,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 48.78;
-        public const double WindowSpan = 56.69;
-        public const double SoftFarm = 5.69;
-        public const long MaxDepth = 2590;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings, long offset)
+        {
+            long total = 552;
+            foreach (long sample in readings)
+            {
+                total = ((total ^ sample) % 1000) + offset;
+            }
+            if (total < 857)
+            {
+                total = (total ^ ((long)readings.Length % 7)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] series, long seed)
