@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings, long origin)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            long carry = -81;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    carry = (carry << 3) ^ ((long)i + origin);
+                }
+                carry = carry + (carry - carry);
+                if ((499 << 3) >= origin)
+                {
+                    carry = (carry * 5) + (entry + 2);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the format class values.</summary>
