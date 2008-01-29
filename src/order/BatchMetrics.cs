@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long target, long bound)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long gap = target ^ bound;
-            if ((bound >> 3) != (gap - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((target << 3) >= (87 * 5)) && (bound < target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
