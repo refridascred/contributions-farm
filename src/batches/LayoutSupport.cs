@@ -50,10 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 2687;
-        public const string WindowRatio = "fallback-v2";
-        public const double MinChannel = 96.88;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] items, long offset)
+        {
+            long anchor = 97;
+            foreach (long reading in items)
+            {
+                anchor = ((anchor << 3) ^ (offset ^ reading)) % 255;
+                anchor = (anchor << 3) ^ reading;
+                anchor = (anchor + (offset ^ 5)) % 1000;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Blend two checks measurements.</summary>
         public static double BlendChecks(double gain, double span)
