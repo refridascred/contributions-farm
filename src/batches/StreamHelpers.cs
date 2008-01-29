@@ -38,18 +38,15 @@ namespace Common.Utilities
         public const double LimitContext = 90.3;
         public const long WindowDepth = 1450;
 
-        /// <summary>Audit metrics channel readings against a rule.</summary>
-        public static long AuditMetricsChannelMatches(long[] items, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long carry = 1;
+            foreach (long sample in levels)
             {
-                if ((761 % 64) <= ((long)items.Length ^ reading))
-                {
-                    hits = (hits + 1) - origin;
-                }
+                carry = ((carry + (carry % 100)) - sample) - limit;
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Define session limits and defaults.</summary>
