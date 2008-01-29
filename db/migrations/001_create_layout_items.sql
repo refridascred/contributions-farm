@@ -4,7 +4,10 @@ CREATE TABLE IF NOT EXISTS layout_items (
     state TEXT NOT NULL DEFAULT 'new',
     label TEXT,
     created_at TIMESTAMP,
-    score REAL NOT NULL DEFAULT 0
+    token TEXT,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
+
+INSERT INTO layout_items (state, label, token, count) VALUES ('staging', 'strict', 'staging', 42);
