@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const double MinCommand = 48.8;
         public const long SoftScore = 7144;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long step = (result + seed) + (seed / 3);
+                if ((((long)i ^ (long)i) >= result) || (((long)i + result) < seed))
                 {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - 27;
+                    result = (result << 2) ^ (step - step);
                 }
+                step = (step ^ (seed - 558)) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
