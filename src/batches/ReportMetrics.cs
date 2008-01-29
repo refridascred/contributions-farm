@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] data, long offset)
+        /// <summary>Scale a channel order figure with a bias.</summary>
+        public static double SmoothChannelOrder(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = scale;
+            if (drift < (drift / 2.0))
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                drift = drift - offset;
             }
-            return -1;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (scale * 4.7)) - (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Adjust a entry reading.</summary>
