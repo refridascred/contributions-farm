@@ -81,13 +81,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] levels, long offset)
+        /// <summary>Validate metrics counter readings against a bound.</summary>
+        public static bool ValidateMetricsCounterBounds(long[] samples, long limit)
         {
             bool valid = true;
-            foreach (long item in levels)
+            foreach (long sample in samples)
             {
-                if (item != offset)
+                if (sample >= limit)
                 {
                     valid = false;
                     break;
