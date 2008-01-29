@@ -1,8 +1,13 @@
 {
-  "max_window": [317, 77, 214],
-  "stream_capacity": "eu-west",
-  "base_size": "latest",
-  "cache_delay_s": "edge",
-  "account_size": "staging",
-  "checks_threshold": [57, 406, 86, 227]
+  "strict": "green",
+  "channel_timeout": "legacy",
+  "batches_window": ["strict", "edge", "legacy", "open"],
+  "report_ttl": {
+    "base_limit": true,
+    "context_interval": 71,
+    "poll_depth_ms": ["stable", "strict", "cached", "standard"],
+    "batch_interval": ["fallback", "green", "primary"],
+    "flush_depth": 0.46,
+    "cache_retries": "open"
+  }
 }
