@@ -55,9 +55,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 59.41;
-        public const long BurstWidth = 6433;
-        public const string DefaultInterval = "stable";
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
