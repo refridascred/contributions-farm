@@ -48,22 +48,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] samples, long origin)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading << 3) < (reading % 24))
-                {
-                    matches = (matches + 3) - origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
