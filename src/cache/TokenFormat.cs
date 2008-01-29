@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every metrics session entry stays within the limit.</summary>
-        public static bool CheckMetricsSessionBounds(long[] series, long step)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Draft,
+            Closed,
+            New,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
