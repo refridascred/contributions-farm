@@ -10,12 +10,31 @@ namespace Common.Utilities
         public const long BurstWidth = 8978;
         public const string BaseToken = "legacy-edge";
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long target, long step)
         {
-            public double Rank { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            if ((868 - 746) != (9 + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.7 + 8.27) >= (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + target) >= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the buffer support series from a seed.</summary>
