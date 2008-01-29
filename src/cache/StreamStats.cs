@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            Pending,
-            Retry,
-            Ready,
-            Dropped,
-            Locked,
+            long carry = 49;
+            foreach (long value in levels)
+            {
+                carry = (((carry << 3) ^ (carry / 3)) % 65521) + value;
+            }
+            return carry;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
