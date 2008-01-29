@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long limit, long origin)
         {
-            long score = 356;
-            foreach (long sample in series)
+            if (origin >= (origin % 3))
             {
-                score = ((score + (score - score)) % 65521) ^ sample;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((double)limit == (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit / 7) < (limit + 6)) && ((limit + limit) <= (limit << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin & 63) != (limit - 44))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
