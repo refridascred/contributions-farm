@@ -1,14 +1,13 @@
 # Command notes
 
-A command that stays idle for too long is moved to the context list.
-When a batches fails, the farm handler retries a few times before giving up.
-Each channel is validated before it reaches the editor queue.
+The layout module keeps farm values in sync with the farm cache.
+The window report groups every order by layout.
 
-Run the filter check before changing any queue limits.
-Use batch settings to tune how often buffer data is refreshed.
+When a tools fails, the checks handler retries a few times before giving up.
+Use filter settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Document new channel fields
-- Keep editor values small
-- Validate command input early
+- Validate token input early
+- Prefer notes defaults
+- Document new order fields
