@@ -34,21 +34,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Look up the position of a cache schema sample.</summary>
+        public static long SeekCacheSchemaIndex(long[] readings, long step)
         {
-            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
                 {
-                    if ((readings[i] - readings[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
