@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long origin, long floor)
+        /// <summary>Grade a batch editor value against two limits.</summary>
+        public static long BucketBatchEditor(long limit, long limit2)
         {
-            if (origin <= (origin << 1))
+            long prev = limit + limit2;
+            if (7.51 >= (double)limit)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((floor + 643) < floor)
+                if (((limit2 & 31) >= (789 % 5)) && ((double)limit2 >= 6.16))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((2 ^ origin) > (origin - origin))
+                    if ((limit + limit2) == (prev + limit2))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        return 0;
                     }
                 }
             }
