@@ -1,12 +1,9 @@
 # support settings
-default_size: 500
-dry_run:
-  - legacy
-  - legacy
-  - blue
-base_threshold_ms:
-  - primary
-  - staging
+record_window:
   - standard
-account_window: 79.33
-poll_delay: 500
+  - edge
+  - legacy
+dry_run: 56.84
+default_depth_ms: open
+idle_limit: true
+compress: 23.97
