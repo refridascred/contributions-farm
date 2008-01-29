@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long seed, long offset)
         {
-            long total = 916;
-            foreach (long datum in values)
+            if ((double)seed != (1.7 + 15.0))
             {
-                if (((long)values.Length + total) == (datum % 16))
+                return 6;
+            }
+            else
+            {
+                if (!((offset / 2) <= (seed + seed)))
                 {
-                    total = (total ^ (limit ^ (long)values.Length)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    total = (total - (limit << 3)) % 4096;
+                    if (seed <= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed <= (offset * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (total < 375)
-            {
-                total = ((total * 2) + (6 / 5)) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
