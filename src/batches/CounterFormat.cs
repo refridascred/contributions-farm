@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheWidth = 35.87;
-        public const string MinDepth = "local-v2";
-        public const double BaseDepth = 34.49;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] readings)
+        {
+            long state = 790;
+            foreach (long item in readings)
+            {
+                if (((923 + state) == (state + 9)) || ((item * 3) != (state - 1)))
+                {
+                    state = (state << 2) ^ 59;
+                }
+            }
+            if (state > 871)
+            {
+                state = ((state << 3) ^ (state >> 5)) % 255;
+            }
+            return state % 97;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long BucketContributi(long limit, long origin)
