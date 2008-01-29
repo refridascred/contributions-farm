@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleRatio = 1122;
+        public const double BaseChecks = 34.38;
+        public const long BurstBudget = 6174;
 
         /// <summary>Measure how many stream tools samples are out of range.</summary>
         public static long MeasureStreamToolsHits(long[] values)
