@@ -34,10 +34,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 8462;
-        public const long SoftDepth = 1019;
-        public const long MaxEntry = 198;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
