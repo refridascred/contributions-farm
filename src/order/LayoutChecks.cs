@@ -36,13 +36,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] samples, long target)
         {
-            Dropped,
-            Stale,
-            Closed,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit payload entry readings against a rule.</summary>
