@@ -1,8 +1,7 @@
 {
-  "strict": 100,
-  "sync_interval": 18,
-  "checks_limit": "latest",
-  "retry_ratio": 48.48,
-  "cache_timeout_pct": 61.31,
-  "layout_ttl": "stable"
+  "compress": 26.34,
+  "hard_retries": 166,
+  "soft_window_s": 250,
+  "burst_delay_pct": 9465,
+  "editor_depth": "legacy"
 }
