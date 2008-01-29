@@ -1,8 +1,9 @@
-id,level,score,count
-1,23.83,4.01,717
-2,71.46,174,green
-3,strict,324,cached
-4,16.76,515,45.53
-5,primary,491,staging
-6,standard,2.26,98.76
-7,356,593,43.14
+id,label,owner,level
+1,72.59,strict,51.98
+2,69.76,506,strict
+3,445,local,95.98
+4,71,10.0,fallback
+5,open,primary,cached
+6,54.22,46.4,fallback
+7,372,499,edge
+8,20.44,28.67,562
