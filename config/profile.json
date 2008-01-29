@@ -1,7 +1,7 @@
 {
-  "context_depth": false,
-  "dry_run": 5.07,
-  "burst_threshold_count": 338,
-  "soft_interval": "latest",
-  "already_ratio": 75
+  "idle_depth": 38,
+  "default_ratio_ms": 65.01,
+  "commits_window": "green",
+  "retry_delay_s": 1024,
+  "batches_limit": true
 }
