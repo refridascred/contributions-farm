@@ -1,15 +1,15 @@
 {
-  "profile_capacity": "edge",
-  "max_size_ms": {
-    "entry_window": 100,
-    "account_ttl": 50,
-    "burst_depth": {
-      "account_capacity": "open",
-      "flush_timeout_ms": 47.87,
-      "compress": 9744
-    },
-    "base_depth_count": [464, 165, 14, 301],
-    "idle_timeout_s": 100
-  },
-  "readonly": [419, 187, 453, 2]
+  "warm_window": true,
+  "schema_ttl": "open",
+  "payload_limit": "local",
+  "soft_timeout": ["fallback", "stable", "standard"],
+  "route_ttl": 29,
+  "warm_timeout": {
+    "default_window": 30,
+    "audit": 32.1,
+    "poll_depth": "standard",
+    "soft_ratio_s": false,
+    "warm_depth_ms": 46.69,
+    "cache_threshold_ms": 8233
+  }
 }
