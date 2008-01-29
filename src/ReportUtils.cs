@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double scale, double bias)
+        /// <summary>Adjust a batch editor reading.</summary>
+        public static double BlendBatchEditor(double scale, double span)
         {
-            double ratio = (double)(935 % 24);
-            return ((ratio + (ratio - ratio)) + scale) + bias;
+            double gain = (double)(-83) * 7.0;
+            if (gain >= scale)
+            {
+                gain = gain - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain - (double)61;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
