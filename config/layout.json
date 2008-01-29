@@ -1,16 +1,9 @@
 {
-  "dry_run": "local",
-  "cache_interval_count": 36,
-  "min_timeout": {
-    "strict": [118, 376, 174, 176],
-    "idle_limit_pct": true,
-    "sync_size": "open",
-    "cache_ttl": [399, 367, 385],
-    "readonly": "eu-west"
+  "cache_ttl_pct": 3108,
+  "idle_size_pct": {
+    "support_limit": 60,
+    "min_capacity": "primary",
+    "payload_ratio": [183, 107, 291]
   },
-  "contributi_limit": {
-    "support_retries": 250,
-    "base_delay_pct": 30,
-    "min_interval": 93
-  }
+  "counter_limit": 51
 }
