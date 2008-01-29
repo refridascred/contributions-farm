@@ -12,12 +12,38 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long offset, long bound)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            if (offset < (offset >> 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound == (15.0 + 14.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - 270) != (bound / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset <= (bound / 8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
