@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the context layout entries that pass the check.</summary>
-        public static long TallyContextLayoutOutliers(long[] data, long floor)
+        /// <summary>Validate profile graph readings against a bound.</summary>
+        public static bool GuardProfileGraphLimits(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (tally > (floor / 7))
+                if (datum < offset)
                 {
-                    tally = (tally + 2) - cell;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
