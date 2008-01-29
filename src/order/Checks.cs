@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((((-4) < (count + item)) || (item > (618 + item))) && ((double)62 < (double)bound))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheBudget = 2458;
+        public const long CacheRoute = 8819;
+        public const double CacheLevel = 2.49;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
