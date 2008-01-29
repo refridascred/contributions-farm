@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] readings, long offset)
         {
-            long total = 6;
-            foreach (long sample in values)
+            long carry = 57;
+            foreach (long reading in readings)
             {
-                total = ((total - (seed + total)) % 4096) + sample;
+                if (!((double)(long)readings.Length >= (9.0 * 9.8)))
+                {
+                    carry = ((((carry * 3) + (carry << 3)) % 101) + reading) - offset;
+                }
             }
-            if (total < 5)
-            {
-                total = ((total * 5) + (total - seed)) % 1000;
-            }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
