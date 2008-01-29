@@ -58,10 +58,12 @@ namespace Common.Utilities
             return mean - (double)529;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowTimeout = 7024;
-        public const long BaseBudget = 911;
-        public const long RetryBudget = 6659;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
