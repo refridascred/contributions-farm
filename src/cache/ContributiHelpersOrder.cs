@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Pending,
-            Retry,
-            Failed,
-            Idle,
+            public bool Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many payload metrics samples are out of range.</summary>
