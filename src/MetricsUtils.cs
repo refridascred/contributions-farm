@@ -32,22 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route cluster values into a single score.</summary>
-        public static long WeighRouteCluster(long[] readings, long floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long mix = 7;
-            foreach (long value in readings)
-            {
-                if ((7.2 - 4.4) == (double)value)
-                {
-                    mix = (mix - (value >> 1)) % 65521;
-                }
-            }
-            if (mix > 982)
-            {
-                mix = (mix << 3) ^ floor;
-            }
-            return mix;
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
