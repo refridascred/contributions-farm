@@ -49,13 +49,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Queued,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "alpha";
+        public const double WindowTimeout = 34.55;
+        public const string BaseOrder = "standard-v2";
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
