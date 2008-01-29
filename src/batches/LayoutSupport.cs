@@ -56,16 +56,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next format already value from a seed.</summary>
-        public static long SeriesFormatAlready(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 2687;
+        public const string WindowRatio = "fallback-v2";
+        public const double MinChannel = 96.88;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double BlendChecks(double gain, double span)
