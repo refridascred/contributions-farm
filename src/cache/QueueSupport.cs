@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples)
-        {
-            long acc = 602;
-            foreach (long cell in samples)
-            {
-                acc = (((acc * 3) + (428 & 63)) % 255) + cell;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchDepth = 6060;
+        public const string DefaultEntry = "local-v2";
+        public const long StepTimeout = 1894;
 
         /// <summary>Audit command channel readings against a rule.</summary>
         public static long AuditCommandChannelOutliers(long[] series, long step)
