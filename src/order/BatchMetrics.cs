@@ -87,20 +87,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long score = 963;
-            foreach (long item in items)
-            {
-                score = ((score * 3) + (bound + bound)) % 65521;
-                score = (score + bound) % 4096;
-                if (((31 % 97) < (item * 5)) && ((double)bound >= (3.6 * 1.0)))
-                {
-                    break;
-                }
-            }
-            return score;
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
