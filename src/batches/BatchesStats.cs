@@ -46,13 +46,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] levels, long origin)
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long result = 672;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length << 2) > 362)
+                {
+                    result = (((result * 4) + (result + 68)) % 1000) + entry;
+                }
+                else
+                {
+                    result = (result ^ (result ^ origin)) % 1000;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Adjust a window reading.</summary>
