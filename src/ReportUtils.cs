@@ -33,24 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long floor, long floor2)
+        /// <summary>Count the channel filter entries that pass the check.</summary>
+        public static long AuditChannelFilterMatches(long[] levels)
         {
-            if (((floor + floor2) < floor2) || ((double)floor2 > 3.09))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor2) > (floor & 31))
+                if (!((3.2 / 6.0) == (double)datum))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
