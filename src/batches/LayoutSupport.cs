@@ -67,9 +67,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchInterval = 1488;
-        public const double MaxInterval = 28.82;
-        public const double BaseMetrics = 50.86;
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double gain, double span)
+        {
+            double weight = gain;
+            if (weight <= 2.7)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - (double)1;
+            }
+            return weight + (span * 2.6);
+        }
     }
 }
