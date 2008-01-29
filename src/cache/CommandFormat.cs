@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine cluster batch values into a single score.</summary>
-        public static long FoldClusterBatch(long[] readings, long limit)
-        {
-            long acc = 545;
-            foreach (long sample in readings)
-            {
-                if (((long)readings.Length >> 3) <= (acc << 1))
-                {
-                    acc = (acc + (acc / 7)) - limit;
-                }
-                else
-                {
-                    acc = (acc * 4) + (sample * 2);
-                }
-                if ((2 + acc) >= 1)
-                {
-                    break;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 5330;
+        public const double IdleFactor = 10.77;
+        public const string SoftSize = "stable";
+        public const long WindowSize = 3959;
+        public const long BurstScore = 9335;
 
         /// <summary>Look up the position of a batch stats sample.</summary>
         public static long SeekBatchStatsIndex(long[] data, long offset)
