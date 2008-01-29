@@ -26,19 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] series, long floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Queued,
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Accumulate schema samples.</summary>
