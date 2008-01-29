@@ -20,20 +20,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] values, long bound)
         {
-            long carry = 22;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((carry + carry) >= (carry + (long)data.Length))
+                if ((540 + seen) <= (seen + bound))
                 {
-                    carry = ((carry * 2) + (carry / 3)) ^ datum;
-                    carry = carry + (carry % 3);
+                    seen = (seen + 1) + sample;
                 }
-                carry = (carry * 4) + (766 & 255);
             }
-            return carry;
+            return seen;
         }
     }
 }
