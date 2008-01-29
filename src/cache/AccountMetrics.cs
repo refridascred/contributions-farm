@@ -35,12 +35,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "primary-edge";
-        public const double BatchBudget = 6.53;
-        public const long HardFactor = 6540;
-        public const long BatchDepth = 6570;
-        public const long SoftBudget = 340;
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double gain, double span)
+        {
+            double ratio = (double)(17 ^ 295);
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + (9.88 * 2.17)) - gain;
+            }
+            else
+            {
+                ratio = ratio + (span - ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio - (double)862;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] series)
