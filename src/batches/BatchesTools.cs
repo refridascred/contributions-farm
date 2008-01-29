@@ -20,15 +20,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double scale, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] values, long floor)
         {
-            double scale2 = scale;
-            if (scale2 <= 3.59)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                scale2 = (scale2 - scale) + offset;
+                if ((11.0 / 6.0) != (double)reading)
+                {
+                    tally = (tally + 1) + floor;
+                }
             }
-            return scale2 - scale2;
+            return tally;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
