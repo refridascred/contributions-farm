@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long floor, long target)
         {
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            long step = floor + target;
+            if (((floor >> 4) >= 5) || ((target % 10) == (floor << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step + floor) > (target ^ step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step << 2) < (floor >> 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
