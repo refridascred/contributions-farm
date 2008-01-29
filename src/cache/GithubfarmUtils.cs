@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (cell < hits)
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowCount = 8305;
+        public const long BurstDepth = 3131;
+        public const double CacheProfile = 8.84;
+        public const long HardInterval = 9594;
+        public const string CacheBudget = "standard";
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] items)
