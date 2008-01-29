@@ -27,19 +27,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] values, long seed)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double span)
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double weight2 = (weight / 7.0) + span;
+            return weight2 - weight2;
         }
     }
 }
