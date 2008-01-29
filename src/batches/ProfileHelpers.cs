@@ -19,15 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long seed2)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            if (((seed2 * 4) != (seed ^ seed)) || (29 < (seed2 + 93)))
             {
-                result = ((result * 5) + (long)i) % 1000;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((seed2 * 5) != (seed2 + seed2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((954 * 4) > seed2) && ((seed2 + seed2) < seed2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed & 255) < 349)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
