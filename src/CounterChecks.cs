@@ -24,13 +24,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Paused,
-            Done,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 6673;
+        public const long DefaultStats = 2812;
+        public const long WindowDepth = 2542;
+        public const long IdleStats = 5826;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
