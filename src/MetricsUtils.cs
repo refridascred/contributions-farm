@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the cache route entries that pass the check.</summary>
-        public static long TallyCacheRouteMatches(long[] items)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if (origin <= (origin << 1))
             {
-                if (tally >= (87 ^ entry))
+                return 4;
+            }
+            else
+            {
+                if ((floor + 643) < floor)
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((2 ^ origin) > (origin - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
