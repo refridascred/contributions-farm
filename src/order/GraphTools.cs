@@ -45,17 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] items, long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long value in series)
             {
-                if (items[i] >= step)
+                if ((total % 64) <= (value + 226))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (58 % 7);
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
