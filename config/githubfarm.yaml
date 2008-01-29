@@ -1,11 +1,11 @@
 # githubfarm settings
-poll_window:
-  - 14
-  - 386
-  - 6
-  - 319
-burst_size_s: 3516
-retry_interval: 78
-hard_window_ms: 78.53
-counter_ratio: 23.03
-batches_ratio: 90.58
+readonly:
+  - 93
+  - 18
+  - 236
+  - 280
+batch_size: true
+soft_limit_pct: open
+batch_timeout_pct: 11.95
+sync_interval_pct: primary
+flush_timeout_pct: 76.07
