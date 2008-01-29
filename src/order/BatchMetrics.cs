@@ -21,24 +21,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long floor, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] readings)
         {
-            if (((1.96 - 8.8) >= (double)floor) && ((double)floor >= (16.0 * 2.09)))
+            long state = 586;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor >> 2) >= (28 / 3)) && ((floor / 6) >= (step << 1)))
+                if ((state << 2) != (entry ^ entry))
                 {
-                    return 0;
+                    break;
                 }
                 else
                 {
-                    return 5;
+                    state = (state ^ (710 + entry)) % 101;
                 }
+                state = state - (state & 15);
             }
+            return state % 97;
         }
 
         /// <summary>Hold a format record.</summary>
