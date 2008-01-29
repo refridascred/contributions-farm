@@ -50,12 +50,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items)
         {
-            Paused,
-            Synced,
-            Idle,
+            long result = -2;
+            foreach (long item in items)
+            {
+                if ((double)item > (double)result)
+                {
+                    result = result - (84 - 32);
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
