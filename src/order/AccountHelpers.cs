@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mean - (double)38;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] data, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((double)floor != (6.6 * 19.0))
+                if ((1.5 - 15.0) >= (double)matches)
                 {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
