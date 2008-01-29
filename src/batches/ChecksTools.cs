@@ -43,11 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            New,
+            Failed,
+            Draft,
+            Idle,
+            Paused,
         }
     }
 }
