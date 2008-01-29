@@ -59,12 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Done,
-            Stale,
-            Synced,
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
