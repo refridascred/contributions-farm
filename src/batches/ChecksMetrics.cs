@@ -27,26 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] items, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] levels, long offset)
         {
-            long sum = 6;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((0.5 * 4.1) >= (double)bound)
+                if (item < offset)
                 {
-                    sum = ((sum + sum) % 1000) ^ item;
-                }
-                if ((sum - bound) != (sum ^ 41))
-                {
-                    sum = (sum * 5) + (sum + 7);
-                }
-                if ((double)sum < (double)(long)items.Length)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
