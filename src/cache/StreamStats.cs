@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchDepth = 3379;
+        public const long BatchStream = 9240;
+        public const double MinSize = 19.83;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
