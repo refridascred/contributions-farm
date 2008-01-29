@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] readings)
         {
-            long total = -20;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                total = total ^ (entry + 53);
-                if ((double)entry >= (double)63)
+                if (7.0 <= (double)sample)
                 {
-                    total = (total << 3) ^ (entry >> 1);
-                }
-                else
-                {
-                    total = total ^ (3 + (long)samples.Length);
+                    matches = matches + 2;
                 }
             }
-            if (total < 8)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
