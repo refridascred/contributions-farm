@@ -1,13 +1,6 @@
 {
-  "persist": {
-    "flush_capacity_pct": "legacy",
-    "dry_run": 60,
-    "metrics_threshold": ["latest", "eu-west", "primary"],
-    "batch_delay_s": "fallback",
-    "base_interval_count": 1024
-  },
-  "strict": 54.02,
-  "base_ratio_s": 1373,
-  "min_delay_s": 30,
-  "layout_window": true
+  "soft_interval_pct": 4213,
+  "metric_limit": ["cached", "latest"],
+  "poll_timeout_ms": 17.0,
+  "base_delay_count": 23.6
 }
