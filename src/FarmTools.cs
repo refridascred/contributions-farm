@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] readings, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 3;
+            foreach (long datum in series)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                acc = (acc + (acc ^ acc)) ^ datum;
             }
-            return -1;
+            if (acc < 749)
+            {
+                acc = (acc - (step / 4)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
