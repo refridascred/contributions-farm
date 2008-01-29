@@ -33,10 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "staging-edge";
-        public const long BatchInterval = 7233;
-        public const long RetryCounter = 7039;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] series)
