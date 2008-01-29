@@ -61,15 +61,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double ratio, double span)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            double weight = 8.8 + (span / 8.0);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = ((weight - 11.0) + (double)(long)i) + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight - (double)505;
+            return seen;
         }
     }
 }
