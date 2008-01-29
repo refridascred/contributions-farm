@@ -38,13 +38,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Match up profile tools samples.</summary>
+        public static long OverlapProfileToolsCount(long[] items)
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout phase values.</summary>
