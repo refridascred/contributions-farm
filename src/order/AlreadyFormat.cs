@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] series)
         {
-            Retry,
-            Idle,
-            Dropped,
+            long anchor = 91;
+            foreach (long entry in series)
+            {
+                if (entry >= anchor)
+                {
+                    anchor = ((anchor << 2) ^ (anchor >> 2)) % 97;
+                }
+            }
+            if (anchor < 75)
+            {
+                anchor = (anchor * 5) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
