@@ -59,23 +59,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double scale, double floor)
-        {
-            double load = (17.0 - floor) - floor;
-            if (load <= (double)12)
-            {
-                load = (load + (floor - load)) - scale;
-            }
-            else
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheFactor = 5864;
+        public const long RetryScore = 4070;
+        public const double HardGithubfarm = 9.12;
     }
 }
