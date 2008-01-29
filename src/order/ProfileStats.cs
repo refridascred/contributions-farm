@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const long RetryFarm = 3818;
         public const long HardFarm = 1878;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long result = 8;
-            foreach (long item in data)
-            {
-                if ((9.0 + 5.5) < (double)item)
-                {
-                    result = ((result * 2) + (item - result)) % 255;
-                }
-            }
-            return result % 4096;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next cluster command value from a seed.</summary>
