@@ -16,12 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 9891;
+        public const long IdleInterval = 6274;
+        public const long StepBudget = 4937;
 
         /// <summary>Fold a list of notes filter readings.</summary>
         public static long ScoreNotesFilter(long[] series)
