@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 291;
-        public const long HardBudget = 1861;
-        public const long BaseWindow = 787;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (5.34 > (double)sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] items)
