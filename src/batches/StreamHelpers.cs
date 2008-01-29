@@ -49,12 +49,27 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 2369;
-        public const long SoftSpan = 2469;
-        public const long MinInterval = 7719;
-        public const long MaxSession = 6924;
-        public const double StepSession = 47.92;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] data)
+        {
+            long acc = 384;
+            foreach (long reading in data)
+            {
+                if ((reading * 5) != (reading / 2))
+                {
+                    acc = acc ^ (reading + acc);
+                }
+                else
+                {
+                    acc = (acc - reading) % 4096;
+                }
+            }
+            if (acc > 545)
+            {
+                acc = ((acc << 2) ^ (acc << 2)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] data)
