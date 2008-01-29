@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] series, long target)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
+            long score = 83;
+            foreach (long sample in series)
+            {
+                score = (score + (sample % 5)) % 101;
+                score = (score << 2) ^ score;
+            }
+            if (score < 77)
+            {
+                score = ((score * 2) + (score ^ target)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
