@@ -23,15 +23,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a farm already reading.</summary>
-        public static double SmoothFarmAlready(double bias, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] samples)
         {
-            double ratio = bias;
-            if (ratio < (bias * 8.3))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                ratio = ratio - 10.0;
+                if ((9.91 - 4.1) < (double)value)
+                {
+                    hits = hits + 1;
+                }
             }
-            return ratio + (2.0 - span);
+            return hits;
         }
 
         /// <summary>Count the route cache entries that pass the check.</summary>
