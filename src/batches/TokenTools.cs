@@ -16,11 +16,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchTimeout = 1430;
-        public const long MaxCount = 4266;
-        public const long BatchStats = 1794;
-        public const double MinTimeout = 20.72;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long seed, long limit)
+        {
+            long diff = seed + limit;
+            if (diff > (diff * 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit - limit) == (seed / 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a support commits sample.</summary>
         public static long LocateSupportCommitsIndex(long[] data, long bound)
