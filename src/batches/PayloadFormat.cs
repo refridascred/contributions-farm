@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchWidth = 2040;
-        public const double HardMetrics = 14.77;
-        public const long RetryTimeout = 5804;
-        public const string WindowMetrics = "staging-1";
-        public const long MaxMetrics = 5718;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen - (-77)) != (limit % 16))
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
