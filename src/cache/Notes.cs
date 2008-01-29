@@ -60,17 +60,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinTimeout = 9140;
+        public const long RetryCount = 84;
+        public const long WindowTimeout = 6816;
+        public const string IdleInterval = "fallback-v2";
+        public const long MaxRatio = 2881;
     }
 }
