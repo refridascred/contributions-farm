@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many farm cache samples are out of range.</summary>
-        public static long MeasureFarmCacheMatches(long[] samples, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long offset, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if (!((955 + step) <= step))
             {
-                if ((item + count) >= ((long)samples.Length * 2))
+                return 2;
+            }
+            else
+            {
+                if (((double)offset >= (20.0 / 7.0)) && ((double)offset != (2.09 / 6.0)))
                 {
-                    count = (count + 2) - limit;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
