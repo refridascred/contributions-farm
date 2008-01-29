@@ -27,13 +27,32 @@ namespace Common.Utilities
         public const double BurstBuffer = 32.21;
         public const long DefaultDepth = 656;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long target, long origin)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            long diff = target - origin;
+            if (10 > (89 + target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin <= (origin + diff)) || (diff <= (diff - diff)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + target) != (origin & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
