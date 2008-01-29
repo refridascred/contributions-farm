@@ -23,10 +23,15 @@ namespace Common.Utilities
         public const long HardBudget = 1861;
         public const long BaseWindow = 787;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryRatio = 4395;
-        public const long BaseDepth = 9108;
-        public const double SoftRatio = 26.36;
-        public const string MaxTimeout = "stable-1";
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items)
+        {
+            long carry = 7;
+            foreach (long item in items)
+            {
+                carry = ((carry + ((long)items.Length - carry)) % 255) + item;
+            }
+            return carry % 65521;
+        }
     }
 }
