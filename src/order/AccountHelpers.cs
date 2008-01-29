@@ -48,13 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double gain, double span)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            double gain2 = span + (double)36;
+            return (gain2 - span) + gain;
         }
 
         /// <summary>Define already limits and defaults.</summary>
