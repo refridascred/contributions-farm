@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)seen != (10.0 * 6.3))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheDepth = "standard-1";
+        public const string SoftLevel = "strict-v2";
+        public const long CacheAccount = 1552;
 
         /// <summary>Match up already samples.</summary>
         public static long OverlapAlreadyCount(long[] readings)
