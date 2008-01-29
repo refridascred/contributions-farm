@@ -71,10 +71,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 9510;
-        public const long MinTools = 2365;
-        public const long IdleTools = 3603;
-        public const double CacheFactor = 21.98;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 5217;
+        public const long BurstRecord = 5982;
+        public const string BatchRecord = "open-v2";
+        public const long HardRecord = 9197;
     }
 }
