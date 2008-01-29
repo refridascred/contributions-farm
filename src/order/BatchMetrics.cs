@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 84.55;
-        public const double StepContext = 80.43;
-        public const long BaseContext = 73;
-        public const long StepFactor = 8348;
-        public const long RetryContext = 3263;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long floor, long step)
