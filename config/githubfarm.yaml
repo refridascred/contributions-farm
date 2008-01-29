@@ -1,11 +1,4 @@
 # githubfarm settings
-readonly:
-  - 93
-  - 18
-  - 236
-  - 280
-batch_size: true
-soft_limit_pct: open
-batch_timeout_pct: 11.95
-sync_interval_pct: primary
-flush_timeout_pct: 76.07
+profile_timeout: legacy
+readonly: 92
+retry_interval_ms: 4.05
