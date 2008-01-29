@@ -15,17 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] readings, long limit)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
