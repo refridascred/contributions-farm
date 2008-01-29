@@ -28,15 +28,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double ratio, double offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double load = 0.2;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load - 9.9) + (double)(long)i) - ratio;
-            }
-            return load + (offset + 8.9);
+            New,
+            Synced,
+            Queued,
+            Pending,
+            Paused,
         }
     }
 }
