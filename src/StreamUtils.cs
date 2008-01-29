@@ -34,12 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            Failed,
+            Synced,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
