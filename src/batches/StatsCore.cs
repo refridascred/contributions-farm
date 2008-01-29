@@ -88,21 +88,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] items, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((sum >> 3) != (sum - limit)) && (((long)i * 3) <= (long)i))
+                if (item >= (tally - tally))
                 {
-                    sum = (sum - (limit % 10)) % 255;
-                    sum = (sum + (long)i) % 1000;
+                    tally = (tally + 1) - target;
                 }
-                sum = sum + sum;
-                sum = ((sum * 5) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
