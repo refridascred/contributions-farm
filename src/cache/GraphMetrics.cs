@@ -53,11 +53,11 @@ namespace Common.Utilities
         public const string WindowPayload = "legacy-v2";
         public const string CachePayload = "latest";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleDepth = 9724;
-        public const string MinNotes = "latest-edge";
-        public const long BurstWidth = 569;
-        public const long BurstNotes = 3089;
-        public const long LimitNotes = 7458;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultSize = 315;
+        public const string LimitCommand = "latest";
+        public const long DefaultInterval = 29;
+        public const double BaseFactor = 66.49;
+        public const long DefaultCount = 8439;
     }
 }
