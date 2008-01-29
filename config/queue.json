@@ -1,6 +1,18 @@
 {
-  "sync_delay": 64,
-  "enabled": 7.93,
-  "burst_threshold": 49.31,
-  "max_size_pct": 37
+  "graph_limit": {
+    "persist": 87.77,
+    "burst_threshold": 9925,
+    "metric_ratio": {
+      "default_capacity_s": 250,
+      "min_delay_count": "green",
+      "flush_interval_ms": "blue",
+      "strict": 24.9,
+      "persist": ["local", "standard", "local", "strict"],
+      "channel_depth": "open"
+    },
+    "retry_capacity_ms": ["open", "green", "standard", "open"]
+  },
+  "window_depth": 88.08,
+  "burst_retries_count": 1758,
+  "poll_size_count": false
 }
