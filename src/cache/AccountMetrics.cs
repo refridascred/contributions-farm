@@ -20,11 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 14.55;
-        public const long BurstTools = 1413;
-        public const double BaseTools = 58.13;
-        public const string IdleTools = "staging-v2";
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double ScaleCluster(double gain, double span)
