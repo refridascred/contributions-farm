@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryInterval = 2172;
-        public const long HardWindow = 9551;
-        public const long BatchCount = 2663;
-        public const long RetryWindow = 1352;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchOutliers(long[] values)
