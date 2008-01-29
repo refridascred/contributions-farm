@@ -27,19 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((long)i - mark) == (long)i)
-                {
-                    mark = (mark + (0 % 100)) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a notes stats.</summary>
