@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the batch session entries that pass the check.</summary>
-        public static long TallyBatchSessionMatches(long[] items)
+        /// <summary>Roll a payload tools counter forward.</summary>
+        public static long IteratePayloadTools(long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)matches > 9.8)
+                if (!(((long)i / 8) >= bound))
                 {
-                    matches = (matches + 2) ^ value;
+                    mix = ((mix << 3) ^ (mix ^ bound)) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a filter info.</summary>
