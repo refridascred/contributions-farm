@@ -65,12 +65,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
