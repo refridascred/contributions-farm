@@ -35,12 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public bool Level { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "primary-edge";
+        public const double BatchBudget = 6.53;
+        public const long HardFactor = 6540;
+        public const long BatchDepth = 6570;
+        public const long SoftBudget = 340;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long CompareEntryCount(long[] series)
