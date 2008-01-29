@@ -1,32 +1,7 @@
 {
-  "githubfarm_timeout": 30.86,
-  "retry_size_pct": "cached",
-  "persist": 70,
-  "compress": "staging",
-  "soft_delay_count": {
-    "retry_limit": {
-      "order_size": false,
-      "commits_ttl": "staging",
-      "audit": "standard",
-      "token_window": [287, 460, 71, 170],
-      "enabled": 50.05,
-      "already_ttl": true
-    },
-    "persist": "open",
-    "contributi_timeout": "legacy",
-    "payload_interval": [136, 244, 386, 476],
-    "max_interval_count": {
-      "verbose": ["standard", "standard", "staging"],
-      "retry_ratio": 52.46,
-      "burst_size_count": false
-    },
-    "batch_threshold": {
-      "flush_ratio": "staging",
-      "flush_depth": false,
-      "hard_ratio": ["standard", "primary", "legacy", "fallback"],
-      "session_delay": 4556,
-      "default_ratio_count": "fallback",
-      "batch_interval_ms": ["eu-west", "staging", "latest"]
-    }
-  }
+  "dry_run": ["primary", "primary", "strict"],
+  "verbose": false,
+  "cache_retries_s": 63,
+  "support_interval": 91,
+  "base_depth_count": "legacy"
 }
