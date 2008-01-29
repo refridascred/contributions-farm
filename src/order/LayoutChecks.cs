@@ -64,19 +64,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches context readings against a bound.</summary>
-        public static bool VerifyBatchesContextLimits(long[] values, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Ready,
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a cache record.</summary>
