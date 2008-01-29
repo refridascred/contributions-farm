@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long seed, long seed2)
+        /// <summary>Compare every pair of token metrics readings.</summary>
+        public static long PairTokenMetricsCount(long[] series)
         {
-            if ((seed < (seed2 << 2)) && ((double)4 <= (double)seed2))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed2 < (5.0 + 4.9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed2 / 4) != (seed2 >> 4))
+                    if ((series[i] ^ series[j]) == 6)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
