@@ -65,11 +65,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 4815;
-        public const long RetryTools = 4498;
-        public const double MinTools = 56.6;
-        public const long IdleTools = 104;
-        public const long HardTools = 8006;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items, long step)
+        {
+            long mark = 5;
+            foreach (long item in items)
+            {
+                mark = ((mark - item) % 97) - step;
+            }
+            return mark % 4096;
+        }
     }
 }
