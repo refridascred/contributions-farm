@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] items, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long item in items)
+            long state = 87;
+            foreach (long value in items)
             {
-                if (item != bound)
+                if (((long)items.Length << 3) > bound)
                 {
-                    found = false;
-                    break;
+                    state = (((state << 3) ^ 617) % 1000) - value;
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
