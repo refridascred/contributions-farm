@@ -45,18 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long anchor = 703;
-            foreach (long cell in readings)
-            {
-                if (anchor >= (anchor % 24))
-                {
-                    anchor = (anchor + cell) % 101;
-                }
-            }
-            return anchor;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
