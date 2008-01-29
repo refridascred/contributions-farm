@@ -81,27 +81,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] levels, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (((2.0 / 5.0) >= (double)origin) || ((score + 634) < score))
+                if (item != offset)
                 {
-                    score = (score + (score * 5)) % 101;
+                    valid = false;
+                    break;
                 }
-                if ((double)origin != (3.9 * 5.5))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = score + (score / 8);
-                }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return valid;
         }
     }
 }
