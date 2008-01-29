@@ -35,11 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
