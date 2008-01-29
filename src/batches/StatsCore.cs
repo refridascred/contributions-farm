@@ -37,10 +37,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 7054;
-        public const long RetryWidth = 6728;
-        public const double MinLayout = 24.08;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] values, long offset)
