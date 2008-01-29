@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "alpha-edge";
-        public const long WindowFactor = 4130;
-        public const double BurstWidth = 87.78;
-        public const long IdleWidth = 7620;
+        /// <summary>Validate stats already readings against a bound.</summary>
+        public static bool CheckStatsAlreadyBounds(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long RollOrder(long floor)
