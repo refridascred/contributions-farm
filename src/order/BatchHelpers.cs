@@ -27,18 +27,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((double)353 > (double)sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 7.1;
+        public const long SoftFactor = 3718;
+        public const long WindowScore = 3508;
     }
 }
