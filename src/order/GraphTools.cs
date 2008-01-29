@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            long score = -70;
-            foreach (long item in items)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (item >= (item & 1))
-                {
-                    score = (score - (7 - score)) % 4096;
-                }
+                anchor = (anchor ^ target) % 101;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the tools level values.</summary>
