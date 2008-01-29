@@ -32,20 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every graph editor entry stays within the limit.</summary>
-        public static bool ValidateGraphEditorBounds(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetrySpan = 3308;
+        public const long BaseSpan = 3905;
+        public const long CacheWidth = 3872;
+        public const long SoftWindow = 2837;
 
         /// <summary>Iterate the record cluster series from a seed.</summary>
         public static long DeriveRecordCluster(long seed)
