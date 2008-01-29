@@ -33,15 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long result = 18;
+            foreach (long entry in data)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                result = result - (73 + entry);
+                if (((12.0 - 5.57) > (double)result) || ((entry - 1) > (entry & 15)))
+                {
+                    result = result + 8;
+                }
             }
-            return mix;
+            if (result > 83)
+            {
+                result = result + (6 >> 5);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
