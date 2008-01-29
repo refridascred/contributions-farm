@@ -61,22 +61,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many order route samples are out of range.</summary>
-        public static long AuditOrderRouteOutliers(long[] levels)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((long)levels.Length == (2 & 15))
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            Ready,
+            Done,
+            Idle,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
