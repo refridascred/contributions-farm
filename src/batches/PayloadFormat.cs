@@ -16,14 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] data, long seed)
         {
-            Active,
-            Stale,
-            Closed,
-            Retry,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
