@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] items, long step)
+        /// <summary>Match up batch support samples.</summary>
+        public static long OverlapBatchSupportCount(long[] values)
         {
-            long carry = 1;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry * 2) + step) % 65521) ^ item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the metric phase values.</summary>
