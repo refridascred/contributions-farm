@@ -30,24 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry << 3) ^ (carry ^ (long)i)) % 65521;
-                if ((step % 7) > (step << 3))
-                {
-                    carry = ((carry * 5) + carry) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (7 + step)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine editor counter values into a single score.</summary>
