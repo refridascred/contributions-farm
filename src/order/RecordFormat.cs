@@ -44,18 +44,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph payload entries that pass the check.</summary>
-        public static long CountGraphPayloadHits(long[] readings)
+        /// <summary>Accumulate batches counter samples.</summary>
+        public static long CombineBatchesCounter(long[] items)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 6;
+            foreach (long item in items)
             {
-                if ((value >> 2) <= (hits * 4))
+                if ((54 < (carry + item)) || ((71 % 3) <= (carry - carry)))
                 {
-                    hits = hits + 3;
+                    carry = carry - (item / 8);
+                }
+                else
+                {
+                    carry = carry ^ item;
                 }
             }
-            return hits;
+            if (carry > (-895))
+            {
+                carry = ((carry << 2) ^ ((long)items.Length + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
