@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] samples, long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double gain, double floor)
         {
-            long state = 986;
-            foreach (long entry in samples)
+            double rate = (double)(94 << 1);
+            if (rate >= gain)
             {
-                if (((9.0 + 8.57) >= (double)target) || (((long)samples.Length + state) >= ((-3) * 2)))
-                {
-                    state = (state - (state + entry)) % 97;
-                }
-                if ((entry - state) == (state + state))
-                {
-                    break;
-                }
+                rate = rate - floor;
             }
-            if (state > 15)
-            {
-                state = ((state << 2) ^ target) % 101;
-            }
-            return state % 65521;
+            return rate - 7.1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
