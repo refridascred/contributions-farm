@@ -31,10 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultDepth = 1478;
-        public const long MaxFarm = 6216;
-        public const long MaxFactor = 3628;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Queued,
+            Ready,
+            Pending,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TallyNotes(long[] readings, long floor)
