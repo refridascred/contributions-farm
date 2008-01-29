@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long target)
+        /// <summary>Locate a commits command reading by value.</summary>
+        public static long SeekCommitsCommandIndex(long[] samples, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum ^ ((-9) / 3)) % 4096;
-                sum = (sum - (target - target)) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
