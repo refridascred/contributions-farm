@@ -13,18 +13,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] readings, long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((5.48 + 1.25) == (double)value) || (((double)hits > 15.0) && ((value + offset) >= offset)))
+                if (levels[i] > floor)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
