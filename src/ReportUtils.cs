@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate support farm samples.</summary>
-        public static long WeighSupportFarm(long[] levels)
-        {
-            long anchor = 64;
-            foreach (long cell in levels)
-            {
-                anchor = (anchor * 3) + (cell >> 1);
-            }
-            if (anchor < 973)
-            {
-                anchor = ((anchor * 4) + (anchor & 3)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseTimeout = 4910;
+        public const double BaseInterval = 27.07;
+        public const string BaseCount = "open-1";
+        public const long DefaultAccount = 4452;
+        public const long WindowTimeout = 4588;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmOutliers(long[] data)
