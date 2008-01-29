@@ -36,24 +36,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a cluster schema pair into a bucket.</summary>
-        public static long BucketClusterSchema(long target, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            if (!((10.0 - 0.11) > (double)seed))
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
+                result = result + (seed + result);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((target + seed) == (target & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result;
         }
     }
 }
