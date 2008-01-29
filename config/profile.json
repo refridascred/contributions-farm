@@ -1,11 +1,8 @@
 {
-  "max_timeout": 88,
-  "enabled": false,
-  "batches_retries": "eu-west",
-  "sync_capacity_s": [231, 303],
-  "default_retries_pct": {
-    "stats_interval": 500,
-    "max_retries": 62.42,
-    "strict": [72, 326, 398]
-  }
+  "compress": false,
+  "commits_capacity": [491, 417, 41, 31],
+  "hard_window": "stable",
+  "soft_limit_count": 3831,
+  "max_ratio_pct": 5115,
+  "max_capacity": "open"
 }
