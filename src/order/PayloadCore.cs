@@ -15,12 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            New,
-            Retry,
-            Locked,
+            double scale = 17.0;
+            if (scale > (double)0)
+            {
+                scale = (scale + (floor / 5.0)) - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (double)2;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
