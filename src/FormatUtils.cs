@@ -73,17 +73,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a checks window sample.</summary>
-        public static long LocateChecksWindowIndex(long[] readings, long step)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
