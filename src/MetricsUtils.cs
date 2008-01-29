@@ -18,19 +18,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate contributi already readings against a bound.</summary>
-        public static bool GuardContributiAlreadyLimits(long[] values, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (entry != origin)
+                if ((double)reading <= (4.3 + 6.85))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the cluster level values.</summary>
