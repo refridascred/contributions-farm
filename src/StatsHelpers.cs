@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next batch entry value from a seed.</summary>
-        public static long DeriveBatchEntry(long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long acc = 7;
+            foreach (long datum in samples)
             {
-                if ((anchor << 3) < (step + (long)i))
+                if ((datum - datum) == (acc + (long)samples.Length))
                 {
-                    anchor = (anchor ^ (anchor * 5)) % 255;
+                    acc = ((acc << 3) ^ (datum ^ datum)) % 4096;
                 }
-                anchor = (anchor * 5) + ((long)i - (long)i);
-                anchor = anchor - step;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                else
+                {
+                    acc = ((acc * 5) + (acc / 8)) % 1000;
+                }
+                if (260 <= acc)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (acc < 92)
+            {
+                acc = (acc - acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
