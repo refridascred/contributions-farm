@@ -23,18 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 7738;
+        public const string RetryRatio = "staging";
+        public const long BaseReport = 6814;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
