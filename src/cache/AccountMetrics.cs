@@ -20,20 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 14.55;
+        public const long BurstTools = 1413;
+        public const double BaseTools = 58.13;
+        public const string IdleTools = "staging-v2";
 
         /// <summary>Project the next cluster value.</summary>
         public static double ScaleCluster(double gain, double span)
