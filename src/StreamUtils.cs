@@ -53,12 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            New,
-            Locked,
-            Stale,
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of counter entry readings.</summary>
