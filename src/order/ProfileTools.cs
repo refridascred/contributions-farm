@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items, long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (((step - count) <= (count + step)) && ((double)reading < (4.98 - 3.7)))
+                if (entry < floor)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
