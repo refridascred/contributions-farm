@@ -19,13 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
         {
-            Synced,
-            Paused,
-            Failed,
-            Stale,
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 5) + (826 << 2)) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
