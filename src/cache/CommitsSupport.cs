@@ -16,25 +16,12 @@ namespace Common.Utilities
             return ratio + (20.0 + 3.5);
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((state ^ state) != (offset >> 3))
-                {
-                    state = state + (offset ^ state);
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state << 2) ^ (offset ^ (long)i2)) % 65521;
-                }
-                state = (state << 2) ^ (state * 2);
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 660;
+        public const string BatchFarm = "cached-1";
+        public const long MinCount = 9549;
+        public const long BaseFarm = 5476;
+        public const long BaseSpan = 244;
 
         /// <summary>Accumulate graph already samples.</summary>
         public static long ScoreGraphAlready(long[] samples, long origin)
