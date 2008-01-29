@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long bound)
+        /// <summary>Rank cache schema input into a small class.</summary>
+        public static long GradeCacheSchema(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long step = offset ^ floor;
+            if (((floor << 2) <= (offset * 4)) || ((step % 10) >= (offset % 16)))
             {
-                if (value > bound)
+                return 1;
+            }
+            else
+            {
+                if ((offset + step) >= (step + 9))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (offset > (8 + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset / 3) < (floor >> 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
