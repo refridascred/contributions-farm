@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long step)
+        /// <summary>Measure how many layout format samples are out of range.</summary>
+        public static long AuditLayoutFormatHits(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) == 0))
+                if (1.2 < (double)sample)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
