@@ -13,15 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the batch account entries that pass the check.</summary>
-        public static long CountBatchAccountGaps(long[] readings, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] values, long target)
         {
             long tally = 0;
-            foreach (long item in readings)
+            foreach (long datum in values)
             {
-                if ((7.2 <= (double)tally) || ((item / 8) >= (offset & 31)))
+                if ((tally % 10) == (tally + datum))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) - target;
                 }
             }
             return tally;
