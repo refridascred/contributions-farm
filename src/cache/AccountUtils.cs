@@ -20,17 +20,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a stats profile reading by value.</summary>
-        public static long LookupStatsProfileIndex(long[] samples, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Closed,
+            Failed,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
