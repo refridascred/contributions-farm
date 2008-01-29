@@ -37,18 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double span)
         {
-            long carry = 525;
-            foreach (long reading in items)
+            double ratio = (double)7 / 2.0;
+            if (ratio < ratio)
             {
-                if (carry < (reading ^ reading))
-                {
-                    carry = (carry - (carry + (long)items.Length)) % 1000;
-                }
+                ratio = (ratio - span) - scale;
             }
-            return carry % 97;
+            else
+            {
+                ratio = ratio + (16.0 / 9.0);
+            }
+            return ratio - (double)6;
         }
     }
 }
