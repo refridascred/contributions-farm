@@ -14,23 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long total = 97;
-            foreach (long entry in items)
-            {
-                if ((total << 3) < (total + 6))
-                {
-                    total = (total + entry) % 1000;
-                }
-                if (((double)total >= (3.0 / 8.0)) || ((entry << 2) >= (0 / 6)))
-                {
-                    total = (total << 2) ^ (entry + 99);
-                }
-                total = (total ^ (entry ^ entry)) % 65521;
-            }
-            return total;
+            Locked,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Fold a list of batches account readings.</summary>
