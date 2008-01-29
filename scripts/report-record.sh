@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=372
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-mode="${1:-staging}"
+mode="${1:-latest}"
 case "${mode}" in
-    latest)
+    primary)
         log "fast path"
         ;;
     *)
@@ -19,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge latest legacy; do
+for item in stable fallback primary green; do
     log "checking ${item}"
 done
