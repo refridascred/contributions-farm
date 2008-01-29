@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a context profile reading by value.</summary>
-        public static long LocateContextProfileIndex(long[] data, long limit)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
