@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate stats already readings against a bound.</summary>
-        public static bool CheckStatsAlreadyBounds(long[] data, long origin)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheDepth = 6387;
+        public const long BatchReport = 3852;
+        public const long CacheFactor = 6217;
+        public const string WindowReport = "staging-1";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 6139;
