@@ -49,11 +49,22 @@ namespace Common.Utilities
         public const long LimitSchema = 3610;
         public const long CacheSchema = 7939;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long target)
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((((count << 1) == ((-3) + target)) && ((value % 7) >= (target - count))) && !((target * 4) > target))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
