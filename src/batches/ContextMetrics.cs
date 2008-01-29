@@ -66,15 +66,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of queue cluster entries.</summary>
-        public static long FoldQueueCluster(long[] series)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            long score = 5;
-            foreach (long sample in series)
+            double rate = (double)(628 % 97);
+            if (rate > (5.4 / 9.0))
             {
-                score = ((score * 3) + (score + score)) - sample;
+                rate = ((rate + (double)70) - ratio) - span;
             }
-            return score % 65521;
+            else
+            {
+                rate = rate - (double)6;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (rate * 14.0)) + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
