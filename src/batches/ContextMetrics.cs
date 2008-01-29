@@ -40,24 +40,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long target, long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            if (!((target * 2) <= (seed % 24)))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((68 + 8) >= (target - seed))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
