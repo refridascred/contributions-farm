@@ -29,19 +29,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] levels, long offset)
+        /// <summary>Count filter stats pairs that satisfy a relation.</summary>
+        public static long CompareFilterStatsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
