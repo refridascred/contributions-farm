@@ -1,15 +1,5 @@
 {
-  "hard_depth": "open",
-  "audit": "blue",
-  "route_limit": 6435,
-  "min_interval": {
-    "base_window": {
-      "idle_window_count": "strict",
-      "cache_interval_count": 60,
-      "default_delay_pct": true,
-      "contributi_depth": 1024
-    },
-    "notes_retries": 30,
-    "hard_interval_s": 1024
-  }
+  "checks_timeout": ["green", "blue", "latest"],
+  "default_ratio": 89.4,
+  "cache_capacity": 36
 }
