@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] values, long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
