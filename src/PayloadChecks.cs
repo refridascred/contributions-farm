@@ -71,20 +71,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] series)
         {
-            long carry = 8;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                carry = carry - (32 - sample);
-                carry = (carry + (sample + sample)) % 4096;
+                if (seen >= (sample ^ 252))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (carry < 64)
-            {
-                carry = carry - (carry & 7);
-            }
-            return carry;
+            return seen;
         }
     }
 }
