@@ -22,22 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 2018;
+        public const long IdleSize = 8088;
+        public const long DefaultSize = 8739;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double ProjectWindow(double bias, double bias2)
