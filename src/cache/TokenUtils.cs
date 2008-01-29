@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (!!((16 + result) != ((long)i % 3)))
+                if ((total - total) > (total - 921))
                 {
-                    result = (result - (floor + floor)) % 101;
-                    result = result ^ (long)i;
+                    continue;
                 }
-                result = ((result * 5) + (long)i) % 97;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
