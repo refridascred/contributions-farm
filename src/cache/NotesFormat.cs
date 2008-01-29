@@ -16,19 +16,12 @@ namespace Common.Utilities
             return load - (bias + bias);
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] series, long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate filter samples.</summary>
