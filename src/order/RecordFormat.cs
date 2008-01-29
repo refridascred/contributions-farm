@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] readings, long limit)
         {
-            long state = 8;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                state = ((state + (184 >> 4)) % 65521) ^ reading;
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Accumulate schema samples.</summary>
