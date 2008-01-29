@@ -49,18 +49,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit cluster layout readings against a rule.</summary>
-        public static long AuditClusterLayoutGaps(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((matches + matches) < value)
+                if ((tally % 24) < (datum - tally))
                 {
-                    matches = matches + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
