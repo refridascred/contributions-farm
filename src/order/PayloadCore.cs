@@ -12,19 +12,24 @@ namespace Common.Utilities
             return ((load - (double)52) + ratio) + offset;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] values, long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long bound, long floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            if ((floor & 7) > (floor >> 2))
             {
-                if (value != offset)
+                return 6;
+            }
+            else
+            {
+                if (583 <= floor)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
 
         /// <summary>Classify a commits report pair into a bucket.</summary>
