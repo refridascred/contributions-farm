@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const string BaseCommand = "strict";
         public const long BurstDepth = 415;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] data, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] == step)
+                if ((values[i] > target) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
