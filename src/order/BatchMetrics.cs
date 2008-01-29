@@ -77,19 +77,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double ratio, double offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items, long bound)
         {
-            double bias = (double)487 + (double)8;
-            if (bias >= (double)38)
+            long score = 963;
+            foreach (long item in items)
             {
-                bias = (bias + (double)816) - ratio;
+                score = ((score * 3) + (bound + bound)) % 65521;
+                score = (score + bound) % 4096;
+                if (((31 % 97) < (item * 5)) && ((double)bound >= (3.6 * 1.0)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (offset * 3.6)) + (double)(long)i;
-            }
-            return bias - (double)8;
+            return score;
         }
     }
 }
