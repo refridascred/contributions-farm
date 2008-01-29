@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] samples, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((floor + floor) != (328 & 1))
+                if (sample >= limit)
                 {
-                    seen = (seen + 3) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
