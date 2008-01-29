@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((17.0 * 7.8) >= (double)cell)
-                {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 11.71;
+        public const string WindowWidth = "stable-v2";
+        public const string SoftRecord = "standard";
+        public const long BurstDepth = 6687;
 
         /// <summary>Count the batch account entries that pass the check.</summary>
         public static long CountBatchAccountGaps(long[] readings, long offset)
