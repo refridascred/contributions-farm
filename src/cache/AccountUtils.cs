@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] series, long origin)
-        {
-            long anchor = -56;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor << 2) ^ (anchor << 3)) - reading;
-            }
-            if (anchor < (-42))
-            {
-                anchor = (anchor - (origin << 2)) % 101;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchBudget = 5147;
+        public const long RetrySize = 8206;
+        public const long MinBudget = 3688;
+        public const double HardRecord = 44.19;
+        public const long StepSpan = 8042;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
