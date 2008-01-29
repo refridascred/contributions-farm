@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const long WindowWidth = 6401;
         public const string SoftDepth = "open";
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] series)
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)seen <= (3.15 * 15.0))
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next format already value from a seed.</summary>
