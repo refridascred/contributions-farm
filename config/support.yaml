@@ -1,14 +1,4 @@
 # support settings
-metrics_timeout:
-  default_threshold_ms: 57
-  account_capacity: true
-  payload_depth: 2563
-  sync_window: 14
-min_ratio: 3685
-route_ttl: 1024
-flush_depth_s:
-  - 170
-  - 389
-  - 489
-hard_depth_pct: primary
-idle_window: 93
+dry_run: true
+batch_window: 1024
+hard_depth_count: green
