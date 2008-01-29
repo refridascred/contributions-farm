@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 941;
-        public const string MinLevel = "stable-edge";
-        public const double BurstCount = 64.34;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long offset, long seed)
+        {
+            if ((offset << 2) <= (offset + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((seed + 7) > (offset + seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long bound, long limit)
