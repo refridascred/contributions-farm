@@ -20,27 +20,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] values, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long origin, long limit)
         {
-            long result = 12;
-            foreach (long reading in values)
+            if (15.0 > (double)origin)
             {
-                for (int i = 0; i < 3; i++)
+                return 2;
+            }
+            else
+            {
+                if ((((-76) - origin) != (21 >> 1)) || (limit > (origin - origin)))
                 {
-                    result = ((result + reading) % 97) + (long)i;
-                    result = result + (target - target);
-                }
-                if ((3.89 + 19.0) >= (double)target)
-                {
-                    result = result ^ (result * 3);
+                    return 0;
                 }
                 else
                 {
-                    result = (result * 4) + (reading + target);
+                    if ((double)limit >= 7.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return result % 65521;
         }
     }
 }
