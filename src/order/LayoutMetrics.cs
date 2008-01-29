@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxLevel = "local-1";
-        public const string WindowLevel = "latest-1";
-        public const string DefaultStats = "staging";
-        public const double WindowInterval = 77.02;
-        public const long WindowRatio = 1180;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 1004;
+        public const long StepProfile = 4750;
+        public const string CacheProfile = "strict";
+        public const long DefaultProfile = 1992;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
