@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary blue stable; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=486
+COMMAND_LIMIT=431
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+for item in latest eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
