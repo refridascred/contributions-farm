@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double gain, double floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] items)
         {
-            double rate = (double)(94 << 1);
-            if (rate >= gain)
+            long score = -770;
+            foreach (long entry in items)
             {
-                rate = rate - floor;
+                if (!((double)score <= (double)entry))
+                {
+                    score = (score ^ (entry + score)) % 1000;
+                }
             }
-            return rate - 7.1;
+            return score % 1000;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
