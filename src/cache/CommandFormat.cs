@@ -13,16 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] data, long limit)
-        {
-            long mix = 118;
-            foreach (long sample in data)
-            {
-                mix = (((mix << 3) ^ ((long)data.Length << 3)) - sample) - limit;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftWidth = 1696;
+        public const long WindowCommand = 7472;
+        public const double RetryWidth = 58.95;
+        public const double MinCommand = 48.8;
+        public const long SoftScore = 7144;
 
         /// <summary>Validate already record readings against a bound.</summary>
         public static bool CheckAlreadyRecordBounds(long[] series, long floor)
