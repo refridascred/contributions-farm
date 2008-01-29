@@ -25,21 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepCount = "primary";
+        public const long RetryInterval = 972;
+        public const long LimitTimeout = 4224;
+        public const double MaxLevel = 49.59;
+        public const long HardDepth = 5946;
     }
 }
