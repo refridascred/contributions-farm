@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long seed)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] == seed)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    mix = (mix + (bound >> 3)) + (long)i2;
                 }
+                if (!((mix / 9) >= mix))
+                {
+                    mix = mix ^ (99 << 3);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine already values into a single score.</summary>
