@@ -48,18 +48,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] values)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long offset = bound ^ seed;
+            if ((offset - seed) <= 33)
             {
-                if ((value - seen) == (value + value))
+                return 7;
+            }
+            else
+            {
+                if ((double)bound != (13.0 + 4.0))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (seed < bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((bound * 4) == (offset / 9)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
