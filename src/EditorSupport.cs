@@ -32,18 +32,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] data, long offset)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double gain = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset - seen) <= 11)
-                {
-                    seen = (seen + 2) + reading;
-                }
+                gain = (gain + (double)299) + (double)(long)i;
             }
-            return seen;
+            return gain - bias;
         }
 
         /// <summary>Count the metric stream entries that pass the check.</summary>
