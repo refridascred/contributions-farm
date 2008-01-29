@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            New,
-            Locked,
-            Synced,
-            Idle,
-            Dropped,
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the channel class values.</summary>
