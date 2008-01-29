@@ -34,22 +34,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] values)
+        /// <summary>Classify a cluster schema pair into a bucket.</summary>
+        public static long BucketClusterSchema(long target, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (!((10.0 - 0.11) > (double)seed))
             {
-                if ((hits < entry) || ((13.0 <= (double)hits) || (4.59 >= (double)entry)))
+                return 3;
+            }
+            else
+            {
+                if ((target + seed) == (target & 31))
                 {
-                    hits = hits + 2;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
