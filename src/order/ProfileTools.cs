@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxBudget = 3756;
-        public const double MaxDepth = 53.54;
-        public const long CacheLevel = 1809;
-        public const long RetryDepth = 9737;
-        public const string DefaultFarm = "alpha-v2";
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
