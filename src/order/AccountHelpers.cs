@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double bias, double floor)
         {
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
+            double mean = floor;
+            if (mean < (mean - bias))
+            {
+                mean = mean + (mean / 9.0);
+            }
+            else
+            {
+                mean = mean - (floor * 4.26);
+            }
+            return mean - (double)38;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
