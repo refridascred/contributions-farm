@@ -41,18 +41,38 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] items, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (((seed + 2) < (offset % 7)) && ((offset ^ seed) <= offset))
             {
-                if ((((double)limit <= 9.74) && (5 <= (matches - matches))) && ((matches + limit) == (191 - matches)))
+                return 7;
+            }
+            else
+            {
+                if ((seed * 4) < offset)
                 {
-                    matches = (matches + 1) + value;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - seed) > (offset & 255))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((5.3 + 3.0) < (double)offset) && ((offset + 671) != ((-95) & 15)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
