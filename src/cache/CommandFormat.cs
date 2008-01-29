@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            Queued,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many buffer layout samples are out of range.</summary>
