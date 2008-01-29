@@ -52,14 +52,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double bias, double offset)
         {
-            Done,
-            Draft,
-            Paused,
-            Pending,
-            Failed,
+            double gain = offset;
+            if (gain >= (double)2)
+            {
+                gain = gain - gain;
+            }
+            else
+            {
+                gain = gain - 19.0;
+            }
+            return gain - bias;
         }
     }
 }
