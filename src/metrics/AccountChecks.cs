@@ -22,5 +22,32 @@ namespace Common.Utilities
         public const long WindowEditor = 9786;
         public const double MinWidth = 89.9;
         public const long WindowTimeout = 4328;
+
+        /// <summary>Classify a already contributi pair into a bucket.</summary>
+        public static long SortAlreadyContributi(long target, long offset)
+        {
+            if (!((target + target) >= target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target - target) != (offset - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target / 4) != (offset & 31)) && ((offset / 6) <= offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
