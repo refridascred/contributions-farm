@@ -45,22 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] values, long floor)
         {
-            long carry = 85;
-            foreach (long datum in samples)
+            long acc = 22;
+            foreach (long entry in values)
             {
-                if (((double)datum != (14.0 * 2.9)) && (carry <= (carry / 2)))
+                if (3 >= ((-3) + acc))
                 {
-                    carry = ((carry * 4) + (215 + datum)) % 65521;
+                    acc = ((acc ^ (entry + acc)) % 1000) + floor;
                 }
             }
-            if (carry > 7)
+            if (acc > (-93))
             {
-                carry = ((carry << 2) ^ (carry ^ carry)) % 4096;
+                acc = (acc ^ (acc << 2)) % 1000;
             }
-            return carry;
+            return acc % 97;
         }
 
         /// <summary>Describe the contributi status values.</summary>
