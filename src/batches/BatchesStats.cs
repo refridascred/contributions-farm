@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepFactor = 1630;
-        public const long BaseScore = 3181;
-        public const double StepScore = 70.33;
-        public const double BaseGraph = 56.58;
-        public const long CacheGraph = 3728;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series)
+        {
+            long acc = 586;
+            foreach (long entry in series)
+            {
+                if ((double)acc < 5.0)
+                {
+                    acc = ((acc << 2) ^ (entry + entry)) % 97;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] samples, long seed)
