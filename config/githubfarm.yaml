@@ -1,4 +1,4 @@
 # githubfarm settings
-entry_depth: 62.05
-idle_timeout: cached
-burst_window_pct: true
+cache_capacity_pct: strict
+cache_retries: blue
+batch_depth: 13
