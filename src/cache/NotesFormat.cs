@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] samples, long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double load = (bias2 * 7.0) + (bias + bias2);
+            for (int i = 0; i < 7; i++)
             {
-                if ((offset ^ offset) < (count % 2))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load + bias) + (double)(long)i;
             }
-            return count;
+            return load - (bias + bias);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
