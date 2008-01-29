@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-1";
         public const long StepMetric = 4389;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] values, long origin)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
