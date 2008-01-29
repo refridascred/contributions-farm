@@ -22,10 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheLevel = "standard-edge";
-        public const double BurstBuffer = 32.21;
-        public const long DefaultDepth = 656;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 1789;
+        public const double CacheCount = 87.84;
+        public const long HardWindow = 4785;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double SmoothGraph(double gain, double offset)
