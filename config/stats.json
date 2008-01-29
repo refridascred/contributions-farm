@@ -1,5 +1,14 @@
 {
-  "soft_depth": 97.32,
-  "burst_ttl_count": 36,
-  "max_delay_pct": "blue"
+  "max_ttl": 78.65,
+  "editor_timeout": "open",
+  "compress": 2419,
+  "min_retries_ms": false,
+  "warm_delay_s": {
+    "stats_retries": 20.72,
+    "batch_size": "latest",
+    "audit": "latest",
+    "retry_size_pct": "strict",
+    "verbose": "legacy"
+  },
+  "sync_threshold_pct": "latest"
 }
