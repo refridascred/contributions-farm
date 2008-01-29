@@ -53,17 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix * 4) + limit) % 97;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheSize = "open-v2";
+        public const long HardCount = 4100;
+        public const string HardChecks = "staging-1";
+        public const double DefaultChecks = 40.9;
 
         /// <summary>Blend two checks metric measurements.</summary>
         public static double SmoothChecksMetric(double bias, double bias2)
