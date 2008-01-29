@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor context samples are out of range.</summary>
-        public static long AuditEditorContextHits(long[] samples, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count + count) == (floor >> 5))
-                {
-                    count = (count + 1) - value;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a entry stats.</summary>
