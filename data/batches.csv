@@ -1,11 +1,6 @@
-id,active,label
-1,336,844
-2,primary,68.14
-3,997,593
-4,90.82,latest
-5,72.98,local
-6,90.67,815
-7,80.13,896
-8,141,574
-9,80.34,94.31
-10,primary,stable
+id,owner,label,token
+1,latest,648,723
+2,local,87.87,43.43
+3,75.5,39.74,15
+4,eu-west,strict,236
+5,16.1,stable,902
