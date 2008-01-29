@@ -31,19 +31,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] items, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            if ((double)875 != (double)offset)
             {
-                if (cell != seed)
+                return 3;
+            }
+            else
+            {
+                if (!((bound + offset) > (bound ^ 8)))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (bound & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.25 + 13.0) == (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
