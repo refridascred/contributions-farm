@@ -1,11 +1,5 @@
 {
-  "poll_depth_count": "standard",
-  "max_delay_ms": false,
-  "burst_capacity_count": false,
-  "audit": "cached",
-  "base_depth_count": {
-    "burst_interval": 8036,
-    "persist": 500,
-    "counter_ttl": "fallback"
-  }
+  "strict": "strict",
+  "support_threshold": [356, 216],
+  "default_depth_ms": 6461
 }
