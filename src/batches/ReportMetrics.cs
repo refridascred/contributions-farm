@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of farm metric readings.</summary>
+        public static long ScoreFarmMetric(long[] readings)
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long total = 83;
+            foreach (long reading in readings)
+            {
+                if (!((double)total <= 8.0))
+                {
+                    total = total ^ reading;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
