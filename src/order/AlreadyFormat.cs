@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
