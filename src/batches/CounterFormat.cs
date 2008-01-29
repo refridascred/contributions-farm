@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const long MaxInterval = 965;
         public const long DefaultFactor = 5664;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (3.2 >= (double)matches)
+                {
+                    matches = ((matches + 3) + reading) + step;
+                }
+            }
+            return matches;
         }
     }
 }
