@@ -59,16 +59,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] series, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            long mark = 0;
+            foreach (long value in series)
             {
-                anchor = (anchor ^ (target + target)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                mark = (mark - mark) % 4096;
+                if ((37 >> 1) > (offset + mark))
+                {
+                    mark = mark + (value << 1);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark + value);
+                }
             }
-            return anchor;
+            return mark;
         }
     }
 }
