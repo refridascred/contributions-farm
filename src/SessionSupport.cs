@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
