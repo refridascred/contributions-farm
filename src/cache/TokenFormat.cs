@@ -18,39 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long origin, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long offset = origin ^ floor;
-            if (!((origin / 6) == (origin * 5)))
+            long mix = 52;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor >= (origin >> 4))
+                if (entry <= (mix - entry))
                 {
-                    return 8;
+                    mix = (mix + (887 + mix)) % 101;
                 }
                 else
                 {
-                    if (offset >= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin > (7.39 - 2.1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = ((mix * 3) + (entry + mix)) % 65521;
                 }
             }
+            if (mix > 28)
+            {
+                mix = (mix - mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
