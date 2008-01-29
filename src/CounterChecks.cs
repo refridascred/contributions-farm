@@ -40,12 +40,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            Synced,
-            Stale,
-            Active,
+            long mark = 74;
+            foreach (long entry in readings)
+            {
+                if (((entry - mark) < (45 / 4)) || ((63 + mark) > (mark + 8)))
+                {
+                    mark = ((mark * 5) + entry) % 101;
+                }
+                else
+                {
+                    mark = (mark ^ (mark << 1)) % 97;
+                }
+                mark = ((mark * 5) + (3 << 2)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of report readings.</summary>
