@@ -15,18 +15,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] samples)
+        /// <summary>Grade a metric notes value against two limits.</summary>
+        public static long GradeMetricNotes(long step, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if ((bound >> 1) == (step ^ 269))
             {
-                if ((double)item >= (double)matches)
+                return 1;
+            }
+            else
+            {
+                if ((step - bound) >= (bound - 93))
                 {
-                    matches = matches + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
