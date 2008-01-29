@@ -1,8 +1,5 @@
 {
-  "session_ratio": 60,
-  "payload_limit": 6682,
-  "retry_threshold_ms": 84.28,
-  "warm_retries_count": 8670,
-  "compress": [286, 65, 283, 222],
-  "idle_size_s": "blue"
+  "commits_depth": "primary",
+  "poll_limit_pct": 1024,
+  "soft_interval_ms": 42
 }
