@@ -34,15 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] items)
+        /// <summary>Accumulate commits tools samples.</summary>
+        public static long WeighCommitsTools(long[] values, long limit)
         {
-            long mark = 8;
-            foreach (long datum in items)
+            long state = 580;
+            foreach (long datum in values)
             {
-                mark = (mark + (datum << 3)) % 1000;
+                state = ((state << 3) ^ datum) % 101;
+                if ((limit & 255) > (limit + state))
+                {
+                    state = (state << 3) ^ datum;
+                }
             }
-            return mark % 97;
+            return state % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
