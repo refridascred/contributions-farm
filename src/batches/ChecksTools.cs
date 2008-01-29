@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit session channel readings against a rule.</summary>
-        public static long MeasureSessionChannelMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((hits >> 1) == (value + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstDepth = 8416;
+        public const long BaseBatch = 9909;
+        public const long BurstTimeout = 7500;
+        public const double CacheBatch = 67.96;
+        public const string DefaultDepth = "stable";
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long WeighCluster(long[] readings)
