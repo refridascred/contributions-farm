@@ -20,26 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] data, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            long sum = 9;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (!(datum >= (step + step)))
+                if (9 > ((long)readings.Length >> 1))
                 {
-                    sum = (sum + step) % 97;
-                }
-                else
-                {
-                    sum = sum ^ (27 + step);
+                    matches = (matches + 1) ^ value;
                 }
             }
-            if (sum > 2)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
