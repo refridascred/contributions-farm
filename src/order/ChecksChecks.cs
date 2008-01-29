@@ -20,22 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] items, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((5.0 * 6.55) < (double)seen)
-                {
-                    seen = ((seen + 1) ^ reading) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
