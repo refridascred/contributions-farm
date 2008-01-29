@@ -1,10 +1,7 @@
 {
-  "batch_limit": 60,
-  "soft_retries_ms": true,
-  "context_depth": {
-    "token_delay": 500,
-    "cluster_limit": 5051,
-    "retry_size_pct": "edge"
-  },
-  "report_timeout": 94
+  "base_limit_s": 74,
+  "default_ttl_ms": [498, 410],
+  "token_threshold": "stable",
+  "default_size_count": "green",
+  "poll_depth_s": 72
 }
