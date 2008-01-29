@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double bias, double floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] levels, long bound)
         {
-            double mean = floor;
-            if (mean < (mean - bias))
+            long acc = 665;
+            foreach (long datum in levels)
             {
-                mean = mean + (mean / 9.0);
+                if ((47 & 31) <= datum)
+                {
+                    acc = (acc - (datum - datum)) + bound;
+                }
+                acc = acc - (acc >> 5);
+                if (!((datum % 5) != (397 + datum)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (floor * 4.26);
-            }
-            return mean - (double)38;
+            return acc % 65521;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
