@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Synced,
-            Closed,
-            Pending,
-            New,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSpan = 7779;
+        public const string CacheTimeout = "cached-1";
+        public const double CacheCount = 17.42;
+        public const string StepFactor = "staging-1";
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
