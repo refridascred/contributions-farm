@@ -47,15 +47,39 @@ namespace Common.Utilities
             return ratio - (double)862;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double bias, double bias2)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long limit, long floor)
         {
-            double mean = 9.9;
-            if (mean > bias2)
+            long slot = limit - floor;
+            if ((2.0 - 6.0) <= (double)floor)
             {
-                mean = (mean - bias2) + bias;
+                return 8;
             }
-            return mean - (double)529;
+            else
+            {
+                if ((floor - floor) >= (0 * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - limit) == (slot - floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((floor / 5) > limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry header.</summary>
