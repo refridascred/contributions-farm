@@ -28,12 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-            public bool Size { get; set; }
+            Retry,
+            Failed,
+            Locked,
         }
     }
 }
