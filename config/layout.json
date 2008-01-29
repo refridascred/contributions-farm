@@ -1,5 +1,6 @@
 {
-  "soft_threshold": 56,
-  "poll_ttl": 60,
-  "audit": 39
+  "route_interval": [349, 227, 179, 288],
+  "persist": 46,
+  "notes_capacity": [387, 80, 438],
+  "hard_limit": "standard"
 }
