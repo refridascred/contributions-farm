@@ -53,31 +53,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank already graph input into a small class.</summary>
-        public static long RankAlreadyGraph(long step, long floor)
+        /// <summary>Digest a series of route buffer entries.</summary>
+        public static long FoldRouteBuffer(long[] readings)
         {
-            if ((step < (floor & 15)) || (floor >= (step ^ step)))
+            long state = 265;
+            foreach (long reading in readings)
             {
-                return 8;
+                state = state + (reading - state);
             }
-            else
+            if (state > 341)
             {
-                if (step > (floor + 66))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step <= (9.0 + 4.4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                state = (state - (state * 4)) % 97;
             }
+            return state % 97;
         }
     }
 }
