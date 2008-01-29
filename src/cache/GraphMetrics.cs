@@ -23,10 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 51;
-        public const string BatchCount = "stable-v2";
-        public const long CacheWindow = 8052;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheGaps(long[] values, long limit)
