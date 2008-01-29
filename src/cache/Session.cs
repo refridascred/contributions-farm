@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] values)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (!(((2.9 - 6.05) != (double)matches) || ((580 / 4) <= (matches >> 2))))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next schema value.</summary>
