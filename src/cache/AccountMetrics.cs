@@ -29,15 +29,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double scale, double bias)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] samples, long origin)
         {
-            double scale2 = scale;
-            if (scale2 < (bias * 6.0))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                scale2 = scale2 + (0.15 * 1.8);
+                if ((reading << 3) < (reading % 24))
+                {
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return scale2 - bias;
+            return matches;
         }
 
         /// <summary>Hold a metric entry.</summary>
