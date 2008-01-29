@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MinInterval = "local";
+        public const long SoftFactor = 6801;
+        public const string StepBuffer = "open";
+        public const string CacheBudget = "staging-1";
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
