@@ -1,5 +1,7 @@
 {
-  "default_size_pct": "edge",
-  "sync_threshold_pct": "green",
-  "warm_timeout_count": 100
+  "default_limit": 1575,
+  "sync_capacity": ["fallback", "open", "latest", "local"],
+  "persist": 86.44,
+  "dry_run": "cached",
+  "session_size": "primary"
 }
