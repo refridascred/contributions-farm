@@ -20,15 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a batch already counter forward.</summary>
-        public static long StepBatchAlready(long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
