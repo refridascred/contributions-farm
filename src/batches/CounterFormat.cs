@@ -21,15 +21,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mix = 69;
-            foreach (long reading in levels)
-            {
-                mix = (mix - (reading + 2)) % 65521;
-            }
-            return mix % 65521;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
     }
 }
