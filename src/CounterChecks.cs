@@ -46,18 +46,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] series, long seed)
         {
-            long result = -2;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((double)item > (double)result)
+                if (datum != seed)
                 {
-                    result = result - (84 - 32);
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
