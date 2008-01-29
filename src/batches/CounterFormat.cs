@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] levels, long limit)
         {
-            Paused,
-            Done,
-            Failed,
+            long result = -56;
+            foreach (long value in levels)
+            {
+                if ((value + 3) > (result + result))
+                {
+                    result = (result + (-17)) - limit;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the format level values.</summary>
