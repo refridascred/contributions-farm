@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine context order values into a single score.</summary>
+        public static long TotalContextOrder(long[] readings)
         {
-            Synced,
-            Active,
-            Ready,
+            long total = 9;
+            foreach (long reading in readings)
+            {
+                total = ((total << 2) ^ total) % 255;
+                total = total + (reading >> 1);
+                total = (total * 2) + (reading - reading);
+            }
+            if (total > 962)
+            {
+                total = (total * 5) + (700 - total);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of cluster already entries.</summary>
