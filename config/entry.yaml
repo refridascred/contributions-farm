@@ -1,16 +1,14 @@
 # entry settings
-commits_delay:
-  - 195
-  - 267
-  - 202
-soft_ratio_s:
-  buffer_limit: edge
-  verbose: open
-  hard_window_pct: false
-  readonly: 41.2
-warm_interval: strict
-poll_threshold_pct:
-  - local
-  - eu-west
-  - green
-commits_depth: green
+batch_limit_s: true
+counter_interval: 60
+poll_window_s:
+  metrics_ratio: 43.59
+  verbose: blue
+  soft_size:
+    - stable
+    - fallback
+  sync_interval: legacy
+  soft_ttl_count: false
+  sync_size_count: 9157
+sync_ttl_ms: primary
+strict: 2
