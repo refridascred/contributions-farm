@@ -38,15 +38,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double scale, double offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] readings, long step)
         {
-            double weight = offset;
-            if (weight > weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - (weight + scale);
+                if ((readings[i] == step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + 7.5;
+            return -1;
         }
     }
 }
