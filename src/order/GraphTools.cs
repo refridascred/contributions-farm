@@ -65,11 +65,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 1645;
-        public const string BaseMetric = "cached-1";
-        public const long LimitMetric = 8291;
-        public const long RetryMetric = 1732;
-        public const long HardInterval = 3479;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
