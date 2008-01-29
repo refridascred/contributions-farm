@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long WindowSize = 3959;
         public const long BurstScore = 9335;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] values, long limit)
         {
-            long total = -266;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total << 3) ^ (entry >> 1);
+                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate already record readings against a bound.</summary>
