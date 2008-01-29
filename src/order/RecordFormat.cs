@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const string MinLevel = "stable-edge";
         public const double BurstCount = 64.34;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] levels)
         {
-            Failed,
-            Pending,
-            Idle,
-            Dropped,
-            Paused,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample - count) >= (31 - sample)) && (((double)sample <= (11.0 * 9.0)) && ((count >> 4) != (sample << 3))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
