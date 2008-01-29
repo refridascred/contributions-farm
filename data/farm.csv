@@ -1,8 +1,8 @@
-id,weight,ratio
-1,191,stable
-2,88.43,703
-3,194,27.17
-4,local,348
-5,standard,green
-6,73,875
-7,69.71,69.3
+id,region,active,weight,state
+1,25.92,746,eu-west,576
+2,staging,legacy,30.65,strict
+3,93.94,84.29,690,147
+4,285,254,primary,4.19
+5,blue,454,449,local
+6,727,30.61,32.42,stable
+7,staging,795,83.12,65.92
