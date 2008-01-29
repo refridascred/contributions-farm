@@ -29,32 +29,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long seed, long bound)
+        /// <summary>Iterate the notes format series from a seed.</summary>
+        public static long IterateNotesFormat(long floor)
         {
-            long diff = seed - bound;
-            if ((7.0 * 5.0) > (double)seed)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)diff > (7.9 - 8.68))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed * 2) == (674 + 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
