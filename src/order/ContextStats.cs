@@ -29,26 +29,25 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] samples, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long offset)
         {
-            long total = 3;
-            foreach (long entry in samples)
+            long slot = bound - offset;
+            if (((double)offset > (18.0 - 19.0)) && ((slot / 6) != (offset + offset)))
             {
-                if (((entry / 4) == (256 + limit)) && ((entry - entry) >= (total - limit)))
+                return 0;
+            }
+            else
+            {
+                if (!((86 & 127) >= (offset - offset)))
                 {
-                    total = (total - (entry + entry)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    total = total ^ total;
+                    return 6;
                 }
             }
-            if (total < 627)
-            {
-                total = (total + (75 % 5)) % 97;
-            }
-            return total;
         }
 
         /// <summary>Describe the layout phase values.</summary>
