@@ -1,12 +1,12 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Each metrics is validated before it reaches the commits queue.
-Run the stats check before changing any order limits.
+The editor report groups every checks by contributi.
+Use account settings to tune how often command data is refreshed.
+Run the counter check before changing any counter limits.
 
 ## Guidelines
 
-- Log every cluster change
-- Validate graph input early
-- Prefer route defaults
-- Keep channel values small
+- Document new schema fields
+- Prefer graph defaults
+- Keep context values small
+- Validate context input early
