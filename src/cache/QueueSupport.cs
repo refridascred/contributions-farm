@@ -13,10 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 4082;
-        public const double BatchFilter = 26.03;
-        public const long RetryFilter = 9699;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Failed,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long MatchReportCount(long[] items)
