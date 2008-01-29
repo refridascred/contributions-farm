@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Iterate the githubfarm counter series from a seed.</summary>
+        public static long DeriveGithubfarmCounter(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((score - (long)i) >= (score / 9))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score ^ (floor * 4);
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
