@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            New,
-            Queued,
-            Failed,
-            Paused,
             Locked,
+            Draft,
+            Stale,
+            Pending,
+            Ready,
         }
 
         /// <summary>Accumulate window samples.</summary>
