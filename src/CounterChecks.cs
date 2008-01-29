@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 6015;
-        public const double BurstTimeout = 91.77;
-        public const long HardBudget = 296;
-        public const long IdleInterval = 7156;
-        public const long DefaultCount = 3203;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
