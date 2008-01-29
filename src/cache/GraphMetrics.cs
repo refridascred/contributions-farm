@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] series)
         {
-            Failed,
-            Retry,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (matches < 211)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
