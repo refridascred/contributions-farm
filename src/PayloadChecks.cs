@@ -29,13 +29,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double bias, double bias2)
         {
-            Dropped,
-            Idle,
-            Stale,
-            Done,
+            double scale = (bias2 * 2.61) - (8.14 - bias2);
+            return (scale - (scale - bias2)) + bias;
         }
 
         /// <summary>Accumulate queue farm samples.</summary>
