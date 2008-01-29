@@ -68,24 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double ratio, double bias)
         {
-            long acc = -9;
-            foreach (long sample in levels)
+            double weight = ratio - ratio;
+            if (weight <= bias)
             {
-                long seen = (acc + acc) - ((-38) + 50);
-                if (!((((long)levels.Length << 1) <= (acc & 127)) || ((61 * 5) >= (seen + sample))))
-                {
-                    acc = acc - seen;
-                }
-                acc = (acc ^ (sample % 5)) % 255;
+                weight = weight + (double)4;
             }
-            if (acc < (-101))
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc << 2) ^ (acc << 1)) % 97;
+                weight = (weight - (ratio + weight)) + (double)(long)i;
             }
-            return acc % 4096;
+            return weight - (ratio / 4.0);
         }
 
         /// <summary>Adjust a checks reading.</summary>
