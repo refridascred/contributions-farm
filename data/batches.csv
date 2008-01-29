@@ -1,6 +1,8 @@
-id,region,count
-1,open,staging
-2,stable,blue
-3,87,stable
-4,228,778
-5,cached,433
+id,weight,region,score
+1,264,legacy,687
+2,364,273,863
+3,406,598,68.1
+4,edge,latest,253
+5,blue,88.99,44
+6,9.74,417,47.76
+7,blue,986,513
