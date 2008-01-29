@@ -28,9 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitTimeout = 9289;
-        public const string MinLevel = "strict-edge";
-        public const double BurstScore = 52.3;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Active,
+            Pending,
+            New,
+        }
     }
 }
