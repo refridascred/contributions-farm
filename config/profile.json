@@ -1,6 +1,8 @@
 {
-  "support_ratio": 81.39,
-  "idle_capacity_count": [344, 25],
-  "warm_window_count": 89.52,
-  "filter_ttl": 9940
+  "support_ttl": 38.79,
+  "soft_retries": [312, 105, 459],
+  "poll_limit": false,
+  "idle_retries": "legacy",
+  "burst_window_s": 60,
+  "dry_run": "cached"
 }
