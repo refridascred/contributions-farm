@@ -27,15 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] values, long target)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if (target >= (count - count))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Audit farm payload readings against a rule.</summary>
