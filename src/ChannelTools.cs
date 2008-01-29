@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long target, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long seed)
         {
-            if (((target - origin) > (origin + target)) || (origin <= target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target ^ origin) != (target + origin)) || ((double)origin < (2.54 + 6.0)))
+                if (items[i] == seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target * 2) < 885)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin - (-27)) < (target ^ target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a record entry.</summary>
