@@ -28,10 +28,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySupport = "stable";
-        public const double BatchSupport = 77.39;
-        public const double SoftWidth = 59.75;
-        public const double SoftSupport = 95.79;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double ratio, double offset)
+        {
+            double load = 0.2;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - 9.9) + (double)(long)i) - ratio;
+            }
+            return load + (offset + 8.9);
+        }
     }
 }
