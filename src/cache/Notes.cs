@@ -43,11 +43,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleFactor = 5680;
-        public const double IdleMetrics = 6.68;
-        public const long MaxMetrics = 5704;
-        public const long LimitMetrics = 895;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series)
+        {
+            long sum = 203;
+            foreach (long item in series)
+            {
+                sum = (sum - item) % 97;
+            }
+            if (sum > 7)
+            {
+                sum = (sum - sum) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
