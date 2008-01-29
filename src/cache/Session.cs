@@ -61,22 +61,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit context queue readings against a rule.</summary>
-        public static long CountContextQueueOutliers(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((0 + matches) <= matches)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
