@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Ready,
-            Stale,
-            Pending,
-            Failed,
+            public double Count { get; set; }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate filter batch readings against a bound.</summary>
