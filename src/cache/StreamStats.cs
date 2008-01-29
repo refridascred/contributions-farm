@@ -28,19 +28,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((0.3 + 20.0) < (double)cell))
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepTimeout = 8585;
+        public const string RetryScore = "staging-edge";
+        public const long WindowSize = 3890;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
