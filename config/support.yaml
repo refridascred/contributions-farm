@@ -1,30 +1,4 @@
 # support settings
-order_interval:
-  editor_depth: eu-west
-  default_limit_count: 7848
-  soft_window_count: 9.78
-  audit:
-    compress: false
-    verbose: 250
-    sync_ttl: 3936
-    strict: local
-    batch_threshold_s: 250
-    hard_interval_pct: 812
-sync_retries_pct: true
-min_depth_ms:
-  sync_depth_count: false
-  already_ratio: false
-  metric_window: eu-west
-  batch_interval_s: 500
-  verbose: 500
-  warm_capacity: fallback
-poll_retries_pct:
-  warm_limit_count:
-    - 243
-    - 183
-    - 174
-    - 491
-  max_interval_pct: legacy
-  window_limit: false
-  poll_threshold_pct: 73.99
-batches_ttl: false
+persist: 1789
+base_threshold: 71.45
+layout_interval: 76.74
