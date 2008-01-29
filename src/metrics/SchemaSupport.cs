@@ -15,5 +15,14 @@ namespace Common.Utilities
             }
             return weight - gain;
         }
+
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
