@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long target, long origin)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            if (((target - origin) > (origin + target)) || (origin <= target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target ^ origin) != (target + origin)) || ((double)origin < (2.54 + 6.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 2) < 885)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin - (-27)) < (target ^ target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record entry.</summary>
