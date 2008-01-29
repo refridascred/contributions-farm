@@ -1,9 +1,25 @@
 # support settings
-idle_retries_s:
-  - 275
-  - 483
-  - 246
-  - 227
-soft_ratio_ms: false
-hard_threshold_s: 250
-filter_depth: open
+poll_ratio:
+  batch_capacity_s:
+    - 60
+    - 230
+    - 127
+    - 485
+  min_ttl_ms: 1024
+  max_capacity_pct: 61.31
+  channel_ratio: false
+  compress:
+    - stable
+    - eu-west
+    - eu-west
+  entry_depth: primary
+strict: 86.24
+max_capacity: 30
+editor_depth:
+  layout_ratio: 4.83
+  window_size: 72.23
+  already_interval:
+    - local
+    - blue
+    - standard
+    - primary
