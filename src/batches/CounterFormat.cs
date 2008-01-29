@@ -10,19 +10,39 @@ namespace Common.Utilities
         public const string MinDepth = "local-v2";
         public const double BaseDepth = 34.49;
 
-        /// <summary>Project the next batches tools value.</summary>
-        public static double ScaleBatchesTools(double ratio, double span)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long origin)
         {
-            double bias = (ratio - ratio) - (double)(-995);
-            if (bias >= (double)49)
+            long next = limit - origin;
+            if ((origin + 5) >= (origin + limit))
             {
-                bias = bias - bias;
+                return 0;
             }
             else
             {
-                bias = bias - 11.0;
+                if (79 > (limit - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((211 * 4) >= next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + next) != (origin + 404))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return bias - (span / 2.0);
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
