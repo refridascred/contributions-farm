@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCount = 6380;
-        public const string BurstCount = "staging-edge";
-        public const long BatchSpan = 8515;
-        public const string BaseCommand = "standard-1";
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
