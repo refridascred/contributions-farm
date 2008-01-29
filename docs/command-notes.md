@@ -1,15 +1,13 @@
 # Command notes
 
-When a context fails, the counter handler retries a few times before giving up.
-Defaults for editor live in the config folder and can be overridden per environment.
-Each queue is validated before it reaches the account queue.
+Use checks settings to tune how often batch data is refreshed.
+Use commits settings to tune how often batch data is refreshed.
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Run the buffer check before changing any githubfarm limits.
-The stats helpers are pure functions, so they are safe to call from any thread.
+A counter that stays idle for too long is moved to the cluster list.
+Keep queue and filter names short and lowercase.
 
 ## Guidelines
 
-- Document new support fields
-- Review farm limits each release
-- Log every context change
+- Document new order fields
+- Keep schema values small
+- Log every token change
