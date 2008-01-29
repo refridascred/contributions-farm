@@ -31,24 +31,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long target, long step)
+        /// <summary>Derive the next stats entry value from a seed.</summary>
+        public static long SeriesStatsEntry(long offset)
         {
-            if (!((target + target) < target))
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.0 / 7.0) < (double)target)
+                if ((offset / 2) > (result << 2))
                 {
-                    return 7;
+                    break;
                 }
-                else
+                for (int i3 = 0; i3 < 7; i3++)
                 {
-                    return 5;
+                    result = (((result << 3) ^ ((-77) << 2)) % 97) + (long)i3;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
