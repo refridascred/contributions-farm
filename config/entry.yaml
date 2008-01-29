@@ -1,5 +1,4 @@
 # entry settings
-stats_capacity: 88.55
-warm_interval_s: stable
-compress: 38.11
-default_threshold_pct: staging
+already_limit: 55.53
+retry_size: legacy
+burst_threshold: blue
