@@ -1,5 +1,11 @@
 {
-  "audit": [492, 365],
-  "base_timeout": [107, 68, 200, 307],
-  "format_delay": "blue"
+  "verbose": "fallback",
+  "flush_delay_pct": 54,
+  "queue_window": {
+    "retry_ttl_pct": 34.41,
+    "min_ttl_s": "staging",
+    "flush_retries_count": ["legacy", "blue"]
+  },
+  "schema_depth": "standard",
+  "audit": false
 }
