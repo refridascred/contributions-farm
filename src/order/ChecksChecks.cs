@@ -35,19 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of filter commits entries.</summary>
-        public static long TotalFilterCommits(long[] readings)
+        /// <summary>Derive the next record cluster value from a seed.</summary>
+        public static long SeriesRecordCluster(long seed)
         {
-            long sum = 78;
-            foreach (long value in readings)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                sum = sum - (170 + value);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (sum > 154)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
+            return mix;
         }
     }
 }
