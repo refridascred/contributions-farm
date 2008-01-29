@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long total = 43;
-            foreach (long cell in readings)
-            {
-                total = (total ^ (cell + total)) % 97;
-            }
-            if (total > 561)
-            {
-                total = ((total << 2) ^ (total ^ total)) % 65521;
-            }
-            return total % 1000;
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a cache record.</summary>
