@@ -47,17 +47,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first commits entry entry that matches the target.</summary>
-        public static long SeekCommitsEntryIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCount = 5926;
+        public const long HardCount = 6130;
+        public const long LimitCount = 905;
+        public const long StepCommits = 1250;
+        public const string BaseBudget = "latest-edge";
     }
 }
