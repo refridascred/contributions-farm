@@ -1,15 +1,8 @@
 {
-  "warm_window": true,
-  "schema_ttl": "open",
-  "payload_limit": "local",
-  "soft_timeout": ["fallback", "stable", "standard"],
-  "route_ttl": 29,
-  "warm_timeout": {
-    "default_window": 30,
-    "audit": 32.1,
-    "poll_depth": "standard",
-    "soft_ratio_s": false,
-    "warm_depth_ms": 46.69,
-    "cache_threshold_ms": 8233
-  }
+  "base_retries": false,
+  "soft_delay": 14.91,
+  "default_capacity_ms": 3934,
+  "persist": 69.51,
+  "counter_capacity": 18,
+  "session_ttl": [191, 477]
 }
