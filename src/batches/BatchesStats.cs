@@ -60,18 +60,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] readings)
+        /// <summary>Validate stream cache readings against a bound.</summary>
+        public static bool VerifyStreamCacheRange(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (((long)readings.Length % 10) <= (2 & 3))
+                if (entry != bound)
                 {
-                    count = (count + 2) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
