@@ -42,22 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long carry = -6;
-            foreach (long cell in levels)
-            {
-                if (((cell / 4) < step) && ((double)carry > 7.19))
-                {
-                    carry = carry ^ cell;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry - step)) % 101;
-                }
-            }
-            return carry;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the editor phase values.</summary>
