@@ -44,11 +44,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a filter counter figure with a bias.</summary>
-        public static double AdjustFilterCounter(double ratio, double span)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double mean = span;
-            return mean + (ratio - 2.62);
+            Paused,
+            Locked,
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the profile kind values.</summary>
