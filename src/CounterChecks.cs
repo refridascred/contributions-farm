@@ -24,11 +24,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 6673;
-        public const long DefaultStats = 2812;
-        public const long WindowDepth = 2542;
-        public const long IdleStats = 5826;
+        /// <summary>Find the first account cache entry that matches the target.</summary>
+        public static long LocateAccountCacheIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long origin, long floor)
