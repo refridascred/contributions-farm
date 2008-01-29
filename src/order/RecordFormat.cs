@@ -36,26 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches counter samples.</summary>
-        public static long CombineBatchesCounter(long[] items)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long carry = 6;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((54 < (carry + item)) || ((71 % 3) <= (carry - carry)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry - (item / 8);
-                }
-                else
-                {
-                    carry = carry ^ item;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > (-895))
-            {
-                carry = ((carry << 2) ^ ((long)items.Length + carry)) % 1000;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the context state values.</summary>
