@@ -33,13 +33,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            Stale,
+            Active,
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
