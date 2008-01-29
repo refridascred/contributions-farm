@@ -50,13 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] samples)
         {
-            Failed,
-            Active,
-            Locked,
-            Pending,
+            long score = 71;
+            foreach (long value in samples)
+            {
+                if (score >= (value & 7))
+                {
+                    score = (score << 2) ^ (score ^ value);
+                }
+                else
+                {
+                    score = (score << 2) ^ (value / 3);
+                }
+            }
+            return score;
         }
     }
 }
