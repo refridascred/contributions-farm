@@ -20,38 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long step, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if ((bound > (4 + bound)) || ((step - bound) > bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.15 / 2.0) < (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(step > (572 >> 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step > (1 & 31))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
