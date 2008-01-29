@@ -34,20 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes format readings against a bound.</summary>
-        public static bool GuardNotesFormatBounds(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 3757;
+        public const long SoftRatio = 9596;
+        public const long IdleSize = 5635;
+        public const long IdleScore = 1405;
+        public const string WindowLevel = "standard-v2";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] data, long limit)
