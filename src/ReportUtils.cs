@@ -19,18 +19,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long sum = 6;
+            foreach (long sample in levels)
             {
-                if ((hits >> 3) <= (value << 1))
-                {
-                    hits = hits + 1;
-                }
+                sum = (sum << 2) ^ (sample - 266);
+                sum = (sum ^ (sum & 3)) % 4096;
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Count the channel filter entries that pass the check.</summary>
