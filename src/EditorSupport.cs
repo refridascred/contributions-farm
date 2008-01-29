@@ -27,39 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long bound, long target)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] levels, long offset)
         {
-            long edge = bound + target;
-            if (((target & 31) > (edge << 2)) && ((bound >> 1) == (edge << 3)))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(bound < target))
+                if (cell != offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-6) ^ target) <= (bound / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - edge) <= target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
