@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Failed,
-            New,
-            Retry,
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
