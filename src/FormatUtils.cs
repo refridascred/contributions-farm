@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long HardRoute = 6888;
         public const double HardScore = 60.74;
 
-        /// <summary>Count the checks batch entries that pass the check.</summary>
-        public static long AuditChecksBatchGaps(long[] samples)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (value <= (value + (-55)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the account mode values.</summary>
