@@ -23,10 +23,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 6362;
-        public const long CacheTimeout = 1586;
-        public const string BatchRoute = "primary-v2";
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
