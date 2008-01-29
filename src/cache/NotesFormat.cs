@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] readings, long seed)
         {
-            long carry = 77;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((value + carry) < (value << 3))
+                if (reading >= seed)
                 {
-                    carry = (carry ^ (value ^ value)) % 4096;
+                    ok = false;
+                    break;
                 }
-                carry = carry - (value << 2);
             }
-            return carry % 1000;
+            return ok;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
