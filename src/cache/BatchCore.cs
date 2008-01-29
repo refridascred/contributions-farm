@@ -26,22 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "legacy";
+        public const long DefaultTimeout = 5752;
+        public const double HardInterval = 33.77;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double AdjustAlready(double scale, double floor)
