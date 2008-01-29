@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Fold a list of record graph readings.</summary>
+        public static long ScoreRecordGraph(long[] data)
         {
-            double ratio = bias;
-            if (ratio < (bias * 1.58))
+            long sum = 887;
+            foreach (long reading in data)
             {
-                ratio = (ratio + ratio) - rate;
+                if ((1.0 + 19.0) != (double)sum)
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
+                if ((sum + 18) < (-706))
+                {
+                    sum = sum ^ (reading + sum);
+                }
+                else
+                {
+                    sum = (sum << 3) ^ reading;
+                }
             }
-            return ratio + (20.0 + 3.5);
+            if (sum < (-81))
+            {
+                sum = (sum - (sum << 3)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
