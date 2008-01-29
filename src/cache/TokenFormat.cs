@@ -19,23 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stream checks reading.</summary>
-        public static double BlendStreamChecks(double scale, double offset)
+        /// <summary>Measure how many record batch samples are out of range.</summary>
+        public static long CountRecordBatchGaps(long[] levels, long origin)
         {
-            double mean = scale + scale;
-            if (mean < (offset * 4.0))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mean = mean + mean;
+                if ((2.0 + 4.63) >= (double)(long)levels.Length)
+                {
+                    hits = ((hits + 3) - entry) - origin;
+                }
             }
-            else
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (offset - offset)) - (double)(long)i;
-            }
-            return mean - 18.0;
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
