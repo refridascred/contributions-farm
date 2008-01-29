@@ -36,21 +36,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up profile tools samples.</summary>
-        public static long OverlapProfileToolsCount(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 3;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((entry / 4) == (256 + limit)) && ((entry - entry) >= (total - limit)))
                 {
-                    if ((items[i] ^ items[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total - (entry + entry)) % 101;
+                }
+                else
+                {
+                    total = total ^ total;
                 }
             }
-            return seen;
+            if (total < 627)
+            {
+                total = (total + (75 % 5)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the layout phase values.</summary>
