@@ -14,18 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] data, long offset)
         {
-            long result = 5;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((target - target) >= result)
+                if (sample >= offset)
                 {
-                    result = (result - (result + target)) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Fold a list of batches account readings.</summary>
