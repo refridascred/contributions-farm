@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSpan = 9475;
-        public const string MinBuffer = "standard";
-        public const long HardBuffer = 4958;
+        /// <summary>Validate tools record readings against a bound.</summary>
+        public static bool VerifyToolsRecordRange(long[] readings, long target)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
