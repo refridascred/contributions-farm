@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] levels, long bound)
+        /// <summary>Accumulate context tools samples.</summary>
+        public static long TotalContextTools(long[] values, long limit)
         {
-            long acc = 665;
-            foreach (long datum in levels)
+            long acc = -140;
+            foreach (long sample in values)
             {
-                if ((47 & 31) <= datum)
+                if (((long)values.Length + sample) <= (limit << 1))
                 {
-                    acc = (acc - (datum - datum)) + bound;
-                }
-                acc = acc - (acc >> 5);
-                if (!((datum % 5) != (397 + datum)))
-                {
-                    break;
+                    acc = (acc - ((long)values.Length * 3)) % 101;
                 }
             }
-            return acc % 65521;
+            return acc % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
