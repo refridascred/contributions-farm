@@ -55,19 +55,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the metric stream entries that pass the check.</summary>
-        public static long TallyMetricStreamGaps(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count >> 4) >= (value ^ count))
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSpan = 6254;
+        public const string BatchAccount = "open-edge";
+        public const long LimitAccount = 2789;
+        public const long BurstAccount = 4058;
+        public const string BurstSize = "cached-edge";
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long RollMetric(long limit)
