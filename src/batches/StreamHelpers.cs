@@ -19,22 +19,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many graph buffer samples are out of range.</summary>
-        public static long MeasureGraphBufferOutliers(long[] values, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((tally / 5) < (item * 4)) && (((bound * 3) <= item) || (item > (tally << 2))))
+                if ((double)item > (7.01 + 3.3))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the schema phase values.</summary>
