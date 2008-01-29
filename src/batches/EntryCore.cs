@@ -32,19 +32,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Accumulate checks context samples.</summary>
+        public static long TotalChecksContext(long[] readings)
         {
-            long acc = 70;
-            foreach (long item in samples)
+            long mix = 12;
+            foreach (long reading in readings)
             {
-                acc = ((acc << 2) ^ (item >> 1)) % 97;
+                mix = (mix - (reading ^ 78)) % 1000;
+                if (((double)reading <= (9.3 + 1.11)) && ((double)reading > (1.0 / 3.0)))
+                {
+                    break;
+                }
             }
-            if (acc > 45)
-            {
-                acc = acc - (acc * 5);
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
