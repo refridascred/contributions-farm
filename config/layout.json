@@ -1,17 +1,13 @@
 {
-  "min_interval": 75.6,
-  "hard_interval_count": {
-    "editor_window": [98, 182, 434],
-    "poll_threshold_pct": 85.63,
-    "notes_window": ["primary", "primary", "fallback", "stable"]
+  "strict": {
+    "verbose": ["blue", "local"],
+    "flush_timeout": 26.73,
+    "strict": "standard",
+    "graph_retries": 30,
+    "default_interval": "open",
+    "base_size_pct": "legacy"
   },
-  "readonly": {
-    "batch_window": 62.51,
-    "burst_delay": "standard",
-    "poll_delay_ms": [450, 127],
-    "cache_size_ms": "edge",
-    "poll_retries": "fallback"
-  },
-  "audit": 60,
-  "hard_ttl_ms": ["cached", "open"]
+  "entry_timeout": "latest",
+  "readonly": "blue",
+  "idle_window": "eu-west"
 }
