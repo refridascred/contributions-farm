@@ -25,17 +25,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] values, long offset)
+        /// <summary>Accumulate token counter samples.</summary>
+        public static long ScoreTokenCounter(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 42;
+            foreach (long sample in items)
             {
-                if (values[i] < offset)
+                if ((double)anchor > (13.0 - 3.0))
                 {
-                    return (long)i;
+                    continue;
                 }
+                anchor = ((anchor * 4) + (bound >> 5)) % 101;
+                anchor = anchor ^ (anchor ^ sample);
             }
-            return -1;
+            if (anchor < 22)
+            {
+                anchor = (anchor + (anchor + bound)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of order readings.</summary>
