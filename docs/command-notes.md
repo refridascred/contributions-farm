@@ -1,11 +1,11 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-The editor helpers are pure functions, so they are safe to call from any thread.
+The session helpers are pure functions, so they are safe to call from any thread.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review order limits each release
-- Log every graph change
-- Validate tools input early
-- Keep cache values small
+- Validate payload input early
+- Document new contributi fields
+- Log every entry change
+- Keep session values small
