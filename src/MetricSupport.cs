@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((16.0 / 3.0) > (double)value)
+                if ((double)seen < (15.0 * 3.0))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 2) - entry;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
