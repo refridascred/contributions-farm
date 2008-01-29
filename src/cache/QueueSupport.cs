@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] items, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((cell - 54) == (cell << 1))
+                if ((double)count >= (5.7 / 6.0))
                 {
-                    hits = (hits + 1) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 2) + sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up commits buffer samples.</summary>
