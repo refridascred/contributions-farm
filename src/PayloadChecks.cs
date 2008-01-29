@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Synced,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
