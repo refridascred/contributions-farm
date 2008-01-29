@@ -27,9 +27,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 7.1;
-        public const long SoftFactor = 3718;
-        public const long WindowScore = 3508;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (matches >= (reading % 8))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
