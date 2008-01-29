@@ -69,21 +69,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] <= limit)
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
