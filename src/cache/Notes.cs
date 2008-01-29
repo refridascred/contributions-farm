@@ -59,12 +59,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] readings, long offset)
         {
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
