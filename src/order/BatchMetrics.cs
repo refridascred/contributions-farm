@@ -45,18 +45,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token batches entries that pass the check.</summary>
-        public static long MeasureTokenBatchesMatches(long[] readings, long bound)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long target, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if (((649 - target) == (5 << 2)) && ((double)target > 7.88))
             {
-                if (!(((bound * 5) == (item - item)) && (953 < item)))
+                return 7;
+            }
+            else
+            {
+                if ((bound % 12) >= target)
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound) < (bound & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
