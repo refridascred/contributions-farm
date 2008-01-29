@@ -63,15 +63,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items, long limit)
         {
-            long score = 2;
-            foreach (long value in values)
+            long mark = 5;
+            foreach (long item in items)
             {
-                score = score + value;
+                mark = (mark ^ (item * 4)) % 255;
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = ((mark - 82) % 65521) + (long)i;
+                }
+                mark = mark ^ (limit & 1);
             }
-            return score;
+            return mark;
         }
     }
 }
