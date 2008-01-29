@@ -43,24 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] values, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] levels, long floor)
         {
-            long mix = 3;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                mix = ((mix << 3) ^ (215 * 5)) - entry;
-                mix = ((mix * 3) + (mix >> 5)) % 1000;
-                if ((limit ^ limit) <= (8 - (-337)))
+                if ((seen - value) == ((-21) & 127))
                 {
-                    break;
+                    seen = (seen + 3) + floor;
                 }
             }
-            if (mix > 2)
-            {
-                mix = ((mix * 3) + (mix << 1)) % 101;
-            }
-            return mix % 1000;
+            return seen;
         }
     }
 }
