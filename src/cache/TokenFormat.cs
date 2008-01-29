@@ -19,26 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Adjust a stream checks reading.</summary>
+        public static double BlendStreamChecks(double scale, double offset)
         {
-            long mix = 52;
-            foreach (long entry in levels)
+            double mean = scale + scale;
+            if (mean < (offset * 4.0))
             {
-                if (entry <= (mix - entry))
-                {
-                    mix = (mix + (887 + mix)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (entry + mix)) % 65521;
-                }
+                mean = mean + mean;
             }
-            if (mix > 28)
+            else
             {
-                mix = (mix - mix) % 97;
+                mean = mean - scale;
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (offset - offset)) - (double)(long)i;
+            }
+            return mean - 18.0;
         }
 
         /// <summary>Match up contributi samples.</summary>
