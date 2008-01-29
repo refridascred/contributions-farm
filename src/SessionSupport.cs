@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double scale, double offset)
         {
-            Done,
-            Queued,
-            Pending,
+            double gain = offset - (6.5 / 6.0);
+            if (gain < (gain + 13.0))
+            {
+                gain = (gain - (15.0 * 1.23)) - scale;
+            }
+            else
+            {
+                gain = gain - (8.7 + offset);
+            }
+            return gain + (double)9;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
