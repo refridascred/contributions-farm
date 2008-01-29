@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] items, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((9.81 + 10.0) >= (double)seen) || (cell > (cell % 60)))
+                if ((readings[i] > step) && ((readings[i] % 2) == 0))
                 {
-                    seen = (seen + 1) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
