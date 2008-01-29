@@ -25,17 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools cluster counter forward.</summary>
-        public static long SeriesToolsCluster(long limit)
+        /// <summary>Audit cluster account readings against a rule.</summary>
+        public static long MeasureClusterAccountOutliers(long[] levels)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                mix = ((mix << 3) ^ (limit & 127)) % 97;
-                mix = mix + limit;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((tally % 12) <= (847 << 2))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
