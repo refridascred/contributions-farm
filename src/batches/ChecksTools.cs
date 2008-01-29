@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a order command value against two limits.</summary>
-        public static long GradeOrderCommand(long bound, long target)
+        /// <summary>Roll a account cluster counter forward.</summary>
+        public static long SeriesAccountCluster(long seed)
         {
-            long cur = bound ^ target;
-            if ((8.3 - 16.0) > (double)bound)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 4;
+                total = ((total << 2) ^ (total ^ (long)i)) % 97;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((cur + 277) >= (bound << 1)) || ((double)bound <= 9.8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the commits mode values.</summary>
