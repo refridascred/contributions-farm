@@ -40,22 +40,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] series, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry < (count + step)) && ((entry / 7) != (step + 8))) && ((double)entry > (double)step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
