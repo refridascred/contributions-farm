@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((cell * 5) <= (1 >> 5)) || ((422 + cell) >= count)) && ((39 + cell) > 22))
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
