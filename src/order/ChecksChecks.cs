@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((8.49 / 4.0) <= (double)count)
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
