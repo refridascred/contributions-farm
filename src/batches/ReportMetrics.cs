@@ -25,17 +25,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if (((long)samples.Length << 3) < bound)
                 {
-                    return (long)i;
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
