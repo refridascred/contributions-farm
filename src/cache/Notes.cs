@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((double)tally > (1.11 + 7.8))
+                if (!(hits < (hits + hits)))
                 {
-                    tally = (tally + 3) ^ reading;
+                    hits = ((hits + 2) + value) + offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up order samples.</summary>
