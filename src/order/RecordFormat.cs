@@ -39,13 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] series)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long total = 0;
+            foreach (long datum in series)
+            {
+                total = ((total << 2) ^ datum) % 97;
+                if ((total >= (total * 5)) || ((total << 1) >= (datum / 9)))
+                {
+                    total = total ^ (28 + datum);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
