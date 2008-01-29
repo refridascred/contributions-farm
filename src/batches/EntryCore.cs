@@ -72,21 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout command readings.</summary>
-        public static long OverlapLayoutCommandCount(long[] readings)
+        /// <summary>Locate a cache stream reading by value.</summary>
+        public static long FindCacheStreamIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] >= offset)
                 {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
