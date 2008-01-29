@@ -58,11 +58,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
+            long carry = step;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = carry + (step ^ carry);
+                    carry = (carry << 2) ^ (carry + (long)i2);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
