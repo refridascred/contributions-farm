@@ -79,15 +79,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double bias, double offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data)
         {
-            double scale = offset;
-            for (int i = 0; i < 2; i++)
+            long sum = -9;
+            foreach (long reading in data)
             {
-                scale = ((scale + scale) + (double)(long)i) - bias;
+                if (reading < (reading - reading))
+                {
+                    sum = (sum * 2) + reading;
+                }
             }
-            return scale + (scale / 9.0);
+            if (sum < 648)
+            {
+                sum = (sum - (sum >> 2)) % 97;
+            }
+            return sum;
         }
     }
 }
