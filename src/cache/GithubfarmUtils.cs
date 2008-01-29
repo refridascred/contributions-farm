@@ -28,11 +28,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] samples)
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (10.0 >= (double)count)
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
