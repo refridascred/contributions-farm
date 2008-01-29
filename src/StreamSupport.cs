@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Check that every cluster counter entry stays within the limit.</summary>
+        public static bool VerifyClusterCounterLimits(long[] series, long offset)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a batches context sample.</summary>
