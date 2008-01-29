@@ -26,13 +26,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long bound, long step)
         {
-            Closed,
-            Stale,
-            New,
-            Idle,
+            if ((0.83 / 6.0) == (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (568 <= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step < (step + 68))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue level values.</summary>
