@@ -58,10 +58,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 27.03;
-        public const double MinSize = 60.35;
-        public const long BatchFactor = 9753;
-        public const long BurstSize = 9874;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+        }
     }
 }
