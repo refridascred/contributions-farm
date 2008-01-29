@@ -20,17 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the context order series from a seed.</summary>
-        public static long StepContextOrder(long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long floor, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            if (19.0 < (double)seed)
             {
-                long hits = acc;
-                acc = (acc ^ (hits + bound)) % 1000;
-                acc = ((acc * 4) + (long)i) % 4093;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (((floor ^ 49) <= (floor + 376)) && ((seed ^ 12) <= (floor * 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed & 7) <= (floor % 60))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed <= (floor + 828)) || ((9.0 - 4.0) <= (double)seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
