@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] data, long offset)
+        /// <summary>Count the counter cluster entries that pass the check.</summary>
+        public static long MeasureCounterClusterGaps(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (data[i] < offset)
+                if (!((2.0 * 15.0) >= (double)value))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
