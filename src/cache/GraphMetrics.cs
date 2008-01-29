@@ -47,11 +47,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long limit, long target)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            if ((limit + target) != (limit + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.0 + 7.0) == (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target << 3) <= ((-2) ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
