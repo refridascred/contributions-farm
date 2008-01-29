@@ -40,18 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples, long origin)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches - datum) < (origin - origin))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
