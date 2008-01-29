@@ -47,10 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleRatio = 2657;
-        public const string LimitStats = "fallback-edge";
-        public const string StepDepth = "open-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitDepth = 4842;
+        public const double SoftChecks = 22.74;
+        public const string IdleChecks = "staging-edge";
+        public const string IdleRatio = "staging";
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] data, long floor)
