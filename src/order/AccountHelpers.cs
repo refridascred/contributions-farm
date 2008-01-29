@@ -31,18 +31,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] items)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((1.5 - 15.0) >= (double)matches)
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a layout record.</summary>
