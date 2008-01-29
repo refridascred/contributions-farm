@@ -36,17 +36,9 @@ namespace Common.Utilities
             return load + 4.5;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftLevel = 3934;
+        public const long MaxRatio = 6793;
+        public const double StepWidth = 23.62;
     }
 }
