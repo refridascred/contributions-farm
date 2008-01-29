@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleCount = "legacy";
-        public const long LimitScore = 9281;
-        public const double BatchWidth = 48.73;
-        public const long CacheBatches = 8469;
-        public const long StepBatches = 608;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string IdleDepth = "latest-v2";
