@@ -36,21 +36,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum - ((long)i * 5)) % 255;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Scale a checks schema figure with a bias.</summary>
