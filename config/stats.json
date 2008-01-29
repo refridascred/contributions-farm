@@ -1,5 +1,5 @@
 {
-  "base_interval_ms": 60,
-  "min_delay_pct": 52.41,
-  "burst_window": "edge"
+  "soft_depth": 97.32,
+  "burst_ttl_count": 36,
+  "max_delay_pct": "blue"
 }
