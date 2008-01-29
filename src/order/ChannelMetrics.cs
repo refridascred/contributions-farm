@@ -23,18 +23,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((tally - tally) > reading)
+                if ((16.0 - 17.0) < (double)reading)
                 {
-                    tally = tally + 3;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
