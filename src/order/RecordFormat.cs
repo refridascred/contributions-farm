@@ -45,13 +45,15 @@ namespace Common.Utilities
         public const long WindowBatch = 2130;
         public const string BaseBatch = "local-edge";
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
