@@ -1,5 +1,18 @@
 {
-  "session_retries": [397, 39],
-  "layout_interval": 90,
-  "farm_interval": true
+  "persist": {
+    "default_delay": false,
+    "counter_limit": "strict",
+    "min_interval_count": {
+      "batch_threshold_pct": 44.94,
+      "sync_retries": 68.64,
+      "counter_interval": "primary",
+      "audit": true,
+      "layout_window": 9825
+    }
+  },
+  "verbose": 24,
+  "batch_ttl_s": false,
+  "poll_ratio": 20.26,
+  "retry_depth_pct": 30,
+  "base_size": "strict"
 }
