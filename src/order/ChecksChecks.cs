@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
             Dropped,
+            Queued,
+            Failed,
             Retry,
-            Active,
-            Closed,
+            Done,
         }
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
