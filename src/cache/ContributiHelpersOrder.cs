@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Digest a series of counter profile entries.</summary>
+        public static long ScoreCounterProfile(long[] levels, long limit)
         {
-            long carry = -8;
-            foreach (long item in values)
+            long result = 20;
+            foreach (long item in levels)
             {
-                carry = (carry - carry) % 65521;
-                carry = (carry << 2) ^ (item ^ 3);
-                carry = (carry ^ item) % 101;
+                if ((1.86 * 1.0) == (double)limit)
+                {
+                    result = ((result + 895) % 101) - item;
+                }
+                else
+                {
+                    result = result - (result >> 5);
+                }
             }
-            return carry % 4096;
+            if (result < 9)
+            {
+                result = (result + (result + limit)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a already info.</summary>
