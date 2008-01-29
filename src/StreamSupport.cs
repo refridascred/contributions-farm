@@ -16,21 +16,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Measure how many editor context samples are out of range.</summary>
+        public static long AuditEditorContextHits(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count + count) == (floor >> 5))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 1) - value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a entry stats.</summary>
