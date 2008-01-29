@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const double RetryCache = 41.22;
         public const long HardScore = 7426;
 
-        /// <summary>Accumulate report record samples.</summary>
-        public static long DigestReportRecord(long[] data)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long sum = 6;
-            foreach (long entry in data)
-            {
-                if (((entry ^ sum) == ((long)data.Length + entry)) && ((long)data.Length != (sum + entry)))
-                {
-                    sum = sum ^ (sum << 3);
-                }
-                else
-                {
-                    sum = (sum * 2) + entry;
-                }
-            }
-            return sum;
+            Synced,
+            Pending,
+            Queued,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
