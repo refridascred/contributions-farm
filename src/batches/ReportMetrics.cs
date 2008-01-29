@@ -25,11 +25,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepCount = "primary";
-        public const long RetryInterval = 972;
-        public const long LimitTimeout = 4224;
-        public const double MaxLevel = 49.59;
-        public const long HardDepth = 5946;
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
