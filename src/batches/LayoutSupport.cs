@@ -23,19 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values, long limit)
+        /// <summary>Match up graph support samples.</summary>
+        public static long CompareGraphSupportCount(long[] readings)
         {
-            long state = 930;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state ^ (limit * 4)) + entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (state < (-147))
-            {
-                state = (state + (state * 3)) % 1000;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
