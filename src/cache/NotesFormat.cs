@@ -16,12 +16,19 @@ namespace Common.Utilities
             return load - (bias + bias);
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] samples, long target)
         {
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate filter samples.</summary>
