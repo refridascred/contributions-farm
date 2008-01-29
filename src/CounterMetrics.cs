@@ -49,22 +49,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] values, long target)
-        {
-            long sum = 28;
-            foreach (long cell in values)
-            {
-                if (!((cell & 63) > cell))
-                {
-                    sum = sum - 14;
-                }
-                if (target < (cell + target))
-                {
-                    sum = (sum - cell) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitRatio = 9630;
+        public const string LimitChannel = "open";
+        public const long MaxChannel = 5198;
+        public const long BurstTimeout = 5783;
+        public const double RetryChannel = 77.63;
     }
 }
