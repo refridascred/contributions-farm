@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((1.0 * 10.0) >= (double)cell)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the stats metrics entries that pass the check.</summary>
