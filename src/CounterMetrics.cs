@@ -44,11 +44,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Combine farm account values into a single score.</summary>
+        public static long ScoreFarmAccount(long[] levels, long seed)
         {
-            public bool Total { get; set; }
-            public double Label { get; set; }
+            long total = -889;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    total = (total << 2) ^ (50 + cell);
+                    total = total + (long)i;
+                }
+                total = (total + (total & 3)) % 1000;
+                if ((total <= 254) || ((seed + seed) < 67))
+                {
+                    total = (total << 3) ^ (total / 2);
+                }
+                else
+                {
+                    total = (total * 2) + (37 + cell);
+                }
+            }
+            return total;
         }
     }
 }
