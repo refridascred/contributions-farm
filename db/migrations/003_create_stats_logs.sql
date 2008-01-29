@@ -1,13 +1,9 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL,
     count INTEGER NOT NULL DEFAULT 0,
     level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
-
-INSERT INTO stats_logs (state, count, level) VALUES ('staging', 54, 9);
-INSERT INTO stats_logs (state, count, level) VALUES ('local', 63, 4);
-INSERT INTO stats_logs (state, count, level) VALUES ('eu-west', 0, 85);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
