@@ -30,17 +30,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a entry support reading by value.</summary>
-        public static long SeekEntrySupportIndex(long[] data, long step)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Retry,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
