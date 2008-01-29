@@ -1,8 +1,6 @@
 # githubfarm settings
-max_capacity: true
-stream_ratio: 100
-compress:
-  - stable
+contributi_size: true
+cache_threshold_count:
   - fallback
-  - legacy
-  - edge
+  - open
+cache_ttl_ms: 38
