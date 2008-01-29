@@ -60,11 +60,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 8406;
-        public const long DefaultBudget = 9226;
-        public const string WindowLevel = "cached-1";
-        public const double WindowToken = 63.14;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "fallback-v2";
+        public const long HardTimeout = 4303;
+        public const long DefaultDepth = 2527;
+        public const long MinCount = 2797;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] levels, long bound)
