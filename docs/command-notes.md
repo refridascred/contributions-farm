@@ -1,11 +1,11 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-The batch helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps contributi values in sync with the queue cache.
+When a batch fails, the cluster handler retries a few times before giving up.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate payload input early
-- Document new contributi fields
-- Log every entry change
-- Keep session values small
+- Validate command input early
+- Log every buffer change
+- Review cache limits each release
