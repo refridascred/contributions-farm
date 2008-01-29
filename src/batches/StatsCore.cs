@@ -41,22 +41,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the counter order entries that pass the check.</summary>
-        public static long AuditCounterOrderMatches(long[] values)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((cell & 7) >= (cell - cell)))
+                if (readings[i] < floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
