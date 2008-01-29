@@ -23,18 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] levels)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)matches < (1.74 + 5.98))
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
-                    matches = (matches + 1) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
