@@ -23,18 +23,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long target, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            if ((floor ^ floor) > ((-103) / 9))
             {
-                if ((16.0 - 17.0) < (double)reading)
+                return 4;
+            }
+            else
+            {
+                if ((floor >= (floor + floor)) || ((double)floor <= 9.0))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
