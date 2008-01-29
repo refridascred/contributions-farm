@@ -54,16 +54,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next batch account value from a seed.</summary>
-        public static long RollBatchAccount(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result * 3) + (long)i;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 7879;
+        public const string IdleBatch = "fallback-1";
+        public const long SoftBatch = 1677;
+        public const double HardRatio = 63.05;
+        public const long BurstRatio = 7763;
     }
 }
