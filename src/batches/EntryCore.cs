@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the counter cluster entries that pass the check.</summary>
-        public static long MeasureCounterClusterGaps(long[] data, long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((2.0 * 15.0) >= (double)value))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Hold a record stats.</summary>
