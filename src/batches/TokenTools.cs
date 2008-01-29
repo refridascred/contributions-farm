@@ -31,9 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "alpha-edge";
-        public const double SoftTimeout = 13.99;
-        public const string LimitSize = "local-v2";
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
