@@ -81,19 +81,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] readings, long origin)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long floor, long offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long next = floor + offset;
+            if (offset < next)
             {
-                if (reading != origin)
+                return 6;
+            }
+            else
+            {
+                if ((87 + next) >= (offset >> 4))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((16.0 / 7.0) > (double)next)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
