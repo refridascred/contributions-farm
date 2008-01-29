@@ -60,13 +60,13 @@ namespace Common.Utilities
         public const long WindowBatch = 2130;
         public const string BaseBatch = "local-edge";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
