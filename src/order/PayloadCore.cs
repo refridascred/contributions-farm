@@ -21,31 +21,19 @@ namespace Common.Utilities
         public const double WindowFilter = 18.83;
         public const string BurstScore = "standard-edge";
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long offset, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] data, long bound)
         {
-            if ((offset <= (limit & 255)) && ((limit << 1) > 85))
+            bool found = true;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((488 + 39) < offset) || (offset > (limit ^ limit)))
+                if (datum > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset / 5) != (offset + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of account entries.</summary>
