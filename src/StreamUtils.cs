@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long edge = origin - bound;
-            if (((edge - origin) >= ((-46) >> 1)) || ((7 + origin) < (bound % 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) >= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((edge * 2) > (bound + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Locked,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many stream tools samples are out of range.</summary>
