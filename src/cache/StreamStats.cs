@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchDepth = 3379;
-        public const long BatchStream = 9240;
-        public const double MinSize = 19.83;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 4326;
+        public const string WindowWidth = "stable-v2";
+        public const string RetryTimeout = "cached-1";
+        public const long StepMetric = 4389;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
