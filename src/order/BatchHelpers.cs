@@ -24,9 +24,11 @@ namespace Common.Utilities
         public const long IdleFactor = 2672;
         public const long BatchSpan = 563;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchWidth = "fallback-edge";
-        public const long RetryWidth = 7876;
-        public const long DefaultSpan = 1001;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 1374;
+        public const long CacheBatches = 9409;
+        public const long IdleWidth = 5890;
+        public const double BurstBatches = 55.65;
+        public const string DefaultBatches = "latest-1";
     }
 }
