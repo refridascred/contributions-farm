@@ -47,12 +47,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] data, long seed)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (sample > (count * 3))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
