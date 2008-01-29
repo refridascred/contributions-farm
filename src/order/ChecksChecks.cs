@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 9870;
-        public const double BaseInterval = 52.59;
-        public const string StepLayout = "fallback-1";
-        public const double BurstSize = 1.71;
+        /// <summary>Validate payload queue readings against a bound.</summary>
+        public static bool ValidatePayloadQueueLimits(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next context stats value from a seed.</summary>
         public static long IterateContextStats(long seed)
