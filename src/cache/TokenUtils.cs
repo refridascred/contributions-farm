@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Digest a series of contributi window entries.</summary>
+        public static long WeighContributiWindow(long[] readings, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long result = 91;
+            foreach (long value in readings)
             {
-                if ((total - total) > (total - 921))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                result = (result ^ (origin & 127)) ^ value;
+                result = (result + (origin << 2)) % 101;
             }
-            return total;
+            return result % 1000;
         }
 
         /// <summary>Blend two format measurements.</summary>
