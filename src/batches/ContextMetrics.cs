@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 6667;
-        public const long BaseSize = 638;
-        public const double RetryAlready = 19.71;
-        public const long RetryDepth = 2601;
-        public const long BatchAlready = 6022;
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double scale, double offset)
