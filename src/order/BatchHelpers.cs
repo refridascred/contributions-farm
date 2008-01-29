@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Validate batch checks readings against a bound.</summary>
+        public static bool GuardBatchChecksBounds(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading <= offset)
                 {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Locate a report reading by value.</summary>
