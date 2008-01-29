@@ -32,18 +32,11 @@ namespace Common.Utilities
         public const long StepPayload = 9597;
         public const double MinPayload = 36.06;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] levels, long offset)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long total = 729;
-            foreach (long datum in levels)
-            {
-                if (!(8 <= (datum - offset)))
-                {
-                    total = total ^ (offset + datum);
-                }
-            }
-            return total;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a batches queue counter forward.</summary>
