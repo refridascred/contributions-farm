@@ -19,11 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metric window value.</summary>
-        public static double SmoothMetricWindow(double weight, double offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] levels, long floor)
         {
-            double mean = (double)(42 - 99);
-            return ((mean + mean) + weight) + offset;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a support commits sample.</summary>
