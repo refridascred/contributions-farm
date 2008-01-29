@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinInterval = "local";
-        public const long SoftFactor = 6801;
-        public const string StepBuffer = "open";
-        public const string CacheBudget = "staging-1";
+        /// <summary>Classify a githubfarm order pair into a bucket.</summary>
+        public static long GradeGithubfarmOrder(long limit, long origin)
+        {
+            if ((limit >= (limit + origin)) && (limit < (limit - origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin % 12) == (origin % 60))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((1 / 8) >= (limit - 34)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
