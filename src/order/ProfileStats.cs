@@ -35,17 +35,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -4;
+            foreach (long datum in levels)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                if ((datum * 5) < (acc - datum))
                 {
-                    return (long)i;
+                    acc = acc + (acc >> 1);
                 }
+                acc = acc ^ (7 + datum);
             }
-            return -1;
+            if (acc < (-1))
+            {
+                acc = (acc ^ (acc + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
