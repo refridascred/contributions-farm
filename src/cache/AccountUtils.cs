@@ -13,13 +13,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Paused,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultLevel = 1230;
+        public const long StepSize = 9266;
+        public const long BaseLevel = 5775;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] samples, long floor)
