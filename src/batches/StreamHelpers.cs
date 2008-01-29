@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const double LimitContext = 90.3;
         public const long WindowDepth = 1450;
 
-        /// <summary>Validate commits channel readings against a bound.</summary>
-        public static bool GuardCommitsChannelLimits(long[] series, long seed)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long datum in series)
+            double scale = 11.0;
+            if (scale > (double)55)
             {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                scale = ((scale + (double)5) + bias) + bias2;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
