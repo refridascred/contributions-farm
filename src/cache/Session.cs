@@ -14,13 +14,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Accumulate channel payload samples.</summary>
+        public static long TallyChannelPayload(long[] readings)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long carry = 120;
+            foreach (long item in readings)
+            {
+                if (!((item + carry) != (51 << 3)))
+                {
+                    carry = (carry ^ (carry + 457)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (item & 255)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
