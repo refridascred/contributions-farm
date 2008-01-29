@@ -1,7 +1,9 @@
 # support settings
-schema_delay: true
-min_size: open
-idle_ttl_s:
-  - 363
-  - 409
-  - 438
+cluster_ratio: false
+soft_limit: 60
+readonly:
+  strict: true
+  readonly: blue
+  sync_size_ms: 3748
+persist: true
+max_window_ms: local
