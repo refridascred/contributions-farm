@@ -14,13 +14,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long limit, long floor)
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            if (((double)floor <= (2.26 / 6.0)) || (limit >= 32))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor <= (floor + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (105 <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-396) << 1) >= limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout record.</summary>
