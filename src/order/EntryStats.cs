@@ -52,12 +52,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepSize = 8006;
-        public const double SoftLevel = 72.95;
-        public const string CacheCommits = "cached-1";
-        public const long StepCommits = 2188;
-        public const string LimitCommits = "stable-1";
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double span)
+        {
+            double ratio2 = ratio;
+            if (ratio2 >= (double)55)
+            {
+                ratio2 = ratio2 - (span * 8.4);
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - span) + (double)(long)i;
+            }
+            return ratio2 - ratio;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TallyCache(long[] values)
