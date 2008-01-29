@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] items, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if ((items[i] > seed) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
