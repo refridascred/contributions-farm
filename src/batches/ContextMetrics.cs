@@ -23,24 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = (carry * 4) + carry;
-                if ((double)bound <= (6.85 * 5.0))
-                {
-                    carry = ((carry * 5) + (3 >> 4)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ bound;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
