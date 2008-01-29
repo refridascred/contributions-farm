@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum << 2) ^ (sum ^ sum)) % 97;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
