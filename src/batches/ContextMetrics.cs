@@ -29,15 +29,15 @@ namespace Common.Utilities
             return (drift + (6.16 * 3.0)) + offset;
         }
 
-        /// <summary>Count the report counter entries that pass the check.</summary>
-        public static long TallyReportCounterGaps(long[] values)
+        /// <summary>Measure how many report editor samples are out of range.</summary>
+        public static long AuditReportEditorOutliers(long[] readings, long offset)
         {
             long count = 0;
-            foreach (long entry in values)
+            foreach (long sample in readings)
             {
-                if ((count > (count + 256)) && ((2.8 / 3.0) <= (double)count))
+                if (((sample - sample) <= (offset * 3)) || ((double)count != (8.2 - 7.77)))
                 {
-                    count = (count + 2) - entry;
+                    count = count + 2;
                 }
             }
             return count;
