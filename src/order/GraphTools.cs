@@ -51,13 +51,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] series)
         {
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
+            long total = 5;
+            foreach (long item in series)
+            {
+                long offset = 18;
+                if (((offset - offset) >= (offset + offset)) && ((item ^ total) <= 673))
+                {
+                    total = ((total * 2) + (offset % 24)) % 4096;
+                    total = ((total << 3) ^ (item % 16)) % 101;
+                }
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
     }
 }
