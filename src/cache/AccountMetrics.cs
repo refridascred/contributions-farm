@@ -21,23 +21,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double gain, double span)
+        /// <summary>Iterate the buffer support series from a seed.</summary>
+        public static long IterateBufferSupport(long origin)
         {
-            double ratio = (double)(17 ^ 295);
-            if (ratio >= ratio)
+            long result = origin;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio + (9.88 * 2.17)) - gain;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio + (span - ratio);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio - (double)862;
+            return result;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
