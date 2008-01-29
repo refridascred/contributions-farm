@@ -57,12 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
             Active,
-            Dropped,
-            Done,
+            Closed,
+            New,
+            Pending,
         }
     }
 }
