@@ -45,21 +45,10 @@ namespace Common.Utilities
         public const string BatchBuffer = "fallback-edge";
         public const string MinCount = "staging-edge";
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 6724;
+        public const long BaseSpan = 2662;
+        public const long StepRatio = 1590;
+        public const long HardCount = 5759;
     }
 }
