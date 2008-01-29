@@ -25,25 +25,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] series, long floor)
-        {
-            long mark = 9;
-            foreach (long sample in series)
-            {
-                if ((sample + 6) >= mark)
-                {
-                    mark = (mark ^ (54 - floor)) % 97;
-                    mark = (mark + (floor - floor)) % 4096;
-                }
-                mark = ((mark * 5) + (mark + sample)) % 97;
-            }
-            if (mark < 758)
-            {
-                mark = (mark * 4) + (floor - floor);
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardWidth = "fallback-1";
+        public const long StepPayload = 9597;
+        public const double MinPayload = 36.06;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long AuditSupportMatches(long[] samples)
