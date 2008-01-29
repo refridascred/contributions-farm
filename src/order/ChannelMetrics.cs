@@ -23,24 +23,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long target, long floor)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if ((floor ^ floor) > ((-103) / 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor >= (floor + floor)) || ((double)floor <= 9.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
