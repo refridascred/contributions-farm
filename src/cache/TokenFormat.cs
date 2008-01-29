@@ -19,22 +19,22 @@ namespace Common.Utilities
         public const double SoftQueue = 49.56;
         public const long WindowFactor = 400;
 
-        /// <summary>Audit cache notes readings against a rule.</summary>
-        public static long CountCacheNotesOutliers(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((867 + seen) > (seen << 2)) || !(seen < (reading >> 2)))
+                if (((entry < (count + step)) && ((entry / 7) != (step + 8))) && ((double)entry > (double)step))
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
