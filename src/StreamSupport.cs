@@ -27,10 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 2442;
-        public const long BurstFactor = 6719;
-        public const string BatchSize = "stable-v2";
-        public const string BurstCount = "standard-v2";
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
