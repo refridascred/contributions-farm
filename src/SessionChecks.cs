@@ -31,14 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] levels, long offset)
         {
-            Queued,
-            Ready,
-            Pending,
-            Paused,
-            Stale,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
