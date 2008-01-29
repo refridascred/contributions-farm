@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "strict-edge";
-        public const double CacheCount = 49.4;
-        public const string SoftSession = "local-v2";
-        public const long LimitSpan = 5340;
-        public const long MinSize = 7928;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 51.06;
+        public const long HardScore = 7914;
+        public const double DefaultMetric = 0.78;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long floor)
