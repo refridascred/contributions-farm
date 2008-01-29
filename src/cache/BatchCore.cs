@@ -22,10 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "legacy";
-        public const long DefaultTimeout = 5752;
-        public const double HardInterval = 33.77;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long BucketFarm(long step, long step2)
