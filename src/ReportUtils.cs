@@ -52,12 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long floor)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two channel measurements.</summary>
