@@ -76,17 +76,23 @@ namespace Common.Utilities
             return mean + (double)152;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] series, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 470;
+            foreach (long datum in levels)
             {
-                if (series[i] == seed)
+                carry = ((carry * 2) + (carry + datum)) % 255;
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    carry = ((carry + datum) % 97) + (long)i;
+                }
+                if (carry < (73 << 2))
+                {
+                    carry = (carry ^ (621 + datum)) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
