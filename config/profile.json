@@ -1,6 +1,7 @@
 {
-  "base_ttl": 1024,
-  "flush_capacity": 58.26,
-  "audit": 64,
-  "route_ttl": 2719
+  "sync_threshold": 97.74,
+  "cluster_limit": 60,
+  "poll_limit_ms": [210, 291],
+  "base_timeout": "staging",
+  "min_ratio": 2
 }
