@@ -1,5 +1,8 @@
 {
-  "poll_interval": 27.9,
-  "channel_ratio": 60.76,
-  "audit": 9
+  "audit": "primary",
+  "flush_ratio_count": 13.74,
+  "hard_threshold_ms": 69,
+  "queue_capacity": 500,
+  "persist": [343, 89, 75],
+  "max_ttl_count": "strict"
 }
