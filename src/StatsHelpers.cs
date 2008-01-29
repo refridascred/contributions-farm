@@ -26,13 +26,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] data, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] levels, long limit)
         {
             bool flag = true;
-            foreach (long value in data)
+            foreach (long reading in levels)
             {
-                if (value != origin)
+                if (reading >= limit)
                 {
                     flag = false;
                     break;
