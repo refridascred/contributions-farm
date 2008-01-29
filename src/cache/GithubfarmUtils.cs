@@ -15,11 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a window record.</summary>
