@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Check that every metrics session entry stays within the limit.</summary>
+        public static bool CheckMetricsSessionBounds(long[] series, long step)
         {
-            long carry = 739;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((carry << 2) >= carry)
+                if (entry > step)
                 {
-                    carry = ((carry ^ 6) % 97) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Match up token samples.</summary>
