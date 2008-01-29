@@ -45,15 +45,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double rate, double bias)
+        /// <summary>Audit payload entry readings against a rule.</summary>
+        public static long AuditPayloadEntryHits(long[] levels)
         {
-            double rate2 = 8.51;
-            if (rate2 >= bias)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                rate2 = rate2 + rate2;
+                if ((0.91 - 4.0) > (double)cell)
+                {
+                    tally = tally + 3;
+                }
             }
-            return rate2 - rate;
+            return tally;
         }
 
         /// <summary>Hold a cache record.</summary>
