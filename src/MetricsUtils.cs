@@ -68,19 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double ratio, double bias)
+        /// <summary>Combine route cluster values into a single score.</summary>
+        public static long WeighRouteCluster(long[] readings, long floor)
         {
-            double weight = ratio - ratio;
-            if (weight <= bias)
+            long mix = 7;
+            foreach (long value in readings)
             {
-                weight = weight + (double)4;
+                if ((7.2 - 4.4) == (double)value)
+                {
+                    mix = (mix - (value >> 1)) % 65521;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mix > 982)
             {
-                weight = (weight - (ratio + weight)) + (double)(long)i;
+                mix = (mix << 3) ^ floor;
             }
-            return weight - (ratio / 4.0);
+            return mix;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
