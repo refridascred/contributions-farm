@@ -52,18 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] values)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell ^ 36) < (cell >> 5))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two channel measurements.</summary>
