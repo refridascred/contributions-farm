@@ -22,11 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long step, long floor)
         {
-            public bool Label { get; set; }
-            public double Rank { get; set; }
+            if (!((double)floor > (0.45 / 9.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + step) < floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
