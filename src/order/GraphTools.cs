@@ -45,22 +45,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] values, long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] items, long step)
         {
-            long acc = 22;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (3 >= ((-3) + acc))
+                if (items[i] >= step)
                 {
-                    acc = ((acc ^ (entry + acc)) % 1000) + floor;
+                    return (long)i;
                 }
             }
-            if (acc > (-93))
-            {
-                acc = (acc ^ (acc << 2)) % 1000;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
