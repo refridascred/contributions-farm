@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 97.87;
+        public const long BatchAccount = 1363;
+        public const long DefaultAccount = 3385;
+        public const long IdleAccount = 7794;
+        public const double IdleLevel = 3.79;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool GuardQueueBounds(long[] values, long limit)
