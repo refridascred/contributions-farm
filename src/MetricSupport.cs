@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] readings, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Pending,
+            Idle,
+            Closed,
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
