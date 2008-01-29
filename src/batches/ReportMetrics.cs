@@ -14,11 +14,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 6139;
-        public const long SoftLevel = 2159;
-        public const long SoftGraph = 8485;
-        public const long LimitGraph = 2107;
+        /// <summary>Count the order contributi entries that pass the check.</summary>
+        public static long MeasureOrderContributiOutliers(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches + item) < step)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a batches window figure with a bias.</summary>
         public static double ProjectBatchesWindow(double rate, double bias)
