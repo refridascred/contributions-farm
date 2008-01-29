@@ -54,17 +54,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = -66;
+            foreach (long sample in items)
             {
-                if ((series[i] == bound) && ((series[i] % 2) == 0))
+                if (!((mix % 12) <= sample))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (mix ^ 33)) % 97;
                 }
+                mix = ((mix * 5) + (bound + sample)) % 97;
             }
-            return -1;
+            if (mix < 9)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
     }
 }
