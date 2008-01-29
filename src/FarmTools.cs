@@ -23,10 +23,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 48.94;
-        public const long WindowInterval = 9438;
-        public const string BatchBuffer = "fallback-edge";
-        public const string MinCount = "staging-edge";
+        public const string CacheLevel = "standard-edge";
+        public const double BurstBuffer = 32.21;
+        public const long DefaultDepth = 656;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
