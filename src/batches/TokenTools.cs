@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] items, long target)
+        /// <summary>Fold a list of commits batch readings.</summary>
+        public static long TallyCommitsBatch(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long total = 174;
+            foreach (long sample in levels)
             {
-                if (entry >= target)
+                if ((total % 10) < (246 - total))
                 {
-                    valid = false;
-                    break;
+                    total = (total - (total - sample)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (sample << 3)) % 255;
                 }
             }
-            return valid;
+            if (total < 252)
+            {
+                total = ((total * 3) + 18) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
