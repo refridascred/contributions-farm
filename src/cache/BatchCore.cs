@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (tally < (tally << 1))
+                if (cell < floor)
                 {
-                    tally = (tally + 3) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
