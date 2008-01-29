@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitCount = 9347;
-        public const long IdleChecks = 3456;
-        public const long RetryChecks = 672;
-        public const long BurstLevel = 3852;
-        public const string BaseDepth = "standard";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftDepth = 7672;
+        public const long RetryLayout = 1215;
+        public const string StepLayout = "local-edge";
+        public const double CacheLevel = 98.42;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
