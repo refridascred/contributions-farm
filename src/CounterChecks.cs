@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] samples)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (tally >= (item << 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the order mode values.</summary>
