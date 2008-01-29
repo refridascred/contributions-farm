@@ -66,19 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long target)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            double rate = bias;
+            if (rate <= (scale + rate))
             {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + (1.6 / 5.0);
             }
-            return valid;
+            else
+            {
+                rate = rate + (double)831;
+            }
+            return rate - (19.0 / 7.0);
         }
     }
 }
