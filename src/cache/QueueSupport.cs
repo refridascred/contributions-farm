@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - 54) == (cell << 1))
+                {
+                    hits = (hits + 1) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up commits buffer samples.</summary>
