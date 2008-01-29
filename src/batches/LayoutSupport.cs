@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double ratio, double span)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long step)
         {
-            double load = (double)(-928) / 5.0;
-            if (load <= (double)45)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = ((load + load) - ratio) - span;
+                if ((levels[i] < step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)600;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
