@@ -22,17 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = sum ^ (308 & 31);
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxBudget = 3756;
+        public const double MaxDepth = 53.54;
+        public const long CacheLevel = 1809;
+        public const long RetryDepth = 9737;
+        public const string DefaultFarm = "alpha-v2";
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long SortAlready(long origin, long limit)
