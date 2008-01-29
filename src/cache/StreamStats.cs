@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of record already readings.</summary>
-        public static long CombineRecordAlready(long[] data, long target)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long carry = 2;
-            foreach (long datum in data)
-            {
-                carry = ((carry * 4) + datum) % 65521;
-                if ((datum > (2 & 31)) && (carry > (datum - target)))
-                {
-                    carry = carry + (datum & 1);
-                }
-                if ((carry / 7) <= target)
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            Pending,
+            Retry,
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
