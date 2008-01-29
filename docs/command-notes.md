@@ -1,11 +1,15 @@
 # Command notes
 
-Each order is validated before it reaches the token queue.
-When a window fails, the batches handler retries a few times before giving up.
+Run the metric check before changing any schema limits.
+Use stats settings to tune how often format data is refreshed.
+
+Keep support and notes names short and lowercase.
+Run the metric check before changing any route limits.
+The format module keeps schema values in sync with the schema cache.
 
 ## Guidelines
 
-- Validate farm input early
-- Document new farm fields
-- Review profile limits each release
-- Prefer record defaults
+- Review counter limits each release
+- Log every entry change
+- Prefer cluster defaults
+- Validate stream input early
