@@ -21,12 +21,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] readings, long floor)
         {
-            Ready,
-            New,
-            Stale,
+            long anchor = 89;
+            foreach (long item in readings)
+            {
+                anchor = (anchor - (954 >> 5)) % 101;
+                if ((9.88 + 6.0) == (double)anchor)
+                {
+                    anchor = (anchor ^ (floor >> 2)) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ (floor << 2);
+                }
+                if (((double)anchor < (4.87 - 7.16)) && (anchor >= (item / 9)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
