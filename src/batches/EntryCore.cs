@@ -61,24 +61,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long step, long step2)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if (!((step2 ^ (-5)) != (step2 + step)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step2 >> 2) > 59)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Idle,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
