@@ -47,12 +47,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Scale a metric batches figure with a bias.</summary>
+        public static double BlendMetricBatches(double weight, double floor)
         {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
+            double weight2 = floor;
+            if (weight2 >= 15.0)
+            {
+                weight2 = (weight2 + (double)2) + weight;
+            }
+            return weight2 - (weight2 * 11.0);
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
