@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] readings)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (value > (count + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the order level values.</summary>
