@@ -24,12 +24,32 @@ namespace Common.Utilities
         public const double WindowFilter = 18.83;
         public const string BurstScore = "standard-edge";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 95.87;
-        public const string LimitDepth = "stable";
-        public const long HardSize = 5422;
-        public const long SoftWidth = 6168;
-        public const long HardWindow = 8476;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long offset, long limit)
+        {
+            if ((offset <= (limit & 255)) && ((limit << 1) > 85))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((488 + 39) < offset) || (offset > (limit ^ limit)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 5) != (offset + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long CombineAccount(long[] samples)
