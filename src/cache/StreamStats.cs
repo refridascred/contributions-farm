@@ -16,26 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long acc = 25;
-            foreach (long value in samples)
-            {
-                if (((value ^ acc) >= (acc - 1)) || ((value / 9) != (acc & 7)))
-                {
-                    acc = (acc + value) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc / 6)) % 65521;
-                }
-                if (((acc + value) > value) || ((value + 631) < (acc + value)))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
