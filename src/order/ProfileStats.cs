@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank cache schema input into a small class.</summary>
-        public static long GradeCacheSchema(long offset, long floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long step = offset ^ floor;
-            if (((floor << 2) <= (offset * 4)) || ((step % 10) >= (offset % 16)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + step) >= (step + 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset > (8 + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset / 3) < (floor >> 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
