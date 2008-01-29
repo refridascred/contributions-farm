@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 7741;
-        public const double SoftReport = 65.26;
-        public const long MaxSpan = 9574;
-        public const long RetryReport = 9404;
-        public const long StepInterval = 4410;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally + tally) <= (tally * 3))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next metric window value.</summary>
         public static double SmoothMetricWindow(double weight, double offset)
