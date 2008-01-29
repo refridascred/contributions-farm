@@ -49,31 +49,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long step, long limit)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            if (((step + limit) >= (limit + step)) && ((limit - step) < step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (3.0 > (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((19.0 + 15.0) <= (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
