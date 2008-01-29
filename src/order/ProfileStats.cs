@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] data, long limit)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample ^ sample) < seen)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) - limit;
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
