@@ -40,39 +40,15 @@ namespace Common.Utilities
             return ratio - (double)862;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long limit, long floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double scale, double bias)
         {
-            long slot = limit - floor;
-            if ((2.0 - 6.0) <= (double)floor)
+            double scale2 = scale;
+            if (scale2 < (bias * 6.0))
             {
-                return 8;
+                scale2 = scale2 + (0.15 * 1.8);
             }
-            else
-            {
-                if ((floor - floor) >= (0 * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit - limit) == (slot - floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((floor / 5) > limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return scale2 - bias;
         }
 
         /// <summary>Hold a entry header.</summary>
