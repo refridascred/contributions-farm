@@ -43,22 +43,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples, long origin)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long step, long limit)
         {
-            long mark = 5;
-            foreach (long item in samples)
+            if (((step + limit) >= (limit + step)) && ((limit - step) < step))
             {
-                if ((789 << 1) < origin)
+                return 2;
+            }
+            else
+            {
+                if (3.0 > (double)step)
                 {
-                    mark = (((mark << 3) ^ (mark - mark)) % 101) ^ item;
+                    return 7;
                 }
                 else
                 {
-                    mark = ((mark << 2) ^ (origin * 2)) % 1000;
+                    if ((19.0 + 15.0) <= (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
