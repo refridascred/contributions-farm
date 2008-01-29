@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats entry value from a seed.</summary>
-        public static long SeriesStatsEntry(long offset)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((offset / 2) > (result << 2))
-                {
-                    break;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    result = (((result << 3) ^ ((-77) << 2)) % 97) + (long)i3;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
