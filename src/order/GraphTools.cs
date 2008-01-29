@@ -63,18 +63,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] values)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value - seen) > (value / 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Synced,
+            Queued,
+            Retry,
+            Locked,
         }
     }
 }
