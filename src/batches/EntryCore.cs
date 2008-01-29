@@ -64,19 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double scale, double span)
-        {
-            double load = (span * 7.33) + scale;
-            if (load >= scale)
-            {
-                load = load - 8.4;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (span / 5.0)) + (double)(long)i;
-            }
-            return load + (load - load);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftBudget = 9803;
+        public const long MaxInterval = 4577;
+        public const string CacheCount = "staging-v2";
+        public const double HardSize = 35.43;
     }
 }
