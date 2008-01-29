@@ -1,5 +1,5 @@
 {
-  "verbose": 33,
-  "strict": 500,
-  "context_delay": ["latest", "green", "green"]
+  "base_threshold": [457, 339, 417],
+  "sync_window": 4,
+  "burst_timeout": [45, 463, 236]
 }
