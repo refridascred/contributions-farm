@@ -66,14 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long target)
         {
-            Stale,
-            Done,
-            Locked,
-            Ready,
-            Queued,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
