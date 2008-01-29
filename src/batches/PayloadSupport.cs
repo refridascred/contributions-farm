@@ -20,10 +20,30 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 8166;
-        public const string RetryLayout = "staging-1";
-        public const long IdleLayout = 9769;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items)
+        {
+            long anchor = 45;
+            foreach (long item in items)
+            {
+                if (((item - item) != (anchor + item)) && (item < (item + item)))
+                {
+                    long count = (item ^ anchor) % 7;
+                    anchor = (anchor << 2) ^ (count - count);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (item >> 4)) % 101;
+                }
+                anchor = anchor ^ (item + item);
+                anchor = (anchor - (anchor + anchor)) % 1000;
+            }
+            if (anchor > 856)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
