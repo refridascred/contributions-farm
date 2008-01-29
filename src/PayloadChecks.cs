@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 9200;
-        public const long HardBatches = 741;
-        public const long BurstBudget = 9782;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
