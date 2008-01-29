@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] items, long limit)
         {
-            Idle,
-            Stale,
-            Locked,
-            Retry,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((limit - limit) <= tally))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many stream tools samples are out of range.</summary>
