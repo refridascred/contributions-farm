@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a stats filter reading.</summary>
-        public static double ProjectStatsFilter(double bias, double floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] series, long offset)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = (bias2 + bias) + (double)(long)i;
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - (bias2 + floor);
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
