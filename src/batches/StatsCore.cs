@@ -65,13 +65,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            Draft,
+            Done,
+            Pending,
+            Idle,
+            Ready,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
