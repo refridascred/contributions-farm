@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Failed,
+            Synced,
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
