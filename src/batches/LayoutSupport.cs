@@ -23,11 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultSpan = 3659;
-        public const long IdleRoute = 4669;
-        public const long WindowWidth = 6401;
-        public const string SoftDepth = "open";
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double ratio, double offset)
+        {
+            double load = (0.74 + 7.79) + offset;
+            if (load >= (double)2)
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (ratio + load)) + (double)(long)i;
+            }
+            return load - (ratio + offset);
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelGaps(long[] series)
