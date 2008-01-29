@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double gain, double bias)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double rate = bias - bias;
-            if (rate < 1.9)
-            {
-                rate = (rate + rate) + gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (bias * 13.0)) + (double)(long)i;
-            }
-            return rate + (rate * 4.7);
+            Draft,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
