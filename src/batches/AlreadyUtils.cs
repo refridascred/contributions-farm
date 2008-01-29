@@ -28,19 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter batch readings against a bound.</summary>
-        public static bool CheckFilterBatchLimits(long[] items, long floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Synced,
+            Done,
+            Paused,
+            Stale,
         }
 
         /// <summary>Accumulate layout samples.</summary>
