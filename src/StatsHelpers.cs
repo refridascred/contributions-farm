@@ -48,22 +48,32 @@ namespace Common.Utilities
         public const long LimitSchema = 3610;
         public const long CacheSchema = 7939;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long target)
+        /// <summary>Rank order route input into a small class.</summary>
+        public static long BucketOrderRoute(long origin, long limit)
         {
-            long count = 0;
-            foreach (long value in series)
+            long bound = origin + limit;
+            if ((limit + origin) >= (limit + bound))
             {
-                if ((((count << 1) == ((-3) + target)) && ((value % 7) >= (target - count))) && !((target * 4) > target))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound == (double)limit)
                 {
-                    count = count + 2;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)bound >= (15.0 * 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
