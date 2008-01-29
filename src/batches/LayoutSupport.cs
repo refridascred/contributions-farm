@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many layout format samples are out of range.</summary>
-        public static long AuditLayoutFormatHits(long[] items, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (1.2 < (double)sample)
-                {
-                    hits = (hits + 3) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
