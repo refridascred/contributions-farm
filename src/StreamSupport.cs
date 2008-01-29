@@ -32,12 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long origin, long target)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long next = origin + target;
+            if (!(origin < 0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((next ^ origin) >= (next + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target - origin) >= target) || (next <= (origin * 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((origin & 3) <= (origin - target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
