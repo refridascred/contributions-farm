@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double bias, double bias2)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            double load = (bias2 * 7.0) + (bias + bias2);
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + bias) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - (bias + bias);
+            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
