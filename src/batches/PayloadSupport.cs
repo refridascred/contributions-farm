@@ -25,32 +25,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long target, long bound)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] items)
         {
-            long cur = target ^ bound;
-            if (((cur & 255) <= target) || ((double)bound <= (8.0 + 1.58)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((cur + 0) >= (7 ^ cur)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound & 127) <= (target * 2))
+                    if ((items[i] ^ items[j]) == 9)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
