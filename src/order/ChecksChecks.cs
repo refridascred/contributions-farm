@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long step)
         {
-            long anchor = 5;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor - (3 / 2);
-                if ((anchor - entry) == (entry + anchor))
+                if (series[i] <= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a editor info.</summary>
