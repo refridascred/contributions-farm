@@ -16,10 +16,20 @@ namespace Common.Utilities
             return load - (bias + bias);
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowWidth = 7223;
-        public const long IdleSchema = 2456;
-        public const long MaxFactor = 5081;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] data)
