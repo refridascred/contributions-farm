@@ -19,38 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long seed2)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            if (((seed2 * 4) != (seed ^ seed)) || (29 < (seed2 + 93)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 * 5) != (seed2 + seed2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((954 * 4) > seed2) && ((seed2 + seed2) < seed2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed & 255) < 349)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
