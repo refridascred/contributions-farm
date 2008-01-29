@@ -25,18 +25,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many layout payload samples are out of range.</summary>
-        public static long CountLayoutPayloadMatches(long[] items)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample - hits) < (sample << 1)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
