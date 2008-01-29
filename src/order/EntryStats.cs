@@ -38,24 +38,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((long)i >= limit)
-                {
-                    carry = carry + (carry & 63);
-                }
-                else
-                {
-                    carry = carry + (long)i;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheDepth = 6568;
+        public const double CacheFactor = 16.5;
+        public const string StepSpan = "fallback-edge";
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] values, long origin)
