@@ -16,39 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a report batches pair into a bucket.</summary>
-        public static long SortReportBatches(long limit, long offset)
-        {
-            if ((1 - limit) == (limit - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 63) <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit >= (offset / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((18.0 / 8.0) > (double)offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 4082;
+        public const double BatchFilter = 26.03;
+        public const long RetryFilter = 9699;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long MatchReportCount(long[] items)
