@@ -53,14 +53,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] series)
         {
-            Paused,
-            Ready,
-            Draft,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((24 + matches) > (9 >> 5))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
