@@ -1,10 +1,4 @@
 # entry settings
-sync_size_ms: blue
-hard_ttl_count: true
-min_capacity_ms: true
-cluster_interval: 100
-base_depth_count:
-  - eu-west
-  - eu-west
-  - local
-strict: primary
+flush_threshold: blue
+enabled: false
+token_size: 96.82
