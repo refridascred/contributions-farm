@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a buffer notes sample.</summary>
-        public static long LocateBufferNotesIndex(long[] values, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                if (!!((16 + result) != ((long)i % 3)))
                 {
-                    return (long)i;
+                    result = (result - (floor + floor)) % 101;
+                    result = result ^ (long)i;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
