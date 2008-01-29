@@ -1,8 +1,9 @@
 {
-  "cache_capacity_ms": "primary",
-  "compress": ["blue", "legacy"],
-  "warm_ttl_pct": true,
-  "context_size": "stable",
-  "poll_capacity_count": false,
-  "burst_ttl_pct": [188, 451, 360]
+  "profile_interval": true,
+  "warm_threshold_ms": {
+    "counter_depth": ["fallback", "edge"],
+    "batch_ttl": ["green", "blue", "staging"],
+    "compress": "cached"
+  },
+  "retry_window": "green"
 }
