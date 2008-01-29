@@ -81,15 +81,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double ratio, double offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double load = (ratio + offset) + (ratio + ratio);
-            if (load <= (ratio - load))
-            {
-                load = load + (double)2;
-            }
-            return load - load;
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
