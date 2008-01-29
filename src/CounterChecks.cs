@@ -38,13 +38,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 48.78;
+        public const double WindowSpan = 56.69;
+        public const double SoftFarm = 5.69;
+        public const long MaxDepth = 2590;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] series, long seed)
