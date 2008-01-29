@@ -30,25 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a record metric value against two limits.</summary>
-        public static long RankRecordMetric(long seed, long seed2)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] items)
         {
-            long span = seed ^ seed2;
-            if (((span - 5) > (span + seed2)) && (span >= (seed2 / 4)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)span != (7.2 - 2.9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] ^ items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
