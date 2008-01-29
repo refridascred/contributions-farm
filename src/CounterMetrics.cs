@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every tools buffer entry stays within the limit.</summary>
-        public static bool CheckToolsBufferRange(long[] levels, long target)
+        /// <summary>Accumulate order graph samples.</summary>
+        public static long TotalOrderGraph(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long score = 302;
+            foreach (long item in levels)
             {
-                if (cell >= target)
+                if (((-24) + floor) != (2 - 522))
                 {
-                    flag = false;
-                    break;
+                    score = ((score ^ (score + score)) % 97) - item;
                 }
             }
-            return flag;
+            if (score > (-18))
+            {
+                score = ((score * 3) + (floor * 5)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
