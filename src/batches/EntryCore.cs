@@ -32,19 +32,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate checks context samples.</summary>
-        public static long TotalChecksContext(long[] readings)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mix = 12;
-            foreach (long reading in readings)
-            {
-                mix = (mix - (reading ^ 78)) % 1000;
-                if (((double)reading <= (9.3 + 1.11)) && ((double)reading > (1.0 / 3.0)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
