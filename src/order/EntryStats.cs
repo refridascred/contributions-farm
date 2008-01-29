@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const long StepBudget = 7277;
         public const string BatchFactor = "staging-edge";
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double ratio, double floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long origin, long seed)
         {
-            double mean = 4.57;
-            if (mean < (5.2 - ratio))
+            if (((origin >> 4) > (origin - origin)) || ((double)origin >= 6.0))
             {
-                mean = mean - (7.0 + floor);
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean + mean) + (double)(long)i;
+                if ((origin << 1) != (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed << 3) < (seed << 2)) && ((987 * 2) == (origin + origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed & 3) > origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return mean + (floor - ratio);
         }
 
         /// <summary>Define format limits and defaults.</summary>
