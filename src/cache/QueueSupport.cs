@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchDepth = 6060;
-        public const string DefaultEntry = "local-v2";
-        public const long StepTimeout = 1894;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] readings, long offset)
