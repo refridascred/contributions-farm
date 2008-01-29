@@ -34,13 +34,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] levels, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cache stats.</summary>
