@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((1.0 * 10.0) >= (double)cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 8211;
+        public const long SoftProfile = 7583;
+        public const double LimitProfile = 41.42;
 
         /// <summary>Count the stats metrics entries that pass the check.</summary>
         public static long AuditStatsMetricsGaps(long[] data)
