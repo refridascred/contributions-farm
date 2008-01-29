@@ -25,10 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseFactor = 4259;
-        public const long IdleBuffer = 8663;
-        public const double IdleCount = 86.22;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long ClassifyFilter(long target, long bound)
