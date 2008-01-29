@@ -13,12 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Pending,
+            Synced,
+            Locked,
             Active,
-            Draft,
         }
 
         /// <summary>Measure how many order queue samples are out of range.</summary>
