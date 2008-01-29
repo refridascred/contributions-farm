@@ -54,31 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long target, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] items)
         {
-            if (((649 - target) == (5 << 2)) && ((double)target > 7.88))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 12) >= target)
+                if ((item + matches) > (204 / 9))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) < (bound & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit batches checks readings against a rule.</summary>
