@@ -53,12 +53,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Project the next already metrics value.</summary>
+        public static double BlendAlreadyMetrics(double ratio, double bias)
         {
-            Stale,
-            Ready,
-            Dropped,
+            double gain = (double)(6 % 2);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain - ratio) - (double)(long)i) + bias;
+            }
+            return gain - gain;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
