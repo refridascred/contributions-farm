@@ -47,18 +47,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double weight, double bias)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            double mean = bias;
+            if (mean < 4.81)
             {
-                state = (state << 3) ^ (state << 3);
-                state = (state + (764 * 2)) % 255;
-                state = ((state * 2) + (floor + (-79))) % 97;
-                state = ((state * 5) + (long)i) % 65521;
+                mean = mean + bias;
             }
-            return state;
+            else
+            {
+                mean = mean - (12.0 - weight);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (weight * 7.12)) + (double)(long)i;
+            }
+            return mean + (bias / 7.0);
         }
 
         /// <summary>Hold a batches options.</summary>
