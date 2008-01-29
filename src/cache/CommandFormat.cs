@@ -42,15 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema buffer counter forward.</summary>
-        public static long StepSchemaBuffer(long floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mark;
+            return mix;
         }
     }
 }
