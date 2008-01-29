@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels, long seed)
         {
-            long state = 745;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                state = (state * 2) + state;
-                if (limit <= (cell - state))
+                if ((17.0 * 7.8) >= (double)cell)
                 {
-                    state = (state + (cell / 8)) % 255;
+                    tally = (tally + 1) - seed;
                 }
                 else
                 {
-                    state = ((state * 5) + (775 << 3)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the batch account entries that pass the check.</summary>
