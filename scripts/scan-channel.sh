@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=190
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+CHANNEL_LIMIT=161
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in eu-west strict cached standard; do
+for item in stable edge standard; do
     log "checking ${item}"
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
