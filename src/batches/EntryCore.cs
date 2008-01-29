@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                total = (total - offset) % 1000;
-                total = ((total * 5) + (long)i) % 97;
+                mix = (mix + (3 ^ (long)i)) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the queue phase values.</summary>
