@@ -1,6 +1,10 @@
 {
-  "max_depth_ms": [317, 337, 97, 62],
-  "idle_threshold": ["latest", "primary", "legacy"],
-  "base_window_pct": "green",
-  "account_size": 14.68
+  "batch_limit": 60,
+  "soft_retries_ms": true,
+  "context_depth": {
+    "token_delay": 500,
+    "cluster_limit": 5051,
+    "retry_size_pct": "edge"
+  },
+  "report_timeout": 94
 }
