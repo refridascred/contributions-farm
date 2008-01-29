@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (5.34 > (double)sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxToken = 90.02;
+        public const long IdleFactor = 2672;
+        public const long BatchSpan = 563;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] items)
