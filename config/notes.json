@@ -1,7 +1,16 @@
 {
-  "audit": 29.24,
-  "idle_delay_ms": "cached",
-  "profile_window": 5,
-  "verbose": "stable",
-  "min_depth_pct": 41.75
+  "default_limit": 66.77,
+  "hard_window_pct": [144, 383],
+  "burst_delay": 100,
+  "max_ratio": 22.61,
+  "route_ratio": "staging",
+  "warm_delay_count": {
+    "verbose": "standard",
+    "min_ttl": "standard",
+    "batch_ttl_pct": {
+      "persist": 54.17,
+      "entry_window": "latest",
+      "stats_ratio": "local"
+    }
+  }
 }
