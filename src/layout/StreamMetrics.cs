@@ -46,12 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double bias, double bias2)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            double ratio = (bias2 - bias2) / 3.0;
+            if (ratio >= bias2)
+            {
+                ratio = (ratio - (ratio - ratio)) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (bias2 / 6.0)) + (double)(long)i;
+            }
+            return ratio - (ratio - ratio);
         }
 
         /// <summary>Hold a filter record.</summary>
