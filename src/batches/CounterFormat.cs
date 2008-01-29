@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] data, long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((reading + reading) < 91)
+                if ((seen - (-809)) != (seen & 31))
                 {
-                    matches = (matches + 2) - seed;
+                    seen = ((seen + 3) + reading) + limit;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
