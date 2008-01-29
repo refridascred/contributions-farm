@@ -64,31 +64,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats context pair into a bucket.</summary>
-        public static long GradeStatsContext(long seed, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            if ((16.0 / 8.0) != (double)bound)
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
+                carry = carry - (54 + offset);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)seed <= (0.7 / 8.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound & 1) == (seed - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Project the next payload value.</summary>
