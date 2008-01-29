@@ -1,14 +1,15 @@
 # support settings
-max_size_s:
-  - 467
-  - 222
-  - 15
-soft_delay_s: green
-audit:
-  - 111
-  - 407
-  - 120
-  - 469
-context_timeout: 79.44
-default_timeout_count: edge
-sync_threshold_count: 3635
+hard_size:
+  batch_timeout_ms:
+    poll_ttl_ms: strict
+    checks_window: false
+    retry_threshold: false
+    idle_size_count:
+      - stable
+      - standard
+      - eu-west
+    min_limit_pct: 30
+  poll_size_pct: false
+  batch_retries_pct: 100
+flush_delay: green
+compress: 9
