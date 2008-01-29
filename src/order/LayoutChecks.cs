@@ -64,14 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Idle,
-            Ready,
             Synced,
-            Stale,
-            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a cache record.</summary>
