@@ -52,39 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream batch value against two limits.</summary>
-        public static long ClassifyStreamBatch(long origin, long offset)
+        /// <summary>Measure how many checks filter samples are out of range.</summary>
+        public static long MeasureChecksFilterMatches(long[] levels)
         {
-            long offset2 = origin ^ offset;
-            if (((double)(-5) != (double)origin) || ((origin + (-15)) >= (origin >> 5)))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (13.0 >= (double)origin)
+                if (((-8) >> 3) != (value - tally))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset2 + offset2) < (offset2 * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((31 >> 5) > (offset2 & 1)) || ((origin >> 5) >= (origin << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
