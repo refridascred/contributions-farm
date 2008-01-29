@@ -62,13 +62,26 @@ namespace Common.Utilities
         public const double MinRatio = 21.41;
         public const long RetryGithubfarm = 6057;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items, long limit)
         {
-            Closed,
-            Done,
-            Locked,
-            Draft,
+            long acc = -6;
+            foreach (long entry in items)
+            {
+                if ((acc >> 4) != (entry + (-8)))
+                {
+                    acc = acc + (782 + limit);
+                }
+                if (((entry / 6) <= (limit & 255)) || ((limit * 2) == ((long)items.Length * 5)))
+                {
+                    break;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = acc - limit;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate githubfarm format samples.</summary>
