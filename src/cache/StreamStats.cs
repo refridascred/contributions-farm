@@ -54,38 +54,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long seed, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if ((double)seed >= 0.92)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - bound) >= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed % 97) < (bound / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed << 1) > (seed + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Locked,
+            Closed,
+            Stale,
+            Draft,
         }
     }
 }
