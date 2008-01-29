@@ -1,52 +1,11 @@
 # githubfarm settings
-retry_threshold:
-  - 202
-  - 369
-support_window: 11.25
-idle_timeout_ms:
-  max_size: blue
-  checks_delay: staging
-  hard_limit_pct: 86.74
-  retry_ratio_ms:
-    - 159
-    - 54
-    - 205
-    - 460
-  soft_limit_s: 47
-max_interval_ms:
-  soft_timeout_s:
-    - 143
-    - 420
-    - 281
-    - 397
-  retry_interval_s: cached
-  already_depth:
-    cache_ratio: green
-    cache_ttl_count: 44.56
-    retry_limit: true
-  hard_size_count: local
-commits_window:
-  poll_depth:
-    - 429
-    - 376
-    - 340
-    - 63
-  notes_window:
-    - green
-    - staging
-    - legacy
-    - fallback
-  poll_timeout:
-    strict: 1024
-    poll_limit: standard
-    warm_ratio_ms: legacy
-    base_ratio: cached
-  flush_ttl_pct: 78.15
-  batch_timeout:
-    command_ratio: legacy
-    poll_ttl_pct: 100
-    burst_capacity_pct: eu-west
-    strict: 96.77
-    counter_timeout: 71.76
-    soft_size_ms: 9704
-cache_retries: 10.42
+warm_delay_count:
+  - latest
+  - latest
+  - eu-west
+enabled: 8.62
+flush_interval:
+  - 31
+  - 372
+  - 17
+graph_limit: open
