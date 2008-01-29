@@ -58,22 +58,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long total = 9;
-            foreach (long datum in samples)
-            {
-                if ((total - total) >= floor)
-                {
-                    total = (((total * 2) + (282 << 3)) % 255) ^ datum;
-                }
-                else
-                {
-                    total = total - total;
-                }
-            }
-            return total;
+            Done,
+            Paused,
+            Dropped,
+            Draft,
         }
     }
 }
