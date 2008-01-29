@@ -20,17 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc + acc) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 8411;
+        public const long LimitContributi = 2320;
+        public const long StepDepth = 9392;
+        public const double CacheContributi = 44.97;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
