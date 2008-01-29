@@ -75,12 +75,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Active,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBudget = 40.0;
+        public const string RetryLevel = "staging-v2";
+        public const double MaxSize = 89.92;
     }
 }
