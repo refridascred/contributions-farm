@@ -13,10 +13,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftInterval = 98.63;
-        public const double DefaultOrder = 97.61;
-        public const long BatchDepth = 7984;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "cached-1";
+        public const long BatchDepth = 8974;
+        public const long IdleWidth = 2894;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferRange(long[] readings, long offset)
