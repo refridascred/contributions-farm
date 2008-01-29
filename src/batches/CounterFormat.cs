@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftInterval = 98.63;
+        public const double DefaultOrder = 97.61;
+        public const long BatchDepth = 7984;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferRange(long[] readings, long offset)
