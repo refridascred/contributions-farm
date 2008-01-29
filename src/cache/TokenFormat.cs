@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            long score = 356;
+            foreach (long sample in series)
+            {
+                score = ((score + (score - score)) % 65521) ^ sample;
+            }
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
