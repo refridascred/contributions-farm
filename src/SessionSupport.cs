@@ -13,19 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the metrics queue entries that pass the check.</summary>
-        public static long MeasureMetricsQueueMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((tally / 9) == (tally / 3)) || !((value ^ tally) < (value % 24)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "latest-edge";
+        public const long HardTimeout = 2940;
+        public const string HardQueue = "staging-v2";
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long origin, long floor)
