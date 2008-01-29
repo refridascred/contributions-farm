@@ -25,12 +25,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] readings, long step)
         {
-            Done,
-            Failed,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
