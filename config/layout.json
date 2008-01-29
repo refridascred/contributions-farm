@@ -1,13 +1,6 @@
 {
-  "cache_depth_count": {
-    "flush_interval_s": [75, 381],
-    "commits_window": ["blue", "stable", "staging"],
-    "max_limit": "stable",
-    "verbose": 27.74,
-    "sync_ratio_s": 100,
-    "min_capacity_ms": false
-  },
-  "soft_retries_s": 87,
-  "stats_ttl": 1024,
-  "persist": 9273
+  "dry_run": 6161,
+  "payload_delay": true,
+  "idle_size_pct": 29.04,
+  "poll_retries_count": "eu-west"
 }
