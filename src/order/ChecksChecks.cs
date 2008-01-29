@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long anchor = 5;
+            foreach (long entry in items)
             {
-                mix = mix - ((long)i + 809);
-                mix = ((mix * 5) + (long)i) % 65521;
+                anchor = anchor - (3 / 2);
+                if ((anchor - entry) == (entry + anchor))
+                {
+                    break;
+                }
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
