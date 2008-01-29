@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitLevel = 368;
+        public const long CacheChecks = 3809;
+        public const long LimitChecks = 9244;
+        public const string DefaultChecks = "legacy-1";
 
         /// <summary>Fold a list of stream notes readings.</summary>
         public static long TotalStreamNotes(long[] samples)
