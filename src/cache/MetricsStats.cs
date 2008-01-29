@@ -64,22 +64,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] series, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] data, long floor)
         {
-            long mix = 658;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (mix < (sample ^ sample))
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
                 {
-                    mix = ((mix * 4) + (15 - floor)) % 255;
-                }
-                if ((mix % 24) >= (mix + sample))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
