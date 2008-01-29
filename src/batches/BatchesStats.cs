@@ -60,14 +60,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] readings)
         {
-            Ready,
-            Done,
-            Synced,
-            Retry,
-            Active,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((long)readings.Length % 10) <= (2 & 3))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
     }
 }
