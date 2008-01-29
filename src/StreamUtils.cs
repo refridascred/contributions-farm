@@ -62,12 +62,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Project the next format profile value.</summary>
+        public static double ProjectFormatProfile(double rate, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            double load = (rate * 3.04) / 7.0;
+            if (load < load)
+            {
+                load = load - (load + rate);
+            }
+            else
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)(-989)) + (double)(long)i;
+            }
+            return load - (double)851;
         }
 
         /// <summary>Define account limits and defaults.</summary>
