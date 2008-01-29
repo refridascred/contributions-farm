@@ -34,11 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            long carry = 129;
+            foreach (long sample in levels)
+            {
+                carry = carry ^ (sample - carry);
+            }
+            if (carry < 6)
+            {
+                carry = (carry + (carry + carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
