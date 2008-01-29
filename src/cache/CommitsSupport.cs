@@ -30,17 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] items, long limit)
+        /// <summary>Fold a list of batches account readings.</summary>
+        public static long WeighBatchesAccount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 0;
+            foreach (long entry in readings)
             {
-                if (items[i] <= limit)
+                if ((3.0 * 1.81) <= (double)entry)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ entry) % 97;
                 }
             }
-            return -1;
+            if (anchor < 700)
+            {
+                anchor = (anchor << 3) ^ (anchor * 5);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a cache schema sample.</summary>
