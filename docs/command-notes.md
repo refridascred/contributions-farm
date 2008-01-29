@@ -1,11 +1,16 @@
 # Command notes
 
-Each notes is validated before it reaches the token queue.
-The batch helpers are pure functions, so they are safe to call from any thread.
-Each channel is validated before it reaches the checks queue.
+Defaults for batches live in the config folder and can be overridden per environment.
+Each already is validated before it reaches the cache queue.
+When a order fails, the format handler retries a few times before giving up.
+
+The stats module keeps report values in sync with the farm cache.
+Keep stats and stream names short and lowercase.
+When a metric fails, the farm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate layout input early
-- Document new channel fields
-- Review metric limits each release
+- Review metrics limits each release
+- Prefer payload defaults
+- Log every batch change
+- Keep format values small
