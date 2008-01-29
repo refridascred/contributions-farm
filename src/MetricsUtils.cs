@@ -76,12 +76,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a queue record sample.</summary>
+        public static long LookupQueueRecordIndex(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] <= limit)
+                if (data[i] == bound)
                 {
                     return (long)i;
                 }
