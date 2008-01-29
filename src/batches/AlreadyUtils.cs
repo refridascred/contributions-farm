@@ -44,17 +44,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a command entry reading by value.</summary>
-        public static long SeekCommandEntryIndex(long[] items, long target)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit token readings against a rule.</summary>
