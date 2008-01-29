@@ -63,18 +63,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples, long target)
+        /// <summary>Digest a series of queue cluster entries.</summary>
+        public static long FoldQueueCluster(long[] series)
         {
-            long result = 2;
-            foreach (long entry in samples)
+            long score = 5;
+            foreach (long sample in series)
             {
-                if (((5.0 + 4.29) < (double)target) && ((entry & 7) <= (entry / 7)))
-                {
-                    result = (result - (result + entry)) % 97;
-                }
+                score = ((score * 3) + (score + score)) - sample;
             }
-            return result % 1000;
+            return score % 65521;
         }
     }
 }
