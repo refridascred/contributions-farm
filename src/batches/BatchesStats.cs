@@ -33,25 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (limit >= (limit - anchor))
-                {
-                    anchor = anchor - (anchor + anchor);
-                    continue;
-                }
-                else
-                {
-                    long delta = limit + (limit + limit);
-                    anchor = (anchor * 2) + (delta - (-57));
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
