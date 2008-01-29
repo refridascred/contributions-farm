@@ -46,11 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardRatio = "strict-1";
-        public const double HardCounter = 23.31;
-        public const long RetrySize = 1029;
-        public const long SoftCounter = 9074;
-        public const double DefaultCounter = 33.8;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((target & 15) > entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
