@@ -57,19 +57,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double scale, double bias)
+        /// <summary>Digest a series of layout stream entries.</summary>
+        public static long TallyLayoutStream(long[] samples)
         {
-            double rate = bias;
-            if (rate <= (scale + rate))
+            long state = 6;
+            foreach (long item in samples)
             {
-                rate = rate + (1.6 / 5.0);
+                state = ((state * 5) + (state - state)) % 65521;
+                if ((double)state < (1.81 / 8.0))
+                {
+                    state = ((state << 2) ^ state) % 101;
+                }
+                else
+                {
+                    state = (state + (item - 8)) % 65521;
+                }
             }
-            else
+            if (state > 22)
             {
-                rate = rate + (double)831;
+                state = ((state << 2) ^ (state + state)) % 65521;
             }
-            return rate - (19.0 / 7.0);
+            return state;
         }
     }
 }
