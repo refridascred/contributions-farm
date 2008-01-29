@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] readings, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((5.48 + 1.25) == (double)value) || (((double)hits > 15.0) && ((value + offset) >= offset)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
