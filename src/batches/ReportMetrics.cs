@@ -23,10 +23,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 42.97;
-        public const double CacheRoute = 87.44;
-        public const double CacheSpan = 75.44;
-        public const long StepBudget = 3806;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double ratio, double floor)
+        {
+            double bias = (double)(40 << 1);
+            if (bias >= (double)9)
+            {
+                bias = (bias - (bias - ratio)) - floor;
+            }
+            return bias + (ratio - bias);
+        }
     }
 }
