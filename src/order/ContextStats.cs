@@ -24,11 +24,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (reading > (reading << 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout phase values.</summary>
