@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const long RetryRoute = 5218;
         public const long BaseRoute = 8943;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Measure how many payload metrics samples are out of range.</summary>
+        public static long CountPayloadMetricsOutliers(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((370 + 6) < (floor << 1))
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
