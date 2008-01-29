@@ -1,7 +1,7 @@
 {
-  "warm_window": 1282,
-  "cache_window_s": "standard",
-  "base_window_count": 250,
-  "batch_ratio": 24,
-  "burst_threshold_count": 9176
+  "idle_limit_s": "latest",
+  "poll_threshold": 7034,
+  "warm_timeout_s": "staging",
+  "channel_size": ["primary", "staging", "open"],
+  "buffer_ttl": ["edge", "staging", "blue", "fallback"]
 }
