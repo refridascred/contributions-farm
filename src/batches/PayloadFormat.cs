@@ -16,17 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] data, long seed)
+        /// <summary>Project the next cache order value.</summary>
+        public static double AdjustCacheOrder(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (offset + 8.0) + (double)783;
+            if (rate <= (double)160)
             {
-                if ((data[i] < seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - rate;
             }
-            return -1;
+            else
+            {
+                rate = rate - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (weight / 6.0)) - (double)(long)i;
+            }
+            return rate - (offset + 2.51);
         }
 
         /// <summary>Describe the counter phase values.</summary>
