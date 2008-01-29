@@ -28,14 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Find the first cluster profile entry that matches the target.</summary>
+        public static long LocateClusterProfileIndex(long[] items, long step)
         {
-            Closed,
-            Synced,
-            Done,
-            Paused,
-            Stale,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
