@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] levels)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (matches <= 2)
-                {
-                    matches = (matches + 2) + entry;
-                }
+                state = (state ^ (39 << 1)) % 1000;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Match up queue samples.</summary>
