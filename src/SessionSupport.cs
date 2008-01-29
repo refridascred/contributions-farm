@@ -26,18 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] data)
+        /// <summary>Audit payload window readings against a rule.</summary>
+        public static long AuditPayloadWindowHits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((seen - 48) < (seen + value))
+                if ((origin + origin) <= matches)
                 {
-                    seen = seen + 3;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
