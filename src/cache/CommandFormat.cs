@@ -35,10 +35,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "strict-edge";
-        public const double MinLayout = 14.07;
-        public const long CacheLayout = 2632;
-        public const string LimitLayout = "alpha-1";
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items, long seed)
+        {
+            long anchor = 40;
+            foreach (long sample in items)
+            {
+                anchor = ((anchor - anchor) % 97) - seed;
+                if ((18.0 + 5.92) >= (double)sample)
+                {
+                    anchor = (anchor * 4) + (anchor & 3);
+                }
+            }
+            if (anchor > (-2))
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor % 4096;
+        }
     }
 }
