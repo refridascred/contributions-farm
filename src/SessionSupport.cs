@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] values, long offset)
-        {
-            long score = 864;
-            foreach (long item in values)
-            {
-                if (((7.0 - 12.0) >= (double)offset) && ((item + item) != (offset / 5)))
-                {
-                    score = (score + (offset & 15)) % 65521;
-                }
-                score = score ^ 92;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "primary-1";
+        public const string LimitCommand = "staging-v2";
+        public const string BatchCommand = "stable";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatMatches(long[] data)
