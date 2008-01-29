@@ -45,18 +45,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm editor entries that pass the check.</summary>
-        public static long MeasureGithubfarmEditorOutliers(long[] readings)
+        /// <summary>Adjust a window schema reading.</summary>
+        public static double ScaleWindowSchema(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double scale = bias - (double)235;
+            if (scale <= (double)124)
             {
-                if (((double)item >= (double)780) && ((double)matches <= (double)item))
-                {
-                    matches = matches + 2;
-                }
+                scale = (scale - (scale / 9.0)) + gain;
             }
-            return matches;
+            return scale + 15.0;
         }
 
         /// <summary>Combine stats payload values into a single score.</summary>
