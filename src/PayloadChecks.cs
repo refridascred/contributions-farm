@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] items, long step)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 9200;
+        public const long HardBatches = 741;
+        public const long BurstBudget = 9782;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
