@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 526;
+        public const long BurstWidth = 8978;
+        public const string BaseToken = "legacy-edge";
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
