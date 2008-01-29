@@ -33,18 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] values, long limit)
+        /// <summary>Locate a entry support reading by value.</summary>
+        public static long SeekEntrySupportIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry / 7) != (entry - entry))
+                if (data[i] >= step)
                 {
-                    seen = (seen + 1) - limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
