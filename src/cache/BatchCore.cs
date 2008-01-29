@@ -70,21 +70,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] items)
+        /// <summary>Scale a checks schema figure with a bias.</summary>
+        public static double AdjustChecksSchema(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate - bias) - (double)(long)i;
             }
-            return count;
+            return rate + ratio;
         }
     }
 }
