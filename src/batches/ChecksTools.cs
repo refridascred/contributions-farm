@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            Dropped,
-            Active,
-            Draft,
-            New,
-            Pending,
+            long carry = 2;
+            foreach (long datum in series)
+            {
+                if (((datum + 5) > datum) || ((carry + datum) > (9 << 2)))
+                {
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = (carry - ((long)series.Length ^ datum)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the commits mode values.</summary>
