@@ -63,21 +63,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc + offset)) - (long)i2;
                 }
+                acc = acc ^ (offset * 5);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Scale a cluster format figure with a bias.</summary>
