@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Locate a context profile reading by value.</summary>
+        public static long LocateContextProfileIndex(long[] data, long limit)
         {
-            long anchor = 51;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((-59) > (4 + anchor))
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
                 {
-                    anchor = (anchor + sample) % 101;
-                }
-                else
-                {
-                    anchor = anchor + (sample >> 1);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
