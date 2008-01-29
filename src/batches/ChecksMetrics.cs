@@ -34,19 +34,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] levels, long offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (item < offset)
+                if (((long)i << 3) < (39 / 6))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix * 2) + floor;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
