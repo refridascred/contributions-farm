@@ -17,15 +17,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double rate, double floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            double load = floor;
-            if (load < (double)157)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (floor - load)) + rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (load * 17.0);
+            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
