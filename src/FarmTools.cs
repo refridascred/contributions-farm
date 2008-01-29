@@ -28,14 +28,13 @@ namespace Common.Utilities
         public const string BatchBuffer = "fallback-edge";
         public const string MinCount = "staging-edge";
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Locked,
-            Closed,
-            Active,
-            Dropped,
-            Pending,
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
