@@ -38,10 +38,38 @@ namespace Common.Utilities
         public const string BatchBuffer = "fallback-edge";
         public const string MinCount = "staging-edge";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 6724;
-        public const long BaseSpan = 2662;
-        public const long StepRatio = 1590;
-        public const long HardCount = 5759;
+        /// <summary>Grade a channel cluster value against two limits.</summary>
+        public static long SortChannelCluster(long bound, long bound2)
+        {
+            if (!((bound / 2) <= (bound ^ bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (2 >= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound > (bound / 7)) && ((double)bound2 != (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound >> 4) >= (631 >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
