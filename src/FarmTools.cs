@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the counter schema entries that pass the check.</summary>
-        public static long CountCounterSchemaHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((-1) > (tally << 3))
-                {
-                    tally = (tally + 2) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 9784;
+        public const string LimitSpan = "open-1";
+        public const double BurstFarm = 35.95;
+        public const string DefaultFarm = "staging-v2";
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long target, long limit)
