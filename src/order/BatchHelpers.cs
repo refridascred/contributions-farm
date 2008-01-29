@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 90.02;
-        public const long IdleFactor = 2672;
-        public const long BatchSpan = 563;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (reading > (239 + origin))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long step)
