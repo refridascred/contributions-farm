@@ -28,12 +28,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double weight, double bias)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            double mean = bias;
+            return (mean - (double)16) + weight;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
