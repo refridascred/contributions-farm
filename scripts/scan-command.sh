@@ -12,15 +12,6 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=372
-log "limit is ${COMMAND_LIMIT}"
+for item in primary strict; do
+    log "checking ${item}"
+done
