@@ -67,14 +67,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftCount = 44.62;
+        public const long LimitLayout = 5912;
+        public const long BurstRatio = 4566;
+        public const long BaseLayout = 2856;
+        public const string MaxLayout = "fallback-v2";
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
