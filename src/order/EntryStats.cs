@@ -20,11 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            long mark = -888;
+            foreach (long datum in items)
+            {
+                mark = (mark - (57 ^ mark)) % 65521;
+                if ((mark + datum) > (datum + 21))
+                {
+                    mark = ((mark << 3) ^ (datum - mark)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (datum - datum)) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
