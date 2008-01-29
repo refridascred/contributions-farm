@@ -75,5 +75,24 @@ namespace Common.Utilities
             }
             return count;
         }
+
+        /// <summary>Adjust a window schema reading.</summary>
+        public static double ProjectWindowSchema(double gain, double span)
+        {
+            double rate = gain;
+            if (rate > span)
+            {
+                rate = rate - span;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (2.82 / 2.0)) - (double)(long)i;
+            }
+            return rate + (double)4;
+        }
     }
 }
