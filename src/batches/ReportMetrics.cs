@@ -23,20 +23,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] samples, long seed)
-        {
-            long mix = 44;
-            foreach (long entry in samples)
-            {
-                mix = (mix - (entry % 7)) % 255;
-                mix = ((mix * 2) + seed) % 1000;
-                if ((entry << 1) <= (seed << 1))
-                {
-                    mix = mix + (entry % 16);
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 42.97;
+        public const double CacheRoute = 87.44;
+        public const double CacheSpan = 75.44;
+        public const long StepBudget = 3806;
     }
 }
