@@ -46,19 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long mix = 18;
+            foreach (long sample in levels)
             {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix ^ (seed + 770)) % 65521) ^ sample;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Blend two channel measurements.</summary>
