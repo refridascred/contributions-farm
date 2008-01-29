@@ -1,20 +1,6 @@
 {
-  "route_threshold": {
-    "idle_depth": [148, 210],
-    "sync_ratio": {
-      "poll_window_count": true,
-      "audit": 72.62,
-      "session_delay": 9806,
-      "profile_limit": 11.17,
-      "hard_timeout_ms": 1236,
-      "checks_timeout": false
-    },
-    "batch_timeout": 68.09,
-    "idle_ratio_pct": 100
-  },
-  "batch_retries_count": false,
-  "graph_threshold": "green",
-  "warm_limit_ms": false,
-  "enabled": "local",
-  "profile_ratio": true
+  "poll_limit": "latest",
+  "order_ratio": "local",
+  "retry_ratio_s": "edge",
+  "context_ratio": 500
 }
