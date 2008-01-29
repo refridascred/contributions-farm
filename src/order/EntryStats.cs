@@ -38,18 +38,23 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] readings, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((count + count) < (45 + count))
+                if ((long)i >= limit)
                 {
-                    count = ((count + 2) + item) - floor;
+                    carry = carry + (carry & 63);
                 }
+                else
+                {
+                    carry = carry + (long)i;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
