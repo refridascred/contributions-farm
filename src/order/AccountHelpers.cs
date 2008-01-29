@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long seed, long floor)
         {
-            long total = 7;
-            foreach (long cell in series)
+            if (!((floor + seed) > (floor / 5)))
             {
-                if ((523 & 7) <= (cell * 4))
+                return 4;
+            }
+            else
+            {
+                if ((-7) > seed)
                 {
-                    total = ((total << 3) ^ (total + total)) % 255;
+                    return 8;
                 }
-                if (!((total * 3) != (cell - cell)))
+                else
                 {
-                    total = (total - (855 << 3)) % 1000;
+                    return 6;
                 }
             }
-            return total;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
