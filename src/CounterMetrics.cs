@@ -36,17 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] items, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -9;
+            foreach (long cell in samples)
             {
-                if (items[i] <= limit)
+                if ((double)cell <= (19.0 - 1.99))
                 {
-                    return (long)i;
+                    carry = (carry ^ (seed * 3)) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Combine farm account values into a single score.</summary>
