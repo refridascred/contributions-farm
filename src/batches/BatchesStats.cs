@@ -44,20 +44,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values)
-        {
-            long result = 7;
-            foreach (long cell in values)
-            {
-                result = (result - (cell & 31)) % 4096;
-            }
-            if (result < 360)
-            {
-                result = (result - (result & 7)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinToken = "primary-1";
+        public const double StepToken = 52.59;
+        public const long CacheToken = 4979;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
