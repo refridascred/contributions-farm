@@ -27,18 +27,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (3.2 >= (double)matches)
-                {
-                    matches = ((matches + 3) + reading) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitTimeout = 9289;
+        public const string MinLevel = "strict-edge";
+        public const double BurstScore = 52.3;
     }
 }
