@@ -16,10 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 3770;
-        public const string BaseCommand = "strict";
-        public const long BurstDepth = 415;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryDepth = 5555;
