@@ -33,19 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double gain, double bias)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] samples)
         {
-            double ratio = (double)376;
-            if (ratio < (double)583)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                ratio = (ratio - (bias - ratio)) - gain;
+                if (11 <= matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            else
-            {
-                ratio = ratio + 9.0;
-            }
-            return ratio - 5.96;
+            return matches;
         }
     }
 }
