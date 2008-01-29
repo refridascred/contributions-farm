@@ -42,21 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] data)
+        /// <summary>Blend two support payload measurements.</summary>
+        public static double ScaleSupportPayload(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = span * 16.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = ((drift + (span / 8.0)) - (double)(long)i) + rate;
             }
-            return seen;
+            return drift + drift;
         }
 
         /// <summary>Match up buffer samples.</summary>
