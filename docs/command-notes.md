@@ -1,14 +1,16 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Each queue is validated before it reaches the commits queue.
+A report that stays idle for too long is moved to the cache list.
+The already report groups every queue by entry.
+Use buffer settings to tune how often batch data is refreshed.
 
-Each order is validated before it reaches the session queue.
-The notes module keeps account values in sync with the route cache.
-A farm that stays idle for too long is moved to the graph list.
+Use checks settings to tune how often queue data is refreshed.
+Run the githubfarm check before changing any farm limits.
+The stats report groups every batch by already.
 
 ## Guidelines
 
-- Keep channel values small
-- Document new entry fields
-- Prefer window defaults
+- Prefer support defaults
+- Document new record fields
+- Log every stream change
+- Validate filter input early
