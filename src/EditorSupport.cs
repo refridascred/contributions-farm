@@ -62,12 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] items, long offset)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
