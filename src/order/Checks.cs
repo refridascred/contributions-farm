@@ -20,19 +20,31 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Rank payload format input into a small class.</summary>
+        public static long SortPayloadFormat(long seed, long floor)
         {
-            double scale = rate;
-            if (scale > (scale - scale))
+            if ((double)seed <= (11.0 / 2.0))
             {
-                scale = (scale + rate) + offset;
+                return 1;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = (scale + scale) + (double)(long)i;
+                if (((seed % 16) < (seed << 2)) && (floor <= (9 + seed)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - 7) < (seed * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return scale + (double)0;
         }
 
         /// <summary>Rank route input into a small class.</summary>
