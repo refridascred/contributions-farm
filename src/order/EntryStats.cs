@@ -65,22 +65,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Fold a list of editor counter readings.</summary>
+        public static long WeighEditorCounter(long[] samples)
         {
-            long mark = 2;
-            foreach (long cell in values)
+            long acc = -958;
+            foreach (long reading in samples)
             {
-                if ((mark * 4) < (cell + cell))
+                if (((double)reading <= (0.54 * 5.9)) || (((long)samples.Length % 2) < (reading & 3)))
                 {
-                    mark = (mark + cell) % 4096;
-                }
-                if ((double)cell >= (double)mark)
-                {
-                    break;
+                    acc = ((acc * 5) + acc) % 65521;
                 }
             }
-            return mark;
+            if (acc < (-91))
+            {
+                acc = ((acc * 5) + (326 * 4)) % 97;
+            }
+            return acc;
         }
     }
 }
