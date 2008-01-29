@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] series, long floor)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            long sum = 39;
+            foreach (long item in series)
+            {
+                sum = (((sum * 2) + (sum ^ floor)) % 4096) + item;
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
