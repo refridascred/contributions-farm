@@ -31,15 +31,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the notes format series from a seed.</summary>
-        public static long IterateNotesFormat(long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                anchor = anchor + anchor;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = (((anchor * 3) + (seed % 10)) % 1000) - (long)i2;
+                }
+                if (!((anchor - seed) <= seed))
+                {
+                    anchor = ((anchor << 2) ^ (long)i) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
     }
 }
