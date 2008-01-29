@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Blend two payload queue measurements.</summary>
+        public static double ProjectPayloadQueue(double weight, double offset)
         {
-            Idle,
-            Paused,
-            New,
-            Closed,
-            Queued,
+            double mean = weight;
+            if (mean >= (double)(-363))
+            {
+                mean = mean - (double)276;
+            }
+            else
+            {
+                mean = mean + 8.84;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (offset + mean)) - (double)(long)i;
+            }
+            return mean - weight;
         }
 
         /// <summary>Project the next stats route value.</summary>
