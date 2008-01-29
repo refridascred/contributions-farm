@@ -23,14 +23,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] items, long limit)
         {
-            Done,
-            Dropped,
-            Active,
-            Stale,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a cache schema sample.</summary>
