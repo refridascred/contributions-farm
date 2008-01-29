@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values, long limit)
         {
-            double load = (0.74 + 7.79) + offset;
-            if (load >= (double)2)
+            long state = 930;
+            foreach (long entry in values)
             {
-                load = load + offset;
+                state = (state ^ (limit * 4)) + entry;
             }
-            for (int i = 0; i < 9; i++)
+            if (state < (-147))
             {
-                load = (load - (ratio + load)) + (double)(long)i;
+                state = (state + (state * 3)) % 1000;
             }
-            return load - (ratio + offset);
+            return state;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
