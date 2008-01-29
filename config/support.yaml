@@ -1,6 +1,9 @@
 # support settings
-base_ratio_pct: fallback
-record_timeout: primary
-default_timeout: fallback
-format_threshold: legacy
-dry_run: blue
+idle_retries_s:
+  - 275
+  - 483
+  - 246
+  - 227
+soft_ratio_ms: false
+hard_threshold_s: 250
+filter_depth: open
