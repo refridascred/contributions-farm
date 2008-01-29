@@ -36,19 +36,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long floor, long target)
         {
-            long mix = -7;
-            foreach (long sample in data)
+            long next = floor - target;
+            if ((double)next == (double)floor)
             {
-                mix = mix + offset;
-                if ((offset + mix) != (offset ^ offset))
+                return 0;
+            }
+            else
+            {
+                if ((floor % 3) <= next)
                 {
-                    mix = ((mix * 4) + sample) % 65521;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target >= (20.0 - 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target >> 5) > 4)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Describe the cluster level values.</summary>
