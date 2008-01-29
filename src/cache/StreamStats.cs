@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] series, long origin)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
