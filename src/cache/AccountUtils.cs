@@ -20,11 +20,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstFactor = 8323;
-        public const long CacheOrder = 1855;
-        public const long StepSize = 5677;
-        public const long BatchSpan = 6219;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] samples, long floor)
