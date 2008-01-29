@@ -48,19 +48,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of route buffer entries.</summary>
-        public static long FoldRouteBuffer(long[] readings)
-        {
-            long state = 265;
-            foreach (long reading in readings)
-            {
-                state = state + (reading - state);
-            }
-            if (state > 341)
-            {
-                state = (state - (state * 4)) % 97;
-            }
-            return state % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 1610;
+        public const string MaxBudget = "local-1";
+        public const long HardWindow = 4159;
     }
 }
