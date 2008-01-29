@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const double CacheTools = 44.59;
         public const string LimitCount = "primary";
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((1.53 + 4.26) < (double)item)
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
