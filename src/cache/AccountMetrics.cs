@@ -81,38 +81,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long step)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            if ((limit - limit) <= limit)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - 41) != (limit + step))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 8;
+                    long edge = (-294) + (offset / 4);
+                    mark = ((mark << 3) ^ (edge & 1)) ^ (long)i2;
                 }
-                else
+                if ((double)mark >= 6.1)
                 {
-                    if ((limit % 3) <= (step - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (8.63 < (double)step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    long lane = (mark + (long)i) + (mark & 63);
+                    mark = ((mark * 3) + (mark ^ lane)) % 97;
                 }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
+            return mark;
         }
     }
 }
