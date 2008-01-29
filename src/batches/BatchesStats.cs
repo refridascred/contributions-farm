@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((tally + 715) < (entry ^ entry))
                 {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the token schema series from a seed.</summary>
