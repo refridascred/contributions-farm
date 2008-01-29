@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in cached standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in fallback primary open local; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=268
-log "limit is ${BUFFER_LIMIT}"
