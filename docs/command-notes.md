@@ -1,11 +1,11 @@
 # Command notes
 
-The entry module keeps contributi values in sync with the queue cache.
-When a batch fails, the cluster handler retries a few times before giving up.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often record data is refreshed.
+Each notes is validated before it reaches the order queue.
+Use stream settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Validate command input early
 - Log every buffer change
-- Review cache limits each release
+- Review cluster limits each release
+- Prefer buffer defaults
