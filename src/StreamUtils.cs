@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 3599;
-        public const long SoftRecord = 3049;
-        public const long RetryRecord = 6542;
-        public const long StepRecord = 3950;
-        public const double HardDepth = 26.59;
+        /// <summary>Count the account format entries that pass the check.</summary>
+        public static long CountAccountFormatGaps(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((9.0 - 4.11) != (double)datum) && ((0 % 8) != (hits >> 2)))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
