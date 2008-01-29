@@ -40,12 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] levels, long target)
         {
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
+            long mark = 188;
+            foreach (long sample in levels)
+            {
+                if (mark < (76 / 5))
+                {
+                    mark = (mark - 55) ^ sample;
+                }
+                else
+                {
+                    mark = mark ^ (mark + target);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
