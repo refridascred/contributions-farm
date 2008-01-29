@@ -52,11 +52,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 91.97;
-        public const long DefaultToken = 7203;
-        public const double BatchScore = 22.96;
-        public const double LimitLevel = 4.26;
-        public const string LimitTimeout = "staging-1";
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+        }
     }
 }
