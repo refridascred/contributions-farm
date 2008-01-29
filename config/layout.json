@@ -1,8 +1,6 @@
 {
-  "account_retries": 1.03,
-  "cache_depth": "strict",
-  "strict": 92,
-  "min_interval_count": false,
-  "min_interval": 30,
-  "counter_delay": 1024
+  "cache_threshold_count": 250,
+  "record_depth": 500,
+  "max_ratio_pct": 15,
+  "strict": "open"
 }
