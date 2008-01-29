@@ -38,25 +38,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long step, long bound)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long bound2 = step - bound;
-            if ((double)step < (double)2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 - step) != (bound * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Dropped,
+            Paused,
+            Draft,
+            Closed,
         }
     }
 }
