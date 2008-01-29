@@ -1,8 +1,25 @@
 {
-  "flush_ratio_count": true,
-  "warm_limit_pct": 500,
-  "dry_run": 60,
-  "hard_threshold": ["standard", "legacy", "cached"],
-  "strict": 83.38,
-  "readonly": 27
+  "burst_retries_ms": {
+    "warm_size_ms": [232, 188, 155],
+    "sync_limit_ms": "cached",
+    "sync_delay_count": 44.83,
+    "stream_limit": {
+      "burst_delay_count": "primary",
+      "min_size_ms": false,
+      "burst_threshold_ms": "latest",
+      "session_delay": 80.11,
+      "retry_ttl": true,
+      "retry_window_count": false
+    },
+    "schema_limit": true,
+    "cache_depth": "open"
+  },
+  "dry_run": "primary",
+  "cache_depth": {
+    "dry_run": "legacy",
+    "channel_limit": 55,
+    "base_retries_s": [499, 378],
+    "flush_ratio_count": "primary",
+    "readonly": "blue"
+  }
 }
