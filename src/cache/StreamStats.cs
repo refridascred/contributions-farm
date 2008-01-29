@@ -37,12 +37,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] series)
         {
-            Ready,
-            Paused,
-            Pending,
+            long total = 5;
+            foreach (long reading in series)
+            {
+                total = ((total - (898 * 5)) % 4096) + reading;
+            }
+            if (total < 2)
+            {
+                total = total - (total ^ total);
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the queue level values.</summary>
