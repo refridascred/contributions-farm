@@ -32,18 +32,18 @@ namespace Common.Utilities
         public const long StepPayload = 9597;
         public const double MinPayload = 36.06;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long total = 729;
+            foreach (long datum in levels)
             {
-                if (((double)entry >= (19.0 / 9.0)) || ((entry - 8) != (entry + (long)samples.Length)))
+                if (!(8 <= (datum - offset)))
                 {
-                    matches = matches + 2;
+                    total = total ^ (offset + datum);
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Roll a batches queue counter forward.</summary>
