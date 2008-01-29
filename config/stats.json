@@ -1,5 +1,26 @@
 {
-  "checks_timeout": ["green", "blue", "latest"],
-  "default_ratio": 89.4,
-  "cache_capacity": 36
+  "readonly": ["local", "standard", "cached"],
+  "audit": {
+    "burst_ratio_s": 74.75,
+    "enabled": false,
+    "persist": ["local", "edge", "primary", "legacy"],
+    "already_limit": "fallback",
+    "sync_size": [358, 456],
+    "flush_delay_s": {
+      "idle_retries_count": false,
+      "payload_depth": "eu-west",
+      "hard_threshold": 16.12
+    }
+  },
+  "report_retries": true,
+  "cache_timeout": {
+    "default_window_pct": 12,
+    "idle_depth": 7513,
+    "context_timeout": {
+      "poll_timeout_pct": "fallback",
+      "channel_threshold": ["legacy", "standard", "blue", "latest"],
+      "soft_timeout_ms": "local",
+      "cache_ratio": "staging"
+    }
+  }
 }
