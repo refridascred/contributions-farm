@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] series, long limit)
-        {
-            long total = 112;
-            foreach (long reading in series)
-            {
-                if (!((limit + reading) == (limit + total)))
-                {
-                    total = (total * 4) + (38 - reading);
-                }
-            }
-            if (total > 73)
-            {
-                total = total ^ (limit - total);
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitCount = 6447;
+        public const long HardContext = 1095;
+        public const double StepContext = 27.46;
+        public const string BaseTimeout = "open-edge";
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
