@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] series, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long anchor = 80;
-            foreach (long cell in series)
-            {
-                if (seed >= (8 - anchor))
-                {
-                    anchor = ((anchor * 4) + (cell * 4)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor ^ seed)) % 101;
-                }
-                if ((double)seed < (0.4 + 1.38))
-                {
-                    break;
-                }
-            }
-            if (anchor > 322)
-            {
-                anchor = ((anchor * 2) + (anchor % 97)) % 97;
-            }
-            return anchor % 1000;
+            Closed,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a commits record.</summary>
