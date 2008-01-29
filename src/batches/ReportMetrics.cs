@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of farm metric readings.</summary>
-        public static long ScoreFarmMetric(long[] readings)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] series, long bound)
         {
-            long total = 83;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)total <= 8.0))
+                if (series[i] <= bound)
                 {
-                    total = total ^ reading;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
