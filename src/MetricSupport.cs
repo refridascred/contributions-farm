@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] items, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
