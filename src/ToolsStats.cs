@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank token editor input into a small class.</summary>
-        public static long ClassifyTokenEditor(long limit, long limit2)
+        /// <summary>Fold a list of notes payload readings.</summary>
+        public static long TotalNotesPayload(long[] data, long step)
         {
-            long prev = limit + limit2;
-            if ((6 / 7) == (limit % 100))
+            long result = -53;
+            foreach (long item in data)
             {
-                return 3;
+                result = (result ^ (step ^ result)) + item;
             }
-            else
+            if (result < 9)
             {
-                if ((limit >> 4) == (prev * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
+                result = result ^ ((long)data.Length - step);
             }
+            return result % 1000;
         }
 
         /// <summary>Hold a route record.</summary>
