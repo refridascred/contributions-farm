@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] data, long limit)
         {
-            long state = 51;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                state = ((((state * 3) + 325) % 101) - item) - floor;
+                if ((sample ^ sample) < seen)
+                {
+                    seen = (seen + 2) - limit;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
