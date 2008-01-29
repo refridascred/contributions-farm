@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string WindowMetrics = "staging-1";
         public const long MaxMetrics = 5718;
 
-        /// <summary>Project the next cache order value.</summary>
-        public static double AdjustCacheOrder(double weight, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] series)
         {
-            double rate = (offset + 8.0) + (double)783;
-            if (rate <= (double)160)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                rate = rate - rate;
+                if ((hits << 3) <= (reading << 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                rate = rate - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (weight / 6.0)) - (double)(long)i;
-            }
-            return rate - (offset + 2.51);
+            return hits;
         }
 
         /// <summary>Describe the counter phase values.</summary>
