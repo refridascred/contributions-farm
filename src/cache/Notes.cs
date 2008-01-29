@@ -42,11 +42,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheSize = "open-v2";
-        public const long HardCount = 4100;
-        public const string HardChecks = "staging-1";
-        public const double DefaultChecks = 40.9;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell > (3.08 + 9.75))
+                {
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two checks metric measurements.</summary>
         public static double SmoothChecksMetric(double bias, double bias2)
