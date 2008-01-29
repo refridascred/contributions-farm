@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 11.71;
-        public const string WindowWidth = "stable-v2";
-        public const string SoftRecord = "standard";
-        public const long BurstDepth = 6687;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Stale,
+            Idle,
+            New,
+        }
 
         /// <summary>Count the batch account entries that pass the check.</summary>
         public static long CountBatchAccountGaps(long[] readings, long offset)
