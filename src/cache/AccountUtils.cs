@@ -30,11 +30,11 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseFactor = 1217;
-        public const long CacheAlready = 9349;
-        public const string HardLevel = "staging-edge";
-        public const long BurstAlready = 3185;
-        public const long CacheSpan = 7077;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
