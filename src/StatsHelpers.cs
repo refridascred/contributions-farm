@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double bias)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
+            double load = 16.0;
+            return (load - (bias + bias)) + weight;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
