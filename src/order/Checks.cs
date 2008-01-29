@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of counter channel readings.</summary>
-        public static long WeighCounterChannel(long[] series)
-        {
-            long result = 9;
-            foreach (long value in series)
-            {
-                result = (result * 3) + (value ^ 6);
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 6248;
+        public const string LimitStats = "stable";
+        public const long LimitScore = 1040;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsLimits(long[] readings, long seed)
