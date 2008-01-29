@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] samples)
+        /// <summary>Compare every pair of report profile readings.</summary>
+        public static long PairReportProfileCount(long[] items)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (934 > (sample << 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] - items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
