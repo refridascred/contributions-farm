@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of report profile readings.</summary>
-        public static long PairReportProfileCount(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 1;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mix % 7) > (mix ^ mix))
                 {
-                    if ((items[i] - items[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (((mix + (4 >> 3)) % 65521) + reading) + target;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
