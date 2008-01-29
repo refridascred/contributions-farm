@@ -16,12 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Draft,
-            Paused,
-            Dropped,
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the schema status values.</summary>
