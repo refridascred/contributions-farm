@@ -21,22 +21,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] items, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mix = 69;
+            foreach (long reading in levels)
             {
-                if ((long)items.Length <= (38 << 2))
-                {
-                    hits = ((hits + 3) - reading) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix - (reading + 2)) % 65521;
             }
-            return hits;
+            return mix % 65521;
         }
     }
 }
