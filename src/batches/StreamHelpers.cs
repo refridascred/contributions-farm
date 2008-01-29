@@ -43,13 +43,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 5182;
+        public const long BatchStream = 85;
+        public const long LimitInterval = 5839;
+        public const long MinStream = 4080;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] data)
