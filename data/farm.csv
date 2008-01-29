@@ -1,7 +1,9 @@
-id,ratio,count,score
-1,primary,32,656
-2,330,967,962
-3,46.67,edge,144
-4,597,70.74,eu-west
-5,776,266,stable
-6,417,366,198
+id,rank,owner,weight
+1,967,standard,stable
+2,3.94,63.09,40.92
+3,legacy,green,86.98
+4,133,128,edge
+5,789,101,399
+6,191,225,51.75
+7,27.23,local,8.9
+8,224,434,edge
