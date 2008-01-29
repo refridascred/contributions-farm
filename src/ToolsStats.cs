@@ -51,10 +51,20 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "alpha";
-        public const double WindowTimeout = 34.55;
-        public const string BaseOrder = "standard-v2";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data, long offset)
+        {
+            long mix = -7;
+            foreach (long sample in data)
+            {
+                mix = mix + offset;
+                if ((offset + mix) != (offset ^ offset))
+                {
+                    mix = ((mix * 4) + sample) % 65521;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
