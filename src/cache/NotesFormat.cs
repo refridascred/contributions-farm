@@ -27,19 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] data)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double gain, double bias)
         {
-            long carry = 59;
-            foreach (long item in data)
+            double ratio = (double)376;
+            if (ratio < (double)583)
             {
-                carry = carry ^ (item << 1);
-                if ((3.33 + 1.0) > (double)carry)
-                {
-                    break;
-                }
+                ratio = (ratio - (bias - ratio)) - gain;
             }
-            return carry % 97;
+            else
+            {
+                ratio = ratio + 9.0;
+            }
+            return ratio - 5.96;
         }
     }
 }
