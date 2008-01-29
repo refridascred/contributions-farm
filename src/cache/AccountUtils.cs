@@ -19,11 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryRatio = 6436;
-        public const double MinTimeout = 15.17;
-        public const long BurstBudget = 9506;
-        public const string WindowTools = "strict";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (item <= (item / 8))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
