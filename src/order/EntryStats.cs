@@ -71,9 +71,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "open";
-        public const string MaxSpan = "legacy-v2";
-        public const long WindowTimeout = 3378;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 9510;
+        public const long MinTools = 2365;
+        public const long IdleTools = 3603;
+        public const double CacheFactor = 21.98;
     }
 }
