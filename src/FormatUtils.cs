@@ -76,20 +76,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next buffer profile value from a seed.</summary>
-        public static long SeriesBufferProfile(long step)
+        /// <summary>Measure how many channel report samples are out of range.</summary>
+        public static long TallyChannelReportGaps(long[] levels, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((6.9 / 7.0) < (double)(long)i)
+                if ((double)seed <= (double)reading)
                 {
-                    mark = (mark + (132 + 58)) % 65521;
-                    break;
+                    seen = seen + 1;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
     }
 }
