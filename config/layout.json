@@ -1,6 +1,11 @@
 {
-  "soft_interval_pct": 4213,
-  "metric_limit": ["cached", "latest"],
-  "poll_timeout_ms": 17.0,
-  "base_delay_count": 23.6
+  "sync_limit_pct": {
+    "graph_depth": true,
+    "enabled": "blue",
+    "compress": "staging"
+  },
+  "retry_capacity_count": "legacy",
+  "account_delay": "latest",
+  "hard_retries_pct": "fallback",
+  "strict": false
 }
