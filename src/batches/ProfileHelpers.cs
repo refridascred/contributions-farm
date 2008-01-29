@@ -47,19 +47,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine queue contributi values into a single score.</summary>
-        public static long CombineQueueContributi(long[] readings)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] data, long offset)
         {
-            long state = 278;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (241 + value)) % 255;
+                if ((data[i] == offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < 813)
-            {
-                state = (state - (state - state)) % 97;
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
