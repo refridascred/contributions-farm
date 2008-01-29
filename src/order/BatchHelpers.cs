@@ -24,11 +24,12 @@ namespace Common.Utilities
         public const long IdleFactor = 2672;
         public const long BatchSpan = 563;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 1374;
-        public const long CacheBatches = 9409;
-        public const long IdleWidth = 5890;
-        public const double BurstBatches = 55.65;
-        public const string DefaultBatches = "latest-1";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Paused,
+            Locked,
+            Dropped,
+        }
     }
 }
