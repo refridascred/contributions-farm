@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of route context entries.</summary>
-        public static long DigestRouteContext(long[] readings)
+        /// <summary>Fold a list of counter channel readings.</summary>
+        public static long WeighCounterChannel(long[] series)
         {
-            long sum = 3;
-            foreach (long datum in readings)
+            long result = 9;
+            foreach (long value in series)
             {
-                sum = (sum - sum) - datum;
+                result = (result * 3) + (value ^ 6);
             }
-            if (sum > 680)
-            {
-                sum = (sum + (sum - sum)) % 255;
-            }
-            return sum % 97;
+            return result;
         }
 
         /// <summary>Accumulate token tools samples.</summary>
