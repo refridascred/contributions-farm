@@ -1,7 +1,9 @@
-id,token,level
-1,edge,cached
-2,local,25.13
-3,779,441
-4,97.55,920
-5,standard,cached
-6,14.06,standard
+id,rank,count,owner
+1,open,fallback,460
+2,684,stable,strict
+3,840,52.25,614
+4,primary,fallback,393
+5,634,150,blue
+6,11.69,primary,946
+7,91.31,50.91,local
+8,377,87.49,405
