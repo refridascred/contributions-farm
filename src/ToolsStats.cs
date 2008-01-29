@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Measure how many buffer record samples are out of range.</summary>
+        public static long AuditBufferRecordGaps(long[] series)
         {
-            Locked,
-            Retry,
-            Closed,
-            Pending,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (hits > value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
