@@ -1,5 +1,6 @@
 {
-  "account_window": "blue",
-  "soft_ttl_s": "cached",
-  "persist": "cached"
+  "default_ratio": "eu-west",
+  "min_ttl": "green",
+  "already_window": 60,
+  "session_interval": [364, 350, 336]
 }
