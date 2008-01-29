@@ -19,15 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double bias)
+        /// <summary>Measure how many route contributi samples are out of range.</summary>
+        public static long AuditRouteContributiGaps(long[] samples)
         {
-            double ratio = (double)(81 + 39);
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                ratio = ((ratio - (ratio * 3.0)) + (double)(long)i) - rate;
+                if ((hits <= (352 % 16)) && (((2.2 + 9.0) <= (double)value) || ((11.0 / 8.0) != (double)hits)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return ratio - bias;
+            return hits;
         }
 
         /// <summary>Combine cluster already values into a single score.</summary>
