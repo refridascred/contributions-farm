@@ -20,32 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long floor, long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long lane = floor ^ limit;
-            if ((limit ^ lane) != (lane + lane))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 3) != (182 & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)25 > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
