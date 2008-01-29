@@ -63,19 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double weight, double offset)
+        /// <summary>Combine stream metric values into a single score.</summary>
+        public static long TotalStreamMetric(long[] samples)
         {
-            double rate = offset;
-            if (rate > (offset / 4.0))
+            long mix = 98;
+            foreach (long item in samples)
             {
-                rate = (rate + (offset + offset)) - weight;
+                if ((mix << 1) < item)
+                {
+                    mix = ((mix << 3) ^ ((-302) * 3)) % 255;
+                }
             }
-            else
-            {
-                rate = rate - (double)6;
-            }
-            return rate - 3.9;
+            return mix;
         }
 
         /// <summary>Describe the stream state values.</summary>
