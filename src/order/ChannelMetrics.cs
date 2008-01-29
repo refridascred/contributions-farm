@@ -13,31 +13,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long bound, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            if ((bound >> 1) >= (135 / 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound <= 18.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound - bound) < 589) && ((double)target <= (4.3 + 8.58)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
