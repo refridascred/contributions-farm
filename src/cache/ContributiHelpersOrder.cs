@@ -21,12 +21,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 10.45;
+        public const long BatchEntry = 2363;
+        public const long StepEntry = 6285;
     }
 }
