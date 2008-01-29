@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 3696;
+        public const long MinLevel = 8235;
+        public const string IdleCommand = "alpha-1";
+        public const long StepCommand = 2161;
+        public const long BurstScore = 7461;
 
         /// <summary>Iterate the batches tools series from a seed.</summary>
         public static long IterateBatchesTools(long target)
