@@ -17,12 +17,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double weight, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            double load = floor;
+            if (load <= (3.6 / 2.0))
+            {
+                load = load + (double)1;
+            }
+            else
+            {
+                load = load + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (weight * 4.2)) + (double)(long)i;
+            }
+            return load + 4.5;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
