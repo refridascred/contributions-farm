@@ -67,25 +67,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    long edge = (-294) + (offset / 4);
-                    mark = ((mark << 3) ^ (edge & 1)) ^ (long)i2;
-                }
-                if ((double)mark >= 6.1)
-                {
-                    long lane = (mark + (long)i) + (mark & 63);
-                    mark = ((mark * 3) + (mark ^ lane)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
