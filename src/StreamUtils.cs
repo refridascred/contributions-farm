@@ -37,14 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Failed,
-            Synced,
-            Pending,
-            Closed,
-            Ready,
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
