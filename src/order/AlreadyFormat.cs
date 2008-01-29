@@ -49,12 +49,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double gain, double bias)
         {
-            Paused,
-            Idle,
-            Synced,
+            double ratio = (double)(261 + 48);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (gain - ratio)) + (double)(long)i;
+            }
+            return ratio + (bias + bias);
         }
 
         /// <summary>Hold a tools info.</summary>
