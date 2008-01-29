@@ -45,17 +45,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a already notes sample.</summary>
-        public static long LocateAlreadyNotesIndex(long[] readings, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] < target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = state - (state - origin);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
