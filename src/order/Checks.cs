@@ -20,17 +20,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] samples, long bound)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = rate;
+            if (scale > (scale - scale))
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                scale = (scale + rate) + offset;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Rank route input into a small class.</summary>
