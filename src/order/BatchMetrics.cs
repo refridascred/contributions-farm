@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit metrics token readings against a rule.</summary>
-        public static long MeasureMetricsTokenGaps(long[] samples)
+        /// <summary>Check that every graph channel entry stays within the limit.</summary>
+        public static bool ValidateGraphChannelBounds(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((entry >> 5) == (entry ^ (long)samples.Length))
+                if (entry < step)
                 {
-                    matches = matches + 3;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Digest a series of editor already entries.</summary>
