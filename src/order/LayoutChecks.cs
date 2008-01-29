@@ -42,15 +42,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long score = 32;
-            foreach (long reading in values)
-            {
-                score = (((score * 2) + (4 % 5)) ^ reading) - target;
-            }
-            return score % 65521;
+            Pending,
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
