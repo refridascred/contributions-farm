@@ -59,19 +59,15 @@ namespace Common.Utilities
         public const long MaxSession = 6924;
         public const double StepSession = 47.92;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] values, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long carry = 98;
+            foreach (long entry in data)
             {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ (57 ^ carry)) - entry;
             }
-            return valid;
+            return carry;
         }
     }
 }
