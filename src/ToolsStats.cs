@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of context route readings.</summary>
-        public static long PairContextRouteCount(long[] readings)
+        /// <summary>Rank token editor input into a small class.</summary>
+        public static long ClassifyTokenEditor(long limit, long limit2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long prev = limit + limit2;
+            if ((6 / 7) == (limit % 100))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 4) == (prev * 3))
                 {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a route reading.</summary>
