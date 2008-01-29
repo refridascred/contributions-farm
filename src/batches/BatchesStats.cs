@@ -34,24 +34,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Grade a token payload value against two limits.</summary>
+        public static long GradeTokenPayload(long offset, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long step2 = offset ^ step;
+            if ((89 > (offset - step2)) || (step >= (offset * 5)))
             {
-                if ((long)i != (origin >> 2))
-                {
-                    mix = ((mix << 3) ^ ((long)i + mix)) % 255;
-                    mix = mix - (mix << 2);
-                }
-                if (!(origin > (mix * 4)))
-                {
-                    mix = ((mix * 2) + (origin + mix)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((58 << 1) <= (75 + step2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((961 & 15) > (offset / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
