@@ -44,12 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double gain, double offset)
-        {
-            double drift = (double)(9 - 74);
-            return ((drift - (double)701) + gain) + offset;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "legacy-edge";
+        public const double CacheCount = 91.14;
+        public const long BaseProfile = 6505;
+        public const long MinProfile = 7273;
+        public const long RetryRatio = 5813;
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double bias, double offset)
