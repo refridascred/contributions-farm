@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] values, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long floor, long step)
         {
-            bool stale = true;
-            foreach (long value in values)
+            if (((step + floor) == (8 - step)) && ((step + (-381)) <= (0 / 9)))
             {
-                if (value > origin)
+                return 0;
+            }
+            else
+            {
+                if ((step / 8) > (floor + floor))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((step & 63) != (floor >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)step <= (18.0 * 7.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Match up command samples.</summary>
