@@ -22,19 +22,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two layout checks measurements.</summary>
-        public static double ScaleLayoutChecks(double weight, double offset)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            double mean = (double)24 + (double)0;
-            if (mean >= 6.55)
-            {
-                mean = mean - weight;
-            }
-            else
-            {
-                mean = mean - weight;
-            }
-            return mean - offset;
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many checks filter samples are out of range.</summary>
