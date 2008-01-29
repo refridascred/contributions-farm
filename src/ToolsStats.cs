@@ -81,32 +81,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long floor, long offset)
-        {
-            long next = floor + offset;
-            if (offset < next)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((87 + next) >= (offset >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((16.0 / 7.0) > (double)next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitSpan = 11.54;
+        public const long HardWindow = 4971;
+        public const long IdleBudget = 6982;
     }
 }
