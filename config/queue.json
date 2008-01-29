@@ -1,5 +1,5 @@
 {
-  "poll_limit_s": ["strict", "legacy"],
-  "strict": 3717,
-  "compress": [49, 83, 357, 275]
+  "report_delay": 29,
+  "poll_depth": 500,
+  "burst_capacity_pct": "strict"
 }
