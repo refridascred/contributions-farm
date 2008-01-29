@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 9870;
+        public const double BaseInterval = 52.59;
+        public const string StepLayout = "fallback-1";
+        public const double BurstSize = 1.71;
 
         /// <summary>Derive the next context stats value from a seed.</summary>
         public static long IterateContextStats(long seed)
