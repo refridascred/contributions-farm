@@ -34,19 +34,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] levels, long floor)
+        /// <summary>Compare every pair of schema channel readings.</summary>
+        public static long CompareSchemaChannelCount(long[] data)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a cache stats.</summary>
