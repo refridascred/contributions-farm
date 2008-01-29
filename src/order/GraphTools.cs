@@ -65,15 +65,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((value - seen) > (value / 3))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
