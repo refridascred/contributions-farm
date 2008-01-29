@@ -12,32 +12,19 @@ namespace Common.Utilities
         public const long BaseStream = 7242;
         public const long HardStream = 5678;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long bound, long limit)
+        /// <summary>Check that every batches token entry stays within the limit.</summary>
+        public static bool GuardBatchesTokenLimits(long[] series, long bound)
         {
-            long cur = bound ^ limit;
-            if (limit > (bound & 3))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)cur <= (3.44 + 5.0)) || ((0.5 + 4.0) >= (double)limit))
+                if (item > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (cur > (bound / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
