@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long StepRecord = 3950;
         public const double HardDepth = 26.59;
 
-        /// <summary>Count the already route entries that pass the check.</summary>
-        public static long CountAlreadyRouteGaps(long[] readings)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum + count) <= datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
