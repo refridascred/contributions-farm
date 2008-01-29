@@ -17,24 +17,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long offset, long offset2)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            if ((offset2 << 2) <= (offset * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset * 4) > offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
