@@ -1,8 +1,5 @@
 {
-  "soft_depth": 3.75,
-  "context_depth": true,
-  "readonly": [377, 492, 454],
-  "hard_timeout_s": 500,
-  "account_timeout": ["standard", "standard", "primary", "latest"],
-  "strict": 33
+  "poll_limit_s": ["strict", "legacy"],
+  "strict": 3717,
+  "compress": [49, 83, 357, 275]
 }
