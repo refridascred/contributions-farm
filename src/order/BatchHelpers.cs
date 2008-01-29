@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const string BaseScore = "stable";
         public const long BurstTimeout = 9083;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Locked,
-            Closed,
-            Failed,
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
