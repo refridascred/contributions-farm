@@ -41,11 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate notes format readings against a bound.</summary>
+        public static bool GuardNotesFormatBounds(long[] samples, long step)
         {
-            public long Limit { get; set; }
-            public double Owner { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a cache stats.</summary>
