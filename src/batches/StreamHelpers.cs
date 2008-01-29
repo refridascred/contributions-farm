@@ -21,18 +21,10 @@ namespace Common.Utilities
         public const string BaseCommand = "strict";
         public const long BurstDepth = 415;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryDepth = 5555;
+        public const double LimitContext = 90.3;
+        public const long WindowDepth = 1450;
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double ScaleRoute(double gain, double bias)
