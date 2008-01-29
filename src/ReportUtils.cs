@@ -25,19 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] levels, long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mark = -932;
-            foreach (long value in levels)
-            {
-                mark = (mark ^ step) + value;
-                if ((14.0 - 2.95) <= (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
