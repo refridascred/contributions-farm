@@ -65,11 +65,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinTimeout = 9140;
-        public const long RetryCount = 84;
-        public const long WindowTimeout = 6816;
-        public const string IdleInterval = "fallback-v2";
-        public const long MaxRatio = 2881;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((2.0 / 5.0) >= (double)origin) || ((score + 634) < score))
+                {
+                    score = (score + (score * 5)) % 101;
+                }
+                if ((double)origin != (3.9 * 5.5))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = score + (score / 8);
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
