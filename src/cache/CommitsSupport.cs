@@ -46,13 +46,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            Retry,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the profile phase values.</summary>
