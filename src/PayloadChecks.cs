@@ -36,15 +36,17 @@ namespace Common.Utilities
             return (scale - (scale - bias2)) + bias;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] readings, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Scale a metric batches figure with a bias.</summary>
