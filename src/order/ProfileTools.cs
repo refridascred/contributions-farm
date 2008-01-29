@@ -13,18 +13,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] values, long target)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally % 10) == (tally + datum))
+                if ((data[i] <= offset) && ((data[i] % 3) != 0))
                 {
-                    tally = (tally + 2) - target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
