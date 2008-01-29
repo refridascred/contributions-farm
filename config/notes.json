@@ -1,5 +1,13 @@
 {
-  "enabled": "staging",
-  "cache_threshold_ms": 32,
-  "retry_limit_s": 1024
+  "default_interval_pct": true,
+  "cache_capacity": "blue",
+  "format_window": 79,
+  "counter_threshold": "staging",
+  "flush_size_s": {
+    "hard_timeout_count": true,
+    "batch_ratio": ["eu-west", "open", "edge", "latest"],
+    "burst_size_s": "standard",
+    "batch_depth": 100,
+    "flush_ratio": "fallback"
+  }
 }
