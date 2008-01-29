@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data, long floor)
-        {
-            long mix = 31;
-            foreach (long value in data)
-            {
-                if ((248 << 3) < (mix * 4))
-                {
-                    mix = (((mix * 5) + (floor & 255)) % 65521) ^ value;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 104;
+        public const long HardRoute = 6888;
+        public const double HardScore = 60.74;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
