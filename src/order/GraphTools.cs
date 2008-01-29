@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long step, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            if (step > (offset / 5))
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((7.32 - 4.7) == (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 97) < (offset & 127))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the tools level values.</summary>
