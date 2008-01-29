@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] items, long bound)
+        /// <summary>Count the editor profile entries that pass the check.</summary>
+        public static long MeasureEditorProfileGaps(long[] data)
         {
-            long score = -496;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                score = ((score ^ (3 - 3)) ^ reading) + bound;
+                if (((seen - entry) > entry) || (seen < (entry + seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many editor context samples are out of range.</summary>
