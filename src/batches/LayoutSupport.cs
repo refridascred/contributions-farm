@@ -51,19 +51,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double BlendChecks(double gain, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] readings, long step)
         {
-            double weight = gain;
-            if (weight <= 2.7)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                weight = weight + weight;
+                if ((-56) >= (count & 31))
+                {
+                    count = ((count + 1) + sample) - step;
+                }
             }
-            else
-            {
-                weight = weight - (double)1;
-            }
-            return weight + (span * 2.6);
+            return count;
         }
     }
 }
