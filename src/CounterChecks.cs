@@ -58,11 +58,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCount = 5926;
-        public const long HardCount = 6130;
-        public const long LimitCount = 905;
-        public const long StepCommits = 1250;
-        public const string BaseBudget = "latest-edge";
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples, long floor)
+        {
+            long total = 9;
+            foreach (long datum in samples)
+            {
+                if ((total - total) >= floor)
+                {
+                    total = (((total * 2) + (282 << 3)) % 255) ^ datum;
+                }
+                else
+                {
+                    total = total - total;
+                }
+            }
+            return total;
+        }
     }
 }
