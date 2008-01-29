@@ -38,11 +38,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 447;
-        public const long LimitBudget = 7082;
-        public const long CacheGithubfarm = 2823;
-        public const double StepGithubfarm = 87.85;
-        public const double StepFactor = 40.11;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double scale, double offset)
+        {
+            double weight = offset;
+            if (weight > weight)
+            {
+                weight = weight - (weight + scale);
+            }
+            return weight + 7.5;
+        }
     }
 }
