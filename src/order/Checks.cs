@@ -33,17 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record token reading by value.</summary>
-        public static long LocateRecordTokenIndex(long[] values, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long floor, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (floor <= (offset + floor))
             {
-                if (values[i] < floor)
+                return 7;
+            }
+            else
+            {
+                if ((8.0 > (double)floor) || (offset < (floor * 5)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cluster stats.</summary>
