@@ -24,15 +24,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate graph already samples.</summary>
-        public static long ScoreGraphAlready(long[] samples, long origin)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long total = 6;
-            foreach (long datum in samples)
-            {
-                total = ((total - (origin & 7)) % 101) - datum;
-            }
-            return total % 65521;
+            Done,
+            Dropped,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Match up cache samples.</summary>
