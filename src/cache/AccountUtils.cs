@@ -15,31 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long limit)
+        /// <summary>Project the next stats route value.</summary>
+        public static double BlendStatsRoute(double ratio, double floor)
         {
-            if ((double)bound <= (14.0 - 8.3))
+            double rate = 3.64 + (floor - floor);
+            if (rate >= rate)
             {
-                return 7;
+                rate = rate - (double)858;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (limit >= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound & 31) == (limit + limit)) && ((5.15 - 4.7) != (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                rate = (rate - rate) - (double)(long)i;
             }
+            return rate - ratio;
         }
 
         /// <summary>Define already limits and defaults.</summary>
