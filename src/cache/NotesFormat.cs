@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long offset)
+        /// <summary>Validate account batch readings against a bound.</summary>
+        public static bool GuardAccountBatchRange(long[] readings, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Hold a graph stats.</summary>
