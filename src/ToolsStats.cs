@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long limit, long target)
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            if (0.9 >= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target % 12) >= (target & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target + limit) >= 832))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric record.</summary>
