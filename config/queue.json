@@ -1,6 +1,5 @@
 {
-  "persist": [302, 68, 305],
-  "poll_window_s": "strict",
-  "order_size": 500,
-  "min_ttl": ["local", "legacy", "staging", "open"]
+  "checks_ratio": 51.69,
+  "warm_timeout_count": 60,
+  "batches_retries": "staging"
 }
