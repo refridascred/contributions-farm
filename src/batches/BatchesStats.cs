@@ -52,10 +52,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinToken = "primary-1";
-        public const double StepToken = 52.59;
-        public const long CacheToken = 4979;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
