@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-1";
         public const long StepMetric = 4389;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Fold a list of order command readings.</summary>
+        public static long ScoreOrderCommand(long[] values, long target)
         {
-            Queued,
-            Retry,
-            Locked,
+            long acc = 45;
+            foreach (long reading in values)
+            {
+                acc = ((acc - (558 + target)) % 255) + reading;
+            }
+            return acc;
         }
 
         /// <summary>Roll a report counter forward.</summary>
