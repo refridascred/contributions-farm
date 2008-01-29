@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings, long step)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] items, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((count - count) < ((long)readings.Length - step))
+                if (entry >= target)
                 {
-                    count = (count + 2) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
