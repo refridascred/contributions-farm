@@ -70,13 +70,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultAccount = 59.41;
+        public const long BurstWidth = 6433;
+        public const string DefaultInterval = "stable";
     }
 }
