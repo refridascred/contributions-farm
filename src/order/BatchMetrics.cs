@@ -68,18 +68,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches checks readings against a rule.</summary>
-        public static long TallyBatchesChecksHits(long[] values, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((bound + 94) != (seen & 1))
-                {
-                    seen = (seen + 1) - item;
-                }
+                score = score - bound;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
