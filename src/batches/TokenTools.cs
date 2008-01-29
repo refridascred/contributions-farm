@@ -50,17 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits window sample.</summary>
-        public static long LookupCommitsWindowIndex(long[] series, long bound)
+        /// <summary>Match up format cache samples.</summary>
+        public static long MatchFormatCacheCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
