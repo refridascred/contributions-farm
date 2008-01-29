@@ -20,19 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] levels, long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            double load = floor;
+            if (load < (double)157)
             {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load + (floor - load)) + rate;
             }
-            return ready;
+            return load + (load * 17.0);
         }
 
         /// <summary>Audit route readings against a rule.</summary>
