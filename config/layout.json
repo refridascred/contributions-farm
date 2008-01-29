@@ -1,6 +1,5 @@
 {
-  "soft_size_s": "standard",
-  "batches_interval": ["edge", "green", "eu-west", "eu-west"],
-  "default_depth": ["legacy", "blue", "edge"],
-  "max_capacity_s": "open"
+  "stats_depth": "fallback",
+  "payload_limit": true,
+  "entry_retries": 81.23
 }
