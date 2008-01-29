@@ -37,12 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseLevel = 7869;
-        public const double RetryNotes = 6.76;
-        public const long HardFactor = 6695;
-        public const long BurstNotes = 2495;
-        public const double WindowNotes = 24.58;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Active,
+            Draft,
+            Idle,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Combine queue contributi values into a single score.</summary>
         public static long CombineQueueContributi(long[] readings)
