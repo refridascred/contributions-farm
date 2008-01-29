@@ -23,22 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 5209;
+        public const string HardAlready = "legacy-v2";
+        public const long MinAlready = 2237;
+        public const long MaxFactor = 9145;
 
         /// <summary>Classify a cluster schema pair into a bucket.</summary>
         public static long BucketClusterSchema(long target, long seed)
