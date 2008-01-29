@@ -58,20 +58,24 @@ namespace Common.Utilities
         public const long MaxLayout = 8805;
         public const long BaseLevel = 6587;
 
-        /// <summary>Fold a list of session metric readings.</summary>
-        public static long ScoreSessionMetric(long[] values, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long step, long step2)
         {
-            long score = 63;
-            foreach (long datum in values)
+            if (!((step2 ^ (-5)) != (step2 + step)))
             {
-                if (((score + score) >= (origin - datum)) || ((score % 8) != (score << 2)))
-                {
-                    long delta = datum * 3;
-                    score = (score << 2) ^ (delta ^ origin);
-                }
-                score = score + (score << 3);
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((step2 >> 2) > 59)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
