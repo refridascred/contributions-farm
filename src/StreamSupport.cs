@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the stats metrics entries that pass the check.</summary>
