@@ -44,18 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] levels, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen - value) == ((-21) & 127))
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
+            Failed,
+            New,
+            Done,
         }
     }
 }
