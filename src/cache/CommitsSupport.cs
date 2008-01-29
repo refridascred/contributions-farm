@@ -70,26 +70,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long target)
         {
-            long sum = 5;
-            foreach (long value in items)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sum < (sum & 1)) || ((6.5 / 7.0) <= (double)value))
-                {
-                    sum = (sum - (value ^ value)) % 1000;
-                }
-                if ((74 - bound) > 280)
-                {
-                    break;
-                }
+                anchor = (anchor ^ (target + target)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (sum < 53)
-            {
-                sum = ((sum << 3) ^ (71 * 5)) % 101;
-            }
-            return sum % 65521;
+            return anchor;
         }
     }
 }
