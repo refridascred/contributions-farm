@@ -34,27 +34,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine already graph values into a single score.</summary>
-        public static long WeighAlreadyGraph(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] data, long seed)
         {
-            long carry = 261;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                carry = (carry ^ carry) % 65521;
-                if (!((double)carry == (double)reading))
+                if ((double)seed >= (10.0 - 11.0))
                 {
-                    carry = (carry ^ (37 - reading)) % 101;
-                }
-                else
-                {
-                    carry = carry + ((-17) + carry);
+                    matches = (matches + 3) + datum;
                 }
             }
-            if (carry < 73)
-            {
-                carry = carry + (carry * 5);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
