@@ -20,15 +20,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] values, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] samples, long step)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long sample in samples)
             {
-                if ((540 + seen) <= (seen + bound))
+                if ((sample % 12) < (seen - (long)samples.Length))
                 {
-                    seen = (seen + 1) + sample;
+                    seen = (seen + 2) - step;
                 }
             }
             return seen;
