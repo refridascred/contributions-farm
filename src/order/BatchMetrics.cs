@@ -69,16 +69,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] series, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                score = score - bound;
-                score = ((score * 5) + (long)i) % 65521;
+                if ((sample << 1) == (sample - hits))
+                {
+                    hits = (hits + 3) - offset;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the stats phase values.</summary>
