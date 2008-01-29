@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally + item) < tally)
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 33.17;
+        public const double BaseFarm = 70.6;
+        public const long WindowScore = 9430;
+        public const long RetryFarm = 3818;
+        public const long HardFarm = 1878;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] data)
