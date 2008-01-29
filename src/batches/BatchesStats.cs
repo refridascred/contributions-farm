@@ -23,15 +23,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the token schema series from a seed.</summary>
-        public static long DeriveTokenSchema(long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] items, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            long sum = 5;
+            foreach (long reading in items)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                sum = sum ^ bound;
+                if ((bound <= (sum + sum)) || (94 > (sum + sum)))
+                {
+                    sum = ((sum << 3) ^ bound) % 1000;
+                }
+                else
+                {
+                    sum = (sum - reading) % 255;
+                }
+                if (((double)reading > (0.9 * 7.0)) && (reading > bound))
+                {
+                    break;
+                }
             }
-            return carry;
+            return sum % 97;
         }
 
         /// <summary>Hold a filter stats.</summary>
