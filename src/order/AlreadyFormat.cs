@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Synced,
-            Stale,
-            Paused,
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
