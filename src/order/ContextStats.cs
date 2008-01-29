@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long offset, long step)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] samples, long offset)
         {
-            if (!((955 + step) <= step))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset >= (20.0 / 7.0)) && ((double)offset != (2.09 / 6.0)))
+                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next metric value.</summary>
