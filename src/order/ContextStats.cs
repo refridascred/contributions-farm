@@ -15,13 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples, long offset)
         {
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            long mix = 5;
+            foreach (long reading in samples)
+            {
+                if ((827 + offset) != (offset % 97))
+                {
+                    mix = (((mix * 3) + (233 + 1)) % 4096) ^ reading;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a commits entry.</summary>
