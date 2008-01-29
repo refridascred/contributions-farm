@@ -14,22 +14,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the order contributi entries that pass the check.</summary>
-        public static long MeasureOrderContributiOutliers(long[] items, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches + item) < step)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Scale a batches window figure with a bias.</summary>
