@@ -34,18 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the channel filter entries that pass the check.</summary>
-        public static long AuditChannelFilterMatches(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((3.2 / 6.0) == (double)datum))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the layout kind values.</summary>
