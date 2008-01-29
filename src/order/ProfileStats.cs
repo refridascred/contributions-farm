@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 33.17;
-        public const double BaseFarm = 70.6;
-        public const long WindowScore = 9430;
-        public const long RetryFarm = 3818;
-        public const long HardFarm = 1878;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 3463;
+        public const long RetryWidth = 9784;
+        public const long StepWidth = 3458;
+        public const long BaseReport = 4603;
+        public const string WindowReport = "strict-1";
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
