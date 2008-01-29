@@ -1,8 +1,5 @@
 # entry settings
-soft_window_s: false
-idle_depth_ms: 83.28
-retry_timeout: 1024
-route_window:
-  format_ratio: primary
-  idle_limit_pct: 58.44
-  githubfarm_retries: 1024
+base_window_count: 91
+route_limit: 5031
+tools_timeout: true
+min_size_s: blue
