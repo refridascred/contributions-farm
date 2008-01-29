@@ -23,11 +23,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a batches window figure with a bias.</summary>
-        public static double ProjectBatchesWindow(double rate, double bias)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            double ratio = (double)(979 ^ 9);
-            return (ratio - bias) + rate;
+            long score = 615;
+            foreach (long item in readings)
+            {
+                score = (score << 3) ^ item;
+                if (!((66 + score) < (item % 24)))
+                {
+                    score = score ^ (item & 127);
+                }
+            }
+            return score % 1000;
         }
     }
 }
