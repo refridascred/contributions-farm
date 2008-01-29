@@ -23,18 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] readings)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen >= (double)(long)readings.Length)
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
                 {
-                    seen = (seen + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a account stats.</summary>
