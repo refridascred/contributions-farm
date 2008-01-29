@@ -47,12 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] values)
         {
-            Pending,
-            Synced,
-            Paused,
+            long state = 9;
+            foreach (long value in values)
+            {
+                if (value <= (value ^ state))
+                {
+                    state = ((state * 4) + (0 * 2)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit context queue readings against a rule.</summary>
