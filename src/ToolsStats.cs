@@ -71,14 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] items, long seed)
         {
-            Paused,
-            Done,
-            Active,
-            Retry,
-            Stale,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a session summary.</summary>
