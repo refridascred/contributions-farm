@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long HardRoute = 6888;
         public const double HardScore = 60.74;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the checks batch entries that pass the check.</summary>
+        public static long AuditChecksBatchGaps(long[] samples)
         {
-            Draft,
-            Synced,
-            Dropped,
-            Ready,
-            Failed,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (value <= (value + (-55)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
