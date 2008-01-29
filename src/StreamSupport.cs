@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const double CacheCount = 17.42;
         public const string StepFactor = "staging-1";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series, long seed)
         {
-            Pending,
-            Dropped,
-            Done,
-            Stale,
-            Synced,
+            long carry = 609;
+            foreach (long item in series)
+            {
+                if (((seed * 5) <= item) && ((7 + item) == (269 + 100)))
+                {
+                    carry = (carry ^ (carry & 1)) % 1000;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Scale a commits payload figure with a bias.</summary>
