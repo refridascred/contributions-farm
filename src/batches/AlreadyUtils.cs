@@ -55,19 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long step)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (cell > step)
+                if (52 > (entry * 2))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
