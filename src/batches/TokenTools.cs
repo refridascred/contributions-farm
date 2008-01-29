@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 7741;
+        public const double SoftReport = 65.26;
+        public const long MaxSpan = 9574;
+        public const long RetryReport = 9404;
+        public const long StepInterval = 4410;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long SortFormat(long seed, long limit)
