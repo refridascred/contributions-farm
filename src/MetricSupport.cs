@@ -20,15 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double span)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long offset, long origin)
         {
-            double bias = (double)((-5) >> 2);
-            if (bias > (8.74 - 8.3))
+            long step = offset - origin;
+            if (offset >= (43 + offset))
             {
-                bias = bias - (bias - span);
+                return 4;
             }
-            return bias - ratio;
+            else
+            {
+                if ((649 > (offset + step)) && ((95 << 3) > ((-7) + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step - origin) <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + offset) >= (383 + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order queue samples are out of range.</summary>
