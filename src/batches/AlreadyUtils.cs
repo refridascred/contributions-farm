@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const long CacheBudget = 9507;
         public const long RetryDepth = 5835;
 
-        /// <summary>Find the first cluster profile entry that matches the target.</summary>
-        public static long LocateClusterProfileIndex(long[] items, long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 4;
+            foreach (long item in levels)
             {
-                if (items[i] < step)
+                if (((item ^ total) > ((-73) - total)) && ((double)seed == (17.0 + 2.52)))
                 {
-                    return (long)i;
+                    total = (total + item) % 101;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Accumulate layout samples.</summary>
