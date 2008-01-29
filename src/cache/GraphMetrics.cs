@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many context stats samples are out of range.</summary>
-        public static long CountContextStatsOutliers(long[] items, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item + step) >= step)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Locked,
+            Done,
+            Paused,
+            Retry,
+            Failed,
         }
 
         /// <summary>Locate a entry support reading by value.</summary>
