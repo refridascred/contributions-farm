@@ -24,12 +24,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long step)
         {
-            Retry,
-            Failed,
-            Locked,
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state ^ 71;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
