@@ -22,21 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
