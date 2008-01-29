@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first commits batches entry that matches the target.</summary>
-        public static long FindCommitsBatchesIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 9628;
+        public const long BatchCount = 3881;
+        public const long MaxPayload = 2822;
+        public const string StepPayload = "cached-edge";
+        public const long CacheLevel = 4920;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] samples)
