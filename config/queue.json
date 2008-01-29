@@ -1,5 +1,5 @@
 {
-  "idle_size_count": 67,
-  "readonly": "edge",
-  "record_window": 68
+  "default_size_pct": "edge",
+  "sync_threshold_pct": "green",
+  "warm_timeout_count": 100
 }
