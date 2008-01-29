@@ -14,21 +14,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up commits buffer samples.</summary>
-        public static long PairCommitsBufferCount(long[] levels)
+        /// <summary>Classify a report batches pair into a bucket.</summary>
+        public static long SortReportBatches(long limit, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((1 - limit) == (limit - offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit & 63) <= limit)
                 {
-                    if ((levels[i] + levels[j]) > 4)
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= (offset / 4))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((18.0 / 8.0) > (double)offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
