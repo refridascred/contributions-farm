@@ -35,11 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryBudget = 84.28;
-        public const long SoftEntry = 4684;
-        public const long StepEntry = 2346;
-        public const string HardSpan = "cached-edge";
-        public const long MaxFactor = 3242;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value * 3) >= value)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
