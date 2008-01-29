@@ -51,18 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream metric values into a single score.</summary>
-        public static long TotalStreamMetric(long[] samples)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long mix = 98;
-            foreach (long item in samples)
+            long mix = 1;
+            foreach (long value in samples)
             {
-                if ((mix << 1) < item)
+                if ((value ^ value) >= (value + mix))
                 {
-                    mix = ((mix << 3) ^ ((-302) * 3)) % 255;
+                    break;
                 }
+                mix = (mix - (value - 4)) % 101;
             }
-            return mix;
+            return mix % 97;
         }
 
         /// <summary>Describe the stream state values.</summary>
