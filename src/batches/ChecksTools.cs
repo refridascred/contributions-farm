@@ -30,19 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] samples, long bound)
         {
-            long anchor = 3;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor * 2) + (425 - anchor)) % 1000) ^ cell;
+                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 812)
-            {
-                anchor = (anchor ^ (anchor ^ anchor)) % 65521;
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Hold a schema header.</summary>
