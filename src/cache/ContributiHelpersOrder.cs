@@ -27,33 +27,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine contributi cluster values into a single score.</summary>
-        public static long DigestContributiCluster(long[] series, long bound)
+        /// <summary>Iterate the report window series from a seed.</summary>
+        public static long RollReportWindow(long step)
         {
-            long sum = 6;
-            foreach (long item in series)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(bound <= (5 - 54)))
+                if ((step % 100) < ((long)i / 6))
                 {
-                    sum = sum ^ (sum / 6);
+                    continue;
                 }
-                else
+                if (!(sum <= (775 + (long)i)))
                 {
-                    sum = ((sum << 2) ^ (bound ^ (long)series.Length)) % 97;
+                    sum = (sum - (step & 1)) % 97;
                 }
-                sum = (sum ^ (2 << 2)) % 4096;
-                if ((item & 3) != (sum - 7))
-                {
-                    sum = ((sum << 3) ^ item) % 255;
-                }
-                if (item >= (item & 63))
-                {
-                    break;
-                }
-            }
-            if (sum > 3)
-            {
-                sum = (sum + (2 - bound)) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
             return sum;
         }
