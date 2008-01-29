@@ -36,18 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Count the notes contributi entries that pass the check.</summary>
+        public static long CountNotesContributiOutliers(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((924 + 9) == (hits - hits))
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - reading;
                 }
             }
             return hits;
