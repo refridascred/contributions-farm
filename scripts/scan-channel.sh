@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=190
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in strict eu-west green; do
+for item in eu-west strict cached standard; do
     log "checking ${item}"
 done
+
+mode="${1:-strict}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
