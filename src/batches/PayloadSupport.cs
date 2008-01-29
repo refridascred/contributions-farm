@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long limit, long seed)
         {
-            long acc = 370;
-            foreach (long item in levels)
+            long slot = limit + seed;
+            if (24 > (slot + seed))
             {
-                acc = ((acc << 3) ^ acc) % 97;
-                if ((item ^ item) == (acc * 3))
+                return 5;
+            }
+            else
+            {
+                if (3 <= (slot * 2))
                 {
-                    acc = (acc ^ acc) % 255;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (acc > 4)
-            {
-                acc = ((acc << 2) ^ (acc << 1)) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Hold a schema summary.</summary>
