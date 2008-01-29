@@ -30,14 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Draft,
-            Dropped,
-            Locked,
-            Pending,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 9356;
+        public const long HardDepth = 64;
+        public const long BaseProfile = 215;
+        public const long LimitSpan = 5748;
+        public const long WindowDepth = 348;
     }
 }
