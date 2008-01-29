@@ -1,4 +1,11 @@
 # githubfarm settings
-default_size_s: false
-window_delay: strict
-readonly: 5230
+batch_ttl_count: 32.62
+min_interval: false
+base_limit_ms:
+  - cached
+  - blue
+  - strict
+  - stable
+account_capacity: cached
+idle_interval_s: 19.42
+enabled: open
