@@ -54,11 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double bias, double offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double bias2 = 18.0;
-            return (bias2 + offset) + bias;
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a session stats.</summary>
