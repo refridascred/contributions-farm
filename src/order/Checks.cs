@@ -45,11 +45,12 @@ namespace Common.Utilities
         public const long HardSpan = 8086;
         public const long BatchProfile = 5668;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the report kind values.</summary>
