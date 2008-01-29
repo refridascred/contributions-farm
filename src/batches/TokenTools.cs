@@ -21,11 +21,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] values, long floor)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
