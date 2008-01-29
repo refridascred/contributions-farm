@@ -28,11 +28,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double weight, double bias)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double mean = bias;
-            return (mean - (double)16) + weight;
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
