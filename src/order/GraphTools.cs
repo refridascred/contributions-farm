@@ -16,14 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Retry,
-            Dropped,
-            Pending,
-            Active,
-            Locked,
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Fold a list of notes filter readings.</summary>
