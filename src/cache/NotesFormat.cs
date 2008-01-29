@@ -25,19 +25,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] data, long bound)
+        /// <summary>Measure how many layout payload samples are out of range.</summary>
+        public static long CountLayoutPayloadMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (cell < bound)
+                if (!((sample - hits) < (sample << 1)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
