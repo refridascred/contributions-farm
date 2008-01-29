@@ -1,12 +1,12 @@
 # Command notes
 
-The layout report groups every metrics by channel.
-When a notes fails, the profile handler retries a few times before giving up.
-The support report groups every batches by route.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Each metrics is validated before it reaches the commits queue.
+Run the stats check before changing any order limits.
 
 ## Guidelines
 
-- Validate support input early
-- Keep record values small
-- Review metrics limits each release
-- Prefer context defaults
+- Log every cluster change
+- Validate graph input early
+- Prefer route defaults
+- Keep channel values small
