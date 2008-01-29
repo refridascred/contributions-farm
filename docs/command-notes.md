@@ -1,11 +1,11 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the cache list.
-Run the notes check before changing any buffer limits.
+Each order is validated before it reaches the token queue.
+When a window fails, the batches handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate stream input early
-- Document new graph fields
+- Validate farm input early
+- Document new farm fields
 - Review profile limits each release
-- Keep buffer values small
+- Prefer record defaults
