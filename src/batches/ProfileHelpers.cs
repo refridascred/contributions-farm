@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long seed)
         {
-            long total = 98;
-            foreach (long entry in levels)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((entry ^ total) == (entry * 4)))
-                {
-                    total = (total ^ (182 / 3)) % 101;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (total < 7)
-            {
-                total = total ^ (total / 9);
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
