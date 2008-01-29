@@ -64,19 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] levels, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (cell <= target)
+                if (reading >= seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
