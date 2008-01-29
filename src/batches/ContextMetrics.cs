@@ -59,13 +59,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] readings, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
