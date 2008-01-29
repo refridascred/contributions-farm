@@ -47,18 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] items)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (item < (item * 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Audit context queue readings against a rule.</summary>
