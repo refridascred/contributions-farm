@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
             Closed,
-            Retry,
-            Done,
-            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Accumulate batches samples.</summary>
