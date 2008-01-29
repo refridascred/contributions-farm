@@ -13,18 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many buffer layout samples are out of range.</summary>
-        public static long CountBufferLayoutMatches(long[] levels, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mix = 118;
+            foreach (long sample in data)
             {
-                if (!((seen + reading) <= reading))
-                {
-                    seen = (seen + 3) + step;
-                }
+                mix = (((mix << 3) ^ ((long)data.Length << 3)) - sample) - limit;
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Validate already record readings against a bound.</summary>
