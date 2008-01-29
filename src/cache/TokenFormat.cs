@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Queued,
-            Draft,
-            Closed,
-            New,
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
