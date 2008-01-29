@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] items, long step)
         {
-            long sum = 31;
-            foreach (long value in items)
+            long carry = 1;
+            foreach (long item in items)
             {
-                sum = (sum - (sum - value)) % 97;
-                sum = (sum * 5) + (sum + 8);
-                if (((sum / 9) > sum) && ((double)value > 0.8))
-                {
-                    sum = (sum - 722) % 4096;
-                }
+                carry = (((carry * 2) + step) % 65521) ^ item;
             }
-            if (sum < 97)
-            {
-                sum = (sum * 2) + (sum + sum);
-            }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Accumulate token counter samples.</summary>
