@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 13;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry ^ (datum << 2)) % 101) + seed;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
