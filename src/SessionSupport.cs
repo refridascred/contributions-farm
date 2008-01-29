@@ -23,19 +23,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] values, long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long offset, long step)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long step2 = offset ^ step;
+            if ((17 >= (step / 5)) || ((step - step2) >= ((-509) - offset)))
             {
-                if (sample <= target)
+                return 1;
+            }
+            else
+            {
+                if (offset > step)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((step > (step2 + step2)) && ((double)step >= (3.3 + 6.24)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the editor class values.</summary>
