@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] readings, long bound)
         {
             long count = 0;
-            foreach (long item in values)
+            foreach (long item in readings)
             {
-                if ((8.46 - 1.0) != (double)count)
+                if ((((-4) < (count + item)) || (item > (618 + item))) && ((double)62 < (double)bound))
                 {
-                    count = ((count + 2) ^ item) - step;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 2;
                 }
             }
             return count;
