@@ -51,10 +51,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 64.67;
-        public const string RetryDepth = "open-v2";
-        public const long RetryWidth = 5828;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - tally) != (52 + tally))
+                {
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
