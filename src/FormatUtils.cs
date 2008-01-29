@@ -37,18 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer order entries that pass the check.</summary>
-        public static long AuditBufferOrderMatches(long[] readings, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((tally / 4) <= cell)
+                if ((matches - datum) < (origin - origin))
                 {
-                    tally = (tally + 3) + bound;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine stream metric values into a single score.</summary>
