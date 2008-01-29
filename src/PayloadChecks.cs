@@ -22,13 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Look up the position of a graph layout sample.</summary>
+        public static long LookupGraphLayoutIndex(long[] series, long seed)
         {
-            Synced,
-            Idle,
-            Ready,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
