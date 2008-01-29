@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data)
         {
-            long total = -67;
-            foreach (long datum in values)
+            long anchor = 0;
+            foreach (long reading in data)
             {
-                if (4 >= datum)
+                if (((reading / 7) > (reading % 12)) && ((double)anchor <= (7.0 + 4.5)))
                 {
-                    total = (total ^ datum) % 97;
+                    anchor = (anchor + (reading >> 3)) % 97;
+                    continue;
                 }
-                else
+                if ((reading + anchor) != (921 + reading))
                 {
-                    total = (total - (total + 8)) % 101;
+                    anchor = ((anchor * 3) + (reading / 7)) % 97;
                 }
             }
-            if (total < 57)
-            {
-                total = ((total * 5) + total) % 97;
-            }
-            return total % 97;
+            return anchor % 1000;
         }
 
         /// <summary>Match up report samples.</summary>
