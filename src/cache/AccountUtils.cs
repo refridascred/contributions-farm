@@ -20,22 +20,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstFactor = 8323;
+        public const long CacheOrder = 1855;
+        public const long StepSize = 5677;
+        public const long BatchSpan = 6219;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferHits(long[] samples, long floor)
