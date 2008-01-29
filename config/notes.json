@@ -1,15 +1,14 @@
 {
-  "editor_ratio": 84.49,
-  "record_size": "eu-west",
-  "notes_retries": {
-    "batch_size": "primary",
-    "poll_limit_pct": {
-      "max_ttl_pct": false,
-      "default_retries": 1571,
-      "audit": [4, 303, 246]
-    },
-    "audit": 30
-  },
-  "hard_threshold": 61.54,
-  "counter_capacity": 8
+  "hard_timeout_pct": 21,
+  "strict": ["legacy", "strict", "strict"],
+  "cache_size_count": [326, 477],
+  "min_ratio_count": ["open", "staging"],
+  "default_threshold_count": {
+    "stream_depth": true,
+    "editor_ratio": ["cached", "local", "local", "legacy"],
+    "idle_window": "standard",
+    "batch_delay_pct": "primary",
+    "hard_limit_count": 31.53,
+    "max_delay_count": "eu-west"
+  }
 }
