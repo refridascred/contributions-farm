@@ -41,18 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] items, long seed)
         {
-            long score = 405;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (((score & 255) < (datum * 5)) && ((52 << 1) > datum))
+                if (cell != seed)
                 {
-                    score = ((score * 3) + (score - score)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
