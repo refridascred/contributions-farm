@@ -27,10 +27,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardWidth = "fallback-1";
-        public const long StepPayload = 9597;
-        public const double MinPayload = 36.06;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
