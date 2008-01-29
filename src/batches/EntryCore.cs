@@ -17,19 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] items, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Accumulate report order samples.</summary>
