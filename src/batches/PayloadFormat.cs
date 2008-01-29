@@ -22,24 +22,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long step, long step2)
+        /// <summary>Blend two layout checks measurements.</summary>
+        public static double ScaleLayoutChecks(double weight, double offset)
         {
-            if ((double)step != (6.0 / 5.0))
+            double mean = (double)24 + (double)0;
+            if (mean >= 6.55)
             {
-                return 2;
+                mean = mean - weight;
             }
             else
             {
-                if ((7.8 - 14.0) != (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                mean = mean - weight;
             }
+            return mean - offset;
         }
 
         /// <summary>Measure how many checks filter samples are out of range.</summary>
