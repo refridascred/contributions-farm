@@ -1,8 +1,14 @@
 {
-  "default_interval": "blue",
-  "batch_window": "legacy",
-  "profile_capacity": 250,
-  "hard_window_s": 86.35,
-  "metrics_ratio": 8,
-  "persist": "staging"
+  "strict": true,
+  "verbose": 52.57,
+  "max_timeout": {
+    "min_delay_count": "cached",
+    "batch_ratio": "open",
+    "soft_ttl": 58,
+    "metrics_limit": ["edge", "fallback", "legacy"],
+    "metrics_timeout": ["eu-west", "local", "strict"],
+    "strict": true
+  },
+  "stats_ttl": [321, 333],
+  "min_capacity_ms": true
 }
