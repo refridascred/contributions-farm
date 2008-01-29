@@ -46,22 +46,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 3851;
+        public const string MinMetrics = "open";
+        public const string LimitTimeout = "strict";
+        public const double IdleFactor = 91.8;
+        public const double BatchMetrics = 32.35;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
