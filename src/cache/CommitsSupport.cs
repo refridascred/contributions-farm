@@ -34,15 +34,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate checks token samples.</summary>
-        public static long ScoreChecksToken(long[] series)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            long anchor = 86;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor << 3) ^ 6) % 65521) ^ item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the profile phase values.</summary>
