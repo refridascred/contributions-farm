@@ -31,11 +31,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheDepth = "legacy-v2";
-        public const long StepWindow = 2868;
-        public const double BurstWindow = 62.43;
-        public const string IdleBudget = "open-1";
-        public const long RetryWindow = 8890;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Locked,
+            Queued,
+            Idle,
+            Draft,
+            Active,
+        }
     }
 }
