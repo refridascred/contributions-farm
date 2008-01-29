@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate notes layout samples.</summary>
-        public static long ScoreNotesLayout(long[] values, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long anchor = -21;
-            foreach (long value in values)
-            {
-                anchor = anchor ^ (anchor - value);
-            }
-            if (anchor > 44)
-            {
-                anchor = (anchor - seed) % 65521;
-            }
-            return anchor;
+            Stale,
+            Active,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
