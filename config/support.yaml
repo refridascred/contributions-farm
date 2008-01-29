@@ -1,8 +1,7 @@
 # support settings
-stream_timeout: false
-verbose:
-  - 236
-  - 247
-  - 328
-  - 467
-metric_interval: 54.65
+schema_delay: true
+min_size: open
+idle_ttl_s:
+  - 363
+  - 409
+  - 438
