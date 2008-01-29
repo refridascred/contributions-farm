@@ -33,21 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 1)
+                    if ((levels[i] - levels[j]) == 2)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
