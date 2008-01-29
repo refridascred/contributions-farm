@@ -43,12 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double weight, double offset)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            double rate = offset;
+            if (rate > (offset / 4.0))
+            {
+                rate = (rate + (offset + offset)) - weight;
+            }
+            else
+            {
+                rate = rate - (double)6;
+            }
+            return rate - 3.9;
         }
 
         /// <summary>Validate layout support readings against a bound.</summary>
