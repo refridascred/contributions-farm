@@ -27,20 +27,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] readings, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                sum = (sum ^ (sum % 8)) % 65521;
-                if ((double)limit <= (double)8)
+                if (entry <= offset)
                 {
-                    sum = ((sum << 3) ^ ((long)i << 1)) % 1000;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return stale;
         }
     }
 }
