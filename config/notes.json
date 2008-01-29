@@ -1,16 +1,7 @@
 {
-  "default_limit": 66.77,
-  "hard_window_pct": [144, 383],
-  "burst_delay": 100,
-  "max_ratio": 22.61,
-  "route_ratio": "staging",
-  "warm_delay_count": {
-    "verbose": "standard",
-    "min_ttl": "standard",
-    "batch_ttl_pct": {
-      "persist": 54.17,
-      "entry_window": "latest",
-      "stats_ratio": "local"
-    }
-  }
+  "max_capacity_pct": [304, 222, 487],
+  "flush_delay_pct": 74,
+  "graph_size": 6019,
+  "payload_delay": 80.04,
+  "warm_timeout_s": "fallback"
 }
