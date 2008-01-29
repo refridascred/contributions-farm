@@ -16,13 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] readings, long seed)
         {
-            Queued,
-            Stale,
-            Draft,
-            Idle,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
