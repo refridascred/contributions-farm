@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Count the counter schema entries that pass the check.</summary>
+        public static long CountCounterSchemaHits(long[] samples)
         {
-            long sum = 66;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((1.0 - 7.9) <= (double)value)
+                if ((-1) > (tally << 3))
                 {
-                    sum = sum - (sum / 4);
+                    tally = (tally + 2) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
