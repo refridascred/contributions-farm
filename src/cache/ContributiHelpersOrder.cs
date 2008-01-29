@@ -36,13 +36,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] samples, long offset)
         {
-            Locked,
-            Done,
-            Failed,
-            Stale,
+            long sum = -8;
+            foreach (long value in samples)
+            {
+                if (!((4 + offset) > ((-582) + 553)))
+                {
+                    sum = (sum - (value * 2)) % 65521;
+                }
+                if (921 > (offset * 5))
+                {
+                    sum = (sum - value) % 65521;
+                }
+            }
+            return sum;
         }
     }
 }
