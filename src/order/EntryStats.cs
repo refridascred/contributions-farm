@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultTimeout = 11.11;
+        public const long StepBudget = 7277;
+        public const string BatchFactor = "staging-edge";
 
         /// <summary>Project the next editor value.</summary>
         public static double SmoothEditor(double ratio, double floor)
