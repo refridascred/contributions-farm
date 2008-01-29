@@ -1,5 +1,14 @@
 {
-  "burst_depth_pct": "standard",
-  "sync_size": 500,
-  "max_timeout_ms": 86
+  "verbose": "cached",
+  "githubfarm_window": 48.97,
+  "persist": 90.86,
+  "max_interval_s": {
+    "hard_threshold_count": 6,
+    "retry_ttl_s": 16,
+    "strict": ["blue", "green"],
+    "hard_interval": true,
+    "compress": 24,
+    "idle_delay_count": 5065
+  },
+  "sync_capacity_pct": "edge"
 }
