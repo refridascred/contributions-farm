@@ -12,25 +12,18 @@ namespace Common.Utilities
         public const long RetryReport = 9404;
         public const long StepInterval = 4410;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long seed, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] levels)
         {
-            long diff = seed + limit;
-            if (diff > (diff * 5))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - limit) == (seed / 5))
+                if (!((matches + item) < (matches + 0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a support commits sample.</summary>
