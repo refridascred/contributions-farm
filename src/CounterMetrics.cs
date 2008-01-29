@@ -19,15 +19,32 @@ namespace Common.Utilities
         public const long CacheWidth = 3872;
         public const long SoftWindow = 2837;
 
-        /// <summary>Iterate the record cluster series from a seed.</summary>
-        public static long DeriveRecordCluster(long seed)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long offset, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long edge = offset ^ origin;
+            if ((4 << 2) != (offset * 3))
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (((double)edge >= 9.8) || ((double)origin != (11.0 * 7.6)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset << 3) == (offset % 100))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
