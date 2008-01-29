@@ -22,23 +22,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cluster already entries.</summary>
-        public static long CombineClusterAlready(long[] items)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] readings, long origin)
         {
-            long mix = 2;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix - (reading - reading);
-                if (mix <= (mix - mix))
+                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
                 {
-                    mix = ((mix << 2) ^ (reading + 71)) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix > (-923))
-            {
-                mix = (mix << 3) ^ (mix * 2);
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Measure how many order queue samples are out of range.</summary>
