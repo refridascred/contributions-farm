@@ -27,11 +27,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 9356;
-        public const long HardDepth = 64;
-        public const long BaseProfile = 215;
-        public const long LimitSpan = 5748;
-        public const long WindowDepth = 348;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long seed, long limit)
+        {
+            long delta = seed - limit;
+            if (!(seed < ((-54) / 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.0 * 9.0) != (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit * 3) == (857 / 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (4.8 > (double)delta)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
