@@ -63,17 +63,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a queue record sample.</summary>
-        public static long LookupQueueRecordIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftLevel = "primary-edge";
+        public const double SoftBatches = 60.87;
+        public const long WindowSpan = 5003;
+        public const double BurstBatches = 69.95;
+        public const long SoftDepth = 8774;
     }
 }
