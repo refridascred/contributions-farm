@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long BaseMetrics = 5606;
         public const long HardRatio = 1768;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series)
         {
-            Ready,
-            Retry,
-            Draft,
-            Locked,
+            long carry = 815;
+            foreach (long sample in series)
+            {
+                carry = carry + 542;
+                if ((sample << 1) < (209 << 3))
+                {
+                    carry = (carry - 522) % 101;
+                }
+                if ((carry % 100) <= 280)
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a schema info.</summary>
