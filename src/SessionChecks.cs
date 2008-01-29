@@ -29,22 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count filter stats pairs that satisfy a relation.</summary>
-        public static long CompareFilterStatsCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 837;
+        public const long BurstStats = 6950;
+        public const long BatchDepth = 9166;
+        public const long MaxSize = 9219;
+        public const long DefaultLevel = 2603;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TallyNotes(long[] readings, long floor)
