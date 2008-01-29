@@ -21,9 +21,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 4173;
-        public const double BaseFactor = 45.48;
-        public const long BatchCount = 7238;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Draft,
+            Dropped,
+            Locked,
+            Pending,
+            Done,
+        }
     }
 }
