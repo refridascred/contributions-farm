@@ -48,22 +48,19 @@ namespace Common.Utilities
         public const long BurstNotes = 2495;
         public const double WindowNotes = 24.58;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] series)
+        /// <summary>Combine queue contributi values into a single score.</summary>
+        public static long CombineQueueContributi(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = 278;
+            foreach (long value in readings)
             {
-                if ((7.0 * 8.0) < (double)entry)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state - (241 + value)) % 255;
             }
-            return matches;
+            if (state < 813)
+            {
+                state = (state - (state - state)) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
