@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseAlready = 31.31;
-        public const long MaxSize = 9597;
-        public const long RetryScore = 4847;
-        public const long LimitSize = 4316;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 84.55;
+        public const double StepContext = 80.43;
+        public const long BaseContext = 73;
+        public const long StepFactor = 8348;
+        public const long RetryContext = 3263;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long RankSchema(long floor, long step)
