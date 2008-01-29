@@ -82,13 +82,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            public double Count { get; set; }
+            public double Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
