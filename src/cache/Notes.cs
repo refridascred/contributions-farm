@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long floor, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] levels, long offset)
         {
-            if (((step + floor) == (8 - step)) && ((step + (-381)) <= (0 / 9)))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step / 8) > (floor + floor))
+                if ((offset - sample) <= (sample / 8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step & 63) != (floor >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)step <= (18.0 * 7.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
