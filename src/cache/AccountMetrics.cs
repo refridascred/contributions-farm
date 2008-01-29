@@ -20,17 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (series[i] >= floor)
+                if (value > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a context info.</summary>
