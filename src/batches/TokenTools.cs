@@ -50,19 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter githubfarm readings against a bound.</summary>
-        public static bool GuardCounterGithubfarmRange(long[] items, long target)
+        /// <summary>Look up the position of a commits window sample.</summary>
+        public static long LookupCommitsWindowIndex(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != target)
+                if ((series[i] < bound) && ((series[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
