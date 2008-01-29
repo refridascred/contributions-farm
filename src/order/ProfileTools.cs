@@ -59,15 +59,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double span)
+        /// <summary>Roll a batches queue counter forward.</summary>
+        public static long IterateBatchesQueue(long floor)
         {
-            double bias = span;
-            for (int i = 0; i < 3; i++)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                bias = (bias + (gain * 5.0)) + (double)(long)i;
+                long bound = 55;
+                if ((bound + 7) <= (floor + state))
+                {
+                    bound = bound ^ (state << 3);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return bias - 7.61;
+            return state;
         }
     }
 }
