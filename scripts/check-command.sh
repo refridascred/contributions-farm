@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=84
-log "limit is ${COMMAND_LIMIT}"
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in eu-west green; do
-    log "checking ${item}"
+COMMAND_LIMIT=500
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
