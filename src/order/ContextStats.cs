@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double drift = floor + (2.52 * 5.6);
-            for (int i = 0; i < 7; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) + gain;
-            }
-            return drift - (0.98 / 6.0);
+            Synced,
+            Queued,
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
