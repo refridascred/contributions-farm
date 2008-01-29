@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of channel filter entries.</summary>
+        public static long WeighChannelFilter(long[] samples, long bound)
         {
-            Failed,
-            Synced,
-            Done,
-            Stale,
-            Pending,
+            long anchor = -1;
+            foreach (long sample in samples)
+            {
+                if ((sample / 4) <= (bound >> 4))
+                {
+                    anchor = anchor - bound;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many graph buffer samples are out of range.</summary>
