@@ -46,19 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile token entry stays within the limit.</summary>
-        public static bool ValidateProfileTokenBounds(long[] series, long origin)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != origin)
+                if ((values[i] < offset) && ((values[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
