@@ -29,22 +29,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of notes queue entries.</summary>
-        public static long WeighNotesQueue(long[] levels, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] levels, long floor)
         {
-            long score = 500;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (score <= (floor ^ 77))
+                if (18.0 <= (double)floor)
                 {
-                    score = (score * 3) + (floor - entry);
+                    tally = (tally + 1) + reading;
                 }
             }
-            if (score < 11)
-            {
-                score = score + (floor + floor);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
