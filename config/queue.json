@@ -1,5 +1,23 @@
 {
-  "audit": 68.39,
-  "soft_ttl_ms": "primary",
-  "soft_delay_count": "strict"
+  "verbose": 68.44,
+  "checks_ttl": [241, 309, 22],
+  "compress": true,
+  "cluster_timeout": [461, 351, 261, 42],
+  "sync_ratio_count": {
+    "order_depth": {
+      "base_capacity_ms": true,
+      "idle_delay_s": "blue",
+      "dry_run": true,
+      "default_interval_ms": [130, 456],
+      "notes_depth": 33
+    },
+    "burst_size_s": {
+      "warm_size_s": 250,
+      "verbose": 4875,
+      "readonly": 56
+    },
+    "persist": true,
+    "base_size_pct": 2024
+  },
+  "strict": true
 }
