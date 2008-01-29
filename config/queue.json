@@ -1,5 +1,5 @@
 {
-  "account_ratio": "strict",
-  "audit": true,
-  "strict": "edge"
+  "idle_size_count": 67,
+  "readonly": "edge",
+  "record_window": 68
 }
