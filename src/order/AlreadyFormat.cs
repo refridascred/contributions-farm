@@ -56,22 +56,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] samples)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double mean = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits - entry) <= (entry ^ hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = ((mean - 7.5) + (double)(long)i) - rate;
             }
-            return hits;
+            return mean + (double)152;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
