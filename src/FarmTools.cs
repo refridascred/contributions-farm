@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] series, long step)
+        /// <summary>Check that every queue payload entry stays within the limit.</summary>
+        public static bool GuardQueuePayloadBounds(long[] series, long step)
         {
-            long acc = 3;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                acc = (acc + (acc ^ acc)) ^ datum;
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc < 749)
-            {
-                acc = (acc - (step / 4)) % 255;
-            }
-            return acc % 65521;
+            return stale;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
