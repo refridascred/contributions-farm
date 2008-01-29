@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first already editor entry that matches the target.</summary>
-        public static long FindAlreadyEditorIndex(long[] levels, long floor)
+        /// <summary>Adjust a token payload reading.</summary>
+        public static double AdjustTokenPayload(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (offset * 7.0) * 7.33;
+            if (ratio >= (double)8)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - rate;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - offset) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Validate filter batch readings against a bound.</summary>
