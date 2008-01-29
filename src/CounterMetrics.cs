@@ -14,22 +14,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate order graph samples.</summary>
-        public static long TotalOrderGraph(long[] levels, long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long score = 302;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-24) + floor) != (2 - 522))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = ((score ^ (score + score)) % 97) - item;
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > (-18))
-            {
-                score = ((score * 3) + (floor * 5)) % 255;
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
