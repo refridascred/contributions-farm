@@ -49,15 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a window schema reading.</summary>
-        public static double ScaleWindowSchema(double gain, double bias)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double scale = bias - (double)235;
-            if (scale <= (double)124)
-            {
-                scale = (scale - (scale / 9.0)) + gain;
-            }
-            return scale + 15.0;
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Check that every channel contributi entry stays within the limit.</summary>
