@@ -24,32 +24,9 @@ namespace Common.Utilities
         public const long IdleFactor = 2672;
         public const long BatchSpan = 563;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long step, long origin)
-        {
-            long slot = step - origin;
-            if ((3.16 / 3.0) <= (double)slot)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)step >= 9.0) && ((step % 10) > (step << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin * 2) <= slot)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchWidth = "fallback-edge";
+        public const long RetryWidth = 7876;
+        public const long DefaultSpan = 1001;
     }
 }
