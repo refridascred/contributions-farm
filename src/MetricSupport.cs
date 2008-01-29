@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the batch metric entries that pass the check.</summary>
-        public static long AuditBatchMetricMatches(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((double)sample < (4.0 - 16.0)) || (matches >= (matches - sample)))
+                if ((16.0 / 3.0) > (double)value)
                 {
-                    matches = matches + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
