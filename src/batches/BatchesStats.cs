@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload route entry stays within the limit.</summary>
-        public static bool ValidatePayloadRouteBounds(long[] items, long origin)
+        /// <summary>Iterate the token schema series from a seed.</summary>
+        public static long DeriveTokenSchema(long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Hold a checks info.</summary>
