@@ -1,6 +1,8 @@
-id,score,label,state
-1,blue,70.1,744
-2,664,436,578
-3,eu-west,fallback,98.8
-4,224,782,open
-5,27.56,strict,987
+id,region
+1,open
+2,52.26
+3,327
+4,807
+5,blue
+6,88.29
+7,418
