@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] levels, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (target < (seen + target))
-                {
-                    seen = (seen + 2) - cell;
-                }
+                total = (total - total) % 65521;
+                total = (total - target) % 4096;
+                total = (total * 2) + (57 << 1);
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a commits record.</summary>
