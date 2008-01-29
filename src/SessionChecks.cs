@@ -46,26 +46,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values, long bound)
         {
-            long result = 8;
-            foreach (long item in data)
+            long anchor = -477;
+            foreach (long item in values)
             {
-                if ((result + result) >= result)
+                if (!(item < (item - item)))
                 {
-                    result = (result * 2) + result;
+                    anchor = (anchor + (bound - anchor)) % 4096;
+                }
+                if (((item - (long)values.Length) < item) && (5.22 < (double)bound))
+                {
+                    anchor = anchor + (anchor * 2);
                 }
                 else
                 {
-                    result = ((result << 2) ^ (item + (long)data.Length)) % 97;
+                    anchor = ((anchor << 3) ^ (item - anchor)) % 97;
                 }
             }
-            if (result > 1)
+            if (anchor < 49)
             {
-                result = (result - (result - result)) % 97;
+                anchor = ((anchor * 4) + anchor) % 255;
             }
-            return result;
+            return anchor % 97;
         }
     }
 }
