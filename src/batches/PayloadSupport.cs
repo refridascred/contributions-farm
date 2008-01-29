@@ -33,19 +33,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double gain, double offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] values, long offset)
         {
-            double gain2 = gain;
-            if (gain2 >= (double)870)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain2 = gain2 - offset;
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 - (gain - gain2);
-            }
-            return gain2 - 13.0;
+            return -1;
         }
     }
 }
