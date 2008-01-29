@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Synced,
-            Queued,
-            Idle,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryTimeout = 8510;
+        public const double MaxPayload = 94.37;
+        public const string BaseRatio = "primary-1";
+        public const long StepWidth = 6575;
+        public const long HardSpan = 4084;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] samples, long offset)
