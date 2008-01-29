@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryCount = 7980;
+        public const long MaxDepth = 910;
+        public const long HardSpan = 4494;
+        public const long SoftAccount = 77;
+        public const long BaseTimeout = 9211;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
