@@ -1,8 +1,8 @@
 {
-  "base_depth_s": "latest",
-  "queue_limit": 69.52,
-  "base_retries_ms": 30,
-  "warm_interval": "latest",
-  "metric_ttl": ["cached", "open"],
-  "filter_capacity": 500
+  "githubfarm_ratio": true,
+  "strict": ["standard", "latest"],
+  "cluster_window": "fallback",
+  "account_threshold": 91,
+  "flush_delay_s": [314, 444],
+  "poll_size_count": true
 }
