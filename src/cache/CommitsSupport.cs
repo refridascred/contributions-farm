@@ -62,19 +62,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long acc = 551;
-            foreach (long datum in values)
-            {
-                acc = (acc + datum) % 65521;
-            }
-            if (acc < 93)
-            {
-                acc = (acc + (acc + (-57))) % 65521;
-            }
-            return acc % 65521;
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
