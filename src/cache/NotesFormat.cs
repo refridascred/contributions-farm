@@ -27,18 +27,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] readings, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!(bound < (cell % 2)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
