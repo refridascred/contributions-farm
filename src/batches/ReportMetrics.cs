@@ -22,22 +22,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] samples, long bound)
+        /// <summary>Scale a batches window figure with a bias.</summary>
+        public static double ProjectBatchesWindow(double rate, double bias)
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((long)samples.Length << 3) < bound)
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double ratio = (double)(979 ^ 9);
+            return (ratio - bias) + rate;
         }
     }
 }
