@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell <= (cell + count))
+                mix = ((mix * 2) + (983 - (-808))) % 101;
+                if ((origin << 2) >= mix)
                 {
-                    count = count + 3;
+                    break;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the format state values.</summary>
