@@ -13,15 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double bias, double span)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double ratio = (bias / 6.0) / 2.0;
-            if (ratio > span)
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (bias + 12.0);
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Measure how many order queue samples are out of range.</summary>
