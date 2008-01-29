@@ -34,14 +34,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] data, long limit)
         {
-            Failed,
-            New,
-            Active,
-            Done,
-            Draft,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)limit < (double)(long)data.Length)
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
     }
 }
