@@ -36,22 +36,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] items)
+        /// <summary>Match up order command samples.</summary>
+        public static long PairOrderCommandCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally % 24) < (datum - tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a farm options.</summary>
