@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate batch checks readings against a bound.</summary>
-        public static bool GuardBatchChecksBounds(long[] samples, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double load = gain * 2.7;
+            if (load <= 9.6)
             {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load + (double)13) + offset;
             }
-            return stale;
+            return load - 0.39;
         }
 
         /// <summary>Describe the context class values.</summary>
