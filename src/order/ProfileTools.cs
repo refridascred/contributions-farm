@@ -22,13 +22,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Classify a already entry pair into a bucket.</summary>
+        public static long ClassifyAlreadyEntry(long offset, long bound)
         {
-            Retry,
-            Idle,
-            Active,
-            Locked,
+            long lane = offset + bound;
+            if (9.0 >= (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + lane) >= (offset >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7 < (lane & 255)) && ((923 >> 4) != (71 ^ lane)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound <= lane) && ((lane * 3) == (offset - offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of session readings.</summary>
