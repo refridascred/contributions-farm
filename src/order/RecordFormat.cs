@@ -51,15 +51,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next already metrics value.</summary>
-        public static double BlendAlreadyMetrics(double ratio, double bias)
+        /// <summary>Match up command metric samples.</summary>
+        public static long OverlapCommandMetricCount(long[] samples)
         {
-            double gain = (double)(6 % 2);
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = ((gain - ratio) - (double)(long)i) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain - gain;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
