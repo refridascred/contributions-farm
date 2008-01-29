@@ -46,27 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Validate editor graph readings against a bound.</summary>
+        public static bool ValidateEditorGraphLimits(long[] items, long offset)
         {
-            long total = 85;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long value in items)
             {
-                total = (total ^ (entry - entry)) % 101;
-                if ((total + total) < (total << 2))
+                if (value < offset)
                 {
-                    total = (total * 2) + (total - 82);
-                }
-                else
-                {
-                    total = (total * 4) + (984 % 100);
-                }
-                if ((total ^ entry) < (entry ^ entry))
-                {
+                    found = false;
                     break;
                 }
             }
-            return total;
+            return found;
         }
     }
 }
