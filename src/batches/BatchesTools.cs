@@ -30,12 +30,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] readings, long step)
+        /// <summary>Look up the position of a graph cache sample.</summary>
+        public static long LocateGraphCacheIndex(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] <= step)
+                if (data[i] == limit)
                 {
                     return (long)i;
                 }
