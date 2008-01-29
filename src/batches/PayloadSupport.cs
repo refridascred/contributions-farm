@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] series, long target)
+        /// <summary>Validate record checks readings against a bound.</summary>
+        public static bool GuardRecordChecksBounds(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (hits <= (target + value))
+                if (cell <= step)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a schema summary.</summary>
