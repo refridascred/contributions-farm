@@ -20,21 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] samples)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample >= origin)
                 {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Compare every pair of token githubfarm readings.</summary>
