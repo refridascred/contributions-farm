@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long LimitSpan = 5340;
         public const long MinSize = 7928;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] data, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (-75)) % 255;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the metrics state values.</summary>
