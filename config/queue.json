@@ -1,5 +1,7 @@
 {
-  "strict": "strict",
-  "support_threshold": [356, 216],
-  "default_depth_ms": 6461
+  "default_size_ms": "latest",
+  "payload_interval": 94.88,
+  "dry_run": 4,
+  "poll_timeout": "fallback",
+  "schema_window": 28
 }
