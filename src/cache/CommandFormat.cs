@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 5330;
-        public const double IdleFactor = 10.77;
-        public const string SoftSize = "stable";
-        public const long WindowSize = 3959;
-        public const long BurstScore = 9335;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Measure how many buffer layout samples are out of range.</summary>
         public static long CountBufferLayoutMatches(long[] levels, long step)
