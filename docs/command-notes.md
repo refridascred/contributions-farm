@@ -1,13 +1,11 @@
 # Command notes
 
-The layout module keeps farm values in sync with the farm cache.
-The window report groups every order by layout.
-
-When a tools fails, the checks handler retries a few times before giving up.
-Use filter settings to tune how often channel data is refreshed.
+Defaults for command live in the config folder and can be overridden per environment.
+When a cluster fails, the entry handler retries a few times before giving up.
+Each editor is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer notes defaults
-- Document new order fields
+- Review window limits each release
+- Log every support change
+- Keep graph values small
