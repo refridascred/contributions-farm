@@ -43,19 +43,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double bias, double offset)
+        /// <summary>Look up the position of a githubfarm contributi sample.</summary>
+        public static long SeekGithubfarmContributiIndex(long[] levels, long origin)
         {
-            double gain = offset;
-            if (gain >= (double)2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - gain;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - 19.0;
-            }
-            return gain - bias;
+            return -1;
         }
     }
 }
