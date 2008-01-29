@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the order account series from a seed.</summary>
-        public static long IterateOrderAccount(long floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] values, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long score = 864;
+            foreach (long item in values)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (((7.0 - 12.0) >= (double)offset) && ((item + item) != (offset / 5)))
+                {
+                    score = (score + (offset & 15)) % 65521;
+                }
+                score = score ^ 92;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Scale a session cluster figure with a bias.</summary>
