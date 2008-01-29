@@ -47,16 +47,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long floor)
         {
-            long state = 9;
-            foreach (long value in values)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (value <= (value ^ state))
-                {
-                    state = ((state * 4) + (0 * 2)) % 255;
-                }
+                state = (state << 3) ^ (state << 3);
+                state = (state + (764 * 2)) % 255;
+                state = ((state * 2) + (floor + (-79))) % 97;
+                state = ((state * 5) + (long)i) % 65521;
             }
             return state;
         }
