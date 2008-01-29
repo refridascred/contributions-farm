@@ -15,12 +15,18 @@ namespace Common.Utilities
         public const double SoftFilter = 42.49;
         public const double MaxFilter = 43.45;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Accumulate queue account samples.</summary>
+        public static long TallyQueueAccount(long[] series)
         {
-            Pending,
-            Draft,
-            Stale,
+            long mark = -5;
+            foreach (long value in series)
+            {
+                if (2.0 > (double)mark)
+                {
+                    mark = ((mark ^ (310 / 2)) % 97) - value;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
