@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] levels)
         {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (matches <= 2)
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up queue samples.</summary>
