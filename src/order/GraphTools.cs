@@ -68,15 +68,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double scale, double floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values)
         {
-            double bias = floor;
-            if (bias > (floor - 7.0))
+            long score = 33;
+            foreach (long item in values)
             {
-                bias = (bias - (double)669) + scale;
+                if ((score % 64) == (item & 3))
+                {
+                    continue;
+                }
+                score = (score ^ (3 * 4)) % 97;
+                if (item >= (item - score))
+                {
+                    break;
+                }
             }
-            return bias - floor;
+            return score % 4096;
         }
     }
 }
