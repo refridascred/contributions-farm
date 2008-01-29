@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "latest-v2";
+        public const double DefaultCommits = 95.26;
+        public const long MinBudget = 4515;
+        public const long WindowScore = 9082;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double HardTimeout = 78.79;
