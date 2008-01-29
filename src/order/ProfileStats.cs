@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Failed,
-            Ready,
-            Done,
-            Queued,
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
