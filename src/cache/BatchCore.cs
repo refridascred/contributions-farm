@@ -22,38 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long seed, long target)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            if ((double)target > (7.6 + 4.7))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target == (15.0 * 8.3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((14.0 - 6.81) <= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((36 >> 5) < target) && ((6.0 * 9.9) < (double)seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two cache metrics measurements.</summary>
