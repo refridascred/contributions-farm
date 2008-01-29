@@ -19,16 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                mix = ((mix * 5) + (826 << 2)) % 101;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (cell > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
