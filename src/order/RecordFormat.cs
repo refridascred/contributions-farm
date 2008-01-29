@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit metrics batches readings against a rule.</summary>
-        public static long TallyMetricsBatchesMatches(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell > (2.4 * 10.0))
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 941;
+        public const string MinLevel = "stable-edge";
+        public const double BurstCount = 64.34;
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
