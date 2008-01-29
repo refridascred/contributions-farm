@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a route record pair into a bucket.</summary>
-        public static long RankRouteRecord(long step, long limit)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            if (((83 << 3) > (limit + 55)) || ((step << 3) >= (step / 8)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + limit) == (limit - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
