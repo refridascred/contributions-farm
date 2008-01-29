@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 57.0;
-        public const string LimitFormat = "fallback";
-        public const string DefaultFormat = "legacy";
-        public const string StepFormat = "staging-edge";
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry << 2) ^ carry) % 101;
+                carry = ((carry << 3) ^ step) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterLimits(long[] samples, long target)
