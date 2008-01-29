@@ -40,16 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] data, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state + (state << 3);
-                state = ((state * 2) + (long)i) % 4093;
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Compare every pair of token payload readings.</summary>
