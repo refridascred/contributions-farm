@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftDepth = 7672;
-        public const long RetryLayout = 1215;
-        public const string StepLayout = "local-edge";
-        public const double CacheLevel = 98.42;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels)
+        {
+            long acc = 370;
+            foreach (long item in levels)
+            {
+                acc = ((acc << 3) ^ acc) % 97;
+                if ((item ^ item) == (acc * 3))
+                {
+                    acc = (acc ^ acc) % 255;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = ((acc << 2) ^ (acc << 1)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
