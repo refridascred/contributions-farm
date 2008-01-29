@@ -32,12 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Scale a commits payload figure with a bias.</summary>
+        public static double ScaleCommitsPayload(double bias, double bias2)
         {
-            Queued,
-            Pending,
-            Locked,
+            double ratio = bias / 8.0;
+            if (ratio < bias2)
+            {
+                ratio = ratio + bias2;
+            }
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - 4.0;
         }
     }
 }
