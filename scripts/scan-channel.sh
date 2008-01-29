@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable latest standard primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-standard}"
 case "${mode}" in
-    primary)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in edge local open cached; do
+    log "checking ${item}"
+done
