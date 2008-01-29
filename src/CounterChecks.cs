@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Failed,
-            Draft,
-            Ready,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 6015;
+        public const double BurstTimeout = 91.77;
+        public const long HardBudget = 296;
+        public const long IdleInterval = 7156;
+        public const long DefaultCount = 3203;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
