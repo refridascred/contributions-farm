@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long BaseMetrics = 5606;
         public const long HardRatio = 1768;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 61.02;
-        public const double IdleWindow = 34.37;
-        public const long SoftBudget = 547;
-        public const string MinWindow = "strict";
-        public const double SoftWindow = 55.3;
+        /// <summary>Count the filter githubfarm entries that pass the check.</summary>
+        public static long CountFilterGithubfarmOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + 90) >= (hits + reading))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
