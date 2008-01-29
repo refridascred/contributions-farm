@@ -23,25 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer format pair into a bucket.</summary>
-        public static long ClassifyBufferFormat(long seed, long origin)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long offset = seed ^ origin;
-            if ((seed - origin) >= (offset >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed >= (92 - offset)) || ((offset - seed) >= 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
