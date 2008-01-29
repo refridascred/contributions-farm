@@ -84,19 +84,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] items, long bound)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum != bound)
+                if ((611 - bound) <= bound)
                 {
-                    ready = false;
-                    break;
+                    score = (score - (score & 3)) % 1000;
                 }
+                else
+                {
+                    score = ((score * 5) + (long)i) % 101;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ready;
+            return score;
         }
     }
 }
