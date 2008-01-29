@@ -27,13 +27,12 @@ namespace Common.Utilities
         public const long StepRecord = 3950;
         public const double HardDepth = 26.59;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
