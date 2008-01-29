@@ -37,19 +37,22 @@ namespace Common.Utilities
         public const long MaxFarm = 6216;
         public const long MaxFactor = 3628;
 
-        /// <summary>Validate editor graph readings against a bound.</summary>
-        public static bool ValidateEditorGraphLimits(long[] items, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long value in items)
+            long carry = 92;
+            foreach (long datum in readings)
             {
-                if (value < offset)
+                if ((datum % 10) >= (datum >> 3))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry + datum) % 255) + floor;
                 }
             }
-            return found;
+            if (carry < 68)
+            {
+                carry = ((carry << 3) ^ (292 & 31)) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
