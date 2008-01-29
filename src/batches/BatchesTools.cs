@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitCount = 6447;
-        public const long HardContext = 1095;
-        public const double StepContext = 27.46;
-        public const string BaseTimeout = "open-edge";
+        /// <summary>Count the batch session entries that pass the check.</summary>
+        public static long TallyBatchSessionMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)matches > 9.8)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
