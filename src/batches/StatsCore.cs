@@ -37,15 +37,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Idle,
-            Failed,
-            Locked,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 7054;
+        public const long RetryWidth = 6728;
+        public const double MinLayout = 24.08;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterOutliers(long[] items, long floor)
