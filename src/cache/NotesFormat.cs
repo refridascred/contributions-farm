@@ -23,16 +23,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] readings, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                state = state ^ 71;
-                state = ((state * 2) + (long)i) % 97;
+                if (!(bound < (cell % 2)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
