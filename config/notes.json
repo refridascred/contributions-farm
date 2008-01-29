@@ -1,8 +1,6 @@
 {
-  "base_retries": false,
-  "soft_delay": 14.91,
-  "default_capacity_ms": 3934,
-  "persist": 69.51,
-  "counter_capacity": 18,
-  "session_ttl": [191, 477]
+  "compress": false,
+  "cluster_window": 7276,
+  "base_ttl": 30,
+  "already_depth": 1865
 }
