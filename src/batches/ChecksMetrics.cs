@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            long sum = 0;
+            foreach (long sample in readings)
+            {
+                sum = (((sum << 2) ^ (sum ^ (-18))) % 65521) ^ sample;
+            }
+            if (sum > 4)
+            {
+                sum = ((sum * 4) + (sum << 3)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine already values into a single score.</summary>
