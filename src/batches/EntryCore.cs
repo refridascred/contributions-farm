@@ -53,11 +53,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
