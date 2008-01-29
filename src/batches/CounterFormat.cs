@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long BaseMetrics = 5606;
         public const long HardRatio = 1768;
 
-        /// <summary>Count the filter githubfarm entries that pass the check.</summary>
-        public static long CountFilterGithubfarmOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + 90) >= (hits + reading))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 44.14;
+        public const long MaxInterval = 965;
+        public const long DefaultFactor = 5664;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
