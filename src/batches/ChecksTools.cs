@@ -16,14 +16,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double floor)
         {
-            Locked,
-            Queued,
-            Paused,
-            Closed,
-            Stale,
+            double rate = (double)(5 >> 1);
+            if (rate <= (floor * 20.0))
+            {
+                rate = (rate + rate) - scale;
+            }
+            return rate - 20.0;
         }
 
         /// <summary>Define window limits and defaults.</summary>
