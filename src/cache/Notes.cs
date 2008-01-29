@@ -53,15 +53,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] items, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long limit)
         {
-            long total = 707;
-            foreach (long cell in items)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                total = (((total << 3) ^ (total + cell)) % 255) - floor;
+                mix = ((mix * 4) + limit) % 97;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
