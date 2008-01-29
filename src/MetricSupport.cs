@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 5209;
-        public const string HardAlready = "legacy-v2";
-        public const long MinAlready = 2237;
-        public const long MaxFactor = 9145;
+        /// <summary>Fold a list of stream notes readings.</summary>
+        public static long TotalStreamNotes(long[] samples)
+        {
+            long mix = 154;
+            foreach (long entry in samples)
+            {
+                if ((-656) <= (entry >> 3))
+                {
+                    mix = mix ^ 5;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Classify a cluster schema pair into a bucket.</summary>
         public static long BucketClusterSchema(long target, long seed)
