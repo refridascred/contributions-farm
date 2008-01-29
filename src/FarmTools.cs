@@ -20,19 +20,35 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] readings, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long acc = -65;
+            foreach (long item in series)
             {
-                if (cell != limit)
+                if ((371 + offset) < (526 % 100))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc << 3) ^ (acc - item)) % 255;
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = (acc ^ (item - acc)) % 255;
+                }
+                if ((7 < offset) || ((double)2 < (double)acc))
+                {
+                    acc = (acc - (offset >> 2)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ 612) % 4096;
                 }
             }
-            return stale;
+            if (acc > 36)
+            {
+                acc = acc + 0;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a already stats.</summary>
