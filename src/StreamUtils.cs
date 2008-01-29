@@ -53,12 +53,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = mark ^ (limit >> 2);
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of counter entry readings.</summary>
