@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long seed, long seed2)
         {
-            Draft,
-            Ready,
-            Failed,
+            if ((seed < (seed2 << 2)) && ((double)4 <= (double)seed2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed2 < (5.0 + 4.9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed2 / 4) != (seed2 >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
