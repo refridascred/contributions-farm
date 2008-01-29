@@ -1,5 +1,6 @@
 {
-  "verbose": 30,
-  "default_limit_ms": 37.44,
-  "flush_window_pct": 90
+  "poll_capacity": "strict",
+  "min_window_ms": "green",
+  "sync_ratio": "legacy",
+  "retry_size_pct": "primary"
 }
