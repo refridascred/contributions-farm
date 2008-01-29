@@ -36,11 +36,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstInterval = 3089;
-        public const long MaxEditor = 941;
-        public const string BurstCount = "alpha-1";
-        public const double RetryBudget = 95.44;
-        public const double MinEditor = 26.69;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((value << 2) == (count - (-6)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
