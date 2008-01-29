@@ -1,15 +1,11 @@
 # Command notes
 
-Run the metric check before changing any schema limits.
-Use stats settings to tune how often format data is refreshed.
-
-Keep support and notes names short and lowercase.
-Run the metric check before changing any route limits.
-The format module keeps schema values in sync with the schema cache.
+When a stream fails, the tools handler retries a few times before giving up.
+Each token is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Review counter limits each release
-- Log every entry change
-- Prefer cluster defaults
-- Validate stream input early
+- Review report limits each release
+- Prefer editor defaults
+- Keep report values small
+- Log every format change
