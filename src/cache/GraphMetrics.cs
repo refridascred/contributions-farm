@@ -46,39 +46,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank tools metric input into a small class.</summary>
-        public static long RankToolsMetric(long step, long origin)
+        /// <summary>Look up the position of a filter queue sample.</summary>
+        public static long SeekFilterQueueIndex(long[] data, long offset)
         {
-            long lane = step ^ origin;
-            if (origin < (origin + lane))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (lane < 60)
+                if ((data[i] > offset) && ((data[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - 853) >= (lane * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.38 - 2.34) <= (double)lane)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
