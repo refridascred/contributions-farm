@@ -45,10 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 93.56;
-        public const long BatchNotes = 8863;
-        public const long BaseNotes = 6649;
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
+        {
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
