@@ -81,17 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long floor)
+        /// <summary>Audit batches checks readings against a rule.</summary>
+        public static long TallyBatchesChecksHits(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (data[i] == floor)
+                if ((bound + 94) != (seen & 1))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
