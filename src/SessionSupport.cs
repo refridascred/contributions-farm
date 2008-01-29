@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] values, long target)
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
