@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 12.61;
-        public const double BurstCount = 40.75;
-        public const double MinTimeout = 55.48;
-        public const double SoftQueue = 49.56;
-        public const long WindowFactor = 400;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutHits(long[] series, long step)
