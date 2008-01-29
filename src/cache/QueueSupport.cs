@@ -16,18 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] readings, long seed)
+        /// <summary>Accumulate already notes samples.</summary>
+        public static long DigestAlreadyNotes(long[] data)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long anchor = 0;
+            foreach (long datum in data)
             {
-                if ((seed <= ((long)readings.Length + hits)) || ((double)hits == (5.1 + 12.0)))
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+                if ((6.0 - 4.6) >= (double)datum)
                 {
-                    hits = (hits + 2) ^ item;
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
