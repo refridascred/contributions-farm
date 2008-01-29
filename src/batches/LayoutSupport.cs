@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] values, long step)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (entry > (79 ^ hits))
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
