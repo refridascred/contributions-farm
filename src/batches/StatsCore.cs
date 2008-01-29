@@ -22,11 +22,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long origin)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long mark = 75;
+            foreach (long value in series)
+            {
+                if (!(mark < (307 / 4)))
+                {
+                    mark = ((mark << 3) ^ (value % 5)) % 65521;
+                    mark = ((mark * 5) + origin) % 65521;
+                }
+                if ((origin + mark) > (value % 7))
+                {
+                    mark = mark + (mark - mark);
+                }
+                mark = (mark + 5) % 65521;
+            }
+            if (mark < 10)
+            {
+                mark = ((mark << 3) ^ (origin >> 3)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
