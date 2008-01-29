@@ -1,7 +1,8 @@
-id,token,state
-1,112,81
-2,137,756
-3,806,222
-4,61,local
-5,edge,cached
-6,strict,85.42
+id,label,level
+1,blue,90.14
+2,528,343
+3,edge,753
+4,cached,cached
+5,139,48
+6,954,cached
+7,89,324
