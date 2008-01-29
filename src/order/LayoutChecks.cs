@@ -55,11 +55,12 @@ namespace Common.Utilities
             return (bias2 + offset) + bias;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
