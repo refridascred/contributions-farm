@@ -1,4 +1,4 @@
 # support settings
-dry_run: true
-batch_window: 1024
-hard_depth_count: green
+cluster_ratio: 89.32
+base_ttl_s: true
+batch_timeout: 87
