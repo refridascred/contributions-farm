@@ -20,18 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] items, long offset)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(hits < (hits + hits)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = ((hits + 2) + value) + offset;
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
