@@ -31,18 +31,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] values, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long origin, long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            if (((limit / 8) < (968 - origin)) || ((double)limit > (double)origin))
             {
-                if (target >= (count - count))
+                return 0;
+            }
+            else
+            {
+                if ((11.0 / 6.0) > (double)limit)
                 {
-                    count = (count + 3) + item;
+                    return 3;
+                }
+                else
+                {
+                    if (!(limit > (limit >> 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (92 <= (origin + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
