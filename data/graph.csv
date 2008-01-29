@@ -1,7 +1,9 @@
-id,ratio,level
-1,1,971
-2,eu-west,500
-3,85.76,68.93
-4,stable,805
-5,7.6,75.41
-6,primary,889
+id,region,active,level,score
+1,cached,94.11,779,eu-west
+2,211,97.25,6.89,829
+3,stable,56.36,cached,628
+4,16,98.47,995,30.49
+5,35.1,56,63.05,stable
+6,89.54,strict,28,primary
+7,146,primary,921,83.24
+8,81.38,latest,16.71,815
