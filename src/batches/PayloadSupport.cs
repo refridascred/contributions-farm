@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long limit, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] series, long target)
         {
-            long slot = limit + seed;
-            if (24 > (slot + seed))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (3 <= (slot * 2))
+                if (hits <= (target + value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a schema summary.</summary>
