@@ -25,15 +25,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Dropped,
+            Active,
+            Idle,
         }
     }
 }
