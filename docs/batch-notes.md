@@ -1,10 +1,14 @@
 # Batch notes
 
-Each token is validated before it reaches the counter queue.
-Defaults for support live in the config folder and can be overridden per environment.
+A format that stays idle for too long is moved to the record list.
+A order that stays idle for too long is moved to the support list.
+
+Keep session and entry names short and lowercase.
+A contributi that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Keep queue values small
-- Prefer order defaults
-- Review account limits each release
+- Document new context fields
+- Log every schema change
+- Prefer batches defaults
+- Review support limits each release
