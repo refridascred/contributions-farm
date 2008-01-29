@@ -41,12 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "legacy-edge";
-        public const double CacheCount = 91.14;
-        public const long BaseProfile = 6505;
-        public const long MinProfile = 7273;
-        public const long RetryRatio = 5813;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next profile value.</summary>
         public static double SmoothProfile(double bias, double offset)
