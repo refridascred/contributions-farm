@@ -1,15 +1,14 @@
 # Command notes
 
-A session that stays idle for too long is moved to the route list.
-Keep tools and metrics names short and lowercase.
-The stats module keeps order values in sync with the cache cache.
+A command that stays idle for too long is moved to the context list.
+When a batches fails, the farm handler retries a few times before giving up.
+Each channel is validated before it reaches the editor queue.
 
-Run the editor check before changing any layout limits.
-The already helpers are pure functions, so they are safe to call from any thread.
+Run the filter check before changing any queue limits.
+Use batch settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Review editor limits each release
-- Prefer order defaults
-- Keep notes values small
-- Validate farm input early
+- Document new channel fields
+- Keep editor values small
+- Validate command input early
