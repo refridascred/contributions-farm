@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] series, long bound)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            long result = -89;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result + (45 / 7)) % 255) - bound;
-                if ((560 + result) != (reading + (-14)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
