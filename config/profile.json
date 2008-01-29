@@ -1,8 +1,7 @@
 {
-  "support_ttl": 38.79,
-  "soft_retries": [312, 105, 459],
-  "poll_limit": false,
-  "idle_retries": "legacy",
-  "burst_window_s": 60,
-  "dry_run": "cached"
+  "flush_threshold_ms": ["legacy", "eu-west", "green", "local"],
+  "max_timeout": 2719,
+  "batch_capacity_ms": "local",
+  "buffer_depth": false,
+  "audit": "eu-west"
 }
