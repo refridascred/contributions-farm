@@ -21,9 +21,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 10.45;
-        public const long BatchEntry = 2363;
-        public const long StepEntry = 6285;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((seed ^ 1) < (hits / 7))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
