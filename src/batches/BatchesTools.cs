@@ -30,17 +30,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a graph cache sample.</summary>
-        public static long LocateGraphCacheIndex(long[] data, long limit)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] == limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
