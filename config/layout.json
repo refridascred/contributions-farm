@@ -1,7 +1,6 @@
 {
-  "burst_limit": [92, 5, 132],
-  "max_size_ms": "stable",
-  "audit": "legacy",
-  "enabled": "strict",
-  "session_ratio": "legacy"
+  "soft_size_s": "standard",
+  "batches_interval": ["edge", "green", "eu-west", "eu-west"],
+  "default_depth": ["legacy", "blue", "edge"],
+  "max_capacity_s": "open"
 }
