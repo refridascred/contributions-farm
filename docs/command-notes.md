@@ -1,10 +1,11 @@
 # Command notes
 
-The tools helpers are pure functions, so they are safe to call from any thread.
-Keep cluster and graph names short and lowercase.
+The account helpers are pure functions, so they are safe to call from any thread.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new support fields
-- Log every batches change
-- Validate contributi input early
+- Review order limits each release
+- Log every graph change
+- Validate tools input early
+- Keep cache values small
