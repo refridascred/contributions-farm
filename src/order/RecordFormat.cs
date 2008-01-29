@@ -13,13 +13,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            Draft,
-            Synced,
-            Closed,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
