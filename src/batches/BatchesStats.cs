@@ -39,23 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Check that every payload route entry stays within the limit.</summary>
+        public static bool ValidatePayloadRouteBounds(long[] items, long origin)
         {
-            long result = 18;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                result = result - (73 + entry);
-                if (((12.0 - 5.57) > (double)result) || ((entry - 1) > (entry & 15)))
+                if (entry > origin)
                 {
-                    result = result + 8;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 83)
-            {
-                result = result + (6 >> 5);
-            }
-            return result % 65521;
+            return ok;
         }
 
         /// <summary>Hold a checks info.</summary>
