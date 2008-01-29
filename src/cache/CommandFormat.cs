@@ -42,23 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items, long seed)
+        /// <summary>Roll a schema buffer counter forward.</summary>
+        public static long StepSchemaBuffer(long floor)
         {
-            long anchor = 40;
-            foreach (long sample in items)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor - anchor) % 97) - seed;
-                if ((18.0 + 5.92) >= (double)sample)
-                {
-                    anchor = (anchor * 4) + (anchor & 3);
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            if (anchor > (-2))
-            {
-                anchor = (anchor * 4) + (anchor + anchor);
-            }
-            return anchor % 4096;
+            return mark;
         }
     }
 }
