@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] values, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((step >> 2) <= (41 * 3))
+                if (entry != floor)
                 {
-                    count = (count + 3) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
