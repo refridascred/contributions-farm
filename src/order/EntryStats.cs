@@ -42,31 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items)
-        {
-            long carry = 163;
-            foreach (long sample in items)
-            {
-                if (sample <= (564 ^ sample))
-                {
-                    carry = ((carry * 2) + (sample + sample)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ (sample >> 3);
-                }
-                if (((carry ^ carry) < (8 & 3)) || ((long)items.Length > (sample % 12)))
-                {
-                    break;
-                }
-            }
-            if (carry < 456)
-            {
-                carry = (carry - (carry * 4)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepSize = 8006;
+        public const double SoftLevel = 72.95;
+        public const string CacheCommits = "cached-1";
+        public const long StepCommits = 2188;
+        public const string LimitCommits = "stable-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSchema = 2039;
