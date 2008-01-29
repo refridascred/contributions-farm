@@ -1,6 +1,6 @@
 {
-  "route_ratio": true,
-  "checks_depth": "blue",
-  "already_timeout": 68.55,
-  "cache_depth_ms": 42
+  "burst_delay_pct": "legacy",
+  "flush_delay": 4,
+  "layout_size": true,
+  "cache_window": 30
 }
