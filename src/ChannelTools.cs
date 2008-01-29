@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels, long offset)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            long sum = -7;
+            foreach (long item in levels)
+            {
+                if ((sum ^ item) <= item)
+                {
+                    sum = ((sum << 3) ^ ((-49) * 5)) % 255;
+                }
+                sum = sum - (item / 7);
+            }
+            if (sum < 40)
+            {
+                sum = (sum << 3) ^ offset;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
