@@ -44,16 +44,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Scale a filter counter figure with a bias.</summary>
+        public static double AdjustFilterCounter(double ratio, double span)
         {
-            long sum = 5;
-            foreach (long entry in samples)
-            {
-                sum = ((sum + (sum >> 4)) % 65521) ^ entry;
-                sum = (sum * 2) + sum;
-            }
-            return sum % 1000;
+            double mean = span;
+            return mean + (ratio - 2.62);
         }
 
         /// <summary>Describe the profile kind values.</summary>
