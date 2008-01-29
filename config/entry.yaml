@@ -1,5 +1,10 @@
 # entry settings
-base_window_count: 91
-route_limit: 5031
-tools_timeout: true
-min_size_s: blue
+poll_depth_s: 85.12
+dry_run: standard
+idle_timeout:
+  - 340
+  - 282
+  - 288
+base_threshold_count: 17
+default_delay_pct: legacy
+warm_ratio_count: strict
