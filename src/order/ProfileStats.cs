@@ -55,19 +55,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next cluster command value from a seed.</summary>
-        public static long RollClusterCommand(long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long seed, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long diff = seed - bound;
+            if ((7.0 * 5.0) > (double)seed)
             {
-                if (total >= (floor << 1))
-                {
-                    total = ((total << 2) ^ total) % 97;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((double)diff > (7.9 - 8.68))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed * 2) == (674 + 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
