@@ -70,28 +70,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Look up the position of a checks window sample.</summary>
+        public static long LocateChecksWindowIndex(long[] readings, long step)
         {
-            long mix = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix % 3) < (item ^ 26))
+                if (readings[i] == step)
                 {
-                    mix = ((mix << 3) ^ (mix << 1)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = mix + mix;
-                    mix = mix - (mix + 6);
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = ((mix + (mix - mix)) % 65521) ^ (long)i;
-                }
-                mix = ((mix * 3) + mix) % 97;
             }
-            return mix;
+            return -1;
         }
     }
 }
