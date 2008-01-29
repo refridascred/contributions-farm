@@ -73,15 +73,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] data)
+        /// <summary>Check that every graph window entry stays within the limit.</summary>
+        public static bool ValidateGraphWindowBounds(long[] items, long offset)
         {
-            long carry = 98;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                carry = ((carry << 3) ^ (57 ^ carry)) - entry;
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
     }
 }
