@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] series)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (matches < 211)
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
