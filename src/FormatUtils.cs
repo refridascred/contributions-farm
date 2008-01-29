@@ -54,15 +54,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long mark = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ (datum - (long)items.Length)) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Describe the stream state values.</summary>
