@@ -31,23 +31,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5752;
         public const double HardInterval = 33.77;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double scale, double floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double drift = scale + floor;
-            if (drift < floor)
-            {
-                drift = drift - (floor - floor);
-            }
-            else
-            {
-                drift = drift + (drift / 6.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift / 8.0)) + (double)(long)i;
-            }
-            return drift - (double)55;
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
