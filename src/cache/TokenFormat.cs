@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
+                if ((double)reading == (7.0 + 3.0))
                 {
-                    return (long)i;
+                    count = (count + 1) + target;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
