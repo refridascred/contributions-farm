@@ -1,19 +1,8 @@
 {
-  "cache_timeout_pct": 69,
-  "poll_delay_s": {
-    "retry_limit_s": {
-      "idle_window_ms": "standard",
-      "hard_capacity": false,
-      "githubfarm_ratio": "staging",
-      "retry_limit_count": false,
-      "cluster_depth": ["staging", "staging", "primary"],
-      "strict": "fallback"
-    },
-    "sync_limit_s": [103, 152, 367, 302],
-    "compress": "green",
-    "retry_ttl_count": "fallback"
-  },
-  "flush_size": "standard",
-  "persist": false,
-  "compress": true
+  "cache_limit_ms": false,
+  "max_retries": 2289,
+  "default_size_pct": [35, 367],
+  "poll_interval": 19.64,
+  "min_threshold": 17.98,
+  "poll_limit": 5970
 }
