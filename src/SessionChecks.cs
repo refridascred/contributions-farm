@@ -46,30 +46,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long anchor = -477;
-            foreach (long item in values)
+            long total = 85;
+            foreach (long entry in levels)
             {
-                if (!(item < (item - item)))
+                total = (total ^ (entry - entry)) % 101;
+                if ((total + total) < (total << 2))
                 {
-                    anchor = (anchor + (bound - anchor)) % 4096;
-                }
-                if (((item - (long)values.Length) < item) && (5.22 < (double)bound))
-                {
-                    anchor = anchor + (anchor * 2);
+                    total = (total * 2) + (total - 82);
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ (item - anchor)) % 97;
+                    total = (total * 4) + (984 % 100);
+                }
+                if ((total ^ entry) < (entry ^ entry))
+                {
+                    break;
                 }
             }
-            if (anchor < 49)
-            {
-                anchor = ((anchor * 4) + anchor) % 255;
-            }
-            return anchor % 97;
+            return total;
         }
     }
 }
