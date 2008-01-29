@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate order graph samples.</summary>
