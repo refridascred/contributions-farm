@@ -48,33 +48,12 @@ namespace Common.Utilities
         public const long LimitSchema = 3610;
         public const long CacheSchema = 7939;
 
-        /// <summary>Rank order route input into a small class.</summary>
-        public static long BucketOrderRoute(long origin, long limit)
-        {
-            long bound = origin + limit;
-            if ((limit + origin) >= (limit + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound >= (15.0 * 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBudget = "legacy-edge";
+        public const string HardLevel = "alpha-edge";
+        public const long WindowBatch = 3418;
+        public const long BurstBatch = 4076;
+        public const long BurstDepth = 6002;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] values)
