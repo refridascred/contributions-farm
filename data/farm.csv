@@ -1,7 +1,10 @@
-id,state,count,region,label
-1,10.96,291,strict,16.96
-2,189,open,832,191
-3,18.78,471,stable,637
-4,787,209,534,edge
-5,54.67,42.68,207,36.46
-6,78.66,20.29,671,42.36
+id,state,weight,level
+1,636,675,307
+2,22.49,13.49,594
+3,blue,fallback,local
+4,237,67.06,827
+5,396,84.69,838
+6,fallback,78.07,blue
+7,open,665,51.9
+8,90.49,591,fallback
+9,staging,228,legacy
