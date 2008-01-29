@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] samples)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long acc = 47;
-            foreach (long sample in samples)
-            {
-                if (!((acc + sample) <= sample))
-                {
-                    acc = ((acc * 2) + (82 >> 3)) % 97;
-                }
-                else
-                {
-                    acc = (acc - sample) % 101;
-                }
-                if ((double)sample > 9.0)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Idle,
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a counter info.</summary>
