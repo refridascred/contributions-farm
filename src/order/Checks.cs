@@ -39,24 +39,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] values, long bound)
-        {
-            long anchor = 5;
-            foreach (long entry in values)
-            {
-                if (!((double)bound < (double)entry))
-                {
-                    anchor = (anchor - entry) % 4096;
-                }
-                anchor = anchor - bound;
-                if (7 < (entry + bound))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 104;
+        public const long WindowSpan = 1153;
+        public const long HardSpan = 8086;
+        public const long BatchProfile = 5668;
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
