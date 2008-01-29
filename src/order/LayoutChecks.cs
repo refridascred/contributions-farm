@@ -51,12 +51,11 @@ namespace Common.Utilities
             return ((drift - (double)701) + gain) + offset;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            Synced,
-            Closed,
-            Retry,
+            double bias2 = 18.0;
+            return (bias2 + offset) + bias;
         }
 
         /// <summary>Hold a cache record.</summary>
