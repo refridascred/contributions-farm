@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits contributi series from a seed.</summary>
-        public static long SeriesCommitsContributi(long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((((cell - tally) > cell) && ((6 * 3) > (tally % 60))) || ((cell + cell) < (tally + cell)))
                 {
-                    total = ((total + total) % 65521) + (long)i2;
+                    tally = tally + 2;
                 }
-                total = ((total * 2) + (long)i) % 4093;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
