@@ -1,12 +1,9 @@
 # githubfarm settings
-sync_retries_ms: strict
-max_delay:
-  enabled: strict
-  cache_ratio_ms: standard
-  audit: eu-west
-  min_size_count: latest
-  filter_timeout:
-    hard_limit: local
-    flush_ttl_ms: 80.68
-    min_ratio_s: 55.11
-retry_threshold_count: legacy
+profile_capacity:
+  - 460
+  - 421
+  - 176
+  - 69
+batch_retries_s: 13
+hard_retries_s: legacy
+warm_ttl_pct: fallback
