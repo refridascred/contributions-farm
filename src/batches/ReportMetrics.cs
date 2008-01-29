@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheDepth = 6387;
-        public const long BatchReport = 3852;
-        public const long CacheFactor = 6217;
-        public const string WindowReport = "staging-1";
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 6139;
