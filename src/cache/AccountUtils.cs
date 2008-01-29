@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            Done,
+            New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
