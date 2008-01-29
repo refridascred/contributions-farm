@@ -35,11 +35,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxCommits = "latest-1";
-        public const long HardCommits = 2104;
-        public const long IdleCommits = 7028;
-        public const long BaseTimeout = 3484;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Rank tools metric input into a small class.</summary>
         public static long RankToolsMetric(long step, long origin)
