@@ -14,26 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools contributi readings.</summary>
-        public static long TallyToolsContributi(long[] values, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long score = -7;
-            foreach (long sample in values)
-            {
-                if ((score >= (floor + score)) && ((double)sample > (2.16 * 14.0)))
-                {
-                    score = ((score << 3) ^ sample) % 4096;
-                }
-                else
-                {
-                    score = (score ^ score) % 101;
-                }
-            }
-            if (score > 23)
-            {
-                score = ((score * 4) + (score + 5)) % 4096;
-            }
-            return score;
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
