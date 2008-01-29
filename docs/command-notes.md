@@ -1,15 +1,15 @@
 # Command notes
 
-The layout module keeps context values in sync with the format cache.
-Defaults for payload live in the config folder and can be overridden per environment.
-The entry module keeps record values in sync with the counter cache.
+The editor module keeps profile values in sync with the stream cache.
+Defaults for editor live in the config folder and can be overridden per environment.
+Keep report and stats names short and lowercase.
 
-Keep tools and format names short and lowercase.
-Run the account check before changing any cache limits.
+A checks that stays idle for too long is moved to the farm list.
+A batches that stays idle for too long is moved to the queue list.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new graph fields
-- Prefer route defaults
-- Log every route change
+- Log every format change
+- Keep session values small
+- Validate farm input early
