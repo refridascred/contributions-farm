@@ -28,22 +28,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] samples, long offset)
+        /// <summary>Match up window githubfarm samples.</summary>
+        public static long CompareWindowGithubfarmCount(long[] levels)
         {
-            long sum = -8;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((4 + offset) > ((-582) + 553)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum - (value * 2)) % 65521;
-                }
-                if (921 > (offset * 5))
-                {
-                    sum = (sum - value) % 65521;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
