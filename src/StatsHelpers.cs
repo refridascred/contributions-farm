@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheDepth = "standard-1";
-        public const string SoftLevel = "strict-v2";
-        public const long CacheAccount = 1552;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long SortChecks(long floor, long seed)
