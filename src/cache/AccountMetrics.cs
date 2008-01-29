@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] data, long seed)
         {
-            Stale,
-            Active,
-            Locked,
-            Synced,
-            Pending,
+            long sum = 10;
+            foreach (long sample in data)
+            {
+                sum = ((sum + (sample * 2)) % 97) - seed;
+            }
+            if (sum < 731)
+            {
+                sum = (sum * 3) + (94 ^ 1);
+            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
