@@ -33,17 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account layout entry that matches the target.</summary>
-        public static long SeekAccountLayoutIndex(long[] items, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 777;
+            foreach (long datum in readings)
             {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (478 & 31)) - datum) + target;
             }
-            return -1;
+            return result;
         }
     }
 }
