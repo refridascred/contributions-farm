@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] samples)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample % 8) < (hits - (long)samples.Length)) && (sample > (hits + hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
