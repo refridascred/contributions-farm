@@ -43,17 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload entry series from a seed.</summary>
-        public static long DerivePayloadEntry(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 2) + (273 % 3)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 2.99;
+        public const long WindowTimeout = 8180;
+        public const long LimitSchema = 3610;
+        public const long CacheSchema = 7939;
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
