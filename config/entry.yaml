@@ -1,11 +1,4 @@
 # entry settings
-verbose: 250
-default_ratio_s: fallback
-max_limit_pct: 791
-editor_ratio:
-  - staging
-  - primary
-queue_limit: 250
-stats_threshold:
-  - blue
-  - cached
+batch_depth_s: 90.85
+dry_run: 100
+cache_window: 1024
