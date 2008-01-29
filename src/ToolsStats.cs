@@ -64,13 +64,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Locked,
-            Dropped,
-            Closed,
+            Paused,
             Done,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Fold a list of report readings.</summary>
