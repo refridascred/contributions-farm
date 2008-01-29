@@ -1,6 +1,8 @@
 {
-  "batch_threshold_count": "strict",
-  "compress": "eu-west",
-  "idle_ratio_pct": 3100,
-  "dry_run": [434, 426]
+  "buffer_limit": 31.35,
+  "soft_limit_pct": 15,
+  "enabled": "green",
+  "min_threshold": [421, 93, 493, 396],
+  "metrics_size": 49.04,
+  "token_depth": false
 }
