@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long bound, long origin)
+        /// <summary>Fold a list of record already readings.</summary>
+        public static long TallyRecordAlready(long[] samples)
         {
-            if ((origin & 1) < (30 & 1))
+            long total = 337;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)(-1) <= (double)bound)
+                if (value > (168 * 2))
                 {
-                    return 8;
+                    total = (total << 2) ^ total;
                 }
                 else
                 {
-                    return 6;
+                    total = total ^ (6 & 127);
                 }
             }
+            return total % 65521;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
