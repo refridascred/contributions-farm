@@ -35,19 +35,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] readings, long bound)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Fold a list of report readings.</summary>
