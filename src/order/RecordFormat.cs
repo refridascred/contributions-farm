@@ -51,21 +51,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up command metric samples.</summary>
-        public static long OverlapCommandMetricCount(long[] samples)
+        /// <summary>Scale a window entry figure with a bias.</summary>
+        public static double AdjustWindowEntry(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double ratio = (bias2 * 8.34) - (bias + bias);
+            return ratio - bias2;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
