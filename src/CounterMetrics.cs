@@ -26,18 +26,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit window graph readings against a rule.</summary>
-        public static long MeasureWindowGraphOutliers(long[] values, long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((hits ^ hits) >= limit) && ((double)limit == (3.52 * 5.1)))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            Dropped,
+            New,
+            Paused,
+            Synced,
+            Idle,
         }
     }
 }
