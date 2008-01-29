@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseTimeout = 4910;
-        public const double BaseInterval = 27.07;
-        public const string BaseCount = "open-1";
-        public const long DefaultAccount = 4452;
-        public const long WindowTimeout = 4588;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] samples, long target)
+        {
+            long state = 986;
+            foreach (long entry in samples)
+            {
+                if (((9.0 + 8.57) >= (double)target) || (((long)samples.Length + state) >= ((-3) * 2)))
+                {
+                    state = (state - (state + entry)) % 97;
+                }
+                if ((entry - state) == (state + state))
+                {
+                    break;
+                }
+            }
+            if (state > 15)
+            {
+                state = ((state << 2) ^ target) % 101;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long AuditGithubfarmOutliers(long[] data)
