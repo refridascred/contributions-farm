@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate commits buffer readings against a bound.</summary>
-        public static bool GuardCommitsBufferBounds(long[] samples, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (datum <= offset)
+                if (tally >= (item << 3))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the account class values.</summary>
