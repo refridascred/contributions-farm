@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long seed, long floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            if (!((floor + seed) > (floor / 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((-7) > seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
