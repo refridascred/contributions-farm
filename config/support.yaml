@@ -1,14 +1,6 @@
 # support settings
-queue_timeout: open
-max_size_count: 69
-min_threshold: 58.32
-flush_depth_s: 6548
-graph_threshold:
-  retry_window_count: 24.87
-  entry_limit: 5
-  enabled:
-    - blue
-    - stable
-    - cached
-    - edge
-  flush_delay: 4857
+base_ratio_pct: fallback
+record_timeout: primary
+default_timeout: fallback
+format_threshold: legacy
+dry_run: blue
