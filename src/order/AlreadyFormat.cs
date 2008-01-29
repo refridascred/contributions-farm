@@ -68,21 +68,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((392 + 950) == (cell - origin))
                 {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
