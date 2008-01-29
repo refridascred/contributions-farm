@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long CacheBudget = 9507;
         public const long RetryDepth = 5835;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] levels, long seed)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long total = 4;
-            foreach (long item in levels)
-            {
-                if (((item ^ total) > ((-73) - total)) && ((double)seed == (17.0 + 2.52)))
-                {
-                    total = (total + item) % 101;
-                }
-            }
-            return total;
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
