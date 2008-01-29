@@ -25,13 +25,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long target, long bound)
         {
-            Done,
-            Dropped,
-            Active,
-            Idle,
+            long cur = target ^ bound;
+            if (((cur & 255) <= target) || ((double)bound <= (8.0 + 1.58)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((cur + 0) >= (7 ^ cur)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound & 127) <= (target * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
