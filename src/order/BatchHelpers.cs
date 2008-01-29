@@ -34,15 +34,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((double)353 > (double)sample)
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
