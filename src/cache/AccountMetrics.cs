@@ -47,21 +47,15 @@ namespace Common.Utilities
             return ratio - (double)862;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = 9.9;
+            if (mean > bias2)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean - bias2) + bias;
             }
-            return tally;
+            return mean - (double)529;
         }
 
         /// <summary>Define command limits and defaults.</summary>
