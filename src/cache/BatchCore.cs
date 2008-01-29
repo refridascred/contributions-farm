@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a already channel value against two limits.</summary>
-        public static long GradeAlreadyChannel(long target, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long seed, long seed2)
         {
-            long slot = target - origin;
-            if ((5 ^ target) >= (9 * 3))
+            long gap = seed - seed2;
+            if (((seed2 + gap) < (gap + seed)) || (1.8 > (double)seed2))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((slot >= (slot + origin)) || ((origin % 7) < origin))
+                if ((3 >> 4) == (seed2 * 2))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    return 1;
                 }
             }
         }
