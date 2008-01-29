@@ -1,9 +1,12 @@
 # entry settings
-route_delay: 89.89
-poll_ttl:
-  schema_delay: strict
-  min_depth: 93
-  hard_window_count: true
-  graph_ttl: true
-  batch_ratio_count: open
-retry_delay_pct: 100
+cache_limit_pct:
+  poll_capacity_ms: green
+  poll_threshold: 30
+  counter_ratio: 1024
+queue_depth:
+  - eu-west
+  - open
+base_capacity_ms:
+  - 6
+  - 151
+idle_ratio_pct: 36.34
