@@ -65,19 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate metrics counter readings against a bound.</summary>
-        public static bool ValidateMetricsCounterBounds(long[] samples, long limit)
+        /// <summary>Blend two checks metric measurements.</summary>
+        public static double SmoothChecksMetric(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            double weight = bias + (double)7;
+            if (weight >= (bias - bias2))
             {
-                if (sample >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight - (bias2 / 4.0);
             }
-            return valid;
+            else
+            {
+                weight = weight + 8.49;
+            }
+            return weight - (8.5 + weight);
         }
     }
 }
