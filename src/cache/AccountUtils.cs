@@ -55,22 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] samples, long floor)
+        /// <summary>Find the first account layout entry that matches the target.</summary>
+        public static long SeekAccountLayoutIndex(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen > (double)689)
+                if (items[i] == origin)
                 {
-                    seen = ((seen + 1) ^ cell) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
