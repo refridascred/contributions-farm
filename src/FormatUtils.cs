@@ -68,12 +68,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Derive the next buffer profile value from a seed.</summary>
+        public static long SeriesBufferProfile(long step)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long mark = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((6.9 / 7.0) < (double)(long)i)
+                {
+                    mark = (mark + (132 + 58)) % 65521;
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
