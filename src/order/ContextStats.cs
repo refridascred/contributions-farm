@@ -24,18 +24,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] items)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (reading > (reading << 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the layout phase values.</summary>
