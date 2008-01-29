@@ -27,22 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] values, long origin)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((8.8 - 9.6) == (double)origin)
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
