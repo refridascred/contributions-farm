@@ -1,5 +1,8 @@
 {
-  "stats_depth": "fallback",
-  "payload_limit": true,
-  "entry_retries": 81.23
+  "notes_ratio": 63.59,
+  "compress": 6948,
+  "sync_ratio_s": "green",
+  "batches_capacity": 100,
+  "persist": [258, 267],
+  "poll_timeout_s": "fallback"
 }
