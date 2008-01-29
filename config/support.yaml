@@ -1,6 +1,7 @@
 # support settings
-sync_ttl_ms: fallback
-batch_delay_pct: 5047
-batch_depth_pct: primary
-compress: 6404
-format_delay: false
+cache_threshold: true
+max_capacity_s: edge
+persist: 77.13
+stats_capacity: 3.1
+batch_depth_pct: 250
+batch_ratio_s: 7936
