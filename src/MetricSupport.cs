@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine context order values into a single score.</summary>
-        public static long TotalContextOrder(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] items, long origin)
         {
-            long total = 9;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                total = ((total << 2) ^ total) % 255;
-                total = total + (reading >> 1);
-                total = (total * 2) + (reading - reading);
+                if (sample != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total > 962)
-            {
-                total = (total * 5) + (700 - total);
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
