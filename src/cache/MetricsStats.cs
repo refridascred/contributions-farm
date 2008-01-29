@@ -50,31 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long bound, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] values)
         {
-            if ((bound >> 4) > (89 + target))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target <= (2.0 - 1.92))
+                if ((value - seen) == (value + value))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.4 + 5.55) <= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
