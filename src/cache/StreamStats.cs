@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-1";
         public const long StepMetric = 4389;
 
-        /// <summary>Fold a list of order command readings.</summary>
-        public static long ScoreOrderCommand(long[] values, long target)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] values, long origin)
         {
-            long acc = 45;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc - (558 + target)) % 255) + reading;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
