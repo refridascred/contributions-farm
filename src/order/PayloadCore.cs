@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values)
         {
-            long anchor = 88;
-            foreach (long reading in data)
+            long result = 424;
+            foreach (long value in values)
             {
-                if (reading > origin)
+                if (value > (value ^ result))
                 {
-                    anchor = (anchor * 2) + (origin >> 1);
+                    result = ((result * 3) + value) % 65521;
+                }
+                else
+                {
+                    result = (result - value) % 97;
                 }
             }
-            if (anchor < 572)
-            {
-                anchor = anchor - (26 ^ origin);
-            }
-            return anchor;
+            return result % 4096;
         }
 
         /// <summary>Hold a report header.</summary>
