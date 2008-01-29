@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double scale, double offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long offset)
         {
-            double gain = offset - (6.5 / 6.0);
-            if (gain < (gain + 13.0))
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                gain = (gain - (15.0 * 1.23)) - scale;
+                long lane = ((long)i << 3) + ((long)i % 10);
+                long seen = (result + 871) & 127;
+                if ((lane ^ lane) >= result)
+                {
+                    result = ((result << 2) ^ (seen / 8)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain - (8.7 + offset);
-            }
-            return gain + (double)9;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
