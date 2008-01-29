@@ -1,6 +1,9 @@
 # support settings
-retry_timeout_s: false
-compress: staging
-contributi_ttl: true
-sync_delay: fallback
-entry_delay: false
+hard_capacity: 82
+default_depth_count:
+  - 332
+  - 169
+metric_limit: staging
+filter_ttl:
+  - cached
+  - latest
