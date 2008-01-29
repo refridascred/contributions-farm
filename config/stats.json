@@ -1,13 +1,6 @@
 {
-  "strict": "green",
-  "channel_timeout": "legacy",
-  "batches_window": ["strict", "edge", "legacy", "open"],
-  "report_ttl": {
-    "base_limit": true,
-    "context_interval": 71,
-    "poll_depth_ms": ["stable", "strict", "cached", "standard"],
-    "batch_interval": ["fallback", "green", "primary"],
-    "flush_depth": 0.46,
-    "cache_retries": "open"
-  }
+  "batch_delay": "cached",
+  "hard_delay_ms": 2.71,
+  "account_size": false,
+  "strict": 9.59
 }
