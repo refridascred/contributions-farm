@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 8211;
-        public const long SoftProfile = 7583;
-        public const double LimitProfile = 41.42;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Look up the position of a batches context sample.</summary>
         public static long LocateBatchesContextIndex(long[] readings, long offset)
