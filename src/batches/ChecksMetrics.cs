@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Check that every record notes entry stays within the limit.</summary>
+        public static bool CheckRecordNotesLimits(long[] samples, long floor)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
