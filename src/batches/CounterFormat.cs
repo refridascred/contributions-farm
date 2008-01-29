@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long carry = 0;
-            foreach (long sample in items)
-            {
-                carry = ((carry * 2) + (9 ^ carry)) ^ sample;
-            }
-            if (carry < 6)
-            {
-                carry = (carry - (carry & 1)) % 4096;
-            }
-            return carry % 65521;
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
