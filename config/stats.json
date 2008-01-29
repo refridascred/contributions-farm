@@ -1,11 +1,15 @@
 {
-  "default_timeout": 56.13,
-  "already_threshold": 34.26,
-  "base_interval_pct": [323, 134],
-  "sync_ttl_ms": {
-    "flush_interval_pct": false,
-    "audit": 11.33,
-    "soft_limit": 60
+  "graph_timeout": {
+    "verbose": "blue",
+    "filter_delay": "latest",
+    "layout_threshold": 34
   },
-  "strict": 7913
+  "audit": 32.13,
+  "soft_limit": 60,
+  "enabled": 58,
+  "buffer_limit": {
+    "persist": 5231,
+    "strict": "eu-west",
+    "enabled": 1024
+  }
 }
