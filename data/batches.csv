@@ -1,8 +1,7 @@
-id,active
-1,85.41
-2,571
-3,staging
-4,local
-5,legacy
-6,60.4
-7,570
+id,count,active
+1,primary,blue
+2,294,292
+3,green,617
+4,939,legacy
+5,primary,175
+6,833,94.42
