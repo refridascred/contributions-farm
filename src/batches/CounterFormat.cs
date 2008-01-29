@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long BaseMetrics = 5606;
         public const long HardRatio = 1768;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            New,
-            Done,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 61.02;
+        public const double IdleWindow = 34.37;
+        public const long SoftBudget = 547;
+        public const string MinWindow = "strict";
+        public const double SoftWindow = 55.3;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
