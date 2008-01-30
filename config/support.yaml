@@ -1,4 +1,6 @@
 # support settings
-warm_delay_s: 10
-poll_size_ms: 26.22
-cache_capacity_s: 76.89
+support_capacity: 40
+base_interval_pct: stable
+githubfarm_capacity: edge
+min_timeout_pct: 86.32
+min_timeout: 500
