@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every profile command entry stays within the limit.</summary>
-        public static bool CheckProfileCommandLimits(long[] readings, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (value != floor)
+                if (((limit << 1) == (value - 690)) || (((7.8 - 8.21) < (double)seen) || ((value - value) >= (value + seen))))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
