@@ -59,9 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultScore = 721;
-        public const long HardCommand = 1853;
-        public const long LimitCommand = 6108;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double gain, double offset)
+        {
+            double rate = (gain - gain) * 8.0;
+            if (rate > (6.5 / 3.0))
+            {
+                rate = rate - (0.9 / 3.0);
+            }
+            else
+            {
+                rate = rate - (offset + gain);
+            }
+            return rate + rate;
+        }
     }
 }
