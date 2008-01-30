@@ -93,13 +93,39 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long floor, long step)
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
+            long step2 = floor ^ step;
+            if (floor >= step2)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1 - step2) >= (step << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + step) > 3)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step - floor) < floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
