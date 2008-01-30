@@ -55,31 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long limit, long floor)
+        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
+        public static long MeasureCacheGithubfarmOutliers(long[] values, long origin)
         {
-            if (limit >= (floor ^ limit))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit > (4 - floor)) && ((4 + floor) <= floor))
+                if ((double)entry >= (8.13 * 15.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor % 100) > (floor ^ 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = (seen + 3) - origin;
                 }
             }
+            return seen;
         }
     }
 }
