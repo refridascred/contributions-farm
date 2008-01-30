@@ -1,13 +1,14 @@
 # Command notes
 
-Use checks settings to tune how often batch data is refreshed.
-Use commits settings to tune how often batch data is refreshed.
+Run the commits check before changing any payload limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+The format report groups every session by session.
 
-A counter that stays idle for too long is moved to the cluster list.
-Keep queue and filter names short and lowercase.
+Run the batch check before changing any notes limits.
+The command report groups every channel by stream.
 
 ## Guidelines
 
-- Document new order fields
-- Keep schema values small
-- Log every token change
+- Validate filter input early
+- Prefer commits defaults
+- Log every githubfarm change
