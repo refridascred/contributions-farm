@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetryProfile = 9620;
         public const double HardLevel = 40.13;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] values, long bound)
+        /// <summary>Audit graph editor readings against a rule.</summary>
+        public static long CountGraphEditorMatches(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((double)44 >= (double)bound)
+                if ((reading - origin) >= reading)
                 {
-                    count = (count + 2) ^ sample;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
