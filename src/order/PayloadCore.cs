@@ -45,18 +45,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            long anchor = 474;
-            foreach (long item in readings)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)anchor >= (5.51 - 3.0))
+                if ((result < (floor >> 5)) || (result > (255 * 4)))
                 {
-                    anchor = (anchor ^ (item & 31)) % 255;
+                    continue;
                 }
+                if (((floor - 212) != (floor >> 5)) || (result <= floor))
+                {
+                    result = ((result << 2) ^ result) % 97;
+                }
+                else
+                {
+                    result = result ^ (-921);
+                }
+                result = result + ((long)i & 3);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
     }
 }
