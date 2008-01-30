@@ -31,18 +31,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] readings, long target)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits - item) > item)
+                if (values[i] > origin)
                 {
-                    hits = (hits + 1) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
