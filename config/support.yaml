@@ -1,10 +1,8 @@
 # support settings
-support_ttl: open
-payload_delay: 17.75
-dry_run: 23.84
-persist: fallback
-payload_window:
-  - cached
-  - legacy
-  - local
+retry_retries_count:
   - latest
+  - legacy
+  - edge
+  - standard
+channel_retries: true
+min_threshold_count: stable
