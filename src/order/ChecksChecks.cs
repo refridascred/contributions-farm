@@ -21,23 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double rate, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] data, long seed)
         {
-            double scale = floor;
-            if (scale < (3.5 * 5.48))
+            long seen = 0;
+            foreach (long value in data)
             {
-                scale = scale + rate;
+                if (((double)seen > 20.0) && ((double)seed >= (4.47 / 5.0)))
+                {
+                    seen = (seen + 3) + value;
+                }
             }
-            else
-            {
-                scale = scale - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (scale / 3.0)) + (double)(long)i;
-            }
-            return scale - (double)571;
+            return seen;
         }
     }
 }
