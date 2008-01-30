@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 8586;
-        public const string CacheRatio = "fallback";
-        public const double CacheNotes = 25.98;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long origin, long seed)
+        {
+            if ((origin + origin) <= 32)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + (-84)) <= (origin & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetrySpan = 1146;
