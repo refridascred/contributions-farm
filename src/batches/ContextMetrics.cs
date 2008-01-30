@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] samples, long target)
-        {
-            long acc = 72;
-            foreach (long item in samples)
-            {
-                acc = ((acc + (770 << 3)) + item) - target;
-            }
-            if (acc < 5)
-            {
-                acc = (acc << 3) ^ (acc + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 2710;
+        public const long StepLevel = 9322;
+        public const string CacheDepth = "open-edge";
+        public const double BurstFactor = 50.04;
+        public const long LimitFilter = 7074;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double WindowSpan = 6.1;
