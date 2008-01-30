@@ -58,17 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepSize = 64.73;
+        public const long IdleScore = 949;
+        public const long HardBatches = 1034;
+        public const double BatchBatches = 11.68;
+        public const long LimitBatches = 9395;
     }
 }
