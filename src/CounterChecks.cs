@@ -23,19 +23,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine checks token values into a single score.</summary>
-        public static long ScoreChecksToken(long[] data, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] data, long bound)
         {
-            long result = 704;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                result = ((result << 2) ^ (result ^ 345)) + value;
+                if (reading < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (result < 9)
-            {
-                result = result - limit;
-            }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
