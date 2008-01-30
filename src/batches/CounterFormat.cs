@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a profile graph value against two limits.</summary>
-        public static long RankProfileGraph(long limit, long floor)
-        {
-            long slot = limit - floor;
-            if ((double)287 != (double)floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) >= (2 - slot))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 5355;
+        public const long SoftFactor = 1511;
+        public const long MaxDepth = 6181;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string RetryReport = "fallback-v2";
