@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] data)
+        /// <summary>Accumulate already command samples.</summary>
+        public static long CombineAlreadyCommand(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long sum = 74;
+            foreach (long cell in samples)
             {
-                if (item >= (tally / 9))
-                {
-                    tally = tally + 1;
-                }
+                sum = ((sum - 68) % 255) - cell;
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
