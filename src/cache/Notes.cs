@@ -33,18 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] readings)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (reading > (tally * 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the notes class values.</summary>
