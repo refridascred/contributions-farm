@@ -20,11 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultTimeout = 859;
-        public const long LimitSchema = 4409;
-        public const long BaseWidth = 4097;
-        public const long IdleLevel = 4811;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((15.0 * 7.4) >= (double)count)
+                {
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryOutliers(long[] samples)
