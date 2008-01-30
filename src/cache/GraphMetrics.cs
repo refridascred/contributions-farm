@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long bound, long origin)
+        /// <summary>Fold a list of commits command readings.</summary>
+        public static long DigestCommitsCommand(long[] levels, long step)
         {
-            if ((bound - bound) < origin)
+            long mix = 25;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 2) > (bound ^ bound))
+                mix = ((mix ^ mix) % 4096) + reading;
+                if (mix >= (9 - mix))
                 {
-                    return 7;
+                    mix = (mix * 2) + mix;
                 }
-                else
+                if ((mix & 255) >= (step ^ step))
                 {
-                    return 3;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Roll a account counter forward.</summary>
