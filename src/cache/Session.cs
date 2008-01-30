@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] samples)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            long result = 7;
+            foreach (long value in samples)
+            {
+                if (value >= (result - result))
+                {
+                    result = result ^ result;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (value + result)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Combine already values into a single score.</summary>
