@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = 72;
+            foreach (long item in samples)
             {
-                if ((double)count != (20.0 / 3.0))
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc + (770 << 3)) + item) - target;
             }
-            return count;
+            if (acc < 5)
+            {
+                acc = (acc << 3) ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
