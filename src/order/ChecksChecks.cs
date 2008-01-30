@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long HardTimeout = 5782;
         public const long LimitCounter = 6637;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] samples, long floor)
         {
-            New,
-            Ready,
-            Synced,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((matches - 85) <= ((long)samples.Length ^ floor)) || ((value << 1) <= 595))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
