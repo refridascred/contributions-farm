@@ -46,13 +46,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] levels, long seed)
         {
-            Paused,
-            Closed,
-            Stale,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
