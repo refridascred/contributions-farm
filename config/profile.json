@@ -1,8 +1,13 @@
 {
-  "max_size_count": "eu-west",
-  "warm_ratio_ms": "blue",
-  "burst_timeout_pct": "edge",
-  "order_timeout": 37.46,
-  "stats_threshold": "cached",
-  "min_timeout_ms": true
+  "enabled": "fallback",
+  "min_retries": {
+    "warm_capacity_count": "eu-west",
+    "payload_window": "green",
+    "verbose": true,
+    "poll_threshold": true,
+    "warm_timeout": false
+  },
+  "warm_capacity_ms": 41.25,
+  "default_timeout": 6945,
+  "persist": 6660
 }
