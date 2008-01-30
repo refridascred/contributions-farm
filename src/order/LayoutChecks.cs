@@ -14,13 +14,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Ready,
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the profile mode values.</summary>
