@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public long Size { get; set; }
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            Done,
+            Failed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
