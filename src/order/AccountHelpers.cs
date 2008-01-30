@@ -12,38 +12,19 @@ namespace Common.Utilities
         public const long MaxReport = 2928;
         public const long MinReport = 6260;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long limit, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] values, long seed)
         {
-            if (((double)floor <= (2.26 / 6.0)) || (limit >= 32))
+            bool valid = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor <= (floor + floor))
+                if (reading < seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (105 <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-396) << 1) >= limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
