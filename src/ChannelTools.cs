@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long target, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            long next = target ^ step;
+            if (!(next < (next * 2)))
             {
-                mix = mix - (630 + target);
-                if ((1.12 + 9.0) <= (double)target)
-                {
-                    mix = (mix ^ (59 + target)) % 97;
-                }
-                if (289 <= (1 - target))
-                {
-                    mix = (mix + (mix - mix)) % 97;
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (((next + target) < (step % 5)) && ((641 - step) > (step - 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
