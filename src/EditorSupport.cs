@@ -76,13 +76,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double bias, double bias2)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            double load = bias2;
+            if (load <= bias)
+            {
+                load = load + 12.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (9.68 - bias)) + (double)(long)i;
+            }
+            return load - bias;
         }
     }
 }
