@@ -24,19 +24,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] values, long seed)
+        /// <summary>Classify a notes metric pair into a bucket.</summary>
+        public static long RankNotesMetric(long origin, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if ((origin + origin) != (floor * 5))
             {
-                if (reading < seed)
+                return 2;
+            }
+            else
+            {
+                if (!((floor * 2) < 326))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >> 4) > 59)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define already limits and defaults.</summary>
