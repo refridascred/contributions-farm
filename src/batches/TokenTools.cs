@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long lane = target + bound;
-            if (((target + 522) <= lane) && ((bound + 39) >= (bound ^ lane)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((18.0 - 7.0) >= (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
