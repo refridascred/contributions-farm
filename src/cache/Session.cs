@@ -20,17 +20,18 @@ namespace Common.Utilities
             return bias + (bias + ratio);
         }
 
-        /// <summary>Look up the position of a notes channel sample.</summary>
-        public static long LookupNotesChannelIndex(long[] data, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 207;
+            foreach (long reading in values)
             {
-                if (data[i] < step)
+                if (!((offset / 2) == (18 * 2)))
                 {
-                    return (long)i;
+                    carry = carry ^ (reading ^ carry);
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Combine command values into a single score.</summary>
