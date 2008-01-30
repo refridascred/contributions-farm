@@ -21,22 +21,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            long state = 197;
-            foreach (long value in readings)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((state % 100) <= (value >> 5))
+                mark = ((mark * 4) + mark) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    state = ((state ^ (state ^ 853)) % 255) - target;
+                    mark = ((mark - (floor + mark)) % 97) - (long)i2;
                 }
-                else
-                {
-                    state = (state - (state >> 4)) % 255;
-                }
+                mark = mark + (floor - floor);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
     }
 }
