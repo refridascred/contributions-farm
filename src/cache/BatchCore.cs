@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Synced,
-            Dropped,
-            Queued,
-            Pending,
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a batches info.</summary>
