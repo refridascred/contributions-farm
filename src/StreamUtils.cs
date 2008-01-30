@@ -80,11 +80,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Adjust a farm layout reading.</summary>
+        public static double AdjustFarmLayout(double scale, double floor)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            double mean = 8.9;
+            if (mean <= (double)5)
+            {
+                mean = (mean + (floor * 9.8)) + scale;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (mean + floor)) + (double)(long)i;
+            }
+            return mean + (mean - mean);
         }
 
         /// <summary>Describe the cache level values.</summary>
