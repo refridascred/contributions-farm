@@ -31,11 +31,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseTimeout = 3.13;
-        public const double MaxCache = 47.35;
-        public const double BatchCache = 4.41;
-        public const long IdleSpan = 6918;
-        public const double SoftCache = 22.07;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits - item) > item)
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
+        }
     }
 }
