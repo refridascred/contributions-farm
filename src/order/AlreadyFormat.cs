@@ -59,15 +59,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 2218;
+        public const long HardWidth = 2216;
+        public const long RetryRecord = 1633;
+        public const double CacheBudget = 89.91;
     }
 }
