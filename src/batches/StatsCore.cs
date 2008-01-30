@@ -22,23 +22,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine filter batches values into a single score.</summary>
-        public static long CombineFilterBatches(long[] readings)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long sum = 6;
-            foreach (long item in readings)
-            {
-                sum = ((sum ^ (6 & 15)) % 65521) + item;
-                if ((double)sum != (3.0 / 2.0))
-                {
-                    break;
-                }
-            }
-            if (sum < 458)
-            {
-                sum = ((sum << 2) ^ sum) % 101;
-            }
-            return sum;
+            public bool Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
