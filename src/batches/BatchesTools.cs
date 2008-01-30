@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of notes cache readings.</summary>
-        public static long ScoreNotesCache(long[] data, long target)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] levels)
         {
-            long total = 964;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                total = ((total ^ target) % 65521) ^ cell;
+                if (((double)reading < (8.0 + 16.0)) && ((double)0 >= (double)reading))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (total > (-535))
-            {
-                total = total ^ (381 ^ 468);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
