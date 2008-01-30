@@ -13,21 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a buffer githubfarm counter forward.</summary>
-        public static long IterateBufferGithubfarm(long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((8.9 + 9.5) != (double)score)
+                if (((long)items.Length ^ item) <= (item - item))
                 {
-                    score = (score ^ (score >> 5)) % 101;
-                    score = ((score * 3) + (bound - score)) % 97;
-                    break;
+                    matches = matches + 1;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many cache order samples are out of range.</summary>
