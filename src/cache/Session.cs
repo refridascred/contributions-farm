@@ -18,26 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] series)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] values, long floor)
         {
-            long result = 583;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample >= (sample + result)) && ((17.0 + 0.51) == (double)result))
+                if (values[i] > floor)
                 {
-                    result = result - (79 >> 4);
-                }
-                else
-                {
-                    result = (result + (result + sample)) % 101;
+                    return (long)i;
                 }
             }
-            if (result < 6)
-            {
-                result = (result + (result & 1)) % 97;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
