@@ -30,21 +30,21 @@ namespace Common.Utilities
         public const long CacheDepth = 6531;
         public const double MinContributi = 52.97;
 
-        /// <summary>Compare every pair of layout farm readings.</summary>
-        public static long PairLayoutFarmCount(long[] values)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                double weight = (7.82 - 8.6) * 3.33;
+                if (((weight - weight) >= weight) && ((double)offset >= weight))
                 {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    long gap = (offset + offset) % 97;
+                    weight = weight + (double)gap;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
