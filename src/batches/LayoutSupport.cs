@@ -37,16 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command report entries.</summary>
-        public static long TotalCommandReport(long[] levels)
+        /// <summary>Validate counter cache readings against a bound.</summary>
+        public static bool CheckCounterCacheRange(long[] levels, long step)
         {
-            long state = 50;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                state = (state << 2) ^ (datum << 3);
-                state = state - (datum ^ state);
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return ready;
         }
 
         /// <summary>Fold a list of order readings.</summary>
