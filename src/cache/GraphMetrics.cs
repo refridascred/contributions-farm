@@ -26,22 +26,21 @@ namespace Common.Utilities
         public const string HardDepth = "primary-v2";
         public const long WindowEditor = 4288;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Compare every pair of layout farm readings.</summary>
+        public static long PairLayoutFarmCount(long[] values)
         {
-            long result = 9;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result >= (result << 2)) && ((double)result >= (14.0 + 7.85)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result - (entry - entry);
-                }
-                if (result >= (entry >> 3))
-                {
-                    result = (result + (1 * 4)) % 1000;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
