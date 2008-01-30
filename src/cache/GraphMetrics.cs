@@ -25,10 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 52.99;
-        public const long CacheDepth = 6531;
-        public const double MinContributi = 52.97;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchCount = 26.06;
+        public const string BurstFactor = "stable";
+        public const long WindowSchema = 351;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long IterateMetric(long offset)
