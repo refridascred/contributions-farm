@@ -22,20 +22,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the token commits series from a seed.</summary>
-        public static long StepTokenCommits(long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)step < (double)result)
-                {
-                    result = ((result * 3) + (step + step)) % 255;
-                }
-                result = result - (step % 10);
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
