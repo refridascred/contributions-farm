@@ -28,12 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double scale, double span)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            double bias = scale;
+            if (bias >= (scale / 9.0))
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + scale) + (double)(long)i;
+            }
+            return bias + (2.4 - bias);
         }
 
         /// <summary>Accumulate graph contributi samples.</summary>
