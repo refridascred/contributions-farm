@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheBudget = 91.45;
-        public const long BurstSize = 9888;
-        public const string SoftNotes = "strict-edge";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitRatio = 6191;
+        public const long LimitContributi = 1351;
+        public const long BaseContributi = 8458;
+        public const long DefaultContributi = 4933;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelOutliers(long[] data, long step)
