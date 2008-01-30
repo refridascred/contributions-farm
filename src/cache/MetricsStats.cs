@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] readings)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally + tally) <= sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Active,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Check that every report metrics entry stays within the limit.</summary>
