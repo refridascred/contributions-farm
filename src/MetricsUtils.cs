@@ -39,12 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryScore = "alpha-v2";
-        public const long WindowScore = 2674;
-        public const long BaseBatches = 996;
-        public const long IdleBatches = 1322;
-        public const string MinWidth = "staging-1";
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
