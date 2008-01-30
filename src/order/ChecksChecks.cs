@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((bound - matches) > (sample + matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxInterval = 88.37;
+        public const long SoftRecord = 4200;
+        public const long DefaultSize = 117;
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
         public static bool GuardGraphCounterLimits(long[] values, long step)
