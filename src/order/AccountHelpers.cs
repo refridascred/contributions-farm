@@ -28,18 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (((634 / 8) > (sample + 8)) && ((4.6 * 1.27) != (double)sample))
+                if ((tally & 127) > (tally + tally))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Combine editor entry values into a single score.</summary>
