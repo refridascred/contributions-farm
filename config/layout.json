@@ -1,8 +1,6 @@
 {
-  "poll_ttl": true,
-  "already_ttl": 2555,
-  "cluster_limit": "fallback",
-  "strict": "cached",
-  "base_limit_pct": [167, 163, 452],
-  "retry_ttl_pct": "edge"
+  "default_delay": 13.93,
+  "soft_retries": "stable",
+  "max_ttl_count": "legacy",
+  "filter_delay": true
 }
