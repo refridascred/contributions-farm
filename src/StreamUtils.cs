@@ -93,31 +93,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of batch stats entries.</summary>
-        public static long WeighBatchStats(long[] values, long seed)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long total = 50;
-            foreach (long sample in values)
-            {
-                total = (total ^ 797) % 1000;
-                for (int i = 0; i < 4; i++)
-                {
-                    total = ((total - (seed * 5)) % 4096) - (long)i;
-                }
-                if ((8.32 - 2.0) > (double)total)
-                {
-                    total = ((total * 4) + 259) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (sample - (long)values.Length)) % 65521;
-                }
-                if (((long)values.Length != (total + 0)) && (seed < (seed * 2)))
-                {
-                    break;
-                }
-            }
-            return total;
+            Active,
+            New,
+            Draft,
+            Done,
         }
     }
 }
