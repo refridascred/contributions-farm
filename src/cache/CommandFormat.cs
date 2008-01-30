@@ -27,20 +27,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every counter session entry stays within the limit.</summary>
-        public static bool VerifyCounterSessionLimits(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 55;
+        public const long SoftScore = 9127;
+        public const long BatchFactor = 6071;
+        public const double StepScore = 48.17;
+        public const long DefaultLevel = 876;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
