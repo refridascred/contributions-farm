@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = bias;
+            if (ratio < (1.0 / 9.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + rate;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Hold a format entry.</summary>
