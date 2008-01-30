@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            Stale,
-            Idle,
-            Synced,
-            Active,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits % 16) != (208 >> 3))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
