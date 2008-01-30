@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleLevel = 5754;
-        public const double CacheInterval = 76.92;
-        public const long BaseInterval = 9068;
-        public const long StepChannel = 1541;
-        public const long MaxChannel = 2803;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] series, long target)
+        {
+            long mark = 8;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = ((mark * 2) + ((long)i + target)) % 4096;
+                }
+                mark = mark + (target - mark);
+                if (((long)series.Length < (mark - (long)series.Length)) || (entry > (target << 3)))
+                {
+                    mark = (mark * 2) + (entry - mark);
+                }
+            }
+            if (mark < 717)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long IdleAlready = 6075;
