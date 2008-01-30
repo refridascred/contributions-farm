@@ -19,25 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue token value against two limits.</summary>
-        public static long BucketQueueToken(long seed, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] series, long seed)
         {
-            long gap = seed ^ offset;
-            if (((-771) * 4) <= (seed - gap))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((offset - 68) > offset))
+                if ((double)(long)series.Length == (17.0 / 6.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    hits = ((hits + 1) - item) - seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the filter mode values.</summary>
