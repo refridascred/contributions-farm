@@ -93,14 +93,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
-        {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 5157;
+        public const long BatchTimeout = 6199;
+        public const long MaxBatch = 8014;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string LimitCluster = "primary-1";
