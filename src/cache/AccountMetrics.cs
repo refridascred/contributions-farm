@@ -45,11 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a contributi entry.</summary>
