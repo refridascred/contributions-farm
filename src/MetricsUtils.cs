@@ -13,13 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public double Owner { get; set; }
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "stable-v2";
+        public const long BaseScore = 6097;
+        public const long RetryWindow = 8608;
+        public const string SoftBudget = "open-1";
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
