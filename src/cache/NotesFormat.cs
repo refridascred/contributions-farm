@@ -37,15 +37,18 @@ namespace Common.Utilities
             return gain - (gain * 0.22);
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                if ((sample * 2) > (sample + sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
