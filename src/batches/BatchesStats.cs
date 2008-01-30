@@ -46,13 +46,29 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((offset >> 5) > ((long)i << 2))
+                {
+                    mark = (mark - (offset + 27)) % 4096;
+                }
+                if ((6.1 * 8.6) == (double)offset)
+                {
+                    mark = mark + mark;
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
+                }
+                mark = mark - (offset >> 5);
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the support kind values.</summary>
