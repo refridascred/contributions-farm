@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long IdleAccount = 7794;
         public const double IdleLevel = 3.79;
 
-        /// <summary>Locate a farm commits reading by value.</summary>
-        public static long LookupFarmCommitsIndex(long[] levels, long origin)
+        /// <summary>Measure how many context queue samples are out of range.</summary>
+        public static long TallyContextQueueHits(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (levels[i] < origin)
+                if ((target & 63) < seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the graph filter entries that pass the check.</summary>
