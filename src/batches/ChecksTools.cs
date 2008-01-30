@@ -35,16 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Derive the next context commits value from a seed.</summary>
+        public static long DeriveContextCommits(long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix * 2) + (mix * 5)) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
+                state = ((state << 3) ^ 777) % 101;
+                state = (state + step) % 65521;
+                state = state ^ step;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
