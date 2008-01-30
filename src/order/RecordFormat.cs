@@ -47,19 +47,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit checks payload readings against a rule.</summary>
-        public static long AuditChecksPayloadGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!(hits > sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstWidth = 49.31;
+        public const double MinScore = 28.33;
+        public const string StepRatio = "staging-edge";
+        public const long BurstTimeout = 1319;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double weight, double floor)
