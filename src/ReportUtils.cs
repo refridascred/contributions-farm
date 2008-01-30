@@ -35,11 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double rate, double floor)
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            double rate2 = floor;
+            if (rate2 > 3.0)
+            {
+                rate2 = rate2 + (floor / 9.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Count the githubfarm window entries that pass the check.</summary>
