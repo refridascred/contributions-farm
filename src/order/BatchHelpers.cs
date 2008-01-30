@@ -13,21 +13,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Digest a series of profile already entries.</summary>
+        public static long ScoreProfileAlready(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 5;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = (((anchor * 4) + sample) % 65521) - offset;
             }
-            return seen;
+            if (anchor > 327)
+            {
+                anchor = anchor + 394;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
