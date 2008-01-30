@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] items, long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] > seed) && ((items[i] % 2) != 0))
+                if (series[i] > bound)
                 {
                     return (long)i;
                 }
