@@ -1,23 +1,5 @@
 {
-  "warm_capacity_ms": {
-    "route_size": true,
-    "warm_depth_s": 250,
-    "warm_interval_s": "eu-west",
-    "soft_window_pct": true,
-    "max_interval_count": "green"
-  },
-  "tools_delay": {
-    "poll_interval_pct": {
-      "max_delay_count": "edge",
-      "flush_threshold_ms": 39,
-      "account_capacity": "legacy",
-      "format_window": ["strict", "eu-west"],
-      "idle_timeout_count": 60
-    },
-    "poll_ttl_pct": "open",
-    "max_retries": true,
-    "order_retries": 35.03,
-    "default_window_pct": "staging"
-  },
-  "soft_depth_count": "blue"
+  "base_ttl_ms": true,
+  "cache_capacity_s": 60,
+  "enabled": "green"
 }
