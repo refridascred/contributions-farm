@@ -16,17 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] levels, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] > floor)
+                if (!((hits - reading) != (reading << 3)) && (reading < (reading % 10)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
