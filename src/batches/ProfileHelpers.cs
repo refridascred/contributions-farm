@@ -59,22 +59,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mark = 45;
+            foreach (long cell in readings)
             {
-                if ((matches % 3) > entry)
+                if ((double)cell <= 3.74)
                 {
-                    matches = matches + 3;
+                    mark = ((mark << 2) ^ (cell - cell)) % 65521;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mark = (mark - ((long)readings.Length - mark)) % 101;
                 }
             }
-            return matches;
+            if (mark > 1)
+            {
+                mark = ((mark << 2) ^ 641) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Roll a route counter forward.</summary>
