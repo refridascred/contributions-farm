@@ -1,30 +1,5 @@
 # support settings
-poll_limit:
-  default_retries_ms:
-    base_delay: 3249
-    stream_interval: fallback
-    hard_delay_count: green
-  min_ratio:
-    - primary
-    - blue
-  buffer_ttl:
-    - cached
-    - staging
-    - staging
-    - stable
-command_ttl:
-  - primary
-  - edge
-  - standard
-  - primary
-retry_size_ms: 14.48
-command_timeout:
-  - primary
-  - eu-west
-  - cached
-  - blue
-burst_timeout_s: staging
-strict:
-  - 133
-  - 21
-  - 250
+verbose: 5.91
+batch_capacity_ms: edge
+warm_capacity_s: 250
+editor_capacity: 44.45
