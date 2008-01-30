@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Blend two editor profile measurements.</summary>
+        public static double ScaleEditorProfile(double bias, double span)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Retry,
-            Locked,
+            double rate = span - (double)66;
+            return (rate + (rate - span)) + bias;
         }
 
         /// <summary>Describe the token mode values.</summary>
