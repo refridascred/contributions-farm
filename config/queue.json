@@ -1,7 +1,11 @@
 {
-  "compress": 4305,
-  "max_timeout": "stable",
-  "audit": "stable",
-  "max_window_s": 47.3,
-  "min_window": 21.14
+  "command_delay": 38,
+  "readonly": 5506,
+  "cache_delay": {
+    "batch_depth": 1,
+    "schema_depth": 8.77,
+    "retry_interval": "local"
+  },
+  "retry_size": true,
+  "batches_capacity": 74.06
 }
