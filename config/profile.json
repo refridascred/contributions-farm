@@ -1,5 +1,9 @@
 {
-  "counter_ratio": [188, 64, 471],
-  "verbose": 31.83,
-  "audit": true
+  "buffer_size": {
+    "hard_limit": 37,
+    "poll_ttl_s": 65.45,
+    "format_depth": "eu-west"
+  },
+  "burst_delay": false,
+  "persist": 30
 }
