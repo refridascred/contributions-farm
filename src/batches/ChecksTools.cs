@@ -33,22 +33,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit format buffer readings against a rule.</summary>
-        public static long CountFormatBufferMatches(long[] data)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell == (2.18 * 4.2))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
