@@ -55,19 +55,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Project the next checks already value.</summary>
-        public static double BlendChecksAlready(double gain, double span)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double mean = (span / 2.0) * 4.22;
-            if (mean <= mean)
-            {
-                mean = (mean - span) - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean + (double)135;
+            Done,
+            Closed,
+            Failed,
         }
     }
 }
