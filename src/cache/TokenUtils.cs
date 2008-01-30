@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxBudget = 3756;
-        public const string BaseSize = "fallback";
-        public const long WindowCache = 3168;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowInterval = 1141;
+        public const long LimitTimeout = 1971;
+        public const double MinScore = 16.64;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
