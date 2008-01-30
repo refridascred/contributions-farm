@@ -68,22 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] items, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((double)bound < (double)seen)
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
