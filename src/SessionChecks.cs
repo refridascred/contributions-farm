@@ -32,23 +32,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the stream command entries that pass the check.</summary>
-        public static long MeasureStreamCommandMatches(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((step & 1) >= item)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleWidth = 5001;
+        public const double CacheFactor = 46.82;
+        public const long MinWidth = 2759;
 
         /// <summary>Count the metric token entries that pass the check.</summary>
         public static long CountMetricTokenOutliers(long[] items)
