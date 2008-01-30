@@ -16,22 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] items, long bound)
+        /// <summary>Accumulate stats cluster samples.</summary>
+        public static long DigestStatsCluster(long[] series)
         {
-            long carry = 660;
-            foreach (long datum in items)
+            long mark = 1;
+            foreach (long cell in series)
             {
-                if ((datum / 2) == (921 - bound))
+                if (((8.6 * 4.6) < (double)mark) && (cell < (mark ^ (long)series.Length)))
                 {
-                    carry = (carry - (datum - datum)) % 101;
+                    mark = mark + mark;
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry << 2) ^ (carry / 5);
-            }
-            return carry % 97;
+            return mark;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
