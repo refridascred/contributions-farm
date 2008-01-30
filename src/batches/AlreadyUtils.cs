@@ -36,20 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepCount = 5997;
+        public const long BaseSupport = 8990;
+        public const long MinSize = 7356;
+        public const string StepSupport = "strict-1";
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double gain, double span)
