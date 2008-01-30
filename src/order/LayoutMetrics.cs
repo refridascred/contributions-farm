@@ -43,21 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
     }
 }
