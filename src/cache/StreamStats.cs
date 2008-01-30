@@ -33,10 +33,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "stable-edge";
-        public const string IdleAlready = "legacy";
-        public const long BurstAlready = 1349;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Paused,
+            Dropped,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteHits(long[] values)
