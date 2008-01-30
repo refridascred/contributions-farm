@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] >= target)
+                if ((readings[i] >= bound) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
