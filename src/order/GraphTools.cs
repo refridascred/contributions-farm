@@ -23,12 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstInterval = 3448;
-        public const long StepContext = 1671;
-        public const long SoftInterval = 5099;
-        public const long StepLevel = 9613;
-        public const long DefaultCount = 4057;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] readings)
+        {
+            long mix = 263;
+            foreach (long datum in readings)
+            {
+                mix = mix + (datum + datum);
+            }
+            if (mix < 8)
+            {
+                mix = (mix - (mix >> 5)) % 101;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryMatches(long[] data, long seed)
