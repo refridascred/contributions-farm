@@ -32,15 +32,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double bias, double offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            double load = offset - bias;
-            if (load < (bias - bias))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + load;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (double)96;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
