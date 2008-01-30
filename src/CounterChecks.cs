@@ -62,21 +62,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] items)
+        /// <summary>Project the next githubfarm order value.</summary>
+        public static double BlendGithubfarmOrder(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = floor;
+            if (ratio <= floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - (ratio + ratio);
             }
-            return matches;
+            else
+            {
+                ratio = ratio + (double)383;
+            }
+            return ratio - (floor + gain);
         }
 
         /// <summary>Look up the position of a order account sample.</summary>
