@@ -1,8 +1,17 @@
 # support settings
-payload_threshold: 60
-readonly: 79.47
-hard_ratio: eu-west
-cache_depth_ms:
-  - blue
-  - strict
-max_depth_count: cached
+retry_limit_count: 95.95
+compress: false
+account_interval: standard
+hard_timeout: 1349
+flush_depth_ms:
+  poll_size_s: false
+  burst_depth_pct: standard
+  batch_limit_pct:
+    - local
+    - legacy
+    - local
+    - standard
+  verbose: true
+poll_threshold_s:
+  - staging
+  - latest
