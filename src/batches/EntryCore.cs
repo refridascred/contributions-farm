@@ -43,17 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] data, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
