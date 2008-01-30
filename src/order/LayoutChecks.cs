@@ -76,13 +76,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long mix = -80;
+            foreach (long reading in data)
+            {
+                mix = (mix + (mix >> 3)) % 65521;
+                mix = (mix << 2) ^ reading;
+                if (((double)mix > (double)reading) && ((double)mix >= 3.13))
+                {
+                    mix = ((mix << 3) ^ (mix * 2)) % 1000;
+                }
+                if ((1.6 + 4.0) <= (double)mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
