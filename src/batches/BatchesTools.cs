@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Fold a list of notes cache readings.</summary>
+        public static long ScoreNotesCache(long[] data, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 964;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total ^ target) % 65521) ^ cell;
             }
-            return matches;
+            if (total > (-535))
+            {
+                total = total ^ (381 ^ 468);
+            }
+            return total;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
