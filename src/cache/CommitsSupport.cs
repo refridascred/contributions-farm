@@ -14,13 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Locked,
-            Failed,
+            Closed,
             Queued,
-            Done,
+            Retry,
         }
 
         /// <summary>Fold a list of batches account readings.</summary>
