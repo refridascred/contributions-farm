@@ -1,5 +1,8 @@
 # support settings
-poll_capacity: 7924
-burst_limit_ms: true
-retry_ratio: 7054
-retry_timeout_count: latest
+payload_threshold: 60
+readonly: 79.47
+hard_ratio: eu-west
+cache_depth_ms:
+  - blue
+  - strict
+max_depth_count: cached
