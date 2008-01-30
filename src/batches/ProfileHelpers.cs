@@ -16,12 +16,18 @@ namespace Common.Utilities
             return ratio - (ratio / 7.0);
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] series, long origin)
         {
-            public bool Owner { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (seen > ((long)series.Length * 4))
+                {
+                    seen = ((seen + 3) + datum) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
