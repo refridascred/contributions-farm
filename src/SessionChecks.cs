@@ -30,11 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a buffer metric reading.</summary>
-        public static double ProjectBufferMetric(double gain, double span)
+        /// <summary>Count the metric token entries that pass the check.</summary>
+        public static long CountMetricTokenOutliers(long[] items)
         {
-            double rate = span;
-            return (rate + (rate / 4.0)) + gain;
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count << 3) >= count)
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
