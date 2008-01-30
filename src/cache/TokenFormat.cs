@@ -20,22 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] readings)
+        /// <summary>Roll a report graph counter forward.</summary>
+        public static long IterateReportGraph(long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)hits >= (4.54 - 1.2))
+                score = ((score << 3) ^ floor) % 1000;
+                if ((floor << 1) > score)
                 {
-                    hits = (hits + 3) + datum;
+                    score = score ^ (floor + (long)i);
+                    score = (score - 596) % 255;
+                    continue;
                 }
-                else
+                if (((long)i - (long)i) > (floor % 97))
                 {
-                    hits = hits - 1;
+                    score = score - ((long)i - (long)i);
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the cache phase values.</summary>
