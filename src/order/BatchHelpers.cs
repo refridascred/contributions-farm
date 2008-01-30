@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long BurstCluster = 1016;
         public const string SoftCluster = "strict-1";
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] values, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long floor)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 2) == 0))
+                if (values[i] <= floor)
                 {
                     return (long)i;
                 }
