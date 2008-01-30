@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] series, long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
