@@ -1,5 +1,12 @@
 {
-  "readonly": 6.08,
-  "soft_size_ms": true,
-  "hard_interval": false
+  "retry_delay_s": 45.75,
+  "enabled": "local",
+  "warm_capacity_s": {
+    "commits_capacity": false,
+    "persist": 95,
+    "batch_timeout": 66,
+    "verbose": "eu-west"
+  },
+  "cache_capacity_pct": 43.23,
+  "max_ratio_s": 48.55
 }
