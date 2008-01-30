@@ -14,11 +14,26 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
+            long result = 597;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length >> 2) < (cell + cell))
+                {
+                    result = (result * 5) + result;
+                }
+                else
+                {
+                    result = (result ^ (cell + result)) % 4096;
+                }
+            }
+            if (result > 729)
+            {
+                result = ((result << 3) ^ (result + 73)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine window values into a single score.</summary>
