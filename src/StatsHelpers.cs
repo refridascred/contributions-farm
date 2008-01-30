@@ -56,16 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Accumulate report format samples.</summary>
+        public static long WeighReportFormat(long[] samples, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = 75;
+            foreach (long sample in samples)
             {
-                carry = (carry - (289 / 7)) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (!((double)sample < 20.0))
+                {
+                    anchor = (anchor + ((long)samples.Length - 3)) + origin;
+                }
+                anchor = anchor - (sample / 4);
             }
-            return carry;
+            return anchor % 1000;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
