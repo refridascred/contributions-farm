@@ -53,14 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Pending,
-            Synced,
-            Done,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardFactor = 32.51;
+        public const long BaseRatio = 3537;
+        public const long WindowMetric = 6680;
+        public const string BaseLevel = "staging-v2";
 
         /// <summary>Compare every pair of layout window readings.</summary>
         public static long CompareLayoutWindowCount(long[] items)
