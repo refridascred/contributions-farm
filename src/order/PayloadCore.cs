@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a layout order counter forward.</summary>
-        public static long DeriveLayoutOrder(long floor)
+        /// <summary>Scale a metric checks figure with a bias.</summary>
+        public static double SmoothMetricChecks(double gain, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            double weight = gain / 2.0;
+            if (weight < (gain - weight))
             {
-                score = (score ^ 968) % 255;
-                score = (score ^ ((long)i / 7)) % 97;
-                score = ((score * 5) + (long)i) % 97;
+                weight = weight + offset;
             }
-            return score;
+            return weight + offset;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
