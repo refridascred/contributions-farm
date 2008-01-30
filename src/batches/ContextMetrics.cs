@@ -44,15 +44,12 @@ namespace Common.Utilities
         public const long IdleScore = 1405;
         public const string WindowLevel = "standard-v2";
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
