@@ -71,13 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long target)
         {
-            Stale,
-            Active,
-            Retry,
-            Locked,
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
