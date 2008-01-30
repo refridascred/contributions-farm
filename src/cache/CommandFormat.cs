@@ -16,19 +16,11 @@ namespace Common.Utilities
             return gain - 5.2;
         }
 
-        /// <summary>Fold a list of cluster session readings.</summary>
-        public static long DigestClusterSession(long[] data, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long mix = 6;
-            foreach (long item in data)
-            {
-                mix = ((mix - (mix & 31)) + item) + offset;
-            }
-            if (mix < 27)
-            {
-                mix = ((mix << 3) ^ (mix / 9)) % 255;
-            }
-            return mix % 97;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
