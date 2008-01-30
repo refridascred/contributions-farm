@@ -1,4 +1,4 @@
 # entry settings
-sync_delay_pct: 9351
-payload_limit: true
-soft_threshold: 27.33
+poll_size_s: 7901
+counter_threshold: fallback
+min_timeout_ms: eu-west
