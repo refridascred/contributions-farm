@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] items, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long target, long target2)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long next = target + target2;
+            if ((72 % 5) > (target << 1))
             {
-                if (!((limit - limit) <= tally))
+                return 1;
+            }
+            else
+            {
+                if ((0.7 / 4.0) > (double)target)
                 {
-                    tally = (tally + 2) ^ sample;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((next + target2) != (target + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the queue phase values.</summary>
