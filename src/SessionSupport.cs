@@ -28,14 +28,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long step, long step2)
         {
-            Idle,
-            Locked,
-            New,
-            Retry,
-            Done,
+            if ((7.5 / 9.0) >= (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (62 < (92 - step2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
