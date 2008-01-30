@@ -33,13 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit cache metric readings against a rule.</summary>
+        public static long MeasureCacheMetricHits(long[] items)
         {
-            Ready,
-            Draft,
-            Stale,
-            Paused,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!(((double)sample > (4.4 / 5.0)) && ((double)582 < (11.0 / 7.0))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
