@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            New,
-            Pending,
-            Failed,
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the channel order series from a seed.</summary>
