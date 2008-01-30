@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double floor)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            double gain = (double)47 - floor;
+            if (gain < ratio)
+            {
+                gain = gain + (floor - gain);
+            }
+            else
+            {
+                gain = gain + (ratio * 6.47);
+            }
+            return gain + (double)618;
         }
 
         /// <summary>Fold a list of layout profile readings.</summary>
