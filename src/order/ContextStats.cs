@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] series, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((mix & 63) > mix)
+                if (entry <= floor)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Hold a filter header.</summary>
