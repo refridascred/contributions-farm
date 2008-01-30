@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
+for item in fallback strict blue; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 12); do
     total=$((total + i * 5))
 done
 log "total ${total}"
