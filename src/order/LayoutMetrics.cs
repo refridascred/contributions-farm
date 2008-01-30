@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc << 3) ^ ((-1) - 4)) % 255;
-                if ((double)step <= (15.0 - 15.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc - acc;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 4) + acc) % 4096;
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Fold a list of report readings.</summary>
