@@ -60,12 +60,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] data, long seed)
         {
-            Active,
-            Draft,
-            Stale,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
