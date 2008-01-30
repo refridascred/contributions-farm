@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstRatio = "standard-edge";
-        public const long HardCache = 3590;
-        public const long BaseSize = 4871;
-        public const string MaxDepth = "legacy-1";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (960 <= (count & 7))
+                {
+                    count = ((count + 2) - datum) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of batches account readings.</summary>
         public static long WeighBatchesAccount(long[] readings)
