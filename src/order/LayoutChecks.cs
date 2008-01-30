@@ -62,24 +62,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a layout context pair into a bucket.</summary>
-        public static long ClassifyLayoutContext(long offset, long bound)
+        /// <summary>Locate a layout filter reading by value.</summary>
+        public static long LookupLayoutFilterIndex(long[] items, long floor)
         {
-            if ((double)offset >= (double)bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) != (45 * 4))
+                if (items[i] > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
