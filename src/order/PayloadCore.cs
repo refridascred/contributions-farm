@@ -16,10 +16,13 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinScore = 7341;
-        public const string IdleCommand = "cached-1";
-        public const double LimitCommand = 76.04;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Locate a queue editor reading by value.</summary>
         public static long LookupQueueEditorIndex(long[] items, long offset)
