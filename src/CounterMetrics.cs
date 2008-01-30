@@ -32,14 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            New,
-            Done,
-            Paused,
-            Idle,
-            Ready,
+            long total = target;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total ^ (total + target)) % 101;
+                total = total ^ target;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
