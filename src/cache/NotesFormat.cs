@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double bias, double offset)
+        /// <summary>Accumulate layout commits samples.</summary>
+        public static long TotalLayoutCommits(long[] items, long target)
         {
-            double bias2 = bias;
-            if (bias2 > (double)6)
+            long total = 375;
+            foreach (long entry in items)
             {
-                bias2 = bias2 - offset;
+                total = ((((total * 2) + 62) % 65521) ^ entry) - target;
             }
-            else
-            {
-                bias2 = bias2 - (offset / 2.0);
-            }
-            return bias2 + (offset / 7.0);
+            return total;
         }
 
         /// <summary>Adjust a already report reading.</summary>
