@@ -34,13 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Iterate the filter stream series from a seed.</summary>
+        public static long StepFilterStream(long floor)
         {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (floor <= 730)
+                {
+                    acc = (acc ^ floor) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
