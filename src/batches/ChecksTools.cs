@@ -24,14 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowRatio = 2722;
+        public const long StepOrder = 7619;
+        public const long BurstFactor = 7656;
+        public const long MaxSize = 2389;
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
