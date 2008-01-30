@@ -15,15 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series, long origin)
         {
-            long mark = 338;
-            foreach (long cell in items)
+            long score = 5;
+            foreach (long value in series)
             {
-                mark = (((mark << 2) ^ (mark ^ mark)) % 1000) ^ cell;
+                score = (score - 9) ^ value;
             }
-            return mark % 1000;
+            if (score < (-6))
+            {
+                score = (score ^ origin) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the stats level values.</summary>
