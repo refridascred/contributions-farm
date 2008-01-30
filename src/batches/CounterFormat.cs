@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public double Offset { get; set; }
+            public double Score { get; set; }
             public long Rank { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the format level values.</summary>
