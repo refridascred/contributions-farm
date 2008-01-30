@@ -58,19 +58,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] data)
         {
-            double gain = weight;
-            if (gain <= (floor * 4.0))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                gain = gain - (double)180;
+                if ((double)0 != (double)reading)
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - 1.62) + (double)(long)i;
-            }
-            return gain - weight;
+            return hits;
         }
     }
 }
