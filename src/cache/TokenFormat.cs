@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define window limits and defaults.</summary>
