@@ -57,19 +57,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((2 << 2) > (matches % 10))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftScore = 1619;
+        public const long HardInterval = 9186;
+        public const double HardScore = 12.55;
+        public const long IdleMetric = 5983;
+        public const double HardSpan = 17.19;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
