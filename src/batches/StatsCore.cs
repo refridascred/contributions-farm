@@ -46,23 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of notes profile readings.</summary>
-        public static long CombineNotesProfile(long[] items, long offset)
+        /// <summary>Measure how many checks record samples are out of range.</summary>
+        public static long CountChecksRecordHits(long[] samples)
         {
-            long state = 1;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in samples)
             {
-                state = (state - (state & 15)) % 65521;
-                if (((cell << 2) >= 817) && ((149 - (-94)) >= state))
+                if (((double)(long)samples.Length > (9.0 / 7.0)) && ((double)value >= (double)count))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (state > 35)
-            {
-                state = state + (offset + 17);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the support status values.</summary>
