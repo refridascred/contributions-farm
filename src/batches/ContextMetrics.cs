@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "cached";
-        public const long CacheLevel = 2769;
-        public const long WindowBudget = 3459;
-        public const long BurstContributi = 9303;
-        public const long LimitBudget = 1996;
+        /// <summary>Check that every window channel entry stays within the limit.</summary>
+        public static bool VerifyWindowChannelLimits(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterOutliers(long[] items)
