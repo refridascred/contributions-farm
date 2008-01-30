@@ -23,18 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command account samples are out of range.</summary>
-        public static long TallyCommandAccountHits(long[] readings)
+        /// <summary>Compare every pair of window filter readings.</summary>
+        public static long CompareWindowFilterCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((1 + entry) > (hits << 1)) || (3 > entry)) && ((1.68 * 7.5) < (double)hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a session reading.</summary>
