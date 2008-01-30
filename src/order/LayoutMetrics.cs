@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many cluster account samples are out of range.</summary>
-        public static long TallyClusterAccountMatches(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((3.0 + 9.6) < (double)matches)
+                acc = ((acc << 3) ^ ((-1) - 4)) % 255;
+                if ((double)step <= (15.0 - 15.0))
                 {
-                    matches = (matches + 3) + datum;
+                    acc = acc - acc;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 4) + acc) % 4096;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
