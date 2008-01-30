@@ -13,21 +13,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Combine account counter values into a single score.</summary>
+        public static long WeighAccountCounter(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 532;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix ^ seed) % 4096) ^ datum;
+                mix = (mix + 951) % 101;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
