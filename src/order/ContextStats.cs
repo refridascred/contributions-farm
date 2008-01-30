@@ -52,22 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] series, long step)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mark = 9;
-            foreach (long item in series)
-            {
-                if ((5.5 - 5.0) >= (double)mark)
-                {
-                    mark = ((mark * 2) + (75 << 2)) - step;
-                }
-                if ((item - mark) >= (item - item))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
