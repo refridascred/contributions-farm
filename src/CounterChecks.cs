@@ -84,21 +84,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 12)
+                    if ((items[i] + items[j]) < 8)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Look up the position of a order account sample.</summary>
