@@ -34,12 +34,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] data, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
