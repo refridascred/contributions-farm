@@ -25,13 +25,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Pending,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "stable-edge";
+        public const string IdleAlready = "legacy";
+        public const long BurstAlready = 1349;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteHits(long[] values)
