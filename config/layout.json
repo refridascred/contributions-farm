@@ -1,6 +1,20 @@
 {
-  "min_retries_pct": false,
-  "commits_threshold": "cached",
-  "batches_ratio": "cached",
-  "poll_interval_s": "primary"
+  "strict": ["edge", "standard", "latest"],
+  "soft_interval": {
+    "base_ttl_ms": "fallback",
+    "dry_run": [227, 120],
+    "persist": 35
+  },
+  "cache_threshold": {
+    "base_delay_pct": 30,
+    "queue_size": {
+      "max_limit": 27.03,
+      "poll_threshold_count": "strict",
+      "readonly": true
+    },
+    "already_threshold": 83.26
+  },
+  "sync_window_ms": [19, 54, 390, 13],
+  "audit": 30,
+  "farm_size": "standard"
 }
