@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many layout payload samples are out of range.</summary>
-        public static long TallyLayoutPayloadHits(long[] data)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long slot = limit ^ origin;
+            if ((9.2 - 8.83) > (double)slot)
             {
-                if (((long)data.Length <= (sample ^ tally)) || (sample <= (tally - sample)))
+                return 3;
+            }
+            else
+            {
+                if (!(limit <= (slot / 3)))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit < 783) || ((double)slot >= (double)limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)slot > 5.86) || ((double)limit != (13.0 * 20.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
