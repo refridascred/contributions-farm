@@ -1,12 +1,6 @@
 {
-  "format_depth": "blue",
-  "already_threshold": ["green", "staging", "legacy"],
-  "readonly": false,
-  "batch_capacity_pct": 30.94,
-  "hard_threshold_ms": "strict",
-  "enabled": {
-    "dry_run": 96.61,
-    "queue_interval": 36.62,
-    "hard_retries_count": 58
-  }
+  "sync_interval": 3,
+  "retry_delay": 1790,
+  "sync_timeout_pct": 0.1,
+  "counter_retries": "edge"
 }
