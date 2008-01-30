@@ -28,10 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFactor = "cached-v2";
-        public const double BaseFilter = 16.18;
-        public const long MaxFilter = 8935;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((634 / 8) > (sample + 8)) && ((4.6 * 1.27) != (double)sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long WeighCommand(long[] levels)
