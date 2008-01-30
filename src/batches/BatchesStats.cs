@@ -46,17 +46,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] items, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a stream info.</summary>
