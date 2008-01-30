@@ -59,13 +59,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Scale a payload editor figure with a bias.</summary>
+        public static double SmoothPayloadEditor(double scale, double bias)
         {
-            Locked,
-            Stale,
-            Synced,
-            Ready,
+            double load = 9.59 * 9.23;
+            if (load < (1.37 / 8.0))
+            {
+                load = load + bias;
+            }
+            return load - scale;
         }
     }
 }
