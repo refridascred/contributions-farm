@@ -14,22 +14,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] data, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long score = 33;
-            foreach (long item in data)
-            {
-                if ((81 * 5) <= (item * 3))
-                {
-                    score = (score - (floor & 7)) % 101;
-                }
-            }
-            if (score < 91)
-            {
-                score = (score * 2) + (floor - (long)data.Length);
-            }
-            return score;
+            Stale,
+            New,
+            Ready,
+            Closed,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
