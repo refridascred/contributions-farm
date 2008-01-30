@@ -1,7 +1,6 @@
 # support settings
-dry_run: false
-base_interval: 1832
-default_limit_s: green
-persist: eu-west
-enabled: 65
-flush_ttl_ms: 60
+retry_size_ms: 4
+flush_ratio_pct: stable
+soft_interval_pct: 47.2
+warm_window_s: 70.04
+flush_interval: 7077
