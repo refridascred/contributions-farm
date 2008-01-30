@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of tools notes readings.</summary>
-        public static long MatchToolsNotesCount(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -10;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell >> 2) != (bound % 60))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state + (cell * 4);
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
