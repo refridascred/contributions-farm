@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] readings, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            long carry = 57;
-            foreach (long reading in readings)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((double)(long)readings.Length >= (9.0 * 9.8)))
+                if ((982 & 3) == (score << 2))
                 {
-                    carry = ((((carry * 3) + (carry << 3)) % 101) + reading) - offset;
+                    score = (score - (43 * 4)) % 4096;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
