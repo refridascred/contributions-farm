@@ -42,31 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long origin, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] levels)
         {
-            if ((0.5 + 16.0) == (double)origin)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 2) <= (origin << 1))
+                if ((136 >> 4) < (2 - entry))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.4 + 9.0) <= 16.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
