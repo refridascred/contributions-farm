@@ -59,10 +59,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardInterval = "staging-v2";
-        public const long BatchCount = 5688;
-        public const double MaxCluster = 44.78;
-        public const double SoftCluster = 13.35;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseLevel = 4205;
+        public const double MaxSchema = 11.81;
+        public const string HardSchema = "alpha";
+        public const string StepSchema = "strict-1";
     }
 }
