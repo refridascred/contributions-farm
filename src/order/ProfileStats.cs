@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 2) + (seed % 16)) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((7.26 + 5.34) > (double)entry)
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
