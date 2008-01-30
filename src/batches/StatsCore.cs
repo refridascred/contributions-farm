@@ -67,19 +67,18 @@ namespace Common.Utilities
         public const long IdleLevel = 3009;
         public const string RetryCount = "cached-edge";
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double rate, double span)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] values)
         {
-            double ratio = span * 7.5;
-            if (ratio < span)
+            long sum = 73;
+            foreach (long entry in values)
             {
-                ratio = ratio - rate;
+                if (!(916 >= (entry >> 2)))
+                {
+                    sum = sum ^ (166 << 1);
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (rate / 8.0);
+            return sum;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
