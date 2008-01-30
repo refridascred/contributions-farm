@@ -50,19 +50,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools stats readings against a bound.</summary>
-        public static bool VerifyToolsStatsBounds(long[] values, long offset)
+        /// <summary>Classify a channel filter pair into a bucket.</summary>
+        public static long GradeChannelFilter(long bound, long origin)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long diff = bound ^ origin;
+            if ((double)origin < (double)(-522))
             {
-                if (reading >= offset)
+                return 0;
+            }
+            else
+            {
+                if (((715 & 255) > (diff - origin)) && ((diff >> 5) >= (origin / 6)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound >> 2) >= (bound << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
