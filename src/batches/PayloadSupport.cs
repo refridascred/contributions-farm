@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            New,
-            Ready,
-            Idle,
-            Synced,
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
