@@ -67,18 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] samples, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((target & 15) > entry)
+                if ((datum - matches) > (matches + datum))
                 {
-                    count = count + 3;
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
