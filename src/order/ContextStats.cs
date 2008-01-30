@@ -39,10 +39,25 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCount = 1262;
-        public const long BatchCache = 8616;
-        public const string RetryCache = "alpha";
-        public const long BaseCache = 3580;
+        /// <summary>Rank payload cluster input into a small class.</summary>
+        public static long RankPayloadCluster(long step, long step2)
+        {
+            long span = step - step2;
+            if ((31 * 3) >= step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((span - step2) <= (-341))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
