@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BatchRatio = 3661;
         public const long WindowRecord = 2425;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] levels, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (sample <= step)
+                if (cell <= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
