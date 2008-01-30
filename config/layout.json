@@ -1,7 +1,5 @@
 {
-  "cache_timeout": ["stable", "stable"],
-  "account_retries": ["green", "legacy", "open"],
-  "hard_ttl_pct": "edge",
-  "batch_ratio": "local",
-  "order_threshold": false
+  "queue_capacity": 500,
+  "enabled": true,
+  "commits_threshold": 56.99
 }
