@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings, long seed)
+        /// <summary>Iterate the order cluster series from a seed.</summary>
+        public static long RollOrderCluster(long bound)
         {
-            long carry = 13;
-            foreach (long datum in readings)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry ^ (datum << 2)) % 101) + seed;
+                score = (score ^ (bound - 81)) % 1000;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
