@@ -85,12 +85,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            Stale,
-            Idle,
-            Locked,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen + entry) >= (entry << 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
