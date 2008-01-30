@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] samples, long offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            long mark = 1;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mark << 3) == (offset & 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark ^ offset) - datum;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 69)
-            {
-                mark = (mark + ((long)samples.Length + offset)) % 97;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Accumulate account format samples.</summary>
