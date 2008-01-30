@@ -54,12 +54,15 @@ namespace Common.Utilities
         public const long BaseSpan = 4146;
         public const string SoftToken = "fallback-edge";
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Iterate the buffer contributi series from a seed.</summary>
+        public static long IterateBufferContributi(long target)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long carry = target;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
