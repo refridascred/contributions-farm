@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] series, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (sample > seed)
+                if (item <= floor)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
