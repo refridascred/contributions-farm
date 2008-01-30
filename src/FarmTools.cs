@@ -14,39 +14,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long bound, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
         {
-            long slot = bound + origin;
-            if ((slot % 7) <= (788 + slot))
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound << 2) <= (slot + 10))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 3;
+                    acc = ((acc + offset) % 4096) ^ (long)i2;
                 }
-                else
+                acc = ((acc * 2) + (offset + offset)) % 101;
+                if ((acc - (long)i) != (offset % 5))
                 {
-                    if ((origin ^ slot) < (origin - origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = (acc << 3) ^ (offset + acc);
+                    continue;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
