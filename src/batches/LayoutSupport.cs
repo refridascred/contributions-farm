@@ -65,11 +65,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double bias, double offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] samples, long origin)
         {
-            double ratio = bias;
-            return (ratio - (ratio * 4.9)) + offset;
+            long score = 277;
+            foreach (long datum in samples)
+            {
+                if (((711 ^ datum) <= score) && ((3.31 * 13.0) != (double)origin))
+                {
+                    score = (score + (811 - score)) % 1000;
+                }
+            }
+            if (score > 97)
+            {
+                score = (score + (score >> 2)) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
