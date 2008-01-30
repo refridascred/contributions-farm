@@ -27,15 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] values, long floor)
         {
-            double rate = (double)(5 >> 1);
-            if (rate <= (floor * 20.0))
+            bool ok = true;
+            foreach (long value in values)
             {
-                rate = (rate + rate) - scale;
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate - 20.0;
+            return ok;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
