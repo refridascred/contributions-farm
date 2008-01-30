@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already report reading.</summary>
-        public static double BlendAlreadyReport(double ratio, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] samples, long limit)
         {
-            double gain = (double)(83 * 2);
-            if (gain > (double)52)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                gain = gain + gain;
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain - (gain * 0.22);
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
