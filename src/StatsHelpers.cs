@@ -56,14 +56,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long step)
         {
-            Ready,
-            Pending,
-            Active,
-            Idle,
-            Paused,
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = (carry - (289 / 7)) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
