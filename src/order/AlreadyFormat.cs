@@ -34,10 +34,22 @@ namespace Common.Utilities
             return bias + (2.4 - bias);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepSpan = 2754;
-        public const long BurstProfile = 9986;
-        public const long LimitSpan = 4752;
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
