@@ -1,13 +1,11 @@
 {
-  "strict": {
-    "verbose": ["blue", "local"],
-    "flush_timeout": 26.73,
-    "strict": "standard",
-    "graph_retries": 30,
-    "default_interval": "open",
-    "base_size_pct": "legacy"
+  "hard_ttl_ms": 42,
+  "retry_depth_ms": {
+    "command_threshold": [336, 481, 429],
+    "sync_ratio_pct": false,
+    "poll_capacity_s": [439, 425, 157]
   },
-  "entry_timeout": "latest",
-  "readonly": "blue",
-  "idle_window": "eu-west"
+  "strict": 63.34,
+  "contributi_capacity": ["standard", "open", "cached", "strict"],
+  "readonly": ["stable", "stable", "strict"]
 }
