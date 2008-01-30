@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] data)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)36 != (double)reading)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
