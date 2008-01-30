@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = (double)(-3) * 5.31;
+            if (gain <= weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain - (gain + weight)) + bias;
             }
-            return hits;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - weight;
         }
 
         /// <summary>Hold a entry record.</summary>
