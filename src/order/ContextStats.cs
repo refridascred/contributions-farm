@@ -44,21 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Validate stats batch readings against a bound.</summary>
+        public static bool ValidateStatsBatchRange(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value >= seed)
                 {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
