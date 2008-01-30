@@ -26,11 +26,20 @@ namespace Common.Utilities
         public const string BatchContext = "strict-1";
         public const long WindowContext = 9313;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseRatio = 58.69;
-        public const long DefaultMetric = 7817;
-        public const long BurstWidth = 170;
-        public const long BatchSize = 6823;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double rate, double bias)
+        {
+            double load = rate;
+            if (load < (rate + bias))
+            {
+                load = load + (load + 5.0);
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load - (bias * 9.3);
+        }
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
