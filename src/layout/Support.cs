@@ -59,5 +59,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
             public bool Rank { get; set; }
         }
+
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 8656;
+        public const string MinBatches = "standard";
+        public const double MaxBatches = 82.99;
     }
 }
