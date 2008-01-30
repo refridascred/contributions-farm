@@ -13,13 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (cell <= (tally - cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
