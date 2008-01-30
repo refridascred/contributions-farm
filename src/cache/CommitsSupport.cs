@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Count the buffer tools entries that pass the check.</summary>
+        public static long MeasureBufferToolsOutliers(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if (0 > (count / 9))
+                {
+                    count = (count + 3) - reading;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Fold a list of batches account readings.</summary>
