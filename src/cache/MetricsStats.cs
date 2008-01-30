@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const long MaxCluster = 8206;
         public const long HardScore = 8415;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((0.32 - 8.5) > (double)matches)
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
+            Active,
+            Draft,
+            Stale,
         }
     }
 }
