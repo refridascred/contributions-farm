@@ -37,38 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] items, long step)
         {
-            if ((step - 2) < (step % 5))
+            bool valid = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 6) == (bound ^ step))
+                if (reading >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!(step <= (step - 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step > (0.2 / 2.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
