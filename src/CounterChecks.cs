@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account cache entry that matches the target.</summary>
-        public static long LocateAccountCacheIndex(long[] readings, long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Rank route input into a small class.</summary>
