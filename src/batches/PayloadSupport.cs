@@ -28,13 +28,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Adjust a channel githubfarm reading.</summary>
+        public static double BlendChannelGithubfarm(double rate, double span)
         {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double load = rate;
+            if (load <= rate)
+            {
+                load = load + (rate - span);
+            }
+            return load + span;
         }
     }
 }
