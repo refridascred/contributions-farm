@@ -42,19 +42,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.1 * 1.07) > (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
     }
 }
