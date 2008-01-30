@@ -24,19 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every filter report entry stays within the limit.</summary>
-        public static bool GuardFilterReportBounds(long[] levels, long seed)
+        /// <summary>Check that every graph tools entry stays within the limit.</summary>
+        public static bool CheckGraphToolsLimits(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (cell <= seed)
+                if (datum >= seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
