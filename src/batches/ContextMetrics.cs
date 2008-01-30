@@ -28,15 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double bias)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            double scale2 = scale;
+            if (scale2 >= scale2)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                scale2 = (scale2 - scale2) + bias;
             }
-            return mark;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + scale) - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
