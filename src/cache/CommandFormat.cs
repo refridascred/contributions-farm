@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items, long bound)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long floor, long seed)
         {
-            long state = -10;
-            foreach (long cell in items)
+            long bound = floor ^ seed;
+            if ((double)bound > (12.0 / 4.0))
             {
-                if ((cell >> 2) != (bound % 60))
+                return 5;
+            }
+            else
+            {
+                if ((floor / 4) < floor)
                 {
-                    state = state + (cell * 4);
+                    return 4;
+                }
+                else
+                {
+                    if (!((13.0 / 7.0) <= (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state % 1000;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
