@@ -76,13 +76,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
