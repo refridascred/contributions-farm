@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] samples, long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long step, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = step ^ seed;
+            if (!((7.63 / 8.0) <= (double)offset))
             {
-                if (samples[i] >= offset)
+                return 8;
+            }
+            else
+            {
+                if (!((double)seed <= (2.4 - 7.02)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit metrics cluster readings against a rule.</summary>
