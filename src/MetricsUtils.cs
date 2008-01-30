@@ -24,14 +24,13 @@ namespace Common.Utilities
         public const string SoftFactor = "alpha-v2";
         public const long CacheQueue = 3383;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            Stale,
-            Active,
-            Locked,
-            Failed,
-            Retry,
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
