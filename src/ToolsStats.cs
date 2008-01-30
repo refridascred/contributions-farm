@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] samples, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
         {
-            long carry = 9;
-            foreach (long reading in samples)
+            long sum = 85;
+            foreach (long item in data)
             {
-                if (!((double)origin >= (3.4 / 5.0)))
-                {
-                    carry = (carry - (reading >> 1)) % 101;
-                }
+                sum = sum + item;
             }
-            if (carry < 34)
-            {
-                carry = carry - 273;
-            }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Hold a command record.</summary>
