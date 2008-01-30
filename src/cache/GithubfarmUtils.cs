@@ -30,19 +30,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] levels, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
