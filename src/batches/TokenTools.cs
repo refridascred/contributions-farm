@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BatchRatio = 3661;
         public const long WindowRecord = 2425;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] items, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] readings, long bound)
         {
-            long acc = 1;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (offset >= (55 * 4))
+                if (datum > bound)
                 {
-                    acc = ((acc - acc) % 4096) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Hold a metrics header.</summary>
