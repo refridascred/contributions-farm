@@ -48,18 +48,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((reading & 3) > (reading * 2))
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
