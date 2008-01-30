@@ -71,11 +71,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxLevel = 2083;
-        public const long StepFactor = 8184;
-        public const string BaseCache = "cached-edge";
-        public const long StepInterval = 4088;
-        public const double MinInterval = 45.41;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowTimeout = "primary";
+        public const long LimitTimeout = 1475;
+        public const double BasePayload = 14.61;
+        public const long BaseFactor = 8324;
+        public const long SoftLevel = 5765;
     }
 }
