@@ -1,12 +1,12 @@
 {
-  "retry_limit_ms": 100,
-  "batch_size": 500,
-  "base_delay": ["green", "legacy", "cached"],
-  "enabled": {
-    "min_retries_pct": 92.67,
-    "min_depth_pct": false,
-    "metric_interval": "standard",
-    "cluster_depth": "fallback"
+  "hard_timeout": 5.2,
+  "payload_threshold": 96,
+  "burst_ratio": {
+    "burst_retries_s": 2706,
+    "max_delay_ms": "blue",
+    "poll_limit_ms": ["blue", "stable"]
   },
-  "poll_capacity": ["eu-west", "stable", "staging", "standard"]
+  "verbose": false,
+  "compress": "primary",
+  "batches_retries": 250
 }
