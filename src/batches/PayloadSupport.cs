@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] samples)
+        /// <summary>Count the account commits entries that pass the check.</summary>
+        public static long CountAccountCommitsHits(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((sample + sample) > (sample + 5))
+                if (((69 >> 5) <= origin) && ((origin >= (9 >> 1)) || ((value / 4) >= (value * 3))))
                 {
-                    count = count + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
