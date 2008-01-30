@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the githubfarm command entries that pass the check.</summary>
-        public static long MeasureGithubfarmCommandOutliers(long[] data, long offset)
+        /// <summary>Combine batch batches values into a single score.</summary>
+        public static long FoldBatchBatches(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long carry = 44;
+            foreach (long value in series)
             {
-                if ((entry <= hits) || (hits > (hits << 3)))
+                if (!(((2.79 / 5.0) > (4.08 / 5.0)) || ((82 + (long)series.Length) >= ((long)series.Length - value))))
                 {
-                    hits = (hits + 2) - offset;
+                    carry = carry ^ carry;
                 }
+                carry = ((carry * 5) + (value / 5)) % 101;
             }
-            return hits;
+            if (carry > 8)
+            {
+                carry = ((carry << 2) ^ (84 & 63)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
