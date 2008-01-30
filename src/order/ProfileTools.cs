@@ -45,21 +45,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((2 << 2) > (matches % 10))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a payload header.</summary>
