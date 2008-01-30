@@ -33,24 +33,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double gain, double offset)
-        {
-            double load = gain;
-            if (load <= (double)(-271))
-            {
-                load = load - (double)(-1);
-            }
-            else
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (3.71 - offset)) + (double)(long)i;
-            }
-            return load + (gain - gain);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinStats = 14.15;
+        public const double BatchInterval = 83.67;
+        public const double LimitLevel = 13.49;
+        public const double IdleInterval = 74.92;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCluster = 4394;
