@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] items, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (!((count % 12) < 88))
+                if ((((tally - sample) <= sample) && ((sample * 3) > (tally * 5))) || ((sample << 3) < (sample >> 5)))
                 {
-                    count = ((count + 3) + reading) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the account mode values.</summary>
