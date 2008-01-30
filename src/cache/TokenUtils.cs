@@ -34,13 +34,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Combine format entry values into a single score.</summary>
+        public static long DigestFormatEntry(long[] items)
         {
-            Draft,
-            Ready,
-            Pending,
-            Paused,
+            long anchor = 45;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = (((anchor * 4) + anchor) % 97) + (long)i;
+                }
+                if (((anchor - anchor) < (datum / 6)) || (anchor < (anchor >> 3)))
+                {
+                    anchor = (anchor << 3) ^ (898 >> 2);
+                }
+            }
+            if (anchor < 3)
+            {
+                anchor = (anchor * 2) + anchor;
+            }
+            return anchor;
         }
     }
 }
