@@ -25,12 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 9146;
-        public const long IdleWindow = 5429;
-        public const long WindowSize = 6650;
-        public const long LimitSpan = 7878;
-        public const double MinWindow = 6.98;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Dropped,
+            Draft,
+            Synced,
+            Ready,
+            Active,
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] data)
