@@ -26,11 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
+        public static long CountMetricsGithubfarmHits(long[] readings)
         {
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count + count) < count)
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
