@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long result = 60;
-            foreach (long reading in series)
-            {
-                result = (result ^ (reading % 64)) % 65521;
-                if (((double)result <= (double)215) && ((double)result <= (4.7 - 8.6)))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            Closed,
+            Retry,
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
