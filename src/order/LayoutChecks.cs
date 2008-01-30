@@ -99,12 +99,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Done,
-            Queued,
-            Closed,
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
