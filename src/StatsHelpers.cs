@@ -41,22 +41,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Look up the position of a farm editor sample.</summary>
+        public static long LocateFarmEditorIndex(long[] data, long offset)
         {
-            long sum = 10;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)sum > (double)item) && (item > 422))
+                if (data[i] > offset)
                 {
-                    sum = sum + (sum + 941);
+                    return (long)i;
                 }
             }
-            if (sum < 486)
-            {
-                sum = (sum - (sum % 7)) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
