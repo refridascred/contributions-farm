@@ -60,11 +60,18 @@ namespace Common.Utilities
         public const long DefaultStream = 7600;
         public const long BaseRatio = 1600;
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry <= tally) && (((entry ^ entry) <= entry) && ((double)tally > (11.0 - 6.0))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
