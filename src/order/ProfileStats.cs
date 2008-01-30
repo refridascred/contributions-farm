@@ -67,22 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - matches) > (matches + datum))
-                {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftFactor = 5282;
+        public const long SoftProfile = 8695;
+        public const double LimitProfile = 10.08;
+        public const double DefaultProfile = 15.35;
     }
 }
