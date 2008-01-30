@@ -28,26 +28,32 @@ namespace Common.Utilities
         public const long IdleSpan = 1519;
         public const string DefaultSpan = "staging";
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] items, long limit)
+        /// <summary>Classify a session metric pair into a bucket.</summary>
+        public static long BucketSessionMetric(long bound, long step)
         {
-            long carry = 1;
-            foreach (long datum in items)
+            long gap = bound ^ step;
+            if ((553 + step) > (step % 8))
             {
-                if (!((460 + datum) <= datum))
+                return 3;
+            }
+            else
+            {
+                if (!((gap * 5) != (step * 4)))
                 {
-                    carry = ((carry << 3) ^ limit) % 101;
+                    return 1;
                 }
                 else
                 {
-                    carry = (carry * 4) + (limit & 31);
+                    if ((gap % 16) > (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (carry < 40)
-            {
-                carry = (carry - (limit - limit)) % 101;
-            }
-            return carry % 65521;
         }
     }
 }
