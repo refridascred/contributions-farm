@@ -1,6 +1,4 @@
 # support settings
-support_capacity: 40
-base_interval_pct: stable
-githubfarm_capacity: edge
-min_timeout_pct: 86.32
-min_timeout: 500
+support_timeout: 5642
+order_depth: 439
+poll_limit_pct: 59.46
