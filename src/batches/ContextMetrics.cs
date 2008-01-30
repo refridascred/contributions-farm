@@ -28,19 +28,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] items, long limit)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long origin)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
