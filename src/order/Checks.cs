@@ -46,12 +46,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Combine record values into a single score.</summary>
