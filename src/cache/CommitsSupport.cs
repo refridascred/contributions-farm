@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] data, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (960 <= (count & 7))
-                {
-                    count = ((count + 2) - datum) - bound;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Fold a list of batches account readings.</summary>
