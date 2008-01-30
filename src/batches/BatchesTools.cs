@@ -36,19 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile order readings against a bound.</summary>
-        public static bool CheckProfileOrderLimits(long[] series, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
