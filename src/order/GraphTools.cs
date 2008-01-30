@@ -64,32 +64,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long target, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values, long target)
         {
-            long next = target - bound;
-            if (next >= (target * 4))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)next >= (8.1 - 6.0))
+                if ((4.16 < (double)reading) || ((17.0 / 7.0) <= (double)(long)values.Length))
                 {
-                    return 3;
+                    seen = (seen + 1) + target;
                 }
                 else
                 {
-                    if ((9.0 + 9.7) < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
