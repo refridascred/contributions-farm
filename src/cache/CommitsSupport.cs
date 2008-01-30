@@ -64,11 +64,24 @@ namespace Common.Utilities
         public const long DefaultStream = 7600;
         public const long BaseRatio = 1600;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 1656;
-        public const double RetryContext = 71.38;
-        public const long MaxRatio = 5426;
-        public const double DefaultWidth = 0.46;
-        public const long CacheBudget = 9202;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long bound, long offset)
+        {
+            if (((offset * 3) != (306 / 5)) || ((bound / 8) == ((-3) + offset)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)31 != (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
