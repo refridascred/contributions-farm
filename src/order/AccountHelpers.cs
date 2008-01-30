@@ -76,19 +76,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
-        public static bool GuardChannelContributiRange(long[] series, long offset)
+        /// <summary>Look up the position of a checks payload sample.</summary>
+        public static long FindChecksPayloadIndex(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != offset)
+                if ((items[i] > limit) && ((items[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
