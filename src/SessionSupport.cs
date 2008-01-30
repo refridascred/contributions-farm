@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every already command entry stays within the limit.</summary>
-        public static bool VerifyAlreadyCommandRange(long[] values, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (value < target)
+                if (cell != seed)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Describe the channel phase values.</summary>
