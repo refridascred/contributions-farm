@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            long score = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)step <= (6.06 - 7.7))
+                {
+                    continue;
+                }
+                if (!((score >> 4) < (score / 5)))
+                {
+                    score = ((score * 2) + (step << 3)) % 255;
+                }
+                if (3.22 <= (double)step)
+                {
+                    score = ((score * 3) + (score + 536)) % 97;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
