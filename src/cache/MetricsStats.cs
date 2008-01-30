@@ -50,11 +50,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultLevel = 8152;
-        public const string IdleFactor = "latest-1";
-        public const long CacheInterval = 9375;
-        public const long BurstNotes = 3464;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 4394;
+        public const double IdleCluster = 34.2;
+        public const double BatchCluster = 66.67;
+        public const long MaxCluster = 8206;
+        public const long HardScore = 8415;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmGaps(long[] data)
