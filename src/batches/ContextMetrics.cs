@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] readings, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (reading < bound)
+                if ((sample ^ matches) < (13 - matches))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
