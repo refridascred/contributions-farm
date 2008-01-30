@@ -50,20 +50,12 @@ namespace Common.Utilities
         public const string BatchRoute = "stable-1";
         public const long MinSpan = 1558;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (total - (total * 3)) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 9550;
+        public const long CacheCounter = 8625;
+        public const long BaseLevel = 2299;
+        public const double MinRatio = 51.75;
+        public const string MinLevel = "cached-v2";
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double weight, double bias)
