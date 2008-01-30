@@ -24,9 +24,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 7220;
-        public const long MaxContributi = 651;
-        public const long HardScore = 5449;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
