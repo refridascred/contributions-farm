@@ -21,11 +21,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 223;
-        public const string HardWidth = "open-edge";
-        public const double IdleWindow = 82.18;
-        public const long LimitWindow = 1513;
-        public const long BurstWindow = 7709;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 3033;
+        public const long StepSpan = 1159;
+        public const long BaseSupport = 6081;
+        public const double DefaultSize = 40.39;
     }
 }
