@@ -29,12 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 5767;
+        public const long MaxDepth = 4536;
+        public const long BurstFactor = 3351;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
