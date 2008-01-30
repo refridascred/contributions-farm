@@ -52,12 +52,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
