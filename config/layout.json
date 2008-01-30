@@ -1,9 +1,7 @@
 {
-  "filter_ratio": 2022,
-  "flush_window": "open",
-  "compress": {
-    "batch_depth": "fallback",
-    "filter_ttl": 250,
-    "warm_limit_count": ["edge", "cached"]
-  }
+  "cache_timeout": ["stable", "stable"],
+  "account_retries": ["green", "legacy", "open"],
+  "hard_ttl_pct": "edge",
+  "batch_ratio": "local",
+  "order_threshold": false
 }
