@@ -65,22 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (!(entry < (count << 2)))
+                if (!(((double)matches <= (double)59) || ((matches * 2) <= (matches & 1))))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = ((matches + 2) + cell) - limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the metric phase values.</summary>
