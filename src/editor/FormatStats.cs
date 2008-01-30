@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
             public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the channel status values.</summary>
