@@ -33,39 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long limit, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] values)
         {
-            long span = limit + target;
-            if ((double)target == (1.7 + 3.1))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit + 287) <= (target << 1)))
+                if (!(cell >= (hits / 7)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (32 - span))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6 < (limit - target)) && ((3.24 + 6.3) <= (double)target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
