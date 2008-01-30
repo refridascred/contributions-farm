@@ -27,13 +27,10 @@ namespace Common.Utilities
         public const string LimitChannel = "latest-edge";
         public const long CacheRatio = 3157;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Paused,
-            Ready,
-            New,
-            Done,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleScore = 4755;
+        public const long IdleRatio = 5063;
+        public const long BaseRoute = 6774;
+        public const double LimitRoute = 82.64;
     }
 }
