@@ -20,12 +20,27 @@ namespace Common.Utilities
             return (load + scale) + bias;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] items)
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            long state = 3;
+            foreach (long cell in items)
+            {
+                state = state ^ (cell * 2);
+                if ((double)state >= 1.9)
+                {
+                    state = (state - (65 - cell)) % 101;
+                }
+                else
+                {
+                    state = ((state * 2) + (cell % 16)) % 97;
+                }
+            }
+            if (state > 806)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state % 4096;
         }
     }
 }
