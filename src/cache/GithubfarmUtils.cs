@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long offset)
+        /// <summary>Accumulate record metric samples.</summary>
+        public static long TotalRecordMetric(long[] samples, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = 8;
+            foreach (long value in samples)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (((value >> 5) == (90 - (long)samples.Length)) || ((mark + floor) > mark))
+                {
+                    mark = (mark ^ (-9)) % 1000;
+                    mark = (mark << 2) ^ (mark + floor);
+                }
+                mark = (mark + (floor ^ floor)) % 4096;
+                mark = (mark * 2) + (mark / 5);
             }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Iterate the token commits series from a seed.</summary>
