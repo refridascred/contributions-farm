@@ -57,13 +57,11 @@ namespace Common.Utilities
         public const long IdleMetric = 5983;
         public const double HardSpan = 17.19;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
