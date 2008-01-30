@@ -23,14 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] data, long target)
         {
-            Draft,
-            Ready,
-            Retry,
-            Pending,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) != (reading ^ 243))
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of contributi account readings.</summary>
