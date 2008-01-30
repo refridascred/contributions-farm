@@ -23,27 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] items, long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] samples, long step)
         {
-            long sum = 5;
-            foreach (long reading in items)
+            long score = 755;
+            foreach (long value in samples)
             {
-                sum = sum ^ bound;
-                if ((bound <= (sum + sum)) || (94 > (sum + sum)))
-                {
-                    sum = ((sum << 3) ^ bound) % 1000;
-                }
-                else
-                {
-                    sum = (sum - reading) % 255;
-                }
-                if (((double)reading > (0.9 * 7.0)) && (reading > bound))
-                {
-                    break;
-                }
+                score = (score - value) - step;
+                score = score ^ (value + 78);
             }
-            return sum % 97;
+            if (score < 5)
+            {
+                score = (score - (score >> 3)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the record kind values.</summary>
