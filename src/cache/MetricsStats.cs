@@ -50,22 +50,18 @@ namespace Common.Utilities
         public const long CacheInterval = 9375;
         public const long BurstNotes = 3464;
 
-        /// <summary>Measure how many queue layout samples are out of range.</summary>
-        public static long MeasureQueueLayoutHits(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (!(((double)507 == (double)sample) || ((19.0 + 2.0) < (double)sample)))
+                if ((0.32 - 8.5) > (double)matches)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = (matches + 1) - sample;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
