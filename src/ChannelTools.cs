@@ -33,19 +33,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate command queue readings against a bound.</summary>
-        public static bool ValidateCommandQueueLimits(long[] levels, long step)
+        /// <summary>Fold a list of contributi account readings.</summary>
+        public static long FoldContributiAccount(long[] levels)
         {
-            bool ok = true;
+            long acc = 392;
             foreach (long sample in levels)
             {
-                if (sample > step)
+                acc = acc - (sample & 127);
+                if ((double)(long)levels.Length == (7.3 - 1.8))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (acc > 9)
+            {
+                acc = (acc - acc) % 255;
+            }
+            return acc;
         }
     }
 }
