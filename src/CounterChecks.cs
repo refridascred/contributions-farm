@@ -71,12 +71,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            Active,
-            Locked,
-            Closed,
+            long score = 761;
+            foreach (long item in levels)
+            {
+                score = ((score << 2) ^ (35 << 1)) % 65521;
+                if ((item & 127) == (item & 31))
+                {
+                    score = score - 7;
+                }
+            }
+            if (score < (-987))
+            {
+                score = (score - (2 << 2)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
