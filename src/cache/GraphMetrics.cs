@@ -94,19 +94,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long score = 185;
-            foreach (long item in samples)
-            {
-                score = (score - (749 >> 4)) + item;
-            }
-            if (score > (-554))
-            {
-                score = (score * 5) + score;
-            }
-            return score;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
