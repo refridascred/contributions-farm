@@ -59,10 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 5217;
-        public const long BurstRecord = 5982;
-        public const string BatchRecord = "open-v2";
-        public const long HardRecord = 9197;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double bias2)
+        {
+            double ratio = bias2;
+            return (ratio + (ratio - bias2)) + bias;
+        }
     }
 }
