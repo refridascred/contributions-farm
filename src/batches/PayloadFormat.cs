@@ -36,19 +36,13 @@ namespace Common.Utilities
             return mean + 8.12;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] series, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
