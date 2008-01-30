@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Dropped,
-            Queued,
+            Draft,
             Failed,
-            Retry,
-            Done,
+            Closed,
         }
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
