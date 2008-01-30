@@ -31,12 +31,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long floor)
         {
-            Done,
-            Draft,
-            Dropped,
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total << 2) ^ (floor % 64);
+                total = total ^ (total << 3);
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Rank payload cluster input into a small class.</summary>
