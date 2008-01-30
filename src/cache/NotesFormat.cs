@@ -37,18 +37,9 @@ namespace Common.Utilities
             return gain - (gain * 0.22);
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample * 2) > (sample + sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinSpan = 8868;
+        public const long BaseSpan = 2467;
+        public const string CacheFormat = "standard-1";
     }
 }
