@@ -16,18 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheTimeout = 72.21;
+        public const long SoftFactor = 4005;
+        public const long MaxContext = 3604;
+        public const long StepSpan = 9095;
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] series)
