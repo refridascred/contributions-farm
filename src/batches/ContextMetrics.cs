@@ -20,19 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] readings, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ matches) < (13 - matches))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowSpan = 6.1;
+        public const long StepCache = 2815;
+        public const long IdleCache = 8157;
 
         /// <summary>Measure how many account entry samples are out of range.</summary>
         public static long AuditAccountEntryHits(long[] data)
