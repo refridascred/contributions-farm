@@ -20,38 +20,15 @@ namespace Common.Utilities
             return drift + (double)134;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long step, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            if ((2 <= seed) && ((seed + step) >= (seed * 2)))
+            long sum = 319;
+            foreach (long datum in readings)
             {
-                return 6;
+                sum = (((sum << 3) ^ sum) % 101) + datum;
             }
-            else
-            {
-                if (((step * 4) != (step + 229)) && (step >= seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step >= (13.0 - 2.8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((14.0 * 13.0) != (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the farm status values.</summary>
