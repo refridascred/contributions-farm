@@ -19,20 +19,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] readings, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((71 << 3) == (long)i) || ((acc << 1) != (limit - (-4))))
+                if (readings[i] > offset)
                 {
-                    acc = (acc ^ (limit * 5)) % 97;
-                    acc = acc + limit;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
