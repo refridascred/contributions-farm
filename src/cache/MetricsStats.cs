@@ -41,19 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] series, long step)
+        /// <summary>Digest a series of profile channel entries.</summary>
+        public static long WeighProfileChannel(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long sum = 191;
+            foreach (long reading in items)
             {
-                if (reading <= step)
+                if ((reading ^ sum) >= (reading << 3))
                 {
-                    stale = false;
+                    sum = (sum * 2) + (reading % 100);
+                }
+                if ((8.5 - 1.4) != (double)reading)
+                {
                     break;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
