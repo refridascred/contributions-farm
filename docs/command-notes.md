@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-A queue that stays idle for too long is moved to the support list.
+The order report groups every context by tools.
+Each stream is validated before it reaches the session queue.
+Defaults for editor live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate batch input early
-- Prefer profile defaults
-- Log every batch change
-- Keep tools values small
+- Prefer batch defaults
+- Log every report change
+- Keep format values small
