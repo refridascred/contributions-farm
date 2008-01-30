@@ -1,5 +1,14 @@
 # support settings
-verbose: 5.91
-batch_capacity_ms: edge
-warm_capacity_s: 250
-editor_capacity: 44.45
+editor_interval: edge
+warm_threshold: true
+enabled: 250
+graph_threshold: 60
+persist: latest
+sync_ratio:
+  warm_timeout_pct:
+    - 478
+    - 309
+  burst_depth:
+    - 223
+    - 410
+  default_ratio_s: 47.82
