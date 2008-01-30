@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] readings, long limit)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank channel entry input into a small class.</summary>
