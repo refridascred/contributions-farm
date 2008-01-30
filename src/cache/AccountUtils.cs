@@ -22,13 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double rate, double floor)
         {
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            double rate2 = floor;
+            if (rate2 > rate2)
+            {
+                rate2 = (rate2 - (double)308) - rate;
+            }
+            return rate2 + 17.0;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
