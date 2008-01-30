@@ -28,10 +28,22 @@ namespace Common.Utilities
         public const long RetryStream = 1576;
         public const long CacheInterval = 1857;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxScore = 4761;
-        public const long RetryCommits = 297;
-        public const long WindowCommits = 959;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] readings, long origin)
