@@ -1,8 +1,8 @@
 {
-  "verbose": "cached",
-  "queue_timeout": 2343,
-  "farm_threshold": false,
-  "readonly": "latest",
-  "audit": 25,
-  "idle_delay_pct": 67.7
+  "base_ttl_ms": 54,
+  "buffer_interval": 40,
+  "cache_ttl": "cached",
+  "command_timeout": 1826,
+  "hard_capacity": false,
+  "max_ratio_s": true
 }
