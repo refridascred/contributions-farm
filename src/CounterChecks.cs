@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] readings)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading <= (reading + hits)) && (((1 << 1) < (hits >> 4)) || ((reading - (long)readings.Length) < hits)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the token status values.</summary>
