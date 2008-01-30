@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((tally % 7) != (tally / 5))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
