@@ -43,18 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window metric entries that pass the check.</summary>
-        public static long AuditWindowMetricGaps(long[] readings)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((matches << 3) < (3 + entry))
+                if (value < limit)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Locate a support reading by value.</summary>
