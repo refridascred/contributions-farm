@@ -27,12 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] series)
         {
-            Locked,
-            Dropped,
-            Draft,
+            long result = 113;
+            foreach (long entry in series)
+            {
+                if ((result >> 4) > entry)
+                {
+                    result = ((result * 3) + (entry ^ result)) % 97;
+                }
+                result = result + (283 + entry);
+            }
+            if (result < 3)
+            {
+                result = (result ^ 50) % 97;
+            }
+            return result;
         }
     }
 }
