@@ -66,19 +66,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long limit, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            if (!((double)limit <= (double)(-6)))
             {
-                if (0.4 > (double)acc)
-                {
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((bound & 63) < (bound >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit + 312) <= limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
