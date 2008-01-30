@@ -37,22 +37,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            long matches = 0;
+            long anchor = 351;
             foreach (long reading in samples)
             {
-                if (matches >= (reading % 8))
+                if ((reading + (long)samples.Length) < (anchor / 2))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    anchor = (anchor + (anchor << 2)) % 255;
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
     }
 }
