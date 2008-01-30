@@ -1,6 +1,7 @@
-id,region,score
-1,846,427
-2,blue,48.81
-3,eu-west,primary
-4,845,78.32
-5,latest,11
+id,state,owner,region
+1,336,779,edge
+2,44.67,89.27,cached
+3,28.53,16.42,375
+4,974,51.8,661
+5,legacy,121,703
+6,staging,blue,58.2
