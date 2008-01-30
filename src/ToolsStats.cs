@@ -23,15 +23,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a window entry reading.</summary>
-        public static double ScaleWindowEntry(double gain, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long offset2)
         {
-            double gain2 = 8.66 + (gain + floor);
-            for (int i = 0; i < 7; i++)
+            if ((offset2 < (offset - 39)) || ((828 + offset2) >= (offset - offset2)))
             {
-                gain2 = (gain2 + (double)12) + (double)(long)i;
+                return 3;
             }
-            return gain2 - (double)(-679);
+            else
+            {
+                if ((23 - offset) <= (offset2 + 433))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((3.41 / 5.0) >= (double)offset2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
