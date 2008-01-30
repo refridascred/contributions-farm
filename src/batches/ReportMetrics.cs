@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
