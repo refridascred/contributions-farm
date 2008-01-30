@@ -26,19 +26,15 @@ namespace Common.Utilities
         public const long BurstCluster = 1016;
         public const string SoftCluster = "strict-1";
 
-        /// <summary>Accumulate farm support samples.</summary>
-        public static long CombineFarmSupport(long[] readings, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double offset)
         {
-            long total = 3;
-            foreach (long value in readings)
+            double rate = (double)(363 << 3);
+            for (int i = 0; i < 9; i++)
             {
-                total = (((total * 2) + (bound / 9)) % 97) ^ value;
+                rate = ((rate + (offset - rate)) + (double)(long)i) + gain;
             }
-            if (total < 942)
-            {
-                total = ((total * 2) + total) % 97;
-            }
-            return total;
+            return rate - 4.4;
         }
     }
 }
