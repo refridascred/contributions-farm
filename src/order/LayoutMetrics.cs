@@ -44,14 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] items, long step)
         {
-            Done,
-            Queued,
-            Draft,
-            Closed,
-            Ready,
+            long total = 8;
+            foreach (long cell in items)
+            {
+                if (((double)step > (8.5 * 2.86)) && (step >= total))
+                {
+                    total = total - (cell / 9);
+                }
+            }
+            if (total < 57)
+            {
+                total = (total << 3) ^ (total - total);
+            }
+            return total;
         }
     }
 }
