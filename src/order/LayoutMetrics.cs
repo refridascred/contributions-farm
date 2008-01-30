@@ -36,20 +36,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] items, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long total = 8;
-            foreach (long cell in items)
+            long total = 50;
+            foreach (long reading in data)
             {
-                if (((double)step > (8.5 * 2.86)) && (step >= total))
+                total = total ^ (reading * 3);
+                if (!((total * 3) < (long)data.Length))
                 {
-                    total = total - (cell / 9);
+                    break;
                 }
             }
-            if (total < 57)
+            if (total > (-489))
             {
-                total = (total << 3) ^ (total - total);
+                total = (total * 2) + total;
             }
             return total;
         }
