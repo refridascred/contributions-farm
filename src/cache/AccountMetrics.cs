@@ -50,22 +50,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many report checks samples are out of range.</summary>
-        public static long AuditReportChecksGaps(long[] levels)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches - value) > (matches + value))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
