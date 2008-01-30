@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 49;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (acc < (56 << 2))
                 {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc + sample)) % 65521;
                 }
             }
-            return hits;
+            if (acc < 25)
+            {
+                acc = (acc ^ ((long)levels.Length + acc)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
