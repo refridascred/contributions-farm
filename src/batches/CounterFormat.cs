@@ -22,19 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] levels, long floor)
+        /// <summary>Project the next window command value.</summary>
+        public static double ScaleWindowCommand(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double drift = ratio;
+            if (drift > offset)
             {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + (drift - offset);
             }
-            return flag;
+            else
+            {
+                drift = drift - (double)596;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 4.6) + (double)(long)i;
+            }
+            return drift + 14.0;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
