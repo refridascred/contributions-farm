@@ -1,11 +1,16 @@
 # Command notes
 
-Run the farm check before changing any counter limits.
-Each report is validated before it reaches the githubfarm queue.
-The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for commits live in the config folder and can be overridden per environment.
+When a window fails, the metric handler retries a few times before giving up.
+Keep farm and editor names short and lowercase.
+
+Each commits is validated before it reaches the layout queue.
+The tools report groups every record by context.
+Run the record check before changing any payload limits.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Keep profile values small
-- Log every channel change
+- Validate context input early
+- Document new support fields
+- Prefer checks defaults
+- Log every buffer change
