@@ -21,18 +21,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] data, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches - item) < (item - 1))
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
+            Paused,
+            Locked,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
