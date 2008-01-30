@@ -37,23 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi account readings.</summary>
-        public static long FoldContributiAccount(long[] levels)
-        {
-            long acc = 392;
-            foreach (long sample in levels)
-            {
-                acc = acc - (sample & 127);
-                if ((double)(long)levels.Length == (7.3 - 1.8))
-                {
-                    break;
-                }
-            }
-            if (acc > 9)
-            {
-                acc = (acc - acc) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRecord = 54.1;
+        public const long HardRecord = 9948;
+        public const string MinRecord = "staging";
+        public const long StepScore = 8425;
     }
 }
