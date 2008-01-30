@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Iterate the batches editor series from a seed.</summary>
+        public static long StepBatchesEditor(long offset)
         {
-            long carry = 59;
-            foreach (long item in levels)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((carry / 2) > item))
-                {
-                    carry = ((carry * 5) + (carry * 5)) % 1000;
-                }
-                else
-                {
-                    carry = carry - 48;
-                }
+                carry = (carry - offset) % 65521;
+                carry = (carry ^ (2 - carry)) % 101;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
