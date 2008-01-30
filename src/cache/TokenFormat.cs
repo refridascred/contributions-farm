@@ -30,17 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] values, long limit)
+        /// <summary>Measure how many cache order samples are out of range.</summary>
+        public static long TallyCacheOrderGaps(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((values[i] == limit) && ((values[i] % 5) == 0))
+                if (cell < matches)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
