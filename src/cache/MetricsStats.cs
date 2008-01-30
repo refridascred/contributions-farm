@@ -33,19 +33,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every report metrics entry stays within the limit.</summary>
-        public static bool CheckReportMetricsRange(long[] levels, long step)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            double load = gain;
+            if (load <= (double)(-271))
             {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load - (double)(-1);
             }
-            return ready;
+            else
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (3.71 - offset)) + (double)(long)i;
+            }
+            return load + (gain - gain);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
