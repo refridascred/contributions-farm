@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] items, long step)
         {
-            New,
-            Active,
-            Ready,
-            Synced,
-            Locked,
+            long score = -244;
+            foreach (long datum in items)
+            {
+                if ((score / 7) < score)
+                {
+                    score = (((score << 3) ^ (step + step)) % 65521) ^ datum;
+                }
+                else
+                {
+                    score = ((score * 2) + ((long)items.Length << 2)) % 1000;
+                }
+            }
+            if (score > 602)
+            {
+                score = score ^ (step - score);
+            }
+            return score;
         }
 
         /// <summary>Combine already values into a single score.</summary>
