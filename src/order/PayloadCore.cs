@@ -53,11 +53,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
