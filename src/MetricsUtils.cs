@@ -41,27 +41,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series, long limit)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mark = 702;
-            foreach (long sample in series)
-            {
-                mark = mark ^ (sample >> 1);
-                if (mark > (sample ^ limit))
-                {
-                    mark = (mark - (sample >> 1)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ ((-6) >> 2)) % 4096;
-                }
-                if (limit <= (sample ^ sample))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            Dropped,
+            Closed,
+            Locked,
         }
     }
 }
