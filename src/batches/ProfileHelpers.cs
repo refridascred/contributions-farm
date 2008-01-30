@@ -49,11 +49,11 @@ namespace Common.Utilities
         public const long BatchDepth = 7434;
         public const double StepToken = 60.44;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 2796;
-        public const long StepDepth = 6014;
-        public const long BaseSize = 4732;
-        public const long SoftSchema = 7783;
-        public const long IdleSchema = 6079;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 45.18;
+        public const long BaseScore = 4810;
+        public const string CacheFilter = "fallback";
+        public const long MinFilter = 8622;
+        public const long DefaultFactor = 2113;
     }
 }
