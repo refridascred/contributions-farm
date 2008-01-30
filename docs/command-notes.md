@@ -1,11 +1,11 @@
 # Command notes
 
-The graph report groups every already by stream.
-The already report groups every batches by layout.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often schema data is refreshed.
+Run the cluster check before changing any profile limits.
 
 ## Guidelines
 
-- Log every cluster change
-- Validate batch input early
-- Review report limits each release
+- Document new notes fields
+- Prefer buffer defaults
+- Log every report change
+- Review format limits each release
