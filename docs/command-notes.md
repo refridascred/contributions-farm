@@ -1,12 +1,14 @@
 # Command notes
 
-The context report groups every format by queue.
-The entry report groups every profile by session.
-When a queue fails, the format handler retries a few times before giving up.
+The account module keeps window values in sync with the contributi cache.
+When a account fails, the metrics handler retries a few times before giving up.
+
+The stream helpers are pure functions, so they are safe to call from any thread.
+Use buffer settings to tune how often editor data is refreshed.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate record input early
-- Keep metrics values small
-- Review cluster limits each release
-- Document new context fields
+- Review batch limits each release
+- Prefer buffer defaults
+- Keep account values small
