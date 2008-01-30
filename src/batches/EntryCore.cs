@@ -29,21 +29,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Measure how many graph cache samples are out of range.</summary>
+        public static long MeasureGraphCacheMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((8 < (hits ^ datum)) || (597 >= datum))
                 {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a layout info.</summary>
