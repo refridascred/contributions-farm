@@ -1,6 +1,9 @@
 # entry settings
-filter_capacity: primary
-soft_ratio_ms: 12
-dry_run: 12.02
-hard_ratio_s: false
-cluster_ttl: 100
+retry_delay: legacy
+compress:
+  - green
+  - fallback
+  - stable
+  - cached
+sync_size: 9113
+burst_ttl: 89
