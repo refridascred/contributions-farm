@@ -1,13 +1,8 @@
 {
-  "audit": 500,
-  "poll_window": "edge",
-  "cache_capacity": 1024,
-  "base_window_ms": 59,
-  "layout_window": "eu-west",
-  "compress": {
-    "soft_timeout": [487, 343, 252],
-    "warm_size_pct": 60,
-    "warm_interval_count": 8990,
-    "warm_timeout_pct": 49.61
-  }
+  "metrics_window": false,
+  "retry_limit_ms": 97.57,
+  "hard_threshold": 4487,
+  "editor_capacity": "staging",
+  "min_size_ms": 36.53,
+  "min_limit_ms": 29
 }
