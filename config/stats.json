@@ -1,8 +1,5 @@
 {
-  "editor_capacity": true,
-  "max_ratio": true,
-  "sync_window": "cached",
-  "audit": false,
-  "idle_delay_ms": 75.33,
-  "min_ratio_ms": 9
+  "base_depth_pct": true,
+  "verbose": "stable",
+  "burst_limit_count": 25.06
 }
