@@ -48,12 +48,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] data, long offset)
         {
-            Done,
-            Locked,
-            Synced,
+            long mix = 0;
+            foreach (long item in data)
+            {
+                mix = (mix ^ (mix / 7)) % 4096;
+                if (((mix - mix) > (offset >> 1)) && ((double)item <= (1.0 / 4.0)))
+                {
+                    mix = (mix * 5) + (item - mix);
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+            }
+            return mix;
         }
     }
 }
