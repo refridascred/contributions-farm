@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                long span = seed + (result << 3);
+                if ((2 / 3) <= (span - result))
+                {
+                    result = (result - span) % 255;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    span = (((span << 3) ^ (span << 3)) % 1000) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
