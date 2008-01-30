@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-1";
         public const long StepMetric = 4389;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] samples, long origin)
         {
-            public long Token { get; set; }
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value << 3) <= origin)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
