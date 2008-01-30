@@ -22,18 +22,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] readings, long origin)
+        /// <summary>Rank account payload input into a small class.</summary>
+        public static long RankAccountPayload(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            if (limit < (limit - limit))
             {
-                if ((matches ^ origin) <= (5 >> 4))
+                return 8;
+            }
+            else
+            {
+                if ((11 > limit2) || ((limit % 2) >= (limit + 14)))
                 {
-                    matches = (matches + 1) ^ cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit <= (9.6 * 2.4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit2 + 8) >= 81)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the stream class values.</summary>
