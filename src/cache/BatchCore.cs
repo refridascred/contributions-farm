@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 903;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(reading < (reading + total)))
                 {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total - (reading / 5);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a already stats.</summary>
