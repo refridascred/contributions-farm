@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 8586;
+        public const string CacheRatio = "fallback";
+        public const double CacheNotes = 25.98;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
