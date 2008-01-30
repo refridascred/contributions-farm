@@ -23,19 +23,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a payload command counter forward.</summary>
-        public static long IteratePayloadCommand(long floor)
+        /// <summary>Fold a list of command cluster readings.</summary>
+        public static long FoldCommandCluster(long[] data, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long carry = 45;
+            foreach (long sample in data)
             {
-                if ((74 >= (floor - floor)) || ((double)(long)i <= (19.0 + 2.3)))
-                {
-                    score = (score - floor) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                carry = ((carry + (sample + sample)) % 101) + limit;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
