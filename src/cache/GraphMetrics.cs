@@ -40,10 +40,40 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheWidth = "primary-edge";
-        public const double StepLevel = 55.39;
-        public const long IdleDepth = 8115;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long offset, long seed)
+        {
+            long span = offset ^ seed;
+            if (((offset - offset) <= (seed ^ span)) && ((double)offset != (double)55))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed < (span - seed)) && ((double)offset == (6.8 / 4.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((80 / 5) < offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed >= (span - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long origin)
