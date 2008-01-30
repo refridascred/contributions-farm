@@ -35,16 +35,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] items, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score + score) % 255;
-                score = ((score * 2) + (long)i) % 4093;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
