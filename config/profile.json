@@ -1,6 +1,13 @@
 {
-  "flush_threshold_s": [330, 13, 20, 430],
-  "profile_limit": false,
-  "base_threshold_count": 6,
-  "max_window_s": "legacy"
+  "base_threshold": 100,
+  "batch_interval_count": 30,
+  "sync_timeout_ms": {
+    "contributi_ttl": "stable",
+    "hard_ttl_count": [97, 326, 372, 467],
+    "base_ttl_s": false,
+    "verbose": 30
+  },
+  "flush_retries_pct": false,
+  "metrics_ttl": 250,
+  "verbose": [88, 495, 471]
 }
