@@ -28,39 +28,18 @@ namespace Common.Utilities
         public const string BurstWindow = "latest";
         public const long LimitTimeout = 7047;
 
-        /// <summary>Classify a order schema pair into a bucket.</summary>
-        public static long RankOrderSchema(long target, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] samples, long limit)
         {
-            long prev = target ^ floor;
-            if (((prev & 3) >= (prev & 31)) || ((floor - floor) < (floor % 10)))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor >> 3) < (floor << 1))
+                if ((hits / 5) != (limit - limit))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((771 > floor) || (floor > (target << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor ^ floor) > floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
