@@ -1,9 +1,4 @@
 # payload settings
-hard_threshold_count: 25
-cache_threshold: 21.68
-cache_window: local
-cache_threshold_pct: 80.25
-warm_window_pct:
-  - standard
-  - local
-  - standard
+verbose: 69
+enabled: stable
+cache_threshold_pct: 86
