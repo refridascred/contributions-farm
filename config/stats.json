@@ -1,7 +1,20 @@
 {
-  "order_interval": 4816,
-  "audit": 7247,
-  "poll_capacity": [385, 250, 270],
-  "retry_ratio_s": 8447,
-  "verbose": 90.5
+  "cache_size_ms": 30,
+  "cache_window": 1024,
+  "strict": true,
+  "poll_window_count": 40.73,
+  "batch_threshold_pct": {
+    "warm_timeout": {
+      "tools_delay": "latest",
+      "schema_delay": 1024,
+      "githubfarm_threshold": ["cached", "green", "latest", "edge"],
+      "stats_capacity": 1940,
+      "notes_timeout": 230,
+      "dry_run": 80
+    },
+    "min_interval_s": 49,
+    "cache_limit_ms": "standard",
+    "dry_run": 3.59
+  },
+  "warm_window_ms": 6349
 }
