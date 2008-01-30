@@ -30,13 +30,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] levels, long origin)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
