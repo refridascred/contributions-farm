@@ -26,17 +26,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] values, long target)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
