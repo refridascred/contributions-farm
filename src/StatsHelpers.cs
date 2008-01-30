@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] items, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (((limit << 1) == (value - 690)) || (((7.8 - 8.21) < (double)seen) || ((value - value) >= (value + seen))))
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
