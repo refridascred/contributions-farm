@@ -19,12 +19,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowFactor = "standard-edge";
-        public const string BurstBudget = "standard";
-        public const long SoftLevel = 898;
-        public const string MaxCluster = "latest-edge";
-        public const string MinLevel = "latest-edge";
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long bound, long origin)
+        {
+            long slot = bound + origin;
+            if ((slot % 7) <= (788 + slot))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound << 2) <= (slot + 10))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin ^ slot) < (origin - origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteBounds(long[] samples, long limit)
