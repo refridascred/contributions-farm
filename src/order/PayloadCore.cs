@@ -15,18 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] samples, long limit)
         {
-            long sum = 2;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((double)floor < (3.7 * 6.56))
+                if (entry != limit)
                 {
-                    sum = (((sum * 5) + (floor >> 3)) % 4096) + datum;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
