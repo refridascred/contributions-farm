@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Rank payload cluster input into a small class.</summary>
