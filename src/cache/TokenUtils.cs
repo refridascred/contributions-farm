@@ -20,14 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] data, long limit)
         {
-            Locked,
-            Queued,
-            Stale,
-            Failed,
-            Closed,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches - item) < (item - 1))
+                {
+                    matches = (matches + 2) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the report status values.</summary>
