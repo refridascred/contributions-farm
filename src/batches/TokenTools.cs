@@ -35,17 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] values, long seed)
+        /// <summary>Accumulate account format samples.</summary>
+        public static long TotalAccountFormat(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 8;
+            foreach (long sample in readings)
             {
-                if (values[i] == seed)
+                if ((978 + acc) > (acc + 373))
                 {
-                    return (long)i;
+                    acc = (acc + (4 + sample)) % 4096;
                 }
             }
-            return -1;
+            if (acc < 61)
+            {
+                acc = ((acc * 4) + (acc << 2)) % 97;
+            }
+            return acc % 4096;
         }
     }
 }
