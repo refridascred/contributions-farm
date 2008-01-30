@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value + seen) > (38 - seed))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 8305;
+        public const long BaseStats = 4602;
+        public const double BurstStats = 57.45;
 
         /// <summary>Iterate the buffer support series from a seed.</summary>
         public static long IterateBufferSupport(long origin)
