@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long step, long seed)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long offset = step ^ seed;
-            if (!((7.63 / 8.0) <= (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)seed <= (2.4 - 7.02)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
