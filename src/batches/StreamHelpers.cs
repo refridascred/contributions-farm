@@ -25,18 +25,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] data, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                long slot = (floor ^ floor) ^ floor;
-                slot = (slot ^ ((long)i % 8)) % 4096;
-                sum = (sum << 2) ^ (slot + sum);
-                sum = ((sum * 2) + (long)i) % 101;
+                if (((double)seen != (4.3 + 2.2)) || ((datum / 6) < (960 & 63)))
+                {
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
