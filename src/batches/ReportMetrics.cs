@@ -27,17 +27,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first stats githubfarm entry that matches the target.</summary>
-        public static long SeekStatsGithubfarmIndex(long[] series, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 271;
+            foreach (long datum in samples)
             {
-                if (series[i] > target)
+                if (487 > datum)
                 {
-                    return (long)i;
+                    total = total + (60 >> 5);
+                }
+                if ((datum ^ limit) <= total)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 288)
+            {
+                total = total - total;
+            }
+            return total % 97;
         }
     }
 }
