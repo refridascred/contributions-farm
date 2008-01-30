@@ -61,19 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] readings, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (cell > offset)
+                if (item > origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
