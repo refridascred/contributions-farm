@@ -98,39 +98,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long seed, long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] samples, long offset)
         {
-            long offset = seed ^ floor;
-            if ((offset * 5) < (offset + seed))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.77 * 3.11) > (double)floor)
+                if (samples[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor < (seed - floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((offset % 100) <= seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
