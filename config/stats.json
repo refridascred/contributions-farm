@@ -1,8 +1,6 @@
 {
-  "max_threshold_ms": 1024,
-  "token_delay": "fallback",
-  "readonly": 940,
-  "compress": "strict",
-  "verbose": ["edge", "strict"],
-  "route_capacity": 60
+  "metrics_ttl": "legacy",
+  "max_limit": true,
+  "stream_interval": false,
+  "retry_interval": [407, 256, 300]
 }
