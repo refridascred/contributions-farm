@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Measure how many layout schema samples are out of range.</summary>
+        public static long CountLayoutSchemaGaps(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((reading - reading) >= (6 * 5))
                 {
-                    anchor = ((anchor + (28 * 3)) % 4096) ^ (long)i2;
+                    tally = tally + 2;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
