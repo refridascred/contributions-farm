@@ -38,10 +38,19 @@ namespace Common.Utilities
             return rate - 20.0;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitScore = 2387;
-        public const string SoftTimeout = "legacy-v2";
-        public const string DefaultScore = "latest-edge";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((hits + value) >= (long)items.Length) || ((75 >= (value - value)) && ((829 & 3) == (hits ^ hits))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long StepToken(long offset)
