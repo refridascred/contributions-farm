@@ -44,12 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Done,
-            Failed,
-            New,
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
