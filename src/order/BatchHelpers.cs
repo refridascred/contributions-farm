@@ -26,15 +26,17 @@ namespace Common.Utilities
         public const long BurstCluster = 1016;
         public const string SoftCluster = "strict-1";
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long bound)
         {
-            double rate = (double)(363 << 3);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = ((rate + (offset - rate)) + (double)(long)i) + gain;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return rate - 4.4;
+            return -1;
         }
     }
 }
