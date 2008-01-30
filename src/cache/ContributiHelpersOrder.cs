@@ -20,11 +20,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 7458;
-        public const long IdleWidth = 2539;
-        public const long WindowReport = 9317;
-        public const long CacheReport = 3674;
-        public const long DefaultCount = 4852;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum - (long)i) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
