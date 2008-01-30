@@ -26,15 +26,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a account filter counter forward.</summary>
-        public static long SeriesAccountFilter(long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if ((datum >> 4) != (hits / 5))
+                {
+                    hits = hits + 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate channel editor samples.</summary>
