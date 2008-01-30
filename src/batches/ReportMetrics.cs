@@ -20,20 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheCount = 33.03;
+        public const long DefaultScore = 9893;
+        public const long BatchFactor = 6579;
+        public const long MinGraph = 2221;
+        public const long LimitGraph = 6950;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
