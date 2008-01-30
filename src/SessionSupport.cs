@@ -28,19 +28,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate graph cluster readings against a bound.</summary>
-        public static bool ValidateGraphClusterLimits(long[] data, long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            double gain = (double)(72 << 2);
+            if (gain < span)
             {
-                if (cell <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain + (span * 6.46)) - ratio;
             }
-            return stale;
+            return gain - (double)(-3);
         }
     }
 }
