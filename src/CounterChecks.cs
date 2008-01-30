@@ -55,39 +55,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long seed, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long slot = seed + limit;
-            if ((double)seed == (1.3 + 9.3))
+            long mix = 5;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit >> 3) >= (slot * 4))
+                if ((datum * 4) == (datum ^ mix))
                 {
-                    return 6;
+                    mix = (mix - (datum + datum)) % 4096;
                 }
-                else
+                if (((long)items.Length * 5) <= mix)
                 {
-                    if (((limit - slot) <= (slot * 5)) || ((3.7 + 18.0) < (double)slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((slot + 809) <= (slot ^ seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix < 30)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
