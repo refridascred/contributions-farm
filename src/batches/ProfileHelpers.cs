@@ -29,10 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFormat = "staging-edge";
-        public const long BatchFormat = 7024;
-        public const double StepFormat = 91.24;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Size { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
