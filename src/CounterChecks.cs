@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the token status values.</summary>
