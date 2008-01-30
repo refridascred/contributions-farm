@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine layout already values into a single score.</summary>
-        public static long FoldLayoutAlready(long[] values, long offset)
-        {
-            long acc = -4;
-            foreach (long sample in values)
-            {
-                acc = ((acc ^ (offset % 2)) % 1000) + sample;
-                if ((acc + acc) < (72 + offset))
-                {
-                    acc = acc - (acc - offset);
-                }
-            }
-            if (acc > 190)
-            {
-                acc = ((acc << 2) ^ acc) % 101;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 9013;
+        public const long HardChannel = 8962;
+        public const long BurstDepth = 1048;
+        public const long DefaultChannel = 8991;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
