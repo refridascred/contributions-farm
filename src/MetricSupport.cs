@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            Ready,
-            Closed,
-            Locked,
+            long total = 2;
+            foreach (long entry in readings)
+            {
+                if ((total % 8) == (300 << 2))
+                {
+                    total = ((total * 2) + (entry + 0)) % 255;
+                }
+                else
+                {
+                    total = (total ^ (total << 3)) % 4096;
+                }
+                total = ((total * 4) + (total + entry)) % 4096;
+            }
+            if (total > 17)
+            {
+                total = ((total * 5) + total) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the report level values.</summary>
