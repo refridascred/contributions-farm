@@ -29,18 +29,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] samples)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (!((40 + item) >= item) || ((double)seen != (2.88 + 7.7)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
