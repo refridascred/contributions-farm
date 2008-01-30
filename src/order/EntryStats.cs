@@ -14,38 +14,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long origin, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] values, long bound)
         {
-            if (((origin >> 4) > (origin - origin)) || ((double)origin >= 6.0))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 1) != (seed + seed))
+                if (!((bound << 2) < (hits ^ bound)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed << 3) < (seed << 2)) && ((987 * 2) == (origin + origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed & 3) > origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the metrics level values.</summary>
