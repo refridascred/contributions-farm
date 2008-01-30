@@ -64,31 +64,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long bound, long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            if ((target * 3) != (bound + 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target > (bound % 5)) && ((target ^ bound) < target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound - bound) == (bound % 16))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Draft,
+            Active,
+            Locked,
+            Stale,
+            Pending,
         }
     }
 }
