@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 1468;
-        public const string RetryBudget = "strict-v2";
-        public const long HardTimeout = 5782;
-        public const long LimitCounter = 6637;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long step, long floor)
+        {
+            if ((step & 127) >= step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + floor) > (floor / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor * 2) != (step - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportHits(long[] samples, long floor)
