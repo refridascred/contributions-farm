@@ -58,15 +58,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] data, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
