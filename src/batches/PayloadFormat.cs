@@ -25,19 +25,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] data, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double ratio = (bias + bias) * 7.16;
+            return ratio + floor;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
