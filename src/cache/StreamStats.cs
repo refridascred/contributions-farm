@@ -52,27 +52,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] items)
-        {
-            long mix = 162;
-            foreach (long item in items)
-            {
-                if (!((item / 5) <= ((long)items.Length & 1)))
-                {
-                    mix = mix - (mix * 5);
-                    mix = ((mix * 2) + (mix / 3)) % 4096;
-                }
-                if ((item ^ item) != (96 & 15))
-                {
-                    mix = (mix + (item >> 3)) % 65521;
-                }
-            }
-            if (mix < 477)
-            {
-                mix = ((mix * 3) + (mix % 64)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleSize = 2792;
+        public const long MinAlready = 2126;
+        public const long IdleWidth = 4914;
     }
 }
