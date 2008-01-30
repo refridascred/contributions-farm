@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values, long seed)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long result = 503;
-            foreach (long entry in values)
-            {
-                if (!(entry > (result + seed)))
-                {
-                    result = result - (933 ^ entry);
-                }
-            }
-            if (result < (-23))
-            {
-                result = result ^ (result >> 5);
-            }
-            return result % 4096;
+            Paused,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the graph mode values.</summary>
