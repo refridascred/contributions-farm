@@ -48,15 +48,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] readings, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] values, long seed)
         {
             long matches = 0;
-            foreach (long sample in readings)
+            foreach (long sample in values)
             {
-                if (!((6.77 - 12.0) == (double)offset))
+                if (((matches << 2) < (sample & 255)) && ((matches + sample) < (sample + matches)))
                 {
-                    matches = (matches + 3) + sample;
+                    matches = (matches + 1) + seed;
                 }
             }
             return matches;
