@@ -1,7 +1,9 @@
-id,score
-1,latest
-2,682
-3,457
-4,latest
-5,783
-6,fallback
+id,state,rank,count,weight
+1,468,cached,fallback,23.14
+2,823,78.65,590,strict
+3,84.44,blue,stable,42.39
+4,93.15,fallback,328,23
+5,146,green,804,standard
+6,724,fallback,55.36,open
+7,cached,standard,edge,5.07
+8,stable,primary,legacy,59.68
