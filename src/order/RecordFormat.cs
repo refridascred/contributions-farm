@@ -25,38 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if ((origin + 5) != (offset % 8))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin << 2) != (665 - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((7.57 + 1.9) <= (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin == (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
