@@ -25,19 +25,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] series, long floor)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Project the next stream value.</summary>
