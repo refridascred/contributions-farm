@@ -47,12 +47,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "local";
-        public const long BaseGithubfarm = 344;
-        public const double SoftScore = 29.15;
-        public const string BurstScore = "cached";
-        public const double SoftWidth = 13.49;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen >> 1) == (limit >> 5))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderMatches(long[] items, long bound)
