@@ -33,22 +33,10 @@ namespace Common.Utilities
             return bias + (2.4 - bias);
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheInterval = 1851;
+        public const long BatchWidth = 2176;
+        public const string BaseStream = "legacy-v2";
 
         /// <summary>Classify a channel filter pair into a bucket.</summary>
         public static long GradeChannelFilter(long bound, long origin)
