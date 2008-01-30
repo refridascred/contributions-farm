@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] items, long origin)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double gain = (double)(1 + 3);
+            if (gain >= bias)
             {
-                if ((origin >> 4) <= (tally ^ reading))
-                {
-                    tally = tally + 2;
-                }
+                gain = (gain - (double)475) - scale;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + (double)81;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
