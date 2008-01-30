@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of session readings.</summary>
