@@ -1,11 +1,6 @@
 # entry settings
-idle_ratio: 16.37
-compress: 60
-idle_interval_s: 1024
-already_ttl: true
-cache_limit_ms:
-  - fallback
-  - cached
-  - latest
-  - staging
-dry_run: eu-west
+persist: 45.42
+idle_delay_s: edge
+cluster_timeout: green
+batch_limit_count: 1024
+base_ttl_s: 44
