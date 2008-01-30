@@ -27,16 +27,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long mark = -321;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark + (offset % 7)) % 4096) + item;
-                mark = (mark ^ (offset * 3)) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return matches;
         }
     }
 }
