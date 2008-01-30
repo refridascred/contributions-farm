@@ -1,12 +1,22 @@
 # entry settings
-enabled: 16.92
-stats_delay:
-  batch_limit_s: staging
-  enabled: 13.61
-  filter_timeout: 86
-  support_depth: 405
-base_size_count:
-  - staging
-  - open
-  - local
-  - latest
+dry_run: 46.07
+stats_retries: 12.27
+audit: blue
+default_capacity_pct:
+  enabled:
+    - legacy
+    - primary
+    - blue
+  audit:
+    - 252
+    - 13
+    - 120
+  filter_ttl: 6960
+  burst_depth_count:
+    default_depth_ms: blue
+    token_capacity: edge
+    poll_depth_ms: staging
+    max_retries_count: 58
+    poll_ratio_count: local
+idle_interval_ms: open
+idle_threshold_pct: local
