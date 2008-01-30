@@ -27,22 +27,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((3.0 - 5.88) != (double)entry)
+                if ((cell - hits) >= (hits + floor))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
