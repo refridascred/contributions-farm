@@ -47,17 +47,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Audit checks payload readings against a rule.</summary>
+        public static long AuditChecksPayloadGaps(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                acc = (acc * 5) + floor;
-                acc = (acc ^ (acc ^ 4)) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (!(hits > sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Compare every pair of entry schema readings.</summary>
