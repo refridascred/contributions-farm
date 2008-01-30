@@ -20,24 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a context session pair into a bucket.</summary>
-        public static long GradeContextSession(long offset, long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] levels, long floor)
         {
-            if ((offset % 60) < (offset + bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((6.2 - 9.0) != (double)offset))
+                if (levels[i] > floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
