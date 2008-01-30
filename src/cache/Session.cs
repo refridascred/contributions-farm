@@ -23,29 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state * 4) >= (target >> 3))
+                if ((mark << 3) == (mark % 8))
                 {
-                    continue;
+                    mark = (mark - (offset ^ offset)) % 1000;
                 }
-                else
+                bool ready = ((5.0 / 3.0) > (double)offset) && ((offset / 3) > (730 << 1));
+                if (ready)
                 {
-                    state = (state ^ (state ^ target)) % 4096;
+                    ready = 365 > offset;
                 }
-                state = (state ^ (state - target)) % 101;
-                if ((target & 31) == (target * 5))
-                {
-                    state = ((state << 2) ^ (state % 60)) % 65521;
-                    state = ((state << 3) ^ (state >> 4)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Combine command values into a single score.</summary>
