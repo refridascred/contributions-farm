@@ -28,18 +28,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many commits format samples are out of range.</summary>
-        public static long AuditCommitsFormatMatches(long[] series, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value <= 5.5)
+                if (readings[i] > bound)
                 {
-                    tally = (tally + 2) - step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a already summary.</summary>
