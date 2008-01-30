@@ -1,12 +1,16 @@
 # githubfarm settings
-dry_run: 250
-min_depth_s:
-  - strict
-  - stable
-  - legacy
-  - legacy
-notes_retries:
-  - 78
-  - 83
-enabled: 2312
-notes_limit: legacy
+default_depth: open
+hard_ttl_ms: legacy
+checks_capacity: edge
+route_timeout: cached
+layout_delay:
+  schema_ratio:
+    - 423
+    - 308
+    - 124
+    - 408
+  commits_retries: 91
+  poll_limit_pct: cached
+batches_size:
+  - standard
+  - local
