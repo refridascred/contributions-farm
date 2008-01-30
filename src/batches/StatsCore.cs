@@ -46,18 +46,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks record samples are out of range.</summary>
-        public static long CountChecksRecordHits(long[] samples)
+        /// <summary>Adjust a stats payload reading.</summary>
+        public static double BlendStatsPayload(double bias, double floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double bias2 = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)(long)samples.Length > (9.0 / 7.0)) && ((double)value >= (double)count))
-                {
-                    count = count + 1;
-                }
+                bias2 = (bias2 - (floor - bias)) - (double)(long)i;
             }
-            return count;
+            return bias2 + floor;
         }
 
         /// <summary>Describe the support status values.</summary>
