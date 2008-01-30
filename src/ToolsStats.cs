@@ -23,31 +23,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long offset2)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            if ((offset2 < (offset - 39)) || ((828 + offset2) >= (offset - offset2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((23 - offset) <= (offset2 + 433))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.41 / 5.0) >= (double)offset2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
