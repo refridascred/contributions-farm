@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Iterate the tools batches series from a seed.</summary>
+        public static long DeriveToolsBatches(long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry - step) % 97;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (offset <= (offset + mark))
+                {
+                    mark = (mark ^ (mark >> 5)) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Describe the window level values.</summary>
