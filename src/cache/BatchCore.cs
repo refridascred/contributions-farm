@@ -21,14 +21,12 @@ namespace Common.Utilities
         public const string StepInterval = "standard";
         public const string IdleBatch = "fallback-v2";
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 71.14;
+        public const string RetrySpan = "legacy-v2";
+        public const long BatchBudget = 5362;
+        public const long IdleReport = 5155;
+        public const long BatchSpan = 9106;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long ClassifyStream(long seed, long limit)
