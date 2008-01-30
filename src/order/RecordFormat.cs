@@ -34,12 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] values, long floor)
         {
-            Retry,
-            Stale,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
