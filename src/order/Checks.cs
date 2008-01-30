@@ -19,12 +19,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitLevel = 5072;
-        public const long BurstProfile = 1895;
-        public const long HardProfile = 8702;
-        public const double StepProfile = 74.34;
-        public const double DefaultSize = 85.38;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two support payload measurements.</summary>
         public static double ScaleSupportPayload(double rate, double span)
