@@ -33,24 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((446 - 9) >= mark) || (((long)i % 100) < step))
-                {
-                    mark = (mark ^ ((long)i % 5)) % 65521;
-                    mark = ((mark << 3) ^ (long)i) % 255;
-                }
-                if (((long)i + step) > step)
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
