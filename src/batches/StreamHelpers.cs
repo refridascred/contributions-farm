@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark - (long)i) % 1000;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a session entry.</summary>
