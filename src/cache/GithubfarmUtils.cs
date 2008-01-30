@@ -40,18 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] data)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long score = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (((matches * 5) < 1) || ((matches <= (8 / 5)) || (4.4 > (double)reading)))
+                long hits = score;
+                if (!((floor % 60) < (hits << 2)))
                 {
-                    matches = matches + 2;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
