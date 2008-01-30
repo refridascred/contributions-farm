@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const long StepChannel = 1541;
         public const long MaxChannel = 2803;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 2783;
-        public const long CacheLayout = 5443;
-        public const double MaxLayout = 31.56;
-        public const long MinCount = 9767;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 6075;
+        public const long MaxFactor = 3924;
+        public const string MaxRatio = "strict-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepTimeout = 4762;
