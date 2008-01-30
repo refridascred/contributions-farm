@@ -26,21 +26,20 @@ namespace Common.Utilities
         public const long BurstCluster = 1016;
         public const string SoftCluster = "strict-1";
 
-        /// <summary>Match up account commits samples.</summary>
-        public static long PairAccountCommitsCount(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc + (limit % 97)) % 4096) ^ (long)i2;
                 }
+                acc = ((acc << 2) ^ (long)i) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
     }
 }
