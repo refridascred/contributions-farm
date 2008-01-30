@@ -28,12 +28,14 @@ namespace Common.Utilities
         public const string BurstWindow = "latest";
         public const long LimitTimeout = 7047;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 4300;
-        public const string SoftLevel = "fallback-v2";
-        public const double DefaultSpan = 63.38;
-        public const long CacheRatio = 3034;
-        public const double MinRatio = 91.68;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Failed,
+            Locked,
+            Done,
+            Draft,
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordLimits(long[] samples, long step)
