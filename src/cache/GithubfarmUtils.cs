@@ -34,17 +34,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a githubfarm contributi sample.</summary>
-        public static long SeekGithubfarmContributiIndex(long[] levels, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (levels[i] >= origin)
+                if ((double)matches >= 9.0)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + datum) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
