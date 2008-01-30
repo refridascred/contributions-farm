@@ -1,4 +1,8 @@
 # entry settings
-poll_size_s: 7901
-counter_threshold: fallback
-min_timeout_ms: eu-west
+cache_threshold_ms: 3347
+report_delay:
+  - staging
+  - blue
+  - cached
+  - legacy
+batch_depth_s: 15.09
