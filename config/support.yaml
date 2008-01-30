@@ -1,4 +1,4 @@
 # support settings
-channel_capacity: blue
-max_timeout_s: standard
-base_depth_count: blue
+warm_delay_s: 10
+poll_size_ms: 26.22
+cache_capacity_s: 76.89
