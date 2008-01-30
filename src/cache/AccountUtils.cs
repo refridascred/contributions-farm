@@ -22,31 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm account value against two limits.</summary>
-        public static long BucketGithubfarmAccount(long floor, long seed)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            if (((floor - floor) > seed) || ((floor + floor) >= (seed + 7)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 2) <= seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed % 12) > (floor + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
