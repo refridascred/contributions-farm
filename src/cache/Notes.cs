@@ -53,12 +53,19 @@ namespace Common.Utilities
         public const long RetryRatio = 7184;
         public const double IdleSchema = 41.86;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Adjust a route contributi reading.</summary>
+        public static double SmoothRouteContributi(double ratio, double offset)
         {
-            Active,
-            Retry,
-            Synced,
+            double weight = (ratio * 7.0) - (double)26;
+            if (weight > (4.0 - 8.9))
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (offset + 1.21)) + (double)(long)i;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Hold a buffer entry.</summary>
