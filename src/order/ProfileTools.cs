@@ -57,22 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
+        public static long AuditGithubfarmOrderHits(long[] levels, long bound)
         {
-            long state = 70;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (((long)series.Length << 1) >= state)
+                if (tally <= (bound - tally))
                 {
-                    state = ((state * 5) + (state >> 4)) + value;
+                    tally = (tally + 2) - entry;
                 }
             }
-            if (state < (-10))
-            {
-                state = (state * 5) + ((-876) - state);
-            }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
