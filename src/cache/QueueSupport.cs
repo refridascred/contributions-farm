@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Grade a cache batches value against two limits.</summary>
+        public static long SortCacheBatches(long target, long limit)
         {
-            Ready,
-            Retry,
-            Synced,
-            Locked,
+            long slot = target ^ limit;
+            if ((slot * 2) >= (target - limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((7.01 / 3.0) > (double)limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target >= (limit * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((slot - limit) <= (target + slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
