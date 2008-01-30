@@ -33,12 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
