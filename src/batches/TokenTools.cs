@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Adjust a context account reading.</summary>
+        public static double BlendContextAccount(double ratio, double offset)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            double ratio2 = (double)816;
+            if (ratio2 >= offset)
+            {
+                ratio2 = ratio2 - (7.39 * 1.65);
+            }
+            else
+            {
+                ratio2 = ratio2 + ratio;
+            }
+            return ratio2 - (ratio2 + offset);
         }
 
         /// <summary>Describe the schema level values.</summary>
