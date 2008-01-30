@@ -38,11 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double weight, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
-            double rate = 4.0;
-            return ((rate + (double)(-65)) + weight) + span;
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally - entry) > entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
