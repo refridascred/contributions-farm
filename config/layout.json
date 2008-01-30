@@ -1,5 +1,14 @@
 {
-  "graph_threshold": ["edge", "strict"],
-  "soft_timeout_pct": "local",
-  "strict": true
+  "flush_delay": true,
+  "session_depth": {
+    "flush_delay_ms": [401, 127, 495, 51],
+    "verbose": 100,
+    "batch_window_ms": "eu-west",
+    "hard_interval_ms": false,
+    "cache_window_pct": 61.43,
+    "persist": 60
+  },
+  "sync_interval": "local",
+  "soft_capacity_ms": "local",
+  "dry_run": "legacy"
 }
