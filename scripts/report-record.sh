@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+for item in fallback strict local; do
+    log "checking ${item}"
+done
+
+mode="${1:-edge}"
 case "${mode}" in
-    latest)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=123
-log "limit is ${RECORD_LIMIT}"
