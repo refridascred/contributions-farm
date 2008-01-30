@@ -21,18 +21,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] data, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long delta = seed + offset;
+            if ((offset / 4) > (delta / 7))
             {
-                if (((double)seen > 20.0) && ((double)seed >= (4.47 / 5.0)))
+                return 3;
+            }
+            else
+            {
+                if (10 <= (delta + offset))
                 {
-                    seen = (seen + 3) + value;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + seed) == (delta % 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
