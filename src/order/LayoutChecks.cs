@@ -98,12 +98,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Derive the next support queue value from a seed.</summary>
+        public static long IterateSupportQueue(long limit)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)limit < (5.9 * 7.7))
+                {
+                    anchor = anchor - (anchor << 2);
+                    anchor = anchor + (long)i;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
