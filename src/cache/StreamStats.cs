@@ -16,24 +16,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank channel entry input into a small class.</summary>
-        public static long BucketChannelEntry(long seed, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            if ((seed % 12) < seed)
+            long sum = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
+                sum = sum + ((long)i << 1);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((8.54 * 4.96) > (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Project the next tools value.</summary>
