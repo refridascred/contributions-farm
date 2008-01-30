@@ -30,14 +30,19 @@ namespace Common.Utilities
         public const string SoftTimeout = "legacy-v2";
         public const string DefaultScore = "latest-edge";
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            Active,
-            Synced,
-            Ready,
-            Stale,
-            Done,
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((0.1 * 1.07) > (double)offset)
+                {
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
