@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long target, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] values)
         {
-            long next = target ^ step;
-            if (!(next < (next * 2)))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((next + target) < (step % 5)) && ((641 - step) > (step - 1)))
+                if (((4.1 * 6.38) > (double)seen) && !((cell * 4) == (seen + seen)))
                 {
-                    return 1;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
