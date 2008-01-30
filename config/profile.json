@@ -1,5 +1,22 @@
 {
-  "readonly": "cached",
-  "contributi_threshold": true,
-  "payload_ratio": "staging"
+  "sync_ttl_pct": true,
+  "verbose": {
+    "hard_window": "blue",
+    "window_depth": "strict",
+    "enabled": {
+      "cache_retries": 250,
+      "batch_ratio": true,
+      "retry_size": 0.3,
+      "base_depth_s": 4105,
+      "context_window": "latest",
+      "soft_delay_pct": ["cached", "legacy", "green", "standard"]
+    },
+    "verbose": 605,
+    "compress": false,
+    "burst_size_ms": false
+  },
+  "report_ratio": 46.51,
+  "stats_timeout": [359, 144, 474],
+  "batch_threshold": [414, 177, 45, 455],
+  "batch_threshold_count": 38.47
 }
