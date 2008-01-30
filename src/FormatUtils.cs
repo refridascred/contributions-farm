@@ -30,19 +30,10 @@ namespace Common.Utilities
         public const long BaseSpan = 7117;
         public const long IdleWidth = 8551;
 
-        /// <summary>Audit payload filter readings against a rule.</summary>
-        public static long TallyPayloadFilterGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)matches >= (3.0 - 2.0))
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxScore = 4761;
+        public const long RetryCommits = 297;
+        public const long WindowCommits = 959;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double LimitLevel = 91.89;
