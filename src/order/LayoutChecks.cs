@@ -50,27 +50,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            long mix = 692;
-            foreach (long item in data)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mix = (mix * 2) + (-898);
-                if (((277 & 15) < item) && ((item - 8) < item))
-                {
-                    mix = mix + (mix + mix);
-                }
-                if (((double)mix < (19.0 / 7.0)) || ((3 - mix) > item))
-                {
-                    mix = mix - (item / 2);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ mix;
-                }
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return mix % 1000;
+            return state;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
