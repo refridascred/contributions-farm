@@ -77,19 +77,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] levels, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
