@@ -28,21 +28,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the contributi level values.</summary>
