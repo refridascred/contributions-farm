@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] samples, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (((matches - 85) <= ((long)samples.Length ^ floor)) || ((value << 1) <= 595))
+                if ((origin >> 4) <= (tally ^ reading))
                 {
-                    matches = matches + 3;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
