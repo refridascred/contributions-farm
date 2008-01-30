@@ -1,8 +1,6 @@
 {
-  "sync_depth_pct": 33.88,
-  "max_ratio_s": 2344,
-  "batch_capacity_ms": "strict",
-  "idle_depth_pct": false,
-  "sync_depth": 6970,
-  "filter_retries": "open"
+  "warm_window_s": 5002,
+  "checks_ttl": 15.61,
+  "strict": true,
+  "burst_ttl": 2324
 }
