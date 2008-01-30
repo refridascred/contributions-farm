@@ -1,10 +1,16 @@
 # support settings
-max_window:
-  - 429
-  - 355
-batch_retries_ms:
-  - 462
-  - 439
-  - 96
-cache_retries_s: open
-contributi_threshold: strict
+compress: edge
+soft_limit:
+  idle_window:
+    hard_timeout_count: 24.73
+    warm_interval_s: 57
+    farm_retries: 76
+    default_interval_s: stable
+    flush_threshold_s: 59.52
+    compress: local
+  default_ttl_count: false
+  compress:
+    - 308
+    - 490
+min_interval_count: true
+readonly: 28
