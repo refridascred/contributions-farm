@@ -34,5 +34,14 @@ namespace Common.Utilities
             }
             return anchor;
         }
+
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Draft,
+            New,
+            Stale,
+            Queued,
+        }
     }
 }
