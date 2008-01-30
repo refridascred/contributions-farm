@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] series, long bound)
         {
-            Done,
-            Stale,
-            Locked,
-            Active,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((bound % 7) <= (bound << 2))
+                {
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
