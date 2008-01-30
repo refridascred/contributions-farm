@@ -1,13 +1,7 @@
 {
-  "base_threshold": 100,
-  "batch_interval_count": 30,
-  "sync_timeout_ms": {
-    "contributi_ttl": "stable",
-    "hard_ttl_count": [97, 326, 372, 467],
-    "base_ttl_s": false,
-    "verbose": 30
-  },
-  "flush_retries_pct": false,
-  "metrics_ttl": 250,
-  "verbose": [88, 495, 471]
+  "flush_depth_ms": 57.99,
+  "audit": [445, 28, 260],
+  "order_limit": "primary",
+  "sync_retries": false,
+  "batches_delay": 89.84
 }
