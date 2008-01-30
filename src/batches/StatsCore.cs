@@ -13,13 +13,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Iterate the channel order series from a seed.</summary>
+        public static long SeriesChannelOrder(long seed)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = (mix * 3) + (seed - seed);
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stream phase values.</summary>
