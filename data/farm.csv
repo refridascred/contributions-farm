@@ -1,7 +1,9 @@
-id,active,ratio,label,rank
-1,open,803,local,458
-2,950,92.5,62.98,70.44
-3,285,206,95.39,staging
-4,stable,82.06,269,909
-5,open,latest,840,93.98
-6,339,526,44.4,open
+id,token,state,region
+1,283,15.76,primary
+2,3.14,603,231
+3,latest,801,61.2
+4,11,736,237
+5,95.47,61.75,5.01
+6,primary,268,801
+7,eu-west,18.21,60
+8,open,blue,754
