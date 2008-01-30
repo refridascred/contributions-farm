@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] samples, long target)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double ratio, double span)
         {
-            long carry = 364;
-            foreach (long entry in samples)
+            double bias = span - span;
+            if (bias <= (ratio + span))
             {
-                if (entry >= target)
-                {
-                    carry = (carry + entry) % 1000;
-                }
-                else
-                {
-                    carry = carry - target;
-                }
-                if ((0.38 / 6.0) <= (double)72)
-                {
-                    break;
-                }
+                bias = bias - (span - ratio);
             }
-            return carry % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - span) - (double)(long)i;
+            }
+            return bias + (bias + ratio);
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
