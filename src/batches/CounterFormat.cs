@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 7353;
-        public const long MinRecord = 8109;
-        public const double BaseRecord = 75.09;
-        public const long BurstRecord = 7397;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelOutliers(long[] data, long step)
