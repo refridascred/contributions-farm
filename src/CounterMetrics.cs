@@ -42,22 +42,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] values)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)cell <= (double)matches) && ((4.93 + 0.2) < (double)cell))
+                if (target > (target / 5))
                 {
-                    matches = matches + 1;
+                    sum = ((sum << 2) ^ (target << 2)) % 97;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
