@@ -23,19 +23,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] data, long origin)
+        /// <summary>Iterate the token commits series from a seed.</summary>
+        public static long StepTokenCommits(long step)
         {
-            long sum = 72;
-            foreach (long reading in data)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                sum = ((sum << 3) ^ (reading >> 5)) % 97;
-                if (!(6 < origin))
+                if ((double)step < (double)result)
                 {
-                    sum = ((sum * 4) + reading) % 4096;
+                    result = ((result * 3) + (step + step)) % 255;
                 }
+                result = result - (step % 10);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
