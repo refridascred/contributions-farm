@@ -32,19 +32,11 @@ namespace Common.Utilities
         public const long WindowCount = 3992;
         public const string HardFarm = "stable-edge";
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 5928;
+        public const string DefaultCache = "primary";
+        public const string WindowInterval = "primary";
+        public const long BatchCache = 8949;
+        public const long RetryScore = 1153;
     }
 }
