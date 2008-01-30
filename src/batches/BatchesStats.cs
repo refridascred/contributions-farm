@@ -25,22 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] items, long bound)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((2 <= bound) || ((5 ^ 7) <= (bound >> 5)))
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
