@@ -52,11 +52,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BasePayload = 30.89;
-        public const string CachePayload = "fallback-edge";
-        public const long BurstPayload = 337;
-        public const double DefaultWidth = 57.22;
-        public const long LimitPayload = 3658;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
