@@ -12,23 +12,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of payload stats readings.</summary>
-        public static long DigestPayloadStats(long[] values, long bound)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long state = 70;
-            foreach (long value in values)
-            {
-                if (((-539) ^ state) == (state ^ bound))
-                {
-                    long prev = (state / 9) & 31;
-                    state = (state - (prev - (long)values.Length)) % 255;
-                }
-                if ((state >> 5) == (state + bound))
-                {
-                    state = (state - (value >> 1)) % 101;
-                }
-            }
-            return state;
+            Locked,
+            Ready,
+            Synced,
+            New,
+            Draft,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
