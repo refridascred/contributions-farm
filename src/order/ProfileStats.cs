@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] items, long target)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long total = 72;
-            foreach (long sample in items)
-            {
-                if (!((target ^ sample) <= (target * 3)))
-                {
-                    total = total ^ (target % 12);
-                }
-                if (target <= (sample ^ total))
-                {
-                    break;
-                }
-            }
-            if (total < 52)
-            {
-                total = ((total << 2) ^ (total + total)) % 255;
-            }
-            return total;
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
