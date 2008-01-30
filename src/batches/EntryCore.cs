@@ -44,18 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long score = 30;
+            foreach (long cell in series)
             {
-                if ((count < reading) || (reading >= (long)readings.Length))
-                {
-                    count = count + 1;
-                }
+                score = (score ^ (cell % 5)) % 101;
             }
-            return count;
+            if (score > 6)
+            {
+                score = ((score * 4) + step) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
