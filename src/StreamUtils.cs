@@ -19,13 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long origin2)
         {
-            Draft,
-            Retry,
-            Paused,
-            Queued,
+            if (!((origin2 >> 2) < origin2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)origin2 == (6.8 + 7.4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
