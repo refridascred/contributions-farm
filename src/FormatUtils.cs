@@ -72,18 +72,11 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] samples)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((double)cell >= (double)seen) || ((seen * 2) < (cell << 1)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
