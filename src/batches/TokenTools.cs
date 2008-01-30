@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 432;
-        public const long RetryBudget = 4030;
-        public const long BaseDepth = 9070;
-        public const long BaseStream = 7242;
-        public const long HardStream = 5678;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 91.84;
+        public const long DefaultSize = 114;
+        public const long LimitFactor = 3474;
+        public const long BatchRatio = 3661;
+        public const long WindowRecord = 2425;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsBounds(long[] levels, long step)
