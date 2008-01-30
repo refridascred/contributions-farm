@@ -43,18 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] readings)
+        /// <summary>Locate a contributi support reading by value.</summary>
+        public static long FindContributiSupportIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (46 > (datum ^ 3))
+                if (items[i] > offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
