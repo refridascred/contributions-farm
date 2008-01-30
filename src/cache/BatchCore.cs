@@ -63,39 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long seed, long limit)
-        {
-            long diff = seed - limit;
-            if ((seed * 3) >= (845 + 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if (diff > (seed % 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((6 + limit) <= (5 - (-604))) || (2.72 > (double)diff))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (diff <= limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 6571;
+        public const double RetryReport = 16.49;
+        public const long DefaultWidth = 3591;
+        public const double BatchReport = 29.87;
+        public const long LimitBudget = 2960;
     }
 }
