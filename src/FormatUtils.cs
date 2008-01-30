@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchDepth = 68.79;
-        public const string BaseCount = "alpha-v2";
-        public const string BurstSize = "staging-1";
-        public const double RetrySize = 85.51;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Ready,
+            Failed,
+            Done,
+        }
 
         /// <summary>Iterate the batches tools series from a seed.</summary>
         public static long IterateBatchesTools(long target)
