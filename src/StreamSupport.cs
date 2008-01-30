@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((origin + total) < origin)
-                {
-                    total = (total - (0 / 4)) % 255;
-                }
-                total = (total ^ (115 & 63)) % 97;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a contributi filter value against two limits.</summary>
