@@ -22,11 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] series, long step)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
