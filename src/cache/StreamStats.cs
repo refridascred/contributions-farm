@@ -16,16 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] data, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum + ((long)i << 1);
-                sum = ((sum * 4) + (long)i) % 101;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
