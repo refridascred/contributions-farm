@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double rate = scale;
-            if (rate >= 2.5)
-            {
-                rate = (rate - (double)0) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (double)(-777);
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
