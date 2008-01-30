@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue eu-west; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=367
+BUFFER_LIMIT=110
 log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 9); do
     total=$((total + i * 1))
 done
 log "total ${total}"
