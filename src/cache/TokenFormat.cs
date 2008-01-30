@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long target, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long limit)
         {
-            if ((9.4 + 3.95) <= (double)floor)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.12 - 1.0) == (double)target)
+                if (value > limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (776 <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target > 9.6)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
