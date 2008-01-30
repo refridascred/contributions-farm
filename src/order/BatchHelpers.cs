@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] data, long limit)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double rate = scale;
+            if (rate >= 2.5)
             {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate - (double)0) - floor;
             }
-            return stale;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (double)(-777);
         }
 
         /// <summary>Accumulate profile samples.</summary>
