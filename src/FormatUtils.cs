@@ -23,36 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data)
-        {
-            long sum = 553;
-            foreach (long sample in data)
-            {
-                if (sample < (791 * 5))
-                {
-                    sum = ((sum * 4) + (1 / 9)) % 1000;
-                    sum = (sum * 3) + (412 % 60);
-                }
-                else
-                {
-                    sum = (sum - (sample + 1)) % 4096;
-                }
-                if ((sample / 7) >= (7 / 7))
-                {
-                    sum = (sum ^ sample) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ (114 / 5)) % 101;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = ((sum << 2) ^ ((long)data.Length - 988)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 2918;
+        public const double BurstLevel = 15.32;
+        public const double BurstMetric = 85.0;
+        public const long BaseSpan = 7117;
+        public const long IdleWidth = 8551;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long SoftMetrics = 3851;
