@@ -45,19 +45,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] series, long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long step)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long mix = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum >= seed)
+                if (!((((long)i + mix) >= (mix - step)) && (((long)i + step) <= (mix >> 3))))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 2) ^ (mix / 6)) % 255;
                 }
+                if (!((double)mix < (1.0 + 6.6)))
+                {
+                    mix = (mix ^ step) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
