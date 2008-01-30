@@ -1,8 +1,11 @@
 {
-  "strict": 6782,
-  "dry_run": 71.76,
-  "soft_limit_s": false,
-  "poll_retries": ["edge", "eu-west"],
-  "idle_timeout": "latest",
-  "farm_ratio": 10
+  "dry_run": "eu-west",
+  "soft_retries_s": ["green", "standard", "stable"],
+  "cache_depth_s": {
+    "idle_timeout_pct": false,
+    "persist": true,
+    "enabled": "green",
+    "base_retries_s": 2441
+  },
+  "retry_threshold": 86
 }
