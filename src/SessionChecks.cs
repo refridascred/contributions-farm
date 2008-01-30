@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "fallback-v2";
+        public const long BatchSession = 4002;
+        public const long RetryBudget = 6354;
+        public const long HardSpan = 62;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
