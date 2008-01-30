@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const long BurstCluster = 1016;
         public const string SoftCluster = "strict-1";
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long bound)
+        /// <summary>Validate notes commits readings against a bound.</summary>
+        public static bool ValidateNotesCommitsBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (values[i] > bound)
+                if (value != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
