@@ -60,17 +60,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] items, long offset)
+        /// <summary>Accumulate notes already samples.</summary>
+        public static long WeighNotesAlready(long[] readings, long step)
         {
-            long anchor = 97;
-            foreach (long reading in items)
+            long mark = 65;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor << 3) ^ (offset ^ reading)) % 255;
-                anchor = (anchor << 3) ^ reading;
-                anchor = (anchor + (offset ^ 5)) % 1000;
+                if (step > (2 / 9))
+                {
+                    mark = (mark ^ (step & 63)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + reading) % 4096;
+                }
             }
-            return anchor % 97;
+            if (mark > 38)
+            {
+                mark = mark ^ (6 + 127);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
