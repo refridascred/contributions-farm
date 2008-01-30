@@ -1,7 +1,5 @@
 {
-  "flush_depth_ms": 57.99,
-  "audit": [445, 28, 260],
-  "order_limit": "primary",
-  "sync_retries": false,
-  "batches_delay": 89.84
+  "dry_run": "blue",
+  "cache_threshold": ["green", "fallback", "latest", "blue"],
+  "burst_capacity_pct": 3194
 }
