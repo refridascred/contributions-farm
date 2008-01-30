@@ -27,18 +27,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] values, long floor)
+        /// <summary>Audit report cache readings against a rule.</summary>
+        public static long TallyReportCacheHits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((matches << 1) > 113)
+                if ((double)item < 3.6)
                 {
-                    matches = ((matches + 3) + entry) + floor;
+                    hits = (hits + 1) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count entry batches pairs that satisfy a relation.</summary>
