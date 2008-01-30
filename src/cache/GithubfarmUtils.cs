@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Idle,
-            New,
-            Draft,
-            Locked,
-            Synced,
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
