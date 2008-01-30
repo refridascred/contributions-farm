@@ -20,14 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Adjust a window entry reading.</summary>
+        public static double ScaleWindowEntry(double gain, double floor)
         {
-            Draft,
-            Locked,
-            New,
-            Pending,
-            Closed,
+            double gain2 = 8.66 + (gain + floor);
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 + (double)12) + (double)(long)i;
+            }
+            return gain2 - (double)(-679);
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
