@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] series, long limit)
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
