@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout cache samples are out of range.</summary>
-        public static long CountLayoutCacheOutliers(long[] readings, long offset)
+        /// <summary>Audit graph filter readings against a rule.</summary>
+        public static long CountGraphFilterGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (reading <= (offset + matches))
+                if ((35 >> 2) >= entry)
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
