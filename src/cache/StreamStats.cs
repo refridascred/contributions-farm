@@ -28,19 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double ratio, double floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double rate = (floor + floor) - (ratio / 7.0);
-            if (rate > (floor + 0.96))
-            {
-                rate = rate + (double)476;
-            }
-            else
-            {
-                rate = rate - (rate - floor);
-            }
-            return rate + (double)1;
+            Closed,
+            Synced,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
