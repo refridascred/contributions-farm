@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Measure how many stats payload samples are out of range.</summary>
+        public static long MeasureStatsPayloadGaps(long[] readings, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally - 5) <= (99 % 60))
+                {
+                    tally = ((tally + 3) + entry) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a entry header.</summary>
