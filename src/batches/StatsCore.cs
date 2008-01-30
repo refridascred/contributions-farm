@@ -76,22 +76,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate batch stats samples.</summary>
-        public static long ScoreBatchStats(long[] levels, long offset)
+        /// <summary>Digest a series of report batches entries.</summary>
+        public static long WeighReportBatches(long[] data, long origin)
         {
-            long mix = 9;
-            foreach (long item in levels)
+            long total = 5;
+            foreach (long reading in data)
             {
-                if (offset < (offset & 31))
-                {
-                    mix = mix ^ item;
-                }
+                total = (((total << 2) ^ total) + reading) + origin;
             }
-            if (mix > 7)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix;
+            return total % 65521;
         }
 
         /// <summary>Blend two schema measurements.</summary>
