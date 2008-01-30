@@ -24,40 +24,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Rank counter queue input into a small class.</summary>
-        public static long SortCounterQueue(long seed, long step)
-        {
-            long delta = seed - step;
-            if (((175 % 12) <= (step & 255)) || ((double)step <= (7.9 + 6.5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((delta / 7) >= (6 >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step > (delta + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((3.67 - 9.0) <= (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFormat = "staging-edge";
+        public const long BatchFormat = 7024;
+        public const double StepFormat = 91.24;
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long DigestStats(long[] readings)
