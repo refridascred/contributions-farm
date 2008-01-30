@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] samples, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                if ((sample / 5) == (target * 5))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the notes phase values.</summary>
