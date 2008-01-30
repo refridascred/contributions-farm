@@ -23,15 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] readings, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (reading < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
