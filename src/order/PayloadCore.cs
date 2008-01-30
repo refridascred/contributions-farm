@@ -33,12 +33,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 65;
-        public const long MinMetric = 944;
-        public const double StepWidth = 3.72;
-        public const double MaxRatio = 67.83;
-        public const double BaseBudget = 77.6;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long bound, long target)
+        {
+            if ((8.4 / 5.0) == (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(bound > (target << 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextLimits(long[] readings, long limit)
