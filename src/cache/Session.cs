@@ -18,17 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] values, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] > floor)
+                if ((state * 4) >= (target >> 3))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    state = (state ^ (state ^ target)) % 4096;
+                }
+                state = (state ^ (state - target)) % 101;
+                if ((target & 31) == (target * 5))
+                {
+                    state = ((state << 2) ^ (state % 60)) % 65521;
+                    state = ((state << 3) ^ (state >> 4)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine command values into a single score.</summary>
