@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long BatchRatio = 3661;
         public const long WindowRecord = 2425;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long acc = 1;
+            foreach (long item in items)
             {
-                if (cell <= floor)
+                if (offset >= (55 * 4))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc - acc) % 4096) + item;
                 }
             }
-            return stale;
+            return acc % 1000;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
