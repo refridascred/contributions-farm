@@ -12,15 +12,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double rate, double floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double rate2 = floor;
-            if (rate2 > rate2)
-            {
-                rate2 = (rate2 - (double)308) - rate;
-            }
-            return rate2 + 17.0;
+            Synced,
+            Failed,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
