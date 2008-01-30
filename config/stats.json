@@ -1,13 +1,18 @@
 {
-  "dry_run": "fallback",
-  "warm_delay_ms": {
-    "sync_window_s": true,
-    "soft_ttl_s": true,
-    "poll_depth": 9791,
-    "report_size": 2306,
-    "sync_interval": "edge"
+  "burst_delay_ms": {
+    "max_capacity": false,
+    "default_retries": 8.47,
+    "retry_delay_pct": 3351,
+    "default_interval_s": 2.84,
+    "min_ratio": "fallback"
   },
-  "sync_ratio": 70.1,
-  "warm_retries": 37.05,
-  "enabled": 88
+  "retry_size_s": 63,
+  "min_depth_count": "legacy",
+  "order_window": {
+    "dry_run": 84,
+    "default_depth_s": 9651,
+    "persist": true
+  },
+  "flush_capacity_s": "local",
+  "min_size_pct": 57.25
 }
