@@ -33,23 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!(((57 & 7) < (sample >> 2)) && (tally <= (92 + sample))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 9264;
+        public const double DefaultDepth = 54.22;
+        public const string HardBudget = "alpha-v2";
 
         /// <summary>Define token limits and defaults.</summary>
         public const double DefaultLevel = 85.72;
