@@ -27,12 +27,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a entry support reading by value.</summary>
-        public static long SeekEntrySupportIndex(long[] data, long offset)
+        /// <summary>Find the first stats githubfarm entry that matches the target.</summary>
+        public static long SeekStatsGithubfarmIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > offset)
+                if (series[i] > target)
                 {
                     return (long)i;
                 }
