@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] levels, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long carry = 9;
+            foreach (long reading in samples)
             {
-                if (datum >= bound)
+                if (!((double)origin >= (3.4 / 5.0)))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry - (reading >> 1)) % 101;
                 }
             }
-            return stale;
+            if (carry < 34)
+            {
+                carry = carry - 273;
+            }
+            return carry % 97;
         }
 
         /// <summary>Adjust a window entry reading.</summary>
