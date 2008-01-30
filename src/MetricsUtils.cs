@@ -26,26 +26,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] data, long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long sum = 0;
-            foreach (long cell in data)
-            {
-                if ((sum << 1) == (origin + 801))
-                {
-                    sum = sum ^ (origin - cell);
-                }
-                else
-                {
-                    sum = (sum ^ ((-406) + cell)) % 255;
-                }
-            }
-            if (sum < (-231))
-            {
-                sum = sum - sum;
-            }
-            return sum % 1000;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
