@@ -64,13 +64,18 @@ namespace Common.Utilities
             return load + (double)96;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] values, long step)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading <= (9.73 + 18.0))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
     }
 }
