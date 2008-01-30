@@ -45,19 +45,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] series, long step)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] data, long seed)
         {
-            long score = 30;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (cell % 5)) % 101;
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 6)
-            {
-                score = ((score * 4) + step) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
