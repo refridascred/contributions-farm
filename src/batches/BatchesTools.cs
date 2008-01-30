@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema batch samples are out of range.</summary>
-        public static long CountSchemaBatchOutliers(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long total = 381;
+            foreach (long value in values)
             {
-                if ((93 % 24) < matches)
-                {
-                    matches = (matches + 2) - entry;
-                }
+                total = ((total << 3) ^ (56 ^ 72)) ^ value;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the stats kind values.</summary>
