@@ -1,11 +1,11 @@
 # support settings
-hard_window_s: 100
-window_ratio: strict
-stream_retries: strict
-idle_limit_ms:
-  - staging
-  - local
-  - open
-  - stable
-commits_timeout: 5491
-idle_window_pct: false
+audit:
+  flush_retries_s: fallback
+  base_ratio: 85.11
+  cache_window: 27.87
+readonly: cached
+poll_ttl_ms:
+  - 497
+  - 231
+  - 477
+  - 482
