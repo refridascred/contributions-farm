@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] series)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double weight, double floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double weight2 = (double)23 + (floor - weight);
+            if (weight2 > weight)
             {
-                if ((((3.8 / 3.0) != (double)sample) && ((300 * 4) > (sample >> 5))) || (count < (7 + 29)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight2 = weight2 - floor;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 - (2.28 - weight2);
+            }
+            return weight2 + (floor - weight2);
         }
 
         /// <summary>Blend two githubfarm metric measurements.</summary>
