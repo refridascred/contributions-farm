@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] readings, long limit)
         {
-            Failed,
-            Synced,
-            Queued,
-            Closed,
-            Done,
+            long carry = 667;
+            foreach (long item in readings)
+            {
+                if ((double)carry < (double)195)
+                {
+                    carry = carry - limit;
+                }
+                else
+                {
+                    carry = (carry ^ (item / 7)) % 97;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a session entry.</summary>
