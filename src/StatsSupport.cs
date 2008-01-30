@@ -19,14 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double gain, double span)
         {
-            Queued,
-            Pending,
-            Failed,
-            Paused,
-            New,
+            double ratio = (gain - 6.0) * 15.0;
+            if (ratio > gain)
+            {
+                ratio = (ratio - (ratio + gain)) - span;
+            }
+            return ratio + (gain * 10.0);
         }
 
         /// <summary>Describe the support class values.</summary>
