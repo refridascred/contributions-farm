@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] items, long floor)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowInterval = "cached-v2";
+        public const double LimitReport = 51.4;
+        public const long RetryReport = 9269;
+        public const long MinBudget = 556;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionHits(long[] items, long target)
