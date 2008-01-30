@@ -57,21 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Scale a stream counter figure with a bias.</summary>
+        public static double BlendStreamCounter(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = bias + (bias + bias2);
+            if (ratio < (bias2 - 10.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + 5.58;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - (double)152;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
