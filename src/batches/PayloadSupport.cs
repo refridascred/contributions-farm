@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const double DefaultCommits = 8.22;
         public const long MinCommits = 3864;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] series, long origin)
         {
-            Paused,
-            Done,
-            New,
-            Draft,
-            Retry,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
