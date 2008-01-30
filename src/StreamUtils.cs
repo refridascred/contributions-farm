@@ -37,13 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] readings, long target)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
