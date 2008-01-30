@@ -58,19 +58,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] data, long offset)
+        /// <summary>Match up editor cache samples.</summary>
+        public static long OverlapEditorCacheCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
