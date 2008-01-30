@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const double DefaultDepth = 54.22;
         public const string HardBudget = "alpha-v2";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultLevel = 85.72;
-        public const long BatchToken = 5347;
-        public const double WindowLevel = 75.53;
-        public const string MinWidth = "fallback-edge";
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double BasePayload = 30.89;
