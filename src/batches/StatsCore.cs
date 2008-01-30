@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            Queued,
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Combine filter batches values into a single score.</summary>
