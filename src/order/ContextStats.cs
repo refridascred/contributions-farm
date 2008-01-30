@@ -26,22 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] items, long target)
         {
-            long acc = 87;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((7.6 + 2.4) < (double)reading)
+                if (value != target)
                 {
-                    acc = acc ^ (acc & 3);
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 9)
-            {
-                acc = acc - (acc % 97);
-            }
-            return acc;
+            return valid;
         }
 
         /// <summary>Validate stats batch readings against a bound.</summary>
