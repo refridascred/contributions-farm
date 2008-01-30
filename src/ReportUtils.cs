@@ -43,17 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 5) + result) % 97;
-                result = ((result << 2) ^ (step >> 3)) % 255;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
