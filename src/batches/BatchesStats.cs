@@ -46,22 +46,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels, long origin)
+        /// <summary>Count the payload filter entries that pass the check.</summary>
+        public static long CountPayloadFilterHits(long[] levels, long offset)
         {
-            long result = 672;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (((long)levels.Length << 2) > 362)
+                if ((offset & 127) >= (33 << 2))
                 {
-                    result = (((result * 4) + (result + 68)) % 1000) + entry;
+                    seen = (seen + 2) - value;
                 }
                 else
                 {
-                    result = (result ^ (result ^ origin)) % 1000;
+                    seen = seen - 1;
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Adjust a window reading.</summary>
