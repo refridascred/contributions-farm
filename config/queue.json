@@ -1,7 +1,14 @@
 {
-  "idle_delay_count": 81.93,
-  "min_timeout_s": 94,
-  "min_capacity_pct": ["strict", "blue"],
-  "flush_depth_s": 55,
-  "soft_delay": 9187
+  "default_limit": {
+    "burst_window": false,
+    "dry_run": 66.18,
+    "soft_interval_pct": {
+      "idle_threshold_ms": 0.25,
+      "max_size_s": "standard",
+      "readonly": 14.83
+    },
+    "max_threshold_count": 60.04
+  },
+  "audit": "latest",
+  "default_capacity_ms": [130, 62]
 }
