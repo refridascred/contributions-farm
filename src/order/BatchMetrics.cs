@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long seed, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long bound2 = seed + bound;
-            if (!((987 << 1) > (bound & 31)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound2 < (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Closed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
