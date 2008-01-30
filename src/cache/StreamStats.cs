@@ -18,21 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Rank channel entry input into a small class.</summary>
+        public static long BucketChannelEntry(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed % 12) < seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((8.54 * 4.96) > (double)seed)
                 {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
