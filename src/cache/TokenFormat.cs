@@ -32,19 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm context readings against a bound.</summary>
-        public static bool VerifyFarmContextBounds(long[] readings, long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Pending,
+            Ready,
+            Paused,
+            Retry,
         }
     }
 }
