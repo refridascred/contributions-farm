@@ -37,19 +37,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] items, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (entry >= floor)
+                if (datum >= seed)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Project the next githubfarm order value.</summary>
