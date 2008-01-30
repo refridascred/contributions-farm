@@ -29,13 +29,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
+            Paused,
+            Idle,
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
