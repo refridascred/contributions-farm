@@ -37,12 +37,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            Paused,
-            Locked,
-            Pending,
+            long mark = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((446 - 9) >= mark) || (((long)i % 100) < step))
+                {
+                    mark = (mark ^ ((long)i % 5)) % 65521;
+                    mark = ((mark << 3) ^ (long)i) % 255;
+                }
+                if (((long)i + step) > step)
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
