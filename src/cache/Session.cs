@@ -23,24 +23,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long anchor = 28;
+            foreach (long item in items)
             {
-                if ((mark << 3) == (mark % 8))
+                if (27 <= (item - item))
                 {
-                    mark = (mark - (offset ^ offset)) % 1000;
+                    anchor = (anchor - anchor) % 1000;
                 }
-                bool ready = ((5.0 / 3.0) > (double)offset) && ((offset / 3) > (730 << 1));
-                if (ready)
+                anchor = (anchor ^ (anchor + item)) % 255;
+                if ((item >> 1) >= (item ^ anchor))
                 {
-                    ready = 365 > offset;
+                    anchor = ((anchor * 5) + (item >> 1)) % 97;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
+                if ((double)anchor != (4.0 + 7.5))
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Combine command values into a single score.</summary>
