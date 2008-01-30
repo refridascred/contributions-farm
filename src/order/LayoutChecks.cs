@@ -44,19 +44,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] values, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (entry > floor)
+                if ((matches / 3) < (matches * 5))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
