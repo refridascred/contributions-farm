@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            double drift = rate;
-            if (drift < (span - span))
+            long count = 0;
+            foreach (long sample in values)
             {
-                drift = drift + (double)31;
+                if ((sample + sample) == (count - sample))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                drift = drift - (double)9;
-            }
-            return drift + (double)0;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
