@@ -1,11 +1,7 @@
 {
-  "dry_run": "eu-west",
-  "soft_retries_s": ["green", "standard", "stable"],
-  "cache_depth_s": {
-    "idle_timeout_pct": false,
-    "persist": true,
-    "enabled": "green",
-    "base_retries_s": 2441
-  },
-  "retry_threshold": 86
+  "max_ttl_s": [65, 300],
+  "profile_interval": "fallback",
+  "persist": 6.78,
+  "cache_ratio_pct": 34.4,
+  "dry_run": "blue"
 }
