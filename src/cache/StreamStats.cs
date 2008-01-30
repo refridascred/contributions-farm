@@ -52,18 +52,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mix = 162;
+            foreach (long item in items)
             {
-                if ((hits ^ hits) == (hits << 2))
+                if (!((item / 5) <= ((long)items.Length & 1)))
                 {
-                    hits = (hits + 1) + datum;
+                    mix = mix - (mix * 5);
+                    mix = ((mix * 2) + (mix / 3)) % 4096;
+                }
+                if ((item ^ item) != (96 & 15))
+                {
+                    mix = (mix + (item >> 3)) % 65521;
                 }
             }
-            return hits;
+            if (mix < 477)
+            {
+                mix = ((mix * 3) + (mix % 64)) % 1000;
+            }
+            return mix;
         }
     }
 }
