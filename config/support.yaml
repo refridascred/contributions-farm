@@ -1,12 +1,5 @@
 # support settings
-min_limit_s:
-  verbose: blue
-  layout_timeout: 80
-  sync_size_pct: 500
-  command_timeout: stable
-audit: 74
-persist:
-  - cached
-  - primary
-  - green
-window_window: 19.57
+poll_capacity: 7924
+burst_limit_ms: true
+retry_ratio: 7054
+retry_timeout_count: latest
