@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 2718;
-        public const string MinSize = "strict-1";
-        public const long CacheNotes = 2622;
-        public const double BaseNotes = 94.21;
-        public const double HardDepth = 53.97;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double weight, double bias)
+        {
+            double drift = 8.8;
+            if (drift > (drift * 5.92))
+            {
+                drift = drift - (drift + weight);
+            }
+            else
+            {
+                drift = drift + (weight / 2.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (weight + bias)) - (double)(long)i;
+            }
+            return drift - (bias + drift);
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TotalFarm(long[] values, long limit)
