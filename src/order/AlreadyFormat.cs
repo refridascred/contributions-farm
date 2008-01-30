@@ -39,21 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context metric counter forward.</summary>
-        public static long DeriveContextMetric(long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long bound, long bound2)
         {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
+            long next = bound + bound2;
+            if ((double)next < (double)bound2)
             {
-                mix = (mix ^ bound) % 65521;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix * 3) + (bound ^ bound)) + (long)i2;
-                    mix = mix - (mix - bound);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (bound >= next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound2 <= (9.9 - 0.24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((5.3 - 0.87) >= (double)bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload level values.</summary>
