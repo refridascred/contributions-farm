@@ -62,19 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] data, long origin)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
