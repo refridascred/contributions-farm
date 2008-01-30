@@ -31,17 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a batch buffer sample.</summary>
-        public static long LocateBatchBufferIndex(long[] series, long limit)
+        /// <summary>Measure how many metrics schema samples are out of range.</summary>
+        public static long AuditMetricsSchemaGaps(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                if ((double)hits < (double)sample)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
