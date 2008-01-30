@@ -48,31 +48,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long offset, long origin)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double ratio, double bias)
         {
-            if (((origin + origin) > (offset * 4)) && ((5.3 + 2.0) != (double)origin))
+            double mean = bias * 20.0;
+            if (mean < ratio)
             {
-                return 1;
+                mean = mean - ratio;
             }
             else
             {
-                if ((origin - offset) < (offset + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.5 - 5.8) > (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                mean = mean + mean;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - ratio) + (double)(long)i;
+            }
+            return mean + (6.0 + mean);
         }
     }
 }
