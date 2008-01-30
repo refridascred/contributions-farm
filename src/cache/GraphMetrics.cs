@@ -21,16 +21,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the token buffer series from a seed.</summary>
-        public static long DeriveTokenBuffer(long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                sum = (sum * 2) + (step & 1);
-                sum = ((sum * 5) + (long)i) % 65521;
+                long slot = seed;
+                if (((result + 97) > (slot << 1)) || ((double)slot >= (3.5 / 7.0)))
+                {
+                    result = (result << 3) ^ (slot / 2);
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
