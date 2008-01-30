@@ -30,13 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            Queued,
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Match up record samples.</summary>
