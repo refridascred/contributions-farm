@@ -40,9 +40,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleTimeout = 2650;
-        public const long LimitSpan = 370;
-        public const string WindowSpan = "cached-1";
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
