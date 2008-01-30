@@ -10,16 +10,22 @@ namespace Common.Utilities
         public const long HardScore = 7914;
         public const double DefaultMetric = 0.78;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] items, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            long carry = 660;
+            foreach (long datum in items)
             {
-                acc = (acc ^ (-75)) % 255;
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((datum / 2) == (921 - bound))
+                {
+                    carry = (carry - (datum - datum)) % 101;
+                }
             }
-            return acc;
+            if (carry < 5)
+            {
+                carry = (carry << 2) ^ (carry / 5);
+            }
+            return carry % 97;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
