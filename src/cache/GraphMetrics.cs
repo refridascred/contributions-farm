@@ -41,11 +41,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheSpan = 78.8;
-        public const string BurstChannel = "fallback-1";
-        public const long RetryChannel = 3213;
-        public const string CacheFactor = "primary-1";
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long seed)
