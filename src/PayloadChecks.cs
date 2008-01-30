@@ -33,12 +33,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public bool Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 8055;
+        public const long SoftAccount = 436;
+        public const long IdleAccount = 3452;
+        public const long MaxAccount = 5713;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool CheckChannelLimits(long[] values, long step)
