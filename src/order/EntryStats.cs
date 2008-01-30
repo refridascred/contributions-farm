@@ -31,12 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Adjust a cluster schema reading.</summary>
+        public static double SmoothClusterSchema(double weight, double bias)
         {
-            Done,
-            Failed,
-            Idle,
+            double scale = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale + bias) + (double)(long)i) + weight;
+            }
+            return scale + (double)376;
         }
 
         /// <summary>Locate a token reading by value.</summary>
