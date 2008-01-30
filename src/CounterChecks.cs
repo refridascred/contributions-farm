@@ -61,19 +61,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next githubfarm order value.</summary>
-        public static double BlendGithubfarmOrder(double gain, double floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] items, long target)
         {
-            double ratio = floor;
-            if (ratio <= floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - (ratio + ratio);
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)383;
-            }
-            return ratio - (floor + gain);
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
