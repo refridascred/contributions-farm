@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ratio + 11.0;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
+        public static bool VerifyRouteGithubfarmBounds(long[] series, long floor)
         {
-            Queued,
-            Ready,
-            Closed,
-            New,
-            Pending,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
