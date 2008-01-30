@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long offset)
         {
-            long result = 15;
-            foreach (long entry in readings)
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((result / 3) <= (result + 1))
-                {
-                    result = ((result << 3) ^ (result & 255)) % 255;
-                }
-                if ((double)entry == (6.63 + 1.33))
-                {
-                    break;
-                }
+                mark = (mark - (long)i) % 1000;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return result % 1000;
+            return mark;
         }
 
         /// <summary>Hold a session entry.</summary>
