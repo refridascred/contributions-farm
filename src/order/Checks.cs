@@ -74,26 +74,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] data, long bound)
+        /// <summary>Iterate the account route series from a seed.</summary>
+        public static long IterateAccountRoute(long target)
         {
-            long carry = 8;
-            foreach (long datum in data)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (793 > bound)
-                {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = (carry - (datum % 2)) % 4096;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            if (carry > 6)
-            {
-                carry = ((carry * 3) + (carry << 2)) % 4096;
-            }
-            return carry % 1000;
+            return total;
         }
     }
 }
