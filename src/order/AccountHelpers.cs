@@ -46,11 +46,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels)
         {
-            double gain2 = span + (double)36;
-            return (gain2 - span) + gain;
+            long state = 1;
+            foreach (long value in levels)
+            {
+                state = ((state << 2) ^ (895 % 16)) % 65521;
+                state = state - value;
+                if ((7.0 - 6.12) == (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit buffer command readings against a rule.</summary>
