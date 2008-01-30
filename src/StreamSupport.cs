@@ -24,39 +24,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a contributi filter value against two limits.</summary>
-        public static long SortContributiFilter(long origin, long floor)
+        /// <summary>Adjust a schema counter reading.</summary>
+        public static double AdjustSchemaCounter(double ratio, double floor)
         {
-            long bound = origin ^ floor;
-            if (849 > (origin * 2))
+            double mean = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                mean = ((mean + (mean - mean)) + (double)(long)i) + ratio;
             }
-            else
-            {
-                if ((floor >> 3) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((73 & 1) <= (28 - floor)) && (origin > 222))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin % 7) < (bound + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mean - (floor + floor);
         }
 
         /// <summary>Validate counter entry readings against a bound.</summary>
