@@ -1,12 +1,30 @@
 # support settings
-batch_limit: 88
-sync_depth_ms: fallback
-compress: legacy
-route_depth: eu-west
-base_size_ms: 1024
-flush_timeout_ms:
-  default_timeout_pct: 6792
-  cache_window: 85.01
-  session_threshold: 87
-  min_delay_count: blue
-  enabled: 60
+poll_limit:
+  default_retries_ms:
+    base_delay: 3249
+    stream_interval: fallback
+    hard_delay_count: green
+  min_ratio:
+    - primary
+    - blue
+  buffer_ttl:
+    - cached
+    - staging
+    - staging
+    - stable
+command_ttl:
+  - primary
+  - edge
+  - standard
+  - primary
+retry_size_ms: 14.48
+command_timeout:
+  - primary
+  - eu-west
+  - cached
+  - blue
+burst_timeout_s: staging
+strict:
+  - 133
+  - 21
+  - 250
