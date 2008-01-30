@@ -28,12 +28,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] readings, long bound)
         {
-            Queued,
-            Idle,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
