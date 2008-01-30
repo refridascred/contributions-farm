@@ -1,10 +1,14 @@
 # entry settings
-report_size: 60
-report_interval:
-  - fallback
-  - blue
-retry_capacity_pct: false
-token_timeout:
-  - 415
-  - 419
-  - 212
+persist:
+  burst_capacity_s: 20
+  soft_retries: 56
+  hard_depth:
+    - green
+    - stable
+    - fallback
+    - primary
+  sync_depth_s: true
+  hard_timeout_count: green
+metric_threshold: false
+base_window: 68.9
+metric_window: standard
