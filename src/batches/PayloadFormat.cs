@@ -23,11 +23,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double ratio = (bias + bias) * 7.16;
-            return ratio + floor;
+            public long Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine payload values into a single score.</summary>
