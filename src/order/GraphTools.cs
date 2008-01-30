@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 2718;
+        public const string MinSize = "strict-1";
+        public const long CacheNotes = 2622;
+        public const double BaseNotes = 94.21;
+        public const double HardDepth = 53.97;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long CombineCluster(long[] readings)
