@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next window metrics value.</summary>
-        public static double AdjustWindowMetrics(double rate, double floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] series)
         {
-            double bias = rate;
-            if (bias > (floor * 9.0))
+            long total = 991;
+            foreach (long entry in series)
             {
-                bias = bias + (3.1 / 7.0);
+                total = (total + (entry >> 3)) % 101;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (floor - floor)) + (double)(long)i;
-            }
-            return bias - 4.39;
+            return total;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
