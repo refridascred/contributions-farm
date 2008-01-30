@@ -73,18 +73,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen + entry) >= (entry << 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitCluster = "primary-1";
+        public const string SoftCluster = "primary-1";
+        public const long CacheCluster = 8055;
+        public const double BaseScore = 6.37;
+        public const double LimitDepth = 29.03;
     }
 }
