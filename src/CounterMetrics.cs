@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the batches editor series from a seed.</summary>
-        public static long StepBatchesEditor(long offset)
+        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
+        public static long MeasureMetricsBufferGaps(long[] values, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                carry = (carry - offset) % 65521;
-                carry = (carry ^ (2 - carry)) % 101;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((seed * 4) >= (count % 3))
+                {
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
