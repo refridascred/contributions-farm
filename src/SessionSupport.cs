@@ -28,22 +28,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] items)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (!((5 >> 3) >= (cell ^ (-26))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Locked,
+            New,
+            Retry,
+            Done,
         }
     }
 }
