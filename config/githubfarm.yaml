@@ -1,4 +1,5 @@
 # githubfarm settings
-flush_limit_s: 89.81
-sync_size_count: 8
-hard_size: 70
+readonly: 2797
+checks_window: false
+commits_limit: eu-west
+entry_timeout: fallback
