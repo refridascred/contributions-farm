@@ -19,11 +19,19 @@ namespace Common.Utilities
         public const string MaxCluster = "latest-edge";
         public const string MinLevel = "latest-edge";
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate farm checks readings against a bound.</summary>
+        public static bool CheckFarmChecksLimits(long[] data, long origin)
         {
-            public long Rank { get; set; }
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
