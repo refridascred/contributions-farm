@@ -35,15 +35,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long acc = 72;
-            foreach (long sample in data)
-            {
-                acc = ((acc ^ (acc * 4)) % 97) + sample;
-            }
-            return acc;
+            Pending,
+            Locked,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
