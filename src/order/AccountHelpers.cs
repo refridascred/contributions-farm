@@ -59,10 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 5157;
-        public const long BatchTimeout = 6199;
-        public const long MaxBatch = 8014;
+        /// <summary>Digest a series of stream payload entries.</summary>
+        public static long WeighStreamPayload(long[] samples)
+        {
+            long anchor = 206;
+            foreach (long entry in samples)
+            {
+                if (anchor > (anchor ^ anchor))
+                {
+                    anchor = (anchor ^ (62 + anchor)) + entry;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many metrics batch samples are out of range.</summary>
         public static long AuditMetricsBatchHits(long[] values)
