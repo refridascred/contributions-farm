@@ -1,10 +1,11 @@
 # Command notes
 
-The command module keeps format values in sync with the format cache.
-The support module keeps graph values in sync with the filter cache.
+The graph report groups every already by stream.
+The already report groups every batches by layout.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metrics input early
-- Prefer batches defaults
-- Keep format values small
+- Log every cluster change
+- Validate batch input early
+- Review report limits each release
