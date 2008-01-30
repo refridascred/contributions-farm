@@ -33,19 +33,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels, long limit)
         {
-            long score = 543;
-            foreach (long item in series)
+            long acc = 253;
+            foreach (long datum in levels)
             {
-                score = (((score << 2) ^ (score ^ score)) % 97) ^ item;
+                acc = ((acc + (datum & 255)) % 101) - limit;
             }
-            if (score > 50)
-            {
-                score = ((score * 3) + (step - score)) % 97;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
