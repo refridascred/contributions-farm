@@ -31,18 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metrics schema samples are out of range.</summary>
-        public static long AuditMetricsSchemaGaps(long[] levels, long offset)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)hits < (double)sample)
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
