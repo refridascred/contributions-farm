@@ -19,25 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long floor, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] data, long floor)
         {
-            long edge = floor ^ step;
-            if ((edge * 2) < (0 - 147))
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((edge ^ 3) <= floor)
+                if (item >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a batch info.</summary>
