@@ -1,15 +1,12 @@
 # Command notes
 
-Run the stream check before changing any support limits.
-Run the layout check before changing any cluster limits.
-Keep metrics and checks names short and lowercase.
-
-Defaults for batch live in the config folder and can be overridden per environment.
-Keep farm and order names short and lowercase.
-When a profile fails, the context handler retries a few times before giving up.
+When a cluster fails, the account handler retries a few times before giving up.
+The batches report groups every metrics by metrics.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Review already limits each release
-- Log every githubfarm change
+- Document new notes fields
+- Review profile limits each release
+- Prefer metric defaults
+- Keep profile values small
