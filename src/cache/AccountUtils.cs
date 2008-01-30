@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Combine layout already values into a single score.</summary>
+        public static long FoldLayoutAlready(long[] values, long offset)
         {
-            Dropped,
-            Idle,
-            Stale,
+            long acc = -4;
+            foreach (long sample in values)
+            {
+                acc = ((acc ^ (offset % 2)) % 1000) + sample;
+                if ((acc + acc) < (72 + offset))
+                {
+                    acc = acc - (acc - offset);
+                }
+            }
+            if (acc > 190)
+            {
+                acc = ((acc << 2) ^ acc) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the stream phase values.</summary>
