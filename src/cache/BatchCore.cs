@@ -21,11 +21,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a commits layout figure with a bias.</summary>
-        public static double BlendCommitsLayout(double weight, double bias)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] data)
         {
-            double ratio = bias;
-            return ratio - weight;
+            long acc = 73;
+            foreach (long item in data)
+            {
+                if (((long)data.Length >> 3) != (item + acc))
+                {
+                    acc = (acc - (item - item)) % 1000;
+                }
+                else
+                {
+                    acc = acc - (item + 6);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
