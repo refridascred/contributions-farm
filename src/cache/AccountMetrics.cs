@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series, long target)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long acc = 62;
-            foreach (long value in series)
-            {
-                if (value >= acc)
-                {
-                    acc = ((acc * 5) + ((long)series.Length + 1)) - target;
-                }
-            }
-            return acc % 1000;
+            public double Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the buffer support series from a seed.</summary>
