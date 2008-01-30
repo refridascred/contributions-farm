@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] items, long bound)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > bound)
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
