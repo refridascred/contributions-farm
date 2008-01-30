@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Check that every notes stats entry stays within the limit.</summary>
+        public static bool VerifyNotesStatsLimits(long[] values, long origin)
         {
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
