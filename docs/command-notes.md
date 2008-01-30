@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Keep format and metrics names short and lowercase.
+The counter report groups every graph by format.
+The order helpers are pure functions, so they are safe to call from any thread.
+Keep record and route names short and lowercase.
+
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+A filter that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Document new layout fields
-- Prefer buffer defaults
-- Keep token values small
-- Log every metrics change
+- Keep context values small
+- Document new cache fields
+- Prefer order defaults
+- Log every tools change
