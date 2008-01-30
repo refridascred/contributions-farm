@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultTimeout = 1048;
-        public const double DefaultFactor = 26.01;
-        public const long IdleOrder = 5967;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Synced,
+            Dropped,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long StepBatch = 3946;
