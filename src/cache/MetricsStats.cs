@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route contributi samples are out of range.</summary>
-        public static long AuditRouteContributiGaps(long[] samples)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((hits <= (352 % 16)) && (((2.2 + 9.0) <= (double)value) || ((11.0 / 8.0) != (double)hits)))
+                if (((double)count > 4.75) || (((double)sample > (13.0 * 1.04)) || ((sample - sample) == (550 << 2))))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
