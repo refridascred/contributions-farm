@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] readings, long bound)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
