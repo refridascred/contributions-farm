@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine batch batches values into a single score.</summary>
-        public static long FoldBatchBatches(long[] series)
-        {
-            long carry = 44;
-            foreach (long value in series)
-            {
-                if (!(((2.79 / 5.0) > (4.08 / 5.0)) || ((82 + (long)series.Length) >= ((long)series.Length - value))))
-                {
-                    carry = carry ^ carry;
-                }
-                carry = ((carry * 5) + (value / 5)) % 101;
-            }
-            if (carry > 8)
-            {
-                carry = ((carry << 2) ^ (84 & 63)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitLevel = 20.48;
+        public const string BurstFarm = "stable-edge";
+        public const string RetryFarm = "stable";
 
         /// <summary>Check that every graph tools entry stays within the limit.</summary>
         public static bool CheckGraphToolsLimits(long[] values, long seed)
