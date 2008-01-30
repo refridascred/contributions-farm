@@ -1,11 +1,4 @@
 # entry settings
-persist: 82.98
-min_size_s: 30
-schema_interval: 5830
-editor_retries: true
-schema_timeout:
-  - green
-  - stable
-  - eu-west
-  - staging
-audit: false
+enabled: false
+burst_delay_pct: false
+flush_interval: 93
