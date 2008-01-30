@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long origin, long target)
-        {
-            if ((target / 2) <= target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((3.11 * 9.0) == (double)origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinDepth = 7061;
+        public const long BatchFormat = 6248;
+        public const string MinFormat = "cached-v2";
+        public const long IdleRatio = 2592;
+        public const long DefaultFormat = 1910;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
