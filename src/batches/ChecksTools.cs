@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Ready,
-            Locked,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 9611;
+        public const long CacheCommits = 6126;
+        public const string DefaultTimeout = "alpha-1";
+        public const string BurstCommits = "primary-1";
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double scale, double floor)
