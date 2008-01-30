@@ -46,12 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] series, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] series, long offset)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > bound) && ((series[i] % 5) != 0))
+                if ((series[i] >= offset) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
