@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double weight, double span)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] data)
         {
-            double rate = 18.0;
-            if (rate < weight)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                rate = rate + span;
+                if ((entry * 5) == (93 ^ tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return rate - span;
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
