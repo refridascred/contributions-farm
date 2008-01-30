@@ -39,23 +39,18 @@ namespace Common.Utilities
         public const long IdleAccount = 3452;
         public const long MaxAccount = 5713;
 
-        /// <summary>Digest a series of githubfarm token entries.</summary>
-        public static long FoldGithubfarmToken(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] levels, long limit)
         {
-            long score = 4;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                score = score - (reading - reading);
-                if (((129 + 539) >= (4 + score)) && ((score >> 2) < reading))
+                if (((limit >= datum) && ((double)datum >= (13.0 - 19.0))) || (datum <= (limit % 10)))
                 {
-                    score = (score - (71 - reading)) % 1000;
+                    tally = tally + 3;
                 }
             }
-            if (score < 85)
-            {
-                score = ((score * 4) + (-280)) % 65521;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
