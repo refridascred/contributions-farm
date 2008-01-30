@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinTimeout = 154;
-        public const double BurstDepth = 26.48;
-        public const string CacheSpan = "standard";
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!(6 < (sample * 3)) || !((tally / 8) != (tally + sample)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
