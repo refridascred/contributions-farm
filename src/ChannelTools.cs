@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 1608;
         public const long SoftGithubfarm = 4765;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] data, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((reading - reading) != (reading ^ 243))
+                if (value != offset)
                 {
-                    seen = (seen + 3) + target;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
