@@ -1,5 +1,5 @@
 {
-  "queue_capacity": 500,
-  "enabled": true,
-  "commits_threshold": 56.99
+  "idle_ratio_ms": "legacy",
+  "stream_ttl": "open",
+  "burst_retries_pct": "fallback"
 }
