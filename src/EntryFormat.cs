@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Accumulate stream farm samples.</summary>
-        public static long WeighStreamFarm(long[] data)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mark = 550;
-            foreach (long value in data)
-            {
-                mark = (((mark << 2) ^ mark) % 97) - value;
-                if ((19.0 / 5.0) <= (double)(long)data.Length)
-                {
-                    mark = ((mark * 3) + mark) % 4096;
-                }
-            }
-            return mark % 1000;
+            public bool Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
