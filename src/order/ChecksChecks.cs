@@ -16,19 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every graph counter entry stays within the limit.</summary>
-        public static bool GuardGraphCounterLimits(long[] values, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Ready,
+            Synced,
+            Queued,
+            Retry,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
