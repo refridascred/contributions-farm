@@ -1,8 +1,8 @@
 {
-  "batch_timeout_s": [479, 121, 37],
-  "flush_retries_s": 9131,
-  "format_retries": "blue",
-  "default_ttl": false,
-  "profile_capacity": ["edge", "local"],
-  "schema_depth": 48.09
+  "max_size_count": "eu-west",
+  "warm_ratio_ms": "blue",
+  "burst_timeout_pct": "edge",
+  "order_timeout": 37.46,
+  "stats_threshold": "cached",
+  "min_timeout_ms": true
 }
