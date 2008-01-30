@@ -62,11 +62,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowTimeout = 9645;
-        public const long DefaultPayload = 1548;
-        public const long CachePayload = 4493;
-        public const long LimitPayload = 521;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
