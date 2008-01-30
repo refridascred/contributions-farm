@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
-            Failed,
-            Synced,
-            Ready,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count + 950) > (item * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
