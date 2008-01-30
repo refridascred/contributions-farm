@@ -1,15 +1,16 @@
 # githubfarm settings
-enabled: primary
-session_depth: 63.98
-filter_depth:
-  dry_run: 76.7
-  sync_window_pct: 8042
-  batches_ttl: local
-  report_threshold: false
-  burst_timeout_pct: legacy
-  verbose: legacy
-strict: true
-persist: open
-cache_capacity:
-  - 37
-  - 32
+min_timeout_s: 51
+already_interval:
+  compress: local
+  batch_limit: staging
+  retry_ratio_count:
+    burst_ratio_s: eu-west
+    counter_limit: 1103
+    editor_capacity: fallback
+  soft_ratio:
+    - 488
+    - 427
+    - 1
+    - 483
+batches_interval: standard
+batch_limit_count: staging
