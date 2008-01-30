@@ -28,11 +28,12 @@ namespace Common.Utilities
         public const long DefaultScore = 8772;
         public const string BatchTimeout = "strict-edge";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftScore = 1283;
-        public const long StepToken = 8068;
-        public const long BaseSpan = 4146;
-        public const string SoftToken = "fallback-edge";
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double offset)
+        {
+            double weight2 = offset;
+            return (weight2 + (weight2 / 3.0)) + weight;
+        }
 
         /// <summary>Iterate the buffer contributi series from a seed.</summary>
         public static long IterateBufferContributi(long target)
