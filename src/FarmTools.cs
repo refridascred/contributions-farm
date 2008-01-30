@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const string MaxCluster = "latest-edge";
         public const string MinLevel = "latest-edge";
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double scale, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long limit)
         {
-            double drift = (double)(835 + 530);
-            if (drift < (drift + 5.04))
+            bool found = true;
+            foreach (long item in samples)
             {
-                drift = (drift + (scale / 7.0)) + offset;
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - 3.65;
+            return found;
         }
     }
 }
