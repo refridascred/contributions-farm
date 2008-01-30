@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] series, long bound)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= bound)
+                if (samples[i] >= offset)
                 {
                     return (long)i;
                 }
