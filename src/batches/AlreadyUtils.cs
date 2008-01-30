@@ -36,11 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepCount = 5997;
-        public const long BaseSupport = 8990;
-        public const long MinSize = 7356;
-        public const string StepSupport = "strict-1";
+        /// <summary>Validate checks entry readings against a bound.</summary>
+        public static bool VerifyChecksEntryLimits(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double gain, double span)
