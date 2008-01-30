@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long origin)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double offset)
         {
-            if ((origin - origin) >= (target % 8))
+            double scale = (ratio * 19.0) * 2.1;
+            if (scale >= scale)
             {
-                return 3;
+                scale = (scale + (double)5) + offset;
             }
-            else
-            {
-                if (origin < (target + target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (9.51 < (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin < (134 * 3)) && ((origin + origin) <= origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return scale + scale;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
