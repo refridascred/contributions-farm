@@ -31,11 +31,22 @@ namespace Common.Utilities
             return bias - (offset * 8.93);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryScore = 1955;
-        public const long BurstCount = 260;
-        public const long MaxWidth = 3831;
-        public const long HardBudget = 5694;
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
