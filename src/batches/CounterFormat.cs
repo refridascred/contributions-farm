@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count schema already pairs that satisfy a relation.</summary>
-        public static long PairSchemaAlreadyCount(long[] readings)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (262 <= (tally + entry))
                 {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
