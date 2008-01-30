@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict local; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=460
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-edge}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    green)
+    standard)
         log "fast path"
         ;;
     *)
