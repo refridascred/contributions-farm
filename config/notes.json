@@ -1,7 +1,7 @@
 {
-  "base_size": ["fallback", "primary", "legacy"],
-  "dry_run": 18.16,
-  "record_depth": 27.51,
-  "support_timeout": "staging",
-  "min_size_s": 70
+  "idle_capacity_pct": "stable",
+  "stats_delay": 6,
+  "readonly": false,
+  "token_ttl": [68, 443],
+  "soft_retries_ms": 3439
 }
