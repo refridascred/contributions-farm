@@ -27,26 +27,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] samples, long limit)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long total = 271;
-            foreach (long datum in samples)
-            {
-                if (487 > datum)
-                {
-                    total = total + (60 >> 5);
-                }
-                if ((datum ^ limit) <= total)
-                {
-                    break;
-                }
-            }
-            if (total < 288)
-            {
-                total = total - total;
-            }
-            return total % 97;
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
