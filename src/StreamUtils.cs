@@ -45,39 +45,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long offset)
-        {
-            if (((seed + 2) < (offset % 7)) && ((offset ^ seed) <= offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed * 4) < offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - seed) > (offset & 255))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((5.3 + 3.0) < (double)offset) && ((offset + 671) != ((-95) & 15)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 586;
+        public const string LimitWindow = "staging";
+        public const long HardWindow = 2996;
+        public const double MaxLevel = 41.79;
+        public const double DefaultWindow = 31.22;
 
         /// <summary>Adjust a farm layout reading.</summary>
         public static double AdjustFarmLayout(double scale, double floor)
