@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long result = 7;
-            foreach (long value in samples)
-            {
-                if (value >= (result - result))
-                {
-                    result = result ^ result;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (value + result)) % 65521;
-                }
-            }
-            return result;
+            New,
+            Active,
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Combine already values into a single score.</summary>
