@@ -22,20 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes context values into a single score.</summary>
-        public static long TotalNotesContext(long[] series)
-        {
-            long state = -584;
-            foreach (long item in series)
-            {
-                state = (state << 3) ^ (item - 42);
-            }
-            if (state < 38)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSpan = 8816;
+        public const double CacheRatio = 29.3;
+        public const string RetrySupport = "stable-edge";
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] levels, long floor)
