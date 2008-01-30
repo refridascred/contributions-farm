@@ -28,22 +28,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] levels, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double scale, double floor)
         {
-            long mark = 188;
-            foreach (long sample in levels)
+            double gain = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if (mark < (76 / 5))
-                {
-                    mark = (mark - 55) ^ sample;
-                }
-                else
-                {
-                    mark = mark ^ (mark + target);
-                }
+                gain = ((gain + scale) + (double)(long)i) - floor;
             }
-            return mark % 97;
+            return gain + (3.72 - scale);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
