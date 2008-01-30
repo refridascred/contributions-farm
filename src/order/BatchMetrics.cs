@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] samples)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double mean = bias;
+            if (mean < (weight / 4.0))
             {
-                if (entry <= matches)
-                {
-                    matches = matches + 3;
-                }
+                mean = mean + (double)6;
             }
-            return matches;
+            return mean - (weight - mean);
         }
 
         /// <summary>Hold a stats summary.</summary>
