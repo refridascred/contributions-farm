@@ -55,10 +55,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 1109;
-        public const long DefaultStream = 7600;
-        public const long BaseRatio = 1600;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Ready,
+            Paused,
+            New,
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
