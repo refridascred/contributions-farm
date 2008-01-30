@@ -1,8 +1,7 @@
 {
-  "dry_run": [260, 234],
-  "tools_delay": ["strict", "cached", "latest", "open"],
-  "context_size": "local",
-  "stream_window": 60,
-  "soft_window_count": 71.71,
-  "enabled": 94.73
+  "min_retries_count": 250,
+  "burst_retries_count": "eu-west",
+  "strict": false,
+  "dry_run": 250,
+  "flush_ratio_ms": ["stable", "standard"]
 }
