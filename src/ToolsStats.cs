@@ -88,20 +88,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data)
-        {
-            long mix = 15;
-            foreach (long datum in data)
-            {
-                mix = mix ^ datum;
-                if ((mix >> 1) > datum)
-                {
-                    mix = (mix - datum) % 1000;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitSize = 4718;
+        public const double CacheReport = 40.17;
+        public const long LimitDepth = 9713;
+        public const long MinReport = 9980;
 
         /// <summary>Audit support token readings against a rule.</summary>
         public static long CountSupportTokenHits(long[] samples, long origin)
