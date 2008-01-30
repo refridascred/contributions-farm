@@ -48,19 +48,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate tools contributi readings against a bound.</summary>
-        public static bool GuardToolsContributiLimits(long[] series, long limit)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > limit)
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
