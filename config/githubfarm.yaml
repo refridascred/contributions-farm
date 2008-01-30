@@ -1,4 +1,8 @@
 # githubfarm settings
-warm_capacity: green
-idle_ttl_pct: true
-compress: false
+base_ttl_s:
+  - primary
+  - open
+  - local
+  - local
+poll_threshold_s: green
+schema_threshold: 33.98
