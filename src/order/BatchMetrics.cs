@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long seed, long bound)
         {
-            Ready,
-            Synced,
-            Done,
-            New,
+            long bound2 = seed + bound;
+            if (!((987 << 1) > (bound & 31)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound2 < (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a already info.</summary>
