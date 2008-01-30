@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] items, long bound)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
