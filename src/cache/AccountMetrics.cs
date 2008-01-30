@@ -16,10 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 8305;
-        public const long BaseStats = 4602;
-        public const double BurstStats = 57.45;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (cell < (8 & 1))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MaxPayload = 3796;
