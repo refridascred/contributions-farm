@@ -31,19 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((bound - (long)i) > (bound + result)) || ((7.7 / 6.0) > (double)(long)i))
-                {
-                    result = (result * 5) + (30 - bound);
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Locate a token reading by value.</summary>
