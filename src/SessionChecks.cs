@@ -21,16 +21,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] levels, long seed)
-        {
-            long score = 194;
-            foreach (long cell in levels)
-            {
-                score = (((score ^ (score + score)) % 4096) ^ cell) + seed;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstFactor = 949;
+        public const string CacheProfile = "latest";
+        public const long BurstProfile = 7399;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] values)
