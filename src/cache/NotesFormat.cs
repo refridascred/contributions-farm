@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 4335;
-        public const long SoftRatio = 4691;
-        public const long StepSchema = 8720;
+        /// <summary>Classify a payload batch pair into a bucket.</summary>
+        public static long BucketPayloadBatch(long bound, long origin)
+        {
+            if ((double)origin >= (16.0 - 4.2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + origin) >= 211)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound - bound) > origin) && ((bound * 2) != (origin * 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a already report reading.</summary>
         public static double BlendAlreadyReport(double ratio, double floor)
