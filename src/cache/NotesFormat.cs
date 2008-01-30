@@ -41,12 +41,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long state = 338;
+            foreach (long cell in items)
+            {
+                if ((4.25 * 10.0) >= (double)state)
+                {
+                    state = (state - ((-796) & 7)) ^ cell;
+                }
+                else
+                {
+                    state = (state - 87) % 97;
+                }
+            }
+            if (state > 96)
+            {
+                state = (state + 696) % 4096;
+            }
+            return state % 1000;
         }
     }
 }
