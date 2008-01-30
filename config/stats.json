@@ -1,5 +1,17 @@
 {
-  "warm_delay_s": "legacy",
-  "cache_ratio": ["latest", "green", "blue"],
-  "dry_run": "latest"
+  "cache_depth": {
+    "audit": true,
+    "min_threshold_count": "latest",
+    "warm_threshold_s": [270, 321, 86],
+    "burst_threshold": {
+      "cache_limit_ms": "primary",
+      "batch_depth_ms": "primary",
+      "buffer_threshold": false
+    },
+    "farm_threshold": "eu-west",
+    "max_ttl_count": true
+  },
+  "enabled": 7816,
+  "sync_size_s": 30,
+  "verbose": 4005
 }
