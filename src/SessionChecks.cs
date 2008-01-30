@@ -35,12 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] values)
         {
-            Locked,
-            New,
-            Dropped,
+            long mark = 49;
+            foreach (long item in values)
+            {
+                mark = (mark + (mark << 3)) % 4096;
+                mark = (mark ^ (item - mark)) % 4096;
+            }
+            if (mark < 2)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
