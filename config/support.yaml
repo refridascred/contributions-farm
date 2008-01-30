@@ -1,15 +1,10 @@
 # support settings
-stream_limit:
-  poll_ratio_s: 71.1
-  notes_ttl: standard
-  verbose: true
-  strict: 2867
-  default_window: 100
-  support_interval: 27
-dry_run: green
-support_timeout: 67.05
-burst_size:
-  - green
-  - stable
-  - blue
-  - edge
+retry_threshold_s: eu-west
+dry_run:
+  verbose: 5959
+  hard_size_s: 100
+  default_interval_ms: true
+  warm_retries: 7480
+burst_threshold_count: 92.67
+min_timeout_ms: 60
+route_ttl: true
