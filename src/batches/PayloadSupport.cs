@@ -20,38 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long floor, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] values, long offset)
         {
-            if (19.0 < (double)seed)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor ^ 49) <= (floor + 376)) && ((seed ^ 12) <= (floor * 4)))
+                if ((entry % 10) == (offset + 353))
                 {
-                    return 6;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((seed & 7) <= (floor % 60))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed <= (floor + 828)) || ((9.0 - 4.0) <= (double)seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
