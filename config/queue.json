@@ -1,7 +1,7 @@
 {
-  "readonly": "latest",
-  "order_retries": 86.5,
-  "poll_capacity_pct": "strict",
-  "min_interval": [319, 179, 219],
-  "tools_delay": true
+  "format_timeout": 7747,
+  "dry_run": 86,
+  "default_delay": "primary",
+  "audit": 1024,
+  "batch_ratio_pct": true
 }
