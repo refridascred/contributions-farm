@@ -45,15 +45,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double ratio, double offset)
+        /// <summary>Fold a list of editor githubfarm readings.</summary>
+        public static long DigestEditorGithubfarm(long[] data)
         {
-            double bias = (double)(9 * 5);
-            if (bias < (double)346)
+            long total = 71;
+            foreach (long cell in data)
             {
-                bias = bias - (offset * 1.0);
+                if (((cell - cell) > (total ^ total)) && ((30 * 3) >= cell))
+                {
+                    total = (total ^ (1 & 255)) % 101;
+                }
+                if ((714 << 2) <= cell)
+                {
+                    break;
+                }
             }
-            return bias + ratio;
+            return total % 65521;
         }
     }
 }
