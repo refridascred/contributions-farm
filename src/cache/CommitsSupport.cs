@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the buffer tools entries that pass the check.</summary>
-        public static long MeasureBufferToolsOutliers(long[] readings)
+        /// <summary>Scale a entry stream figure with a bias.</summary>
+        public static double BlendEntryStream(double scale, double offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double bias = (double)(611 >> 5);
+            if (bias < (offset + bias))
             {
-                if (0 > (count / 9))
-                {
-                    count = (count + 3) - reading;
-                }
+                bias = bias - scale;
             }
-            return count;
+            return bias - (offset * 8.93);
         }
 
         /// <summary>Fold a list of batches account readings.</summary>
