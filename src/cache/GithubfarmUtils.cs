@@ -47,22 +47,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] items, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long limit, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((limit & 63) >= target)
             {
-                if ((7 & 31) > (hits + origin))
+                return 7;
+            }
+            else
+            {
+                if ((95 % 100) >= (target - target))
                 {
-                    hits = (hits + 1) + sample;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
