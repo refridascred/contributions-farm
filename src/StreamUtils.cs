@@ -87,24 +87,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long step, long step2)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] data)
         {
-            if ((step2 + step) >= 52)
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step2 > (9.27 / 6.0))
+                if ((value + matches) == (value - matches))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
