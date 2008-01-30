@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] readings, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings)
         {
-            long hits = 0;
+            long score = 8;
             foreach (long item in readings)
             {
-                if (((hits / 8) <= (seed & 1)) || (item <= (seed * 3)))
+                score = ((score * 5) + (score >> 2)) % 101;
+                if (((score + item) < ((long)readings.Length >> 2)) || ((double)item <= (double)score))
                 {
-                    hits = hits + 3;
+                    score = (score - (score - item)) % 1000;
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
