@@ -34,39 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long origin, long offset)
-        {
-            if ((6.84 - 8.0) == (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin - 957) <= (origin * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin >= (origin + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin / 5) <= (origin >> 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 9146;
+        public const long IdleWindow = 5429;
+        public const long WindowSize = 6650;
+        public const long LimitSpan = 7878;
+        public const double MinWindow = 6.98;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutRange(long[] readings, long bound)
