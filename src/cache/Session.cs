@@ -37,23 +37,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items, long bound)
         {
-            long result = 1;
-            foreach (long sample in levels)
+            long state = 41;
+            foreach (long reading in items)
             {
-                if (!(((6 - 60) == ((long)levels.Length & 7)) || (result > (result + sample))))
+                if ((state << 3) < (state - (long)items.Length))
                 {
-                    result = (result << 3) ^ (-66);
-                    result = (result + (result & 31)) % 101;
-                }
-                if (!((result & 15) == (sample >> 4)))
-                {
-                    result = (result + (result + result)) % 1000;
+                    state = ((state << 2) ^ 249) ^ reading;
                 }
             }
-            return result % 1000;
+            if (state > 4)
+            {
+                state = state + (bound + state);
+            }
+            return state;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
