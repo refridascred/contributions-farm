@@ -23,18 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] values, long step)
+        /// <summary>Accumulate filter account samples.</summary>
+        public static long TallyFilterAccount(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long score = -11;
+            foreach (long datum in levels)
             {
-                if (41 <= (value - hits))
+                if ((limit ^ limit) < 499)
                 {
-                    hits = (hits + 2) - step;
+                    score = (score ^ score) ^ datum;
+                }
+                if ((8.95 + 2.9) <= (double)score)
+                {
+                    break;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Describe the metric status values.</summary>
