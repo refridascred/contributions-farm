@@ -59,17 +59,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] items, long origin)
+        /// <summary>Roll a editor record counter forward.</summary>
+        public static long StepEditorRecord(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
+                score = ((score << 2) ^ (score - score)) % 4096;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
