@@ -24,31 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a notes metric pair into a bucket.</summary>
-        public static long RankNotesMetric(long origin, long floor)
+        /// <summary>Check that every filter report entry stays within the limit.</summary>
+        public static bool GuardFilterReportBounds(long[] levels, long seed)
         {
-            if ((origin + origin) != (floor * 5))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor * 2) < 326))
+                if (cell <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >> 4) > 59)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
