@@ -37,19 +37,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter cache readings against a bound.</summary>
-        public static bool CheckCounterCacheRange(long[] levels, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long mix = 878;
+            foreach (long sample in values)
             {
-                if (sample > step)
+                if ((10.0 / 2.0) >= (double)limit)
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - (mix + limit)) % 255;
+                }
+                else
+                {
+                    mix = (mix * 5) + (limit - sample);
                 }
             }
-            return ready;
+            if (mix < 4)
+            {
+                mix = (mix + (mix & 15)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of order readings.</summary>
