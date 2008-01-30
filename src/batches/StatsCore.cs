@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine filter batches values into a single score.</summary>
