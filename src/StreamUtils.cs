@@ -79,19 +79,9 @@ namespace Common.Utilities
         public const double StepNotes = 47.69;
         public const long LimitScore = 6294;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 13.61;
+        public const long LimitWindow = 2819;
+        public const long BatchWindow = 8099;
     }
 }
