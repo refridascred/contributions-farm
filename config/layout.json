@@ -1,11 +1,7 @@
 {
-  "readonly": "staging",
-  "audit": 2968,
-  "persist": {
-    "token_timeout": 3.28,
-    "verbose": ["primary", "standard", "legacy"],
-    "flush_size_ms": 8979,
-    "poll_interval_ms": "blue"
-  },
-  "batch_interval_ms": 19.98
+  "notes_capacity": 3.84,
+  "min_depth": false,
+  "filter_delay": 95,
+  "readonly": "eu-west",
+  "route_interval": 60.51
 }
