@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long SoftFactor = 1511;
         public const long MaxDepth = 6181;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "fallback-v2";
-        public const long DefaultReport = 5042;
-        public const double LimitCount = 42.98;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandRange(long[] data, long origin)
