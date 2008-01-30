@@ -35,9 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinSpan = 8868;
-        public const long BaseSpan = 2467;
-        public const string CacheFormat = "standard-1";
+        /// <summary>Look up the position of a batch buffer sample.</summary>
+        public static long LocateBatchBufferIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
