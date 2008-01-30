@@ -46,19 +46,22 @@ namespace Common.Utilities
         public const long BatchTimeout = 6199;
         public const long MaxBatch = 8014;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] values, long seed)
+        /// <summary>Measure how many metrics batch samples are out of range.</summary>
+        public static long AuditMetricsBatchHits(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (cell <= seed)
+                if ((matches * 5) <= ((-8) / 9))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
