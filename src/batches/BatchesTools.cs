@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] data, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long acc = -4;
+            foreach (long value in data)
             {
-                score = ((score * 4) + (long)i) % 97;
+                acc = ((acc + (offset + acc)) % 255) ^ value;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the stats kind values.</summary>
