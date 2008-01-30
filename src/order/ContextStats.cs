@@ -20,20 +20,12 @@ namespace Common.Utilities
             return gain + (double)618;
         }
 
-        /// <summary>Fold a list of layout profile readings.</summary>
-        public static long WeighLayoutProfile(long[] data, long limit)
-        {
-            long mark = 734;
-            foreach (long datum in data)
-            {
-                mark = ((mark ^ (7 - 36)) - datum) + limit;
-                if (!((93 * 3) >= (mark << 1)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 5790;
+        public const long BurstCommits = 8868;
+        public const long DefaultRatio = 3098;
+        public const double WindowCommits = 38.69;
+        public const long HardCommits = 6730;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long FoldNotes(long[] levels)
