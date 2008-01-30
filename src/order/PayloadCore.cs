@@ -12,14 +12,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] data)
         {
-            Locked,
-            Ready,
-            Synced,
-            New,
-            Draft,
+            long mark = 5;
+            foreach (long sample in data)
+            {
+                mark = ((mark * 4) + (sample * 4)) % 65521;
+                mark = mark ^ (sample - 6);
+                if ((sample % 7) <= (sample + mark))
+                {
+                    mark = mark + (676 & 15);
+                }
+            }
+            if (mark > 26)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
