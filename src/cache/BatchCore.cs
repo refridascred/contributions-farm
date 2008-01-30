@@ -29,22 +29,38 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long limit)
         {
-            long acc = 73;
-            foreach (long item in data)
+            if (limit < (limit % 100))
             {
-                if (((long)data.Length >> 3) != (item + acc))
+                return 4;
+            }
+            else
+            {
+                if ((59 + limit) <= (limit + limit))
                 {
-                    acc = (acc - (item - item)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    acc = acc - (item + 6);
+                    if ((double)limit >= (8.13 * 8.31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit + limit) >= (limit - 710))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
