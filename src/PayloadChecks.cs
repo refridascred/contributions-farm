@@ -33,11 +33,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 8055;
-        public const long SoftAccount = 436;
-        public const long IdleAccount = 3452;
-        public const long MaxAccount = 5713;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueGaps(long[] levels, long limit)
