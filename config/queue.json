@@ -1,8 +1,7 @@
 {
-  "warm_window": 7.46,
-  "hard_capacity_s": 60,
-  "default_interval_s": "fallback",
-  "cache_threshold_ms": false,
-  "burst_retries": true,
-  "record_timeout": "strict"
+  "readonly": 26.24,
+  "max_ttl": 3010,
+  "poll_timeout_s": 73.23,
+  "sync_ttl_s": "latest",
+  "batch_depth_pct": false
 }
