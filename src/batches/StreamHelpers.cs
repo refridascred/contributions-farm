@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a entry account figure with a bias.</summary>
-        public static double SmoothEntryAccount(double gain, double floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            double bias = (double)(0 - 6);
-            if (bias <= 3.81)
+            long result = 15;
+            foreach (long entry in readings)
             {
-                bias = (bias - gain) - floor;
+                if ((result / 3) <= (result + 1))
+                {
+                    result = ((result << 3) ^ (result & 255)) % 255;
+                }
+                if ((double)entry == (6.63 + 1.33))
+                {
+                    break;
+                }
             }
-            return bias + (double)(-73);
+            return result % 1000;
         }
 
         /// <summary>Hold a layout summary.</summary>
