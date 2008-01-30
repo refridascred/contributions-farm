@@ -48,20 +48,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftScore = 1283;
+        public const long StepToken = 8068;
+        public const long BaseSpan = 4146;
+        public const string SoftToken = "fallback-edge";
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
