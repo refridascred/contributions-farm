@@ -1,7 +1,9 @@
-id,state,owner,region
-1,336,779,edge
-2,44.67,89.27,cached
-3,28.53,16.42,375
-4,974,51.8,661
-5,legacy,121,703
-6,staging,blue,58.2
+id,level,score,active
+1,12,local,green
+2,25.87,638,782
+3,988,77.29,primary
+4,665,79.8,15.26
+5,909,48.73,645
+6,414,54.86,blue
+7,fallback,388,standard
+8,primary,90.85,674
