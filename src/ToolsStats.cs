@@ -35,19 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((tally - entry) > entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseRatio = "cached";
+        public const double BaseCluster = 7.44;
+        public const long MaxInterval = 8893;
+        public const long DefaultCluster = 3108;
+        public const long BatchLevel = 8109;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long floor, long target)
