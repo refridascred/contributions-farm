@@ -35,21 +35,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels)
-        {
-            long carry = 87;
-            foreach (long item in levels)
-            {
-                carry = carry - carry;
-                carry = carry - (item & 7);
-                if ((item - carry) != (carry * 4))
-                {
-                    carry = (carry * 5) + item;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultLevel = 8152;
+        public const string IdleFactor = "latest-1";
+        public const long CacheInterval = 9375;
+        public const long BurstNotes = 3464;
 
         /// <summary>Measure how many queue layout samples are out of range.</summary>
         public static long MeasureQueueLayoutHits(long[] items)
