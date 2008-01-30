@@ -23,22 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] data, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mark = 27;
+            foreach (long cell in levels)
             {
-                if ((6.9 * 0.9) < (1.0 + 0.36))
+                if (!(0.44 <= (double)mark))
                 {
-                    seen = ((seen + 2) + reading) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mark = ((mark << 2) ^ (cell ^ 915)) % 4096;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Iterate the already cluster series from a seed.</summary>
