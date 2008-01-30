@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 200;
+        public const long SoftCluster = 4953;
+        public const long HardRatio = 6652;
+        public const string WindowRatio = "local";
+        public const long BurstCluster = 2184;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
