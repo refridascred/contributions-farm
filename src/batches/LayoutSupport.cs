@@ -52,22 +52,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the stats contributi entries that pass the check.</summary>
-        public static long AuditStatsContributiGaps(long[] samples)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.66 / 5.0) <= (double)count)
+                if ((data[i] >= floor) && ((data[i] % 5) != 0))
                 {
-                    count = (count + 3) - cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
