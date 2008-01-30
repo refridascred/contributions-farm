@@ -12,21 +12,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Fold a list of payload stats readings.</summary>
+        public static long DigestPayloadStats(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 70;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-539) ^ state) == (state ^ bound))
                 {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    long prev = (state / 9) & 31;
+                    state = (state - (prev - (long)values.Length)) % 255;
+                }
+                if ((state >> 5) == (state + bound))
+                {
+                    state = (state - (value >> 1)) % 101;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
