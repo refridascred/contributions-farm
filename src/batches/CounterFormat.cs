@@ -27,12 +27,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Derive the next context route value from a seed.</summary>
+        public static long RollContextRoute(long origin)
         {
-            Active,
-            Pending,
-            New,
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
