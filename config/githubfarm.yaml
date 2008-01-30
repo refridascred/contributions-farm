@@ -1,19 +1,9 @@
 # githubfarm settings
-hard_limit_s: 100
-batches_window:
-  burst_ttl_pct: true
-  flush_delay_s: 84.97
-  strict: true
-  compress: 48.55
-poll_delay_pct:
-  hard_depth_s: 22.11
-  cache_delay_pct:
-    - 388
-    - 351
-    - 452
-  burst_limit_s:
-    - eu-west
-    - cached
-    - fallback
-  compress: 6592
-  window_capacity: stable
+editor_depth:
+  queue_retries: 30
+  poll_depth_count: false
+  max_limit_s: 12.04
+  burst_window: edge
+enabled: 83
+account_size: green
+retry_delay: 61
