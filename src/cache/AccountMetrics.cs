@@ -37,15 +37,19 @@ namespace Common.Utilities
         public const long BaseStats = 4602;
         public const double BurstStats = 57.45;
 
-        /// <summary>Iterate the buffer support series from a seed.</summary>
-        public static long IterateBufferSupport(long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double gain, double bias)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            double ratio = (double)(24 & 127);
+            if (ratio >= (double)6)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                ratio = (ratio - (double)5) - gain;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - (double)36;
         }
 
         /// <summary>Define token limits and defaults.</summary>
