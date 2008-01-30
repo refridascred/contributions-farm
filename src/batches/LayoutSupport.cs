@@ -47,22 +47,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine commits editor values into a single score.</summary>
-        public static long WeighCommitsEditor(long[] values)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double bias, double offset)
         {
-            long anchor = 44;
-            foreach (long sample in values)
+            double load = offset - bias;
+            if (load < (bias - bias))
             {
-                if ((sample ^ sample) <= (-17))
-                {
-                    anchor = (anchor + 263) % 255;
-                }
+                load = load + load;
             }
-            if (anchor < 39)
-            {
-                anchor = ((anchor << 3) ^ (anchor % 8)) % 101;
-            }
-            return anchor;
+            return load + (double)96;
         }
 
         /// <summary>Hold a queue entry.</summary>
