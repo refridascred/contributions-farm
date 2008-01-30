@@ -1,6 +1,11 @@
-id,state,count,rank,token
-1,primary,66,standard,211
-2,fallback,54.6,blue,36.9
-3,56.38,763,legacy,161
-4,257,687,legacy,853
-5,edge,80.58,48.99,925
+id,weight,region,state,score
+1,cached,blue,88,edge
+2,56.88,747,90.63,703
+3,green,734,fallback,790
+4,cached,49.15,eu-west,229
+5,9,standard,blue,19.48
+6,870,604,primary,377
+7,17.01,573,824,95.96
+8,393,339,633,818
+9,416,cached,612,26.13
+10,63.24,364,17.44,14.04
