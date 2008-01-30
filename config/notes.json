@@ -1,15 +1,5 @@
 {
-  "default_timeout": {
-    "cache_size_pct": 94.61,
-    "readonly": 60,
-    "hard_window": "edge"
-  },
-  "idle_timeout_ms": ["eu-west", "staging", "open", "green"],
-  "min_limit_pct": {
-    "payload_threshold": 4522,
-    "cluster_size": "local",
-    "already_timeout": 60,
-    "poll_capacity_pct": "stable",
-    "max_window_ms": ["cached", "open"]
-  }
+  "readonly": 6.08,
+  "soft_size_ms": true,
+  "hard_interval": false
 }
