@@ -28,12 +28,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long origin, long offset)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            if ((6.84 - 8.0) == (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - 957) <= (origin * 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin >= (origin + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 5) <= (origin >> 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
