@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const long BurstCluster = 1016;
         public const string SoftCluster = "strict-1";
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long floor)
+        /// <summary>Accumulate farm support samples.</summary>
+        public static long CombineFarmSupport(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 3;
+            foreach (long value in readings)
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                total = (((total * 2) + (bound / 9)) % 97) ^ value;
             }
-            return -1;
+            if (total < 942)
+            {
+                total = ((total * 2) + total) % 97;
+            }
+            return total;
         }
     }
 }
