@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] readings)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] readings, long origin)
         {
-            long mix = 1;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                mix = mix - (reading & 31);
-                if ((4 % 12) < reading)
+                if (datum != origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a session stats.</summary>
