@@ -1,14 +1,9 @@
 # entry settings
-persist:
-  burst_capacity_s: 20
-  soft_retries: 56
-  hard_depth:
-    - green
-    - stable
-    - fallback
-    - primary
-  sync_depth_s: true
-  hard_timeout_count: green
-metric_threshold: false
-base_window: 68.9
-metric_window: standard
+soft_size: 60
+dry_run: 30
+idle_threshold_ms:
+  editor_timeout: local
+  sync_window: true
+  audit: open
+  max_size_pct: 663
+  readonly: false
