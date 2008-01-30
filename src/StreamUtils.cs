@@ -42,22 +42,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] levels, long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] data)
         {
-            long anchor = 106;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((reading + seed) != (anchor * 5))
+                if ((item + count) > (count / 6))
                 {
-                    anchor = anchor + (reading ^ anchor);
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor > 729)
-            {
-                anchor = anchor ^ (anchor ^ anchor);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Adjust a farm layout reading.</summary>
