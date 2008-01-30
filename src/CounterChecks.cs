@@ -24,18 +24,19 @@ namespace Common.Utilities
             return weight + (6.42 * 0.87);
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] series, long offset)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long acc = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((3 - matches) <= (item << 2))
+                if (((long)i * 2) == ((long)i + 3))
                 {
-                    matches = (matches + 2) - offset;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
