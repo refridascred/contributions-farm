@@ -36,21 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (floor + floor) - (ratio / 7.0);
+            if (rate > (floor + 0.96))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + (double)476;
             }
-            return matches;
+            else
+            {
+                rate = rate - (rate - floor);
+            }
+            return rate + (double)1;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
