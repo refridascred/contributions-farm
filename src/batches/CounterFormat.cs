@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (cell >= (seen - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "primary-v2";
+        public const long HardContributi = 6126;
+        public const long BaseContributi = 1716;
+        public const long RetryRatio = 6607;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string RetryReport = "fallback-v2";
