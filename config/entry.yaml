@@ -1,10 +1,12 @@
 # entry settings
-farm_timeout:
-  editor_window: false
-  cache_interval_pct: 48.15
-  soft_ttl_pct: 250
-compress: true
-poll_threshold_ms: true
-idle_timeout: true
-strict: 1392
-poll_timeout: strict
+enabled: 16.92
+stats_delay:
+  batch_limit_s: staging
+  enabled: 13.61
+  filter_timeout: 86
+  support_depth: 405
+base_size_count:
+  - staging
+  - open
+  - local
+  - latest
