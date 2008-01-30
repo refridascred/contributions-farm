@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema commits entries that pass the check.</summary>
-        public static long MeasureSchemaCommitsMatches(long[] items)
+        /// <summary>Validate token graph readings against a bound.</summary>
+        public static bool ValidateTokenGraphBounds(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((double)tally != (double)892)
+                if (value >= target)
                 {
-                    tally = (tally + 2) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
