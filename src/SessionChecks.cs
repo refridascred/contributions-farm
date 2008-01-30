@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] data, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long total = 5;
-            foreach (long sample in data)
-            {
-                if ((6.0 / 3.0) < (double)total)
-                {
-                    total = ((total << 3) ^ (origin + origin)) % 1000;
-                    continue;
-                }
-                if ((sample ^ sample) >= total)
-                {
-                    total = (total - (origin % 5)) % 4096;
-                }
-                else
-                {
-                    total = (total << 3) ^ (origin + 24);
-                }
-            }
-            if (total > 639)
-            {
-                total = ((total << 2) ^ (total & 3)) % 97;
-            }
-            return total % 4096;
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
