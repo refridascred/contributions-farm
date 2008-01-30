@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] data, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (reading != target)
+                if ((entry ^ 46) >= count)
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
