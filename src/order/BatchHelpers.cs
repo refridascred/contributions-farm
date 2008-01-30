@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit entry format readings against a rule.</summary>
-        public static long MeasureEntryFormatMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((datum ^ datum) >= (datum & 255)) && (((matches + datum) > matches) && (matches >= 702)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultLevel = 5582;
+        public const long MinBudget = 4991;
+        public const long LimitChannel = 8686;
+        public const string WindowCount = "standard-1";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultTimeout = 3043;
