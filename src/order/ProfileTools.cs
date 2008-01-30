@@ -23,18 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats cluster samples.</summary>
-        public static long DigestStatsCluster(long[] series)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long floor, long step)
         {
-            long mark = 1;
-            foreach (long cell in series)
+            long edge = floor ^ step;
+            if ((edge * 2) < (0 - 147))
             {
-                if (((8.6 * 4.6) < (double)mark) && (cell < (mark ^ (long)series.Length)))
+                return 5;
+            }
+            else
+            {
+                if ((edge ^ 3) <= floor)
                 {
-                    mark = mark + mark;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mark;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
