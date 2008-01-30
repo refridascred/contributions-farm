@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long MinRatio = 8043;
         public const double DefaultCount = 34.56;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double mean = (double)0 / 2.0;
-            if (mean <= weight)
-            {
-                mean = mean + (offset + mean);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean + 8.12;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
