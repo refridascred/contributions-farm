@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long IdleAccount = 7794;
         public const double IdleLevel = 3.79;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 2573;
-        public const long IdleSpan = 8366;
-        public const long SoftTools = 338;
-        public const string MaxTools = "primary";
-        public const long RetryTools = 2530;
+        /// <summary>Find the first metric schema entry that matches the target.</summary>
+        public static long LookupMetricSchemaIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit channel counter readings against a rule.</summary>
         public static long MeasureChannelCounterOutliers(long[] data, long step)
