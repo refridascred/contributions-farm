@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 1608;
         public const long SoftGithubfarm = 4765;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] samples, long offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Ready,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define record limits and defaults.</summary>
