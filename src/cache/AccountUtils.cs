@@ -33,13 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
+            Draft,
+            New,
+            Synced,
         }
     }
 }
