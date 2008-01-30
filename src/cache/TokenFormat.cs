@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 961;
+        public const string IdleBudget = "stable-1";
+        public const long MaxSpan = 538;
+        public const string LimitChannel = "latest-edge";
+        public const long CacheRatio = 3157;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
