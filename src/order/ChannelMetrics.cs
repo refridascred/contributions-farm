@@ -20,39 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long step, long step2)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] items)
         {
-            long edge = step - step2;
-            if ((double)step <= (6.3 - 0.58))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (step <= (step2 / 6))
+                if (!((value >> 4) > (seen & 255)))
                 {
-                    return 0;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (((step + step) > (step2 >> 3)) && ((double)edge < (5.4 - 4.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step2 < (1.7 + 3.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
