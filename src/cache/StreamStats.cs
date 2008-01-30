@@ -23,17 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] data, long step)
+        /// <summary>Blend two githubfarm metric measurements.</summary>
+        public static double ScaleGithubfarmMetric(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(96 / 7);
+            if (scale <= bias)
             {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
+                scale = scale - weight;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (scale / 6.0)) - (double)(long)i;
+            }
+            return scale - (double)12;
         }
 
         /// <summary>Describe the stats level values.</summary>
