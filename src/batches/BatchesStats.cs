@@ -46,22 +46,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the payload filter entries that pass the check.</summary>
-        public static long CountPayloadFilterHits(long[] levels, long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((offset & 127) >= (33 << 2))
-                {
-                    seen = (seen + 2) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Adjust a window reading.</summary>
