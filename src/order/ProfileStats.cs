@@ -63,10 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftFactor = 5282;
-        public const long SoftProfile = 8695;
-        public const double LimitProfile = 10.08;
-        public const double DefaultProfile = 15.35;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((value << 3) >= (hits >> 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
