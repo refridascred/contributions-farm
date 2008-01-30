@@ -38,18 +38,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit cache graph readings against a rule.</summary>
-        public static long TallyCacheGraphGaps(long[] readings, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((87 % 100) <= (item ^ 8)) || (hits > origin))
+                if (target > (-8))
                 {
-                    hits = hits + 2;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of window support readings.</summary>
