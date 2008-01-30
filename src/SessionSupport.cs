@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Active,
-            Closed,
-            Pending,
-            Retry,
-            Paused,
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
