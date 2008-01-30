@@ -49,12 +49,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long target)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc << 3) ^ ((long)i + 9);
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Combine stream context values into a single score.</summary>
