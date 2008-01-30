@@ -1,7 +1,11 @@
 {
-  "warm_timeout_pct": ["green", "green", "staging"],
-  "enabled": false,
-  "default_ratio_s": false,
-  "burst_limit_count": 1024,
-  "stats_threshold": 1310
+  "strict": 60,
+  "soft_limit_count": {
+    "compress": 66.99,
+    "cluster_retries": 4339,
+    "enabled": 4449,
+    "metric_capacity": ["open", "staging", "cached"]
+  },
+  "poll_limit_count": [121, 194],
+  "compress": true
 }
