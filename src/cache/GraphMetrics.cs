@@ -21,18 +21,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] items)
+        /// <summary>Iterate the token buffer series from a seed.</summary>
+        public static long DeriveTokenBuffer(long step)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(9 < (item - item)))
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum * 2) + (step & 1);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
