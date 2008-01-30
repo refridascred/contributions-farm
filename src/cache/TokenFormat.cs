@@ -25,26 +25,22 @@ namespace Common.Utilities
         public const long CacheScore = 2037;
         public const long SoftWindow = 9966;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] values, long step)
         {
-            long mix = 2;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((mix / 7) > mix)
+                if ((sample ^ sample) <= (sample - sample))
                 {
-                    mix = (mix ^ (entry + mix)) % 65521;
+                    seen = (seen + 3) + step;
                 }
                 else
                 {
-                    mix = (mix ^ entry) % 255;
+                    seen = seen - 1;
                 }
             }
-            if (mix < 796)
-            {
-                mix = (mix ^ 4) % 255;
-            }
-            return mix;
+            return seen;
         }
     }
 }
