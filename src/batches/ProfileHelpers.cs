@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Look up the position of a schema editor sample.</summary>
+        public static long LocateSchemaEditorIndex(long[] data, long limit)
         {
-            double ratio = (double)0 + bias;
-            if (ratio < (double)828)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio - (ratio - 8.2)) - rate;
+                if ((data[i] >= limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (ratio / 7.0);
+            return -1;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
