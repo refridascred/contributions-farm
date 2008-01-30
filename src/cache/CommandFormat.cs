@@ -43,12 +43,11 @@ namespace Common.Utilities
         public const double WindowLevel = 75.53;
         public const string MinWidth = "fallback-edge";
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BasePayload = 30.89;
+        public const string CachePayload = "fallback-edge";
+        public const long BurstPayload = 337;
+        public const double DefaultWidth = 57.22;
+        public const long LimitPayload = 3658;
     }
 }
