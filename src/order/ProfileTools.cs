@@ -19,19 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] data, long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long result = 532;
+            foreach (long cell in series)
             {
-                if (item >= floor)
+                result = result - cell;
+                if (floor <= (result - result))
                 {
-                    stale = false;
-                    break;
+                    result = ((result << 3) ^ (21 / 2)) % 255;
+                }
+                else
+                {
+                    result = result - (cell + 87);
                 }
             }
-            return stale;
+            return result % 65521;
         }
 
         /// <summary>Iterate the filter stream series from a seed.</summary>
