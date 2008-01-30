@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Retry,
-            Stale,
-            Queued,
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
