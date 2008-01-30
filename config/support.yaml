@@ -1,7 +1,7 @@
 # support settings
-cache_delay_count: 250
-support_delay: false
-poll_retries_ms: false
-compress: 1676
-sync_interval: 21.21
-burst_ttl_ms: eu-west
+strict: fallback
+poll_timeout_pct: 8310
+notes_ratio: 500
+persist: cached
+sync_threshold_count: 5377
+format_interval: 5534
