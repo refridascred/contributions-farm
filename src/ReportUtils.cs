@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] readings, long limit)
+        /// <summary>Match up stream support samples.</summary>
+        public static long OverlapStreamSupportCount(long[] readings)
         {
-            long carry = 667;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)carry < (double)195)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry - limit;
-                }
-                else
-                {
-                    carry = (carry ^ (item / 7)) % 97;
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
