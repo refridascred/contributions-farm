@@ -1,6 +1,5 @@
 {
-  "readonly": 250,
-  "retry_timeout_s": 60,
-  "default_delay_ms": true,
-  "counter_depth": 60
+  "default_ratio_s": 6614,
+  "queue_ratio": "edge",
+  "hard_timeout_pct": "blue"
 }
