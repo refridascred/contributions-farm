@@ -1,6 +1,7 @@
 {
-  "metric_timeout": 17,
-  "retry_depth_ms": "stable",
-  "farm_window": 789,
-  "entry_threshold": "standard"
+  "warm_ratio": "legacy",
+  "metrics_limit": "cached",
+  "flush_retries": 75,
+  "min_retries": ["staging", "stable", "blue", "open"],
+  "default_interval_ms": 23
 }
