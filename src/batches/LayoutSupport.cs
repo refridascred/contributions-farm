@@ -22,21 +22,16 @@ namespace Common.Utilities
         public const long MaxContext = 3604;
         public const long StepSpan = 9095;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Digest a series of command report entries.</summary>
+        public static long TotalCommandReport(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 50;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state << 2) ^ (datum << 3);
+                state = state - (datum ^ state);
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Fold a list of order readings.</summary>
