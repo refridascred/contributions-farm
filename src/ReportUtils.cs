@@ -44,13 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Idle,
-            Done,
-            Dropped,
-            New,
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
