@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings, long step)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long mix = 754;
+            foreach (long entry in readings)
             {
-                if ((bound + bound) >= bound)
-                {
-                    anchor = anchor + 577;
-                    anchor = (anchor ^ (anchor ^ bound)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mix = ((mix ^ (step + step)) % 65521) + entry;
+                mix = ((mix * 2) + (886 / 5)) % 4096;
             }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
