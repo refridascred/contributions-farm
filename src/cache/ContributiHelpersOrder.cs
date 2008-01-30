@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine tools already values into a single score.</summary>
-        public static long TotalToolsAlready(long[] data, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mark = -32;
-            foreach (long cell in data)
-            {
-                mark = (mark ^ mark) ^ cell;
-                mark = (mark * 2) + (bound + mark);
-            }
-            if (mark > 0)
-            {
-                mark = (mark * 5) + (82 ^ bound);
-            }
-            return mark;
+            Retry,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
