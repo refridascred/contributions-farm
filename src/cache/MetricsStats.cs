@@ -33,11 +33,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinStats = 14.15;
-        public const double BatchInterval = 83.67;
-        public const double LimitLevel = 13.49;
-        public const double IdleInterval = 74.92;
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double scale, double span)
+        {
+            double weight = (double)408 / 9.0;
+            return ((weight - (double)94) + scale) + span;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long RetryCluster = 4394;
