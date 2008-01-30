@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] levels, long target)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading == (7.0 + 3.0))
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Roll a buffer githubfarm counter forward.</summary>
