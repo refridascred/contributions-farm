@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 1701;
-        public const string IdleOrder = "fallback";
-        public const long DefaultFactor = 9018;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Ready,
+            Retry,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long RollTools(long bound)
