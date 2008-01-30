@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
             public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
