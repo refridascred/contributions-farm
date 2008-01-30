@@ -1,4 +1,12 @@
 # support settings
-profile_interval: false
-poll_ratio: true
-strict: 74.69
+batch_limit: 88
+sync_depth_ms: fallback
+compress: legacy
+route_depth: eu-west
+base_size_ms: 1024
+flush_timeout_ms:
+  default_timeout_pct: 6792
+  cache_window: 85.01
+  session_threshold: 87
+  min_delay_count: blue
+  enabled: 60
