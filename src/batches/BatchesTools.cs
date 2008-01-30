@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] items)
+        /// <summary>Measure how many metric report samples are out of range.</summary>
+        public static long CountMetricReportHits(long[] values)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((9.9 - 1.67) > (double)datum)
+                if ((double)seen > (11.0 * 7.4))
                 {
-                    count = count + 2;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
