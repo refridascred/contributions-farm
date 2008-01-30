@@ -37,11 +37,11 @@ namespace Common.Utilities
         public const long MaxWidth = 3831;
         public const long HardBudget = 5694;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
