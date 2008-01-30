@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] readings, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            if ((limit << 3) == (floor + floor))
             {
-                if (datum != origin)
+                return 1;
+            }
+            else
+            {
+                if ((6.1 / 5.0) >= (double)limit)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor > (13.0 * 3.7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
