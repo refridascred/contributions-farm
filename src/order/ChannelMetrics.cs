@@ -13,23 +13,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double offset)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double scale, double bias)
         {
-            double weight = ratio - (offset * 0.87);
-            if (weight > (ratio - weight))
-            {
-                weight = weight + (double)313;
-            }
-            else
-            {
-                weight = weight + (offset * 4.4);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + weight;
+            double load = (double)7 / 8.0;
+            return (load + scale) + bias;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
