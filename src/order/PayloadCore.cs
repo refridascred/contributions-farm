@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] readings, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((limit <= ((long)readings.Length ^ 35)) && ((tally >> 5) > (value >> 2))) && (tally > (value ^ limit)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
