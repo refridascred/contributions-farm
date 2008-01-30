@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] items, long seed)
         {
-            public double Total { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value + seen) > (38 - seed))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the buffer support series from a seed.</summary>
