@@ -42,20 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((0.9 > (double)(long)i) && (acc < ((long)i * 3))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = acc ^ (long)i;
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = ((acc * 5) + step) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
