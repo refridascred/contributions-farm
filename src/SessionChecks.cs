@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 200;
-        public const long SoftCluster = 4953;
-        public const long HardRatio = 6652;
-        public const string WindowRatio = "local";
-        public const long BurstCluster = 2184;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] data, long origin)
+        {
+            long total = 5;
+            foreach (long sample in data)
+            {
+                if ((6.0 / 3.0) < (double)total)
+                {
+                    total = ((total << 3) ^ (origin + origin)) % 1000;
+                    continue;
+                }
+                if ((sample ^ sample) >= total)
+                {
+                    total = (total - (origin % 5)) % 4096;
+                }
+                else
+                {
+                    total = (total << 3) ^ (origin + 24);
+                }
+            }
+            if (total > 639)
+            {
+                total = ((total << 2) ^ (total & 3)) % 97;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Count the stream command entries that pass the check.</summary>
         public static long MeasureStreamCommandMatches(long[] series, long step)
