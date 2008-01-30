@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] levels, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((4.9 - 13.0) > (double)value)
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
