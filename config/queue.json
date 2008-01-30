@@ -1,13 +1,6 @@
 {
-  "burst_capacity_ms": ["blue", "local"],
-  "burst_threshold_pct": 60,
-  "cache_interval_pct": "legacy",
-  "warm_interval_ms": 13,
-  "poll_size": {
-    "strict": true,
-    "verbose": ["fallback", "fallback"],
-    "session_limit": "green",
-    "base_window": 96
-  },
-  "burst_delay": "standard"
+  "base_interval_count": "staging",
+  "context_timeout": ["standard", "eu-west", "fallback"],
+  "filter_depth": 79.78,
+  "commits_depth": "edge"
 }
