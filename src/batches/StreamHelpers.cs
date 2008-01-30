@@ -37,32 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long origin, long origin2)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long floor)
         {
-            long diff = origin ^ origin2;
-            if ((double)diff > (double)origin)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 7;
+                long slot = (floor ^ floor) ^ floor;
+                slot = (slot ^ ((long)i % 8)) % 4096;
+                sum = (sum << 2) ^ (slot + sum);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)origin2 != (6.01 / 8.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((((-362) ^ diff) >= diff) || ((origin + origin) < 6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
