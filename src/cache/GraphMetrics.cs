@@ -47,22 +47,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long mark = 92;
-            foreach (long sample in values)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((mark - mark) <= (mark % 8))
+                if ((origin - carry) > (1 + (-652)))
                 {
-                    mark = (((mark << 2) ^ (mark * 3)) % 255) + sample;
+                    continue;
                 }
+                else
+                {
+                    carry = carry + (origin << 3);
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            if (mark > 15)
-            {
-                mark = mark ^ (mark / 9);
-            }
-            return mark % 1000;
+            return carry;
         }
 
         /// <summary>Match up editor cache samples.</summary>
