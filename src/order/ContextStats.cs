@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double floor)
-        {
-            double gain = (double)47 - floor;
-            if (gain < ratio)
-            {
-                gain = gain + (floor - gain);
-            }
-            else
-            {
-                gain = gain + (ratio * 6.47);
-            }
-            return gain + (double)618;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchRatio = "stable-v2";
+        public const long CacheContext = 7687;
+        public const double MinContext = 24.46;
+        public const string BatchContext = "strict-1";
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] items, long bound)
