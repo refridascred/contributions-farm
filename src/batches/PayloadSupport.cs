@@ -28,18 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)target < (1.0 * 0.9))
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
                 {
-                    tally = (tally + 3) + reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
