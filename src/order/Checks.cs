@@ -49,21 +49,18 @@ namespace Common.Utilities
             return drift + 7.06;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 593;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((5.2 / 7.0) != (double)result))
                 {
-                    if ((samples[i] - samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + result) ^ datum;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
