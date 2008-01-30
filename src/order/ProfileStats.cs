@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            long state = -5;
-            foreach (long datum in items)
-            {
-                state = (state ^ (8 % 10)) % 65521;
-                if ((-582) > (datum / 8))
-                {
-                    break;
-                }
-            }
-            return state;
+            double ratio = span;
+            return ratio - (rate * 3.02);
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
