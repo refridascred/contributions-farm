@@ -43,18 +43,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] series, long limit)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((double)matches <= (double)59) || ((matches * 2) <= (matches & 1))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = ((matches + 2) + cell) - limit;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count batches filter pairs that satisfy a relation.</summary>
