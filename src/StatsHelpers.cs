@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Queued,
-            Draft,
-            Dropped,
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
