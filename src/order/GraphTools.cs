@@ -56,19 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long step)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != step)
+                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
