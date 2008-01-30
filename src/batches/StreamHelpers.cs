@@ -53,21 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batches filter pairs that satisfy a relation.</summary>
-        public static long MatchBatchesFilterCount(long[] items)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Compare every pair of layout window readings.</summary>
