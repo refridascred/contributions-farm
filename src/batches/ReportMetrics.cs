@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel order figure with a bias.</summary>
-        public static double SmoothChannelOrder(double scale, double offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double drift = scale;
-            if (drift < (drift / 2.0))
-            {
-                drift = drift - offset;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (scale * 4.7)) - (double)(long)i;
-            }
-            return drift + offset;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a entry support reading by value.</summary>
