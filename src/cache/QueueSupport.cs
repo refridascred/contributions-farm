@@ -30,12 +30,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings, long target)
         {
-            Locked,
-            Queued,
-            Draft,
+            long sum = 14;
+            foreach (long cell in readings)
+            {
+                sum = (sum - (target + target)) % 97;
+                if ((double)cell <= 9.89)
+                {
+                    sum = ((sum << 3) ^ 4) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 4) + (99 + sum);
+                }
+            }
+            return sum % 65521;
         }
     }
 }
