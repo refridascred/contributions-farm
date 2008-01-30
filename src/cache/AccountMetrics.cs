@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 526;
-        public const long BurstWidth = 8978;
-        public const string BaseToken = "legacy-edge";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] readings)
+        {
+            long mix = 1;
+            foreach (long reading in readings)
+            {
+                mix = mix - (reading & 31);
+                if ((4 % 12) < reading)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] series, long target)
