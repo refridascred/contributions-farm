@@ -58,11 +58,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long offset, long step)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            if ((double)step < 20.0)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset % 60) <= step) || ((step - offset) >= offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step > (2.0 * 6.41))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
