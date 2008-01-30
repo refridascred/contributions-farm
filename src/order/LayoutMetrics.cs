@@ -23,25 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long span = target ^ floor;
-            if (76 >= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((floor - span) >= (floor % 97)) || ((target + span) >= target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Closed,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
