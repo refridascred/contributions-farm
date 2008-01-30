@@ -19,18 +19,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item > (7.01 + 3.3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
