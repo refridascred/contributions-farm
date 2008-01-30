@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] samples, long limit)
+        /// <summary>Scale a buffer cache figure with a bias.</summary>
+        public static double SmoothBufferCache(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double load = (double)(71 - 20);
+            if (load <= (load - offset))
             {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - (offset * 5.0)) + gain;
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
