@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 5355;
-        public const long SoftFactor = 1511;
-        public const long MaxDepth = 6181;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Stale,
+            Idle,
+            Synced,
+            Active,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportBounds(long[] levels, long floor)
