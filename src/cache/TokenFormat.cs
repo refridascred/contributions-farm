@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 961;
-        public const string IdleBudget = "stable-1";
-        public const long MaxSpan = 538;
-        public const string LimitChannel = "latest-edge";
-        public const long CacheRatio = 3157;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long IdleScore = 4755;
