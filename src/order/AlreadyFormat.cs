@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] series, long limit)
-        {
-            long result = 404;
-            foreach (long datum in series)
-            {
-                if ((limit + result) <= result)
-                {
-                    result = ((result << 2) ^ (datum + limit)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 5020;
+        public const long BurstEditor = 2560;
+        public const long BatchRatio = 5622;
+        public const long LimitBudget = 619;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long SortReport(long seed, long seed2)
