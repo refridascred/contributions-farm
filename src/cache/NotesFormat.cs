@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] data, long target)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            if (!((19.0 * 9.0) < (double)bound))
             {
-                if (entry != target)
+                return 7;
+            }
+            else
+            {
+                if (!((offset << 2) < 55))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((5.0 + 7.06) <= (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((46 & 255) > (bound + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
