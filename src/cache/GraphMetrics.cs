@@ -25,19 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items, long step)
         {
-            long score = 464;
-            foreach (long item in items)
+            long score = 8;
+            foreach (long value in items)
             {
-                score = ((score * 5) + (item >> 5)) % 1000;
+                if ((score - score) > score)
+                {
+                    score = (score ^ (score + value)) % 101;
+                    score = ((score << 2) ^ (score + step)) % 65521;
+                    continue;
+                }
+                score = score - (59 / 3);
             }
-            if (score < (-8))
+            if (score < 120)
             {
-                score = (score ^ (score - 14)) % 4096;
+                score = (score - score) % 4096;
             }
-            return score % 65521;
+            return score;
         }
 
         /// <summary>Rank format input into a small class.</summary>
