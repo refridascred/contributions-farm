@@ -12,5 +12,16 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=249
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-green}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy fallback latest; do
+    log "checking ${item}"
+done
