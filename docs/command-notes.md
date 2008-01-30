@@ -1,11 +1,11 @@
 # Command notes
 
-Use layout settings to tune how often layout data is refreshed.
-When a tools fails, the graph handler retries a few times before giving up.
-The route module keeps githubfarm values in sync with the entry cache.
+Use context settings to tune how often profile data is refreshed.
+Keep support and channel names short and lowercase.
 
 ## Guidelines
 
-- Document new buffer fields
-- Log every account change
-- Prefer channel defaults
+- Log every stats change
+- Validate format input early
+- Document new counter fields
+- Prefer buffer defaults
