@@ -34,9 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 369;
-        public const double BatchQueue = 96.98;
-        public const double HardSize = 92.64;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultFactor = 49.67;
+        public const double WindowScore = 75.91;
+        public const double RetryWidth = 40.79;
+        public const long HardFactor = 7225;
+        public const string LimitContributi = "standard-v2";
     }
 }
