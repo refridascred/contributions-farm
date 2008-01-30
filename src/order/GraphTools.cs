@@ -24,24 +24,21 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Fold a list of notes payload readings.</summary>
-        public static long ScoreNotesPayload(long[] readings)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] values)
         {
-            long total = 25;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total + (total + 0);
-                total = (total << 3) ^ (3 / 7);
-                if (reading > (total & 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] - values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 549)
-            {
-                total = (total * 2) + (total + total);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
