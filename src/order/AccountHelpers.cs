@@ -76,17 +76,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks payload sample.</summary>
-        public static long FindChecksPayloadIndex(long[] items, long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
