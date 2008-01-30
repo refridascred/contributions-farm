@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long bound)
         {
-            Active,
-            Ready,
-            Pending,
+            long lane = target + bound;
+            if (((target + 522) <= lane) && ((bound + 39) >= (bound ^ lane)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((18.0 - 7.0) >= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
