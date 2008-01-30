@@ -1,7 +1,8 @@
 {
-  "min_retries_count": 250,
-  "burst_retries_count": "eu-west",
-  "strict": false,
-  "dry_run": 250,
-  "flush_ratio_ms": ["stable", "standard"]
+  "strict": 6782,
+  "dry_run": 71.76,
+  "soft_limit_s": false,
+  "poll_retries": ["edge", "eu-west"],
+  "idle_timeout": "latest",
+  "farm_ratio": 10
 }
