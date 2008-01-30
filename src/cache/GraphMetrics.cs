@@ -40,16 +40,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] series, long offset)
-        {
-            long anchor = 58;
-            foreach (long reading in series)
-            {
-                anchor = (((anchor << 3) ^ (anchor + offset)) % 65521) + reading;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheWidth = "primary-edge";
+        public const double StepLevel = 55.39;
+        public const long IdleDepth = 8115;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long SeriesGraph(long origin)
