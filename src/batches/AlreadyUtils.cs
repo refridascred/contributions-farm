@@ -42,19 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] samples, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
