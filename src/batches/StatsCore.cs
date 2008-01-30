@@ -22,11 +22,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            New,
+            Stale,
+            Failed,
+            Draft,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
