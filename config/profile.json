@@ -1,6 +1,20 @@
 {
-  "token_threshold": 28.63,
-  "batch_ttl": "open",
-  "metrics_limit": ["strict", "legacy", "open"],
-  "min_retries_s": "standard"
+  "contributi_ttl": ["open", "standard"],
+  "soft_ratio": "eu-west",
+  "cache_capacity_count": 30,
+  "enabled": {
+    "sync_depth_ms": 60,
+    "batches_window": 7731,
+    "default_ttl_s": {
+      "token_capacity": 100,
+      "record_retries": 100,
+      "window_depth": "fallback",
+      "hard_interval_count": true,
+      "contributi_size": [430, 171, 204, 341],
+      "warm_ttl": "stable"
+    },
+    "filter_delay": 603
+  },
+  "strict": "staging",
+  "sync_threshold_count": "primary"
 }
