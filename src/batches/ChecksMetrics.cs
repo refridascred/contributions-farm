@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "local";
+        public const string BatchCount = "cached";
+        public const long MinAccount = 6839;
+        public const long BaseScore = 3451;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchBounds(long[] data, long seed)
