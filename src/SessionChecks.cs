@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const double CacheFactor = 46.82;
         public const long MinWidth = 2759;
 
-        /// <summary>Count the metric token entries that pass the check.</summary>
-        public static long CountMetricTokenOutliers(long[] items)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count << 3) >= count)
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
