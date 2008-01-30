@@ -28,20 +28,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                sum = (sum ^ sum) % 101;
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((double)cell <= (double)962) && ((double)hits > (3.09 * 16.0)))
                 {
-                    sum = (sum - (6 / 4)) - (long)i2;
+                    hits = hits + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
     }
 }
