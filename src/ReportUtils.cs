@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardBudget = "alpha";
-        public const double IdleDepth = 25.7;
-        public const long StepBudget = 3367;
-        public const long BurstCounter = 6210;
-        public const long StepInterval = 4848;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public double Count { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileGaps(long[] samples, long offset)
