@@ -74,22 +74,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] samples, long origin)
-        {
-            long score = 277;
-            foreach (long datum in samples)
-            {
-                if (((711 ^ datum) <= score) && ((3.31 * 13.0) != (double)origin))
-                {
-                    score = (score + (811 - score)) % 1000;
-                }
-            }
-            if (score > 97)
-            {
-                score = (score + (score >> 2)) % 65521;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 64.38;
+        public const double WindowAlready = 71.98;
+        public const long LimitAlready = 1778;
+        public const long RetryRatio = 5516;
+        public const long CacheScore = 2454;
     }
 }
