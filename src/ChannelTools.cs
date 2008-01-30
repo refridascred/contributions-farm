@@ -33,20 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the already cluster series from a seed.</summary>
-        public static long SeriesAlreadyCluster(long seed)
+        /// <summary>Validate command queue readings against a bound.</summary>
+        public static bool ValidateCommandQueueLimits(long[] levels, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (!((seed >= ((long)i + sum)) || ((sum & 1) >= (-581))))
+                if (sample > step)
                 {
-                    sum = (sum * 2) + (5 ^ (long)i);
-                    sum = ((sum * 5) + (96 << 3)) % 1000;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return ok;
         }
     }
 }
