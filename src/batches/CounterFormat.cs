@@ -27,15 +27,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next context route value from a seed.</summary>
-        public static long RollContextRoute(long origin)
+        /// <summary>Locate a counter window reading by value.</summary>
+        public static long LocateCounterWindowIndex(long[] levels, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
