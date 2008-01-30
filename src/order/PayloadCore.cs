@@ -41,19 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] readings, long limit)
+        /// <summary>Measure how many cache stats samples are out of range.</summary>
+        public static long CountCacheStatsOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (sample >= limit)
+                if ((((double)matches >= (4.02 * 11.0)) || ((double)69 != (double)cell)) && ((double)matches != (4.5 * 17.0)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
