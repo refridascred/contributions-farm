@@ -28,20 +28,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] readings, long offset)
+        /// <summary>Adjust a channel context reading.</summary>
+        public static double BlendChannelContext(double scale, double bias)
         {
-            long total = 9;
-            foreach (long sample in readings)
+            double weight = bias;
+            if (weight < (weight / 6.0))
             {
-                total = ((total * 4) + (offset - sample)) % 101;
-                total = (total << 2) ^ (sample / 3);
+                weight = weight - scale;
             }
-            if (total < 7)
-            {
-                total = total ^ (offset ^ offset);
-            }
-            return total;
+            return weight - bias;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
