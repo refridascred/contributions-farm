@@ -30,12 +30,19 @@ namespace Common.Utilities
         public const long BaseSpan = 7117;
         public const long IdleWidth = 8551;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 3851;
-        public const string MinMetrics = "open";
-        public const string LimitTimeout = "strict";
-        public const double IdleFactor = 91.8;
-        public const double BatchMetrics = 32.35;
+        /// <summary>Audit payload filter readings against a rule.</summary>
+        public static long TallyPayloadFilterGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)matches >= (3.0 - 2.0))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsLimits(long[] samples, long offset)
