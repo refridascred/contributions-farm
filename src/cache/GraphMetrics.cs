@@ -40,21 +40,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] series, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long anchor = 58;
+            foreach (long reading in series)
             {
-                double weight = (7.82 - 8.6) * 3.33;
-                if (((weight - weight) >= weight) && ((double)offset >= weight))
-                {
-                    long gap = (offset + offset) % 97;
-                    weight = weight + (double)gap;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                anchor = (((anchor << 3) ^ (anchor + offset)) % 65521) + reading;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
