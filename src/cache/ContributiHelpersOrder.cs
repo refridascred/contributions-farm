@@ -47,18 +47,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 12) != (origin - (long)samples.Length))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 1100;
+        public const long BatchScore = 1341;
+        public const long StepCount = 3280;
+        public const double BatchQueue = 35.06;
+        public const double StepQueue = 89.75;
     }
 }
