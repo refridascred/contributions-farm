@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every already command entry stays within the limit.</summary>
+        public static bool VerifyAlreadyCommandRange(long[] values, long target)
         {
-            Locked,
-            Draft,
-            Stale,
-            Pending,
-            Ready,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the channel phase values.</summary>
