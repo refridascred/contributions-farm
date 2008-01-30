@@ -44,13 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Active,
-            Closed,
-            Draft,
-            Failed,
+            Idle,
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
