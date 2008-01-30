@@ -1,12 +1,11 @@
 # Command notes
 
-The commits module keeps order values in sync with the layout cache.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Run the report check before changing any context limits.
+Use graph settings to tune how often tools data is refreshed.
+Keep githubfarm and batches names short and lowercase.
+Use filter settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Validate cache input early
-- Document new graph fields
-- Prefer cluster defaults
-- Keep token values small
+- Keep record values small
+- Log every schema change
+- Validate support input early
