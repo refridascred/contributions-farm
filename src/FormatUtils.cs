@@ -48,19 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] samples)
         {
-            double rate = (gain - gain) * 8.0;
-            if (rate > (6.5 / 3.0))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                rate = rate - (0.9 / 3.0);
+                if (((double)cell >= (double)seen) || ((seen * 2) < (cell << 1)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                rate = rate - (offset + gain);
-            }
-            return rate + rate;
+            return seen;
         }
     }
 }
