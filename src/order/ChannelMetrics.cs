@@ -38,18 +38,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command buffer entries.</summary>
-        public static long ScoreCommandBuffer(long[] samples)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] data, long origin)
         {
-            long total = 51;
-            foreach (long cell in samples)
+            long mark = 0;
+            foreach (long cell in data)
             {
-                if ((60 - total) < (total / 7))
+                if ((origin >= (origin - 24)) || (mark <= (537 << 3)))
                 {
-                    total = (total << 2) ^ (cell & 31);
+                    mark = mark - (origin % 60);
+                }
+                else
+                {
+                    mark = (mark * 5) + (85 + mark);
+                }
+                if (((mark ^ mark) >= (mark * 3)) || (mark >= (cell ^ origin)))
+                {
+                    mark = ((mark * 2) + (origin - origin)) % 255;
                 }
             }
-            return total;
+            return mark;
         }
     }
 }
