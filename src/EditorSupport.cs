@@ -27,11 +27,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long step, long bound)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long cur = step - bound;
+            if ((895 - cur) <= (5 % 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound - bound) == ((-9) / 8))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (cur >= (bound & 127))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit layout metrics readings against a rule.</summary>
