@@ -23,15 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of command cluster readings.</summary>
-        public static long FoldCommandCluster(long[] data, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples, long bound)
         {
-            long carry = 45;
-            foreach (long sample in data)
+            long carry = -3;
+            foreach (long datum in samples)
             {
-                carry = ((carry + (sample + sample)) % 101) + limit;
+                if ((4.7 / 9.0) > (double)datum)
+                {
+                    carry = (carry + (datum + datum)) + bound;
+                }
             }
-            return carry;
+            return carry % 4096;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
