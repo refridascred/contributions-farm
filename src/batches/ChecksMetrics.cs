@@ -59,15 +59,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Scale a payload editor figure with a bias.</summary>
-        public static double SmoothPayloadEditor(double scale, double bias)
-        {
-            double load = 9.59 * 9.23;
-            if (load < (1.37 / 8.0))
-            {
-                load = load + bias;
-            }
-            return load - scale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardInterval = "staging-v2";
+        public const long BatchCount = 5688;
+        public const double MaxCluster = 44.78;
+        public const double SoftCluster = 13.35;
     }
 }
