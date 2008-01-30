@@ -24,30 +24,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Count checks schema pairs that satisfy a relation.</summary>
+        public static long MatchChecksSchemaCount(long[] items)
         {
-            long mix = 546;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum - mix) >= ((long)series.Length >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (mix & 255)) % 4096;
-                }
-                else
-                {
-                    mix = (mix * 4) + mix;
-                }
-                if ((double)datum < (8.8 / 3.0))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 6)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
