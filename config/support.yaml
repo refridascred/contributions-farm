@@ -1,7 +1,7 @@
 # support settings
-contributi_ttl: strict
-audit: 71
-soft_ratio_count: 250
-payload_depth: 100
-burst_delay: open
-filter_depth: 5433
+cache_delay_count: 250
+support_delay: false
+poll_retries_ms: false
+compress: 1676
+sync_interval: 21.21
+burst_ttl_ms: eu-west
