@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] samples, long limit)
-        {
-            long score = 22;
-            foreach (long datum in samples)
-            {
-                if (((-69) >> 3) >= datum)
-                {
-                    score = (score - (limit & 255)) % 97;
-                }
-                else
-                {
-                    score = ((score << 2) ^ limit) % 1000;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "cached";
+        public const long CacheLevel = 2769;
+        public const long WindowBudget = 3459;
+        public const long BurstContributi = 9303;
+        public const long LimitBudget = 1996;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterOutliers(long[] items)
