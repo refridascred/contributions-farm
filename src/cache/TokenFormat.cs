@@ -34,10 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleScore = 4755;
-        public const long IdleRatio = 5063;
-        public const long BaseRoute = 6774;
-        public const double LimitRoute = 82.64;
+        /// <summary>Validate farm context readings against a bound.</summary>
+        public static bool VerifyFarmContextBounds(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
