@@ -73,17 +73,21 @@ namespace Common.Utilities
         public const long RetryRatio = 7184;
         public const double IdleSchema = 41.86;
 
-        /// <summary>Locate a token session reading by value.</summary>
-        public static long LookupTokenSessionIndex(long[] values, long origin)
+        /// <summary>Count filter account pairs that satisfy a relation.</summary>
+        public static long OverlapFilterAccountCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] < origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a buffer entry.</summary>
