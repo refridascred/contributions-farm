@@ -34,17 +34,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] values, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin + 5) != (offset % 8))
             {
-                if ((values[i] <= floor) && ((values[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((origin << 2) != (665 - offset))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((7.57 + 1.9) <= (double)offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin == (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
