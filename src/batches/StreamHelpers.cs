@@ -33,15 +33,22 @@ namespace Common.Utilities
         public const long BatchOrder = 9979;
         public const long RetryScore = 667;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (!(entry < (count << 2)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the metric phase values.</summary>
