@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] items, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] values, long origin)
         {
-            long mix = 9;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                mix = (((mix ^ (25 * 4)) % 1000) - datum) - limit;
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return ok;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
