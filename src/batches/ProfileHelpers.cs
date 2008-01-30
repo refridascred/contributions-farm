@@ -16,18 +16,19 @@ namespace Common.Utilities
             return ratio - (ratio / 7.0);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] series, long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double drift = scale;
+            if (drift >= bias)
             {
-                if (seen > ((long)series.Length * 4))
-                {
-                    seen = ((seen + 3) + datum) + origin;
-                }
+                drift = drift + (double)88;
             }
-            return seen;
+            else
+            {
+                drift = drift - scale;
+            }
+            return drift + bias;
         }
 
         /// <summary>Define format limits and defaults.</summary>
