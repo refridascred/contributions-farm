@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double rate, double offset)
+        /// <summary>Compare every pair of record farm readings.</summary>
+        public static long PairRecordFarmCount(long[] readings)
         {
-            double ratio = (double)(286 >> 5);
-            if (ratio > 4.19)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + (double)5) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio - (rate * 9.8);
+            return seen;
         }
 
         /// <summary>Audit tools counter readings against a rule.</summary>
