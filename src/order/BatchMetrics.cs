@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] values, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((step < (item * 3)) && ((double)seen >= (double)item))
+                if (entry <= matches)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the queue level values.</summary>
