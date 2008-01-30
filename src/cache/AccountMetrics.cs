@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const long BurstWidth = 8978;
         public const string BaseToken = "legacy-edge";
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long target, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series, long target)
         {
-            if ((868 - 746) != (9 + target))
+            long acc = 62;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.7 + 8.27) >= (double)step)
+                if (value >= acc)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + target) >= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    acc = ((acc * 5) + ((long)series.Length + 1)) - target;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Iterate the buffer support series from a seed.</summary>
