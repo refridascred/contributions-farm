@@ -1,15 +1,15 @@
 {
-  "warm_window": {
-    "persist": [49, 46],
-    "channel_limit": 100,
-    "metric_depth": "latest",
-    "burst_interval_ms": 56,
-    "retry_interval": ["stable", "strict", "local"],
-    "format_threshold": "stable"
-  },
-  "enabled": 31.33,
-  "idle_delay": ["staging", "blue"],
-  "base_limit_pct": true,
-  "batches_delay": "blue",
-  "hard_timeout_count": "legacy"
+  "persist": "fallback",
+  "command_capacity": "staging",
+  "counter_limit": 1904,
+  "flush_limit": [282, 267, 57],
+  "warm_ttl": ["strict", "primary", "fallback", "primary"],
+  "commits_depth": {
+    "readonly": "cached",
+    "already_timeout": "fallback",
+    "buffer_window": 1440,
+    "min_retries_pct": "legacy",
+    "idle_size_count": [86, 51],
+    "sync_limit": ["standard", "fallback"]
+  }
 }
