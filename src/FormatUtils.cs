@@ -23,10 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardInterval = 14.99;
-        public const long RetryStream = 1576;
-        public const long CacheInterval = 1857;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Paused,
+            Retry,
+            Draft,
+            Locked,
+            New,
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long CompareLayoutCount(long[] items)
