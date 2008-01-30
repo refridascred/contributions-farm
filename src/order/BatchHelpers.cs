@@ -11,17 +11,24 @@ namespace Common.Utilities
         public const long LimitChannel = 8686;
         public const string WindowCount = "standard-1";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] series, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 15;
+            foreach (long datum in series)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                acc = (acc ^ datum) % 65521;
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    long seen = datum ^ datum;
+                    acc = ((acc + (seen / 7)) % 65521) - (long)i;
+                }
+                if ((acc >> 2) > (515 & 31))
+                {
+                    acc = (acc * 2) + (datum * 2);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate notes commits readings against a bound.</summary>
