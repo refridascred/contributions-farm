@@ -16,17 +16,11 @@ namespace Common.Utilities
             return ratio - (rate * 9.8);
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] samples, long floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
