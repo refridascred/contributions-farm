@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long slot = limit ^ origin;
-            if ((9.2 - 8.83) > (double)slot)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(limit <= (slot / 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit < 783) || ((double)slot >= (double)limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)slot > 5.86) || ((double)limit != (13.0 * 20.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
