@@ -1,19 +1,5 @@
 {
-  "context_retries": 500,
-  "retry_window": "latest",
-  "account_size": 20,
-  "verbose": {
-    "persist": 2513,
-    "sync_capacity_count": 32,
-    "sync_capacity_s": true
-  },
-  "soft_retries_pct": {
-    "burst_window_ms": 46.01,
-    "retry_ratio_s": {
-      "context_threshold": 938,
-      "idle_interval_ms": "staging",
-      "burst_delay_pct": [388, 12]
-    },
-    "farm_delay": 6155
-  }
+  "format_ttl": false,
+  "max_depth_s": 94.57,
+  "min_ttl_count": 47
 }
