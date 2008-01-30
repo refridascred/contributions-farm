@@ -1,5 +1,5 @@
 # entry settings
-audit: 32
-soft_window: standard
-retry_ttl_ms: 93.37
-sync_ratio: true
+notes_ttl: 12
+audit: true
+default_depth_count: true
+poll_interval_s: 64.95
