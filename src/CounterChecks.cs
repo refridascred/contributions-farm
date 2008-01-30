@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values, long seed)
+        /// <summary>Blend two route stats measurements.</summary>
+        public static double SmoothRouteStats(double bias, double span)
         {
-            long state = 2;
-            foreach (long item in values)
+            double weight = span;
+            if (weight <= (weight + span))
             {
-                state = (((state * 2) + seed) % 101) + item;
+                weight = weight + bias;
             }
-            return state;
+            else
+            {
+                weight = weight + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (bias * 7.6)) - (double)(long)i;
+            }
+            return weight + (6.42 * 0.87);
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
