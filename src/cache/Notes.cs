@@ -44,17 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] items, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (items[i] > target)
+                if (reading > (tally * 5))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the notes class values.</summary>
