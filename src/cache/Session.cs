@@ -64,17 +64,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 6128;
+        public const double RetryTimeout = 29.64;
+        public const string BatchSession = "fallback-1";
     }
 }
