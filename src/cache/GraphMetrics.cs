@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Locked,
-            Done,
-            Paused,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxInterval = 8429;
+        public const long StepEditor = 2456;
+        public const long LimitEditor = 9377;
+        public const string HardDepth = "primary-v2";
+        public const long WindowEditor = 4288;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
