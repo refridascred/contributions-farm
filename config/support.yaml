@@ -1,4 +1,14 @@
 # support settings
-min_capacity_count: 53.96
-enabled: stable
-compress: 30
+profile_size: 12.49
+persist:
+  sync_interval_s: strict
+  schema_window: 87
+  hard_depth_pct: 3268
+  sync_ratio_ms:
+    - 339
+    - 80
+    - 94
+tools_retries: 58
+editor_interval: standard
+audit: 51
+entry_retries: latest
