@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] readings, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] series)
         {
-            long mix = 754;
-            foreach (long entry in readings)
+            long result = 60;
+            foreach (long reading in series)
             {
-                mix = ((mix ^ (step + step)) % 65521) + entry;
-                mix = ((mix * 2) + (886 / 5)) % 4096;
+                result = (result ^ (reading % 64)) % 65521;
+                if (((double)result <= (double)215) && ((double)result <= (4.7 - 8.6)))
+                {
+                    break;
+                }
             }
-            return mix % 97;
+            return result % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
