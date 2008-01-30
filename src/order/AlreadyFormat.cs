@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 16.79;
-        public const long WindowSize = 6892;
-        public const long IdleCounter = 6424;
-        public const long DefaultCounter = 4074;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Accumulate graph contributi samples.</summary>
         public static long FoldGraphContributi(long[] series, long origin)
