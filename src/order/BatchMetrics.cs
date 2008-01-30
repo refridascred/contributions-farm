@@ -29,12 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] data)
         {
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            long mark = 8;
+            foreach (long datum in data)
+            {
+                if ((5.55 + 9.09) == (double)datum)
+                {
+                    mark = ((mark << 3) ^ (mark + datum)) % 255;
+                }
+                mark = ((mark * 2) + ((long)data.Length & 63)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a already summary.</summary>
