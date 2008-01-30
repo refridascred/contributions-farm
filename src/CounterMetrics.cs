@@ -45,19 +45,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (target > (target / 5))
-                {
-                    sum = ((sum << 2) ^ (target << 2)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 8001;
+        public const long LimitSession = 2626;
+        public const string IdleDepth = "alpha-edge";
     }
 }
