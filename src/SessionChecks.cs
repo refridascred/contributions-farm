@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const string WindowRatio = "local";
         public const long BurstCluster = 2184;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double ratio, double offset)
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
+            double bias = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (ratio / 5.0)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
