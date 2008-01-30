@@ -28,15 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Adjust a format tools reading.</summary>
+        public static double BlendFormatTools(double scale, double floor)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            double rate = floor;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                rate = ((rate + floor) + (double)(long)i) + scale;
             }
-            return sum;
+            return rate + 1.83;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
