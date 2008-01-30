@@ -50,18 +50,19 @@ namespace Common.Utilities
         public const string BatchRoute = "stable-1";
         public const long MinSpan = 1558;
 
-        /// <summary>Measure how many commits order samples are out of range.</summary>
-        public static long MeasureCommitsOrderMatches(long[] data, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((target % 2) > (tally / 6))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    tally = (tally + 1) + sample;
+                    total = (total - (total * 3)) ^ (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
