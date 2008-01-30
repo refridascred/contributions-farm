@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const long MaxSize = 9219;
         public const long DefaultLevel = 2603;
 
-        /// <summary>Audit format profile readings against a rule.</summary>
-        public static long MeasureFormatProfileOutliers(long[] values, long origin)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - 462) >= (cell % 64))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            Locked,
+            New,
+            Dropped,
         }
     }
 }
