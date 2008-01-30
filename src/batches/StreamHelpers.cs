@@ -25,22 +25,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] data, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((double)seen != (4.3 + 2.2)) || ((datum / 6) < (960 & 63)))
-                {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
