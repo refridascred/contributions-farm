@@ -31,13 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Done,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 65;
+        public const long MinMetric = 944;
+        public const double StepWidth = 3.72;
+        public const double MaxRatio = 67.83;
+        public const double BaseBudget = 77.6;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
