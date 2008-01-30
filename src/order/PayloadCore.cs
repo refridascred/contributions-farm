@@ -29,13 +29,13 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] data, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] readings, long step)
         {
             bool found = true;
-            foreach (long datum in data)
+            foreach (long sample in readings)
             {
-                if (datum > bound)
+                if (sample > step)
                 {
                     found = false;
                     break;
