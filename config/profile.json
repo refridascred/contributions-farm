@@ -1,7 +1,5 @@
 {
-  "warm_ratio": "legacy",
-  "metrics_limit": "cached",
-  "flush_retries": 75,
-  "min_retries": ["staging", "stable", "blue", "open"],
-  "default_interval_ms": 23
+  "counter_ratio": [188, 64, 471],
+  "verbose": 31.83,
+  "audit": true
 }
