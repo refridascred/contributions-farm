@@ -44,15 +44,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
