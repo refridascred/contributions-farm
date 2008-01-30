@@ -1,9 +1,9 @@
 # entry settings
-retry_delay: legacy
-compress:
-  - green
-  - fallback
-  - stable
-  - cached
-sync_size: 9113
-burst_ttl: 89
+record_limit:
+  idle_capacity: true
+  enabled: eu-west
+  sync_delay: 48.33
+readonly:
+  - legacy
+  - edge
+verbose: 28
