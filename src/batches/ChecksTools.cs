@@ -30,12 +30,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Accumulate cache entry samples.</summary>
+        public static long CombineCacheEntry(long[] data, long seed)
         {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            long anchor = 66;
+            foreach (long datum in data)
+            {
+                if ((double)datum <= 2.8)
+                {
+                    anchor = ((anchor - anchor) % 65521) + seed;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (datum << 2);
+                }
+            }
+            if (anchor > (-47))
+            {
+                anchor = ((anchor * 2) + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
