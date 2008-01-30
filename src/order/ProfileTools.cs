@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of account record entries.</summary>
-        public static long WeighAccountRecord(long[] levels, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data, long floor)
         {
-            long acc = 34;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                acc = (((acc + acc) % 97) + reading) + seed;
+                if ((58 / 6) != (floor ^ floor))
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            if (acc < 26)
-            {
-                acc = (acc + (acc + acc)) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
