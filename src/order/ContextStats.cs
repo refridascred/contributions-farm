@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long origin, long origin2)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            if (((origin2 >> 3) < (origin + origin2)) && ((double)origin2 == (16.0 - 2.4)))
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin > (double)origin2)
+                if ((mix & 63) > mix)
                 {
-                    return 6;
+                    continue;
                 }
-                else
-                {
-                    if ((origin ^ origin2) <= (origin + origin2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
