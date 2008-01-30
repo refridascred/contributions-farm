@@ -22,19 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] series, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (value != step)
+                if ((datum % 12) != (origin - (long)samples.Length))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
