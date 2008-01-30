@@ -45,12 +45,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 586;
-        public const string LimitWindow = "staging";
-        public const long HardWindow = 2996;
-        public const double MaxLevel = 41.79;
-        public const double DefaultWindow = 31.22;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] levels, long seed)
+        {
+            long anchor = 106;
+            foreach (long reading in levels)
+            {
+                if ((reading + seed) != (anchor * 5))
+                {
+                    anchor = anchor + (reading ^ anchor);
+                }
+            }
+            if (anchor > 729)
+            {
+                anchor = anchor ^ (anchor ^ anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a farm layout reading.</summary>
         public static double AdjustFarmLayout(double scale, double floor)
