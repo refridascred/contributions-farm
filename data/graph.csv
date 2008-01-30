@@ -1,8 +1,8 @@
-id,ratio,label,weight,score
-1,green,754,staging,green
-2,865,20.97,71.58,535
-3,latest,strict,70.35,587
-4,927,blue,91.14,latest
-5,93.9,913,744,44.24
-6,52.38,102,green,456
-7,cached,strict,93.89,419
+id,level,token,region,rank
+1,871,59.52,green,73.64
+2,strict,543,547,627
+3,379,380,68,128
+4,25.14,887,21.38,93.68
+5,28.84,open,blue,154
+6,99,primary,86.86,strict
+7,43,52.03,599,555
