@@ -1,5 +1,7 @@
 {
-  "window_size": 92,
-  "window_capacity": 83,
-  "verbose": true
+  "order_interval": 4816,
+  "audit": 7247,
+  "poll_capacity": [385, 250, 270],
+  "retry_ratio_s": 8447,
+  "verbose": 90.5
 }
