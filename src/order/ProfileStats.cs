@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] readings, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long total = 72;
+            foreach (long sample in items)
             {
-                if (1.2 < (double)target)
+                if (!((target ^ sample) <= (target * 3)))
                 {
-                    count = (count + 1) + datum;
+                    total = total ^ (target % 12);
                 }
-                else
+                if (target <= (sample ^ total))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (total < 52)
+            {
+                total = ((total << 2) ^ (total + total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
