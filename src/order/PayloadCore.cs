@@ -31,18 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter already readings against a rule.</summary>
-        public static long TallyCounterAlreadyOutliers(long[] items)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value + 50) < 973)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
