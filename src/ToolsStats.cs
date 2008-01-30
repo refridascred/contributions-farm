@@ -71,12 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] data, long bound)
         {
-            Pending,
-            Queued,
-            Done,
+            long total = -862;
+            foreach (long item in data)
+            {
+                total = (total - (bound & 3)) - item;
+            }
+            if (total > 812)
+            {
+                total = ((total * 4) + (bound << 3)) % 65521;
+            }
+            return total % 1000;
         }
     }
 }
