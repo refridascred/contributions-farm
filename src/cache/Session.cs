@@ -60,9 +60,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinInterval = 6739;
-        public const string DefaultFactor = "fallback-1";
-        public const long CacheBatch = 3741;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (floor > (479 * 2))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
     }
 }
