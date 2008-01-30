@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two route stats measurements.</summary>
-        public static double SmoothRouteStats(double bias, double span)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double weight = span;
-            if (weight <= (weight + span))
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + (bias * 7.6)) - (double)(long)i;
-            }
-            return weight + (6.42 * 0.87);
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
