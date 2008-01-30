@@ -10,10 +10,13 @@ namespace Common.Utilities
         public const double DefaultFactor = 26.01;
         public const long IdleOrder = 5967;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 4020;
-        public const double BurstRecord = 88.51;
-        public const double BatchFactor = 14.32;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Done,
+            Retry,
+            Active,
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterLimits(long[] data, long limit)
