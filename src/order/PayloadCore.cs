@@ -16,21 +16,16 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state << 2) ^ (792 % 7);
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
