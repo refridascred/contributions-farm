@@ -1,8 +1,5 @@
 # githubfarm settings
-min_limit: latest
-dry_run: strict
-graph_timeout: 4827
-soft_depth_ms:
-  - 106
-  - 424
-  - 21
+flush_threshold_pct: true
+compress: 13.48
+soft_ratio_s: 3
+flush_timeout: true
