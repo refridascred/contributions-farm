@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] levels)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long target, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long gap = target + origin;
+            if ((32 ^ (-756)) <= (origin << 2))
             {
-                if (((double)reading < (8.0 + 16.0)) && ((double)0 >= (double)reading))
+                return 8;
+            }
+            else
+            {
+                if (3.3 <= (double)origin)
                 {
-                    tally = tally + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (((target + 11) >= origin) && ((gap % 16) >= origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((1 > origin) && ((origin + origin) != (target + gap)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many schema batch samples are out of range.</summary>
