@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long RetryWindow = 8608;
         public const string SoftBudget = "open-1";
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] samples, long origin)
-        {
-            long sum = 845;
-            foreach (long value in samples)
-            {
-                if (sum > (origin - origin))
-                {
-                    sum = (((sum * 4) + ((long)samples.Length / 9)) % 4096) ^ value;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowDepth = 8689;
+        public const string StepLevel = "primary-v2";
+        public const long HardContext = 8839;
+        public const string BatchContext = "strict-1";
+        public const long WindowContext = 9313;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BaseRatio = 58.69;
