@@ -24,10 +24,11 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinWidth = 6251;
-        public const long BurstRatio = 866;
-        public const double RetryBatches = 30.76;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 2293;
+        public const long CacheRoute = 9494;
+        public const string BaseRoute = "legacy-v2";
+        public const long LimitRoute = 1542;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryMatches(long[] data, long seed)
