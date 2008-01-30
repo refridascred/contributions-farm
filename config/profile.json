@@ -1,8 +1,8 @@
 {
-  "compress": "cached",
-  "burst_window_pct": 4716,
-  "queue_ttl": 9125,
-  "checks_ratio": 71.09,
-  "warm_timeout_ms": 6305,
-  "batch_interval_s": ["eu-west", "eu-west", "cached", "eu-west"]
+  "compress": 6437,
+  "record_depth": "edge",
+  "poll_limit_pct": 63.07,
+  "min_size": 30,
+  "hard_size_ms": false,
+  "route_timeout": [277, 102, 483, 230]
 }
