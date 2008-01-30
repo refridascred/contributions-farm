@@ -1,17 +1,6 @@
 {
-  "window_ratio": {
-    "session_retries": "blue",
-    "contributi_threshold": {
-      "idle_interval_ms": [258, 480],
-      "poll_interval": ["legacy", "stable", "local", "primary"],
-      "stream_threshold": "fallback",
-      "min_threshold_count": "open",
-      "metrics_threshold": [386, 122],
-      "burst_size_pct": "cached"
-    },
-    "flush_interval_count": 30
-  },
-  "sync_retries": ["blue", "green"],
-  "audit": 79.12,
-  "tools_threshold": 5968
+  "flush_threshold_s": [330, 13, 20, 430],
+  "profile_limit": false,
+  "base_threshold_count": 6,
+  "max_window_s": "legacy"
 }
