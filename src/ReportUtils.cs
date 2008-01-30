@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] readings, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] values)
         {
-            long score = 818;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!((offset << 1) <= offset))
+                if (tally > (75 + value))
                 {
-                    score = (score + sample) % 65521;
-                    break;
+                    tally = tally + 2;
                 }
-                score = (score ^ (sample << 3)) % 4096;
             }
-            if (score > 146)
-            {
-                score = (score - (offset >> 4)) % 4096;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the notes phase values.</summary>
