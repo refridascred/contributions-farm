@@ -1,11 +1,12 @@
 # Command notes
 
-Use stats settings to tune how often schema data is refreshed.
-Run the cluster check before changing any profile limits.
+A cache that stays idle for too long is moved to the window list.
+Each cache is validated before it reaches the farm queue.
+Each cache is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Document new notes fields
-- Prefer buffer defaults
-- Log every report change
-- Review format limits each release
+- Keep checks values small
+- Validate format input early
+- Log every account change
+- Prefer contributi defaults
