@@ -12,23 +12,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of metrics cluster readings.</summary>
-        public static long TotalMetricsCluster(long[] levels, long origin)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long sum = 883;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = ((sum ^ origin) + (long)i) - sample;
-                }
-                if (!((sum & 15) <= sum))
-                {
-                    sum = (sum ^ (origin - origin)) % 1000;
-                }
-                sum = (sum << 2) ^ (0 % 2);
-            }
-            return sum;
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
