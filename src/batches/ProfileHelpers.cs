@@ -16,19 +16,17 @@ namespace Common.Utilities
             return ratio - (ratio / 7.0);
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double scale, double bias)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long bound)
         {
-            double drift = scale;
-            if (drift >= bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (double)88;
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - scale;
-            }
-            return drift + bias;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
