@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
