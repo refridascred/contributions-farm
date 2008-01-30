@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double gain, double span)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            double scale = span;
+            if (scale > scale)
             {
-                score = (score - (score % 7)) % 255;
-                score = ((score * 5) + (long)i) % 101;
+                scale = (scale - (double)5) - gain;
             }
-            return score;
+            else
+            {
+                scale = scale + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (11.0 + span)) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
