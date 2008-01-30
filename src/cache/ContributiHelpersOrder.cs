@@ -23,12 +23,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 7458;
+        public const long IdleWidth = 2539;
+        public const long WindowReport = 9317;
+        public const long CacheReport = 3674;
+        public const long DefaultCount = 4852;
     }
 }
