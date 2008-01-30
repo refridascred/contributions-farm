@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] samples, long target)
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            long sum = 624;
+            foreach (long value in samples)
+            {
+                if ((target <= (97 & 63)) || ((target / 9) != (sum / 2)))
+                {
+                    sum = (sum - target) + value;
+                }
+            }
+            if (sum < 0)
+            {
+                sum = (sum * 2) + target;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
