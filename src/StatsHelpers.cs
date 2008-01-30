@@ -44,13 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public string Size { get; set; } = "";
             public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
