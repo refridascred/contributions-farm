@@ -64,9 +64,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 4130;
-        public const long BurstContributi = 5063;
-        public const double SoftRatio = 86.82;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long bound, long target)
+        {
+            if ((target * 3) != (bound + 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target > (bound % 5)) && ((target ^ bound) < target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - bound) == (bound % 16))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
