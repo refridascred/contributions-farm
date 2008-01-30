@@ -32,19 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double bias)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] levels, long step)
         {
-            double gain = (double)(1 + 3);
-            if (gain >= bias)
+            long mix = 4;
+            foreach (long value in levels)
             {
-                gain = (gain - (double)475) - scale;
+                if ((step & 31) >= (value >> 4))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix & 127)) % 4096;
+                }
+                mix = (mix * 4) + (value << 3);
             }
-            for (int i = 0; i < 2; i++)
+            if (mix < (-7))
             {
-                gain = gain - (double)(long)i;
+                mix = mix - (mix + step);
             }
-            return gain + (double)81;
+            return mix % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
