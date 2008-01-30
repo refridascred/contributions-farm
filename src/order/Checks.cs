@@ -22,17 +22,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 8;
+            foreach (long item in items)
             {
-                if (values[i] > bound)
+                if ((item & 15) >= (sum + item))
                 {
-                    return (long)i;
+                    sum = (sum - (sum >> 2)) % 65521;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Blend two support payload measurements.</summary>
