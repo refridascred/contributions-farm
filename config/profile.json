@@ -1,5 +1,8 @@
 {
-  "max_window": ["fallback", "local"],
-  "min_threshold_s": "staging",
-  "retry_capacity_count": 76.6
+  "batch_timeout_s": [479, 121, 37],
+  "flush_retries_s": 9131,
+  "format_retries": "blue",
+  "default_ttl": false,
+  "profile_capacity": ["edge", "local"],
+  "schema_depth": 48.09
 }
