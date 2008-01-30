@@ -49,22 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] series)
         {
-            long score = 6;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value << 1) < (value * 2)) || ((bound * 4) <= (0 / 4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 4) + score) % 101;
-                }
-                else
-                {
-                    score = (score + (bound << 2)) % 97;
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
