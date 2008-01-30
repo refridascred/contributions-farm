@@ -43,21 +43,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
-        public static long PairStatsChecksCount(long[] data)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 9)
+                    if ((values[i] + values[j]) == 9)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
