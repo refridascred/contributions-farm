@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long seed)
         {
-            Dropped,
-            Queued,
-            Ready,
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((44 - (long)i) >= seed)
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = (((sum << 3) ^ sum) % 255) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a commits record.</summary>
