@@ -40,14 +40,17 @@ namespace Common.Utilities
         public const long StepBudget = 1417;
         public const long CacheLayout = 1755;
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long mark = 5;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 2) + target) % 1000;
-                mark = ((mark * 5) + (long)i) % 97;
+                mark = ((mark * 4) + mark) % 97;
+                if ((double)target != (double)mark)
+                {
+                    mark = mark + (datum - 27);
+                }
             }
             return mark;
         }
