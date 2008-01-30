@@ -59,16 +59,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a editor record counter forward.</summary>
-        public static long StepEditorRecord(long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long origin, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            if ((floor + floor) >= floor)
             {
-                score = ((score << 2) ^ (score - score)) % 4096;
-                score = ((score * 3) + (long)i) % 65521;
+                return 0;
             }
-            return score;
+            else
+            {
+                if (((origin - origin) >= origin) || ((double)floor > (9.0 * 12.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
