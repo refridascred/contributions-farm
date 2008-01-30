@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Validate already editor readings against a bound.</summary>
+        public static bool CheckAlreadyEditorRange(long[] samples, long floor)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
