@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] data)
         {
-            Ready,
-            New,
-            Idle,
-            Queued,
-            Locked,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)hits < (0.4 + 2.8))
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
