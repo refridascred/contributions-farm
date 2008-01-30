@@ -1,32 +1,15 @@
 # githubfarm settings
-poll_depth_s:
-  poll_capacity_ms: green
-  warm_threshold: 76.95
-  report_threshold: 36.07
-  tools_size:
-    idle_ttl_s: legacy
-    metrics_window: 74.57
-    farm_delay: 22
-    strict: cached
-  dry_run:
-    - 182
-    - 405
-  hard_limit_pct: 250
-poll_window:
-  retry_window: 7377
-  max_ratio_s:
-    - 277
-    - 20
-    - 439
-    - 279
-  flush_timeout_s: 94.95
-flush_size:
-  - cached
-  - local
-persist: 43.56
-enabled:
-  - staging
-  - green
-  - eu-west
-  - green
-record_timeout: true
+enabled: primary
+session_depth: 63.98
+filter_depth:
+  dry_run: 76.7
+  sync_window_pct: 8042
+  batches_ttl: local
+  report_threshold: false
+  burst_timeout_pct: legacy
+  verbose: legacy
+strict: true
+persist: open
+cache_capacity:
+  - 37
+  - 32
