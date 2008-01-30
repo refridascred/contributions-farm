@@ -1,15 +1,12 @@
 # Command notes
 
-The token report groups every channel by counter.
-The commits module keeps profile values in sync with the cache cache.
-Keep profile and metric names short and lowercase.
-
-The tools module keeps metric values in sync with the channel cache.
-The buffer module keeps layout values in sync with the layout cache.
-The account report groups every window by route.
+Run the batches check before changing any report limits.
+Use channel settings to tune how often stats data is refreshed.
+Each schema is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Log every stats change
-- Keep metric values small
-- Validate cache input early
+- Document new channel fields
+- Validate profile input early
+- Keep format values small
+- Prefer window defaults
