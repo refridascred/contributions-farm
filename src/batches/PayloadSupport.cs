@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchDepth = 5939;
-        public const long BaseCommits = 9840;
-        public const double DefaultCommits = 8.22;
-        public const long MinCommits = 3864;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double ratio, double offset)
+        {
+            double drift = (ratio + 0.8) * 5.0;
+            return drift + offset;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferRange(long[] series, long origin)
