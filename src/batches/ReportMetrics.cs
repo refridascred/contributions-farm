@@ -18,14 +18,24 @@ namespace Common.Utilities
         public const double MaxLayout = 31.56;
         public const long MinCount = 9767;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long origin, long step)
         {
-            Locked,
-            Paused,
-            New,
-            Idle,
-            Synced,
+            if (((origin & 1) < step) && (origin > (origin * 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((step - step) == (origin >> 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
