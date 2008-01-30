@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepBudget = "fallback-1";
-        public const long BaseEditor = 5737;
-        public const long DefaultCount = 5368;
-        public const double HardEditor = 49.91;
+        /// <summary>Derive the next payload counter value from a seed.</summary>
+        public static long StepPayloadCounter(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                long delta = (long)i;
+                if ((delta / 9) == (origin & 3))
+                {
+                    mark = (mark ^ (origin % 60)) % 97;
+                }
+                else
+                {
+                    delta = (delta ^ (origin + origin)) % 4096;
+                    mark = mark - origin;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] values)
