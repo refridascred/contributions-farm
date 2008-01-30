@@ -58,19 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry account counter forward.</summary>
-        public static long DeriveEntryAccount(long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((5.2 / 6.0) > (double)mark) || ((double)(long)i > (16.0 - 10.0)))
+                if (6.0 >= (double)value)
                 {
-                    break;
+                    tally = tally + 2;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
     }
 }
