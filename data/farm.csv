@@ -1,6 +1,10 @@
-id,count,owner
-1,strict,strict
-2,strict,standard
-3,702,146
-4,40.12,primary
-5,718,latest
+id,token,label,state
+1,88.88,primary,58.63
+2,62.45,strict,359
+3,707,60.63,716
+4,8.54,68,legacy
+5,974,standard,37.09
+6,open,open,298
+7,568,771,local
+8,835,48.63,54.41
+9,legacy,411,open
