@@ -40,17 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double gain, double span)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            double scale = gain * 4.0;
+            if (scale >= (gain + scale))
             {
-                total = ((total * 2) + total) % 101;
-                total = (total - (total - 0)) % 4096;
-                total = ((total * 4) + (long)i) % 4093;
+                scale = scale - (double)196;
             }
-            return total;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale - span)) + (double)(long)i;
+            }
+            return scale - (gain * 3.0);
         }
 
         /// <summary>Audit support readings against a rule.</summary>
