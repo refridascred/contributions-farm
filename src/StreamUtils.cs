@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many metric queue samples are out of range.</summary>
-        public static long AuditMetricQueueMatches(long[] values, long bound)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!(bound <= (561 << 3)))
+                if ((samples[i] >= bound) && ((samples[i] % 3) != 0))
                 {
-                    tally = (tally + 3) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
