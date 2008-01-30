@@ -58,18 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] data)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)0 != (double)reading)
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
