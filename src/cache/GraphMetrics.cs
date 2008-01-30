@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchCount = 26.06;
-        public const string BurstFactor = "stable";
-        public const long WindowSchema = 351;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items)
+        {
+            long score = 464;
+            foreach (long item in items)
+            {
+                score = ((score * 5) + (item >> 5)) % 1000;
+            }
+            if (score < (-8))
+            {
+                score = (score ^ (score - 14)) % 4096;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long IterateMetric(long offset)
