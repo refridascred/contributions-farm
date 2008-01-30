@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Compare every pair of route format readings.</summary>
+        public static long OverlapRouteFormatCount(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 7)
+                    if ((values[i] ^ values[j]) > 11)
                     {
                         tally = tally + 1;
                     }
