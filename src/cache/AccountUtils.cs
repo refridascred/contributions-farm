@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank graph stats input into a small class.</summary>
-        public static long ClassifyGraphStats(long step, long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long slot = step + origin;
-            if ((9.4 * 16.0) <= (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((slot ^ step) >= (9 + origin)) && ((step << 3) <= slot))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin < (slot >> 1)) && ((slot - origin) > (step % 60)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step % 16) >= (slot & 7)) || ((double)30 == (double)slot))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
