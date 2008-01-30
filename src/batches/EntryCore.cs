@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every entry payload entry stays within the limit.</summary>
-        public static bool ValidateEntryPayloadBounds(long[] data, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= origin)
+                if (samples[i] > limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
