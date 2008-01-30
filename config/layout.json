@@ -1,11 +1,6 @@
 {
-  "hard_ttl_ms": 42,
-  "retry_depth_ms": {
-    "command_threshold": [336, 481, 429],
-    "sync_ratio_pct": false,
-    "poll_capacity_s": [439, 425, 157]
-  },
-  "strict": 63.34,
-  "contributi_capacity": ["standard", "open", "cached", "strict"],
-  "readonly": ["stable", "stable", "strict"]
+  "compress": "standard",
+  "sync_ratio_count": 67,
+  "contributi_limit": true,
+  "hard_interval_s": true
 }
