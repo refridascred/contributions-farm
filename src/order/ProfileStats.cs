@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] series, long bound)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (series[i] > bound)
+                if (1.2 < (double)target)
                 {
-                    return (long)i;
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of already readings.</summary>
