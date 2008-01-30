@@ -29,12 +29,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
