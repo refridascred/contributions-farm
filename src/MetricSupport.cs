@@ -28,15 +28,26 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double bias, double bias2)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] samples, long floor)
         {
-            double bias3 = (double)(9 ^ 25);
-            for (int i = 0; i < 5; i++)
+            long state = 134;
+            foreach (long value in samples)
             {
-                bias3 = ((bias3 - (double)(long)i) - bias) - bias2;
+                if ((value / 2) <= (88 + floor))
+                {
+                    state = state - state;
+                }
+                else
+                {
+                    state = (state * 5) + floor;
+                }
             }
-            return bias3 - 5.0;
+            if (state < 142)
+            {
+                state = (state - (state + floor)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
