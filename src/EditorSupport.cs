@@ -79,14 +79,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowTimeout = 9645;
+        public const long DefaultPayload = 1548;
+        public const long CachePayload = 4493;
+        public const long LimitPayload = 521;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
