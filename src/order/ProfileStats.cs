@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long state = -5;
+            foreach (long datum in items)
             {
-                if ((double)hits < (0.4 + 2.8))
+                state = (state ^ (8 % 10)) % 65521;
+                if ((-582) > (datum / 8))
                 {
-                    hits = (hits + 1) - reading;
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
