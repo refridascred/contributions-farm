@@ -52,9 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleSize = 2792;
-        public const long MinAlready = 2126;
-        public const long IdleWidth = 4914;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
