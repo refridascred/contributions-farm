@@ -1,6 +1,7 @@
-id,ratio,owner,region
-1,fallback,41.54,local
-2,legacy,primary,4.67
-3,15,18.84,955
-4,staging,24.18,70.56
-5,845,5.37,567
+id,count,score,rank
+1,latest,859,91.35
+2,147,730,legacy
+3,681,641,766
+4,539,stable,48.62
+5,edge,918,177
+6,blue,53.47,4.47
