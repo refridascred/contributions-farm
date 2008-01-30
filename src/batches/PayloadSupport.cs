@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] samples)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((matches + reading) != (463 << 2))
+                if ((sample + sample) > (sample + 5))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
