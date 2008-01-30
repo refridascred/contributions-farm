@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const long LimitSpan = 7878;
         public const double MinWindow = 6.98;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] readings, long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long carry = 65;
+            foreach (long datum in data)
             {
-                if (sample >= bound)
+                if ((datum + (long)data.Length) >= carry)
                 {
-                    found = false;
-                    break;
+                    carry = carry - (carry << 2);
                 }
             }
-            return found;
+            return carry % 4096;
         }
     }
 }
