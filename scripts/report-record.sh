@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=199
+RECORD_LIMIT=267
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in green primary; do
+for item in fallback primary edge; do
     log "checking ${item}"
 done
