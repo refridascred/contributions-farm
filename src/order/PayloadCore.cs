@@ -29,19 +29,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] readings, long step)
+        /// <summary>Audit counter already readings against a rule.</summary>
+        public static long TallyCounterAlreadyOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (sample > step)
+                if ((value + 50) < 973)
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
