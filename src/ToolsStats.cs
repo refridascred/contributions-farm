@@ -35,12 +35,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseRatio = "cached";
-        public const double BaseCluster = 7.44;
-        public const long MaxInterval = 8893;
-        public const long DefaultCluster = 3108;
-        public const long BatchLevel = 8109;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long origin, long offset)
+        {
+            if (7 >= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset >= (2.31 - 9.05))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin + offset) != (origin ^ origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin < ((-4) << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long floor, long target)
