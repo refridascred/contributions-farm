@@ -40,20 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] data, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long sum = 72;
+            foreach (long reading in data)
             {
-                long hits = score;
-                if (!((floor % 60) < (hits << 2)))
+                sum = ((sum << 3) ^ (reading >> 5)) % 97;
+                if (!(6 < origin))
                 {
-                    continue;
+                    sum = ((sum * 4) + reading) % 4096;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
