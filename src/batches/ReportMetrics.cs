@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every notes stats entry stays within the limit.</summary>
-        public static bool VerifyNotesStatsLimits(long[] values, long origin)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleLevel = 5754;
+        public const double CacheInterval = 76.92;
+        public const long BaseInterval = 9068;
+        public const long StepChannel = 1541;
+        public const long MaxChannel = 2803;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double CacheCount = 33.03;
