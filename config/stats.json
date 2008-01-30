@@ -1,6 +1,10 @@
 {
-  "sync_interval": 3,
-  "retry_delay": 1790,
-  "sync_timeout_pct": 0.1,
-  "counter_retries": "edge"
+  "readonly": 67.97,
+  "enabled": {
+    "max_capacity": 41,
+    "hard_delay_count": 93,
+    "persist": 100,
+    "max_limit_count": 71.75
+  },
+  "audit": 75
 }
