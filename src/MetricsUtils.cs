@@ -41,12 +41,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate metric commits readings against a bound.</summary>
+        public static bool CheckMetricCommitsBounds(long[] readings, long limit)
         {
-            Dropped,
-            Closed,
-            Locked,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
