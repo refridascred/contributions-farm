@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long BurstSize = 9888;
         public const string SoftNotes = "strict-edge";
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Locate a githubfarm format reading by value.</summary>
+        public static long LocateGithubfarmFormatIndex(long[] levels, long limit)
         {
-            Dropped,
-            Pending,
-            Draft,
-            Queued,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
