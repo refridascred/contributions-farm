@@ -1,11 +1,12 @@
 # Command notes
 
-Use context settings to tune how often profile data is refreshed.
-Keep support and channel names short and lowercase.
+The commits module keeps order values in sync with the layout cache.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the report check before changing any context limits.
 
 ## Guidelines
 
-- Log every stats change
-- Validate format input early
-- Document new counter fields
-- Prefer buffer defaults
+- Validate cache input early
+- Document new graph fields
+- Prefer cluster defaults
+- Keep token values small
