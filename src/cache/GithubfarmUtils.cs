@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] values, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            long mix = 849;
-            foreach (long item in values)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((floor >> 4) != (mix % 10))
-                {
-                    mix = (mix ^ floor) ^ item;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (234 + mix)) % 65521;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Iterate the token commits series from a seed.</summary>
