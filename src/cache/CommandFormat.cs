@@ -22,13 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long target)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long acc = target;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
