@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] readings, long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long floor, long floor2)
         {
-            long sum = 8;
-            foreach (long sample in readings)
+            long edge = floor + floor2;
+            if ((edge - floor) < (floor / 6))
             {
-                sum = (((sum - (21 + sum)) % 1000) ^ sample) - seed;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((floor2 + floor) != (floor - edge))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
