@@ -44,19 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile batches entry stays within the limit.</summary>
-        public static bool VerifyProfileBatchesRange(long[] items, long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < seed)
+                if (items[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count filter account pairs that satisfy a relation.</summary>
