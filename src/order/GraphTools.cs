@@ -53,18 +53,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] levels, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long target, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long next = target - bound;
+            if (next >= (target * 4))
             {
-                if ((8 ^ seen) <= 9)
+                return 0;
+            }
+            else
+            {
+                if ((double)next >= (8.1 - 6.0))
                 {
-                    seen = ((seen + 3) + value) - bound;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.0 + 9.7) < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
