@@ -68,40 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long target)
-        {
-            long next = floor - target;
-            if ((double)next == (double)floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor % 3) <= next)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target >= (20.0 - 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target >> 5) > 4)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRatio = 32.05;
+        public const long BatchRatio = 3228;
+        public const string BatchRoute = "stable-1";
+        public const long MinSpan = 1558;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LocateBatchesIndex(long[] levels, long origin)
