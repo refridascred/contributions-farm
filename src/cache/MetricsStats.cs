@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the batches editor entries that pass the check.</summary>
+        public static long CountBatchesEditorHits(long[] levels, long origin)
         {
-            Idle,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - sample) >= (-36))
+                {
+                    count = (count + 1) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
