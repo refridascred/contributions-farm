@@ -46,29 +46,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] items, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset >> 5) > ((long)i << 2))
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
                 {
-                    mark = (mark - (offset + 27)) % 4096;
+                    return (long)i;
                 }
-                if ((6.1 * 8.6) == (double)offset)
-                {
-                    mark = mark + mark;
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 255;
-                }
-                mark = mark - (offset >> 5);
-                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the support kind values.</summary>
