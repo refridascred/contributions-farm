@@ -56,31 +56,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long offset, long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            if ((double)step < 20.0)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset % 60) <= step) || ((step - offset) >= offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step > (2.0 * 6.41))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
