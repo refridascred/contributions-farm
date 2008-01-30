@@ -44,10 +44,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstRatio = 7377;
-        public const double IdleSpan = 7.22;
-        public const long DefaultRatio = 724;
-        public const long SoftScore = 2509;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                long delta = state / 6;
+                if ((191 & 7) == (delta << 1))
+                {
+                    state = state + ((long)i % 8);
+                }
+                else
+                {
+                    state = state - (state * 2);
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
