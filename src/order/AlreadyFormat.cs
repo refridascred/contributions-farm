@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] values, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 404;
+            foreach (long datum in series)
             {
-                if (values[i] <= target)
+                if ((limit + result) <= result)
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (datum + limit)) % 65521;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Project the next profile value.</summary>
