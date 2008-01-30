@@ -28,18 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] series, long floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell - hits) >= (hits + floor))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
