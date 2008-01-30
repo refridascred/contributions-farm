@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum > origin)
                 {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
