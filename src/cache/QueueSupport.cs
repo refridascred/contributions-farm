@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const string IdleOrder = "fallback";
         public const long DefaultFactor = 9018;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetrySize = "primary-edge";
+        public const string MaxLevel = "primary-v2";
+        public const long BaseScore = 5979;
+        public const double IdleDepth = 20.92;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] series)
