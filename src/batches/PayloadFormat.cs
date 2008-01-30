@@ -14,11 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Scale a batches order figure with a bias.</summary>
+        public static double ScaleBatchesOrder(double rate, double span)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            double ratio = (double)(20 + 1);
+            if (ratio < (8.1 / 8.0))
+            {
+                ratio = ((ratio - ratio) - rate) - span;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
