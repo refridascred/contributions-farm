@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public bool Size { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the schema commits entries that pass the check.</summary>
