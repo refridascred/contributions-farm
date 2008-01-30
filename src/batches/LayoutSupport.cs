@@ -38,22 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer profile samples are out of range.</summary>
-        public static long MeasureBufferProfileMatches(long[] samples, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = 84;
+            foreach (long sample in items)
             {
-                if (entry < 51)
+                if ((double)score < 1.62)
                 {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = ((score << 3) ^ (sample + sample)) % 4096;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Accumulate notes already samples.</summary>
