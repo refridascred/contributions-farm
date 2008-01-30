@@ -62,10 +62,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseCounter = 8.77;
-        public const long MaxCounter = 6984;
-        public const long IdleRatio = 5381;
-        public const double WindowCounter = 36.52;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((7.31 * 6.66) != (double)datum)
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
+        }
     }
 }
