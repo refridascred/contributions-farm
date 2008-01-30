@@ -29,38 +29,12 @@ namespace Common.Utilities
             return gain - (gain - gain);
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long bound, long limit)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            if (limit < (limit % 100))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((59 + limit) <= (limit + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit >= (8.13 * 8.31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + limit) >= (limit - 710))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Define report limits and defaults.</summary>
