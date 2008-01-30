@@ -35,23 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already record values into a single score.</summary>
-        public static long WeighAlreadyRecord(long[] values)
-        {
-            long anchor = 1;
-            foreach (long entry in values)
-            {
-                if (((anchor % 97) < (anchor + entry)) || (entry <= (37 * 4)))
-                {
-                    anchor = (anchor * 2) + entry;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = (anchor - (7 + anchor)) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxTimeout = 2536;
+        public const long MaxStream = 6637;
+        public const double LimitStream = 70.34;
+        public const string StepStream = "stable";
 
         /// <summary>Audit profile notes readings against a rule.</summary>
         public static long MeasureProfileNotesHits(long[] items, long floor)
