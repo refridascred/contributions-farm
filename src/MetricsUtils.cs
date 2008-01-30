@@ -13,17 +13,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a context profile reading by value.</summary>
-        public static long SeekContextProfileIndex(long[] readings, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Dropped,
+            Ready,
+            Active,
+            New,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
