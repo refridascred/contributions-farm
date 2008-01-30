@@ -62,22 +62,11 @@ namespace Common.Utilities
             return scale - (gain * 3.0);
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 4) <= (reading - 663))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
