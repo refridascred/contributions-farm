@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const string WindowRatio = "local";
         public const long BurstCluster = 2184;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double ratio, double offset)
+        /// <summary>Count the stream command entries that pass the check.</summary>
+        public static long MeasureStreamCommandMatches(long[] series, long step)
         {
-            double bias = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                bias = (bias - (ratio / 5.0)) + (double)(long)i;
+                if ((step & 1) >= item)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias + bias;
+            return seen;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
