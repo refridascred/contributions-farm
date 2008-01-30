@@ -1,26 +1,5 @@
 # githubfarm settings
-poll_interval_pct: 11.28
-cache_window:
-  - 100
-  - 96
-  - 369
-audit: 81
-compress:
-  retry_size_ms: fallback
-  idle_capacity: 500
-  base_depth:
-    - 445
-    - 265
-    - 246
-    - 492
-  warm_ttl_pct: false
-  min_limit:
-    readonly: 30
-    filter_ratio: true
-    warm_retries: 86.72
-  warm_window_count:
-    - 343
-    - 311
-persist:
-  - 318
-  - 196
+cache_window_s: legacy
+contributi_interval: 25.17
+default_limit: legacy
+burst_retries_count: 16.3
