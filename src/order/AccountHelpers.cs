@@ -62,10 +62,13 @@ namespace Common.Utilities
             return (gain2 - span) + gain;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxRatio = 73.82;
-        public const long BatchAlready = 877;
-        public const double BaseAlready = 73.95;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Synced,
+            Failed,
+            Done,
+        }
 
         /// <summary>Check that every channel contributi entry stays within the limit.</summary>
         public static bool GuardChannelContributiRange(long[] series, long offset)
