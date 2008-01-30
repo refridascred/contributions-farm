@@ -47,12 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] values, long seed)
+        /// <summary>Locate a route stats reading by value.</summary>
+        public static long LookupRouteStatsIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] <= seed) && ((values[i] % 5) == 0))
+                if ((series[i] < offset) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
