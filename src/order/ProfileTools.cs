@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Digest a series of account record entries.</summary>
+        public static long WeighAccountRecord(long[] levels, long seed)
         {
-            Paused,
-            Dropped,
-            Ready,
-            Failed,
+            long acc = 34;
+            foreach (long reading in levels)
+            {
+                acc = (((acc + acc) % 97) + reading) + seed;
+            }
+            if (acc < 26)
+            {
+                acc = (acc + (acc + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
