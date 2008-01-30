@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] levels, long bound)
         {
-            Locked,
-            Queued,
-            Closed,
-            Synced,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
