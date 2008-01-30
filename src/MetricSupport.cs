@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long BurstCount = 9775;
         public const string BatchWidth = "staging-1";
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((0 >> 4) <= (item - (long)samples.Length))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
