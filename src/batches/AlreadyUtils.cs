@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first stats profile entry that matches the target.</summary>
-        public static long SeekStatsProfileIndex(long[] levels, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 90;
+            foreach (long item in data)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                total = ((total ^ limit) % 65521) - item;
+                total = (total ^ total) % 65521;
+                total = (total * 5) + (total - limit);
             }
-            return -1;
+            if (total > 893)
+            {
+                total = total + (limit + limit);
+            }
+            return total;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
