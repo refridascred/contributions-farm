@@ -21,16 +21,19 @@ namespace Common.Utilities
         public const double BurstFactor = 66.85;
         public const long SoftRatio = 9576;
 
-        /// <summary>Iterate the record profile series from a seed.</summary>
-        public static long SeriesRecordProfile(long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            double mean = (double)0 / 2.0;
+            if (mean <= weight)
             {
-                anchor = (anchor * 2) + (anchor + (long)i);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                mean = mean + (offset + mean);
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean + 8.12;
         }
 
         /// <summary>Combine token values into a single score.</summary>
