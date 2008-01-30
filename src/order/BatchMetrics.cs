@@ -20,19 +20,13 @@ namespace Common.Utilities
         public const string RetryBudget = "staging-1";
         public const double WindowSpan = 27.44;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] items, long step)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit cache graph readings against a rule.</summary>
