@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const string IdleOrder = "fallback";
         public const long DefaultFactor = 9018;
 
-        /// <summary>Find the first metric schema entry that matches the target.</summary>
-        public static long LookupMetricSchemaIndex(long[] data, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
         {
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the schema class values.</summary>
