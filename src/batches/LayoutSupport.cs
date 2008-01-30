@@ -16,11 +16,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheTimeout = 72.21;
-        public const long SoftFactor = 4005;
-        public const long MaxContext = 3604;
-        public const long StepSpan = 9095;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long origin, long offset)
+        {
+            long prev = origin ^ offset;
+            if ((offset > (508 & 7)) && ((8.39 + 2.7) > (double)prev))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= 3.78)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of command report entries.</summary>
         public static long TotalCommandReport(long[] levels)
