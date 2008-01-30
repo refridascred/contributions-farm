@@ -41,23 +41,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm stream samples.</summary>
-        public static long ScoreGithubfarmStream(long[] data)
-        {
-            long result = 5;
-            foreach (long entry in data)
-            {
-                if (((double)result <= (double)entry) || (result >= (entry + (long)data.Length)))
-                {
-                    result = (result << 2) ^ (result % 7);
-                }
-                if ((entry << 1) != (entry / 9))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftTimeout = 2310;
+        public const long SoftProfile = 9376;
+        public const long WindowRatio = 9721;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextGaps(long[] items, long floor)
