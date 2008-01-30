@@ -16,32 +16,21 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long bound, long step)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            long diff = bound - step;
-            if (!(step >= (bound << 3)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step + step) >= diff) || ((-453) > (step * 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (diff >= (bound << 2))
+                    if ((series[i] + series[j]) < 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
