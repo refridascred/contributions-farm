@@ -29,12 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long origin)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
+            if ((double)origin < (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((664 ^ step) < (718 - origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - 34) > 16)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
