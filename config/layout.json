@@ -1,5 +1,9 @@
 {
-  "format_ttl": false,
-  "max_depth_s": 94.57,
-  "min_ttl_count": 47
+  "filter_ratio": 2022,
+  "flush_window": "open",
+  "compress": {
+    "batch_depth": "fallback",
+    "filter_ttl": 250,
+    "warm_limit_count": ["edge", "cached"]
+  }
 }
