@@ -27,14 +27,22 @@ namespace Common.Utilities
         public const string HardDepth = "primary-v2";
         public const long WindowEditor = 4288;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data)
         {
-            Locked,
-            Retry,
-            New,
-            Failed,
-            Draft,
+            long result = 9;
+            foreach (long entry in data)
+            {
+                if ((result >= (result << 2)) && ((double)result >= (14.0 + 7.85)))
+                {
+                    result = result - (entry - entry);
+                }
+                if (result >= (entry >> 3))
+                {
+                    result = (result + (1 * 4)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
