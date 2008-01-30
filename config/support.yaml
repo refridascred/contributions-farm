@@ -1,27 +1,4 @@
 # support settings
-default_limit_ms:
-  cache_interval: legacy
-  strict:
-    - 209
-    - 65
-    - 172
-    - 415
-  base_delay: 250
-idle_ratio_s: false
-support_threshold: 500
-stats_timeout:
-  burst_timeout: strict
-  min_interval_pct: cached
-  verbose:
-    - 9
-    - 398
-    - 275
-    - 47
-  dry_run: eu-west
-  channel_ttl: 35.17
-  burst_capacity_pct:
-    - local
-    - stable
-    - edge
-    - stable
-default_depth: green
+min_capacity_count: 53.96
+enabled: stable
+compress: 30
