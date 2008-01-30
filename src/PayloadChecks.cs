@@ -33,12 +33,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series, long floor)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long total = 816;
+            foreach (long cell in series)
+            {
+                total = ((total - (465 ^ floor)) % 101) + cell;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
