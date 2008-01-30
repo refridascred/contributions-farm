@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] series, long step)
+        /// <summary>Iterate the account already series from a seed.</summary>
+        public static long DeriveAccountAlready(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry << 2) ^ (seed ^ (long)i)) % 4096;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the payload state values.</summary>
