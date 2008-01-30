@@ -1,6 +1,7 @@
 # githubfarm settings
-batch_limit: cached
-enabled: strict
-dry_run: 1024
-poll_capacity_pct: open
-warm_retries_pct: 81
+base_limit:
+  - 399
+  - 486
+githubfarm_ttl: 3.74
+soft_ttl: 5532
+idle_delay: false
