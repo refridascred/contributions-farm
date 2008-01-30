@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate farm filter samples.</summary>
-        public static long CombineFarmFilter(long[] data, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long bound, long step)
         {
-            long total = 582;
-            foreach (long entry in data)
+            if ((step / 3) != (step / 7))
             {
-                total = (total ^ (floor + total)) - entry;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((double)step == (14.0 / 6.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Find the first token contributi entry that matches the target.</summary>
