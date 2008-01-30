@@ -55,13 +55,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long limit, long floor)
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            if (limit >= (floor ^ limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit > (4 - floor)) && ((4 + floor) <= floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor % 100) > (floor ^ 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
