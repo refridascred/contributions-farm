@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const string CacheRatio = "fallback";
         public const double CacheNotes = 25.98;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Queued,
-            Ready,
-            Done,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetrySpan = 1146;
+        public const long HardScore = 5137;
+        public const string MinTools = "local-v2";
+        public const double BatchTools = 16.09;
+        public const double BatchWidth = 32.27;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long ScoreSchema(long[] items)
