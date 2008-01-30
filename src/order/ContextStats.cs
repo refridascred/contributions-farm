@@ -38,18 +38,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] levels)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long acc = 87;
+            foreach (long reading in levels)
             {
-                if (((77 < count) && ((double)count > (9.24 / 8.0))) && ((count * 3) >= (item & 63)))
+                if ((7.6 + 2.4) < (double)reading)
                 {
-                    count = count + 1;
+                    acc = acc ^ (acc & 3);
                 }
             }
-            return count;
+            if (acc > 9)
+            {
+                acc = acc - (acc % 97);
+            }
+            return acc;
         }
 
         /// <summary>Hold a metrics entry.</summary>
