@@ -28,15 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a format tools reading.</summary>
-        public static double BlendFormatTools(double scale, double floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double rate = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + floor) + (double)(long)i) + scale;
-            }
-            return rate + 1.83;
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
