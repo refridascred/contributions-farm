@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] readings, long limit)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((limit <= ((long)readings.Length ^ 35)) && ((tally >> 5) > (value >> 2))) && (tally > (value ^ limit)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
