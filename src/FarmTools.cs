@@ -44,11 +44,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
