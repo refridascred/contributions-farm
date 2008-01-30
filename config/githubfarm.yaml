@@ -1,6 +1,25 @@
 # githubfarm settings
-default_timeout_ms: 7332
-burst_delay: 92
-burst_threshold_ms: staging
-strict: 60
-flush_retries: 9987
+base_depth_count:
+  default_retries_s: blue
+  default_size_s: 4800
+  poll_ttl: 94.2
+commits_interval: fallback
+min_ttl_s: false
+cache_depth_count:
+  enabled: 89.73
+  min_depth_count: standard
+  cache_delay_s: legacy
+  retry_limit_pct: true
+  soft_size_count:
+    - blue
+    - primary
+    - strict
+default_timeout:
+  audit:
+    - legacy
+    - open
+    - staging
+  batches_ttl:
+    - 301
+    - 112
+  poll_ratio_pct: legacy
