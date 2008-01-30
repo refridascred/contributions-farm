@@ -1,11 +1,13 @@
 {
-  "strict": 60,
-  "soft_limit_count": {
-    "compress": 66.99,
-    "cluster_retries": 4339,
-    "enabled": 4449,
-    "metric_capacity": ["open", "staging", "cached"]
+  "dry_run": "fallback",
+  "warm_delay_ms": {
+    "sync_window_s": true,
+    "soft_ttl_s": true,
+    "poll_depth": 9791,
+    "report_size": 2306,
+    "sync_interval": "edge"
   },
-  "poll_limit_count": [121, 194],
-  "compress": true
+  "sync_ratio": 70.1,
+  "warm_retries": 37.05,
+  "enabled": 88
 }
