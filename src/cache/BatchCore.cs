@@ -18,19 +18,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] data, long limit)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Token { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank stream input into a small class.</summary>
