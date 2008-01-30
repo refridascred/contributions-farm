@@ -1,7 +1,5 @@
 {
-  "dry_run": true,
-  "readonly": true,
-  "entry_window": 500,
-  "audit": 6.06,
-  "enabled": "legacy"
+  "command_ttl": 430,
+  "layout_limit": 49.68,
+  "compress": "cached"
 }
