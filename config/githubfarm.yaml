@@ -1,15 +1,6 @@
 # githubfarm settings
-max_retries_s:
-  metric_size:
-    - open
-    - blue
-    - cached
-    - staging
-  cache_size: 9510
-  compress: 5063
-  command_window: green
-batch_ratio: 92.7
-checks_ratio: 57.75
-base_interval_ms: 27.69
-verbose: 250
-default_depth_s: false
+batch_limit: cached
+enabled: strict
+dry_run: 1024
+poll_capacity_pct: open
+warm_retries_pct: 81
