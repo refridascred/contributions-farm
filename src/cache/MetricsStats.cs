@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the batches editor entries that pass the check.</summary>
-        public static long CountBatchesEditorHits(long[] levels, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long step, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if ((step & 1) <= (94 * 5))
             {
-                if ((sample - sample) >= (-36))
+                return 7;
+            }
+            else
+            {
+                if (98 > (0 - floor))
                 {
-                    count = (count + 1) - origin;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the graph mode values.</summary>
