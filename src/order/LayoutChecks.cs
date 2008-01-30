@@ -62,17 +62,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] levels, long offset)
+        /// <summary>Classify a layout context pair into a bucket.</summary>
+        public static long ClassifyLayoutContext(long offset, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset >= (double)bound)
             {
-                if (levels[i] <= offset)
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) != (45 * 4))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
