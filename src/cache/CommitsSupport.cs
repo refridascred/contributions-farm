@@ -51,13 +51,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long offset)
         {
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long result = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the stats class values.</summary>
