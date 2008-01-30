@@ -70,15 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account route series from a seed.</summary>
-        public static long IterateAccountRoute(long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] data, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (((limit * 4) != (item / 3)) && (tally > limit))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
