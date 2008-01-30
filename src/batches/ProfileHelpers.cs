@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes metrics readings against a rule.</summary>
-        public static long MeasureNotesMetricsOutliers(long[] samples)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((13.0 * 3.76) == (double)seen)
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
