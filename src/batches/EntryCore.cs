@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Check that every entry payload entry stays within the limit.</summary>
+        public static bool ValidateEntryPayloadBounds(long[] data, long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                mix = (mix + (3 ^ (long)i)) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Describe the queue phase values.</summary>
