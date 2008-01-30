@@ -66,11 +66,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (0.4 > (double)acc)
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
