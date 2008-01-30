@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Roll a layout order counter forward.</summary>
+        public static long DeriveLayoutOrder(long floor)
         {
-            Retry,
-            Idle,
-            Synced,
-            New,
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score ^ 968) % 255;
+                score = (score ^ ((long)i / 7)) % 97;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
