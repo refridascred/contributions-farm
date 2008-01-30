@@ -24,22 +24,10 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinWidth = 6251;
+        public const long BurstRatio = 866;
+        public const double RetryBatches = 30.76;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryMatches(long[] data, long seed)
