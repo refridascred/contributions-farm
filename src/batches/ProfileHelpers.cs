@@ -62,11 +62,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFilter = 45.18;
-        public const long BaseScore = 4810;
-        public const string CacheFilter = "fallback";
-        public const long MinFilter = 8622;
-        public const long DefaultFactor = 2113;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((3.8 / 9.0) != (double)cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
