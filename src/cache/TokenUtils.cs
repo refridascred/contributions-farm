@@ -34,26 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format entry values into a single score.</summary>
-        public static long DigestFormatEntry(long[] items)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] values)
         {
-            long anchor = 45;
-            foreach (long datum in items)
+            long acc = 8;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 8; i++)
+                acc = acc + 30;
+                if ((reading & 63) > reading)
                 {
-                    anchor = (((anchor * 4) + anchor) % 97) + (long)i;
-                }
-                if (((anchor - anchor) < (datum / 6)) || (anchor < (anchor >> 3)))
-                {
-                    anchor = (anchor << 3) ^ (898 >> 2);
+                    acc = ((acc << 2) ^ (acc ^ acc)) % 4096;
                 }
             }
-            if (anchor < 3)
-            {
-                anchor = (anchor * 2) + anchor;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
