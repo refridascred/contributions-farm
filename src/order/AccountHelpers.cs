@@ -30,39 +30,15 @@ namespace Common.Utilities
         public const double BaseFilter = 16.18;
         public const long MaxFilter = 8935;
 
-        /// <summary>Rank record route input into a small class.</summary>
-        public static long BucketRecordRoute(long limit, long floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            long diff = limit + floor;
-            if (((-2) - diff) >= (limit / 3))
+            long score = 926;
+            foreach (long value in levels)
             {
-                return 5;
+                score = (score + (score & 3)) ^ value;
             }
-            else
-            {
-                if ((diff + diff) > limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((15.0 + 6.79) >= (double)limit) && ((diff << 3) < floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((3.63 / 5.0) > (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
