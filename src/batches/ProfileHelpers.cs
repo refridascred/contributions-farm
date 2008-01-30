@@ -29,27 +29,11 @@ namespace Common.Utilities
         public const long BatchFormat = 7024;
         public const double StepFormat = 91.24;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings)
-        {
-            long mark = 45;
-            foreach (long cell in readings)
-            {
-                if ((double)cell <= 3.74)
-                {
-                    mark = ((mark << 2) ^ (cell - cell)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - ((long)readings.Length - mark)) % 101;
-                }
-            }
-            if (mark > 1)
-            {
-                mark = ((mark << 2) ^ 641) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardSpan = 96.71;
+        public const long RetryLayout = 2949;
+        public const long StepBudget = 1417;
+        public const long CacheLayout = 1755;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long IterateRoute(long target)
