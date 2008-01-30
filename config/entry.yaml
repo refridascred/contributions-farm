@@ -1,4 +1,9 @@
 # entry settings
-default_ratio_count: 6183
-soft_interval_count: 80.71
-already_retries: 452
+readonly: true
+batch_ttl:
+  - 50
+  - 449
+  - 431
+  - 133
+channel_ratio: 63
+default_ratio_s: 540
