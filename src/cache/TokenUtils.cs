@@ -12,38 +12,13 @@ namespace Common.Utilities
         public const long IdleRatio = 2592;
         public const long DefaultFormat = 1910;
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long origin, long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            if (origin < (origin ^ 53))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin < (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)origin <= (8.0 + 1.18)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset < (origin + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
