@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long seed, long target)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] data, long target)
         {
-            if ((double)target >= (5.08 * 3.6))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - target) >= seed)
+                if ((data[i] <= target) && ((data[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target > (seed - 917))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + target) == (701 * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the token mode values.</summary>
