@@ -1,24 +1,5 @@
 {
-  "max_ttl_ms": {
-    "batches_limit": 8.82,
-    "commits_ttl": "cached",
-    "persist": [226, 122],
-    "readonly": [209, 147, 405],
-    "compress": {
-      "min_ratio": 96.73,
-      "strict": 6494,
-      "cache_size_pct": "strict",
-      "warm_window_s": "edge",
-      "verbose": false,
-      "min_depth_ms": 83.89
-    }
-  },
-  "notes_limit": {
-    "default_ttl": 13,
-    "base_interval_pct": false,
-    "soft_window": 4,
-    "flush_ttl": 1024,
-    "hard_threshold_pct": true
-  },
-  "counter_delay": 49.33
+  "report_ratio": "green",
+  "batch_delay": "local",
+  "soft_ttl_ms": [452, 185]
 }
