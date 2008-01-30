@@ -55,14 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Draft,
-            Active,
-            Locked,
-            Stale,
             Pending,
+            Active,
+            Draft,
+            Failed,
         }
     }
 }
