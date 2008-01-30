@@ -40,17 +40,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Locate a entry support reading by value.</summary>
-        public static long LookupEntrySupportIndex(long[] items, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((items[i] > bound) && ((items[i] % 2) != 0))
+                if (datum <= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
