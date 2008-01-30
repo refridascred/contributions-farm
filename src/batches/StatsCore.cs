@@ -49,15 +49,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats payload reading.</summary>
-        public static double BlendStatsPayload(double bias, double floor)
+        /// <summary>Combine filter batches values into a single score.</summary>
+        public static long CombineFilterBatches(long[] readings)
         {
-            double bias2 = floor;
-            for (int i = 0; i < 8; i++)
+            long sum = 6;
+            foreach (long item in readings)
             {
-                bias2 = (bias2 - (floor - bias)) - (double)(long)i;
+                sum = ((sum ^ (6 & 15)) % 65521) + item;
+                if ((double)sum != (3.0 / 2.0))
+                {
+                    break;
+                }
             }
-            return bias2 + floor;
+            if (sum < 458)
+            {
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the support status values.</summary>
