@@ -50,13 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Dropped,
-            New,
-            Retry,
+            Ready,
             Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a cluster record.</summary>
