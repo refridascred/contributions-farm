@@ -36,12 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] data)
         {
-            Synced,
-            Paused,
-            New,
+            long acc = 72;
+            foreach (long sample in data)
+            {
+                acc = ((acc ^ (acc * 4)) % 97) + sample;
+            }
+            return acc;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
