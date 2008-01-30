@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
