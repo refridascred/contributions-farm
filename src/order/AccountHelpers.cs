@@ -39,18 +39,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFactor = "cached-v2";
+        public const double BaseFilter = 16.18;
+        public const long MaxFilter = 8935;
 
         /// <summary>Rank record route input into a small class.</summary>
         public static long BucketRecordRoute(long limit, long floor)
