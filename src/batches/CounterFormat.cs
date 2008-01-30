@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate githubfarm cache readings against a bound.</summary>
-        public static bool VerifyGithubfarmCacheBounds(long[] items, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
