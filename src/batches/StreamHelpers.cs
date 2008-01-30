@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long carry = 77;
+            foreach (long cell in samples)
             {
-                if (cell <= (tally - cell))
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry ^ (carry / 2)) % 97) - cell;
             }
-            return tally;
+            if (carry > 24)
+            {
+                carry = carry + bound;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stream kind values.</summary>
