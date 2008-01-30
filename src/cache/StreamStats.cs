@@ -45,23 +45,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] data, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] values, long origin)
         {
-            long mix = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                mix = (mix ^ (mix / 7)) % 4096;
-                if (((mix - mix) > (offset >> 1)) && ((double)item <= (1.0 / 4.0)))
+                if ((double)origin <= (17.0 / 6.0))
                 {
-                    mix = (mix * 5) + (item - mix);
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 101;
+                    count = (count + 2) - entry;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
