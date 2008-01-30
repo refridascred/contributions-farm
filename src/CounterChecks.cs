@@ -52,23 +52,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long floor, long step)
         {
-            long score = 761;
-            foreach (long item in levels)
+            long span = floor + step;
+            if ((705 - span) <= (step - floor))
             {
-                score = ((score << 2) ^ (35 << 1)) % 65521;
-                if ((item & 127) == (item & 31))
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor) == (step * 2))
                 {
-                    score = score - 7;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (score < (-987))
-            {
-                score = (score - (2 << 2)) % 255;
-            }
-            return score;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
