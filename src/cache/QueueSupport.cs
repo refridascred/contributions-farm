@@ -40,31 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long seed, long seed2)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            if (seed2 < (seed - 44))
-            {
-                return 5;
-            }
-            else
-            {
-                if (143 >= (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (8.23 > (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Define support limits and defaults.</summary>
