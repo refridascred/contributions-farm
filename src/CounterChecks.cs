@@ -61,17 +61,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] items, long target)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long seed, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = seed + limit;
+            if ((double)seed == (1.3 + 9.3))
             {
-                if (items[i] <= target)
+                return 2;
+            }
+            else
+            {
+                if ((limit >> 3) >= (slot * 4))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((limit - slot) <= (slot * 5)) || ((3.7 + 18.0) < (double)slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((slot + 809) <= (slot ^ seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
