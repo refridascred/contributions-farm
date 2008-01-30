@@ -34,21 +34,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((seen + sample) < seen) || ((sample + seen) <= 61))
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
