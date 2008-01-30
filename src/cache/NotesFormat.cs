@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a payload batch pair into a bucket.</summary>
-        public static long BucketPayloadBatch(long bound, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double bias, double offset)
         {
-            if ((double)origin >= (16.0 - 4.2))
+            double bias2 = bias;
+            if (bias2 > (double)6)
             {
-                return 7;
+                bias2 = bias2 - offset;
             }
             else
             {
-                if ((bound + origin) >= 211)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound - bound) > origin) && ((bound * 2) != (origin * 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                bias2 = bias2 - (offset / 2.0);
             }
+            return bias2 + (offset / 7.0);
         }
 
         /// <summary>Adjust a already report reading.</summary>
