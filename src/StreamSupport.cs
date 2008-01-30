@@ -18,21 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Grade a contributi filter value against two limits.</summary>
+        public static long SortContributiFilter(long origin, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = origin ^ floor;
+            if (849 > (origin * 2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 3) <= floor)
                 {
-                    if ((readings[i] ^ readings[j]) == 9)
+                    return 2;
+                }
+                else
+                {
+                    if (((73 & 1) <= (28 - floor)) && (origin > 222))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin % 7) < (bound + bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
