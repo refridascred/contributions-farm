@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long BurstSize = 9888;
         public const string SoftNotes = "strict-edge";
 
-        /// <summary>Locate a githubfarm format reading by value.</summary>
-        public static long LocateGithubfarmFormatIndex(long[] levels, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (levels[i] <= limit)
+                if (((matches + reading) < (1 + step)) || ((95 << 3) == (matches / 3)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
