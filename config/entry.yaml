@@ -1,9 +1,4 @@
 # entry settings
-poll_depth:
-  account_size: 250
-  warm_size: 92.35
-  burst_size_pct: 49.48
-  verbose: 46.92
-  cache_size: cached
-account_interval: false
-cache_depth_count: open
+default_ratio_count: 6183
+soft_interval_count: 80.71
+already_retries: 452
