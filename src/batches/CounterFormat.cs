@@ -20,19 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (262 <= (tally + entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 7353;
+        public const long MinRecord = 8109;
+        public const double BaseRecord = 75.09;
+        public const long BurstRecord = 7397;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelOutliers(long[] data, long step)
