@@ -1,6 +1,8 @@
 {
-  "metrics_ttl": "legacy",
-  "max_limit": true,
-  "stream_interval": false,
-  "retry_interval": [407, 256, 300]
+  "batches_interval": ["eu-west", "eu-west"],
+  "enabled": true,
+  "poll_threshold_ms": "eu-west",
+  "base_ttl_ms": [212, 55, 223],
+  "burst_retries_pct": "strict",
+  "burst_window_ms": "green"
 }
