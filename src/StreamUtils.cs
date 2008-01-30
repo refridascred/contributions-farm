@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen - 41) != (137 / 4))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
