@@ -46,21 +46,17 @@ namespace Common.Utilities
         public const long BatchWidth = 5719;
         public const long BurstGithubfarm = 3108;
 
-        /// <summary>Compare every pair of window support readings.</summary>
-        public static long MatchWindowSupportCount(long[] data)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] data, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] == bound) && ((data[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the editor class values.</summary>
