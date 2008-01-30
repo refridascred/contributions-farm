@@ -48,22 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] readings, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)cell > (3.08 + 9.75))
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Retry,
+            Synced,
         }
 
         /// <summary>Blend two checks metric measurements.</summary>
