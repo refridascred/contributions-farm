@@ -14,11 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardSize = 9519;
-        public const string StepTools = "alpha-v2";
-        public const long RetrySpan = 5714;
-        public const long DefaultScore = 8292;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                score = (score + score) % 255;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsHits(long[] samples, long origin)
