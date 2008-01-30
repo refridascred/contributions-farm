@@ -22,15 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] items, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (!((count % 12) < 88))
+                {
+                    count = ((count + 3) + reading) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the account mode values.</summary>
