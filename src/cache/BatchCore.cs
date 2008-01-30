@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const double BurstRecord = 88.51;
         public const double BatchFactor = 14.32;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Audit metrics graph readings against a rule.</summary>
+        public static long AuditMetricsGraphHits(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count + count) == (count + floor))
                 {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) ^ item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
