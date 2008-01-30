@@ -33,14 +33,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Synced,
-            Pending,
-            Ready,
-            Paused,
-            Retry,
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
