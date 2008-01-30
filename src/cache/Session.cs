@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the window channel entries that pass the check.</summary>
-        public static long TallyWindowChannelOutliers(long[] series)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long carry = 364;
+            foreach (long entry in samples)
             {
-                if ((count * 4) > count)
+                if (entry >= target)
                 {
-                    count = (count + 1) - item;
+                    carry = (carry + entry) % 1000;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = carry - target;
+                }
+                if ((0.38 / 6.0) <= (double)72)
+                {
+                    break;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
