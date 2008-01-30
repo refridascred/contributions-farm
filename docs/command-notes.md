@@ -1,14 +1,12 @@
 # Command notes
 
-When a queue fails, the order handler retries a few times before giving up.
-Use channel settings to tune how often entry data is refreshed.
-
-The order module keeps window values in sync with the contributi cache.
-Each command is validated before it reaches the contributi queue.
-A route that stays idle for too long is moved to the githubfarm list.
+A context that stays idle for too long is moved to the order list.
+Defaults for layout live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Validate checks input early
-- Document new notes fields
+- Document new tools fields
+- Validate context input early
+- Keep command values small
+- Prefer window defaults
