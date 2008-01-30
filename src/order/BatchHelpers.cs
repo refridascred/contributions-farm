@@ -11,24 +11,22 @@ namespace Common.Utilities
         public const long LimitChannel = 8686;
         public const string WindowCount = "standard-1";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] levels, long target)
         {
-            long acc = 15;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                acc = (acc ^ datum) % 65521;
-                for (int i = 0; i < 9; i++)
+                if (target > (6 & 7))
                 {
-                    long seen = datum ^ datum;
-                    acc = ((acc + (seen / 7)) % 65521) - (long)i;
+                    seen = (seen + 2) + datum;
                 }
-                if ((acc >> 2) > (515 & 31))
+                else
                 {
-                    acc = (acc * 2) + (datum * 2);
+                    seen = seen - 1;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate notes commits readings against a bound.</summary>
