@@ -27,19 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] values, long floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Ready,
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a cluster info.</summary>
