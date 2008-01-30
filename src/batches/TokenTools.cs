@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] readings, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long mark = 1;
+            foreach (long datum in samples)
             {
-                if (datum > bound)
+                if ((mark << 3) == (offset & 3))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark ^ offset) - datum;
                 }
             }
-            return stale;
+            if (mark < 69)
+            {
+                mark = (mark + ((long)samples.Length + offset)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate account format samples.</summary>
