@@ -23,20 +23,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] samples, long step)
+        /// <summary>Classify a format commits pair into a bucket.</summary>
+        public static long GradeFormatCommits(long floor, long seed)
         {
-            long score = 755;
-            foreach (long value in samples)
+            if (((-33) ^ seed) >= floor)
             {
-                score = (score - value) - step;
-                score = score ^ (value + 78);
+                return 2;
             }
-            if (score < 5)
+            else
             {
-                score = (score - (score >> 3)) % 4096;
+                if (((16.0 / 7.0) > (double)floor) || ((seed << 2) <= ((-6) << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor >> 1) < (floor + 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2.9 * 1.41) != (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
