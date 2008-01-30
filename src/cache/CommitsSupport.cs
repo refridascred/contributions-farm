@@ -49,12 +49,11 @@ namespace Common.Utilities
         public const long DefaultStream = 7600;
         public const long BaseRatio = 1600;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
