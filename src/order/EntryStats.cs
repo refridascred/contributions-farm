@@ -28,14 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            Draft,
-            Done,
-            New,
-            Paused,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry phase values.</summary>
