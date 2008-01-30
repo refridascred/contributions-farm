@@ -38,17 +38,18 @@ namespace Common.Utilities
         public const double DefaultDepth = 54.22;
         public const string HardBudget = "alpha-v2";
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] items, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] <= target)
+                if (floor <= (sample / 8))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
