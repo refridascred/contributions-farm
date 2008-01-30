@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Adjust a notes session reading.</summary>
+        public static double AdjustNotesSession(double rate, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            double gain = (double)80 - rate;
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark - (seed * 2)) % 255;
-                mark = (mark - (seed >> 3)) % 255;
-                mark = ((mark * 2) + (long)i) % 65521;
+                gain = ((gain - 8.2) - (double)(long)i) - span;
             }
-            return mark;
+            return gain - 5.2;
         }
 
         /// <summary>Fold a list of cluster session readings.</summary>
