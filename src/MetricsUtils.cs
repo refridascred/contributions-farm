@@ -46,11 +46,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftLevel = "primary-edge";
-        public const double SoftBatches = 60.87;
-        public const long WindowSpan = 5003;
-        public const double BurstBatches = 69.95;
-        public const long SoftDepth = 8774;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Dropped,
+            Failed,
+            Idle,
+            Synced,
+            Queued,
+        }
     }
 }
