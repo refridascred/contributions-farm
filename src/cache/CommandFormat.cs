@@ -31,17 +31,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] data, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long item in levels)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                state = ((state + (state & 7)) % 4096) - item;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the context level values.</summary>
