@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Classify a notes tools pair into a bucket.</summary>
+        public static long BucketNotesTools(long offset, long seed)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            if (!(offset > seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((2.3 + 2.91) < (double)seed) && (seed < (8 + 420)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset % 64) == (119 * 3)) || ((offset - offset) > (offset >> 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((1.49 * 3.2) == (double)seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
