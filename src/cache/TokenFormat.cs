@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] readings, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] items, long bound)
         {
-            long result = 17;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((datum + result) > (target % 5))
+                if (sample > bound)
                 {
-                    result = (result ^ datum) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Audit record filter readings against a rule.</summary>
