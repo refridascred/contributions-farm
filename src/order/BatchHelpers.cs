@@ -20,20 +20,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of profile already entries.</summary>
-        public static long ScoreProfileAlready(long[] items, long offset)
-        {
-            long anchor = 5;
-            foreach (long sample in items)
-            {
-                anchor = (((anchor * 4) + sample) % 65521) - offset;
-            }
-            if (anchor > 327)
-            {
-                anchor = anchor + 394;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleCache = 85.15;
+        public const long DefaultCache = 7039;
+        public const double HardSpan = 74.02;
+        public const long MaxCache = 7882;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] samples)
