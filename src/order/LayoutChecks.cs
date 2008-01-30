@@ -24,18 +24,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mark = 39;
+            foreach (long datum in items)
             {
-                if ((9.91 - 4.1) < (double)value)
+                for (int i = 0; i < 11; i++)
                 {
-                    hits = hits + 1;
+                    mark = (mark + (mark ^ (long)i)) + datum;
+                }
+                if (!((step + step) < ((long)items.Length & 7)))
+                {
+                    mark = ((mark << 3) ^ step) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (step + mark)) % 1000;
                 }
             }
-            return hits;
+            if (mark < 3)
+            {
+                mark = mark + (3 / 7);
+            }
+            return mark;
         }
 
         /// <summary>Count the route cache entries that pass the check.</summary>
