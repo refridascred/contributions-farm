@@ -1,6 +1,18 @@
 # entry settings
-default_threshold:
-  - 150
-  - 204
-max_interval_ms: 30
-hard_window: fallback
+enabled: blue
+readonly: 81.99
+flush_size_count: true
+soft_ttl:
+  idle_delay_count:
+    - 292
+    - 119
+    - 343
+    - 337
+  min_retries_ms: 2143
+  profile_threshold: true
+  strict: standard
+min_depth_pct: 19.25
+hard_size:
+  - standard
+  - eu-west
+  - open
