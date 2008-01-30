@@ -37,19 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = (((acc << 3) ^ (-3)) % 65521) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
