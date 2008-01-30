@@ -42,13 +42,19 @@ namespace Common.Utilities
         public const double MaxRatio = 67.83;
         public const double BaseBudget = 77.6;
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] readings, long limit)
         {
-            Done,
-            Retry,
-            Dropped,
-            Synced,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
