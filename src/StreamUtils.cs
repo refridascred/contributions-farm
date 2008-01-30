@@ -60,23 +60,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a farm layout reading.</summary>
-        public static double AdjustFarmLayout(double scale, double floor)
+        /// <summary>Match up notes route samples.</summary>
+        public static long MatchNotesRouteCount(long[] data)
         {
-            double mean = 8.9;
-            if (mean <= (double)5)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (floor * 9.8)) + scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean + floor)) + (double)(long)i;
-            }
-            return mean + (mean - mean);
+            return seen;
         }
 
         /// <summary>Describe the cache level values.</summary>
