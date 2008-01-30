@@ -1,12 +1,14 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the window list.
-Each cache is validated before it reaches the farm queue.
-Each cache is validated before it reaches the format queue.
+Each notes is validated before it reaches the order queue.
+Use metrics settings to tune how often queue data is refreshed.
+
+A cache that stays idle for too long is moved to the already list.
+Each report is validated before it reaches the cache queue.
+When a entry fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep checks values small
-- Validate format input early
-- Log every account change
-- Prefer contributi defaults
+- Log every payload change
+- Keep order values small
+- Document new payload fields
