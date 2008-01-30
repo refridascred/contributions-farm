@@ -25,14 +25,19 @@ namespace Common.Utilities
         public const string BurstWindow = "latest";
         public const long LimitTimeout = 7047;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] levels, long step)
         {
-            Closed,
-            Failed,
-            Draft,
-            Paused,
-            Active,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
