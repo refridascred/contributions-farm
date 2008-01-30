@@ -37,11 +37,17 @@ namespace Common.Utilities
         public const long DefaultScore = 8772;
         public const string BatchTimeout = "strict-edge";
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] items, long floor)
         {
-            double weight2 = offset;
-            return (weight2 + (weight2 / 3.0)) + weight;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the buffer contributi series from a seed.</summary>
