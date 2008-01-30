@@ -1,5 +1,17 @@
 {
-  "editor_size": true,
-  "soft_ratio_ms": 32.6,
-  "enabled": false
+  "sync_delay_s": false,
+  "batch_timeout": {
+    "farm_size": 250,
+    "batch_interval": "local",
+    "persist": {
+      "hard_size_s": 3,
+      "idle_retries_s": false,
+      "persist": ["edge", "blue"],
+      "schema_delay": 83.14,
+      "stats_capacity": 44.85
+    }
+  },
+  "batch_size": "green",
+  "warm_limit_count": "edge",
+  "audit": [458, 357, 96, 347]
 }
