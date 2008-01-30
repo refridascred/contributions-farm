@@ -42,22 +42,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long step, long step2)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((step2 + step) >= 52)
             {
-                if ((item + count) > (count / 6))
+                return 8;
+            }
+            else
+            {
+                if ((double)step2 > (9.27 / 6.0))
                 {
-                    count = count + 1;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up notes route samples.</summary>
