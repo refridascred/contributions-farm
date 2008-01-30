@@ -27,21 +27,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -321;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark + (offset % 7)) % 4096) + item;
+                mark = (mark ^ (offset * 3)) % 101;
             }
-            return seen;
+            return mark % 1000;
         }
     }
 }
