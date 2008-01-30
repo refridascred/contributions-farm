@@ -1,10 +1,7 @@
 # support settings
-retry_threshold_s: eu-west
-dry_run:
-  verbose: 5959
-  hard_size_s: 100
-  default_interval_ms: true
-  warm_retries: 7480
-burst_threshold_count: 92.67
-min_timeout_ms: 60
-route_ttl: true
+warm_size: green
+retry_threshold_count: 60
+readonly: false
+idle_depth: 16
+default_retries: 78.17
+notes_depth: latest
