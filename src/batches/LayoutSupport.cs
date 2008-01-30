@@ -17,25 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long origin, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] levels)
         {
-            long prev = origin ^ offset;
-            if ((offset > (508 & 7)) && ((8.39 + 2.7) > (double)prev))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= 3.78)
+                if (((sample << 1) == (sample / 2)) && ((13.0 * 8.0) < (double)sample))
                 {
-                    return 6;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 1;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the record mode values.</summary>
