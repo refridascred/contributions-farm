@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long step)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)step <= (6.06 - 7.7))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    continue;
+                    total = ((total * 5) + (seed + total)) ^ (long)i2;
                 }
-                if (!((score >> 4) < (score / 5)))
-                {
-                    score = ((score * 2) + (step << 3)) % 255;
-                }
-                if (3.22 <= (double)step)
-                {
-                    score = ((score * 3) + (score + 536)) % 97;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
