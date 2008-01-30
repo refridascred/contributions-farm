@@ -33,19 +33,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (7.82 >= (double)reading)
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxLevel = 98.23;
+        public const long MaxSize = 8651;
+        public const long RetryContributi = 8628;
+        public const double WindowContributi = 0.11;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenHits(long[] samples, long target)
