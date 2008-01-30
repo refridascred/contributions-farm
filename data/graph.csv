@@ -1,8 +1,6 @@
-id,level,state,active
-1,792,925,48.71
-2,legacy,311,394
-3,370,fallback,679
-4,local,latest,latest
-5,51.47,67.63,legacy
-6,558,44.3,13.92
-7,71.72,fallback,21.79
+id,state,weight
+1,840,21.24
+2,96.39,66.63
+3,local,61.25
+4,staging,307
+5,fallback,33.73
