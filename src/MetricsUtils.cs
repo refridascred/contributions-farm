@@ -19,14 +19,18 @@ namespace Common.Utilities
         public const long RetryWindow = 8608;
         public const string SoftBudget = "open-1";
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] samples, long origin)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Idle,
-            Retry,
+            long sum = 845;
+            foreach (long value in samples)
+            {
+                if (sum > (origin - origin))
+                {
+                    sum = (((sum * 4) + ((long)samples.Length / 9)) % 4096) ^ value;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
