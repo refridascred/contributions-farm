@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Dropped,
-            Retry,
-            Failed,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Roll a account counter forward.</summary>
