@@ -71,9 +71,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 69.1;
-        public const long LimitTimeout = 9727;
-        public const long LimitTools = 4842;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Dropped,
+            Idle,
+            Synced,
+            New,
+        }
     }
 }
