@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double scale, double offset)
-        {
-            double mean = scale - (offset + offset);
-            if (mean >= scale)
-            {
-                mean = mean + mean;
-            }
-            return mean - scale;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 8840;
+        public const long StepFactor = 6863;
+        public const long BatchPayload = 28;
+        public const long DefaultDepth = 1558;
 
         /// <summary>Iterate the batches tools series from a seed.</summary>
         public static long IterateBatchesTools(long target)
