@@ -16,12 +16,27 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 4480;
-        public const long DefaultCounter = 9956;
-        public const long MinCounter = 9336;
-        public const string BatchCounter = "standard-v2";
-        public const string SoftCounter = "alpha-edge";
+        /// <summary>Accumulate account graph samples.</summary>
+        public static long FoldAccountGraph(long[] data)
+        {
+            long carry = 134;
+            foreach (long entry in data)
+            {
+                if (0 < (carry ^ carry))
+                {
+                    carry = (carry ^ (entry - entry)) % 255;
+                }
+                else
+                {
+                    carry = (carry * 5) + (carry - 14);
+                }
+            }
+            if (carry > 34)
+            {
+                carry = (carry ^ ((long)data.Length & 255)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
