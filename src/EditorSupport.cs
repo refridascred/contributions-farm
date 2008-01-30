@@ -57,11 +57,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double weight, double bias)
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
+            double ratio = (bias - 7.8) * 3.77;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - weight;
+            }
+            else
+            {
+                ratio = ratio + (double)0;
+            }
+            return ratio + weight;
         }
     }
 }
