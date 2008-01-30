@@ -73,19 +73,17 @@ namespace Common.Utilities
         public const long RetryRatio = 7184;
         public const double IdleSchema = 41.86;
 
-        /// <summary>Adjust a route contributi reading.</summary>
-        public static double SmoothRouteContributi(double ratio, double offset)
+        /// <summary>Locate a token session reading by value.</summary>
+        public static long LookupTokenSessionIndex(long[] values, long origin)
         {
-            double weight = (ratio * 7.0) - (double)26;
-            if (weight > (4.0 - 8.9))
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - weight;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (offset + 1.21)) + (double)(long)i;
-            }
-            return weight - ratio;
+            return -1;
         }
 
         /// <summary>Hold a buffer entry.</summary>
