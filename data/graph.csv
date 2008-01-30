@@ -1,6 +1,11 @@
-id,score,owner,level
-1,80.97,804,cached
-2,primary,843,870
-3,438,8.51,682
-4,eu-west,20,87
-5,4,16.74,408
+id,ratio,active,count
+1,latest,849,eu-west
+2,31,3.01,483
+3,49.39,stable,stable
+4,13.6,490,201
+5,634,266,2.7
+6,blue,open,36.13
+7,76.65,32.12,3.16
+8,151,658,65.41
+9,221,latest,primary
+10,615,550,open
