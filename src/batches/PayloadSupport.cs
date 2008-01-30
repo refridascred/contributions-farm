@@ -38,13 +38,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long seed)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if (carry < ((-79) * 4))
+                {
+                    carry = (carry + seed) % 101;
+                    carry = (carry ^ 96) % 4096;
+                }
+                carry = carry + carry;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
