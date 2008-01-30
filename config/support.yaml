@@ -1,7 +1,25 @@
 # support settings
-warm_size: green
-retry_threshold_count: 60
-readonly: false
-idle_depth: 16
-default_retries: 78.17
-notes_depth: latest
+counter_ratio: 91.17
+retry_window_ms: 74
+compress:
+  cache_capacity:
+    warm_window_s: latest
+    strict: false
+    warm_depth: latest
+    persist: true
+    min_ttl:
+      - open
+      - standard
+      - eu-west
+      - fallback
+    max_window_pct: local
+  batch_ttl: 1678
+  readonly: 250
+notes_window:
+  - 61
+  - 167
+  - 385
+verbose:
+  - 346
+  - 430
+persist: cached
