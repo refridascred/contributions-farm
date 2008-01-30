@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] data, long origin)
         {
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!(((double)entry >= (1.0 + 5.91)) || ((double)matches > (double)entry)))
+                {
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
