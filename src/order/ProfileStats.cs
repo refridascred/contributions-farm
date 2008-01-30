@@ -27,19 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] items, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long bound)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix ^ (769 % 7)) % 101;
+                mix = (mix << 2) ^ (bound >> 3);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
