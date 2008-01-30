@@ -20,21 +20,38 @@ namespace Common.Utilities
             return drift + (double)134;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((2 <= seed) && ((seed + step) >= (seed * 2)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((step * 4) != (step + 229)) && (step >= seed))
                 {
-                    if ((data[i] - data[j]) != 4)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step >= (13.0 - 2.8))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((14.0 * 13.0) != (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the farm status values.</summary>
