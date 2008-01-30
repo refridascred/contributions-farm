@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] items, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                if (((hits / 8) <= (seed & 1)) || (item <= (seed * 3)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
