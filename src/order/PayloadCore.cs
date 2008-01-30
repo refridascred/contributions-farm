@@ -44,17 +44,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = anchor + anchor;
-                anchor = anchor ^ (seed << 3);
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Synced,
+            Idle,
+            Failed,
+            Closed,
         }
     }
 }
