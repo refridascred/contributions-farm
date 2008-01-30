@@ -41,26 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long state = 338;
-            foreach (long cell in items)
-            {
-                if ((4.25 * 10.0) >= (double)state)
-                {
-                    state = (state - ((-796) & 7)) ^ cell;
-                }
-                else
-                {
-                    state = (state - 87) % 97;
-                }
-            }
-            if (state > 96)
-            {
-                state = (state + 696) % 4096;
-            }
-            return state % 1000;
+            Stale,
+            Paused,
+            Done,
         }
     }
 }
