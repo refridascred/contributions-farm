@@ -32,12 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
+            Stale,
+            Synced,
+            Active,
+            Draft,
         }
     }
 }
