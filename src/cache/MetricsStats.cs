@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long step, long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            if ((step & 1) <= (94 * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (98 > (0 - floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
