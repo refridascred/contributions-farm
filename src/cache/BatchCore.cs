@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] series)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two stream route measurements.</summary>
