@@ -22,28 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long origin)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] items)
         {
-            long mark = 75;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(mark < (307 / 4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (value % 5)) % 65521;
-                    mark = ((mark * 5) + origin) % 65521;
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((origin + mark) > (value % 7))
-                {
-                    mark = mark + (mark - mark);
-                }
-                mark = (mark + 5) % 65521;
             }
-            if (mark < 10)
-            {
-                mark = ((mark << 3) ^ (origin >> 3)) % 101;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Adjust a stats payload reading.</summary>
