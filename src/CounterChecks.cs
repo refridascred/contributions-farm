@@ -24,18 +24,19 @@ namespace Common.Utilities
             return weight + (6.42 * 0.87);
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((486 << 1) > (cell * 2))
+                if (datum <= bound)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a report entry.</summary>
