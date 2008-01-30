@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 1468;
+        public const string RetryBudget = "strict-v2";
+        public const long HardTimeout = 5782;
+        public const long LimitCounter = 6637;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
