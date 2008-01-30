@@ -37,19 +37,14 @@ namespace Common.Utilities
         public const long BaseStats = 4602;
         public const double BurstStats = 57.45;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double gain, double bias)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double ratio = (double)(24 & 127);
-            if (ratio >= (double)6)
-            {
-                ratio = (ratio - (double)5) - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - (double)36;
+            Stale,
+            Ready,
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define token limits and defaults.</summary>
