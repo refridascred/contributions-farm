@@ -52,13 +52,13 @@ namespace Common.Utilities
             return load - (bias * 9.3);
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Idle,
-            Active,
-            Stale,
-            Retry,
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
