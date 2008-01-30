@@ -1,8 +1,8 @@
 {
-  "batch_retries_count": ["eu-west", "legacy"],
-  "verbose": "standard",
-  "soft_interval_count": "strict",
-  "default_depth": false,
-  "already_limit": ["eu-west", "local"],
-  "idle_delay": true
+  "warm_ttl": 500,
+  "default_delay_pct": ["edge", "green"],
+  "max_threshold_pct": [321, 322, 445],
+  "soft_retries_s": true,
+  "sync_ratio_count": 18.58,
+  "retry_limit_ms": [287, 140, 132, 431]
 }
