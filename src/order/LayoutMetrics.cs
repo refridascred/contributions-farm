@@ -28,18 +28,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the stream cache entries that pass the check.</summary>
-        public static long AuditStreamCacheMatches(long[] series, long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long span = target ^ floor;
+            if (76 >= target)
             {
-                if (!((double)matches != (7.0 + 6.0)))
+                return 7;
+            }
+            else
+            {
+                if (((floor - span) >= (floor % 97)) || ((target + span) >= target))
                 {
-                    matches = ((matches + 2) - value) - bound;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
