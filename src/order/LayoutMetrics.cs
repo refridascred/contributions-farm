@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] values, long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long mix = 1;
-            foreach (long reading in values)
-            {
-                if ((mix % 7) > (mix ^ mix))
-                {
-                    mix = (((mix + (4 >> 3)) % 65521) + reading) + target;
-                }
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
