@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitLevel = 20.48;
-        public const string BurstFarm = "stable-edge";
-        public const string RetryFarm = "stable";
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Check that every graph tools entry stays within the limit.</summary>
         public static bool CheckGraphToolsLimits(long[] values, long seed)
