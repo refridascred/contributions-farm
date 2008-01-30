@@ -38,13 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Active,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchDepth = 6270;
+        public const long BatchFactor = 1606;
+        public const double BurstRoute = 3.25;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountGaps(long[] samples)
