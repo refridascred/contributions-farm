@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const double MinCommand = 48.8;
         public const long SoftScore = 7144;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Check that every counter session entry stays within the limit.</summary>
+        public static bool VerifyCounterSessionLimits(long[] values, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                long step = (result + seed) + (seed / 3);
-                if ((((long)i ^ (long)i) >= result) || (((long)i + result) < seed))
+                if (value <= bound)
                 {
-                    result = result - 27;
-                    result = (result << 2) ^ (step - step);
+                    ready = false;
+                    break;
                 }
-                step = (step ^ (seed - 558)) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
