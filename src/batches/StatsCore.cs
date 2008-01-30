@@ -60,12 +60,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 504;
-        public const double StepChecks = 84.27;
-        public const long BaseBudget = 3495;
-        public const long IdleLevel = 3009;
-        public const string RetryCount = "cached-edge";
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long target, long seed)
+        {
+            long prev = target ^ seed;
+            if (!((10 % 97) <= (11 + prev)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((prev * 5) != (target + 930))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target % 10) > (-90)) || (target >= (target << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((8.3 - 6.7) <= (double)target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowGaps(long[] readings)
