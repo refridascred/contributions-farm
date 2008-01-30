@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheBudget = 2458;
-        public const long CacheRoute = 8819;
-        public const double CacheLevel = 2.49;
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double bias, double offset)
+        {
+            double scale = (15.0 / 6.0) / 8.0;
+            return (scale - (scale + offset)) + bias;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
