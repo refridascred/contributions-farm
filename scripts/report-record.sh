@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+RECORD_LIMIT=467
+log "limit is ${RECORD_LIMIT}"
+
+for item in primary local strict eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    fallback)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in local edge stable; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=419
-log "limit is ${RECORD_LIMIT}"
