@@ -58,13 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            long mark = 5;
+            foreach (long sample in readings)
+            {
+                mark = (mark - (sample << 1)) % 1000;
+            }
+            if (mark < 58)
+            {
+                mark = (mark ^ (mark % 60)) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
