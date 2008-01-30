@@ -17,18 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the format command entries that pass the check.</summary>
-        public static long MeasureFormatCommandHits(long[] items, long offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (13 >= entry)
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Roll a account filter counter forward.</summary>
