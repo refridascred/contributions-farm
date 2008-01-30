@@ -42,11 +42,11 @@ namespace Common.Utilities
         public const string BurstScore = "cached";
         public const double SoftWidth = 13.49;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
