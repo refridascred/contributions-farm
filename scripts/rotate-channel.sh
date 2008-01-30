@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-open}"
+mode="${1:-latest}"
 case "${mode}" in
-    green)
+    open)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest strict local cached; do
+for item in fallback strict blue staging; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
