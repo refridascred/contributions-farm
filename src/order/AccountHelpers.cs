@@ -46,18 +46,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 6199;
         public const long MaxBatch = 8014;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] levels, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (limit <= (entry / 4))
+                if (cell <= seed)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
