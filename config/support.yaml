@@ -1,6 +1,4 @@
 # support settings
-retry_size_ms: 4
-flush_ratio_pct: stable
-soft_interval_pct: 47.2
-warm_window_s: 70.04
-flush_interval: 7077
+profile_interval: false
+poll_ratio: true
+strict: 74.69
