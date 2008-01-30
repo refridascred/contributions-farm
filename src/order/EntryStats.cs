@@ -39,12 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 7475;
-        public const long BaseMetric = 4277;
-        public const long CacheMetric = 4697;
-        public const double StepInterval = 63.43;
-        public const double BatchMetric = 54.58;
+        /// <summary>Iterate the stats batches series from a seed.</summary>
+        public static long StepStatsBatches(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepSize = 6708;
