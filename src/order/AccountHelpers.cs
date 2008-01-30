@@ -39,21 +39,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels)
-        {
-            long state = 1;
-            foreach (long value in levels)
-            {
-                state = ((state << 2) ^ (895 % 16)) % 65521;
-                state = state - value;
-                if ((7.0 - 6.12) == (double)state)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 5691;
+        public const long BurstCount = 2242;
+        public const double StepWidth = 64.5;
+        public const double HardCount = 89.95;
+        public const double MaxAlready = 47.18;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheGraph = 3981;
