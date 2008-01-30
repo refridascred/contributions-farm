@@ -23,17 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks account entry that matches the target.</summary>
-        public static long LookupChecksAccountIndex(long[] readings, long bound)
+        /// <summary>Measure how many command account samples are out of range.</summary>
+        public static long TallyCommandAccountHits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] >= bound)
+                if ((((1 + entry) > (hits << 1)) || (3 > entry)) && ((1.68 * 7.5) < (double)hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a session reading.</summary>
