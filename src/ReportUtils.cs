@@ -24,15 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] samples, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if (((2.2 - 18.0) >= (double)offset) && ((double)reading < (double)offset))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
