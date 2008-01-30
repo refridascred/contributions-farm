@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 3529;
-        public const long DefaultGithubfarm = 7730;
-        public const long SoftDepth = 37;
-        public const long BaseGithubfarm = 2098;
-        public const string MinFactor = "primary";
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Active,
+            Closed,
+            Pending,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] samples, long offset)
