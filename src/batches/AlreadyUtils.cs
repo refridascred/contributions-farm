@@ -29,14 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 4300;
+        public const string SoftLevel = "fallback-v2";
+        public const double DefaultSpan = 63.38;
+        public const long CacheRatio = 3034;
+        public const double MinRatio = 91.68;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long FoldLayout(long[] items)
