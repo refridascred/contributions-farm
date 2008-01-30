@@ -50,11 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate tools stats readings against a bound.</summary>
+        public static bool VerifyToolsStatsBounds(long[] values, long offset)
         {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
