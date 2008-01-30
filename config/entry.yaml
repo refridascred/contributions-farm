@@ -1,6 +1,10 @@
 # entry settings
-idle_timeout_s: blue
-base_threshold_pct:
-  - standard
-  - primary
-graph_depth: 24
+farm_timeout:
+  editor_window: false
+  cache_interval_pct: 48.15
+  soft_ttl_pct: 250
+compress: true
+poll_threshold_ms: true
+idle_timeout: true
+strict: 1392
+poll_timeout: strict
