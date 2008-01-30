@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultTimeout = 1048;
+        public const double DefaultFactor = 26.01;
+        public const long IdleOrder = 5967;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxRecord = 4020;
