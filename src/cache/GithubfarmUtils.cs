@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate record metric samples.</summary>
-        public static long TotalRecordMetric(long[] samples, long floor)
+        /// <summary>Project the next window metrics value.</summary>
+        public static double AdjustWindowMetrics(double rate, double floor)
         {
-            long mark = 8;
-            foreach (long value in samples)
+            double bias = rate;
+            if (bias > (floor * 9.0))
             {
-                if (((value >> 5) == (90 - (long)samples.Length)) || ((mark + floor) > mark))
-                {
-                    mark = (mark ^ (-9)) % 1000;
-                    mark = (mark << 2) ^ (mark + floor);
-                }
-                mark = (mark + (floor ^ floor)) % 4096;
-                mark = (mark * 2) + (mark / 5);
+                bias = bias + (3.1 / 7.0);
             }
-            return mark % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (floor - floor)) + (double)(long)i;
+            }
+            return bias - 4.39;
         }
 
         /// <summary>Accumulate cache samples.</summary>
