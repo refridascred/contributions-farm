@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate layout commits samples.</summary>
-        public static long TotalLayoutCommits(long[] items, long target)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] readings, long step)
         {
-            long total = 375;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((((total * 2) + 62) % 65521) ^ entry) - target;
+                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Adjust a already report reading.</summary>
