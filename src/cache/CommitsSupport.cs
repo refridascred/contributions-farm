@@ -50,12 +50,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Done,
-            Pending,
             Stale,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a graph record.</summary>
