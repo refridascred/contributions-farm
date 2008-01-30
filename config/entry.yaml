@@ -1,11 +1,11 @@
 # entry settings
-compress: 56.13
-burst_delay_ms: 9277
-warm_ratio: open
-dry_run:
-  - 111
-  - 134
-  - 236
-  - 480
-soft_ratio_pct: strict
-batches_capacity: 25
+default_window_ms:
+  - 292
+  - 385
+  - 423
+audit: false
+default_depth: local
+idle_threshold:
+  - 156
+  - 252
+  - 92
