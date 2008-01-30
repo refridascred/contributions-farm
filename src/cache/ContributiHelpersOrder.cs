@@ -30,12 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Queued,
-            Retry,
-            Synced,
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
