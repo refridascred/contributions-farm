@@ -32,13 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitScore = 4348;
+        public const long SoftWidth = 3028;
+        public const long MaxSchema = 6341;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long floor, long target)
