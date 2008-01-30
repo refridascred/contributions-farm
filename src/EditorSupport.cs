@@ -29,17 +29,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] items, long offset)
+        /// <summary>Audit layout metrics readings against a rule.</summary>
+        public static long AuditLayoutMetricsHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                if ((1.0 / 4.0) > (double)value)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
