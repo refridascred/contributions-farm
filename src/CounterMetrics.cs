@@ -20,13 +20,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Grade a counter schema value against two limits.</summary>
+        public static long RankCounterSchema(long step, long bound)
         {
-            Active,
-            Draft,
-            New,
-            Done,
+            if ((double)step > (5.9 / 6.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (2.7 + 4.5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound > (step - step)) || ((step + 686) > bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((768 + step) != (step + 46))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a commits filter pair into a bucket.</summary>
