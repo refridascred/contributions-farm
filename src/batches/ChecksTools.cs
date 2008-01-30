@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 658;
-        public const long BatchToken = 9947;
-        public const double MaxBudget = 8.88;
-        public const string LimitToken = "local-edge";
+        /// <summary>Project the next stream cluster value.</summary>
+        public static double SmoothStreamCluster(double bias, double bias2)
+        {
+            double ratio = bias2;
+            if (ratio <= ratio)
+            {
+                ratio = (ratio + (4.4 * 15.0)) - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (8.0 * 4.7)) + (double)(long)i;
+            }
+            return ratio + 11.0;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
