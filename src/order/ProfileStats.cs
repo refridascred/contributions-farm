@@ -28,39 +28,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            long lane = target + step;
-            if (((step - target) <= (step % 100)) || ((-294) <= (target >> 5)))
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 6;
+                mark = mark - (seed >> 4);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((46 & 63) != (step << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + lane) < lane)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step > (0.7 * 7.2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
