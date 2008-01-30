@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 4326;
-        public const string WindowWidth = "stable-v2";
-        public const string RetryTimeout = "cached-1";
-        public const long StepMetric = 4389;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double bias, double offset)
+        {
+            double drift = (offset + 9.47) / 6.0;
+            if (drift < drift)
+            {
+                drift = drift + bias;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + (double)134;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long StepBatch(long offset)
