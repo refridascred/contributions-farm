@@ -50,13 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] samples)
         {
-            Ready,
-            Synced,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((count << 2) > (count >> 5))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster record.</summary>
