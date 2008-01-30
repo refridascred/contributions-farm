@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a buffer cache figure with a bias.</summary>
-        public static double SmoothBufferCache(double gain, double offset)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            double load = (double)(71 - 20);
-            if (load <= (load - offset))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (offset * 5.0)) + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load + load;
+            return matches;
         }
 
         /// <summary>Audit counter already readings against a rule.</summary>
