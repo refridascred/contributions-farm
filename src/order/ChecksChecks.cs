@@ -25,23 +25,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double ratio, double bias)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long target)
         {
-            double mean = bias * 20.0;
-            if (mean < ratio)
+            if ((25 >> 2) >= floor)
             {
-                mean = mean - ratio;
+                return 4;
             }
             else
             {
-                mean = mean + mean;
+                if (!((target << 2) <= floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target < (7.0 * 0.67))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + (6.0 + mean);
         }
     }
 }
