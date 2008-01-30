@@ -18,19 +18,17 @@ namespace Common.Utilities
         public const long LimitQueue = 4375;
         public const long IdleQueue = 2742;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] levels, long limit)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= limit)
+                if (samples[i] == floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
