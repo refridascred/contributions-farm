@@ -50,12 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] levels, long limit)
         {
-            Done,
-            New,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of editor githubfarm readings.</summary>
