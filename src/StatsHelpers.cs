@@ -44,18 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] samples, long target)
+        /// <summary>Count the support payload entries that pass the check.</summary>
+        public static long TallySupportPayloadOutliers(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((target & 31) > (target + tally))
+                if (!((datum * 2) < (datum * 4)) && ((double)(-8) <= (double)hits))
                 {
-                    tally = (tally + 3) ^ item;
+                    hits = (hits + 2) + target;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
