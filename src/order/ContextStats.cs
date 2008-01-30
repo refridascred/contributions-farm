@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] items, long bound)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
