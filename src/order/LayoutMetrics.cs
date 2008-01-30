@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long state = 29;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= (sample - state))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    long tally = (state << 2) ^ (sample << 1);
-                    state = ((state * 4) + (tally - sample)) % 255;
-                }
-                if (sample < (sample - state))
-                {
-                    state = (state * 5) + (sample - 516);
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < (-98))
-            {
-                state = ((state * 5) + (-936)) % 4096;
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
