@@ -28,39 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long origin, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long next = origin + target;
-            if (!(origin < 0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((next ^ origin) >= (next + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target - origin) >= target) || (next <= (origin * 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((origin & 3) <= (origin - target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
