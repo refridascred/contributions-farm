@@ -1,6 +1,5 @@
 {
-  "tools_ttl": "local",
-  "hard_limit_ms": 40,
-  "cache_capacity_s": 7312,
-  "commits_retries": "stable"
+  "report_threshold": 7.28,
+  "cache_ratio_ms": true,
+  "dry_run": 37.33
 }
