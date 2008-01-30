@@ -26,31 +26,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 48;
         public const long CacheFactor = 5476;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long limit, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] samples, long step)
         {
-            if ((2.15 + 1.2) <= (double)limit)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((7.0 + 2.0) > (double)bound) || ((bound + bound) == (bound % 7)))
+                if (((long)samples.Length ^ step) > (37 >> 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound < 351)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 3) + datum;
                 }
             }
+            return count;
         }
     }
 }
