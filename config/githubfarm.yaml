@@ -1,32 +1,6 @@
 # githubfarm settings
-queue_ttl: 8370
-window_threshold: 62.58
-cache_delay_s:
-  min_capacity_count: true
-  strict: eu-west
-  profile_interval: fallback
-  idle_interval:
-    min_limit_pct: 60
-    poll_threshold_pct: 78.89
-    persist:
-      - 361
-      - 8
-      - 364
-    metrics_window:
-      - 206
-      - 69
-      - 433
-    hard_window:
-      - 89
-      - 142
-      - 119
-  warm_window: 4645
-  cache_interval:
-    counter_size: 7888
-    support_delay: 30
-    batch_threshold_s:
-      - 48
-      - 242
-      - 320
-      - 397
-    contributi_ratio: 78.03
+default_timeout_ms: 7332
+burst_delay: 92
+burst_threshold_ms: staging
+strict: 60
+flush_retries: 9987
