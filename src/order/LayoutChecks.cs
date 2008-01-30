@@ -24,30 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] data, long limit)
         {
-            long mark = 39;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 11; i++)
+                if (value >= limit)
                 {
-                    mark = (mark + (mark ^ (long)i)) + datum;
-                }
-                if (!((step + step) < ((long)items.Length & 7)))
-                {
-                    mark = ((mark << 3) ^ step) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (step + mark)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 3)
-            {
-                mark = mark + (3 / 7);
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
