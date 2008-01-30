@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long floor, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] series)
         {
-            long bound = floor ^ seed;
-            if ((double)bound > (12.0 / 4.0))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor / 4) < floor)
+                if ((307 + 17) > matches)
                 {
-                    return 4;
+                    matches = (matches + 3) + cell;
                 }
                 else
                 {
-                    if (!((13.0 / 7.0) <= (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of cluster session readings.</summary>
