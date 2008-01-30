@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double gain, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] values)
         {
-            double scale = span;
-            if (scale > scale)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                scale = (scale - (double)5) - gain;
+                if (seen < sample)
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                scale = scale + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (11.0 + span)) - (double)(long)i;
-            }
-            return scale - scale;
+            return seen;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
