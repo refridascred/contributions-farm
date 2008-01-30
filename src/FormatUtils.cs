@@ -68,11 +68,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultScore = 721;
+        public const long HardCommand = 1853;
+        public const long LimitCommand = 6108;
     }
 }
