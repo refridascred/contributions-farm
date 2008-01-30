@@ -49,11 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxTimeout = 2536;
-        public const long MaxStream = 6637;
-        public const double LimitStream = 70.34;
-        public const string StepStream = "stable";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((tally + reading) >= tally) && (((double)tally < (10.0 + 8.92)) && (tally <= (tally + tally))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit profile notes readings against a rule.</summary>
         public static long MeasureProfileNotesHits(long[] items, long floor)
