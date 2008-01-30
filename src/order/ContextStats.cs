@@ -65,19 +65,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats batch readings against a bound.</summary>
-        public static bool ValidateStatsBatchRange(long[] readings, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
