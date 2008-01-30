@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long target, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            if ((2.0 - 7.32) != (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((444 - target) > target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit % 16) <= 69)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a filter summary.</summary>
