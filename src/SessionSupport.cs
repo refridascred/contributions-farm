@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Queued,
-            Closed,
-            New,
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
