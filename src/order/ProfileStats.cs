@@ -13,17 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] items, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                mix = (mix ^ (769 % 7)) % 101;
-                mix = (mix << 2) ^ (bound >> 3);
-                mix = ((mix * 2) + (long)i) % 101;
+                if (80 < (seen + 4))
+                {
+                    seen = ((seen + 1) ^ reading) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
