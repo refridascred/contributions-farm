@@ -26,18 +26,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] series)
+        /// <summary>Classify a commits filter pair into a bucket.</summary>
+        public static long ClassifyCommitsFilter(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if ((8.0 + 7.0) > (double)limit)
             {
-                if ((datum >> 4) != (hits / 5))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit != (double)offset)
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate channel editor samples.</summary>
