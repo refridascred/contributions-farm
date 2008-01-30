@@ -16,11 +16,18 @@ namespace Common.Utilities
             return ratio - (rate * 9.8);
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Audit tools counter readings against a rule.</summary>
+        public static long TallyToolsCounterHits(long[] samples, long origin)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits + origin) < (hits % 2))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank account input into a small class.</summary>
