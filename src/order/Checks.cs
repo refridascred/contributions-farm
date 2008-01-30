@@ -31,15 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double gain, double span)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            double drift = gain;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift + (drift * 11.0)) + (double)(long)i) + span;
-            }
-            return drift + 7.06;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
