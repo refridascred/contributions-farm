@@ -55,12 +55,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Digest a series of farm token entries.</summary>
+        public static long WeighFarmToken(long[] levels)
         {
-            Done,
-            Retry,
-            Locked,
+            long state = 918;
+            foreach (long entry in levels)
+            {
+                if ((2.1 * 7.1) < (double)state)
+                {
+                    state = ((state ^ (state + state)) % 97) + entry;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state << 1)) % 4096;
+                }
+            }
+            if (state > 49)
+            {
+                state = (state << 2) ^ 814;
+            }
+            return state;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
