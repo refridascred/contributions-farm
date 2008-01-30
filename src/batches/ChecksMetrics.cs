@@ -72,15 +72,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((243 + entry) != (22 - 795))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
