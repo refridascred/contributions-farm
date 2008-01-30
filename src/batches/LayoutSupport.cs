@@ -38,11 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Paused,
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Combine commits editor values into a single score.</summary>
