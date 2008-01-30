@@ -1,11 +1,7 @@
 # entry settings
-default_window_ms:
-  - 292
-  - 385
-  - 423
-audit: false
-default_depth: local
-idle_threshold:
-  - 156
-  - 252
-  - 92
+retry_ttl: 29
+queue_interval: open
+format_retries: primary
+queue_capacity:
+  - 342
+  - 306
