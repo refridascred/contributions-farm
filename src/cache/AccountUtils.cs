@@ -13,12 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            New,
-            Ready,
             Paused,
+            Synced,
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
