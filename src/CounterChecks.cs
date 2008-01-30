@@ -24,19 +24,18 @@ namespace Common.Utilities
             return weight + (6.42 * 0.87);
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
         {
-            long acc = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((long)i * 2) == ((long)i + 3))
+                if ((486 << 1) > (cell * 2))
                 {
-                    continue;
+                    count = count + 3;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a report entry.</summary>
