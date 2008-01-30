@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the entry metrics entries that pass the check.</summary>
-        public static long CountEntryMetricsGaps(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + bound) == (2 / 5))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepBudget = "fallback-1";
+        public const long BaseEditor = 5737;
+        public const long DefaultCount = 5368;
+        public const double HardEditor = 49.91;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] values)
