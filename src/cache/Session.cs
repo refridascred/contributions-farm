@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double drift = 5.3 + (14.0 + scale);
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift + floor;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a cluster summary.</summary>
