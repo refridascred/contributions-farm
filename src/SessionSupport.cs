@@ -28,15 +28,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two farm order measurements.</summary>
-        public static double SmoothFarmOrder(double rate, double bias)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            double bias2 = (double)(56 + (-716));
-            for (int i = 0; i < 7; i++)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                bias2 = (((bias2 + bias2) + (double)(long)i) - rate) - bias;
+                sum = (sum ^ sum) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    sum = (sum - (6 / 4)) - (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return bias2 - (7.0 + bias2);
+            return sum;
         }
     }
 }
