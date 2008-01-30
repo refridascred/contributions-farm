@@ -19,11 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long target, long origin)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
+            long step = target - origin;
+            if (!(((-6) - target) == (step >> 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((0.86 - 8.0) < 2.5)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (0.18 > (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
