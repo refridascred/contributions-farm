@@ -1,7 +1,23 @@
 {
-  "notes_capacity": 3.84,
-  "min_depth": false,
-  "filter_delay": 95,
-  "readonly": "eu-west",
-  "route_interval": 60.51
+  "burst_threshold_pct": {
+    "default_ratio": 1024,
+    "retry_threshold_count": 5,
+    "route_interval": "eu-west",
+    "min_retries": "standard",
+    "graph_ratio": 11.33,
+    "soft_limit_count": 87.66
+  },
+  "githubfarm_depth": 88,
+  "dry_run": "legacy",
+  "order_delay": {
+    "record_threshold": [50, 491, 108, 41],
+    "warm_retries": true,
+    "base_timeout_ms": {
+      "default_size_s": "blue",
+      "metric_interval": [250, 322, 426, 68],
+      "sync_capacity_ms": 99,
+      "report_retries": 29.47
+    }
+  },
+  "audit": "latest"
 }
