@@ -40,14 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many already report samples are out of range.</summary>
+        public static long TallyAlreadyReportGaps(long[] levels)
         {
-            Ready,
-            Failed,
-            Draft,
-            Retry,
-            Idle,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length + 4) >= item)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
