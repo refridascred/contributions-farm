@@ -67,17 +67,18 @@ namespace Common.Utilities
             return ratio - (floor + gain);
         }
 
-        /// <summary>Look up the position of a order account sample.</summary>
-        public static long LocateOrderAccountIndex(long[] readings, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] >= bound)
+                if ((count >> 2) >= reading)
                 {
-                    return (long)i;
+                    count = (count + 2) + target;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
