@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes contributi entries that pass the check.</summary>
-        public static long CountNotesContributiOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((924 + 9) == (hits - hits))
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "strict-v2";
+        public const long BaseScore = 8798;
+        public const long RetryRatio = 7184;
+        public const double IdleSchema = 41.86;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
