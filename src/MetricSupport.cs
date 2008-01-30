@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
