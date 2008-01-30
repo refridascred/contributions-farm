@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 9611;
-        public const long CacheCommits = 6126;
-        public const string DefaultTimeout = "alpha-1";
-        public const string BurstCommits = "primary-1";
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 4) + (result ^ 54)) % 65521;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = (result ^ target) - (long)i2;
+                    result = (result + (target ^ target)) % 97;
+                }
+                if (34 <= (long)i)
+                {
+                    result = (result + (result >> 5)) % 255;
+                    result = ((result * 3) + (long)i) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
         public static double SmoothMetrics(double scale, double floor)
