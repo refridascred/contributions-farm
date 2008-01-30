@@ -6,19 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-RECORD_LIMIT=245
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-legacy}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
