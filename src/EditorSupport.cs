@@ -13,13 +13,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Scale a session checks figure with a bias.</summary>
+        public static double SmoothSessionChecks(double bias, double span)
         {
-            Queued,
-            Ready,
-            Closed,
-            Stale,
+            double rate = (span * 8.1) * 5.08;
+            if (rate < (rate * 2.59))
+            {
+                rate = rate - (rate * 4.7);
+            }
+            return rate - bias;
         }
 
         /// <summary>Hold a checks summary.</summary>
