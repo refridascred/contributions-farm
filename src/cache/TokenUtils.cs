@@ -21,17 +21,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] series, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 197;
+            foreach (long value in readings)
             {
-                if ((series[i] >= offset) && ((series[i] % 5) == 0))
+                if ((state % 100) <= (value >> 5))
                 {
-                    return (long)i;
+                    state = ((state ^ (state ^ 853)) % 255) - target;
+                }
+                else
+                {
+                    state = (state - (state >> 4)) % 255;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
