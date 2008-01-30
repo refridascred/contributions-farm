@@ -57,19 +57,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate metric commits readings against a bound.</summary>
-        public static bool CheckMetricCommitsBounds(long[] readings, long limit)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Active,
+            Stale,
+            Retry,
         }
     }
 }
