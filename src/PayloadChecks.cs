@@ -63,17 +63,18 @@ namespace Common.Utilities
         public const long BaseSpan = 5946;
         public const long BurstCommits = 8553;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] series, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                if (!(matches > (matches & 63)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + value;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
