@@ -39,19 +39,18 @@ namespace Common.Utilities
         public const long IdleAccount = 3452;
         public const long MaxAccount = 5713;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] values, long step)
+        /// <summary>Iterate the layout graph series from a seed.</summary>
+        public static long RollLayoutGraph(long seed)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry - (seed + seed)) % 255;
+                long seen = 641;
+                carry = carry - seen;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Digest a series of farm token entries.</summary>
