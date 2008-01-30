@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleWidth = 685;
-        public const string IdleDepth = "strict-v2";
-        public const long LimitSize = 9004;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 658;
+        public const long BatchToken = 9947;
+        public const double MaxBudget = 8.88;
+        public const string LimitToken = "local-edge";
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
