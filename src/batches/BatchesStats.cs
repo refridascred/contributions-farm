@@ -59,12 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Done,
-            Closed,
-            Failed,
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
