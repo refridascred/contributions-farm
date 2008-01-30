@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] data, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long step)
         {
-            long mix = 35;
-            foreach (long datum in data)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(7.4 <= (double)datum))
-                {
-                    mix = mix + (origin % 7);
-                }
+                carry = (carry - step) % 97;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (mix > 226)
-            {
-                mix = (mix ^ (mix + origin)) % 255;
-            }
-            return mix;
+            return carry;
         }
 
         /// <summary>Count the format command entries that pass the check.</summary>
