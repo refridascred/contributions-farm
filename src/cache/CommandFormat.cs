@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftWidth = 1696;
-        public const long WindowCommand = 7472;
-        public const double RetryWidth = 58.95;
-        public const double MinCommand = 48.8;
-        public const long SoftScore = 7144;
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Check that every counter session entry stays within the limit.</summary>
         public static bool VerifyCounterSessionLimits(long[] values, long bound)
