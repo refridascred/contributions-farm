@@ -43,5 +43,14 @@ namespace Common.Utilities
             Stale,
             Queued,
         }
+
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Locked,
+            Dropped,
+            Ready,
+            Synced,
+        }
     }
 }
