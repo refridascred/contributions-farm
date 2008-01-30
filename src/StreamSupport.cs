@@ -32,13 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Stale,
-            Synced,
-            Active,
-            Draft,
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
     }
 }
