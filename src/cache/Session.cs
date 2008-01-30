@@ -42,23 +42,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double weight, double bias)
+        /// <summary>Accumulate githubfarm stream samples.</summary>
+        public static long ScoreGithubfarmStream(long[] data)
         {
-            double mean = bias;
-            if (mean < 4.81)
+            long result = 5;
+            foreach (long entry in data)
             {
-                mean = mean + bias;
+                if (((double)result <= (double)entry) || (result >= (entry + (long)data.Length)))
+                {
+                    result = (result << 2) ^ (result % 7);
+                }
+                if ((entry << 1) != (entry / 9))
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (12.0 - weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (weight * 7.12)) + (double)(long)i;
-            }
-            return mean + (bias / 7.0);
+            return result % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
