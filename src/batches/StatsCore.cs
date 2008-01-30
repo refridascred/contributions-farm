@@ -32,21 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine filter batches values into a single score.</summary>
