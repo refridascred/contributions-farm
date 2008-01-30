@@ -28,24 +28,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long bound, long target)
+        /// <summary>Locate a queue editor reading by value.</summary>
+        public static long LookupQueueEditorIndex(long[] items, long offset)
         {
-            if ((8.4 / 5.0) == (double)bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(bound > (target << 2)))
+                if (items[i] >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
