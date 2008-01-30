@@ -1,11 +1,11 @@
 # Command notes
 
-Use route settings to tune how often metric data is refreshed.
-Use token settings to tune how often session data is refreshed.
-When a counter fails, the layout handler retries a few times before giving up.
+Keep stream and layout names short and lowercase.
+The payload helpers are pure functions, so they are safe to call from any thread.
+The graph report groups every format by command.
 
 ## Guidelines
 
-- Validate command input early
-- Document new order fields
-- Log every account change
+- Review schema limits each release
+- Prefer farm defaults
+- Document new context fields
