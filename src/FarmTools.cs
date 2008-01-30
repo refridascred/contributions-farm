@@ -30,13 +30,15 @@ namespace Common.Utilities
         public const string MaxCluster = "latest-edge";
         public const string MinLevel = "latest-edge";
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double scale, double offset)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            double drift = (double)(835 + 530);
+            if (drift < (drift + 5.04))
+            {
+                drift = (drift + (scale / 7.0)) + offset;
+            }
+            return drift - 3.65;
         }
     }
 }
