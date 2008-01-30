@@ -67,20 +67,17 @@ namespace Common.Utilities
         public const long BaseSpan = 5946;
         public const long BurstCommits = 8553;
 
-        /// <summary>Derive the next commits token value from a seed.</summary>
-        public static long DeriveCommitsToken(long bound)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] series, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score >= (48 % 24)) || ((bound + score) > (61 % 60)))
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
                 {
-                    score = (score ^ (score - bound)) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return -1;
         }
     }
 }
