@@ -36,12 +36,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Draft,
-            Paused,
-            Locked,
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
