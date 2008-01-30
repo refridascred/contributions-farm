@@ -66,10 +66,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseLevel = 4205;
-        public const double MaxSchema = 11.81;
-        public const string HardSchema = "alpha";
-        public const string StepSchema = "strict-1";
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Pending,
+            Retry,
+            Paused,
+            Locked,
+            New,
+        }
     }
 }
