@@ -44,18 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support payload entries that pass the check.</summary>
-        public static long TallySupportPayloadOutliers(long[] series, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!((datum * 2) < (datum * 4)) && ((double)(-8) <= (double)hits))
+                if (!((2 & 63) > (75 - sample)) && (bound > (seen & 63)))
                 {
-                    hits = (hits + 2) + target;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
