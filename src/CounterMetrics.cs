@@ -63,27 +63,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate channel editor samples.</summary>
-        public static long FoldChannelEditor(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] values)
         {
-            long mark = 4;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                mark = (mark ^ (567 >> 2)) % 97;
-                if (3.43 < (double)mark)
+                if (((double)cell <= (double)matches) && ((4.93 + 0.2) < (double)cell))
                 {
-                    mark = ((mark * 5) + (datum * 4)) % 1000;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    mark = mark ^ (datum & 1);
+                    matches = matches - 1;
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark ^ (mark + 87)) % 4096;
-            }
-            return mark;
+            return matches;
         }
     }
 }
