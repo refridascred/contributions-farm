@@ -1,14 +1,4 @@
 # support settings
-profile_size: 12.49
-persist:
-  sync_interval_s: strict
-  schema_window: 87
-  hard_depth_pct: 3268
-  sync_ratio_ms:
-    - 339
-    - 80
-    - 94
-tools_retries: 58
-editor_interval: standard
-audit: 51
-entry_retries: latest
+channel_capacity: blue
+max_timeout_s: standard
+base_depth_count: blue
