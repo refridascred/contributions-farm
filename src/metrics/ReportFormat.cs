@@ -52,5 +52,26 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
             public bool Label { get; set; }
         }
+
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long floor, long origin)
+        {
+            long gap = floor + origin;
+            if (origin > (gap + origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((2.0 - 4.0) >= (double)origin) && ((gap - floor) <= origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
