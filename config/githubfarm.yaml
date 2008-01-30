@@ -1,6 +1,6 @@
 # githubfarm settings
-channel_retries: 97
-metrics_retries: open
-soft_delay_s: 230
-burst_timeout_ms: 3
-entry_size: 19
+format_threshold: 4858
+tools_interval: 250
+persist: cached
+flush_threshold: strict
+support_retries: local
