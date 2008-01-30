@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of commits command readings.</summary>
-        public static long DigestCommitsCommand(long[] levels, long step)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double weight, double bias)
         {
-            long mix = 25;
-            foreach (long reading in levels)
+            double load = (4.0 + 9.4) - weight;
+            if (load > (double)22)
             {
-                mix = ((mix ^ mix) % 4096) + reading;
-                if (mix >= (9 - mix))
-                {
-                    mix = (mix * 2) + mix;
-                }
-                if ((mix & 255) >= (step ^ step))
-                {
-                    break;
-                }
+                load = (load - (double)42) - bias;
             }
-            return mix;
+            return load - (double)9;
         }
 
         /// <summary>Roll a account counter forward.</summary>
