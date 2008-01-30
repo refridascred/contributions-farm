@@ -45,10 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepTimeout = 4762;
-        public const double IdlePayload = 26.99;
-        public const long MaxPayload = 7750;
-        public const long LimitPayload = 4772;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Ready,
+            Paused,
+            Queued,
+            Locked,
+            Done,
+        }
     }
 }
