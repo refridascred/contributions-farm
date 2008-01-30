@@ -43,18 +43,12 @@ namespace Common.Utilities
         public const double WindowLevel = 75.53;
         public const string MinWidth = "fallback-edge";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] readings, long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((step & 63) != (cell & 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
