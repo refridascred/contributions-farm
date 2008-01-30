@@ -1,28 +1,9 @@
 # entry settings
-editor_capacity: 1809
-sync_threshold:
-  stats_capacity: 2.97
-  flush_limit: primary
-  farm_retries: open
-  cache_timeout_pct:
-    entry_limit: true
-    poll_timeout: 21.98
-    min_timeout_s: 53
-  retry_capacity_ms: 30
-  idle_depth_ms: 60
-sync_interval_s:
-  audit: primary
-  hard_ratio_count: 30
-  min_threshold_ms:
-    - 157
-    - 243
-    - 258
-  hard_interval_s:
-    - 65
-    - 121
-enabled: 1024
-compress:
-  - legacy
-  - legacy
-  - strict
-report_window: 7772
+poll_depth:
+  account_size: 250
+  warm_size: 92.35
+  burst_size_pct: 49.48
+  verbose: 46.92
+  cache_size: cached
+account_interval: false
+cache_depth_count: open
