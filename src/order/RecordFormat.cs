@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double ratio, double floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] series, long seed)
         {
-            double scale = (double)2 * 0.8;
-            if (scale < (double)788)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                scale = scale + (floor * 7.1);
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - 15.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale + (9.0 + floor);
+            return flag;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
