@@ -101,10 +101,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 68.91;
-        public const double StepNotes = 47.69;
-        public const long LimitScore = 6294;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public bool Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double IdleWindow = 13.61;
