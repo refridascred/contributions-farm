@@ -18,24 +18,10 @@ namespace Common.Utilities
         public const double MaxLayout = 31.56;
         public const long MinCount = 9767;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long origin, long step)
-        {
-            if (((origin & 1) < step) && (origin > (origin * 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((step - step) == (origin >> 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepTimeout = 4762;
+        public const double IdlePayload = 26.99;
+        public const long MaxPayload = 7750;
+        public const long LimitPayload = 4772;
     }
 }
