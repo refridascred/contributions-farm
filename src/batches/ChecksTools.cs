@@ -34,18 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context commits value from a seed.</summary>
-        public static long DeriveContextCommits(long step)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state << 3) ^ 777) % 101;
-                state = (state + step) % 65521;
-                state = state ^ step;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
