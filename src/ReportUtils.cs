@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardBudget = "alpha";
+        public const double IdleDepth = 25.7;
+        public const long StepBudget = 3367;
+        public const long BurstCounter = 6210;
+        public const long StepInterval = 4848;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileGaps(long[] samples, long offset)
