@@ -60,15 +60,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Draft,
-            Done,
-            Pending,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 504;
+        public const double StepChecks = 84.27;
+        public const long BaseBudget = 3495;
+        public const long IdleLevel = 3009;
+        public const string RetryCount = "cached-edge";
 
         /// <summary>Digest a series of report batches entries.</summary>
         public static long WeighReportBatches(long[] data, long origin)
