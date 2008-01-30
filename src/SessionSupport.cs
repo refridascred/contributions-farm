@@ -20,11 +20,17 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Look up the position of a channel format sample.</summary>
+        public static long LookupChannelFormatIndex(long[] data, long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
