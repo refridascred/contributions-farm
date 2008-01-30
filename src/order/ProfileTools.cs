@@ -71,23 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] readings, long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((611 - bound) <= bound)
+                if (cell > offset)
                 {
-                    score = (score - (score & 3)) % 1000;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    score = ((score * 5) + (long)i) % 101;
-                }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return stale;
         }
     }
 }
