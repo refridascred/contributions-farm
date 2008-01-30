@@ -61,21 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of entry schema readings.</summary>
-        public static long MatchEntrySchemaCount(long[] data)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = weight;
+            if (gain <= (floor * 4.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (double)180;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - 1.62) + (double)(long)i;
+            }
+            return gain - weight;
         }
     }
 }
