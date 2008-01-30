@@ -39,18 +39,23 @@ namespace Common.Utilities
         public const long IdleAccount = 3452;
         public const long MaxAccount = 5713;
 
-        /// <summary>Iterate the layout graph series from a seed.</summary>
-        public static long RollLayoutGraph(long seed)
+        /// <summary>Digest a series of githubfarm token entries.</summary>
+        public static long FoldGithubfarmToken(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long score = 4;
+            foreach (long reading in readings)
             {
-                carry = (carry - (seed + seed)) % 255;
-                long seen = 641;
-                carry = carry - seen;
-                carry = ((carry * 2) + (long)i) % 65521;
+                score = score - (reading - reading);
+                if (((129 + 539) >= (4 + score)) && ((score >> 2) < reading))
+                {
+                    score = (score - (71 - reading)) % 1000;
+                }
             }
-            return carry;
+            if (score < 85)
+            {
+                score = ((score * 4) + (-280)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of farm token entries.</summary>
