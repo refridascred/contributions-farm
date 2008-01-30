@@ -48,13 +48,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Active,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate metric commits readings against a bound.</summary>
