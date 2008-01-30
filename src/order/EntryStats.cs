@@ -37,16 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cluster schema reading.</summary>
-        public static double SmoothClusterSchema(double weight, double bias)
-        {
-            double scale = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale + bias) + (double)(long)i) + weight;
-            }
-            return scale + (double)376;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 7475;
+        public const long BaseMetric = 4277;
+        public const long CacheMetric = 4697;
+        public const double StepInterval = 63.43;
+        public const double BatchMetric = 54.58;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LookupTokenIndex(long[] levels, long seed)
