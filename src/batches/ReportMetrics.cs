@@ -26,22 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics cluster readings against a rule.</summary>
-        public static long MeasureMetricsClusterHits(long[] levels, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mix = 9;
+            foreach (long datum in items)
             {
-                if (((tally - step) > (71 << 2)) && !((55 ^ tally) > (tally - step)))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix ^ (25 * 4)) % 1000) - datum) - limit;
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Hold a command entry.</summary>
