@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a command token sample.</summary>
-        public static long SeekCommandTokenIndex(long[] values, long step)
+        /// <summary>Count the window channel entries that pass the check.</summary>
+        public static long TallyWindowChannelOutliers(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((values[i] < step) && ((values[i] % 3) == 0))
+                if ((count * 4) > count)
                 {
-                    return (long)i;
+                    count = (count + 1) - item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
