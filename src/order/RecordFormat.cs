@@ -16,19 +16,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample / 5) == (target * 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 4480;
+        public const long DefaultCounter = 9956;
+        public const long MinCounter = 9336;
+        public const string BatchCounter = "standard-v2";
+        public const string SoftCounter = "alpha-edge";
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
