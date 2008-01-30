@@ -20,11 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public double Mode { get; set; }
-            public double Owner { get; set; }
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
