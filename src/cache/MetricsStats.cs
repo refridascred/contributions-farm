@@ -24,21 +24,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count checks schema pairs that satisfy a relation.</summary>
-        public static long MatchChecksSchemaCount(long[] items)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 19)
+                    if ((readings[i] - readings[j]) == 20)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
