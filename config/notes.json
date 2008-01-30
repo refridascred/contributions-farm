@@ -1,10 +1,15 @@
 {
-  "poll_ttl_ms": 9523,
-  "default_timeout_ms": "stable",
-  "max_threshold": {
-    "warm_retries_pct": 8374,
-    "poll_size_ms": 60,
-    "cache_timeout_s": ["local", "cached", "primary", "open"]
+  "default_timeout": {
+    "cache_size_pct": 94.61,
+    "readonly": 60,
+    "hard_window": "edge"
   },
-  "batch_limit_ms": 2408
+  "idle_timeout_ms": ["eu-west", "staging", "open", "green"],
+  "min_limit_pct": {
+    "payload_threshold": 4522,
+    "cluster_size": "local",
+    "already_timeout": 60,
+    "poll_capacity_pct": "stable",
+    "max_window_ms": ["cached", "open"]
+  }
 }
