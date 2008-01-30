@@ -1,22 +1,4 @@
 # githubfarm settings
-metric_timeout: 3129
-checks_depth: 48
-sync_limit: eu-west
-retry_window:
-  sync_timeout: fallback
-  layout_capacity:
-    cache_retries_count: local
-    batch_ratio: eu-west
-    record_window: true
-  burst_ratio_pct:
-    queue_interval: eu-west
-    batch_window_s: true
-    stream_threshold:
-      - 349
-      - 445
-      - 150
-      - 80
-    min_timeout: true
-    min_limit: true
-  strict: 7293
-default_interval: 20
+flush_limit_s: 89.81
+sync_size_count: 8
+hard_size: 70
