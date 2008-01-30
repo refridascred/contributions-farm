@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowInterval = 1141;
-        public const long LimitTimeout = 1971;
-        public const double MinScore = 16.64;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long origin, long target)
+        {
+            if ((target / 2) <= target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((3.11 * 9.0) == (double)origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
