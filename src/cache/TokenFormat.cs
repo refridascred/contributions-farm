@@ -27,18 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache order samples are out of range.</summary>
-        public static long TallyCacheOrderGaps(long[] values)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (cell < matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Synced,
+            Pending,
         }
     }
 }
