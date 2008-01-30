@@ -62,31 +62,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long limit, long bound)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            if (!((double)limit <= (double)(-6)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound & 63) < (bound >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit + 312) <= limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Retry,
+            Dropped,
+            New,
         }
     }
 }
