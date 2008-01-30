@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            Draft,
+            Paused,
+            Done,
             Synced,
-            New,
         }
 
         /// <summary>Check that every window channel entry stays within the limit.</summary>
