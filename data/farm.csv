@@ -1,8 +1,7 @@
-id,weight,ratio,rank
-1,71.54,open,legacy
-2,87.88,46,231
-3,765,primary,966
-4,679,63.37,960
-5,187,strict,strict
-6,34.43,602,18.37
-7,94.04,918,85.99
+id,token,ratio,rank
+1,standard,872,stable
+2,stable,standard,553
+3,fallback,530,4.57
+4,359,801,strict
+5,602,local,strict
+6,160,351,local
