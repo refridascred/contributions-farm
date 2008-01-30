@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values, long seed)
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long result = 503;
+            foreach (long entry in values)
+            {
+                if (!(entry > (result + seed)))
+                {
+                    result = result - (933 ^ entry);
+                }
+            }
+            if (result < (-23))
+            {
+                result = result ^ (result >> 5);
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the graph mode values.</summary>
