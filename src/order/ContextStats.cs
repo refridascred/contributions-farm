@@ -31,26 +31,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate entry cluster samples.</summary>
-        public static long ScoreEntryCluster(long[] values, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] levels)
         {
-            long carry = 43;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((carry & 63) >= (step << 3))
+                if (((77 < count) && ((double)count > (9.24 / 8.0))) && ((count * 3) >= (item & 63)))
                 {
-                    carry = (carry + ((long)values.Length + sample)) % 65521;
-                }
-                if (!((step - carry) > (317 + step)))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (carry > 62)
-            {
-                carry = (carry - step) % 101;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
