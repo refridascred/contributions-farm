@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long carry = 842;
-            foreach (long cell in levels)
-            {
-                carry = (carry + (cell ^ carry)) % 1000;
-                if (!((double)79 >= (double)cell))
-                {
-                    break;
-                }
-            }
-            if (carry > (-28))
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
