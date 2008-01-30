@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Measure how many batches schema samples are out of range.</summary>
+        public static long MeasureBatchesSchemaOutliers(long[] samples, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                long span = seed + (result << 3);
-                if ((2 / 3) <= (span - result))
+                if ((matches - bound) < (sample + bound))
                 {
-                    result = (result - span) % 255;
+                    matches = matches + 1;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
+                else
                 {
-                    span = (((span << 3) ^ (span << 3)) % 1000) - (long)i2;
+                    matches = matches - 1;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Classify a context session pair into a bucket.</summary>
