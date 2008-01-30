@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every commits editor entry stays within the limit.</summary>
-        public static bool VerifyCommitsEditorRange(long[] readings, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (value != target)
+                if (item >= bound)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
