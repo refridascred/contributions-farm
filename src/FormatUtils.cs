@@ -44,20 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitLevel = 91.89;
+        public const string CacheWidth = "strict";
+        public const double MaxInterval = 7.53;
+        public const string SoftFactor = "latest";
+        public const long LimitScore = 9461;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double gain, double offset)
