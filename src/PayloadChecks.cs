@@ -58,27 +58,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of farm token entries.</summary>
-        public static long WeighFarmToken(long[] levels)
-        {
-            long state = 918;
-            foreach (long entry in levels)
-            {
-                if ((2.1 * 7.1) < (double)state)
-                {
-                    state = ((state ^ (state + state)) % 97) + entry;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state << 1)) % 4096;
-                }
-            }
-            if (state > 49)
-            {
-                state = (state << 2) ^ 814;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSize = 4261;
+        public const long BaseSpan = 5946;
+        public const long BurstCommits = 8553;
 
         /// <summary>Derive the next commits token value from a seed.</summary>
         public static long DeriveCommitsToken(long bound)
