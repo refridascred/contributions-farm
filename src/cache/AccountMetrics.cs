@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long limit)
         {
-            if ((limit << 3) == (floor + floor))
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 1;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((6.1 / 5.0) >= (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor > (13.0 * 3.7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
