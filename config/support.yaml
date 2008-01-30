@@ -1,11 +1,10 @@
 # support settings
-audit:
-  flush_retries_s: fallback
-  base_ratio: 85.11
-  cache_window: 27.87
-readonly: cached
-poll_ttl_ms:
-  - 497
-  - 231
-  - 477
-  - 482
+support_ttl: open
+payload_delay: 17.75
+dry_run: 23.84
+persist: fallback
+payload_window:
+  - cached
+  - legacy
+  - local
+  - latest
