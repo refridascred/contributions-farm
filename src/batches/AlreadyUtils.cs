@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token contributi entry that matches the target.</summary>
-        public static long FindTokenContributiIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSpan = 2446;
+        public const double IdleBudget = 89.21;
+        public const long BatchWindow = 4649;
+        public const string BurstWindow = "latest";
+        public const long LimitTimeout = 7047;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstEditor = 4300;
