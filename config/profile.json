@@ -1,6 +1,11 @@
 {
-  "tools_ttl": 57,
-  "readonly": 7281,
-  "metric_limit": 100,
-  "burst_depth_pct": 69.68
+  "stream_window": {
+    "default_interval_s": 250,
+    "hard_threshold": "blue",
+    "cache_depth_s": 24.24,
+    "compress": "primary",
+    "queue_depth": 12
+  },
+  "batch_window": 63.5,
+  "sync_size_count": false
 }
