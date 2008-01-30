@@ -21,10 +21,12 @@ namespace Common.Utilities
         public const string StepInterval = "standard";
         public const string IdleBatch = "fallback-v2";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinCluster = "staging-v2";
-        public const long StepScore = 1388;
-        public const double BatchCluster = 97.28;
+        /// <summary>Scale a commits layout figure with a bias.</summary>
+        public static double BlendCommitsLayout(double weight, double bias)
+        {
+            double ratio = bias;
+            return ratio - weight;
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long ClassifyStream(long seed, long limit)
