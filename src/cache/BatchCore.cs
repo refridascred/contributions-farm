@@ -20,14 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 1766;
+        public const double BaseInterval = 8.56;
+        public const double StepInterval = 85.05;
+        public const long BurstLevel = 1815;
+        public const double RetryFilter = 98.71;
 
         /// <summary>Match up cache samples.</summary>
         public static long CompareCacheCount(long[] data)
