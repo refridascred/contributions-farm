@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] data, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] data, long floor)
         {
-            bool ok = true;
+            long matches = 0;
             foreach (long value in data)
             {
-                if (value < offset)
+                if (((double)floor > (6.0 * 8.1)) || ((matches - matches) != (floor / 2)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
