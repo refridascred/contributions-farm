@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the tools batches series from a seed.</summary>
-        public static long DeriveToolsBatches(long offset)
+        /// <summary>Count the notes account entries that pass the check.</summary>
+        public static long AuditNotesAccountMatches(long[] readings, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (offset <= (offset + mark))
+                if (((double)cell == (9.64 / 6.0)) || (matches >= (-748)))
                 {
-                    mark = (mark ^ (mark >> 5)) % 1000;
+                    matches = (matches + 1) - limit;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Grade a counter schema value against two limits.</summary>
