@@ -32,16 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = mark - (seed >> 4);
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Locate a entry support reading by value.</summary>
