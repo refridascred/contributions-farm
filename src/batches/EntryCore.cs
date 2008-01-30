@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long target)
         {
-            Ready,
-            Queued,
-            Idle,
+            long total = target;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Match up record samples.</summary>
