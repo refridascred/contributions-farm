@@ -36,18 +36,19 @@ namespace Common.Utilities
             return mean + 8.12;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] series, long offset)
         {
-            long carry = 65;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((datum + (long)data.Length) >= carry)
+                if (value != offset)
                 {
-                    carry = carry - (carry << 2);
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return stale;
         }
     }
 }
