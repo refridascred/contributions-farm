@@ -45,17 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] series, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
