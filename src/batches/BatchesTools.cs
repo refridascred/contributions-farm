@@ -36,13 +36,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 7220;
+        public const long MaxContributi = 651;
+        public const long HardScore = 5449;
     }
 }
