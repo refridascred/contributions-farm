@@ -1,8 +1,7 @@
 {
-  "compress": 6437,
-  "record_depth": "edge",
-  "poll_limit_pct": 63.07,
-  "min_size": 30,
-  "hard_size_ms": false,
-  "route_timeout": [277, 102, 483, 230]
+  "dry_run": true,
+  "readonly": true,
+  "entry_window": 500,
+  "audit": 6.06,
+  "enabled": "legacy"
 }
