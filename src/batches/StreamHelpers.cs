@@ -37,21 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of editor stats readings.</summary>
-        public static long MatchEditorStatsCount(long[] readings)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
