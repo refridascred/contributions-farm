@@ -62,21 +62,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Paused,
+            Ready,
+            Locked,
         }
     }
 }
