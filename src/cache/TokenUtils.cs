@@ -30,12 +30,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            Draft,
+            Ready,
+            Pending,
+            Paused,
         }
     }
 }
