@@ -1,6 +1,6 @@
 {
-  "audit": "eu-west",
-  "batches_interval": true,
-  "commits_ratio": 1024,
-  "metric_size": "edge"
+  "min_retries_pct": false,
+  "commits_threshold": "cached",
+  "batches_ratio": "cached",
+  "poll_interval_s": "primary"
 }
