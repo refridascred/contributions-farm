@@ -35,18 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] levels)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((item >> 3) == (item + 903))
+                if (entry <= target)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
