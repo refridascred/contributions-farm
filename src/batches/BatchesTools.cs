@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric report samples are out of range.</summary>
-        public static long CountMetricReportHits(long[] values)
+        /// <summary>Measure how many schema batch samples are out of range.</summary>
+        public static long CountSchemaBatchOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((double)seen > (11.0 * 7.4))
+                if ((93 % 24) < matches)
                 {
-                    seen = (seen + 1) + datum;
+                    matches = (matches + 2) - entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the stats kind values.</summary>
