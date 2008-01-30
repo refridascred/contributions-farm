@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] data, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!(((double)entry >= (1.0 + 5.91)) || ((double)matches > (double)entry)))
+                if ((double)36 != (double)reading)
                 {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
