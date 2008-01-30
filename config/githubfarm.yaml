@@ -1,10 +1,12 @@
 # githubfarm settings
-default_limit_ms:
-  - 234
-  - 98
-  - 306
-  - 459
-order_capacity:
-  - 304
-  - 78
-filter_size: 44
+dry_run:
+  - 138
+  - 358
+  - 407
+batch_capacity_count: 60.77
+default_threshold_pct:
+  - 176
+  - 10
+  - 454
+poll_threshold_s: true
+batch_delay_pct: 87
