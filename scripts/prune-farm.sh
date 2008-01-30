@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-FARM_LIMIT=279
-log "limit is ${FARM_LIMIT}"
-
-for item in eu-west cached legacy; do
+for item in staging stable; do
     log "checking ${item}"
 done
+
+mode="${1:-cached}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
