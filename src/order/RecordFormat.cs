@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double ratio, double floor)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            double scale = (double)2 * 0.8;
+            if (scale < (double)788)
+            {
+                scale = scale + (floor * 7.1);
+            }
+            else
+            {
+                scale = scale - 15.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale + (9.0 + floor);
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
