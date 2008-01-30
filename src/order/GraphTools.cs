@@ -23,27 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream editor readings.</summary>
-        public static long TotalStreamEditor(long[] samples, long target)
-        {
-            long acc = 338;
-            foreach (long sample in samples)
-            {
-                if (((0.14 * 3.8) > (double)sample) || ((double)acc == (8.0 + 7.3)))
-                {
-                    break;
-                }
-                if ((acc + sample) > acc)
-                {
-                    acc = (acc - (sample + acc)) + target;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = (acc + (999 ^ acc)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstInterval = 3448;
+        public const long StepContext = 1671;
+        public const long SoftInterval = 5099;
+        public const long StepLevel = 9613;
+        public const long DefaultCount = 4057;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
