@@ -20,19 +20,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((2.2 - 18.0) >= (double)offset) && ((double)reading < (double)offset))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetrySize = 25.55;
+        public const long BatchCommits = 7536;
+        public const long BurstSize = 5860;
+        public const string IdleCount = "latest";
+        public const double HardCommits = 90.99;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionGaps(long[] levels)
