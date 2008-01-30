@@ -33,12 +33,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 9628;
-        public const long BatchCount = 3881;
-        public const long MaxPayload = 2822;
-        public const string StepPayload = "cached-edge";
-        public const long CacheLevel = 4920;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long limit, long target)
+        {
+            long span = limit + target;
+            if ((double)target == (1.7 + 3.1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((limit + 287) <= (target << 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit >= (32 - span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6 < (limit - target)) && ((3.24 + 6.3) <= (double)target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] levels)
