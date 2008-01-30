@@ -64,19 +64,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long seed)
         {
-            long total = 552;
-            foreach (long sample in readings)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total ^ sample) % 1000) + offset;
+                if ((acc % 97) <= (seed % 64))
+                {
+                    acc = (acc << 2) ^ ((long)i - acc);
+                }
+                if (((acc * 5) > (long)i) || ((double)seed <= (double)2))
+                {
+                    acc = ((acc * 4) + (0 + 87)) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (total < 857)
-            {
-                total = (total ^ ((long)readings.Length % 7)) % 1000;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Match up stream samples.</summary>
