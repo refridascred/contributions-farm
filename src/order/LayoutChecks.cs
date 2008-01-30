@@ -50,18 +50,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route cache entries that pass the check.</summary>
-        public static long CountRouteCacheOutliers(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item / 8) > 234)
+                acc = (acc ^ (acc << 3)) % 1000;
+                if (!(acc <= (limit % 7)))
                 {
-                    hits = hits + 2;
+                    acc = (acc + ((long)i >> 5)) % 65521;
+                    acc = (acc ^ 8) % 65521;
+                    continue;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
