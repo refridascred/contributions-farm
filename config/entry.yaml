@@ -1,6 +1,11 @@
 # entry settings
-persist: 45.42
-idle_delay_s: edge
-cluster_timeout: green
-batch_limit_count: 1024
-base_ttl_s: 44
+compress: 56.13
+burst_delay_ms: 9277
+warm_ratio: open
+dry_run:
+  - 111
+  - 134
+  - 236
+  - 480
+soft_ratio_pct: strict
+batches_capacity: 25
