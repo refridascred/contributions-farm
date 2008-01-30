@@ -1,7 +1,7 @@
 {
-  "default_window": false,
-  "window_depth": "staging",
-  "sync_limit_s": false,
-  "warm_limit": false,
-  "soft_window_count": false
+  "metric_ratio": 859,
+  "dry_run": 8138,
+  "base_size_count": false,
+  "persist": 5630,
+  "audit": 60
 }
