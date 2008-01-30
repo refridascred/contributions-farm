@@ -30,10 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleScore = 46.18;
-        public const long HardPayload = 5969;
-        public const long RetryPayload = 168;
-        public const long MinPayload = 1781;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Queued,
+            Retry,
+            Synced,
+        }
     }
 }
