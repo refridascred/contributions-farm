@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit entry format readings against a rule.</summary>
+        public static long MeasureEntryFormatMatches(long[] values)
         {
-            Closed,
-            Retry,
-            New,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((datum ^ datum) >= (datum & 255)) && (((matches + datum) > matches) && (matches >= 702)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
