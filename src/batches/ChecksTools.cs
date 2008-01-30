@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long state = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((44 - (long)i) >= seed)
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = (((sum << 3) ^ sum) % 255) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Define order limits and defaults.</summary>
