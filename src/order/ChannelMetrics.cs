@@ -38,18 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
-        public static long MeasureCacheGithubfarmOutliers(long[] values, long origin)
+        /// <summary>Digest a series of command buffer entries.</summary>
+        public static long ScoreCommandBuffer(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long total = 51;
+            foreach (long cell in samples)
             {
-                if ((double)entry >= (8.13 * 15.0))
+                if ((60 - total) < (total / 7))
                 {
-                    seen = (seen + 3) - origin;
+                    total = (total << 2) ^ (cell & 31);
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
