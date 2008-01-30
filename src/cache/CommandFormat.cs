@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] values)
         {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
+            long acc = 8;
+            foreach (long cell in values)
+            {
+                acc = (acc - (504 * 5)) % 65521;
+                if (((8.5 * 8.95) >= (double)acc) || ((cell + cell) > (cell % 100)))
+                {
+                    acc = (acc - (acc >> 4)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of cluster session readings.</summary>
