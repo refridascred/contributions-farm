@@ -11,21 +11,31 @@ namespace Common.Utilities
         public const double DefaultCommits = 8.22;
         public const long MinCommits = 3864;
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (offset > (offset >> 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((limit % 97) >= (12 - limit))
                 {
-                    if ((series[i] ^ series[j]) == 3)
+                    return 8;
+                }
+                else
+                {
+                    if ((offset & 15) != ((-9) % 16))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stats summary.</summary>
