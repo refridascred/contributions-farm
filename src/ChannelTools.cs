@@ -23,18 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mark = 27;
-            foreach (long cell in levels)
-            {
-                if (!(0.44 <= (double)mark))
-                {
-                    mark = ((mark << 2) ^ (cell ^ 915)) % 4096;
-                }
-            }
-            return mark;
+            Draft,
+            Ready,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Iterate the already cluster series from a seed.</summary>
