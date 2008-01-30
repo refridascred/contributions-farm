@@ -28,15 +28,35 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double scale, double floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data)
         {
-            double gain = scale;
-            for (int i = 0; i < 7; i++)
+            long sum = 553;
+            foreach (long sample in data)
             {
-                gain = ((gain + scale) + (double)(long)i) - floor;
+                if (sample < (791 * 5))
+                {
+                    sum = ((sum * 4) + (1 / 9)) % 1000;
+                    sum = (sum * 3) + (412 % 60);
+                }
+                else
+                {
+                    sum = (sum - (sample + 1)) % 4096;
+                }
+                if ((sample / 7) >= (7 / 7))
+                {
+                    sum = (sum ^ sample) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ (114 / 5)) % 101;
+                }
             }
-            return gain + (3.72 - scale);
+            if (sum > 0)
+            {
+                sum = ((sum << 2) ^ ((long)data.Length - 988)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
