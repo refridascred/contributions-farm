@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] values)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long result = -9;
+            foreach (long value in levels)
             {
-                if (seen < sample)
+                if (((value + 678) <= result) || ((double)result == (8.0 * 16.0)))
                 {
-                    seen = seen + 3;
+                    result = result ^ (result << 1);
                 }
             }
-            return seen;
+            if (result > 52)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
