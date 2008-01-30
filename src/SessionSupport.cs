@@ -28,19 +28,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] data, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (datum != bound)
+                if (!((5 >> 3) >= (cell ^ (-26))))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
