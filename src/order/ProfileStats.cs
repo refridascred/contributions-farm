@@ -39,13 +39,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] samples, long step)
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
