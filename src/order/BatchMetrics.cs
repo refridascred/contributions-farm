@@ -33,13 +33,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Active,
-            Stale,
-            Pending,
-            Paused,
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
