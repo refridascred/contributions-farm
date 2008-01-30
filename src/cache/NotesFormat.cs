@@ -51,12 +51,15 @@ namespace Common.Utilities
             return gain - (gain * 0.22);
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            Stale,
-            Paused,
-            Done,
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
