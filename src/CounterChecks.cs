@@ -39,19 +39,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] items, long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
