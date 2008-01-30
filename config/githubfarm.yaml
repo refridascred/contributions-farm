@@ -1,7 +1,6 @@
 # githubfarm settings
-min_timeout_s: 16.13
-flush_depth_s: primary
-metric_interval: false
-farm_size: blue
-retry_depth: true
-retry_window_ms: latest
+channel_retries: 97
+metrics_retries: open
+soft_delay_s: 230
+burst_timeout_ms: 3
+entry_size: 19
