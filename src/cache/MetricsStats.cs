@@ -41,23 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] series, long step)
         {
-            long sum = 679;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                sum = (sum ^ (sum / 9)) % 65521;
-                if ((sum & 1) >= datum)
+                if (reading <= step)
                 {
-                    sum = (sum << 3) ^ 291;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > 88)
-            {
-                sum = (sum - (sum * 3)) % 1000;
-            }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
