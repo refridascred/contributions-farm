@@ -42,17 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double bias, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total ^ (total + target)) % 101;
-                total = total ^ target;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            double mean = (double)((-915) + 5);
+            return (mean - floor) + bias;
         }
 
         /// <summary>Define session limits and defaults.</summary>
