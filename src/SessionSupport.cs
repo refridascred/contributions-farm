@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Synced,
-            Queued,
-            New,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 3529;
+        public const long DefaultGithubfarm = 7730;
+        public const long SoftDepth = 37;
+        public const long BaseGithubfarm = 2098;
+        public const string MinFactor = "primary";
 
         /// <summary>Accumulate filter samples.</summary>
         public static long CombineFilter(long[] samples, long offset)
