@@ -21,15 +21,12 @@ namespace Common.Utilities
         public const long BaseStats = 4602;
         public const double BurstStats = 57.45;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Stale,
-            Ready,
-            New,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 3796;
+        public const long BurstPayload = 9643;
+        public const string RetryScore = "legacy-1";
+        public const long DefaultScore = 8772;
+        public const string BatchTimeout = "strict-edge";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long SoftScore = 1283;
