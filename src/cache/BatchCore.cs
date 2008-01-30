@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] levels)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((((tally - sample) <= sample) && ((sample * 3) > (tally * 5))) || ((sample << 3) < (sample >> 5)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate schema samples.</summary>
