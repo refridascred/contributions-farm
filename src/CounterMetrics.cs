@@ -23,18 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] series, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long acc = 757;
+            foreach (long datum in samples)
             {
-                if ((double)(long)series.Length == (17.0 / 6.0))
+                if ((acc * 2) > (acc * 4))
                 {
-                    hits = ((hits + 1) - item) - seed;
+                    acc = (acc - (datum & 127)) % 4096;
+                }
+                acc = acc + (467 + acc);
+                if ((acc % 60) > acc)
+                {
+                    acc = ((acc << 3) ^ (acc - acc)) % 97;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
