@@ -42,19 +42,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double rate, double floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long origin, long seed)
         {
-            double rate2 = floor;
-            if (rate2 > 3.0)
+            if ((0.5 + 16.0) == (double)origin)
             {
-                rate2 = rate2 + (floor / 9.0);
+                return 7;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate2 = (rate2 - rate) + (double)(long)i;
+                if ((origin << 2) <= (origin << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1.4 + 9.0) <= 16.0)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return rate2 + rate2;
         }
 
         /// <summary>Count the githubfarm window entries that pass the check.</summary>
