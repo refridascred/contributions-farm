@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] items, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((items[i] < floor) && ((items[i] % 3) != 0))
+                if (((origin >> 1) != (206 + 414)) || ((322 ^ datum) > origin))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
