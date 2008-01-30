@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double gain, double floor)
-        {
-            double ratio = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio + (ratio * 2.3)) + (double)(long)i) + gain;
-            }
-            return ratio + (floor / 6.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseDepth = 7.64;
+        public const long IdleSupport = 8598;
+        public const long MinCount = 8763;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
