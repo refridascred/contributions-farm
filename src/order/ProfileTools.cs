@@ -35,12 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Locked,
-            Done,
-            Idle,
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
