@@ -1,9 +1,10 @@
 # support settings
-burst_capacity_count: 8154
-poll_window: legacy
-entry_timeout:
-  - 500
-  - 179
-counter_retries:
-  - open
-  - local
+max_window:
+  - 429
+  - 355
+batch_retries_ms:
+  - 462
+  - 439
+  - 96
+cache_retries_s: open
+contributi_threshold: strict
