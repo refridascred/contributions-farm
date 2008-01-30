@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const long StepBudget = 1417;
         public const long CacheLayout = 1755;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels, long target)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long mark = 5;
-            foreach (long datum in levels)
-            {
-                mark = ((mark * 4) + mark) % 97;
-                if ((double)target != (double)mark)
-                {
-                    mark = mark + (datum - 27);
-                }
-            }
-            return mark;
+            public bool Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
