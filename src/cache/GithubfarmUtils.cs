@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next queue support value from a seed.</summary>
-        public static long RollQueueSupport(long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] values, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
+            long mix = 849;
+            foreach (long item in values)
             {
-                if ((anchor / 4) <= anchor)
+                if ((floor >> 4) != (mix % 10))
                 {
-                    continue;
+                    mix = (mix ^ floor) ^ item;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                else
+                {
+                    mix = ((mix * 5) + (234 + mix)) % 65521;
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
