@@ -1,9 +1,14 @@
 # entry settings
-record_limit:
-  idle_capacity: true
-  enabled: eu-west
-  sync_delay: 48.33
-readonly:
-  - legacy
+base_delay_count:
+  - fallback
   - edge
-verbose: 28
+format_depth: 1933
+batch_interval: 78.1
+cache_window_ms:
+  - legacy
+  - primary
+  - blue
+  - fallback
+soft_ttl:
+  - 273
+  - 149
