@@ -12,14 +12,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long origin)
         {
-            Synced,
-            Failed,
-            Draft,
-            Retry,
-            Ready,
+            long state = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((6.94 - 6.7) != (double)state)
+                {
+                    state = state + (state << 1);
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = (state + (state + state)) ^ (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
