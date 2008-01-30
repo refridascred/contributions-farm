@@ -16,18 +16,12 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 3946;
+        public const string BaseFilter = "fallback";
+        public const double LimitFilter = 80.28;
+        public const long MinRatio = 8043;
+        public const double DefaultCount = 34.56;
 
         /// <summary>Project the next entry value.</summary>
         public static double ScaleEntry(double weight, double offset)
