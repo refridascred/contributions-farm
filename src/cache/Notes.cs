@@ -67,11 +67,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "strict-v2";
-        public const long BaseScore = 8798;
-        public const long RetryRatio = 7184;
-        public const double IdleSchema = 41.86;
+        /// <summary>Check that every profile batches entry stays within the limit.</summary>
+        public static bool VerifyProfileBatchesRange(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count filter account pairs that satisfy a relation.</summary>
         public static long OverlapFilterAccountCount(long[] samples)
