@@ -52,12 +52,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Combine commits editor values into a single score.</summary>
+        public static long WeighCommitsEditor(long[] values)
         {
-            Stale,
-            Queued,
-            Done,
+            long anchor = 44;
+            foreach (long sample in values)
+            {
+                if ((sample ^ sample) <= (-17))
+                {
+                    anchor = (anchor + 263) % 255;
+                }
+            }
+            if (anchor < 39)
+            {
+                anchor = ((anchor << 3) ^ (anchor % 8)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
