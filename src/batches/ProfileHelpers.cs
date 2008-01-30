@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const long BatchFormat = 7024;
         public const double StepFormat = 91.24;
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define token limits and defaults.</summary>
