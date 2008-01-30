@@ -33,11 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] levels)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item >> 3) == (item + 903))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
