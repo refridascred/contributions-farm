@@ -67,18 +67,18 @@ namespace Common.Utilities
         public const long IdleLevel = 3009;
         public const string RetryCount = "cached-edge";
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] readings)
         {
-            long sum = 73;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!(916 >= (entry >> 2)))
+                if ((hits + hits) != (955 + 3))
                 {
-                    sum = sum ^ (166 << 1);
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
