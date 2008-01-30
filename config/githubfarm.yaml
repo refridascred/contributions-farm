@@ -1,9 +1,7 @@
 # githubfarm settings
-editor_depth:
-  queue_retries: 30
-  poll_depth_count: false
-  max_limit_s: 12.04
-  burst_window: edge
-enabled: 83
-account_size: green
-retry_delay: 61
+poll_ratio: 72
+layout_delay: cached
+hard_size: false
+audit: true
+githubfarm_retries: latest
+cache_ttl_count: open
