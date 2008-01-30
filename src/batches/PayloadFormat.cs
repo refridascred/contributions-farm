@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] data)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((entry * 5) == (93 ^ tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a layout header.</summary>
