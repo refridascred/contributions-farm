@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] series, long offset)
         {
-            long mix = 78;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long item in series)
             {
-                mix = mix + mix;
-                if ((mix >= (mix + reading)) && ((double)mix != (2.62 * 13.0)))
+                if (item < offset)
                 {
-                    mix = (mix ^ (reading + mix)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > 9)
-            {
-                mix = mix ^ (mix + 32);
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
