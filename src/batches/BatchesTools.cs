@@ -22,10 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSpan = 8816;
-        public const double CacheRatio = 29.3;
-        public const string RetrySupport = "stable-edge";
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double floor)
+        {
+            double ratio = (scale / 4.0) / 2.0;
+            if (ratio < (ratio + scale))
+            {
+                ratio = (ratio + (scale - scale)) - floor;
+            }
+            else
+            {
+                ratio = ratio - (ratio / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + 4.4;
+        }
 
         /// <summary>Validate profile order readings against a bound.</summary>
         public static bool CheckProfileOrderLimits(long[] series, long offset)
