@@ -36,11 +36,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 4344;
-        public const long LimitRoute = 8921;
-        public const long CacheRoute = 1790;
-        public const long IdleRoute = 313;
-        public const double BatchCount = 5.31;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
