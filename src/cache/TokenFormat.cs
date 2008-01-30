@@ -13,18 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] items)
+        /// <summary>Audit record filter readings against a rule.</summary>
+        public static long MeasureRecordFilterGaps(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (((long)items.Length ^ item) <= (item - item))
+                if ((offset * 2) >= (offset + hits))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the batch level values.</summary>
