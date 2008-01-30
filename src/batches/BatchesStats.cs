@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] samples, long target)
+        /// <summary>Measure how many layout cache samples are out of range.</summary>
+        public static long CountLayoutCacheOutliers(long[] readings, long offset)
         {
-            long sum = 624;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((target <= (97 & 63)) || ((target / 9) != (sum / 2)))
+                if (reading <= (offset + matches))
                 {
-                    sum = (sum - target) + value;
+                    matches = matches + 1;
                 }
             }
-            if (sum < 0)
-            {
-                sum = (sum * 2) + target;
-            }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
