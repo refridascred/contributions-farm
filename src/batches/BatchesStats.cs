@@ -48,11 +48,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] readings, long offset)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((6.77 - 12.0) == (double)offset))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
     }
 }
