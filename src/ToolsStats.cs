@@ -50,17 +50,18 @@ namespace Common.Utilities
         public const string BatchRoute = "stable-1";
         public const long MinSpan = 1558;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long origin)
+        /// <summary>Measure how many commits order samples are out of range.</summary>
+        public static long MeasureCommitsOrderMatches(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
+                if ((target % 2) > (tally / 6))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
