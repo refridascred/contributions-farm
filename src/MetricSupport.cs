@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] items)
         {
-            Locked,
-            Ready,
-            Synced,
-            Draft,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen & 127) >= (210 >> 1))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
