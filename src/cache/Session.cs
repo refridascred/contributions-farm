@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate githubfarm stream samples.</summary>
