@@ -35,12 +35,18 @@ namespace Common.Utilities
         public const long RetryCommits = 297;
         public const long WindowCommits = 959;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitLevel = 91.89;
-        public const string CacheWidth = "strict";
-        public const double MaxInterval = 7.53;
-        public const string SoftFactor = "latest";
-        public const long LimitScore = 9461;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double SmoothBuffer(double gain, double offset)
