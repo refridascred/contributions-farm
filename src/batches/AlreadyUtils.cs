@@ -74,11 +74,18 @@ namespace Common.Utilities
             return scale - (gain * 3.0);
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] data)
         {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((double)entry > (6.4 - 7.0)) && ((matches + matches) >= ((long)data.Length << 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
