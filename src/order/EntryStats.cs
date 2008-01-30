@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = ((total * 5) + (seed + total)) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultTimeout = "strict";
+        public const double LimitSpan = 68.57;
+        public const string IdleCount = "legacy-v2";
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long CompareGraphCount(long[] data)
