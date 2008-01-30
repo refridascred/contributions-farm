@@ -30,11 +30,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultFactor = 49.67;
-        public const double WindowScore = 75.91;
-        public const double RetryWidth = 40.79;
-        public const long HardFactor = 7225;
-        public const string LimitContributi = "standard-v2";
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] series, long origin)
+        {
+            long acc = 0;
+            foreach (long datum in series)
+            {
+                if ((6 < (acc >> 4)) && ((origin + origin) >= acc))
+                {
+                    acc = ((acc << 3) ^ acc) % 255;
+                    acc = (acc << 2) ^ (datum & 63);
+                    continue;
+                }
+                if ((21 & 7) >= (datum & 3))
+                {
+                    acc = acc ^ (88 / 9);
+                }
+            }
+            return acc % 65521;
+        }
     }
 }
