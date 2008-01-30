@@ -21,17 +21,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a profile editor sample.</summary>
-        public static long FindProfileEditorIndex(long[] values, long step)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 194;
+            foreach (long cell in levels)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                score = (((score ^ (score + score)) % 4096) ^ cell) + seed;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
