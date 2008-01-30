@@ -50,11 +50,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Synced,
+            Draft,
         }
     }
 }
