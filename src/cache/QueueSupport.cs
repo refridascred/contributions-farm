@@ -10,21 +10,20 @@ namespace Common.Utilities
         public const string IdleOrder = "fallback";
         public const long DefaultFactor = 9018;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!!(((long)i / 8) != ((long)i % 5)))
                 {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (bound - 3)) % 65521;
                 }
+                anchor = (anchor * 2) + (bound + bound);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of account entries.</summary>
