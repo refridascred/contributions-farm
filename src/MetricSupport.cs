@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] readings, long seed)
+        /// <summary>Fold a list of record filter readings.</summary>
+        public static long ScoreRecordFilter(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long mark = 61;
+            foreach (long cell in levels)
             {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark * 2) + cell;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
