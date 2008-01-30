@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 8691;
+        public const long MinRatio = 1431;
+        public const double BurstFormat = 86.06;
+        public const double MaxFormat = 58.13;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandMatches(long[] samples, long step)
