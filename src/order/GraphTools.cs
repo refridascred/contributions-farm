@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const double BaseNotes = 94.21;
         public const double HardDepth = 53.97;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long state = 13;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry < (double)state)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state << 2) ^ (limit ^ entry)) % 97;
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 160)
-            {
-                state = (state - (9 & 15)) % 1000;
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
