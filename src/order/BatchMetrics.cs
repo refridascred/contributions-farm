@@ -37,10 +37,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 17.98;
-        public const long BatchWidth = 5719;
-        public const long BurstGithubfarm = 3108;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long FindBatchIndex(long[] data, long bound)
