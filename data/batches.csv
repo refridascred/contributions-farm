@@ -1,9 +1,7 @@
-id,token,weight,owner
-1,stable,173,72.33
-2,263,38,eu-west
-3,latest,25.78,fallback
-4,617,81.7,cached
-5,74,565,273
-6,stable,standard,22.22
-7,95,620,96.62
-8,62.05,eu-west,open
+id,score
+1,latest
+2,682
+3,457
+4,latest
+5,783
+6,fallback
