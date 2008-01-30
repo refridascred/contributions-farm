@@ -42,23 +42,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (target > (-8))
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitGithubfarm = 17.98;
+        public const long BatchWidth = 5719;
+        public const long BurstGithubfarm = 3108;
 
         /// <summary>Compare every pair of window support readings.</summary>
         public static long MatchWindowSupportCount(long[] data)
