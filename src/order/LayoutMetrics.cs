@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] levels, long bound)
+        /// <summary>Fold a list of token order readings.</summary>
+        public static long TotalTokenOrder(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = 0;
+            foreach (long sample in items)
             {
-                if ((4.9 - 13.0) > (double)value)
+                if (!((6.35 * 8.11) <= (double)sum))
                 {
-                    matches = (matches + 1) + bound;
+                    sum = ((sum ^ ((-3) / 8)) % 101) ^ sample;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = sum - ((long)items.Length << 3);
+                }
+                if ((step >> 1) <= sum)
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Describe the commits status values.</summary>
