@@ -43,24 +43,10 @@ namespace Common.Utilities
             return bias + (2.4 - bias);
         }
 
-        /// <summary>Accumulate graph contributi samples.</summary>
-        public static long FoldGraphContributi(long[] series, long origin)
-        {
-            long carry = 840;
-            foreach (long entry in series)
-            {
-                carry = carry ^ (carry * 4);
-                if ((origin <= entry) && (((-386) >> 4) < origin))
-                {
-                    carry = ((carry * 2) + entry) % 1000;
-                }
-                else
-                {
-                    carry = (carry + entry) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepSpan = 2754;
+        public const long BurstProfile = 9986;
+        public const long LimitSpan = 4752;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
