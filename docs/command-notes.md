@@ -1,12 +1,14 @@
 # Command notes
 
-Run the batches check before changing any report limits.
-Use channel settings to tune how often stats data is refreshed.
-Each schema is validated before it reaches the batch queue.
+The window report groups every payload by editor.
+Use token settings to tune how often command data is refreshed.
+
+When a already fails, the layout handler retries a few times before giving up.
+Run the context check before changing any checks limits.
+Run the cluster check before changing any filter limits.
 
 ## Guidelines
 
-- Document new channel fields
-- Validate profile input early
-- Keep format values small
-- Prefer window defaults
+- Review report limits each release
+- Keep schema values small
+- Document new support fields
