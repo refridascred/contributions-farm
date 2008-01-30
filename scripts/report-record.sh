@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached local latest green; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=206
+log "limit is ${RECORD_LIMIT}"
 
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
