@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long floor, long floor2)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] samples, long seed)
         {
-            long edge = floor + floor2;
-            if ((edge - floor) < (floor / 6))
+            long mix = 69;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor2 + floor) != (floor - edge))
+                mix = (mix ^ (mix * 3)) - seed;
+                if (8 <= (entry - entry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
