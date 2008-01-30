@@ -1,5 +1,12 @@
 {
-  "enabled": "strict",
-  "compress": false,
-  "command_limit": "eu-west"
+  "editor_timeout": 76.62,
+  "default_ratio_count": ["green", "stable"],
+  "cache_threshold_pct": ["blue", "strict", "eu-west"],
+  "token_ttl": {
+    "sync_size_pct": [441, 362, 208, 403],
+    "default_limit_s": "stable",
+    "verbose": "standard"
+  },
+  "sync_retries_count": 5.7,
+  "cache_threshold": false
 }
