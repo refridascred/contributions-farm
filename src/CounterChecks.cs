@@ -14,12 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine checks token values into a single score.</summary>
+        public static long ScoreChecksToken(long[] data, long limit)
         {
-            Active,
-            Closed,
-            Ready,
+            long result = 704;
+            foreach (long value in data)
+            {
+                result = ((result << 2) ^ (result ^ 345)) + value;
+            }
+            if (result < 9)
+            {
+                result = result - limit;
+            }
+            return result % 65521;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
