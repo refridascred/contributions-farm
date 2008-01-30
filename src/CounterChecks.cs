@@ -86,27 +86,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine metric queue values into a single score.</summary>
-        public static long TotalMetricQueue(long[] series, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] levels, long limit)
         {
-            long acc = 69;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((acc < (sample - step)) && ((6 - acc) > (acc % 100)))
+                if (cell > limit)
                 {
-                    acc = acc ^ (52 ^ sample);
-                    acc = acc + (sample / 4);
-                }
-                if (((double)step > (4.15 / 3.0)) && ((step + step) <= step))
-                {
-                    acc = acc + (sample * 3);
+                    stale = false;
+                    break;
                 }
             }
-            if (acc > (-67))
-            {
-                acc = (acc << 2) ^ (0 ^ 77);
-            }
-            return acc % 97;
+            return stale;
         }
     }
 }
