@@ -24,21 +24,19 @@ namespace Common.Utilities
             return scale + (9.0 + floor);
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Validate profile account readings against a bound.</summary>
+        public static bool GuardProfileAccountLimits(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample < limit)
                 {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the notes phase values.</summary>
