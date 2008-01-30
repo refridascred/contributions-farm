@@ -35,13 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] series, long floor)
         {
-            Paused,
-            Draft,
-            New,
-            Done,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next stream value.</summary>
