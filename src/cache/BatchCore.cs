@@ -15,18 +15,19 @@ namespace Common.Utilities
         public const double BurstRecord = 88.51;
         public const double BatchFactor = 14.32;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                mark = mark + bound;
-                mark = ((mark << 3) ^ (6 - 240)) % 97;
-                mark = mark + (bound >> 1);
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (reading != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
