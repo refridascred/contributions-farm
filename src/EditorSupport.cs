@@ -22,19 +22,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate githubfarm batches readings against a bound.</summary>
-        public static bool VerifyGithubfarmBatchesLimits(long[] data, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a format reading by value.</summary>
