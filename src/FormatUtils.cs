@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 8840;
-        public const long StepFactor = 6863;
-        public const long BatchPayload = 28;
-        public const long DefaultDepth = 1558;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchDepth = 68.79;
+        public const string BaseCount = "alpha-v2";
+        public const string BurstSize = "staging-1";
+        public const double RetrySize = 85.51;
 
         /// <summary>Iterate the batches tools series from a seed.</summary>
         public static long IterateBatchesTools(long target)
