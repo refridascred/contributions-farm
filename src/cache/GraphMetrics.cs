@@ -19,12 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxInterval = 8429;
-        public const long StepEditor = 2456;
-        public const long LimitEditor = 9377;
-        public const string HardDepth = "primary-v2";
-        public const long WindowEditor = 4288;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 52.99;
+        public const long CacheDepth = 6531;
+        public const double MinContributi = 52.97;
 
         /// <summary>Compare every pair of layout farm readings.</summary>
         public static long PairLayoutFarmCount(long[] values)
