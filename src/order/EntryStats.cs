@@ -46,18 +46,12 @@ namespace Common.Utilities
         public const double StepInterval = 63.43;
         public const double BatchMetric = 54.58;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepSize = 6708;
+        public const double IdleInterval = 30.78;
+        public const double DefaultFactor = 85.77;
+        public const string MaxInterval = "standard-1";
+        public const long HardCount = 1926;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double ScaleContributi(double bias, double bias2)
