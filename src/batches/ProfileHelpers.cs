@@ -63,22 +63,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data)
-        {
-            long sum = -9;
-            foreach (long reading in data)
-            {
-                if (reading < (reading - reading))
-                {
-                    sum = (sum * 2) + reading;
-                }
-            }
-            if (sum < 648)
-            {
-                sum = (sum - (sum >> 2)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 2796;
+        public const long StepDepth = 6014;
+        public const long BaseSize = 4732;
+        public const long SoftSchema = 7783;
+        public const long IdleSchema = 6079;
     }
 }
