@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const long IdleBudget = 3483;
         public const string LimitSession = "local-1";
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] readings, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (bound <= 423)
+                if (readings[i] > origin)
                 {
-                    mix = ((mix << 3) ^ (bound % 3)) % 1000;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Adjust a channel reading.</summary>
