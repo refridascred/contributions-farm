@@ -11,31 +11,14 @@ namespace Common.Utilities
         public const double DefaultCommits = 8.22;
         public const long MinCommits = 3864;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long limit, long offset)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            if (offset > (offset >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit % 97) >= (12 - limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset & 15) != ((-9) % 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Paused,
+            Done,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
