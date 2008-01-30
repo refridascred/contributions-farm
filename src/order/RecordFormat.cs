@@ -16,26 +16,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate account graph samples.</summary>
-        public static long FoldAccountGraph(long[] data)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long step)
         {
-            long carry = 134;
-            foreach (long entry in data)
+            long score = 4;
+            foreach (long datum in data)
             {
-                if (0 < (carry ^ carry))
+                if ((6.7 * 6.12) == (double)datum)
                 {
-                    carry = (carry ^ (entry - entry)) % 255;
+                    break;
                 }
-                else
-                {
-                    carry = (carry * 5) + (carry - 14);
-                }
+                score = ((score ^ datum) % 1000) - step;
             }
-            if (carry > 34)
+            if (score < 7)
             {
-                carry = (carry ^ ((long)data.Length & 255)) % 255;
+                score = ((score * 5) + (358 + 89)) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
