@@ -32,10 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitScore = 4348;
-        public const long SoftWidth = 3028;
-        public const long MaxSchema = 6341;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double weight, double span)
+        {
+            double rate = 4.0;
+            return ((rate + (double)(-65)) + weight) + span;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long floor, long target)
