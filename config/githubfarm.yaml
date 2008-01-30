@@ -1,9 +1,4 @@
 # githubfarm settings
-verbose: green
-readonly: green
-flush_depth_s: 100
-base_timeout_count:
-  githubfarm_size: 23
-  cache_size: 58.75
-  retry_retries: 49
-  strict: 60
+dry_run: 78.12
+idle_depth_ms: true
+compress: legacy
