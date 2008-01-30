@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            Synced,
+            Queued,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a session entry.</summary>
