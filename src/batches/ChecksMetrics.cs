@@ -35,22 +35,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up order command samples.</summary>
-        public static long PairOrderCommandCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "local";
+        public const long BaseGithubfarm = 344;
+        public const double SoftScore = 29.15;
+        public const string BurstScore = "cached";
+        public const double SoftWidth = 13.49;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
