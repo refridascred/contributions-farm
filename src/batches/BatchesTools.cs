@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            long total = 381;
-            foreach (long value in values)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total << 3) ^ (56 ^ 72)) ^ value;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Describe the stats kind values.</summary>
