@@ -23,11 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            double ratio = span;
-            return ratio - (rate * 3.02);
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
