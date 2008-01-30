@@ -31,11 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxLevel = 98.23;
-        public const long MaxSize = 8651;
-        public const long RetryContributi = 8628;
-        public const double WindowContributi = 0.11;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenHits(long[] samples, long target)
