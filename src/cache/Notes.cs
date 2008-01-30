@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double ratio, double offset)
+        /// <summary>Classify a cache tools pair into a bucket.</summary>
+        public static long SortCacheTools(long origin, long bound)
         {
-            double scale = (ratio * 19.0) * 2.1;
-            if (scale >= scale)
+            long next = origin - bound;
+            if (36 >= next)
             {
-                scale = (scale + (double)5) + offset;
+                return 4;
             }
-            return scale + scale;
+            else
+            {
+                if ((origin + bound) <= (next / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
