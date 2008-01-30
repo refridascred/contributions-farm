@@ -57,38 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long step, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            if (((offset - 18) < (offset + offset)) || ((7.0 + 6.5) <= (double)step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)step == (4.0 - 3.3)) || ((1.0 / 2.0) < (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step == (4.0 - 10.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset >= step) && ((step % 12) > (step + offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Queued,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a already info.</summary>
