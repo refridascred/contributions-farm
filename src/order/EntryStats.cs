@@ -50,11 +50,22 @@ namespace Common.Utilities
         public const string MaxInterval = "standard-1";
         public const long HardCount = 1926;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] data, long offset)
         {
-            double ratio = bias2;
-            return (ratio + (ratio - bias2)) + bias;
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (offset > (offset - value))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
