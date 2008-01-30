@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] samples)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)seen >= (double)reading) && ((reading / 8) != ((long)samples.Length + seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
