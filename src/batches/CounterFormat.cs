@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate already editor readings against a bound.</summary>
-        public static bool CheckAlreadyEditorRange(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "fallback-v2";
+        public const long DefaultReport = 5042;
+        public const double LimitCount = 42.98;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandRange(long[] data, long origin)
