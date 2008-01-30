@@ -20,12 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 1766;
-        public const double BaseInterval = 8.56;
-        public const double StepInterval = 85.05;
-        public const long BurstLevel = 1815;
-        public const double RetryFilter = 98.71;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 4020;
+        public const double BurstRecord = 88.51;
+        public const double BatchFactor = 14.32;
 
         /// <summary>Match up cache samples.</summary>
         public static long CompareCacheCount(long[] data)
