@@ -33,12 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetrySize = 25.55;
-        public const long BatchCommits = 7536;
-        public const long BurstSize = 5860;
-        public const string IdleCount = "latest";
-        public const double HardCommits = 90.99;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowDepth = "open-v2";
+        public const long RetryLevel = 9131;
+        public const long MinInterval = 8054;
+        public const long BatchFactor = 1324;
+        public const long BatchContributi = 5032;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionGaps(long[] levels)
