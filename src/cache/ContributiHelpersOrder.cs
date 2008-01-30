@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Combine tools already values into a single score.</summary>
+        public static long TotalToolsAlready(long[] data, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            long mark = -32;
+            foreach (long cell in data)
             {
-                sum = (sum - (sum - sum)) % 97;
-                sum = (sum * 5) + (target + target);
-                sum = (sum * 4) + (target % 12);
-                sum = ((sum * 5) + (long)i) % 4093;
+                mark = (mark ^ mark) ^ cell;
+                mark = (mark * 2) + (bound + mark);
             }
-            return sum;
+            if (mark > 0)
+            {
+                mark = (mark * 5) + (82 ^ bound);
+            }
+            return mark;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
