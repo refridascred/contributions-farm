@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long floor, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if (9.29 > (double)target)
             {
-                if (!(6 < (sample * 3)) || !((tally / 8) != (tally + sample)))
+                return 1;
+            }
+            else
+            {
+                if ((3.3 + 7.4) >= (double)target)
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((target % 7) == (floor & 255))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor - 7) > (floor >> 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
