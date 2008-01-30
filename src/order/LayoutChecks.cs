@@ -47,17 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a layout filter reading by value.</summary>
-        public static long LookupLayoutFilterIndex(long[] items, long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (items[i] > floor)
+                if (entry > floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Match up tools samples.</summary>
