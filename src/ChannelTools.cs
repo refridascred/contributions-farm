@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] values)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches ^ reading) != (matches - 822))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
