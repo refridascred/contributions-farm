@@ -23,25 +23,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Roll a payload command counter forward.</summary>
+        public static long IteratePayloadCommand(long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((74 >= (floor - floor)) || ((double)(long)i <= (19.0 + 2.3)))
                 {
-                    acc = ((acc + offset) % 4096) ^ (long)i2;
+                    score = (score - floor) % 1000;
                 }
-                acc = ((acc * 2) + (offset + offset)) % 101;
-                if ((acc - (long)i) != (offset % 5))
-                {
-                    acc = (acc << 3) ^ (offset + acc);
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
