@@ -33,15 +33,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two support payload measurements.</summary>
-        public static double ScaleSupportPayload(double rate, double span)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double drift = span * 16.0;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift + (span / 8.0)) - (double)(long)i) + rate;
-            }
-            return drift + drift;
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
