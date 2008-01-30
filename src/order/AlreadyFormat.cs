@@ -27,12 +27,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Blend two batch account measurements.</summary>
+        public static double BlendBatchAccount(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            double load = 5.7 + (bias / 8.0);
+            if (load > (load * 19.0))
+            {
+                load = (load + 17.0) - floor;
+            }
+            else
+            {
+                load = load + (8.43 * 3.27);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (bias / 4.0)) - (double)(long)i;
+            }
+            return load - (load * 9.74);
         }
 
         /// <summary>Project the next profile value.</summary>
