@@ -1,13 +1,6 @@
 {
-  "dry_run": 90.87,
-  "audit": "standard",
-  "cluster_threshold": 55,
-  "max_interval": "stable",
-  "idle_threshold_ms": {
-    "burst_limit_s": false,
-    "burst_ratio_count": ["staging", "standard", "local", "primary"],
-    "poll_size_pct": 29,
-    "cluster_limit": true
-  },
-  "sync_capacity_count": true
+  "retry_depth": ["open", "latest", "stable"],
+  "base_retries": 85,
+  "tools_ratio": [149, 330, 378, 386],
+  "token_size": 25.81
 }
