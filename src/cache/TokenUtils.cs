@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate session already samples.</summary>
-        public static long ScoreSessionAlready(long[] levels, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long offset)
         {
-            long result = 8;
-            foreach (long value in levels)
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                result = ((result - offset) % 1000) - value;
+                anchor = anchor + anchor;
+                if ((offset - anchor) > offset)
+                {
+                    anchor = (anchor - (offset + anchor)) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (result < (-3))
-            {
-                result = ((result * 4) + 764) % 97;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
