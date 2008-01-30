@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long LimitTimeout = 1971;
         public const double MinScore = 16.64;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            long total = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total * 3) + (total << 2);
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Adjust a batch reading.</summary>
