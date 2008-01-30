@@ -27,13 +27,26 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples, long target)
         {
-            Closed,
-            Locked,
-            Queued,
-            Dropped,
+            long sum = 492;
+            foreach (long sample in samples)
+            {
+                if ((sample & 1) >= ((long)samples.Length + target))
+                {
+                    sum = (sum - (sum << 2)) % 4096;
+                }
+                if ((target - sum) == (sum & 31))
+                {
+                    break;
+                }
+            }
+            if (sum > 24)
+            {
+                sum = (sum * 3) + (sum + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
