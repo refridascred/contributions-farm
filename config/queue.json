@@ -1,7 +1,15 @@
 {
-  "format_timeout": 7747,
-  "dry_run": 86,
-  "default_delay": "primary",
-  "audit": 1024,
-  "batch_ratio_pct": true
+  "burst_ttl_count": 37,
+  "retry_timeout": 46.87,
+  "soft_interval_pct": {
+    "verbose": 83.2,
+    "min_capacity_s": 45,
+    "channel_retries": ["blue", "cached", "cached"],
+    "compress": "local",
+    "audit": 33,
+    "enabled": true
+  },
+  "min_ratio": "cached",
+  "payload_ttl": 500,
+  "soft_retries_pct": false
 }
