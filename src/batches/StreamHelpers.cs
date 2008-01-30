@@ -37,13 +37,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long origin, long origin2)
         {
-            Draft,
-            Failed,
-            Ready,
-            Closed,
+            long diff = origin ^ origin2;
+            if ((double)diff > (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin2 != (6.01 / 8.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((((-362) ^ diff) >= diff) || ((origin + origin) < 6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
