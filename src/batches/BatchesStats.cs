@@ -38,11 +38,18 @@ namespace Common.Utilities
         public const double MaxWidth = 22.6;
         public const string CacheWindow = "stable-edge";
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double gain, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] values, long limit)
         {
-            double ratio = (double)872 / 9.0;
-            return ((ratio + 3.0) + gain) + bias;
+            long mix = 272;
+            foreach (long datum in values)
+            {
+                if (!((mix % 7) < (mix >> 3)))
+                {
+                    mix = (mix ^ (limit / 4)) ^ datum;
+                }
+            }
+            return mix;
         }
     }
 }
