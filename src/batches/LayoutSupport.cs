@@ -74,11 +74,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 64.38;
-        public const double WindowAlready = 71.98;
-        public const long LimitAlready = 1778;
-        public const long RetryRatio = 5516;
-        public const long CacheScore = 2454;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] levels, long seed)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum == (double)seed)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
