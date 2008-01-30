@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] items, long target)
+        /// <summary>Classify a filter report pair into a bucket.</summary>
+        public static long BucketFilterReport(long limit, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((-651) ^ 7) <= origin)
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((origin - origin) > limit) && ((limit + (-252)) <= limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((9.3 + 9.0) >= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
