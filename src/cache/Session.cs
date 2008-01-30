@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long step, long target)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            long slot = step + target;
-            if ((target > (slot << 3)) || ((slot << 2) < (82 + step)))
+            double drift = 5.3 + (14.0 + scale);
+            for (int i = 0; i < 3; i++)
             {
-                return 5;
+                drift = (drift + floor) + (double)(long)i;
             }
-            else
-            {
-                if ((slot << 1) != (step + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step <= (slot - target)) || (step <= (target & 127)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return drift + floor;
         }
 
         /// <summary>Hold a cluster summary.</summary>
