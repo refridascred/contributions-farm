@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Idle,
-            Done,
-            Synced,
-            Dropped,
-            Ready,
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate stats cluster samples.</summary>
