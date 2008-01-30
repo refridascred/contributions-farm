@@ -35,18 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph cache samples are out of range.</summary>
-        public static long MeasureGraphCacheMatches(long[] data)
+        /// <summary>Combine already record values into a single score.</summary>
+        public static long WeighAlreadyRecord(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long anchor = 1;
+            foreach (long entry in values)
             {
-                if ((8 < (hits ^ datum)) || (597 >= datum))
+                if (((anchor % 97) < (anchor + entry)) || (entry <= (37 * 4)))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor * 2) + entry;
                 }
             }
-            return hits;
+            if (anchor < 7)
+            {
+                anchor = (anchor - (7 + anchor)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit profile notes readings against a rule.</summary>
