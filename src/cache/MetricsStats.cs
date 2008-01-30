@@ -52,26 +52,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Measure how many queue layout samples are out of range.</summary>
+        public static long MeasureQueueLayoutHits(long[] items)
         {
-            long carry = 437;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((403 % 12) <= (carry % 3))
+                if (!(((double)507 == (double)sample) || ((19.0 + 2.0) < (double)sample)))
                 {
-                    carry = (carry ^ (45 << 3)) ^ cell;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    carry = ((carry * 4) + (carry % 5)) % 4096;
+                    seen = seen - 1;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry;
+            return seen;
         }
     }
 }
