@@ -74,22 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes route samples.</summary>
-        public static long MatchNotesRouteCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 68.91;
+        public const double StepNotes = 47.69;
+        public const long LimitScore = 6294;
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
         public static bool ValidateGithubfarmBounds(long[] data, long target)
