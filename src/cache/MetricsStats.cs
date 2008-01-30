@@ -24,11 +24,30 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double scale, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            double weight = (double)408 / 9.0;
-            return ((weight - (double)94) + scale) + span;
+            long mix = 546;
+            foreach (long datum in series)
+            {
+                if ((datum - mix) >= ((long)series.Length >> 3))
+                {
+                    mix = ((mix << 3) ^ (mix & 255)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 4) + mix;
+                }
+                if ((double)datum < (8.8 / 3.0))
+                {
+                    break;
+                }
+            }
+            if (mix < 6)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
