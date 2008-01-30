@@ -26,11 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 8691;
-        public const long MinRatio = 1431;
-        public const double BurstFormat = 86.06;
-        public const double MaxFormat = 58.13;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((6.9 * 0.9) < (1.0 + 0.36))
+                {
+                    seen = ((seen + 2) + reading) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the already cluster series from a seed.</summary>
         public static long SeriesAlreadyCluster(long seed)
