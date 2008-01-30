@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
