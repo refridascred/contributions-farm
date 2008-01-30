@@ -22,39 +22,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a already entry pair into a bucket.</summary>
-        public static long ClassifyAlreadyEntry(long offset, long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] values, long target)
         {
-            long lane = offset + bound;
-            if (9.0 >= (double)bound)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + lane) >= (offset >> 3))
+                if (values[i] < target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((7 < (lane & 255)) && ((923 >> 4) != (71 ^ lane)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound <= lane) && ((lane * 3) == (offset - offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm order samples are out of range.</summary>
