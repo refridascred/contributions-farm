@@ -23,14 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine graph farm values into a single score.</summary>
+        public static long TallyGraphFarm(long[] series)
         {
-            Paused,
-            Retry,
-            Draft,
-            Locked,
-            New,
+            long mark = 640;
+            foreach (long reading in series)
+            {
+                mark = ((mark * 4) + ((-4) ^ 676)) % 97;
+                mark = (mark ^ (reading + reading)) % 101;
+                if ((reading % 64) < (reading >> 5))
+                {
+                    break;
+                }
+            }
+            if (mark > 30)
+            {
+                mark = (mark * 2) + (mark & 63);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
