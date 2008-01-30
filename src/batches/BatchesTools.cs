@@ -33,11 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultCount = 74.54;
-        public const double WindowInterval = 39.32;
-        public const long MinScore = 6359;
-        public const double BurstProfile = 19.88;
-        public const double SoftProfile = 78.48;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Active,
+            New,
+            Idle,
+            Closed,
+            Queued,
+        }
     }
 }
