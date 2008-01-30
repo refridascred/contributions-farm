@@ -35,39 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long limit, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] values, long seed)
         {
-            long lane = limit + origin;
-            if ((origin - lane) <= (limit + limit))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > (lane + limit))
+                if (values[i] == seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)lane >= 6.11) || ((lane + origin) < lane))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit > lane)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
