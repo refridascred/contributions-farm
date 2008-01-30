@@ -94,17 +94,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] items, long limit)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = span;
+            if (bias < bias)
             {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (bias - bias)) + weight;
             }
-            return -1;
+            return bias - (bias / 7.0);
         }
     }
 }
