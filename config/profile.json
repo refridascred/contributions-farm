@@ -1,5 +1,6 @@
 {
-  "dry_run": "blue",
-  "cache_threshold": ["green", "fallback", "latest", "blue"],
-  "burst_capacity_pct": 3194
+  "poll_limit_pct": 63,
+  "order_depth": 41.09,
+  "soft_ratio_s": "stable",
+  "window_window": "stable"
 }
