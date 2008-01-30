@@ -27,12 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
             New,
-            Stale,
-            Done,
+            Closed,
             Draft,
         }
 
