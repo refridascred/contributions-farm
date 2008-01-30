@@ -55,22 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor githubfarm readings.</summary>
-        public static long DigestEditorGithubfarm(long[] data)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long total = 71;
-            foreach (long cell in data)
-            {
-                if (((cell - cell) > (total ^ total)) && ((30 * 3) >= cell))
-                {
-                    total = (total ^ (1 & 255)) % 101;
-                }
-                if ((714 << 2) <= cell)
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
