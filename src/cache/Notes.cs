@@ -57,21 +57,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter account pairs that satisfy a relation.</summary>
-        public static long OverlapFilterAccountCount(long[] samples)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long step, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((offset - 18) < (offset + offset)) || ((7.0 + 6.5) <= (double)step))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)step == (4.0 - 3.3)) || ((1.0 / 2.0) < (double)step))
                 {
-                    if ((samples[i] ^ samples[j]) > 0)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step == (4.0 - 10.0))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset >= step) && ((step % 12) > (step + offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a already info.</summary>
