@@ -1,8 +1,15 @@
 # support settings
-retry_retries_count:
-  - latest
-  - legacy
+stream_limit:
+  poll_ratio_s: 71.1
+  notes_ttl: standard
+  verbose: true
+  strict: 2867
+  default_window: 100
+  support_interval: 27
+dry_run: green
+support_timeout: 67.05
+burst_size:
+  - green
+  - stable
+  - blue
   - edge
-  - standard
-channel_retries: true
-min_threshold_count: stable
