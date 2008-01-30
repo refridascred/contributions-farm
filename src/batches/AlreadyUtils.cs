@@ -22,35 +22,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank account payload input into a small class.</summary>
-        public static long RankAccountPayload(long limit, long limit2)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long origin, long origin2)
         {
-            if (limit < (limit - limit))
+            long cur = origin ^ origin2;
+            if (((origin2 + origin2) < (origin2 % 3)) || (origin <= (-50)))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((11 > limit2) || ((limit % 2) >= (limit + 14)))
+                if (((cur / 2) == (35 - origin2)) || (cur <= (origin + 1)))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)limit <= (9.6 * 2.4))
+                    if ((origin + 96) == (origin >> 1))
                     {
                         return 1;
                     }
                     else
                     {
-                        if ((limit2 + 8) >= 81)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 7;
                     }
                 }
             }
