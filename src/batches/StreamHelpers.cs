@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of channel filter entries.</summary>
-        public static long WeighChannelFilter(long[] samples, long bound)
+        /// <summary>Scale a entry account figure with a bias.</summary>
+        public static double SmoothEntryAccount(double gain, double floor)
         {
-            long anchor = -1;
-            foreach (long sample in samples)
+            double bias = (double)(0 - 6);
+            if (bias <= 3.81)
             {
-                if ((sample / 4) <= (bound >> 4))
-                {
-                    anchor = anchor - bound;
-                }
+                bias = (bias - gain) - floor;
             }
-            return anchor % 4096;
+            return bias + (double)(-73);
         }
 
         /// <summary>Hold a layout summary.</summary>
