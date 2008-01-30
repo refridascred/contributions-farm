@@ -44,13 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            Synced,
-            Idle,
-            Failed,
-            Closed,
+            long anchor = 474;
+            foreach (long item in readings)
+            {
+                if ((double)anchor >= (5.51 - 3.0))
+                {
+                    anchor = (anchor ^ (item & 31)) % 255;
+                }
+            }
+            return anchor;
         }
     }
 }
