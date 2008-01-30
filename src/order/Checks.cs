@@ -31,19 +31,11 @@ namespace Common.Utilities
         public const long DefaultBudget = 698;
         public const long MinFarm = 1398;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] readings, long limit)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
