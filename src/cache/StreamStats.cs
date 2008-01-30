@@ -20,17 +20,21 @@ namespace Common.Utilities
             return drift + (double)134;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score + ((long)i & 1)) % 4096;
-                score = ((score * 5) + (38 + score)) % 4096;
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the farm status values.</summary>
