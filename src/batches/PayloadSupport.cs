@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double ratio, double offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] samples)
         {
-            double drift = (ratio + 0.8) * 5.0;
-            return drift + offset;
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches + reading) != (463 << 2))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
