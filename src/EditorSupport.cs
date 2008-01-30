@@ -13,15 +13,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Scale a session checks figure with a bias.</summary>
-        public static double SmoothSessionChecks(double bias, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] levels, long limit)
         {
-            double rate = (span * 8.1) * 5.08;
-            if (rate < (rate * 2.59))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                rate = rate - (rate * 4.7);
+                if (705 >= (datum ^ datum))
+                {
+                    matches = (matches + 3) - limit;
+                }
             }
-            return rate - bias;
+            return matches;
         }
 
         /// <summary>Hold a checks summary.</summary>
