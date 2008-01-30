@@ -50,18 +50,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] data, long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (((double)floor > (6.0 * 8.1)) || ((matches - matches) != (floor / 2)))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            double ratio = (double)872 / 9.0;
+            return ((ratio + 3.0) + gain) + bias;
         }
     }
 }
