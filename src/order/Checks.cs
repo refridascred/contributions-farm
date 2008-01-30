@@ -25,12 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetrySpan = 1146;
-        public const long HardScore = 5137;
-        public const string MinTools = "local-v2";
-        public const double BatchTools = 16.09;
-        public const double BatchWidth = 32.27;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] samples, long bound)
+        {
+            long acc = 812;
+            foreach (long datum in samples)
+            {
+                if ((bound - datum) >= (26 << 1))
+                {
+                    acc = acc - acc;
+                }
+            }
+            if (acc < 404)
+            {
+                acc = acc + (acc - bound);
+            }
+            return acc;
+        }
 
         /// <summary>Count the window metric entries that pass the check.</summary>
         public static long AuditWindowMetricGaps(long[] readings)
