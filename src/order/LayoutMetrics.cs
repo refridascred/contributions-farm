@@ -22,10 +22,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitLevel = 4814;
-        public const long IdleSpan = 1519;
-        public const string DefaultSpan = "staging";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] readings, long offset)
+        {
+            long total = 9;
+            foreach (long sample in readings)
+            {
+                total = ((total * 4) + (offset - sample)) % 101;
+                total = (total << 2) ^ (sample / 3);
+            }
+            if (total < 7)
+            {
+                total = total ^ (offset ^ offset);
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long CombineBuffer(long[] items, long bound)
