@@ -25,21 +25,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long limit, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
+            if (((limit - limit) > (675 + bound)) || (limit < (bound ^ limit)))
             {
-                long step = (score & 31) >> 2;
-                if ((step + (-132)) < (score - score))
-                {
-                    score = (score + seed) % 255;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((double)limit == (8.3 + 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
