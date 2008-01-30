@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 9264;
-        public const double DefaultDepth = 54.22;
-        public const string HardBudget = "alpha-v2";
+        /// <summary>Fold a list of cluster session readings.</summary>
+        public static long DigestClusterSession(long[] data, long offset)
+        {
+            long mix = 6;
+            foreach (long item in data)
+            {
+                mix = ((mix - (mix & 31)) + item) + offset;
+            }
+            if (mix < 27)
+            {
+                mix = ((mix << 3) ^ (mix / 9)) % 255;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long TallyCommandOutliers(long[] samples, long floor)
