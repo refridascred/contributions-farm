@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] data, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long value in data)
+            long anchor = 349;
+            foreach (long reading in readings)
             {
-                if (value >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor + (offset + reading)) % 65521;
             }
-            return found;
+            if (anchor > 624)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a cluster header.</summary>
