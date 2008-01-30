@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the account mode values.</summary>
