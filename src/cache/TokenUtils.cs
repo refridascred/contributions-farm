@@ -30,17 +30,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a format batches counter forward.</summary>
-        public static long RollFormatBatches(long seed)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark << 3) ^ (seed % 3)) % 255;
-                mark = ((mark * 3) + (mark << 3)) % 101;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
