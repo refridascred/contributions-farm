@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long sum = 0;
+            foreach (long reading in data)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                sum = (sum * 2) + reading;
+                sum = ((sum << 3) ^ sum) % 1000;
+                if ((double)1 > (double)reading)
+                {
+                    break;
+                }
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Measure how many graph cache samples are out of range.</summary>
