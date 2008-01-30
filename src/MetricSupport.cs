@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSize = 2106;
-        public const string BurstCount = "legacy-edge";
-        public const string BaseFactor = "fallback-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleFactor = 6261;
+        public const double LimitQueue = 39.98;
+        public const long BaseFactor = 3172;
+        public const long BurstCount = 9775;
+        public const string BatchWidth = "staging-1";
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
