@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Derive the next queue support value from a seed.</summary>
+        public static long RollQueueSupport(long offset)
         {
-            Active,
-            Ready,
-            Dropped,
-            Synced,
-            Closed,
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((anchor / 4) <= anchor)
+                {
+                    continue;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
