@@ -82,18 +82,27 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples, long target)
+        /// <summary>Combine metric queue values into a single score.</summary>
+        public static long TotalMetricQueue(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = 69;
+            foreach (long sample in series)
             {
-                if ((count >> 2) >= reading)
+                if ((acc < (sample - step)) && ((6 - acc) > (acc % 100)))
                 {
-                    count = (count + 2) + target;
+                    acc = acc ^ (52 ^ sample);
+                    acc = acc + (sample / 4);
+                }
+                if (((double)step > (4.15 / 3.0)) && ((step + step) <= step))
+                {
+                    acc = acc + (sample * 3);
                 }
             }
-            return count;
+            if (acc > (-67))
+            {
+                acc = (acc << 2) ^ (0 ^ 77);
+            }
+            return acc % 97;
         }
     }
 }
