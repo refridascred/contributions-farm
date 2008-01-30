@@ -40,18 +40,39 @@ namespace Common.Utilities
         public const long SoftProfile = 9376;
         public const long WindowRatio = 9721;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] items, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long bound = origin + seed;
+            if ((origin + bound) >= bound)
             {
-                if (floor > (479 * 2))
+                return 7;
+            }
+            else
+            {
+                if ((bound / 3) <= (633 / 3))
                 {
-                    seen = (seen + 1) + sample;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + bound) <= (903 + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed < (bound + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
