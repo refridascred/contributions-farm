@@ -12,13 +12,38 @@ namespace Common.Utilities
         public const long IdleRatio = 2592;
         public const long DefaultFormat = 1910;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long origin, long offset)
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            if (origin < (origin ^ 53))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin < (origin + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)origin <= (8.0 + 1.18)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset < (origin + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
