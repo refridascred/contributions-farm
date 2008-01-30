@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a metric checks figure with a bias.</summary>
-        public static double SmoothMetricChecks(double gain, double offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            double weight = gain / 2.0;
-            if (weight < (gain - weight))
+            long carry = 842;
+            foreach (long cell in levels)
             {
-                weight = weight + offset;
+                carry = (carry + (cell ^ carry)) % 1000;
+                if (!((double)79 >= (double)cell))
+                {
+                    break;
+                }
             }
-            return weight + offset;
+            if (carry > (-28))
+            {
+                carry = ((carry << 2) ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a account options.</summary>
