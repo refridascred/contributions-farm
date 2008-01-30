@@ -55,9 +55,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleInterval = 87.56;
-        public const long IdleQueue = 4040;
-        public const long BaseFactor = 755;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Draft,
+            New,
+            Locked,
+            Paused,
+            Idle,
+        }
     }
 }
