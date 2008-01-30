@@ -12,26 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate counter account samples.</summary>
-        public static long TotalCounterAccount(long[] readings)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long carry = 436;
-            foreach (long datum in readings)
-            {
-                if ((carry < (1 ^ carry)) || ((425 >> 4) < (carry + carry)))
-                {
-                    carry = (carry ^ (datum + datum)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry - 5)) % 4096;
-                }
-            }
-            if (carry > 191)
-            {
-                carry = carry - (37 / 8);
-            }
-            return carry;
+            Failed,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
