@@ -41,14 +41,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] samples)
         {
-            Done,
-            Draft,
-            Dropped,
-            Locked,
-            Retry,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item > (double)560)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
