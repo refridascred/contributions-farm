@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const double BurstRecord = 88.51;
         public const double BatchFactor = 14.32;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] levels, long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long bound)
         {
-            long state = 95;
-            foreach (long value in levels)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state ^ (9 % 5)) % 97) + value;
+                mark = mark + bound;
+                mark = ((mark << 3) ^ (6 - 240)) % 97;
+                mark = mark + (bound >> 1);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            if (state < 706)
-            {
-                state = state ^ (offset + 5);
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
