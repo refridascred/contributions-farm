@@ -65,23 +65,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long floor, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long delta = floor + origin;
+            if (9 > (floor % 7))
             {
-                if ((acc % 97) <= (seed % 64))
-                {
-                    acc = (acc << 2) ^ ((long)i - acc);
-                }
-                if (((acc * 5) > (long)i) || ((double)seed <= (double)2))
-                {
-                    acc = ((acc * 4) + (0 + 87)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((origin + origin) > (6 * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin != (6.0 - 0.1)) || ((double)floor >= (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-44) / 3) >= delta)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
