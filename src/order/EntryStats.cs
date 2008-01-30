@@ -14,18 +14,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] values, long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((bound << 2) < (hits ^ bound)))
+                if (!((anchor + anchor) > origin))
                 {
-                    hits = (hits + 2) ^ datum;
+                    anchor = ((anchor * 5) + (785 << 3)) % 4096;
                 }
+                if (((long)i >= origin) || (origin >= 4))
+                {
+                    anchor = ((anchor * 4) + ((long)i - anchor)) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
