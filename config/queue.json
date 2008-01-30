@@ -1,6 +1,7 @@
 {
-  "warm_window_s": 5002,
-  "checks_ttl": 15.61,
-  "strict": true,
-  "burst_ttl": 2324
+  "default_window": false,
+  "window_depth": "staging",
+  "sync_limit_s": false,
+  "warm_limit": false,
+  "soft_window_count": false
 }
