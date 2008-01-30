@@ -51,17 +51,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] data, long floor)
+        /// <summary>Count the githubfarm window entries that pass the check.</summary>
+        public static long CountGithubfarmWindowMatches(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (data[i] == floor)
+                if (((step % 97) <= (value - value)) && ((value >> 1) >= tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
