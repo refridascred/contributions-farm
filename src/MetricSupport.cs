@@ -13,12 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleFactor = 6261;
-        public const double LimitQueue = 39.98;
-        public const long BaseFactor = 3172;
-        public const long BurstCount = 9775;
-        public const string BatchWidth = "staging-1";
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Queued,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextMatches(long[] samples)
