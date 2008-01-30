@@ -34,22 +34,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] series, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((double)matches >= 9.0)
-                {
-                    matches = ((matches + 3) + datum) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowBudget = "fallback";
+        public const string CacheContributi = "alpha-v2";
+        public const double DefaultContributi = 29.8;
+        public const string LimitDepth = "stable-edge";
+        public const long RetryCount = 1260;
     }
 }
