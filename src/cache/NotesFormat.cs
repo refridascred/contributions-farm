@@ -20,18 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Iterate the contributi editor series from a seed.</summary>
+        public static long DeriveContributiEditor(long limit)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total - total) % 65521;
-                total = (total - target) % 4096;
-                total = (total * 2) + (57 << 1);
-                total = ((total * 2) + (long)i) % 101;
+                long lane = (8 ^ (-7)) & 1;
+                if (((long)i >> 1) == (4 + limit))
+                {
+                    score = score - (limit & 255);
+                    score = score ^ score;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (lane << 2)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Hold a commits record.</summary>
