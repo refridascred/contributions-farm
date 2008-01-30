@@ -1,18 +1,11 @@
 {
-  "sync_size_s": false,
-  "poll_interval_count": 7,
-  "poll_retries": "eu-west",
-  "retry_window_ms": {
-    "enabled": 94.86,
-    "payload_capacity": {
-      "verbose": [74, 35, 93, 416],
-      "burst_depth_count": 100,
-      "flush_limit_count": 5499,
-      "cache_ratio": ["blue", "fallback", "fallback"],
-      "flush_threshold": "eu-west",
-      "enabled": 21
-    },
-    "flush_delay_count": false,
-    "strict": "standard"
-  }
+  "report_size": 2642,
+  "audit": {
+    "flush_threshold": false,
+    "strict": 12.34,
+    "checks_delay": "open",
+    "token_window": 25.23,
+    "burst_timeout_ms": true
+  },
+  "metric_capacity": "cached"
 }
