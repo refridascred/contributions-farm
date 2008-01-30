@@ -28,21 +28,12 @@ namespace Common.Utilities
         public const double IdleDepth = 22.73;
         public const long IdleNotes = 6809;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (carry < ((-79) * 4))
-                {
-                    carry = (carry + seed) % 101;
-                    carry = (carry ^ 96) % 4096;
-                }
-                carry = carry + carry;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Paused,
+            Retry,
+            Idle,
         }
     }
 }
