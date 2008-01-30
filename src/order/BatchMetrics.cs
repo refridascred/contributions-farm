@@ -48,18 +48,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] series, long offset)
+        /// <summary>Validate tools contributi readings against a bound.</summary>
+        public static bool GuardToolsContributiLimits(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((sample << 1) == (sample - hits))
+                if (entry > limit)
                 {
-                    hits = (hits + 3) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
