@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double rate, double offset)
         {
-            long state = 7;
-            foreach (long datum in levels)
+            double ratio = (double)(286 >> 5);
+            if (ratio > 4.19)
             {
-                if ((state & 31) > (state & 63))
-                {
-                    state = (state + state) ^ datum;
-                }
+                ratio = (ratio + (double)5) - offset;
             }
-            return state;
+            return ratio - (rate * 9.8);
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
