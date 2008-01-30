@@ -20,12 +20,20 @@ namespace Common.Utilities
             return gain + (double)618;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 5790;
-        public const long BurstCommits = 8868;
-        public const long DefaultRatio = 3098;
-        public const double WindowCommits = 38.69;
-        public const long HardCommits = 6730;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] items, long bound)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long FoldNotes(long[] levels)
