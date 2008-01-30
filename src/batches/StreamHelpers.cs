@@ -24,13 +24,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseOrder = "alpha";
+        public const long CacheOrder = 1249;
+        public const long BatchOrder = 9979;
+        public const long RetryScore = 667;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long IterateSchema(long origin)
