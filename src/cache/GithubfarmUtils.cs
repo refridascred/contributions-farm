@@ -15,12 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] data)
         {
-            Failed,
-            Queued,
-            Paused,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((matches * 5) < 1) || ((matches <= (8 / 5)) || (4.4 > (double)reading)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
