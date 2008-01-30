@@ -1,16 +1,22 @@
 # githubfarm settings
-warm_delay_ms:
-  cache_depth_count: 100
-  max_threshold_pct:
-    - blue
-    - local
-    - eu-west
-  sync_delay_s: 75.38
-sync_threshold: standard
-editor_timeout:
-  burst_ttl: standard
-  cache_depth_pct: 100
-  base_retries: strict
-  soft_timeout_s: 250
-  audit: 45
-persist: 15.2
+metric_timeout: 3129
+checks_depth: 48
+sync_limit: eu-west
+retry_window:
+  sync_timeout: fallback
+  layout_capacity:
+    cache_retries_count: local
+    batch_ratio: eu-west
+    record_window: true
+  burst_ratio_pct:
+    queue_interval: eu-west
+    batch_window_s: true
+    stream_threshold:
+      - 349
+      - 445
+      - 150
+      - 80
+    min_timeout: true
+    min_limit: true
+  strict: 7293
+default_interval: 20
