@@ -1,8 +1,5 @@
 {
-  "batches_interval": ["eu-west", "eu-west"],
-  "enabled": true,
-  "poll_threshold_ms": "eu-west",
-  "base_ttl_ms": [212, 55, 223],
-  "burst_retries_pct": "strict",
-  "burst_window_ms": "green"
+  "editor_size": true,
+  "soft_ratio_ms": 32.6,
+  "enabled": false
 }
