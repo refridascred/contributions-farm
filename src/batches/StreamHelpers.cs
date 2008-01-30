@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double gain, double floor)
         {
-            Locked,
-            Idle,
-            Retry,
+            double drift = (double)(61 - 40);
+            if (drift < drift)
+            {
+                drift = drift + floor;
+            }
+            else
+            {
+                drift = drift - (gain + 8.2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 5.9) + (double)(long)i;
+            }
+            return drift - 4.5;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
