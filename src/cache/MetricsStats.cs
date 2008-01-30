@@ -58,17 +58,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] readings, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 437;
+            foreach (long cell in data)
             {
-                if (readings[i] < offset)
+                if ((403 % 12) <= (carry % 3))
                 {
-                    return (long)i;
+                    carry = (carry ^ (45 << 3)) ^ cell;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (carry % 5)) % 4096;
                 }
             }
-            return -1;
+            if (carry > 0)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry;
         }
     }
 }
