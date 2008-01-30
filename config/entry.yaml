@@ -1,16 +1,5 @@
 # entry settings
-default_size: cached
-hard_ratio:
-  - 107
-  - 274
-warm_retries_count: standard
-compress:
-  batch_depth_s: 28
-  format_limit: false
-  max_retries: true
-  context_ratio: 15
-  commits_size: 250
-idle_retries:
-  - 372
-  - 249
-  - 266
+audit: 32
+soft_window: standard
+retry_ttl_ms: 93.37
+sync_ratio: true
