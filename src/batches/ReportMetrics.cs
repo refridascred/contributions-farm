@@ -37,23 +37,17 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Locate a entry support reading by value.</summary>
+        public static long SeekEntrySupportIndex(long[] data, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed + mix) <= (seed >> 4))
+                if (data[i] > offset)
                 {
-                    mix = mix - ((long)i ^ mix);
+                    return (long)i;
                 }
-                if (((long)i + mix) >= (seed - 2))
-                {
-                    mix = (mix << 2) ^ (mix - seed);
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
     }
 }
