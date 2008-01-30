@@ -40,15 +40,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Derive the next window report value from a seed.</summary>
+        public static long IterateWindowReport(long origin)
         {
-            long mix = -3;
-            foreach (long value in levels)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                mix = (((mix * 4) + mix) % 65521) ^ value;
+                if (((long)i - anchor) <= (anchor & 1))
+                {
+                    anchor = anchor + ((long)i + anchor);
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor * 4)) % 65521;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor * 5) + (anchor / 9)) + (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
     }
 }
