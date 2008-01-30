@@ -16,21 +16,23 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = offset;
+            if (bias < (double)114)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias + bias) - gain;
             }
-            return count;
+            else
+            {
+                bias = bias + (7.0 * 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (offset - 6.4)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the format state values.</summary>
