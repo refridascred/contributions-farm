@@ -1,6 +1,6 @@
 {
-  "default_delay": 13.93,
-  "soft_retries": "stable",
-  "max_ttl_count": "legacy",
-  "filter_delay": true
+  "strict": "cached",
+  "sync_window_ms": 28.52,
+  "max_ratio_ms": 84,
+  "persist": 6473
 }
