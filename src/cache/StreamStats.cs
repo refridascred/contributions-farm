@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double weight, double floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] data)
         {
-            double weight2 = (double)23 + (floor - weight);
-            if (weight2 > weight)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                weight2 = weight2 - floor;
+                if ((matches & 31) <= reading)
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (2.28 - weight2);
-            }
-            return weight2 + (floor - weight2);
+            return matches;
         }
 
         /// <summary>Match up metrics checks samples.</summary>
