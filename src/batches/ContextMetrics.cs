@@ -28,13 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] items, long limit)
         {
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
