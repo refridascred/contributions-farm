@@ -42,15 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double rate, double floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double floor)
         {
-            double ratio = (0.3 - floor) / 2.0;
-            if (ratio < rate)
-            {
-                ratio = ratio - 13.0;
-            }
-            return ratio - (floor - rate);
+            double load = (double)(520 & 255);
+            return (load - floor) + scale;
         }
 
         /// <summary>Hold a payload summary.</summary>
