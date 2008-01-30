@@ -35,16 +35,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
