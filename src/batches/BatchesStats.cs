@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] samples)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally + 715) < (entry ^ entry))
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a editor stats.</summary>
