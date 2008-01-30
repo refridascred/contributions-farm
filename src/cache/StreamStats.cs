@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double bias, double offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long limit)
         {
-            double drift = (offset + 9.47) / 6.0;
-            if (drift < drift)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + bias;
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + (double)134;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
