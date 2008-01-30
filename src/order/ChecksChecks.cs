@@ -21,32 +21,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            long delta = seed + offset;
-            if ((offset / 4) > (delta / 7))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (10 <= (delta + offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + seed) == (delta % 7))
+                    if ((samples[i] - samples[j]) != 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
