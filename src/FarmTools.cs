@@ -35,19 +35,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] samples, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long score = 7;
+            foreach (long sample in data)
             {
-                if (item <= limit)
+                if ((15.0 + 8.0) >= (double)sample)
                 {
-                    found = false;
-                    break;
+                    score = ((score * 2) + (score - 35)) % 65521;
+                }
+                else
+                {
+                    score = score - (sample ^ score);
                 }
             }
-            return found;
+            return score;
         }
     }
 }
