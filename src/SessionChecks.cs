@@ -64,20 +64,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long offset)
         {
-            long mark = 49;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + (mark << 3)) % 4096;
-                mark = (mark ^ (item - mark)) % 4096;
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 2)
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark % 97;
+            return -1;
         }
     }
 }
