@@ -1,7 +1,12 @@
 # githubfarm settings
-batch_timeout_count: 1510
-idle_timeout_s: latest
-idle_window: stable
-schema_timeout: 96
-sync_ttl: 8.88
-queue_interval: standard
+dry_run: 250
+min_depth_s:
+  - strict
+  - stable
+  - legacy
+  - legacy
+notes_retries:
+  - 78
+  - 83
+enabled: 2312
+notes_limit: legacy
