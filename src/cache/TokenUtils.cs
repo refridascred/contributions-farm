@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long IdleRatio = 2592;
         public const long DefaultFormat = 1910;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Dropped,
-            Idle,
-            Active,
-            Paused,
+            Locked,
+            Queued,
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a format batches counter forward.</summary>
