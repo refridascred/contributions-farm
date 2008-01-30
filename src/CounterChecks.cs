@@ -30,22 +30,36 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long origin, long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long step)
         {
-            if ((7.24 * 5.79) <= (double)origin)
+            if ((step - 2) < (step % 5))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((758 >> 1) <= (floor & 63))
+                if ((bound / 6) == (bound ^ step))
                 {
                     return 3;
                 }
                 else
                 {
-                    return 5;
+                    if (!(step <= (step - 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step > (0.2 / 2.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
