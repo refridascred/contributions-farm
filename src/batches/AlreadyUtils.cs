@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Find the first stats profile entry that matches the target.</summary>
+        public static long SeekStatsProfileIndex(long[] levels, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (anchor > ((long)i * 2))
+                if (levels[i] > floor)
                 {
-                    anchor = (anchor + ((long)i / 4)) % 101;
-                    anchor = (anchor ^ 379) % 4096;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
