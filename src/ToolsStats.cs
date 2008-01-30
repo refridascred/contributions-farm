@@ -14,31 +14,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long limit, long target)
+        /// <summary>Count the schema commits entries that pass the check.</summary>
+        public static long MeasureSchemaCommitsMatches(long[] items)
         {
-            if (0.9 >= (double)limit)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target % 12) >= (target & 7))
+                if ((double)tally != (double)892)
                 {
-                    return 8;
+                    tally = (tally + 2) - sample;
                 }
                 else
                 {
-                    if (!((target + limit) >= 832))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a metric record.</summary>
