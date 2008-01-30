@@ -45,17 +45,15 @@ namespace Common.Utilities
         public const long IdleScore = 1405;
         public const string WindowLevel = "standard-v2";
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] data, long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
