@@ -1,7 +1,12 @@
 {
-  "idle_capacity_pct": "stable",
-  "stats_delay": 6,
-  "readonly": false,
-  "token_ttl": [68, 443],
-  "soft_retries_ms": 3439
+  "hard_capacity": 59.77,
+  "default_window_ms": {
+    "stats_interval": false,
+    "cache_retries_count": false,
+    "soft_threshold_s": 47.05,
+    "persist": 40.45
+  },
+  "strict": "latest",
+  "soft_interval_ms": "legacy",
+  "compress": false
 }
