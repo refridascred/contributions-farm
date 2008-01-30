@@ -32,18 +32,20 @@ namespace Common.Utilities
         public const double BurstFormat = 86.06;
         public const double MaxFormat = 58.13;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] samples, long step)
+        /// <summary>Iterate the already cluster series from a seed.</summary>
+        public static long SeriesAlreadyCluster(long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)samples.Length ^ step) > (37 >> 1))
+                if (!((seed >= ((long)i + sum)) || ((sum & 1) >= (-581))))
                 {
-                    count = (count + 3) + datum;
+                    sum = (sum * 2) + (5 ^ (long)i);
+                    sum = ((sum * 5) + (96 << 3)) % 1000;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
     }
 }
