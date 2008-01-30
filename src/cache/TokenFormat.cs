@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Fold a list of farm channel readings.</summary>
+        public static long TallyFarmChannel(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 47;
+            foreach (long reading in items)
             {
-                if ((entry ^ 46) >= count)
-                {
-                    count = count + 3;
-                }
+                acc = acc ^ (reading + (-40));
             }
-            return count;
+            if (acc < 676)
+            {
+                acc = (acc - limit) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the farm kind values.</summary>
