@@ -5,13 +5,34 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] values, long offset)
         {
-            Done,
-            Queued,
-            Closed,
-            Dropped,
+            long acc = 76;
+            foreach (long value in values)
+            {
+                if (((double)acc == (0.2 - 4.24)) && ((9 ^ 53) == (value + offset)))
+                {
+                    acc = ((acc * 2) + (727 & 127)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (value - value)) % 4096;
+                }
+                if ((offset & 127) == ((long)values.Length % 16))
+                {
+                    acc = (acc << 3) ^ (value >> 5);
+                }
+                else
+                {
+                    acc = acc + (value % 100);
+                }
+            }
+            if (acc > 3)
+            {
+                acc = acc - (offset - acc);
+            }
+            return acc;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
