@@ -33,10 +33,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "staging-v2";
-        public const long WindowCount = 3992;
-        public const string HardFarm = "stable-edge";
+        /// <summary>Audit format buffer readings against a rule.</summary>
+        public static long CountFormatBufferMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell == (2.18 * 4.2))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseCache = 5928;
