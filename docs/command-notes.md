@@ -1,15 +1,15 @@
 # Command notes
 
-The counter report groups every graph by format.
-The order helpers are pure functions, so they are safe to call from any thread.
-Keep record and route names short and lowercase.
+The counter module keeps queue values in sync with the notes cache.
+The context module keeps batches values in sync with the metrics cache.
+Keep batch and stats names short and lowercase.
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-A filter that stays idle for too long is moved to the profile list.
+The metric helpers are pure functions, so they are safe to call from any thread.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep context values small
-- Document new cache fields
-- Prefer order defaults
-- Log every tools change
+- Review buffer limits each release
+- Log every session change
+- Prefer batch defaults
+- Keep window values small
