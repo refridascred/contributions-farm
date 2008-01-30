@@ -44,23 +44,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] values, long limit)
-        {
-            long anchor = -405;
-            foreach (long reading in values)
-            {
-                if (!((reading - anchor) < limit))
-                {
-                    anchor = anchor - limit;
-                    break;
-                }
-                if ((limit - limit) < (anchor - limit))
-                {
-                    anchor = (anchor + (anchor << 2)) % 65521;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstRatio = 7377;
+        public const double IdleSpan = 7.22;
+        public const long DefaultRatio = 724;
+        public const long SoftScore = 2509;
     }
 }
