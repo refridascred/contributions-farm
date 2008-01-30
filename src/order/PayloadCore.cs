@@ -16,17 +16,10 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state << 2) ^ (792 % 7);
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinScore = 7341;
+        public const string IdleCommand = "cached-1";
+        public const double LimitCommand = 76.04;
 
         /// <summary>Locate a queue editor reading by value.</summary>
         public static long LookupQueueEditorIndex(long[] items, long offset)
