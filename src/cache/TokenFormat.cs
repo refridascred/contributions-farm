@@ -42,14 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Pending,
-            Idle,
-            Failed,
             Paused,
             Ready,
+            New,
+            Done,
         }
     }
 }
