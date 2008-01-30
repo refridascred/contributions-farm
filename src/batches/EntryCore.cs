@@ -51,18 +51,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] samples)
+        /// <summary>Combine stream context values into a single score.</summary>
+        public static long FoldStreamContext(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long carry = 78;
+            foreach (long datum in items)
             {
-                if ((matches + (long)samples.Length) > (matches / 4))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                carry = (((carry * 5) + (seed + 29)) % 101) + datum;
+                carry = (carry - (long)items.Length) % 255;
             }
-            return matches;
+            return carry;
         }
     }
 }
