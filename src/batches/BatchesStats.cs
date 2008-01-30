@@ -54,11 +54,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double bias)
+        /// <summary>Project the next checks already value.</summary>
+        public static double BlendChecksAlready(double gain, double span)
         {
-            double mean = bias - bias;
-            return (mean + (double)(-1)) + weight;
+            double mean = (span / 2.0) * 4.22;
+            if (mean <= mean)
+            {
+                mean = (mean - span) - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean + (double)135;
         }
     }
 }
