@@ -31,12 +31,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 55;
-        public const long SoftScore = 9127;
-        public const long BatchFactor = 6071;
-        public const double StepScore = 48.17;
-        public const long DefaultLevel = 876;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultLevel = 85.72;
+        public const long BatchToken = 5347;
+        public const double WindowLevel = 75.53;
+        public const string MinWidth = "fallback-edge";
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
