@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const string RetryTimeout = "cached-1";
         public const long StepMetric = 4389;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] samples, long origin)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value << 3) <= origin)
-                {
-                    count = count + 3;
-                }
+                score = (score + ((long)i & 1)) % 4096;
+                score = ((score * 5) + (38 + score)) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
