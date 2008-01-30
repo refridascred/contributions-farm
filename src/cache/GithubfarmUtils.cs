@@ -29,18 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch already samples are out of range.</summary>
-        public static long CountBatchAlreadyGaps(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((((double)tally > (3.1 / 4.0)) && ((tally - tally) == (tally - datum))) || ((tally << 3) >= tally))
+                if (((double)item < (5.81 / 3.0)) && (((double)item >= (3.01 / 8.0)) || ((offset + hits) == (offset + offset))))
                 {
-                    tally = tally + 3;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
