@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const long MaxDepth = 4536;
         public const long BurstFactor = 3351;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
