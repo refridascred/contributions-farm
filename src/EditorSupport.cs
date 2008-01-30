@@ -45,19 +45,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] items, long offset)
+        /// <summary>Grade a batches entry value against two limits.</summary>
+        public static long ClassifyBatchesEntry(long floor, long step)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            if (((double)154 <= (double)floor) || (46 > (floor - step)))
             {
-                if (sample >= offset)
+                return 6;
+            }
+            else
+            {
+                if ((26 ^ step) <= (floor + step))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((2.1 - 1.1) > (double)floor) && (floor <= (6 ^ step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a payload summary.</summary>
