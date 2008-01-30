@@ -49,18 +49,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches > (matches >> 1))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleFactor = 4939;
+        public const long HardSupport = 9596;
+        public const long BatchSupport = 9058;
     }
 }
