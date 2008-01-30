@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long StepCache = 2815;
         public const long IdleCache = 8157;
 
-        /// <summary>Measure how many account entry samples are out of range.</summary>
-        public static long AuditAccountEntryHits(long[] data)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((cell - count) >= (count + count)) && ((double)cell <= (0.6 * 7.0)))
+                if (!((9.0 - 20.0) == (double)sample))
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the checks kind values.</summary>
