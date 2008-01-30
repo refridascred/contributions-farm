@@ -1,5 +1,5 @@
 {
-  "sync_ratio_s": 4037,
-  "cluster_depth": false,
-  "sync_threshold": ["fallback", "eu-west", "staging", "edge"]
+  "max_threshold_count": "staging",
+  "idle_window_count": 100,
+  "base_limit_count": ["local", "blue"]
 }
