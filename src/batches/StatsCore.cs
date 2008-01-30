@@ -81,17 +81,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] items, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 1;
+            foreach (long sample in readings)
             {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (state << 2)) % 1000) ^ sample;
             }
-            return -1;
+            return state;
         }
     }
 }
