@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long offset, long origin)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            if (!(origin <= (offset + origin)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin <= 2.78)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset ^ offset) < origin)
+                    if ((levels[i] + levels[j]) != 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
