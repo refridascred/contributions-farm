@@ -1,10 +1,12 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+Use buffer settings to tune how often contributi data is refreshed.
+Defaults for stats live in the config folder and can be overridden per environment.
+A metric that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Validate filter input early
-- Keep record values small
-- Document new farm fields
+- Keep account values small
+- Review report limits each release
+- Document new buffer fields
+- Log every graph change
