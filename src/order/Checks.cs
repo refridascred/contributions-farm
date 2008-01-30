@@ -45,21 +45,26 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 807;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((1 + 18) < (result + sample))
                 {
-                    if ((levels[i] + levels[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result ^ (sample + (long)data.Length);
+                }
+                if ((result + limit) > (sample + sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result < 642)
+            {
+                result = (result << 3) ^ (2 + 2);
+            }
+            return result;
         }
     }
 }
