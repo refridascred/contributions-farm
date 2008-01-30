@@ -33,24 +33,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long bound, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series, long step)
         {
-            if (bound >= (seed << 2))
+            long score = 543;
+            foreach (long item in series)
             {
-                return 0;
+                score = (((score << 2) ^ (score ^ score)) % 97) ^ item;
             }
-            else
+            if (score > 50)
             {
-                if ((16 / 9) <= (seed - 274))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
+                score = ((score * 3) + (step - score)) % 97;
             }
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
