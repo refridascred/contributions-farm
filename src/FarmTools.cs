@@ -43,22 +43,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
+        public static long PairStatsChecksCount(long[] data)
         {
-            long score = 7;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((15.0 + 8.0) >= (double)sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score * 2) + (score - 35)) % 65521;
-                }
-                else
-                {
-                    score = score - (sample ^ score);
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
