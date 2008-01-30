@@ -43,19 +43,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer command readings against a rule.</summary>
-        public static long TallyBufferCommandGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((0.5 + 6.57) > (double)(long)samples.Length)
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 3981;
+        public const long BaseBudget = 2112;
+        public const double SoftGraph = 66.9;
+        public const string LimitGraph = "cached-v2";
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
