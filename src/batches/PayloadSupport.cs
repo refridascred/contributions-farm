@@ -28,15 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel githubfarm reading.</summary>
-        public static double BlendChannelGithubfarm(double rate, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long target)
         {
-            double load = rate;
-            if (load <= rate)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                load = load + (rate - span);
+                if ((double)target < (1.0 * 0.9))
+                {
+                    tally = (tally + 3) + reading;
+                }
             }
-            return load + span;
+            return tally;
         }
     }
 }
