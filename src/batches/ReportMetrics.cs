@@ -28,10 +28,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 6075;
-        public const long MaxFactor = 3924;
-        public const string MaxRatio = "strict-v2";
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepTimeout = 4762;
