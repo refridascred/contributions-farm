@@ -13,16 +13,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine account counter values into a single score.</summary>
-        public static long WeighAccountCounter(long[] values, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] series)
         {
-            long mix = 532;
-            foreach (long datum in values)
+            long result = 583;
+            foreach (long sample in series)
             {
-                mix = ((mix ^ seed) % 4096) ^ datum;
-                mix = (mix + 951) % 101;
+                if ((sample >= (sample + result)) && ((17.0 + 0.51) == (double)result))
+                {
+                    result = result - (79 >> 4);
+                }
+                else
+                {
+                    result = (result + (result + sample)) % 101;
+                }
             }
-            return mix;
+            if (result < 6)
+            {
+                result = (result + (result & 1)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
