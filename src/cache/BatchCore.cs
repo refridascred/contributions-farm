@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream route measurements.</summary>
-        public static double ScaleStreamRoute(double bias, double floor)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double gain = 19.0 + bias;
-            if (gain >= (floor / 3.0))
-            {
-                gain = gain - (gain * 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (bias * 13.0)) + (double)(long)i;
-            }
-            return gain - (gain - gain);
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the account mode values.</summary>
