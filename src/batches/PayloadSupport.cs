@@ -20,22 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] samples)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((15.0 * 7.4) >= (double)count)
-                {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
