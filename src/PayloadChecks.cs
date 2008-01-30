@@ -77,12 +77,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Derive the next commits token value from a seed.</summary>
+        public static long DeriveCommitsToken(long bound)
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public bool Count { get; set; }
+            long score = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((score >= (48 % 24)) || ((bound + score) > (61 % 60)))
+                {
+                    score = (score ^ (score - bound)) % 4096;
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
