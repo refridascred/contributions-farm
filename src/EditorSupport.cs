@@ -93,39 +93,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long floor, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long step2 = floor ^ step;
-            if (floor >= step2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((1 - step2) >= (step << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + step) > 3)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step - floor) < floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
