@@ -22,19 +22,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double scale, double span)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double ratio = (double)7 / 2.0;
-            if (ratio < ratio)
-            {
-                ratio = (ratio - span) - scale;
-            }
-            else
-            {
-                ratio = ratio + (16.0 / 9.0);
-            }
-            return ratio - (double)6;
+            Queued,
+            Failed,
+            Active,
+            Retry,
+            Closed,
         }
     }
 }
