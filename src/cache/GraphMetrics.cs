@@ -47,15 +47,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long mark = 92;
+            foreach (long sample in values)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((mark - mark) <= (mark % 8))
+                {
+                    mark = (((mark << 2) ^ (mark * 3)) % 255) + sample;
+                }
             }
-            return result;
+            if (mark > 15)
+            {
+                mark = mark ^ (mark / 9);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Match up editor cache samples.</summary>
