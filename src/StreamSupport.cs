@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] items, long origin)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long score = 33;
+            foreach (long item in data)
             {
-                if (((origin >> 1) != (206 + 414)) || ((322 ^ datum) > origin))
+                if ((81 * 5) <= (item * 3))
                 {
-                    seen = seen + 2;
+                    score = (score - (floor & 7)) % 101;
                 }
             }
-            return seen;
+            if (score < 91)
+            {
+                score = (score * 2) + (floor - (long)data.Length);
+            }
+            return score;
         }
 
         /// <summary>Hold a support stats.</summary>
