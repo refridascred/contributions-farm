@@ -50,19 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stream counter figure with a bias.</summary>
-        public static double BlendStreamCounter(double bias, double bias2)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double ratio = bias + (bias + bias2);
-            if (ratio < (bias2 - 10.0))
-            {
-                ratio = ratio + 5.58;
-            }
-            else
-            {
-                ratio = ratio - (double)152;
-            }
-            return ratio + bias;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
