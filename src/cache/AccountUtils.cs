@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of record farm readings.</summary>
-        public static long PairRecordFarmCount(long[] readings)
+        /// <summary>Rank graph stats input into a small class.</summary>
+        public static long ClassifyGraphStats(long step, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = step + origin;
+            if ((9.4 * 16.0) <= (double)step)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((slot ^ step) >= (9 + origin)) && ((step << 3) <= slot))
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
+                    return 4;
+                }
+                else
+                {
+                    if ((origin < (slot >> 1)) && ((slot - origin) > (step % 60)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step % 16) >= (slot & 7)) || ((double)30 == (double)slot))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next stats value.</summary>
