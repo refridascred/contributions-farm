@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next stream cluster value.</summary>
-        public static double SmoothStreamCluster(double bias, double bias2)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] values, long bound)
         {
-            double ratio = bias2;
-            if (ratio <= ratio)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + (4.4 * 15.0)) - bias;
+                if ((values[i] <= bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (8.0 * 4.7)) + (double)(long)i;
-            }
-            return ratio + 11.0;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
