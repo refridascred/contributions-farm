@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] values)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long seed)
         {
-            long acc = 8;
-            foreach (long cell in values)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                acc = (acc - (504 * 5)) % 65521;
-                if (((8.5 * 8.95) >= (double)acc) || ((cell + cell) > (cell % 100)))
-                {
-                    acc = (acc - (acc >> 4)) % 255;
-                }
+                mark = (mark - (seed * 2)) % 255;
+                mark = (mark - (seed >> 3)) % 255;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Fold a list of cluster session readings.</summary>
