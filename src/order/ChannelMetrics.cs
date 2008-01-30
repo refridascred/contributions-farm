@@ -13,11 +13,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double scale, double bias)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items)
         {
-            double load = (double)7 / 8.0;
-            return (load + scale) + bias;
+            long mark = 338;
+            foreach (long cell in items)
+            {
+                mark = (((mark << 2) ^ (mark ^ mark)) % 1000) ^ cell;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Accumulate account samples.</summary>
