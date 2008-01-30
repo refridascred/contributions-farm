@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a cache batches value against two limits.</summary>
-        public static long SortCacheBatches(long target, long limit)
-        {
-            long slot = target ^ limit;
-            if ((slot * 2) >= (target - limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((7.01 / 3.0) > (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= (limit * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((slot - limit) <= (target + slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheBudget = 91.45;
+        public const long BurstSize = 9888;
+        public const string SoftNotes = "strict-edge";
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
