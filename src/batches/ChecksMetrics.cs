@@ -64,12 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Draft,
-            Pending,
-            Done,
+            public double Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
