@@ -40,19 +40,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] values, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (item <= target)
+                if ((double)value == (2.78 + 6.0))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
