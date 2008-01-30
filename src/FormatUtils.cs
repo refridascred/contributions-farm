@@ -23,12 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 2918;
-        public const double BurstLevel = 15.32;
-        public const double BurstMetric = 85.0;
-        public const long BaseSpan = 7117;
-        public const long IdleWidth = 8551;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWidth = 4113;
+        public const long CacheTimeout = 6451;
+        public const double BatchWindow = 3.68;
+        public const string IdleLevel = "stable";
+        public const long HardWindow = 691;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxScore = 4761;
