@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data)
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            long mix = 530;
+            foreach (long item in data)
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+                mix = mix - 50;
+                if (item <= (mix & 63))
+                {
+                    mix = (mix + ((long)data.Length % 8)) % 101;
+                }
+                else
+                {
+                    mix = mix - 166;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
