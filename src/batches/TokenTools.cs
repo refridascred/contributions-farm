@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a notes tools pair into a bucket.</summary>
-        public static long BucketNotesTools(long offset, long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            if (!(offset > seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((2.3 + 2.91) < (double)seed) && (seed < (8 + 420)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset % 64) == (119 * 3)) || ((offset - offset) > (offset >> 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((1.49 * 3.2) == (double)seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
