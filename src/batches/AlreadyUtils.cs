@@ -42,14 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 6735;
+        public const long MaxLevel = 7775;
+        public const long RetryRecord = 6929;
+        public const double IdleCount = 45.93;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long origin, long floor)
