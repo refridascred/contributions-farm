@@ -34,12 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 3757;
-        public const long SoftRatio = 9596;
-        public const long IdleSize = 5635;
-        public const long IdleScore = 1405;
-        public const string WindowLevel = "standard-v2";
+        /// <summary>Measure how many account entry samples are out of range.</summary>
+        public static long AuditAccountEntryHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((cell - count) >= (count + count)) && ((double)cell <= (0.6 * 7.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
