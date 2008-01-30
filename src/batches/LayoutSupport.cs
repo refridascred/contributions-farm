@@ -65,18 +65,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] levels, long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (double)seed)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
