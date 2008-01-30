@@ -41,12 +41,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowScore = 84.91;
+        public const long BatchDepth = 7434;
+        public const double StepToken = 60.44;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSchema = 2796;
