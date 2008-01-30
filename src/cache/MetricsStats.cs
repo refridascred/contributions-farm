@@ -27,12 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Check that every report metrics entry stays within the limit.</summary>
+        public static bool CheckReportMetricsRange(long[] levels, long step)
         {
-            New,
-            Closed,
-            Draft,
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
