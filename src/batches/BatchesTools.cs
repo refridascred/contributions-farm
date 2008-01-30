@@ -34,21 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultCount = 74.54;
+        public const double WindowInterval = 39.32;
+        public const long MinScore = 6359;
+        public const double BurstProfile = 19.88;
+        public const double SoftProfile = 78.48;
     }
 }
