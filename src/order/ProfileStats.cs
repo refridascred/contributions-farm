@@ -42,12 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] values, long target)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine support values into a single score.</summary>
