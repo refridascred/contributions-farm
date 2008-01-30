@@ -1,8 +1,6 @@
-id,weight,count
-1,9.52,72.1
-2,626,686
-3,47,53.91
-4,153,635
-5,blue,628
-6,35.22,18
-7,311,fallback
+id,region,score
+1,846,427
+2,blue,48.81
+3,eu-west,primary
+4,845,78.32
+5,latest,11
