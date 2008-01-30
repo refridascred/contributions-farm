@@ -14,18 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] levels)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((9.5 + 20.0) <= (double)matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Scale a commits layout figure with a bias.</summary>
