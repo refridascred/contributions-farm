@@ -48,18 +48,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] values, long seed)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (((matches << 2) < (sample & 255)) && ((matches + sample) < (sample + matches)))
+                if (value < offset)
                 {
-                    matches = (matches + 1) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
