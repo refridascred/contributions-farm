@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long RetryBuffer = 7418;
         public const long LimitSize = 4954;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (target < 918)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSchema = "legacy-v2";
+        public const double BurstFactor = 66.85;
+        public const long SoftRatio = 9576;
 
         /// <summary>Iterate the record profile series from a seed.</summary>
         public static long SeriesRecordProfile(long floor)
