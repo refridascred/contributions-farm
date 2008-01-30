@@ -69,18 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm window entries that pass the check.</summary>
-        public static long CountGithubfarmWindowMatches(long[] items, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (((step % 97) <= (value - value)) && ((value >> 1) >= tally))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result * 5) + result) % 97;
+                result = ((result << 2) ^ (step >> 3)) % 255;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
     }
 }
