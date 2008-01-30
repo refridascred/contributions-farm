@@ -31,18 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] items, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((double)value == (2.78 + 6.0))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a layout entry.</summary>
