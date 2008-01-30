@@ -71,18 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm order readings against a rule.</summary>
-        public static long MeasureFarmOrderHits(long[] values)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen + cell) == (seen - cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a cluster record.</summary>
