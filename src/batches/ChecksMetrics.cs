@@ -26,13 +26,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] data, long seed)
         {
-            New,
-            Pending,
-            Locked,
-            Closed,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
