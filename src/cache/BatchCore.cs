@@ -37,11 +37,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 6571;
-        public const double RetryReport = 16.49;
-        public const long DefaultWidth = 3591;
-        public const double BatchReport = 29.87;
-        public const long LimitBudget = 2960;
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings)
+        {
+            long carry = 4;
+            foreach (long reading in readings)
+            {
+                carry = (((carry * 3) + 163) % 1000) - reading;
+            }
+            return carry % 1000;
+        }
     }
 }
