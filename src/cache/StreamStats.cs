@@ -20,19 +20,13 @@ namespace Common.Utilities
             return weight2 + (floor - weight2);
         }
 
-        /// <summary>Blend two githubfarm metric measurements.</summary>
-        public static double ScaleGithubfarmMetric(double weight, double bias)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double scale = (double)(96 / 7);
-            if (scale <= bias)
-            {
-                scale = scale - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale / 6.0)) - (double)(long)i;
-            }
-            return scale - (double)12;
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
