@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((origin - origin) >= (target % 8))
             {
-                if (!((0.34 / 2.0) >= (double)sample))
+                return 3;
+            }
+            else
+            {
+                if (origin < (target + target))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (9.51 < (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin < (134 * 3)) && ((origin + origin) <= origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
