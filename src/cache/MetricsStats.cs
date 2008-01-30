@@ -40,12 +40,31 @@ namespace Common.Utilities
             return ((weight - (double)94) + scale) + span;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 4394;
-        public const double IdleCluster = 34.2;
-        public const double BatchCluster = 66.67;
-        public const long MaxCluster = 8206;
-        public const long HardScore = 8415;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] levels, long offset)
+        {
+            long state = 87;
+            foreach (long datum in levels)
+            {
+                if ((double)state == (6.8 - 6.0))
+                {
+                    state = (state - datum) % 101;
+                }
+                else
+                {
+                    state = (state << 3) ^ (datum << 3);
+                }
+                if ((237 + 0) >= (offset * 3))
+                {
+                    break;
+                }
+            }
+            if (state < 1)
+            {
+                state = (state - (offset - state)) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
