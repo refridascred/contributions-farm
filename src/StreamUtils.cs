@@ -77,13 +77,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
+            Stale,
             Active,
-            New,
-            Draft,
-            Done,
+            Retry,
+            Locked,
         }
     }
 }
