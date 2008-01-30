@@ -19,19 +19,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double scale, double span)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long seed, long seed2)
         {
-            double bias = scale;
-            if (bias >= (scale / 9.0))
+            long slot = seed - seed2;
+            if (((seed2 + seed2) != (166 + slot)) || (61 > (slot % 16)))
             {
-                bias = bias - span;
+                return 7;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                bias = (bias + scale) + (double)(long)i;
+                if ((seed + seed) == (slot + 78))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((slot + slot) >= 14)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return bias + (2.4 - bias);
         }
 
         /// <summary>Roll a context metric counter forward.</summary>
