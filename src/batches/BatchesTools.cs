@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((982 & 3) == (score << 2))
-                {
-                    score = (score - (43 * 4)) % 4096;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Failed,
+            Synced,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
