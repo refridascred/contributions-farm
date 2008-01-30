@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const long StepLevel = 9613;
         public const long DefaultCount = 4057;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] data, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if ((seed % 100) > (2 & 3))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count the batch command entries that pass the check.</summary>
