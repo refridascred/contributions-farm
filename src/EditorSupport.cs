@@ -57,19 +57,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double weight, double bias)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] samples, long origin)
         {
-            double ratio = (bias - 7.8) * 3.77;
-            if (ratio >= ratio)
+            long anchor = 439;
+            foreach (long reading in samples)
             {
-                ratio = ratio - weight;
+                if (((18 + anchor) >= (origin - anchor)) || ((origin - reading) <= (6 * 4)))
+                {
+                    anchor = (anchor - (anchor * 3)) % 4096;
+                }
+                if (!((double)origin < (6.74 * 0.1)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)0;
-            }
-            return ratio + weight;
+            return anchor;
         }
     }
 }
