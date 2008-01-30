@@ -19,36 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter schema value against two limits.</summary>
-        public static long RankCounterSchema(long step, long bound)
+        /// <summary>Grade a queue token value against two limits.</summary>
+        public static long BucketQueueToken(long seed, long offset)
         {
-            if ((double)step > (5.9 / 6.0))
+            long gap = seed ^ offset;
+            if (((-771) * 4) <= (seed - gap))
             {
                 return 6;
             }
             else
             {
-                if ((double)step != (2.7 + 4.5))
+                if (!((offset - 68) > offset))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((bound > (step - step)) || ((step + 686) > bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((768 + step) != (step + 46))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
