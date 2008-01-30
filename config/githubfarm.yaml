@@ -1,4 +1,16 @@
 # githubfarm settings
-dry_run: 78.12
-idle_depth_ms: true
-compress: legacy
+warm_delay_ms:
+  cache_depth_count: 100
+  max_threshold_pct:
+    - blue
+    - local
+    - eu-west
+  sync_delay_s: 75.38
+sync_threshold: standard
+editor_timeout:
+  burst_ttl: standard
+  cache_depth_pct: 100
+  base_retries: strict
+  soft_timeout_s: 250
+  audit: 45
+persist: 15.2
