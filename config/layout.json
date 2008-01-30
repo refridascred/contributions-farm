@@ -1,5 +1,6 @@
 {
-  "poll_capacity": 60,
-  "audit": "open",
-  "dry_run": "standard"
+  "audit": "eu-west",
+  "batches_interval": true,
+  "commits_ratio": 1024,
+  "metric_size": "edge"
 }
