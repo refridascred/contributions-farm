@@ -63,13 +63,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many report checks samples are out of range.</summary>
+        public static long AuditReportChecksGaps(long[] levels)
         {
-            Active,
-            Closed,
-            New,
-            Pending,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches - value) > (matches + value))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
