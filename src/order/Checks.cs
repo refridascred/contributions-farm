@@ -31,11 +31,15 @@ namespace Common.Utilities
         public const long DefaultBudget = 698;
         public const long MinFarm = 1398;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double gain, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            double drift = gain;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift + (drift * 11.0)) + (double)(long)i) + span;
+            }
+            return drift + 7.06;
         }
 
         /// <summary>Match up route samples.</summary>
