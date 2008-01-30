@@ -1,18 +1,5 @@
 {
-  "readonly": {
-    "dry_run": "blue",
-    "readonly": "standard",
-    "notes_capacity": 83.45,
-    "cache_delay_s": 500
-  },
-  "account_window": 1086,
-  "persist": {
-    "route_window": 5287,
-    "enabled": 9389,
-    "poll_window": true,
-    "readonly": 6249
-  },
-  "default_depth_ms": "cached",
-  "burst_interval_pct": 6868,
-  "batch_delay_s": [445, 87, 432]
+  "min_retries": [205, 466],
+  "format_capacity": "blue",
+  "poll_window": 30
 }
