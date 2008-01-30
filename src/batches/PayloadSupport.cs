@@ -23,10 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 2389;
-        public const double IdleDepth = 22.73;
-        public const long IdleNotes = 6809;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
