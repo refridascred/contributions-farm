@@ -1,5 +1,8 @@
 # githubfarm settings
-default_window: 7.85
-min_timeout: standard
-warm_limit: 30
-burst_timeout_pct: 88
+min_limit: latest
+dry_run: strict
+graph_timeout: 4827
+soft_depth_ms:
+  - 106
+  - 424
+  - 21
