@@ -32,11 +32,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long limit)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
+            long prev = target + limit;
+            if ((target ^ limit) <= target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target & 31) >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((9.9 * 6.1) >= (double)limit) || ((prev >> 2) <= limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
