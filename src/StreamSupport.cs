@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long result = 41;
-            foreach (long cell in levels)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)cell > 3.53)
+                if ((origin + total) < origin)
                 {
-                    result = result + (cell << 2);
+                    total = (total - (0 / 4)) % 255;
                 }
+                total = (total ^ (115 & 63)) % 97;
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (result > 30)
-            {
-                result = (result + (result - result)) % 1000;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Grade a contributi filter value against two limits.</summary>
