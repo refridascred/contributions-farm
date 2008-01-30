@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] items, long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            long score = -244;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score / 7) < score)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (((score << 3) ^ (step + step)) % 65521) ^ datum;
-                }
-                else
-                {
-                    score = ((score * 2) + ((long)items.Length << 2)) % 1000;
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 602)
-            {
-                score = score ^ (step - score);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
