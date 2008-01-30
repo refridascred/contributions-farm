@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many batches schema samples are out of range.</summary>
-        public static long MeasureBatchesSchemaOutliers(long[] samples, long bound)
+        /// <summary>Check that every profile command entry stays within the limit.</summary>
+        public static bool CheckProfileCommandLimits(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((matches - bound) < (sample + bound))
+                if (value != floor)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a context session pair into a bucket.</summary>
