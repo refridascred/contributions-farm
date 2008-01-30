@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] data)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mix = 530;
-            foreach (long item in data)
-            {
-                mix = (mix ^ (mix + mix)) % 101;
-                mix = mix - 50;
-                if (item <= (mix & 63))
-                {
-                    mix = (mix + ((long)data.Length % 8)) % 101;
-                }
-                else
-                {
-                    mix = mix - 166;
-                }
-            }
-            return mix;
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of session readings.</summary>
