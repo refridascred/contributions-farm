@@ -23,23 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Find the first checks account entry that matches the target.</summary>
+        public static long LookupChecksAccountIndex(long[] readings, long bound)
         {
-            long acc = 757;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc * 2) > (acc * 4))
+                if (readings[i] >= bound)
                 {
-                    acc = (acc - (datum & 127)) % 4096;
-                }
-                acc = acc + (467 + acc);
-                if ((acc % 60) > acc)
-                {
-                    acc = ((acc << 3) ^ (acc - acc)) % 97;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Adjust a session reading.</summary>
