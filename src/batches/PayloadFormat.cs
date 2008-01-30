@@ -16,12 +16,20 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 3946;
-        public const string BaseFilter = "fallback";
-        public const double LimitFilter = 80.28;
-        public const long MinRatio = 8043;
-        public const double DefaultCount = 34.56;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items, long floor)
+        {
+            long carry = 684;
+            foreach (long cell in items)
+            {
+                carry = ((carry * 2) + cell) - floor;
+            }
+            if (carry > 19)
+            {
+                carry = carry + (440 - (-818));
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
