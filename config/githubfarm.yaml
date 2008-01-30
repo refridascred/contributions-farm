@@ -1,5 +1,7 @@
 # githubfarm settings
-cache_window_s: legacy
-contributi_interval: 25.17
-default_limit: legacy
-burst_retries_count: 16.3
+min_timeout_s: 16.13
+flush_depth_s: primary
+metric_interval: false
+farm_size: blue
+retry_depth: true
+retry_window_ms: latest
