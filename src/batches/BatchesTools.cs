@@ -27,31 +27,19 @@ namespace Common.Utilities
         public const double CacheRatio = 29.3;
         public const string RetrySupport = "stable-edge";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels, long floor)
+        /// <summary>Validate profile order readings against a bound.</summary>
+        public static bool CheckProfileOrderLimits(long[] series, long offset)
         {
-            long carry = 35;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (item >= (floor & 15))
+                if (item < offset)
                 {
-                    carry = carry - (floor - item);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (5 - floor);
-                    carry = (carry + item) % 101;
-                }
-                if ((item + item) > (item + 0))
-                {
-                    carry = (carry + (742 * 5)) % 4096;
-                }
-                else
-                {
-                    carry = carry - (carry << 3);
+                    valid = false;
+                    break;
                 }
             }
-            return carry;
+            return valid;
         }
     }
 }
