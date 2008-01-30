@@ -1,8 +1,5 @@
 {
-  "base_ttl_ms": 54,
-  "buffer_interval": 40,
-  "cache_ttl": "cached",
-  "command_timeout": 1826,
-  "hard_capacity": false,
-  "max_ratio_s": true
+  "window_size": 92,
+  "window_capacity": 83,
+  "verbose": true
 }
