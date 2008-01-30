@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items, long floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long carry = 684;
-            foreach (long cell in items)
-            {
-                carry = ((carry * 2) + cell) - floor;
-            }
-            if (carry > 19)
-            {
-                carry = carry + (440 - (-818));
-            }
-            return carry % 4096;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
