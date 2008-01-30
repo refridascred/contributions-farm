@@ -64,18 +64,11 @@ namespace Common.Utilities
         public const long DefaultStream = 7600;
         public const long BaseRatio = 1600;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry <= tally) && (((entry ^ entry) <= entry) && ((double)tally > (11.0 - 6.0))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 1656;
+        public const double RetryContext = 71.38;
+        public const long MaxRatio = 5426;
+        public const double DefaultWidth = 0.46;
+        public const long CacheBudget = 9202;
     }
 }
