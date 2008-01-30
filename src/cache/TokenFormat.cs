@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings, long target)
         {
-            Dropped,
-            New,
-            Paused,
+            long result = 17;
+            foreach (long datum in readings)
+            {
+                if ((datum + result) > (target % 5))
+                {
+                    result = (result ^ datum) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit record filter readings against a rule.</summary>
