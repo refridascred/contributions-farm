@@ -20,21 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of route format readings.</summary>
-        public static long OverlapRouteFormatCount(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 8;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2.4 * 2.2) != (double)result)
                 {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    result = result ^ result;
+                    result = (result ^ (cell * 4)) % 101;
+                }
+                if (((cell + 9) <= (result - cell)) && ((result + 427) >= (result * 5)))
+                {
+                    result = result - (2 + cell);
+                }
+                else
+                {
+                    result = (result - (cell << 2)) % 97;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
