@@ -1,17 +1,4 @@
 # entry settings
-payload_interval: 15
-graph_depth:
-  window_limit: cached
-  base_limit_s:
-    - 21
-    - 186
-    - 340
-  persist:
-    layout_ttl: true
-    verbose: 49
-    base_threshold: open
-session_ratio:
-  - eu-west
-  - primary
-order_ratio: 68.24
-soft_window_pct: 7.78
+sync_delay_pct: 9351
+payload_limit: true
+soft_threshold: 27.33
