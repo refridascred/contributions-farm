@@ -25,13 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Closed,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstRatio = "standard-edge";
+        public const long HardCache = 3590;
+        public const long BaseSize = 4871;
+        public const string MaxDepth = "legacy-1";
 
         /// <summary>Fold a list of batches account readings.</summary>
         public static long WeighBatchesAccount(long[] readings)
