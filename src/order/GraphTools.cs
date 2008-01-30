@@ -43,14 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] readings)
         {
-            Draft,
-            Stale,
-            Queued,
-            Synced,
-            New,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (46 > (datum ^ 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
