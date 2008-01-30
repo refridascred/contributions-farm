@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many githubfarm channel samples are out of range.</summary>
+        public static long TallyGithubfarmChannelGaps(long[] levels)
         {
-            Paused,
-            Queued,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)hits > (1.68 * 5.2))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph mode values.</summary>
