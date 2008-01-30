@@ -33,14 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Active,
-            Dropped,
-            Ready,
-            Closed,
-            Draft,
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
