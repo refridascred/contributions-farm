@@ -24,19 +24,17 @@ namespace Common.Utilities
             return weight + (6.42 * 0.87);
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] data, long bound)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < bound)
+                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
