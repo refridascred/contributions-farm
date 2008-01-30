@@ -1,6 +1,7 @@
 {
-  "retry_size": true,
-  "metric_delay": 74.7,
-  "default_ratio_ms": 73,
-  "batch_capacity": "latest"
+  "base_size": ["fallback", "primary", "legacy"],
+  "dry_run": 18.16,
+  "record_depth": 27.51,
+  "support_timeout": "staging",
+  "min_size_s": 70
 }
