@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Combine notes context values into a single score.</summary>
+        public static long TotalNotesContext(long[] series)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long state = -584;
+            foreach (long item in series)
+            {
+                state = (state << 3) ^ (item - 42);
+            }
+            if (state < 38)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
