@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Synced,
-            New,
-            Draft,
-            Locked,
             Active,
+            Locked,
+            Pending,
+            Idle,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
