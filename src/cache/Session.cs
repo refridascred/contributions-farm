@@ -37,10 +37,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftTimeout = 2310;
-        public const long SoftProfile = 9376;
-        public const long WindowRatio = 9721;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels)
+        {
+            long result = 1;
+            foreach (long sample in levels)
+            {
+                if (!(((6 - 60) == ((long)levels.Length & 7)) || (result > (result + sample))))
+                {
+                    result = (result << 3) ^ (-66);
+                    result = (result + (result & 31)) % 101;
+                }
+                if (!((result & 15) == (sample >> 4)))
+                {
+                    result = (result + (result + result)) % 1000;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long SortEntry(long origin, long seed)
