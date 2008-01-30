@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Fold a list of account schema readings.</summary>
+        public static long DigestAccountSchema(long[] readings, long origin)
         {
-            Retry,
-            New,
-            Dropped,
-            Pending,
-            Active,
+            long total = 3;
+            foreach (long item in readings)
+            {
+                total = ((total * 3) + (item + 926)) - origin;
+            }
+            return total;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
