@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] levels, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 80;
+            foreach (long value in values)
             {
-                if (levels[i] > target)
+                acc = (acc ^ (90 >> 2)) % 65521;
+                for (int i = 0; i < 6; i++)
                 {
-                    return (long)i;
+                    acc = ((acc - (acc % 8)) % 4096) + (long)i;
+                }
+                if ((acc - 869) > acc)
+                {
+                    acc = ((acc * 2) + (value % 5)) % 255;
                 }
             }
-            return -1;
+            if (acc < 48)
+            {
+                acc = (acc ^ (acc - acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a commits entry.</summary>
