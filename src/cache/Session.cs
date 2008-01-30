@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Look up the position of a command token sample.</summary>
+        public static long SeekCommandTokenIndex(long[] values, long step)
         {
-            Done,
-            Retry,
-            Ready,
-            Paused,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
