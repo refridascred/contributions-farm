@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every record notes entry stays within the limit.</summary>
-        public static bool CheckRecordNotesLimits(long[] samples, long floor)
+        /// <summary>Audit contributi command readings against a rule.</summary>
+        public static long MeasureContributiCommandMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (item <= floor)
+                if (!((matches % 3) == (matches << 3)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) - cell;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a already header.</summary>
