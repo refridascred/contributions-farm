@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen - (-77)) != (limit % 16))
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 53.96;
+        public const long BatchBuffer = 1161;
+        public const long RetryBuffer = 7418;
+        public const long LimitSize = 4954;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteRange(long[] levels, long bound)
