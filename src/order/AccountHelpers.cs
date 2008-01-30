@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a filter githubfarm counter forward.</summary>
-        public static long SeriesFilterGithubfarm(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state << 2) ^ ((long)i - (long)i2)) % 101;
-                }
-                state = (state ^ (state + state)) % 1000;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "staging";
+        public const string WindowCount = "open";
+        public const long WindowInterval = 2545;
+        public const long MaxReport = 2928;
+        public const long MinReport = 6260;
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long RankContributi(long limit, long floor)
