@@ -29,15 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
