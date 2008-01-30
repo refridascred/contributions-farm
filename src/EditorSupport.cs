@@ -45,28 +45,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches entry value against two limits.</summary>
-        public static long ClassifyBatchesEntry(long floor, long step)
+        /// <summary>Rank command entry input into a small class.</summary>
+        public static long ClassifyCommandEntry(long bound, long origin)
         {
-            if (((double)154 <= (double)floor) || (46 > (floor - step)))
+            if ((bound & 3) < origin)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((26 ^ step) <= (floor + step))
+                if (!((bound & 127) >= (origin + bound)))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if (((2.1 - 1.1) > (double)floor) && (floor <= (6 ^ step)))
+                    if (346 > bound)
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        if ((8.0 / 9.0) > (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
