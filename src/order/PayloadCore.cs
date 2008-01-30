@@ -39,28 +39,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((result < (floor >> 5)) || (result > (255 * 4)))
-                {
-                    continue;
-                }
-                if (((floor - 212) != (floor >> 5)) || (result <= floor))
-                {
-                    result = ((result << 2) ^ result) % 97;
-                }
-                else
-                {
-                    result = result ^ (-921);
-                }
-                result = result + ((long)i & 3);
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Done,
+            Retry,
+            Dropped,
+            Synced,
         }
     }
 }
