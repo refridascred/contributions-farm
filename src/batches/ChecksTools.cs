@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ratio + 11.0;
         }
 
-        /// <summary>Check that every route githubfarm entry stays within the limit.</summary>
-        public static bool VerifyRouteGithubfarmBounds(long[] series, long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample >= floor)
+                if (readings[i] >= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Derive the next context commits value from a seed.</summary>
