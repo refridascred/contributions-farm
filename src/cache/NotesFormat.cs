@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] samples, long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long floor)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Look up the position of a batch buffer sample.</summary>
