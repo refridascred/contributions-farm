@@ -28,13 +28,39 @@ namespace Common.Utilities
         public const string BurstWindow = "latest";
         public const long LimitTimeout = 7047;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Classify a order schema pair into a bucket.</summary>
+        public static long RankOrderSchema(long target, long floor)
         {
-            Failed,
-            Locked,
-            Done,
-            Draft,
+            long prev = target ^ floor;
+            if (((prev & 3) >= (prev & 31)) || ((floor - floor) < (floor % 10)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor >> 3) < (floor << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((771 > floor) || (floor > (target << 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor ^ floor) > floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
