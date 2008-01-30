@@ -23,24 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine graph farm values into a single score.</summary>
-        public static long TallyGraphFarm(long[] series)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] values)
         {
-            long mark = 640;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 4) + ((-4) ^ 676)) % 97;
-                mark = (mark ^ (reading + reading)) % 101;
-                if ((reading % 64) < (reading >> 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 30)
-            {
-                mark = (mark * 2) + (mark & 63);
-            }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
