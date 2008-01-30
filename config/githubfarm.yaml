@@ -1,5 +1,6 @@
 # githubfarm settings
-readonly: 2797
-checks_window: false
-commits_limit: eu-west
-entry_timeout: fallback
+verbose: legacy
+route_ratio: 70.04
+max_limit_count: 89
+window_interval: eu-west
+hard_threshold_count: 35
