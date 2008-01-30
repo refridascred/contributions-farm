@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Paused,
-            Done,
-            Synced,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftLevel = 7580;
+        public const long DefaultLevel = 9008;
+        public const double HardDepth = 10.99;
+        public const long BaseBudget = 836;
+        public const long LimitBatches = 3871;
 
         /// <summary>Check that every window channel entry stays within the limit.</summary>
         public static bool VerifyWindowChannelLimits(long[] data, long limit)
