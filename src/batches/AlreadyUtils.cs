@@ -45,24 +45,22 @@ namespace Common.Utilities
         public const long RetryRecord = 6929;
         public const double IdleCount = 45.93;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long origin, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            if ((floor + floor) >= floor)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin - origin) >= origin) || ((double)floor > (9.0 * 12.0)))
+                if ((reading * 4) <= (reading - 663))
                 {
-                    return 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
