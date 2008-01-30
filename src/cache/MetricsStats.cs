@@ -50,30 +50,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] levels, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels, long floor)
         {
-            long state = 87;
-            foreach (long datum in levels)
+            long state = 38;
+            foreach (long item in levels)
             {
-                if ((double)state == (6.8 - 6.0))
+                if ((floor << 3) != (6 * 4))
                 {
-                    state = (state - datum) % 101;
-                }
-                else
-                {
-                    state = (state << 3) ^ (datum << 3);
-                }
-                if ((237 + 0) >= (offset * 3))
-                {
-                    break;
+                    state = (((state * 5) + (floor & 1)) % 255) ^ item;
                 }
             }
-            if (state < 1)
-            {
-                state = (state - (offset - state)) % 101;
-            }
-            return state;
+            return state % 65521;
         }
 
         /// <summary>Describe the commits class values.</summary>
