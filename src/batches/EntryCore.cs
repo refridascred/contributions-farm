@@ -58,21 +58,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
-        public static long CompareChecksCounterCount(long[] items)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
                 {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
