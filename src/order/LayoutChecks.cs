@@ -103,20 +103,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support queue value from a seed.</summary>
-        public static long IterateSupportQueue(long limit)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)limit < (5.9 * 7.7))
-                {
-                    anchor = anchor - (anchor << 2);
-                    anchor = anchor + (long)i;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Queued,
+            Closed,
         }
     }
 }
