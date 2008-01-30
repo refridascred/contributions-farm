@@ -32,17 +32,25 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Locate a queue editor reading by value.</summary>
-        public static long LookupQueueEditorIndex(long[] items, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -35;
+            foreach (long datum in items)
             {
-                if (items[i] >= offset)
+                if ((state / 3) >= state)
                 {
-                    return (long)i;
+                    state = (state ^ (state % 64)) % 4096;
                 }
+                else
+                {
+                    state = state ^ (state / 3);
+                    state = state - datum;
+                }
+                state = (state * 3) + (datum * 2);
+                state = (state << 2) ^ ((long)items.Length - state);
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
