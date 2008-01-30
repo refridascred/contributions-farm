@@ -1,15 +1,7 @@
 {
-  "base_limit_ms": 4336,
-  "command_interval": {
-    "tools_timeout": false,
-    "already_ratio": ["edge", "primary"],
-    "retry_limit_count": ["green", "cached", "standard", "staging"],
-    "compress": {
-      "compress": 41,
-      "poll_interval": "eu-west",
-      "burst_depth_ms": "cached"
-    },
-    "batch_window": 500
-  },
-  "persist": "cached"
+  "batch_ttl": 100,
+  "poll_interval_ms": ["cached", "green"],
+  "soft_ttl_ms": ["open", "standard", "standard"],
+  "idle_delay_s": "edge",
+  "burst_timeout": 500
 }
