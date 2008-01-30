@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] samples)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((7.26 + 5.34) > (double)entry)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            New,
+            Idle,
+            Queued,
+            Locked,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
