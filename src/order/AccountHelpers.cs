@@ -42,19 +42,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine editor entry values into a single score.</summary>
-        public static long DigestEditorEntry(long[] items)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double offset)
         {
-            long result = 241;
-            foreach (long datum in items)
+            double rate = 4.41;
+            if (rate < gain)
             {
-                result = (result + (datum / 6)) % 101;
+                rate = (rate + rate) + offset;
             }
-            if (result < 64)
+            else
             {
-                result = result ^ (result + result);
+                rate = rate - (double)30;
             }
-            return result % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)3) + (double)(long)i;
+            }
+            return rate - (gain * 7.1);
         }
 
         /// <summary>Digest a series of stream payload entries.</summary>
