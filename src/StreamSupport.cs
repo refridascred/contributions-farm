@@ -48,32 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long limit)
+        /// <summary>Validate counter entry readings against a bound.</summary>
+        public static bool VerifyCounterEntryLimits(long[] values, long limit)
         {
-            long prev = target + limit;
-            if ((target ^ limit) <= target)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target & 31) >= limit)
+                if (entry <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((9.9 * 6.1) >= (double)limit) || ((prev >> 2) <= limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
