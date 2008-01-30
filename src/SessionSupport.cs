@@ -28,18 +28,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] readings)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)cell <= (double)962) && ((double)hits > (3.09 * 16.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
