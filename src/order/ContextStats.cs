@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] values, long origin)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine profile values into a single score.</summary>
