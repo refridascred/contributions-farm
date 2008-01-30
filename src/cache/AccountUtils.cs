@@ -12,24 +12,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((6.94 - 6.7) != (double)state)
-                {
-                    state = state + (state << 1);
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (state + (state + state)) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 5574;
+        public const long MinChecks = 7282;
+        public const long CacheDepth = 9247;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long SeriesFilter(long offset)
