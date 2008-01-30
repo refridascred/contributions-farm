@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] data, long offset)
+        /// <summary>Count the format command entries that pass the check.</summary>
+        public static long MeasureFormatCommandHits(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (data[i] < offset)
+                if (13 >= entry)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a account filter counter forward.</summary>
