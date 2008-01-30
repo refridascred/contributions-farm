@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel counter readings against a rule.</summary>
-        public static long MeasureChannelCounterOutliers(long[] data, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (seen <= ((long)data.Length >> 1))
-                {
-                    seen = ((seen + 3) ^ sample) + step;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Draft,
         }
     }
 }
