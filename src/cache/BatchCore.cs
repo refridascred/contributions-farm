@@ -14,26 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Blend two stream route measurements.</summary>
+        public static double ScaleStreamRoute(double bias, double floor)
         {
-            long result = 597;
-            foreach (long cell in data)
+            double gain = 19.0 + bias;
+            if (gain >= (floor / 3.0))
             {
-                if (((long)data.Length >> 2) < (cell + cell))
-                {
-                    result = (result * 5) + result;
-                }
-                else
-                {
-                    result = (result ^ (cell + result)) % 4096;
-                }
+                gain = gain - (gain * 3.0);
             }
-            if (result > 729)
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result << 3) ^ (result + 73)) % 97;
+                gain = (gain + (bias * 13.0)) + (double)(long)i;
             }
-            return result;
+            return gain - (gain - gain);
         }
 
         /// <summary>Combine window values into a single score.</summary>
