@@ -14,23 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((bound % 7) <= (bound << 2))
-                {
-                    seen = (seen + 3) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardSize = 9519;
+        public const string StepTools = "alpha-v2";
+        public const long RetrySpan = 5714;
+        public const long DefaultScore = 8292;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsHits(long[] samples, long origin)
