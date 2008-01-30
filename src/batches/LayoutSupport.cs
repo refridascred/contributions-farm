@@ -38,18 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long score = 84;
-            foreach (long sample in items)
-            {
-                if ((double)score < 1.62)
-                {
-                    score = ((score << 3) ^ (sample + sample)) % 4096;
-                }
-            }
-            return score % 4096;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Combine commits editor values into a single score.</summary>
