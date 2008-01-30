@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((seen & 127) >= (210 >> 1))
+                if ((double)matches == (6.22 / 6.0))
                 {
-                    seen = (seen + 2) ^ entry;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
