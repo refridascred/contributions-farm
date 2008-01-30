@@ -28,21 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((bound - (long)i) > (bound + result)) || ((7.7 / 6.0) > (double)(long)i))
                 {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result * 5) + (30 - bound);
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the entry phase values.</summary>
