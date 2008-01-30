@@ -84,16 +84,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark ^ (limit >> 2);
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of batch stats entries.</summary>
