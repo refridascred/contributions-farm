@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] levels, long seed)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((86 + seed) < (8 + seen)) && ((0 & 3) >= seen)))
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of queue entries.</summary>
