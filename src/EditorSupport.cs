@@ -45,38 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command entry input into a small class.</summary>
-        public static long ClassifyCommandEntry(long bound, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            if ((bound & 3) < origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((bound & 127) >= (origin + bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (346 > bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.0 / 9.0) > (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
