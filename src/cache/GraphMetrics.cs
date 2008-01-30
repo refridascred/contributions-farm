@@ -72,23 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Audit farm order readings against a rule.</summary>
+        public static long MeasureFarmOrderHits(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((origin - carry) > (1 + (-652)))
+                if ((seen + cell) == (seen - cell))
                 {
-                    continue;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    carry = carry + (origin << 3);
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a cluster record.</summary>
