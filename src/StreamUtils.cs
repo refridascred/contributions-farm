@@ -39,19 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] readings, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long bound)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long offset = seed - bound;
+            if (!((22 ^ 4) > offset))
             {
-                if (item > step)
+                return 8;
+            }
+            else
+            {
+                if ((1.2 * 3.0) <= (double)offset)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (seed > ((-54) * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
