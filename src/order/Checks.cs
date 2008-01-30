@@ -41,26 +41,26 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] data, long bound)
         {
-            long result = 807;
-            foreach (long sample in data)
+            long carry = 8;
+            foreach (long datum in data)
             {
-                if ((1 + 18) < (result + sample))
+                if (793 > bound)
                 {
-                    result = result ^ (sample + (long)data.Length);
+                    carry = carry - carry;
                 }
-                if ((result + limit) > (sample + sample))
+                else
                 {
-                    break;
+                    carry = (carry - (datum % 2)) % 4096;
                 }
             }
-            if (result < 642)
+            if (carry > 6)
             {
-                result = (result << 3) ^ (2 + 2);
+                carry = ((carry * 3) + (carry << 2)) % 4096;
             }
-            return result;
+            return carry % 1000;
         }
     }
 }
