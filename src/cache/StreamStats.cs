@@ -20,13 +20,21 @@ namespace Common.Utilities
             return weight2 + (floor - weight2);
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Match up metrics checks samples.</summary>
+        public static long OverlapMetricsChecksCount(long[] items)
         {
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats level values.</summary>
