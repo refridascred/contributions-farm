@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next schema batches value from a seed.</summary>
-        public static long StepSchemaBatches(long origin)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] items, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)i % 8) >= (73 << 2))
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    mix = ((mix * 2) + ((long)i / 7)) % 4096;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = mix - (21 * 4);
-                }
-                mix = (mix - (origin / 5)) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
