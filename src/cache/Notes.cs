@@ -61,19 +61,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two checks metric measurements.</summary>
-        public static double SmoothChecksMetric(double bias, double bias2)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double weight = bias + (double)7;
-            if (weight >= (bias - bias2))
-            {
-                weight = weight - (bias2 / 4.0);
-            }
-            else
-            {
-                weight = weight + 8.49;
-            }
-            return weight - (8.5 + weight);
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
         }
     }
 }
