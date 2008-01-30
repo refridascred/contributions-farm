@@ -1,7 +1,7 @@
 {
-  "report_interval": "stable",
-  "poll_ratio_pct": false,
-  "soft_capacity": false,
-  "entry_depth": 68,
-  "flush_depth_pct": true
+  "warm_timeout_pct": ["green", "green", "staging"],
+  "enabled": false,
+  "default_ratio_s": false,
+  "burst_limit_count": 1024,
+  "stats_threshold": 1310
 }
