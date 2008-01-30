@@ -42,15 +42,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long step)
         {
-            long score = 926;
-            foreach (long value in levels)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                score = (score + (score & 3)) ^ value;
+                if (!((0.9 > (double)(long)i) && (acc < ((long)i * 3))))
+                {
+                    acc = acc ^ (long)i;
+                }
+                acc = ((acc * 5) + step) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
