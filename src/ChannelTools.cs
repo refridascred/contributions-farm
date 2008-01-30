@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Done,
-            Failed,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchSpan = 8891;
+        public const double BurstWidth = 26.44;
+        public const long IdleGithubfarm = 1608;
+        public const long SoftGithubfarm = 4765;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportHits(long[] data, long target)
