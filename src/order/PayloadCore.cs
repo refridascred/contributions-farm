@@ -34,18 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache stats samples are out of range.</summary>
-        public static long CountCacheStatsOutliers(long[] data)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((double)matches >= (4.02 * 11.0)) || ((double)69 != (double)cell)) && ((double)matches != (4.5 * 17.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
