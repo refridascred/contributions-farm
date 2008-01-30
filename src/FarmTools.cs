@@ -12,19 +12,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell > (double)hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowFactor = "standard-edge";
+        public const string BurstBudget = "standard";
+        public const long SoftLevel = 898;
+        public const string MaxCluster = "latest-edge";
+        public const string MinLevel = "latest-edge";
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
