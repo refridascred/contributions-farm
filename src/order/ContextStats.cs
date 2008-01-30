@@ -45,11 +45,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
