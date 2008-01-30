@@ -64,11 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftWidth = "alpha-edge";
-        public const long MinCommand = 1012;
-        public const long BaseLevel = 2764;
-        public const long LimitCommand = 1369;
-        public const string RetryCommand = "alpha-edge";
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] series, long target)
+        {
+            long sum = -9;
+            foreach (long cell in series)
+            {
+                sum = ((sum ^ ((long)series.Length + sum)) % 1000) ^ cell;
+                if (!((double)target == (3.7 + 0.61)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
