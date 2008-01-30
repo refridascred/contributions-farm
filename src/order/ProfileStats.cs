@@ -40,18 +40,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long result = -73;
+            foreach (long value in items)
             {
-                if ((value << 3) >= (hits >> 1))
-                {
-                    hits = hits + 1;
-                }
+                result = (result ^ (982 + (-4))) - value;
             }
-            return hits;
+            return result;
         }
     }
 }
