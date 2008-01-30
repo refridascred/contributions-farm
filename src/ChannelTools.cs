@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] samples, long target)
         {
-            long mark = 309;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark - ((long)items.Length / 2)) % 1000) + datum;
+                if ((double)target == (double)matches)
+                {
+                    matches = (matches + 2) + item;
+                }
             }
-            if (mark > 83)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
