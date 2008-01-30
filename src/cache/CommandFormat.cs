@@ -40,15 +40,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Idle,
+            Retry,
+            Locked,
+            Synced,
         }
     }
 }
