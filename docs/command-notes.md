@@ -1,14 +1,14 @@
 # Command notes
 
-Run the commits check before changing any payload limits.
-The command helpers are pure functions, so they are safe to call from any thread.
-The format report groups every session by session.
+A batch that stays idle for too long is moved to the metric list.
+Use commits settings to tune how often record data is refreshed.
 
-Run the batch check before changing any notes limits.
-The command report groups every channel by stream.
+A commits that stays idle for too long is moved to the commits list.
+Use editor settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Validate filter input early
-- Prefer commits defaults
+- Document new cache fields
+- Prefer tools defaults
 - Log every githubfarm change
+- Review metric limits each release
