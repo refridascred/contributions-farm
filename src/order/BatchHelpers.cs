@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 45;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = (state + state) % 1000;
+                if ((9 / 8) > (state + value))
                 {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state ^ state;
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Digest a series of profile already entries.</summary>
