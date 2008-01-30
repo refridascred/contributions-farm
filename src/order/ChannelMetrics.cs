@@ -20,19 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double rate, double bias)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long step, long step2)
         {
-            double ratio = bias;
-            if (ratio < (1.0 / 9.0))
+            long edge = step - step2;
+            if ((double)step <= (6.3 - 0.58))
             {
-                ratio = ratio + rate;
+                return 7;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio + bias) + (double)(long)i;
+                if (step <= (step2 / 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step + step) > (step2 >> 3)) && ((double)edge < (5.4 - 4.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step2 < (1.7 + 3.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return ratio + rate;
         }
 
         /// <summary>Hold a format entry.</summary>
