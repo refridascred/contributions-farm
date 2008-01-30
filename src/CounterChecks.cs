@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] readings)
         {
-            long anchor = 21;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                double gain = 9.8 / 5.0;
-                if ((gain - 19.0) <= (gain / 5.0))
+                if ((reading <= (reading + hits)) && (((1 << 1) < (hits >> 4)) || ((reading - (long)readings.Length) < hits)))
                 {
-                    gain = gain + (double)anchor;
-                }
-                if (anchor < seed)
-                {
-                    anchor = anchor ^ (value << 1);
+                    hits = hits + 3;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Find the first account cache entry that matches the target.</summary>
