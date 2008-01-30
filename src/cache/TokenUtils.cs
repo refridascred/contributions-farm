@@ -21,19 +21,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Roll a format batches counter forward.</summary>
+        public static long RollFormatBatches(long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mark = ((mark * 4) + mark) % 1000;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark - (floor + mark)) % 97) - (long)i2;
-                }
-                mark = mark + (floor - floor);
-                mark = ((mark * 3) + (long)i) % 65521;
+                mark = ((mark << 3) ^ (seed % 3)) % 255;
+                mark = ((mark * 3) + (mark << 3)) % 101;
+                mark = ((mark * 4) + (long)i) % 97;
             }
             return mark;
         }
