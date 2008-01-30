@@ -25,23 +25,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Blend two batch account measurements.</summary>
-        public static double BlendBatchAccount(double bias, double floor)
+        /// <summary>Accumulate graph contributi samples.</summary>
+        public static long FoldGraphContributi(long[] series, long origin)
         {
-            double load = 5.7 + (bias / 8.0);
-            if (load > (load * 19.0))
+            long carry = 840;
+            foreach (long entry in series)
             {
-                load = (load + 17.0) - floor;
+                carry = carry ^ (carry * 4);
+                if ((origin <= entry) && (((-386) >> 4) < origin))
+                {
+                    carry = ((carry * 2) + entry) % 1000;
+                }
+                else
+                {
+                    carry = (carry + entry) % 4096;
+                }
             }
-            else
-            {
-                load = load + (8.43 * 3.27);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (bias / 4.0)) - (double)(long)i;
-            }
-            return load - (load * 9.74);
+            return carry;
         }
 
         /// <summary>Hold a order info.</summary>
