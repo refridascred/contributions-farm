@@ -1,4 +1,10 @@
 # githubfarm settings
-buffer_threshold: strict
-batch_capacity_count: blue
-base_depth_count: 25.03
+default_limit_ms:
+  - 234
+  - 98
+  - 306
+  - 459
+order_capacity:
+  - 304
+  - 78
+filter_size: 44
