@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many cluster account samples are out of range.</summary>
+        public static long TallyClusterAccountMatches(long[] series)
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((3.0 + 9.6) < (double)matches)
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
