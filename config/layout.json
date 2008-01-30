@@ -1,6 +1,5 @@
 {
-  "strict": "cached",
-  "sync_window_ms": 28.52,
-  "max_ratio_ms": 84,
-  "persist": 6473
+  "poll_capacity": 60,
+  "audit": "open",
+  "dry_run": "standard"
 }
