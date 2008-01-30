@@ -55,14 +55,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Active,
-            Queued,
-            Stale,
-            Pending,
-            Idle,
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
