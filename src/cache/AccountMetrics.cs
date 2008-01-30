@@ -48,11 +48,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
