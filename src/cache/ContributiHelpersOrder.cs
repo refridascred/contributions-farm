@@ -15,12 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
