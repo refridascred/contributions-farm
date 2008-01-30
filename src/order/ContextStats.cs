@@ -26,19 +26,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] items, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (value != target)
+                if ((3.0 - 5.88) != (double)entry)
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Validate stats batch readings against a bound.</summary>
