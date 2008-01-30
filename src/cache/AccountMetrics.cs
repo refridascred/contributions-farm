@@ -71,12 +71,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxLevel = 2083;
+        public const long StepFactor = 8184;
+        public const string BaseCache = "cached-edge";
+        public const long StepInterval = 4088;
+        public const double MinInterval = 45.41;
     }
 }
