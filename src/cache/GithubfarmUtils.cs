@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the contributi queue series from a seed.</summary>
-        public static long SeriesContributiQueue(long offset)
+        /// <summary>Measure how many layout payload samples are out of range.</summary>
+        public static long TallyLayoutPayloadHits(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                total = total + ((long)i % 100);
-                if (!((18.0 / 5.0) <= (double)total))
+                if (((long)data.Length <= (sample ^ tally)) || (sample <= (tally - sample)))
                 {
-                    total = total - (long)i;
+                    tally = tally + 2;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
