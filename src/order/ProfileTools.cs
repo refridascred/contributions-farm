@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] levels, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long total = 886;
-            foreach (long sample in levels)
-            {
-                total = (((total + (238 >> 5)) % 4096) ^ sample) - seed;
-            }
-            return total;
+            Idle,
+            Done,
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Accumulate stats cluster samples.</summary>
