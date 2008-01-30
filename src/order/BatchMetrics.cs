@@ -53,12 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Audit cache graph readings against a rule.</summary>
+        public static long TallyCacheGraphGaps(long[] readings, long origin)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((87 % 100) <= (item ^ 8)) || (hits > origin))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
