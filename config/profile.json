@@ -1,7 +1,8 @@
 {
-  "enabled": 1024,
-  "poll_delay_count": [34, 482, 499],
-  "poll_size_count": "latest",
-  "soft_depth_pct": "legacy",
-  "editor_threshold": "stable"
+  "compress": "cached",
+  "burst_window_pct": 4716,
+  "queue_ttl": 9125,
+  "checks_ratio": 71.09,
+  "warm_timeout_ms": 6305,
+  "batch_interval_s": ["eu-west", "eu-west", "cached", "eu-west"]
 }
