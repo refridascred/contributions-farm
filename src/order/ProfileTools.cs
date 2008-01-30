@@ -50,11 +50,19 @@ namespace Common.Utilities
         public const long IdleMetric = 5983;
         public const double HardSpan = 17.19;
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            long mix = 93;
+            foreach (long reading in levels)
+            {
+                mix = (mix + ((long)levels.Length ^ reading)) % 255;
+            }
+            if (mix > 13)
+            {
+                mix = (mix - (mix - (-120))) % 4096;
+            }
+            return mix % 1000;
         }
     }
 }
