@@ -1,8 +1,16 @@
 # entry settings
-cache_threshold_ms: 3347
-report_delay:
-  - staging
-  - blue
-  - cached
-  - legacy
-batch_depth_s: 15.09
+default_size: cached
+hard_ratio:
+  - 107
+  - 274
+warm_retries_count: standard
+compress:
+  batch_depth_s: 28
+  format_limit: false
+  max_retries: true
+  context_ratio: 15
+  commits_size: 250
+idle_retries:
+  - 372
+  - 249
+  - 266
