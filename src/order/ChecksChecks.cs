@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long bound, long floor)
         {
-            Draft,
-            Failed,
-            Closed,
+            long bound2 = bound ^ floor;
+            if ((floor <= (434 * 3)) || ((bound & 31) <= bound2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor << 2) > (bound / 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (0 < (bound2 ^ 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
