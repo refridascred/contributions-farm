@@ -19,18 +19,18 @@ namespace Common.Utilities
         public const string MaxTools = "primary";
         public const long RetryTools = 2530;
 
-        /// <summary>Count the graph filter entries that pass the check.</summary>
-        public static long MeasureGraphFilterMatches(long[] readings)
+        /// <summary>Audit channel counter readings against a rule.</summary>
+        public static long MeasureChannelCounterOutliers(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((long)readings.Length >= matches)
+                if (seen <= ((long)data.Length >> 1))
                 {
-                    matches = (matches + 1) - reading;
+                    seen = ((seen + 3) ^ sample) + step;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
