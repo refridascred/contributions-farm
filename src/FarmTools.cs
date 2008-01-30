@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const string MaxCluster = "latest-edge";
         public const string MinLevel = "latest-edge";
 
-        /// <summary>Validate farm checks readings against a bound.</summary>
-        public static bool CheckFarmChecksLimits(long[] data, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
