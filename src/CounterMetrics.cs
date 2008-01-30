@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the notes account entries that pass the check.</summary>
-        public static long AuditNotesAccountMatches(long[] readings, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long carry = 59;
+            foreach (long item in levels)
             {
-                if (((double)cell == (9.64 / 6.0)) || (matches >= (-748)))
+                if (!((carry / 2) > item))
                 {
-                    matches = (matches + 1) - limit;
+                    carry = ((carry * 5) + (carry * 5)) % 1000;
+                }
+                else
+                {
+                    carry = carry - 48;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
