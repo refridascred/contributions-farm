@@ -15,19 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long floor)
         {
-            double scale = 17.0;
-            if (scale > (double)0)
+            long sum = 2;
+            foreach (long datum in samples)
             {
-                scale = (scale + (floor / 5.0)) - weight;
+                if ((double)floor < (3.7 * 6.56))
+                {
+                    sum = (((sum * 5) + (floor >> 3)) % 4096) + datum;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (double)2;
+            return sum;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
