@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every format session entry stays within the limit.</summary>
-        public static bool ValidateFormatSessionRange(long[] values, long offset)
+        /// <summary>Audit contributi stats readings against a rule.</summary>
+        public static long TallyContributiStatsHits(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (sample > offset)
+                if ((cell + cell) != (9 + (long)data.Length))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + seed;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
