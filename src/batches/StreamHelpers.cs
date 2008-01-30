@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double gain, double floor)
+        /// <summary>Count the entry metrics entries that pass the check.</summary>
+        public static long CountEntryMetricsGaps(long[] readings, long bound)
         {
-            double drift = (double)(61 - 40);
-            if (drift < drift)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                drift = drift + floor;
+                if ((entry + bound) == (2 / 5))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                drift = drift - (gain + 8.2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 5.9) + (double)(long)i;
-            }
-            return drift - 4.5;
+            return hits;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
