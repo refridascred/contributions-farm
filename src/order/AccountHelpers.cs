@@ -42,23 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long seed)
         {
-            double rate = 4.41;
-            if (rate < gain)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                rate = (rate + rate) + offset;
+                anchor = (anchor ^ (330 % 3)) % 4096;
+                anchor = ((anchor << 3) ^ ((long)i << 1)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate - (double)30;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)3) + (double)(long)i;
-            }
-            return rate - (gain * 7.1);
+            return anchor;
         }
 
         /// <summary>Digest a series of stream payload entries.</summary>
