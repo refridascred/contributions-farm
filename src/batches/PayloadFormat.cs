@@ -14,15 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a batches order figure with a bias.</summary>
-        public static double ScaleBatchesOrder(double rate, double span)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double ratio = (double)(20 + 1);
-            if (ratio < (8.1 / 8.0))
-            {
-                ratio = ((ratio - ratio) - rate) - span;
-            }
-            return ratio - ratio;
+            Ready,
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Blend two schema measurements.</summary>
