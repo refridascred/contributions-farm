@@ -93,18 +93,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support token readings against a rule.</summary>
-        public static long CountSupportTokenHits(long[] samples, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long offset = seed ^ floor;
+            if ((offset * 5) < (offset + seed))
             {
-                if ((748 >> 2) <= matches)
+                return 7;
+            }
+            else
+            {
+                if ((9.77 * 3.11) > (double)floor)
                 {
-                    matches = ((matches + 1) ^ item) - origin;
+                    return 8;
+                }
+                else
+                {
+                    if (floor < (seed - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((offset % 100) <= seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
