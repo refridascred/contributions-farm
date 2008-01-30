@@ -1,7 +1,31 @@
 # support settings
-dry_run: 31.48
-soft_ttl_ms: fallback
-window_timeout: 64.0
-batch_retries: 250
-idle_delay_s: 21
-farm_ttl: legacy
+poll_retries: legacy
+enabled:
+  - fallback
+  - cached
+  - strict
+  - eu-west
+strict:
+  - staging
+  - staging
+  - blue
+  - legacy
+filter_window:
+  - 358
+  - 441
+  - 151
+retry_depth:
+  idle_threshold_ms: false
+  token_timeout: 58
+  burst_capacity_pct: 1024
+  batch_retries_count: staging
+  max_window_count: 60
+  sync_retries_ms:
+    - green
+    - primary
+    - latest
+context_retries:
+  idle_ratio: primary
+  compress: 59.12
+  editor_interval: 500
+  session_ttl: 36
