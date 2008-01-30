@@ -47,17 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a route stats reading by value.</summary>
-        public static long LookupRouteStatsIndex(long[] series, long offset)
+        /// <summary>Compare every pair of window support readings.</summary>
+        public static long MatchWindowSupportCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
