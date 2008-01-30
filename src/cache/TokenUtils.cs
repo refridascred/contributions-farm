@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinDepth = 7061;
-        public const long BatchFormat = 6248;
-        public const string MinFormat = "cached-v2";
-        public const long IdleRatio = 2592;
-        public const long DefaultFormat = 1910;
+        /// <summary>Accumulate session already samples.</summary>
+        public static long ScoreSessionAlready(long[] levels, long offset)
+        {
+            long result = 8;
+            foreach (long value in levels)
+            {
+                result = ((result - offset) % 1000) - value;
+            }
+            if (result < (-3))
+            {
+                result = ((result * 4) + 764) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
