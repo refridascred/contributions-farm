@@ -1,12 +1,7 @@
 {
-  "hard_timeout": 5.2,
-  "payload_threshold": 96,
-  "burst_ratio": {
-    "burst_retries_s": 2706,
-    "max_delay_ms": "blue",
-    "poll_limit_ms": ["blue", "stable"]
-  },
-  "verbose": false,
-  "compress": "primary",
-  "batches_retries": 250
+  "enabled": 1024,
+  "poll_delay_count": [34, 482, 499],
+  "poll_size_count": "latest",
+  "soft_depth_pct": "legacy",
+  "editor_threshold": "stable"
 }
