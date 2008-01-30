@@ -50,32 +50,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a channel filter pair into a bucket.</summary>
-        public static long GradeChannelFilter(long bound, long origin)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long diff = bound ^ origin;
-            if ((double)origin < (double)(-522))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((715 & 255) > (diff - origin)) && ((diff >> 5) >= (origin / 6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound >> 2) >= (bound << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
