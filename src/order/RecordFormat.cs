@@ -24,19 +24,17 @@ namespace Common.Utilities
             return scale + (9.0 + floor);
         }
 
-        /// <summary>Validate profile account readings against a bound.</summary>
-        public static bool GuardProfileAccountLimits(long[] items, long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < limit)
+                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the notes phase values.</summary>
