@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            long result = -9;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value + 678) <= result) || ((double)result == (8.0 * 16.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result ^ (result << 1);
+                    if ((items[i] ^ items[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 52)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
