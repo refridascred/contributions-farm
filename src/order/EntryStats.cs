@@ -14,23 +14,21 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long origin)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((anchor + anchor) > origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor * 5) + (785 << 3)) % 4096;
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (((long)i >= origin) || (origin >= 4))
-                {
-                    anchor = ((anchor * 4) + ((long)i - anchor)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
