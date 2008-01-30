@@ -40,19 +40,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate report format samples.</summary>
-        public static long WeighReportFormat(long[] samples, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long anchor = 75;
-            foreach (long sample in samples)
+            long sum = 10;
+            foreach (long item in values)
             {
-                if (!((double)sample < 20.0))
+                if (((double)sum > (double)item) && (item > 422))
                 {
-                    anchor = (anchor + ((long)samples.Length - 3)) + origin;
+                    sum = sum + (sum + 941);
                 }
-                anchor = anchor - (sample / 4);
             }
-            return anchor % 1000;
+            if (sum < 486)
+            {
+                sum = (sum - (sum % 7)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
