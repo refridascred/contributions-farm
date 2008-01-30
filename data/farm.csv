@@ -1,6 +1,7 @@
-id,rank,ratio,weight,owner
-1,stable,355,eu-west,179
-2,169,fallback,green,723
-3,669,611,673,latest
-4,497,standard,77.49,25.19
-5,518,34.12,560,blue
+id,active,ratio,label,rank
+1,open,803,local,458
+2,950,92.5,62.98,70.44
+3,285,206,95.39,staging
+4,stable,82.06,269,909
+5,open,latest,840,93.98
+6,339,526,44.4,open
