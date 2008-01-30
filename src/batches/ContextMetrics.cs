@@ -56,11 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] readings, long origin)
         {
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (entry <= (matches % 97))
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
