@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if (!(origin <= (offset + origin)))
             {
-                if ((hits % 16) != (208 >> 3))
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= 2.78)
                 {
-                    hits = (hits + 1) ^ item;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset ^ offset) < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
