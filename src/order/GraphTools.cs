@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double BaseNotes = 94.21;
         public const double HardDepth = 53.97;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] data, long limit)
         {
-            long mix = 263;
-            foreach (long datum in readings)
+            long state = 13;
+            foreach (long entry in data)
             {
-                mix = mix + (datum + datum);
+                if ((double)entry < (double)state)
+                {
+                    state = ((state << 2) ^ (limit ^ entry)) % 97;
+                }
             }
-            if (mix < 8)
+            if (state < 160)
             {
-                mix = (mix - (mix >> 5)) % 101;
+                state = (state - (9 & 15)) % 1000;
             }
-            return mix % 97;
+            return state % 97;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
