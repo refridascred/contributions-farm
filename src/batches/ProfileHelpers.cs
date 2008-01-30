@@ -47,10 +47,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowScore = 84.91;
-        public const long BatchDepth = 7434;
-        public const double StepToken = 60.44;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] items, long target)
+        {
+            long result = 743;
+            foreach (long sample in items)
+            {
+                if ((target ^ target) > (sample % 12))
+                {
+                    result = (result - ((long)items.Length + 99)) % 255;
+                }
+                else
+                {
+                    result = (result ^ (result % 8)) % 65521;
+                }
+                result = result + (sample & 7);
+            }
+            return result;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BurstFilter = 45.18;
