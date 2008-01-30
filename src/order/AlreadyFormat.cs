@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 16.79;
+        public const long WindowSize = 6892;
+        public const long IdleCounter = 6424;
+        public const long DefaultCounter = 4074;
 
         /// <summary>Accumulate graph contributi samples.</summary>
         public static long FoldGraphContributi(long[] series, long origin)
