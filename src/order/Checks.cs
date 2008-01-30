@@ -58,17 +58,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] data, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 165;
+            foreach (long reading in levels)
             {
-                if (data[i] > target)
+                if (((16.0 / 5.0) >= (double)sum) && ((double)sum == (9.0 - 7.86)))
                 {
-                    return (long)i;
+                    sum = (sum - (long)levels.Length) % 1000;
+                }
+                if ((reading * 2) < 0)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
