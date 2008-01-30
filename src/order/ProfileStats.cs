@@ -40,15 +40,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Locate a entry support reading by value.</summary>
+        public static long LookupEntrySupportIndex(long[] items, long bound)
         {
-            long result = -73;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result ^ (982 + (-4))) - value;
+                if ((items[i] > bound) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
