@@ -1,7 +1,9 @@
-id,rank,count,level
-1,stable,149,9.75
-2,755,557,87.8
-3,960,325,693
-4,49.49,latest,977
-5,176,standard,525
-6,77.35,73.24,32.26
+id,ratio,label,active,count
+1,494,748,eu-west,807
+2,stable,209,982,1.64
+3,legacy,1.36,93.52,strict
+4,54.91,standard,6.02,38.96
+5,728,edge,standard,725
+6,890,strict,2,262
+7,967,edge,standard,stable
+8,strict,strict,51.46,legacy
