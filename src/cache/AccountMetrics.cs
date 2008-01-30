@@ -65,11 +65,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowTimeout = "primary";
-        public const long LimitTimeout = 1475;
-        public const double BasePayload = 14.61;
-        public const long BaseFactor = 8324;
-        public const long SoftLevel = 5765;
+        /// <summary>Validate metric order readings against a bound.</summary>
+        public static bool GuardMetricOrderRange(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
