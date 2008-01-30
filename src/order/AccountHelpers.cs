@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "staging";
-        public const string WindowCount = "open";
-        public const long WindowInterval = 2545;
-        public const long MaxReport = 2928;
-        public const long MinReport = 6260;
+        /// <summary>Count the githubfarm command entries that pass the check.</summary>
+        public static long MeasureGithubfarmCommandOutliers(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry <= hits) || (hits > (hits << 3)))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool GuardSchemaLimits(long[] values, long seed)
