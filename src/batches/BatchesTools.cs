@@ -22,23 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] items)
         {
-            double ratio = (scale / 4.0) / 2.0;
-            if (ratio < (ratio + scale))
+            long count = 0;
+            foreach (long datum in items)
             {
-                ratio = (ratio + (scale - scale)) - floor;
+                if ((9.9 - 1.67) > (double)datum)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + 4.4;
+            return count;
         }
 
         /// <summary>Validate profile order readings against a bound.</summary>
