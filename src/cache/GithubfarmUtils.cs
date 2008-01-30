@@ -22,12 +22,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] data)
         {
-            Pending,
-            Closed,
-            Dropped,
+            long mark = 258;
+            foreach (long item in data)
+            {
+                mark = (mark - (item ^ item)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the farm phase values.</summary>
