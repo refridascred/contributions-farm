@@ -33,18 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] samples, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((tally * 3) != (tally / 7))
+                if ((hits ^ hits) == (hits << 2))
                 {
-                    tally = ((tally + 1) ^ value) - bound;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
