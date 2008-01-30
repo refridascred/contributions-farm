@@ -31,22 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((tally - reading) > tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
