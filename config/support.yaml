@@ -1,4 +1,11 @@
 # support settings
-support_timeout: 5642
-order_depth: 439
-poll_limit_pct: 59.46
+hard_window_s: 100
+window_ratio: strict
+stream_retries: strict
+idle_limit_ms:
+  - staging
+  - local
+  - open
+  - stable
+commits_timeout: 5491
+idle_window_pct: false
