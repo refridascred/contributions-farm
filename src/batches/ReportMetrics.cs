@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long StepChannel = 1541;
         public const long MaxChannel = 2803;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheCount = 33.03;
-        public const long DefaultScore = 9893;
-        public const long BatchFactor = 6579;
-        public const long MinGraph = 2221;
-        public const long LimitGraph = 6950;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 2783;
+        public const long CacheLayout = 5443;
+        public const double MaxLayout = 31.56;
+        public const long MinCount = 9767;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
