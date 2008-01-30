@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of token order readings.</summary>
-        public static long TotalTokenOrder(long[] items, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values)
         {
-            long sum = 0;
-            foreach (long sample in items)
+            long acc = 587;
+            foreach (long value in values)
             {
-                if (!((6.35 * 8.11) <= (double)sum))
-                {
-                    sum = ((sum ^ ((-3) / 8)) % 101) ^ sample;
-                }
-                else
-                {
-                    sum = sum - ((long)items.Length << 3);
-                }
-                if ((step >> 1) <= sum)
-                {
-                    break;
-                }
+                acc = acc + ((-572) ^ value);
             }
-            return sum % 65521;
+            if (acc < 10)
+            {
+                acc = (acc * 2) + acc;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
