@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long target, long target2)
+        /// <summary>Measure how many metric queue samples are out of range.</summary>
+        public static long AuditMetricQueueMatches(long[] values, long bound)
         {
-            long next = target + target2;
-            if ((72 % 5) > (target << 1))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.7 / 4.0) > (double)target)
+                if (!!(bound <= (561 << 3)))
                 {
-                    return 6;
+                    tally = (tally + 3) - entry;
                 }
                 else
                 {
-                    if ((next + target2) != (target + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the queue phase values.</summary>
