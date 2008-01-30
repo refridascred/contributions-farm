@@ -26,15 +26,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] values, long step)
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = ((ratio2 + ratio) + (double)(long)i) - bias;
+                if ((values[i] <= step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + (ratio * 4.8);
+            return -1;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
