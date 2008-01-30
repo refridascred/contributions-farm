@@ -27,17 +27,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Locate a counter window reading by value.</summary>
-        public static long LocateCounterWindowIndex(long[] levels, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 5) == 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
