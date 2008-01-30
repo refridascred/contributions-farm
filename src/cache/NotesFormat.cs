@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double floor)
-        {
-            double weight = (double)(120 - 1);
-            if (weight >= (double)15)
-            {
-                weight = (weight - floor) - ratio;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 4335;
+        public const long SoftRatio = 4691;
+        public const long StepSchema = 8720;
 
         /// <summary>Iterate the contributi editor series from a seed.</summary>
         public static long DeriveContributiEditor(long limit)
