@@ -1,15 +1,15 @@
 # Command notes
 
-The counter module keeps queue values in sync with the notes cache.
-The context module keeps batches values in sync with the metrics cache.
-Keep batch and stats names short and lowercase.
+Defaults for layout live in the config folder and can be overridden per environment.
+A format that stays idle for too long is moved to the metrics list.
+The token module keeps counter values in sync with the batch cache.
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Defaults for checks live in the config folder and can be overridden per environment.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Each checks is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Log every session change
-- Prefer batch defaults
-- Keep window values small
+- Prefer record defaults
+- Log every channel change
+- Keep format values small
+- Validate editor input early
