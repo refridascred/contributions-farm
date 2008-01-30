@@ -49,16 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Audit profile notes readings against a rule.</summary>
+        public static long MeasureProfileNotesHits(long[] items, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                acc = (acc << 3) ^ ((long)i + 9);
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((tally + tally) == (reading + floor))
+                {
+                    tally = tally + 3;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine stream context values into a single score.</summary>
