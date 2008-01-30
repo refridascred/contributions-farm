@@ -38,26 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] values, long limit)
+        /// <summary>Measure how many buffer profile samples are out of range.</summary>
+        public static long MeasureBufferProfileMatches(long[] samples, long floor)
         {
-            long mix = 878;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((10.0 / 2.0) >= (double)limit)
+                if (entry < 51)
                 {
-                    mix = (mix - (mix + limit)) % 255;
+                    seen = (seen + 3) - floor;
                 }
                 else
                 {
-                    mix = (mix * 5) + (limit - sample);
+                    seen = seen - 1;
                 }
             }
-            if (mix < 4)
-            {
-                mix = (mix + (mix & 15)) % 101;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Accumulate notes already samples.</summary>
