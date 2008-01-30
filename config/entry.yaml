@@ -1,7 +1,19 @@
 # entry settings
-retry_ttl: 29
-queue_interval: open
-format_retries: primary
-queue_capacity:
-  - 342
-  - 306
+flush_retries: 250
+entry_window: 3
+sync_retries:
+  - 17
+  - 499
+  - 311
+  - 474
+batches_interval:
+  filter_timeout: edge
+  default_retries_s: strict
+  soft_capacity_pct: blue
+  flush_threshold_count: 30
+  compress: 20
+  idle_limit_pct:
+    - legacy
+    - strict
+    - standard
+base_window_pct: 5791
