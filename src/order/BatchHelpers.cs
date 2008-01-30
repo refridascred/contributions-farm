@@ -20,11 +20,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleCache = 85.15;
-        public const long DefaultCache = 7039;
-        public const double HardSpan = 74.02;
-        public const long MaxCache = 7882;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultTimeout = 3043;
+        public const string WindowCluster = "staging-edge";
+        public const long BurstCluster = 1016;
+        public const string SoftCluster = "strict-1";
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] samples)
