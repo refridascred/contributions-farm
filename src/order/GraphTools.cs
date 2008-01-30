@@ -24,19 +24,24 @@ namespace Common.Utilities
             return drift - (bias + drift);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values, long limit)
+        /// <summary>Fold a list of notes payload readings.</summary>
+        public static long ScoreNotesPayload(long[] readings)
         {
-            long carry = 5;
-            foreach (long value in values)
+            long total = 25;
+            foreach (long reading in readings)
             {
-                carry = ((carry - value) % 97) + limit;
+                total = total + (total + 0);
+                total = (total << 3) ^ (3 / 7);
+                if (reading > (total & 3))
+                {
+                    break;
+                }
             }
-            if (carry < 652)
+            if (total > 549)
             {
-                carry = ((carry * 2) + carry) % 1000;
+                total = (total * 2) + (total + total);
             }
-            return carry % 4096;
+            return total;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
