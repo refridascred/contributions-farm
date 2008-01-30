@@ -47,15 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
-        public static long AuditGithubfarmOrderHits(long[] levels, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] samples)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally <= (bound - tally))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) - entry;
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
