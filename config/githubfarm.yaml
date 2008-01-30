@@ -1,8 +1,7 @@
 # githubfarm settings
-base_limit_count: fallback
-soft_ratio_count:
-  - green
-  - legacy
-  - fallback
-  - standard
-enabled: legacy
+batch_timeout_count: 1510
+idle_timeout_s: latest
+idle_window: stable
+schema_timeout: 96
+sync_ttl: 8.88
+queue_interval: standard
