@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache metric readings against a rule.</summary>
-        public static long MeasureCacheMetricHits(long[] items)
+        /// <summary>Measure how many batch already samples are out of range.</summary>
+        public static long CountBatchAlreadyGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (!(((double)sample > (4.4 / 5.0)) && ((double)582 < (11.0 / 7.0))))
+                if ((((double)tally > (3.1 / 4.0)) && ((tally - tally) == (tally - datum))) || ((tally << 3) >= tally))
                 {
-                    seen = seen + 2;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
