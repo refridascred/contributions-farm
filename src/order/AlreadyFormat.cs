@@ -44,15 +44,11 @@ namespace Common.Utilities
             return load - (load * 9.74);
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double gain, double bias)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double ratio = (double)(261 + 48);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (gain - ratio)) + (double)(long)i;
-            }
-            return ratio + (bias + bias);
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the graph state values.</summary>
