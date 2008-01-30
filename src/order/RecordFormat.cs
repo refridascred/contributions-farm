@@ -49,11 +49,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "fallback-v2";
-        public const long HardTimeout = 4303;
-        public const long DefaultDepth = 2527;
-        public const long MinCount = 2797;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc * 5) + floor;
+                acc = (acc ^ (acc ^ 4)) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of entry schema readings.</summary>
         public static long MatchEntrySchemaCount(long[] data)
