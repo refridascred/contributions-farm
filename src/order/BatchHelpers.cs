@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const long BurstCluster = 1016;
         public const string SoftCluster = "strict-1";
 
-        /// <summary>Count metrics support pairs that satisfy a relation.</summary>
-        public static long MatchMetricsSupportCount(long[] readings)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] >= step) && ((values[i] % 2) == 0))
                 {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
