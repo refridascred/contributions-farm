@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long bound, long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long seed)
         {
-            if ((step / 3) != (step / 7))
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step == (14.0 / 6.0))
+                if (anchor > ((long)i * 2))
                 {
-                    return 7;
+                    anchor = (anchor + ((long)i / 4)) % 101;
+                    anchor = (anchor ^ 379) % 4096;
                 }
-                else
-                {
-                    return 6;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
