@@ -36,10 +36,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 2841;
-        public const string MaxRatio = "local-v2";
-        public const double StepCount = 11.18;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] readings, long target)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((double)target != (8.45 / 9.0))
+                {
+                    seen = (seen + 3) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricRange(long[] data, long offset)
