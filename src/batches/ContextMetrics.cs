@@ -33,18 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] items)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((9.0 - 20.0) == (double)sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
