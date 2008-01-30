@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] levels, long floor)
         {
-            long acc = 80;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                acc = (acc ^ (90 >> 2)) % 65521;
-                for (int i = 0; i < 6; i++)
+                if ((double)tally < (double)reading)
                 {
-                    acc = ((acc - (acc % 8)) % 4096) + (long)i;
-                }
-                if ((acc - 869) > acc)
-                {
-                    acc = ((acc * 2) + (value % 5)) % 255;
+                    tally = (tally + 1) + floor;
                 }
             }
-            if (acc < 48)
-            {
-                acc = (acc ^ (acc - acc)) % 1000;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Project the next profile value.</summary>
