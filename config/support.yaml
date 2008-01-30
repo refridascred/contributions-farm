@@ -1,31 +1,12 @@
 # support settings
-poll_retries: legacy
-enabled:
-  - fallback
+min_limit_s:
+  verbose: blue
+  layout_timeout: 80
+  sync_size_pct: 500
+  command_timeout: stable
+audit: 74
+persist:
   - cached
-  - strict
-  - eu-west
-strict:
-  - staging
-  - staging
-  - blue
-  - legacy
-filter_window:
-  - 358
-  - 441
-  - 151
-retry_depth:
-  idle_threshold_ms: false
-  token_timeout: 58
-  burst_capacity_pct: 1024
-  batch_retries_count: staging
-  max_window_count: 60
-  sync_retries_ms:
-    - green
-    - primary
-    - latest
-context_retries:
-  idle_ratio: primary
-  compress: 59.12
-  editor_interval: 500
-  session_ttl: 36
+  - primary
+  - green
+window_window: 19.57
