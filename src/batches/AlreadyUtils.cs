@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const long CacheRatio = 3034;
         public const double MinRatio = 91.68;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] samples, long step)
         {
-            long result = 290;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((value + result) >= (result % 60))
+                if (sample != step)
                 {
-                    result = ((result << 2) ^ (value + value)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
