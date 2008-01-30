@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] series)
+        /// <summary>Classify a filter buffer pair into a bucket.</summary>
+        public static long GradeFilterBuffer(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long item in series)
+            if (offset >= (offset2 >> 5))
             {
-                if ((count + 950) > (item * 2))
+                return 3;
+            }
+            else
+            {
+                if ((offset / 8) > 33)
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((12.0 - 9.0) != (double)offset) && (offset > (offset << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
