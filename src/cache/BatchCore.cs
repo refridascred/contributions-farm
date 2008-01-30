@@ -21,12 +21,10 @@ namespace Common.Utilities
         public const string StepInterval = "standard";
         public const string IdleBatch = "fallback-v2";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 71.14;
-        public const string RetrySpan = "legacy-v2";
-        public const long BatchBudget = 5362;
-        public const long IdleReport = 5155;
-        public const long BatchSpan = 9106;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinCluster = "staging-v2";
+        public const long StepScore = 1388;
+        public const double BatchCluster = 97.28;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long ClassifyStream(long seed, long limit)
