@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const long BatchFormat = 7024;
         public const double StepFormat = 91.24;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardSpan = 96.71;
-        public const long RetryLayout = 2949;
-        public const long StepBudget = 1417;
-        public const long CacheLayout = 1755;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
