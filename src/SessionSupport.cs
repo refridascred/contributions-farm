@@ -28,24 +28,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long step, long step2)
+        /// <summary>Blend two farm order measurements.</summary>
+        public static double SmoothFarmOrder(double rate, double bias)
         {
-            if ((7.5 / 9.0) >= (double)step)
+            double bias2 = (double)(56 + (-716));
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                bias2 = (((bias2 + bias2) + (double)(long)i) - rate) - bias;
             }
-            else
-            {
-                if (62 < (92 - step2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return bias2 - (7.0 + bias2);
         }
     }
 }
