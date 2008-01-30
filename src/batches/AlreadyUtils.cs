@@ -36,19 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks entry readings against a bound.</summary>
-        public static bool VerifyChecksEntryLimits(long[] series, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Project the next session value.</summary>
