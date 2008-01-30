@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate window payload readings against a bound.</summary>
-        public static bool ValidateWindowPayloadBounds(long[] data, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
