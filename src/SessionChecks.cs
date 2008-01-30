@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "fallback-v2";
-        public const long BatchSession = 4002;
-        public const long RetryBudget = 6354;
-        public const long HardSpan = 62;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen >> 5) > entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
