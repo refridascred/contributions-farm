@@ -60,13 +60,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Stale,
-            New,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 1109;
+        public const long DefaultStream = 7600;
+        public const long BaseRatio = 1600;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
