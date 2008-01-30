@@ -1,14 +1,6 @@
 # entry settings
-base_delay_count:
-  - fallback
-  - edge
-format_depth: 1933
-batch_interval: 78.1
-cache_window_ms:
-  - legacy
+idle_timeout_s: blue
+base_threshold_pct:
+  - standard
   - primary
-  - blue
-  - fallback
-soft_ttl:
-  - 273
-  - 149
+graph_depth: 24
