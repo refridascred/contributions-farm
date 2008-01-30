@@ -22,23 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next window command value.</summary>
-        public static double ScaleWindowCommand(double ratio, double offset)
+        /// <summary>Count schema already pairs that satisfy a relation.</summary>
+        public static long PairSchemaAlreadyCount(long[] readings)
         {
-            double drift = ratio;
-            if (drift > offset)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + (drift - offset);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (double)596;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 4.6) + (double)(long)i;
-            }
-            return drift + 14.0;
+            return matches;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
