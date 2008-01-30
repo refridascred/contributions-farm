@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double scale = (15.0 / 6.0) / 8.0;
-            return (scale - (scale + offset)) + bias;
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
