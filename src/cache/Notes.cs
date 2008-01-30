@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] series)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (!((0.34 / 2.0) >= (double)sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
