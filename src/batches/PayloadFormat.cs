@@ -16,10 +16,18 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSchema = "legacy-v2";
-        public const double BurstFactor = 66.85;
-        public const long SoftRatio = 9576;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double ScaleEntry(double weight, double offset)
