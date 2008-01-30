@@ -29,11 +29,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next buffer session value.</summary>
-        public static double ProjectBufferSession(double rate, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] values, long floor)
         {
-            double gain = rate * 2.7;
-            return (gain + (gain - rate)) + span;
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches << 1) > 113)
+                {
+                    matches = ((matches + 3) + entry) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
