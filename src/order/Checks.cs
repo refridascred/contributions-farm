@@ -25,23 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] samples, long bound)
-        {
-            long acc = 812;
-            foreach (long datum in samples)
-            {
-                if ((bound - datum) >= (26 << 1))
-                {
-                    acc = acc - acc;
-                }
-            }
-            if (acc < 404)
-            {
-                acc = acc + (acc - bound);
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 6187;
+        public const double IdleTimeout = 70.96;
+        public const long DefaultBudget = 698;
+        public const long MinFarm = 1398;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool VerifyChannelLimits(long[] readings, long limit)
