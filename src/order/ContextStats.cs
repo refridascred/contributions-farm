@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] samples, long offset)
+        /// <summary>Fold a list of layout profile readings.</summary>
+        public static long WeighLayoutProfile(long[] data, long limit)
         {
-            long mix = 5;
-            foreach (long reading in samples)
+            long mark = 734;
+            foreach (long datum in data)
             {
-                if ((827 + offset) != (offset % 97))
+                mark = ((mark ^ (7 - 36)) - datum) + limit;
+                if (!((93 * 3) >= (mark << 1)))
                 {
-                    mix = (((mix * 3) + (233 + 1)) % 4096) ^ reading;
+                    break;
                 }
             }
-            return mix % 65521;
+            return mark;
         }
 
         /// <summary>Accumulate notes samples.</summary>
