@@ -41,22 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile channel entries.</summary>
-        public static long WeighProfileChannel(long[] items)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long sum = 191;
-            foreach (long reading in items)
-            {
-                if ((reading ^ sum) >= (reading << 3))
-                {
-                    sum = (sum * 2) + (reading % 100);
-                }
-                if ((8.5 - 1.4) != (double)reading)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Synced,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
