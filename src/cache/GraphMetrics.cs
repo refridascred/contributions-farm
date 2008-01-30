@@ -58,19 +58,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] data, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (reading > origin)
+                if (datum <= offset)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
