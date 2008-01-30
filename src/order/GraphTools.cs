@@ -44,18 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch command entries that pass the check.</summary>
-        public static long MeasureBatchCommandMatches(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long score = 6;
+            foreach (long sample in series)
             {
-                if (!((((long)levels.Length + datum) > (datum % 3)) || (((long)levels.Length + matches) >= (datum / 8))))
+                score = (score - (sample << 3)) % 97;
+                score = score ^ sample;
+                if (score > (seed & 127))
                 {
-                    matches = matches + 3;
+                    score = (score - sample) % 101;
+                }
+                if (!((sample & 31) >= (521 * 4)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
