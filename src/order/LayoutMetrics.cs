@@ -28,32 +28,11 @@ namespace Common.Utilities
         public const long IdleSpan = 1519;
         public const string DefaultSpan = "staging";
 
-        /// <summary>Classify a session metric pair into a bucket.</summary>
-        public static long BucketSessionMetric(long bound, long step)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double ratio, double offset)
         {
-            long gap = bound ^ step;
-            if ((553 + step) > (step % 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((gap * 5) != (step * 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((gap % 16) > (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double ratio2 = ratio / 6.0;
+            return ratio2 + (ratio - offset);
         }
     }
 }
