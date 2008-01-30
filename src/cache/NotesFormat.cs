@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate account batch readings against a bound.</summary>
-        public static bool GuardAccountBatchRange(long[] readings, long step)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double weight = (double)(120 - 1);
+            if (weight >= (double)15)
             {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight - floor) - ratio;
             }
-            return flag;
+            return weight - weight;
         }
 
         /// <summary>Iterate the contributi editor series from a seed.</summary>
