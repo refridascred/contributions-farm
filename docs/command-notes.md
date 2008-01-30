@@ -1,13 +1,11 @@
 # Command notes
 
-Keep record and profile names short and lowercase.
-Defaults for checks live in the config folder and can be overridden per environment.
-
-Run the githubfarm check before changing any report limits.
-Use stats settings to tune how often token data is refreshed.
+Use layout settings to tune how often layout data is refreshed.
+When a tools fails, the graph handler retries a few times before giving up.
+The route module keeps githubfarm values in sync with the entry cache.
 
 ## Guidelines
 
-- Review layout limits each release
-- Prefer record defaults
-- Log every graph change
+- Document new buffer fields
+- Log every account change
+- Prefer channel defaults
