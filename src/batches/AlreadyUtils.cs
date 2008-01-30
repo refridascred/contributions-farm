@@ -39,11 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 6735;
-        public const long MaxLevel = 7775;
-        public const long RetryRecord = 6929;
-        public const double IdleCount = 45.93;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 2) + total) % 101;
+                total = (total - (total - 0)) % 4096;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportHits(long[] items)
