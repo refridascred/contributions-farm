@@ -44,18 +44,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] levels, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((3.9 / 6.0) > (double)datum)
+                if ((count < reading) || (reading >= (long)readings.Length))
                 {
-                    tally = (tally + 3) + seed;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
