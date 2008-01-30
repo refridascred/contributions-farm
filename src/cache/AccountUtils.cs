@@ -24,14 +24,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Ready,
-            Dropped,
-            Retry,
-            Stale,
-            Active,
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
