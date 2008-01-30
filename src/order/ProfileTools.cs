@@ -43,12 +43,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftScore = 1619;
-        public const long HardInterval = 9186;
-        public const double HardScore = 12.55;
-        public const long IdleMetric = 5983;
-        public const double HardSpan = 17.19;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double scale, double offset)
+        {
+            double gain = scale;
+            if (gain <= (double)4)
+            {
+                gain = (gain + 8.56) - offset;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (1.69 / 4.0);
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] levels)
