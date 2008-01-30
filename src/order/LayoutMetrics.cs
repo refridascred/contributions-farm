@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long acc = 587;
-            foreach (long value in values)
-            {
-                acc = acc + ((-572) ^ value);
-            }
-            if (acc < 10)
-            {
-                acc = (acc * 2) + acc;
-            }
-            return acc % 65521;
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of entry entries.</summary>
