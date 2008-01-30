@@ -24,15 +24,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a schema counter reading.</summary>
-        public static double AdjustSchemaCounter(double ratio, double floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double mean = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean + (mean - mean)) + (double)(long)i) + ratio;
-            }
-            return mean - (floor + floor);
+            Closed,
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Validate counter entry readings against a bound.</summary>
