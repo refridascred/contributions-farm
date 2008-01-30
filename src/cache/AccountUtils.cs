@@ -24,14 +24,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Paused,
-            Synced,
+            Ready,
+            Dropped,
+            Retry,
             Stale,
-            Queued,
-            Failed,
+            Active,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
