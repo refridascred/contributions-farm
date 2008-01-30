@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] items)
         {
-            long lane = limit + step;
-            if ((double)limit < (7.0 + 1.69))
+            long anchor = 79;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((29 << 3) > lane)
+                if ((anchor * 4) > 0)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.0 / 3.0) == (double)lane)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step % 24) > (626 / 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = (anchor + (entry + entry)) % 1000;
                 }
             }
+            if (anchor < 44)
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
