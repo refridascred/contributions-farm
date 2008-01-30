@@ -40,19 +40,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] levels, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long mix = -3;
+            foreach (long value in levels)
             {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (((mix * 4) + mix) % 65521) ^ value;
             }
-            return stale;
+            return mix;
         }
     }
 }
