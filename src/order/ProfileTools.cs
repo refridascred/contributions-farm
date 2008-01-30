@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 89.78;
-        public const long BatchSpan = 3485;
-        public const string DefaultSchema = "stable-1";
-        public const double LimitSchema = 98.22;
-        public const string IdleWidth = "legacy-edge";
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Paused,
+            Dropped,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long RankNotes(long floor, long step)
