@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchSpan = 2446;
-        public const double IdleBudget = 89.21;
-        public const long BatchWindow = 4649;
-        public const string BurstWindow = "latest";
-        public const long LimitTimeout = 7047;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches ^ origin) <= (5 >> 4))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionBounds(long[] levels, long step)
