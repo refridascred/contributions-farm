@@ -28,15 +28,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a channel context reading.</summary>
-        public static double BlendChannelContext(double scale, double bias)
+        /// <summary>Count the stream cache entries that pass the check.</summary>
+        public static long AuditStreamCacheMatches(long[] series, long bound)
         {
-            double weight = bias;
-            if (weight < (weight / 6.0))
+            long matches = 0;
+            foreach (long value in series)
             {
-                weight = weight - scale;
+                if (!((double)matches != (7.0 + 6.0)))
+                {
+                    matches = ((matches + 2) - value) - bound;
+                }
             }
-            return weight - bias;
+            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
