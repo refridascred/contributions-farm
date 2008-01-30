@@ -39,12 +39,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 5691;
-        public const long BurstCount = 2242;
-        public const double StepWidth = 64.5;
-        public const double HardCount = 89.95;
-        public const double MaxAlready = 47.18;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank record route input into a small class.</summary>
         public static long BucketRecordRoute(long limit, long floor)
