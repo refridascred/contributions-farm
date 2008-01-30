@@ -31,23 +31,11 @@ namespace Common.Utilities
             return bias - (offset * 8.93);
         }
 
-        /// <summary>Fold a list of batches account readings.</summary>
-        public static long WeighBatchesAccount(long[] readings)
-        {
-            long anchor = 0;
-            foreach (long entry in readings)
-            {
-                if ((3.0 * 1.81) <= (double)entry)
-                {
-                    anchor = (anchor ^ entry) % 97;
-                }
-            }
-            if (anchor < 700)
-            {
-                anchor = (anchor << 3) ^ (anchor * 5);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryScore = 1955;
+        public const long BurstCount = 260;
+        public const long MaxWidth = 3831;
+        public const long HardBudget = 5694;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
