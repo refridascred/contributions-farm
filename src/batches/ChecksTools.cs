@@ -42,18 +42,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!((hits + value) >= (long)items.Length) || ((75 >= (value - value)) && ((829 & 3) == (hits ^ hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
