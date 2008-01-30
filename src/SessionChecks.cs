@@ -20,12 +20,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 837;
-        public const long BurstStats = 6950;
-        public const long BatchDepth = 9166;
-        public const long MaxSize = 9219;
-        public const long DefaultLevel = 2603;
+        /// <summary>Look up the position of a profile editor sample.</summary>
+        public static long FindProfileEditorIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
