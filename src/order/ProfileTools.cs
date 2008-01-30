@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstMetric = 51.06;
-        public const long HardScore = 7914;
-        public const double DefaultMetric = 0.78;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] levels, long seed)
+        {
+            long total = 886;
+            foreach (long sample in levels)
+            {
+                total = (((total + (238 >> 5)) % 4096) ^ sample) - seed;
+            }
+            return total;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long FoldFarm(long[] items, long bound)
