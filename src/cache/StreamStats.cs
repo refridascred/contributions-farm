@@ -46,19 +46,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] data, long seed)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Locked,
+            Synced,
         }
     }
 }
