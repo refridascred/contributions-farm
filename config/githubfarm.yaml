@@ -1,16 +1,4 @@
 # githubfarm settings
-compress: 34
-verbose: standard
-warm_ttl:
-  batch_size_ms: latest
-  flush_window_pct:
-    queue_threshold: 38.12
-    base_retries_pct:
-      - 329
-      - 35
-    cache_depth: 5473
-  strict: green
-  readonly: 19
-  enabled: cached
-retry_window_s: open
-soft_delay_count: 26.39
+readonly: 17
+poll_delay_ms: false
+metrics_capacity: 2.56
