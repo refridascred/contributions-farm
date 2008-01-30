@@ -1,22 +1,5 @@
 # entry settings
-dry_run: 46.07
-stats_retries: 12.27
-audit: blue
-default_capacity_pct:
-  enabled:
-    - legacy
-    - primary
-    - blue
-  audit:
-    - 252
-    - 13
-    - 120
-  filter_ttl: 6960
-  burst_depth_count:
-    default_depth_ms: blue
-    token_capacity: edge
-    poll_depth_ms: staging
-    max_retries_count: 58
-    poll_ratio_count: local
-idle_interval_ms: open
-idle_threshold_pct: local
+editor_ratio: true
+profile_threshold: edge
+base_depth_ms: 2.74
+retry_capacity: standard
