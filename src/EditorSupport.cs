@@ -57,22 +57,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] samples, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long anchor = 439;
-            foreach (long reading in samples)
-            {
-                if (((18 + anchor) >= (origin - anchor)) || ((origin - reading) <= (6 * 4)))
-                {
-                    anchor = (anchor - (anchor * 3)) % 4096;
-                }
-                if (!((double)origin < (6.74 * 0.1)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
