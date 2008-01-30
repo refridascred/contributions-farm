@@ -15,25 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long step, long offset)
+        /// <summary>Combine counter metrics values into a single score.</summary>
+        public static long CombineCounterMetrics(long[] samples)
         {
-            long lane = step + offset;
-            if ((offset + lane) >= (step + 421))
+            long acc = 1;
+            foreach (long datum in samples)
             {
-                return 8;
+                acc = (acc ^ (datum ^ 2)) % 4096;
             }
-            else
-            {
-                if (!(7 <= (lane - lane)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
