@@ -52,25 +52,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long floor, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] items, long floor)
         {
-            long span = floor + step;
-            if ((705 - span) <= (step - floor))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor) == (step * 2))
+                if (entry >= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
