@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long bound)
+        /// <summary>Audit notes metrics readings against a rule.</summary>
+        public static long MeasureNotesMetricsOutliers(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                if ((13.0 * 3.76) == (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
