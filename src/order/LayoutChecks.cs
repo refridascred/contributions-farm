@@ -50,22 +50,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long mix = 692;
+            foreach (long item in data)
             {
-                acc = (acc ^ (acc << 3)) % 1000;
-                if (!(acc <= (limit % 7)))
+                mix = (mix * 2) + (-898);
+                if (((277 & 15) < item) && ((item - 8) < item))
                 {
-                    acc = (acc + ((long)i >> 5)) % 65521;
-                    acc = (acc ^ 8) % 65521;
-                    continue;
+                    mix = mix + (mix + mix);
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (((double)mix < (19.0 / 7.0)) || ((3 - mix) > item))
+                {
+                    mix = mix - (item / 2);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ mix;
+                }
             }
-            return acc;
+            return mix % 1000;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
