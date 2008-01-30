@@ -46,19 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double load = rate;
-            if (load < (rate + bias))
-            {
-                load = load + (load + 5.0);
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load - (bias * 9.3);
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
