@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] values, long step)
         {
-            long acc = 49;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (acc < (56 << 2))
+                if (step >= (reading + 61))
                 {
-                    acc = ((acc << 2) ^ (acc + sample)) % 65521;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc < 25)
-            {
-                acc = (acc ^ ((long)levels.Length + acc)) % 4096;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of command cluster readings.</summary>
