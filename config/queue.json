@@ -1,14 +1,18 @@
 {
-  "default_limit": {
-    "burst_window": false,
-    "dry_run": 66.18,
-    "soft_interval_pct": {
-      "idle_threshold_ms": 0.25,
-      "max_size_s": "standard",
-      "readonly": 14.83
-    },
-    "max_threshold_count": 60.04
+  "readonly": {
+    "dry_run": "blue",
+    "readonly": "standard",
+    "notes_capacity": 83.45,
+    "cache_delay_s": 500
   },
-  "audit": "latest",
-  "default_capacity_ms": [130, 62]
+  "account_window": 1086,
+  "persist": {
+    "route_window": 5287,
+    "enabled": 9389,
+    "poll_window": true,
+    "readonly": 6249
+  },
+  "default_depth_ms": "cached",
+  "burst_interval_pct": 6868,
+  "batch_delay_s": [445, 87, 432]
 }
