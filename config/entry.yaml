@@ -1,8 +1,17 @@
 # entry settings
-max_limit: 6022
-poll_limit_ms: 5266
-idle_threshold_ms:
-  - 438
-  - 335
-  - 335
-  - 394
+payload_interval: 15
+graph_depth:
+  window_limit: cached
+  base_limit_s:
+    - 21
+    - 186
+    - 340
+  persist:
+    layout_ttl: true
+    verbose: 49
+    base_threshold: open
+session_ratio:
+  - eu-west
+  - primary
+order_ratio: 68.24
+soft_window_pct: 7.78
