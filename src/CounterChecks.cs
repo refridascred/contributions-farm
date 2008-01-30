@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count schema payload pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaPayloadCount(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 8;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((datum + (-831)) < datum) && ((double)datum != (10.0 + 6.7)))
                 {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result ^ (result & 63);
                 }
             }
-            return tally;
+            if (result < 81)
+            {
+                result = result - seed;
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine checks token values into a single score.</summary>
