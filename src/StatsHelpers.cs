@@ -30,13 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Compare every pair of stream command readings.</summary>
+        public static long OverlapStreamCommandCount(long[] items)
         {
-            Queued,
-            Failed,
-            Stale,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up record samples.</summary>
