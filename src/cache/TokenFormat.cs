@@ -27,12 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] items, long step)
         {
-            Stale,
-            Synced,
-            Pending,
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
