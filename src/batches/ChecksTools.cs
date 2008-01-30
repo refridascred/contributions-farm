@@ -27,13 +27,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Failed,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "staging-v2";
+        public const long WindowCount = 3992;
+        public const string HardFarm = "stable-edge";
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterBounds(long[] data, long bound)
