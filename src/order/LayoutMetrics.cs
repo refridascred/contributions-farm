@@ -44,11 +44,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] values, long limit)
         {
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            long anchor = -405;
+            foreach (long reading in values)
+            {
+                if (!((reading - anchor) < limit))
+                {
+                    anchor = anchor - limit;
+                    break;
+                }
+                if ((limit - limit) < (anchor - limit))
+                {
+                    anchor = (anchor + (anchor << 2)) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
