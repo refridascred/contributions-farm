@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Match up context counter samples.</summary>
+        public static long OverlapContextCounterCount(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor + anchor;
-                if ((offset - anchor) > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (offset + anchor)) % 65521;
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the cache state values.</summary>
