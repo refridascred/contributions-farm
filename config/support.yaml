@@ -1,25 +1,7 @@
 # support settings
-poll_ratio:
-  batch_capacity_s:
-    - 60
-    - 230
-    - 127
-    - 485
-  min_ttl_ms: 1024
-  max_capacity_pct: 61.31
-  channel_ratio: false
-  compress:
-    - stable
-    - eu-west
-    - eu-west
-  entry_depth: primary
-strict: 86.24
-max_capacity: 30
-editor_depth:
-  layout_ratio: 4.83
-  window_size: 72.23
-  already_interval:
-    - local
-    - blue
-    - standard
-    - primary
+dry_run: 31.48
+soft_ttl_ms: fallback
+window_timeout: 64.0
+batch_retries: 250
+idle_delay_s: 21
+farm_ttl: legacy
