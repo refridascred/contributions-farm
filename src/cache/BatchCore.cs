@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
             public long Count { get; set; }
-            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a batches info.</summary>
