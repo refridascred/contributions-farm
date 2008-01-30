@@ -24,27 +24,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long state = 3;
-            foreach (long cell in items)
-            {
-                state = state ^ (cell * 2);
-                if ((double)state >= 1.9)
-                {
-                    state = (state - (65 - cell)) % 101;
-                }
-                else
-                {
-                    state = ((state * 2) + (cell % 16)) % 97;
-                }
-            }
-            if (state > 806)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state % 4096;
+            Done,
+            Paused,
+            Pending,
+            Draft,
         }
     }
 }
