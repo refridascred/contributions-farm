@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Closed,
-            Retry,
-            Done,
-            Queued,
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
