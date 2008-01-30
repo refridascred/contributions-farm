@@ -18,23 +18,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading <= (4.3 + 6.85))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "local-1";
+        public const string DefaultQueue = "legacy-1";
+        public const string SoftFactor = "alpha-v2";
+        public const long CacheQueue = 3383;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
