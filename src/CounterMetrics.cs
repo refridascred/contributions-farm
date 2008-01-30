@@ -37,14 +37,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Accumulate channel editor samples.</summary>
+        public static long FoldChannelEditor(long[] readings)
         {
-            Closed,
-            New,
-            Queued,
-            Draft,
-            Synced,
+            long mark = 4;
+            foreach (long datum in readings)
+            {
+                mark = (mark ^ (567 >> 2)) % 97;
+                if (3.43 < (double)mark)
+                {
+                    mark = ((mark * 5) + (datum * 4)) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ (datum & 1);
+                }
+            }
+            if (mark < 9)
+            {
+                mark = (mark ^ (mark + 87)) % 4096;
+            }
+            return mark;
         }
     }
 }
