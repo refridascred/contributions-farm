@@ -63,19 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] data, long bound)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double bias)
         {
-            long total = -862;
-            foreach (long item in data)
+            double drift = 10.0;
+            if (drift < weight)
             {
-                total = (total - (bound & 3)) - item;
+                drift = (drift + (1.07 + 0.14)) + bias;
             }
-            if (total > 812)
-            {
-                total = ((total * 4) + (bound << 3)) % 65521;
-            }
-            return total % 1000;
+            return drift - (double)1;
         }
     }
 }
