@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of route entry readings.</summary>
-        public static long MatchRouteEntryCount(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((2.0 - 7.32) != (double)limit)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((444 - target) > target)
                 {
-                    if ((series[i] ^ series[j]) != 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((limit % 16) <= 69)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
