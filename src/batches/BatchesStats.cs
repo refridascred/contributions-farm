@@ -23,38 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format commits pair into a bucket.</summary>
-        public static long GradeFormatCommits(long floor, long seed)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if (((-33) ^ seed) >= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((16.0 / 7.0) > (double)floor) || ((seed << 2) <= ((-6) << 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor >> 1) < (floor + 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2.9 * 1.41) != (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
