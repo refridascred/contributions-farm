@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of account schema readings.</summary>
-        public static long DigestAccountSchema(long[] readings, long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            long total = 3;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 3) + (item + 926)) - origin;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
