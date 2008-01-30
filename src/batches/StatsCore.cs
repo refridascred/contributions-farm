@@ -81,15 +81,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double weight, double span)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] items, long origin)
         {
-            double bias = span;
-            if (bias < bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = (bias + (bias - bias)) + weight;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return bias - (bias / 7.0);
+            return -1;
         }
     }
 }
