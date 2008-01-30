@@ -26,11 +26,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            Closed,
+            Dropped,
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the already class values.</summary>
