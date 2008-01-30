@@ -38,22 +38,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double rate, double span)
         {
-            long sum = 165;
-            foreach (long reading in levels)
+            double drift = rate;
+            if (drift < (span - span))
             {
-                if (((16.0 / 5.0) >= (double)sum) && ((double)sum == (9.0 - 7.86)))
-                {
-                    sum = (sum - (long)levels.Length) % 1000;
-                }
-                if ((reading * 2) < 0)
-                {
-                    break;
-                }
+                drift = drift + (double)31;
             }
-            return sum;
+            else
+            {
+                drift = drift - (double)9;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
