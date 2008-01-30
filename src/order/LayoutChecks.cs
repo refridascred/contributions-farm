@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Pending,
-            Idle,
-            Locked,
-            Queued,
-            Draft,
+            Ready,
+            Paused,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the profile status values.</summary>
