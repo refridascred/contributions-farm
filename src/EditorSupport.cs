@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double rate, double bias)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long bound)
         {
-            double bias2 = (double)(14 + 841);
-            if (bias2 <= (7.81 / 5.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = ((bias2 - bias2) - rate) + bias;
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (19.0 + 2.9)) + (double)(long)i;
-            }
-            return bias2 - (double)58;
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
