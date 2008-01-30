@@ -34,38 +34,25 @@ namespace Common.Utilities
             return gain2 - (double)(-679);
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long origin, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long target)
         {
-            if (7 >= origin)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset >= (2.31 - 9.05))
+                if (!(((long)i + result) <= (target + target)))
                 {
-                    return 3;
+                    result = (result << 2) ^ (result & 3);
                 }
-                else
+                if ((target << 1) < (target & 31))
                 {
-                    if (!((origin + offset) != (origin ^ origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin < ((-4) << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = (result ^ (target - (-352))) % 101;
+                    result = result + result;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
