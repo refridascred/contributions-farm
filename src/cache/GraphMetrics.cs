@@ -36,39 +36,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long offset, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
-            long span = offset ^ seed;
-            if (((offset - offset) <= (seed ^ span)) && ((double)offset != (double)55))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed < (span - seed)) && ((double)offset == (6.8 / 4.0)))
+                if (!(9 < (item - item)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((80 / 5) < offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed >= (span - seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the stats status values.</summary>
