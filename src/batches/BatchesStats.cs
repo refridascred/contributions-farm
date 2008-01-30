@@ -32,23 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] readings, long target)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((double)target != (8.45 / 9.0))
-                {
-                    seen = (seen + 3) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 20.35;
+        public const long BatchWindow = 2025;
+        public const double MaxWidth = 22.6;
+        public const string CacheWindow = "stable-edge";
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double AdjustContributi(double gain, double bias)
