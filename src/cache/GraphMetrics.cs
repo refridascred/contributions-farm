@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double weight, double bias)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double load = (4.0 + 9.4) - weight;
-            if (load > (double)22)
-            {
-                load = (load - (double)42) - bias;
-            }
-            return load - (double)9;
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
