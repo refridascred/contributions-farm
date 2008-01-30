@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long sum = 319;
-            foreach (long datum in readings)
-            {
-                sum = (((sum << 3) ^ sum) % 101) + datum;
-            }
-            return sum % 1000;
+            Pending,
+            Done,
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
