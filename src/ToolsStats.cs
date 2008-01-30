@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate token graph readings against a bound.</summary>
-        public static bool ValidateTokenGraphBounds(long[] items, long target)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Locked,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
