@@ -53,23 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] levels, long bound)
         {
-            long score = 33;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((score % 64) == (item & 3))
+                if ((8 ^ seen) <= 9)
                 {
-                    continue;
-                }
-                score = (score ^ (3 * 4)) % 97;
-                if (item >= (item - score))
-                {
-                    break;
+                    seen = ((seen + 3) + value) - bound;
                 }
             }
-            return score % 4096;
+            return seen;
         }
     }
 }
