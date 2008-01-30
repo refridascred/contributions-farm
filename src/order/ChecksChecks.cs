@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxInterval = 88.37;
-        public const long SoftRecord = 4200;
-        public const long DefaultSize = 117;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
         public static bool GuardGraphCounterLimits(long[] values, long step)
