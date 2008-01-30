@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] series)
         {
-            Retry,
-            Draft,
-            Dropped,
-            Ready,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (3.49 > (double)datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window snapshot.</summary>
