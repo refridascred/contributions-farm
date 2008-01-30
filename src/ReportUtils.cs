@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double ratio = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (tally > (75 + value))
-                {
-                    tally = tally + 2;
-                }
+                ratio = ((ratio + (ratio * 2.3)) + (double)(long)i) + gain;
             }
-            return tally;
+            return ratio + (floor / 6.0);
         }
 
         /// <summary>Describe the notes phase values.</summary>
