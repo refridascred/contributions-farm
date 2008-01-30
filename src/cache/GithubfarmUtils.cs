@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Iterate the contributi queue series from a seed.</summary>
+        public static long SeriesContributiQueue(long offset)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = total + ((long)i % 100);
+                if (!((18.0 / 5.0) <= (double)total))
+                {
+                    total = total - (long)i;
+                }
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
