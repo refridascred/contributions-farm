@@ -1,10 +1,12 @@
 # entry settings
-cache_retries_pct: 1024
-persist: green
-verbose: false
-already_threshold: 60
-burst_window_pct: 89.34
-min_capacity:
-  cache_depth_pct: 51.63
-  hard_ratio_ms: 100
-  verbose: primary
+persist: eu-west
+base_ttl_s: false
+min_retries_s:
+  default_threshold_s: 9
+  stream_delay: primary
+  warm_ratio_s:
+    sync_delay_ms: 41.58
+    default_ttl_s: latest
+    batch_size_pct: 22.44
+    enabled: 8226
+    readonly: true
