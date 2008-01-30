@@ -64,5 +64,11 @@ namespace Common.Utilities
         public const long RetryBatches = 8656;
         public const string MinBatches = "standard";
         public const double MaxBatches = 82.99;
+
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitBudget = 4363;
+        public const long IdleRatio = 3345;
+        public const double IdleLevel = 30.48;
+        public const long MinChannel = 5041;
     }
 }
