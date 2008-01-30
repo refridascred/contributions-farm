@@ -20,13 +20,12 @@ namespace Common.Utilities
             return bias2 - (double)58;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a tools command reading.</summary>
