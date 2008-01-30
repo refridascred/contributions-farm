@@ -48,11 +48,22 @@ namespace Common.Utilities
         public const string BurstScore = "cached";
         public const double SoftWidth = 13.49;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] items, long bound)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)bound < (double)seen)
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
