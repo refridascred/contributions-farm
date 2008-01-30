@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long IdleAccount = 7794;
         public const double IdleLevel = 3.79;
 
-        /// <summary>Measure how many context queue samples are out of range.</summary>
-        public static long TallyContextQueueHits(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((target & 63) < seen)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 2573;
+        public const long IdleSpan = 8366;
+        public const long SoftTools = 338;
+        public const string MaxTools = "primary";
+        public const long RetryTools = 2530;
 
         /// <summary>Count the graph filter entries that pass the check.</summary>
         public static long MeasureGraphFilterMatches(long[] readings)
