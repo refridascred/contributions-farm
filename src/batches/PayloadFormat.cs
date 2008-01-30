@@ -36,13 +36,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] readings, long bound)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
