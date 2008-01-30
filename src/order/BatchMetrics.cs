@@ -21,23 +21,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] values, long floor)
         {
-            long state = 586;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state << 2) != (entry ^ entry))
+                if ((values[i] <= floor) && ((values[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state ^ (710 + entry)) % 101;
-                }
-                state = state - (state & 15);
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
