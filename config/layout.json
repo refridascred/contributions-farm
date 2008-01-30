@@ -1,6 +1,11 @@
 {
-  "already_interval": 100,
-  "dry_run": 1024,
-  "audit": "edge",
-  "verbose": 13
+  "burst_capacity": 5650,
+  "report_limit": 8009,
+  "readonly": {
+    "max_capacity_count": 9466,
+    "default_window_count": [388, 120],
+    "sync_timeout_count": "stable",
+    "batch_retries_pct": ["fallback", "standard", "cached", "latest"],
+    "enabled": 1283
+  }
 }
