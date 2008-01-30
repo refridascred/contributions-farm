@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values)
-        {
-            long state = 4;
-            foreach (long datum in values)
-            {
-                state = ((state * 2) + 5) ^ datum;
-            }
-            if (state > 9)
-            {
-                state = ((state * 3) + (state % 3)) % 4096;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSize = 2106;
+        public const string BurstCount = "legacy-edge";
+        public const string BaseFactor = "fallback-edge";
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
