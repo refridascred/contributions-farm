@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] samples, long target)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)target == (double)matches)
+                mix = mix - (630 + target);
+                if ((1.12 + 9.0) <= (double)target)
                 {
-                    matches = (matches + 2) + item;
+                    mix = (mix ^ (59 + target)) % 97;
                 }
+                if (289 <= (1 - target))
+                {
+                    mix = (mix + (mix - mix)) % 97;
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
