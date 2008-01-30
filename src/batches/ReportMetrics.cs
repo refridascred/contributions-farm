@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Audit metrics cluster readings against a rule.</summary>
+        public static long MeasureMetricsClusterHits(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((tally - step) > (71 << 2)) && !((55 ^ tally) > (tally - step)))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a command entry.</summary>
