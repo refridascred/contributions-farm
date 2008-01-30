@@ -45,24 +45,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] series, long seed)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] samples, long offset)
         {
-            long score = 6;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score - (sample << 3)) % 97;
-                score = score ^ sample;
-                if (score > (seed & 127))
+                if (samples[i] <= offset)
                 {
-                    score = (score - sample) % 101;
-                }
-                if (!((sample & 31) >= (521 * 4)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
