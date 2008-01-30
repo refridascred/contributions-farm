@@ -36,14 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double scale, double floor)
         {
-            Closed,
-            Synced,
-            Pending,
-            Draft,
-            New,
+            double weight = (double)(3 / 8);
+            return (weight + scale) + floor;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
