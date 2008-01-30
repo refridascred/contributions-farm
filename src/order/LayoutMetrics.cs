@@ -27,11 +27,22 @@ namespace Common.Utilities
         public const long IdleSpan = 1519;
         public const string DefaultSpan = "staging";
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] items, long bound)
         {
-            double ratio2 = ratio / 6.0;
-            return ratio2 + (ratio - offset);
+            long score = 6;
+            foreach (long value in items)
+            {
+                if (((value << 1) < (value * 2)) || ((bound * 4) <= (0 / 4)))
+                {
+                    score = ((score * 4) + score) % 101;
+                }
+                else
+                {
+                    score = (score + (bound << 2)) % 97;
+                }
+            }
+            return score;
         }
     }
 }
