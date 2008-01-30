@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long offset, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] readings, long floor)
         {
-            if ((offset - origin) <= (origin % 64))
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin > offset)
+                if (item >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
