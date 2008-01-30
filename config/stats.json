@@ -1,5 +1,8 @@
 {
-  "base_depth_pct": true,
-  "verbose": "stable",
-  "burst_limit_count": 25.06
+  "max_threshold_ms": 1024,
+  "token_delay": "fallback",
+  "readonly": 940,
+  "compress": "strict",
+  "verbose": ["edge", "strict"],
+  "route_capacity": 60
 }
