@@ -42,21 +42,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((7 & 31) > (hits + origin))
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
