@@ -1,16 +1,27 @@
 # support settings
-compress: edge
-soft_limit:
-  idle_window:
-    hard_timeout_count: 24.73
-    warm_interval_s: 57
-    farm_retries: 76
-    default_interval_s: stable
-    flush_threshold_s: 59.52
-    compress: local
-  default_ttl_count: false
-  compress:
-    - 308
-    - 490
-min_interval_count: true
-readonly: 28
+default_limit_ms:
+  cache_interval: legacy
+  strict:
+    - 209
+    - 65
+    - 172
+    - 415
+  base_delay: 250
+idle_ratio_s: false
+support_threshold: 500
+stats_timeout:
+  burst_timeout: strict
+  min_interval_pct: cached
+  verbose:
+    - 9
+    - 398
+    - 275
+    - 47
+  dry_run: eu-west
+  channel_ttl: 35.17
+  burst_capacity_pct:
+    - local
+    - stable
+    - edge
+    - stable
+default_depth: green
