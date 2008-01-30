@@ -56,13 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] series)
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (matches > (matches >> 1))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
     }
 }
