@@ -40,22 +40,20 @@ namespace Common.Utilities
         public const string StepPayload = "cached-edge";
         public const long CacheLevel = 4920;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            long carry = 4;
-            foreach (long item in samples)
+            long carry = 87;
+            foreach (long item in levels)
             {
-                if ((16.0 / 6.0) != (double)item)
+                carry = carry - carry;
+                carry = carry - (item & 7);
+                if ((item - carry) != (carry * 4))
                 {
-                    carry = (carry ^ (3 + 5)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (item / 3)) % 1000;
+                    carry = (carry * 5) + item;
                 }
             }
-            return carry;
+            return carry % 65521;
         }
 
         /// <summary>Combine already values into a single score.</summary>
