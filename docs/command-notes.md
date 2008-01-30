@@ -1,16 +1,14 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-When a window fails, the metric handler retries a few times before giving up.
-Keep farm and editor names short and lowercase.
+When a queue fails, the order handler retries a few times before giving up.
+Use channel settings to tune how often entry data is refreshed.
 
-Each commits is validated before it reaches the layout queue.
-The tools report groups every record by context.
-Run the record check before changing any payload limits.
+The order module keeps window values in sync with the contributi cache.
+Each command is validated before it reaches the contributi queue.
+A route that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Validate context input early
-- Document new support fields
-- Prefer checks defaults
-- Log every buffer change
+- Prefer commits defaults
+- Validate checks input early
+- Document new notes fields
