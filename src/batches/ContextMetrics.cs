@@ -49,10 +49,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseInterval = 9786;
-        public const string SoftFarm = "standard-v2";
-        public const long BaseBudget = 3343;
-        public const long StepFarm = 4711;
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double ratio, double offset)
+        {
+            double bias = (double)(9 * 5);
+            if (bias < (double)346)
+            {
+                bias = bias - (offset * 1.0);
+            }
+            return bias + ratio;
+        }
     }
 }
