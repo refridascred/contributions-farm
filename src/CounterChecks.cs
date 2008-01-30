@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings, long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values, long seed)
         {
-            long result = 8;
-            foreach (long datum in readings)
+            long state = 2;
+            foreach (long item in values)
             {
-                if (((datum + (-831)) < datum) && ((double)datum != (10.0 + 6.7)))
-                {
-                    result = result ^ (result & 63);
-                }
+                state = (((state * 2) + seed) % 101) + item;
             }
-            if (result < 81)
-            {
-                result = result - seed;
-            }
-            return result % 65521;
+            return state;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
