@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ratio + 11.0;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] readings, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (readings[i] >= step)
+                if ((8 + 9) <= (item + 6))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next context commits value from a seed.</summary>
