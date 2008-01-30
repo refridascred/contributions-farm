@@ -41,11 +41,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 5182;
-        public const long BatchStream = 85;
-        public const long LimitInterval = 5839;
-        public const long MinStream = 4080;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] data)
