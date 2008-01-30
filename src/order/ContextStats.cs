@@ -32,15 +32,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] readings)
+        /// <summary>Count editor queue pairs that satisfy a relation.</summary>
+        public static long MatchEditorQueueCount(long[] values)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((seen + sample) < seen) || ((sample + seen) <= 61))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
