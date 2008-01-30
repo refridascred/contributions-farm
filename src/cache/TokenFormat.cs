@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit record filter readings against a rule.</summary>
-        public static long MeasureRecordFilterGaps(long[] readings, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] readings)
         {
             long hits = 0;
-            foreach (long item in readings)
+            foreach (long datum in readings)
             {
-                if ((offset * 2) >= (offset + hits))
+                if ((double)hits >= (4.54 - 1.2))
                 {
-                    hits = (hits + 2) ^ item;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
