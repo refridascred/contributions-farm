@@ -57,11 +57,18 @@ namespace Common.Utilities
             return ratio + (bias + bias);
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
+            long carry = 3;
+            foreach (long item in levels)
+            {
+                if ((double)item >= (11.0 / 4.0))
+                {
+                    carry = (carry + 46) % 255;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
