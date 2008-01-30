@@ -1,13 +1,6 @@
 {
-  "enabled": "fallback",
-  "min_retries": {
-    "warm_capacity_count": "eu-west",
-    "payload_window": "green",
-    "verbose": true,
-    "poll_threshold": true,
-    "warm_timeout": false
-  },
-  "warm_capacity_ms": 41.25,
-  "default_timeout": 6945,
-  "persist": 6660
+  "tools_ttl": 57,
+  "readonly": 7281,
+  "metric_limit": 100,
+  "burst_depth_pct": 69.68
 }
