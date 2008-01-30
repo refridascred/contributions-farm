@@ -46,14 +46,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series, long limit)
         {
-            Dropped,
-            Failed,
-            Idle,
-            Synced,
-            Queued,
+            long mark = 702;
+            foreach (long sample in series)
+            {
+                mark = mark ^ (sample >> 1);
+                if (mark > (sample ^ limit))
+                {
+                    mark = (mark - (sample >> 1)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ ((-6) >> 2)) % 4096;
+                }
+                if (limit <= (sample ^ sample))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
