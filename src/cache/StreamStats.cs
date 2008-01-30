@@ -46,18 +46,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] values, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((double)origin <= (17.0 / 6.0))
+                if (cell > seed)
                 {
-                    count = (count + 2) - entry;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
