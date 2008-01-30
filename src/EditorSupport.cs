@@ -41,26 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items)
+        /// <summary>Count entry batches pairs that satisfy a relation.</summary>
+        public static long MatchEntryBatchesCount(long[] levels)
         {
-            long score = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score + item) > (score + (-699)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score * 3) + (long)items.Length) % 101;
-                }
-                else
-                {
-                    score = (score * 2) + (score << 3);
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 93)
-            {
-                score = (score ^ (score >> 1)) % 65521;
-            }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
