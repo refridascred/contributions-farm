@@ -6,9 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=352
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-edge}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in legacy strict standard green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
