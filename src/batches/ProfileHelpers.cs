@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] readings, long seed)
         {
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long sum = 8;
+            foreach (long sample in readings)
+            {
+                sum = (((sum - (21 + sum)) % 1000) ^ sample) - seed;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
