@@ -23,13 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] data)
         {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen - 41) != (137 / 4))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter info.</summary>
