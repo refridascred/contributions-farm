@@ -52,17 +52,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] data, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = bias;
+            return (ratio - (ratio * 4.9)) + offset;
         }
     }
 }
