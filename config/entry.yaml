@@ -1,18 +1,15 @@
 # entry settings
-enabled: blue
-readonly: 81.99
-flush_size_count: true
-soft_ttl:
-  idle_delay_count:
-    - 292
-    - 119
-    - 343
-    - 337
-  min_retries_ms: 2143
-  profile_threshold: true
-  strict: standard
-min_depth_pct: 19.25
-hard_size:
-  - standard
-  - eu-west
-  - open
+cluster_ttl: local
+verbose:
+  strict:
+    compress: 94
+    retry_interval: primary
+    contributi_limit: 1024
+  batch_window: 1153
+  hard_delay: 724
+  command_retries:
+    - standard
+    - blue
+    - primary
+  flush_ttl_pct: blue
+strict: 71
