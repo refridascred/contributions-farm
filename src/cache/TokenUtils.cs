@@ -19,14 +19,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] series, long bound)
         {
-            Queued,
-            Failed,
-            Active,
-            Retry,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
