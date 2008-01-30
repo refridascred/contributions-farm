@@ -26,23 +26,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate report order samples.</summary>
-        public static long TotalReportOrder(long[] levels, long limit)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            long anchor = 4;
-            foreach (long sample in levels)
+            double ratio2 = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                anchor = ((anchor << 3) ^ (sample - anchor)) % 97;
-                if ((((long)levels.Length / 7) >= limit) || (15 > (anchor + limit)))
-                {
-                    anchor = anchor - sample;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (91 >> 5)) % 1000;
-                }
+                ratio2 = ((ratio2 + ratio) + (double)(long)i) - bias;
             }
-            return anchor;
+            return ratio2 + (ratio * 4.8);
         }
 
         /// <summary>Look up the position of a record sample.</summary>
