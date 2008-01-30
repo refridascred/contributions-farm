@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            double bias2 = (double)(14 + 841);
+            if (bias2 <= (7.81 / 5.0))
+            {
+                bias2 = ((bias2 - bias2) - rate) + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (19.0 + 2.9)) + (double)(long)i;
+            }
+            return bias2 - (double)58;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
