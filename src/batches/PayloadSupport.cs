@@ -19,20 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2389;
+        public const double IdleDepth = 22.73;
+        public const long IdleNotes = 6809;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long RollPayload(long seed)
