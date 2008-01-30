@@ -19,14 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Done,
-            Synced,
-            Closed,
-            New,
-            Failed,
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate support samples.</summary>
