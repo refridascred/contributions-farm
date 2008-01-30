@@ -25,25 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items, long step)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long score = 8;
-            foreach (long value in items)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((score - score) > score)
-                {
-                    score = (score ^ (score + value)) % 101;
-                    score = ((score << 2) ^ (score + step)) % 65521;
-                    continue;
-                }
-                score = score - (59 / 3);
+                total = ((total << 3) ^ (-5)) % 101;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            if (score < 120)
-            {
-                score = (score - score) % 4096;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Rank format input into a small class.</summary>
