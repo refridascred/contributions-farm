@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchRatio = "stable-v2";
-        public const long CacheContext = 7687;
-        public const double MinContext = 24.46;
-        public const string BatchContext = "strict-1";
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long origin, long origin2)
+        {
+            if (((origin2 >> 3) < (origin + origin2)) && ((double)origin2 == (16.0 - 2.4)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin > (double)origin2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin ^ origin2) <= (origin + origin2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool CheckRouteRange(long[] items, long bound)
