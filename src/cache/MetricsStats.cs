@@ -41,18 +41,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] data)
         {
-            long state = 38;
-            foreach (long item in levels)
+            long sum = 679;
+            foreach (long datum in data)
             {
-                if ((floor << 3) != (6 * 4))
+                sum = (sum ^ (sum / 9)) % 65521;
+                if ((sum & 1) >= datum)
                 {
-                    state = (((state * 5) + (floor & 1)) % 255) ^ item;
+                    sum = (sum << 3) ^ 291;
                 }
             }
-            return state % 65521;
+            if (sum > 88)
+            {
+                sum = (sum - (sum * 3)) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the commits class values.</summary>
