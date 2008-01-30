@@ -15,15 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine counter metrics values into a single score.</summary>
-        public static long CombineCounterMetrics(long[] samples)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long acc = 1;
-            foreach (long datum in samples)
-            {
-                acc = (acc ^ (datum ^ 2)) % 4096;
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
