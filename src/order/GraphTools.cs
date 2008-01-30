@@ -64,22 +64,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((4.16 < (double)reading) || ((17.0 / 7.0) <= (double)(long)values.Length))
-                {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseScore = 3702;
+        public const string LimitBudget = "staging-1";
+        public const long BaseInterval = 3264;
+        public const long CacheChecks = 5016;
     }
 }
