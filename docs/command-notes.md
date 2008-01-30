@@ -1,15 +1,11 @@
 # Command notes
 
-When a schema fails, the format handler retries a few times before giving up.
-Run the tools check before changing any entry limits.
-The context report groups every channel by counter.
-
-A profile that stays idle for too long is moved to the route list.
-Run the order check before changing any batch limits.
-Each route is validated before it reaches the stats queue.
+Run the farm check before changing any counter limits.
+Each report is validated before it reaches the githubfarm queue.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer graph defaults
-- Review session limits each release
+- Prefer stats defaults
+- Keep profile values small
+- Log every channel change
