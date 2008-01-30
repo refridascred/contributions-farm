@@ -1,15 +1,15 @@
 # Commits notes
 
-Use commits settings to tune how often counter data is refreshed.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Use farm settings to tune how often account data is refreshed.
+Use batch settings to tune how often schema data is refreshed.
+Use context settings to tune how often filter data is refreshed.
 
-The tools module keeps command values in sync with the schema cache.
-The account helpers are pure functions, so they are safe to call from any thread.
-Use githubfarm settings to tune how often checks data is refreshed.
+The schema module keeps stats values in sync with the schema cache.
+When a profile fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep token values small
-- Review account limits each release
-- Document new checks fields
-- Validate batches input early
+- Log every entry change
+- Document new route fields
+- Keep channel values small
+- Prefer booking defaults
