@@ -28,11 +28,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepInterval = "stable-1";
-        public const string StepSize = "local-v2";
-        public const long IdleRatio = 2622;
-        public const string IdleStats = "staging-1";
-        public const long BurstSize = 7840;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long offset, long origin)
+        {
+            if (((origin + origin) > (offset * 4)) && ((5.3 + 2.0) != (double)origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - offset) < (offset + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.5 - 5.8) > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
