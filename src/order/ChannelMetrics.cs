@@ -27,11 +27,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double span)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long seed)
         {
-            double weight2 = (weight / 7.0) + span;
-            return weight2 - weight2;
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = (((acc << 3) ^ (-3)) % 65521) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
