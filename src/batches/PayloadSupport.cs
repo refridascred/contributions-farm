@@ -28,17 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long bound)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
