@@ -23,13 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Failed,
-            Draft,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "local-1";
+        public const long DefaultInterval = 2910;
+        public const long IdleCommits = 8538;
+        public const long SoftCount = 5152;
+        public const long WindowCommits = 9487;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool CheckCacheRange(long[] readings, long step)
