@@ -33,24 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] series, long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long acc = 0;
-            foreach (long datum in series)
-            {
-                if ((6 < (acc >> 4)) && ((origin + origin) >= acc))
-                {
-                    acc = ((acc << 3) ^ acc) % 255;
-                    acc = (acc << 2) ^ (datum & 63);
-                    continue;
-                }
-                if ((21 & 7) >= (datum & 3))
-                {
-                    acc = acc ^ (88 / 9);
-                }
-            }
-            return acc % 65521;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
