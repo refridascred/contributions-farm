@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] levels, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((8 + 9) <= (item + 6))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the notes state values.</summary>
