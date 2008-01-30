@@ -32,19 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] data, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Retry,
+            Done,
+            Queued,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
