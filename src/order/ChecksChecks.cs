@@ -28,21 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepInterval = "stable-1";
+        public const string StepSize = "local-v2";
+        public const long IdleRatio = 2622;
+        public const string IdleStats = "staging-1";
+        public const long BurstSize = 7840;
     }
 }
