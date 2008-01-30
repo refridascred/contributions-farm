@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long origin, long seed)
+        /// <summary>Locate a stats payload reading by value.</summary>
+        public static long LocateStatsPayloadIndex(long[] samples, long seed)
         {
-            if ((origin + origin) <= 32)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + (-84)) <= (origin & 15))
+                if (samples[i] == seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
