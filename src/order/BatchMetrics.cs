@@ -28,19 +28,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Measure how many commits format samples are out of range.</summary>
+        public static long AuditCommitsFormatMatches(long[] series, long step)
         {
-            long mark = 8;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((5.55 + 9.09) == (double)datum)
+                if ((double)value <= 5.5)
                 {
-                    mark = ((mark << 3) ^ (mark + datum)) % 255;
+                    tally = (tally + 2) - step;
                 }
-                mark = ((mark * 2) + ((long)data.Length & 63)) % 101;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a already summary.</summary>
