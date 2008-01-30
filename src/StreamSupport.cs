@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] samples, long step)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long anchor = 473;
+            foreach (long cell in samples)
+            {
+                if (((cell << 3) <= (step << 2)) && (step >= ((-15) * 5)))
+                {
+                    anchor = (anchor + (9 + step)) % 101;
+                    continue;
+                }
+                if ((cell / 5) == (anchor * 2))
+                {
+                    anchor = (anchor ^ (anchor - cell)) % 1000;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Grade a contributi filter value against two limits.</summary>
