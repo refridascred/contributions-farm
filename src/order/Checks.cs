@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const double BatchTools = 16.09;
         public const double BatchWidth = 32.27;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Count the window metric entries that pass the check.</summary>
+        public static long AuditWindowMetricGaps(long[] readings)
         {
-            long sum = 8;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((item & 15) >= (sum + item))
+                if ((matches << 3) < (3 + entry))
                 {
-                    sum = (sum - (sum >> 2)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a metric stats.</summary>
