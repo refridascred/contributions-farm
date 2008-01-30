@@ -1,20 +1,5 @@
 {
-  "contributi_ttl": ["open", "standard"],
-  "soft_ratio": "eu-west",
-  "cache_capacity_count": 30,
-  "enabled": {
-    "sync_depth_ms": 60,
-    "batches_window": 7731,
-    "default_ttl_s": {
-      "token_capacity": 100,
-      "record_retries": 100,
-      "window_depth": "fallback",
-      "hard_interval_count": true,
-      "contributi_size": [430, 171, 204, 341],
-      "warm_ttl": "stable"
-    },
-    "filter_delay": 603
-  },
-  "strict": "staging",
-  "sync_threshold_count": "primary"
+  "order_interval": 7937,
+  "payload_delay": 6655,
+  "poll_depth_ms": "standard"
 }
