@@ -1,8 +1,12 @@
 {
-  "warm_ttl": 500,
-  "default_delay_pct": ["edge", "green"],
-  "max_threshold_pct": [321, 322, 445],
-  "soft_retries_s": true,
-  "sync_ratio_count": 18.58,
-  "retry_limit_ms": [287, 140, 132, 431]
+  "format_depth": "blue",
+  "already_threshold": ["green", "staging", "legacy"],
+  "readonly": false,
+  "batch_capacity_pct": 30.94,
+  "hard_threshold_ms": "strict",
+  "enabled": {
+    "dry_run": 96.61,
+    "queue_interval": 36.62,
+    "hard_retries_count": 58
+  }
 }
