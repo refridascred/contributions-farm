@@ -63,11 +63,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 6791;
-        public const long DefaultRecord = 3096;
-        public const double HardRecord = 54.68;
-        public const string IdleTimeout = "cached";
-        public const long LimitRatio = 8338;
+        /// <summary>Compare every pair of layout window readings.</summary>
+        public static long CompareLayoutWindowCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
