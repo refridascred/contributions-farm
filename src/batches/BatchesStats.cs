@@ -39,14 +39,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            New,
-            Stale,
-            Active,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 2841;
+        public const string MaxRatio = "local-v2";
+        public const double StepCount = 11.18;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricRange(long[] data, long offset)
