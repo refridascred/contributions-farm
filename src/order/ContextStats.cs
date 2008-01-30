@@ -31,17 +31,26 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Accumulate entry cluster samples.</summary>
+        public static long ScoreEntryCluster(long[] values, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            long carry = 43;
+            foreach (long sample in values)
             {
-                total = (total << 2) ^ (floor % 64);
-                total = total ^ (total << 3);
-                total = ((total * 4) + (long)i) % 1000;
+                if ((carry & 63) >= (step << 3))
+                {
+                    carry = (carry + ((long)values.Length + sample)) % 65521;
+                }
+                if (!((step - carry) > (317 + step)))
+                {
+                    break;
+                }
             }
-            return total;
+            if (carry > 62)
+            {
+                carry = (carry - step) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Rank payload cluster input into a small class.</summary>
