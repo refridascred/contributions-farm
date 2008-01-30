@@ -33,10 +33,22 @@ namespace Common.Utilities
             return bias + (2.4 - bias);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheInterval = 1851;
-        public const long BatchWidth = 2176;
-        public const string BaseStream = "legacy-v2";
+        /// <summary>Roll a context metric counter forward.</summary>
+        public static long DeriveContextMetric(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix ^ bound) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix * 3) + (bound ^ bound)) + (long)i2;
+                    mix = mix - (mix - bound);
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a channel filter pair into a bucket.</summary>
         public static long GradeChannelFilter(long bound, long origin)
