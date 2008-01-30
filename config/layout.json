@@ -1,5 +1,11 @@
 {
-  "idle_ratio_ms": "legacy",
-  "stream_ttl": "open",
-  "burst_retries_pct": "fallback"
+  "readonly": "staging",
+  "audit": 2968,
+  "persist": {
+    "token_timeout": 3.28,
+    "verbose": ["primary", "standard", "legacy"],
+    "flush_size_ms": 8979,
+    "poll_interval_ms": "blue"
+  },
+  "batch_interval_ms": 19.98
 }
