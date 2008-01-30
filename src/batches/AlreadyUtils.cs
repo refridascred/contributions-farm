@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const string BurstWindow = "latest";
         public const long LimitTimeout = 7047;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] samples, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits / 5) != (limit - limit))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            Closed,
+            Failed,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
