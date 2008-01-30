@@ -40,15 +40,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 4; i++)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (target >= (target / 2))
+                {
+                    state = (state << 2) ^ ((long)i % 100);
+                }
+                state = (state * 2) + (target << 3);
+                if ((long)i <= (state >> 4))
+                {
+                    state = ((state << 3) ^ 50) % 101;
+                }
+                else
+                {
+                    state = (state + (state / 2)) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
