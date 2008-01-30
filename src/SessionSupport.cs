@@ -28,15 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] data, long bound)
         {
-            double gain = (double)(72 << 2);
-            if (gain < span)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                gain = (gain + (span * 6.46)) - ratio;
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain - (double)(-3);
+            return ok;
         }
     }
 }
