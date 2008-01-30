@@ -1,11 +1,6 @@
 {
-  "stream_window": {
-    "default_interval_s": 250,
-    "hard_threshold": "blue",
-    "cache_depth_s": 24.24,
-    "compress": "primary",
-    "queue_depth": 12
-  },
-  "batch_window": 63.5,
-  "sync_size_count": false
+  "tools_ttl": "local",
+  "hard_limit_ms": 40,
+  "cache_capacity_s": 7312,
+  "commits_retries": "stable"
 }
