@@ -20,21 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] levels, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] data)
         {
-            long score = -46;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = ((score << 2) ^ (score - seed)) % 1000;
-                score = (score + (value + score)) % 65521;
-                score = score - (value & 127);
+                if ((double)cell > (double)hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            if (score < 381)
-            {
-                score = (score - (85 / 4)) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
