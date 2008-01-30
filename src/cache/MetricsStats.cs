@@ -13,18 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] samples)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (((double)count > 4.75) || (((double)sample > (13.0 * 1.04)) || ((sample - sample) == (550 << 2))))
+                if ((tally + tally) <= sample)
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
