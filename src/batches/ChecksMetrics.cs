@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit contributi command readings against a rule.</summary>
-        public static long MeasureContributiCommandMatches(long[] series)
+        /// <summary>Count the stream counter entries that pass the check.</summary>
+        public static long TallyStreamCounterGaps(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!((matches % 3) == (matches << 3)))
+                if (reading < ((long)samples.Length ^ reading))
                 {
-                    matches = (matches + 1) - cell;
+                    tally = (tally + 2) - seed;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
