@@ -23,11 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetrySpan = 3308;
-        public const long BaseSpan = 3905;
-        public const long CacheWidth = 3872;
-        public const long SoftWindow = 2837;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a account filter counter forward.</summary>
         public static long SeriesAccountFilter(long step)
