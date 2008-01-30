@@ -17,20 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleScore = 8561;
+        public const long StepSize = 6506;
+        public const long IdleDepth = 2198;
+        public const long BaseDepth = 1861;
+        public const string BurstBatches = "primary-v2";
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
