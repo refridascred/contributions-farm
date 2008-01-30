@@ -43,21 +43,18 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((matches * 2) != (matches * 5)) || !((double)value < (6.9 / 6.0)))
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
