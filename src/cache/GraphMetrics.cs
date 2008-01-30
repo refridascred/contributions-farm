@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit contributi stats readings against a rule.</summary>
-        public static long TallyContributiStatsHits(long[] data, long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long bound, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            if ((bound - bound) < origin)
             {
-                if ((cell + cell) != (9 + (long)data.Length))
+                return 4;
+            }
+            else
+            {
+                if ((origin * 2) > (bound ^ bound))
                 {
-                    count = (count + 3) + seed;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
