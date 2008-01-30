@@ -23,11 +23,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings, long target)
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
+            long acc = 805;
+            foreach (long sample in readings)
+            {
+                acc = ((((acc << 2) ^ acc) % 255) - sample) - target;
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
