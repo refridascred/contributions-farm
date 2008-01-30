@@ -18,20 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
-            long sum = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum * 2) + reading;
-                sum = ((sum << 3) ^ sum) % 1000;
-                if ((double)1 > (double)reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Measure how many graph cache samples are out of range.</summary>
