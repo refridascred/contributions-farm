@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record filter readings.</summary>
-        public static long ScoreRecordFilter(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] levels, long seed)
         {
-            long mark = 61;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                mark = (mark * 2) + cell;
+                if (!(((86 + seed) < (8 + seen)) && ((0 & 3) >= seen)))
+                {
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
