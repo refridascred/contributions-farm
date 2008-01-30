@@ -44,24 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                long delta = state / 6;
-                if ((191 & 7) == (delta << 1))
-                {
-                    state = state + ((long)i % 8);
-                }
-                else
-                {
-                    state = state - (state * 2);
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            Queued,
+            Draft,
+            Closed,
+            Ready,
         }
     }
 }
