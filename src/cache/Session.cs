@@ -49,11 +49,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 27.49;
-        public const double CacheRatio = 17.14;
-        public const double DefaultPayload = 25.76;
-        public const long BurstPayload = 5957;
-        public const double RetrySize = 33.97;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
