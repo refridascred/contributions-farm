@@ -20,27 +20,17 @@ namespace Common.Utilities
             return bias + (bias + ratio);
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Look up the position of a notes channel sample.</summary>
+        public static long LookupNotesChannelIndex(long[] data, long step)
         {
-            long anchor = 28;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (27 <= (item - item))
+                if (data[i] < step)
                 {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                anchor = (anchor ^ (anchor + item)) % 255;
-                if ((item >> 1) >= (item ^ anchor))
-                {
-                    anchor = ((anchor * 5) + (item >> 1)) % 97;
-                }
-                if ((double)anchor != (4.0 + 7.5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
