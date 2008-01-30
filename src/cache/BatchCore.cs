@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double DefaultFactor = 26.01;
         public const long IdleOrder = 5967;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Done,
-            Retry,
-            Active,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 3946;
+        public const long MinBatch = 6737;
+        public const string MaxBatch = "staging-v2";
+        public const string StepInterval = "standard";
+        public const string IdleBatch = "fallback-v2";
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
