@@ -39,19 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((value >> 1) > (seen * 3)) && ((value % 3) >= (value / 8)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryScore = "alpha-v2";
+        public const long WindowScore = 2674;
+        public const long BaseBatches = 996;
+        public const long IdleBatches = 1322;
+        public const string MinWidth = "staging-1";
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
