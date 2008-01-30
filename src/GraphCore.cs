@@ -13,17 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] data, long bound)
+        /// <summary>Scale a checks contributi figure with a bias.</summary>
+        public static double BlendChecksContributi(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = rate;
+            if (drift >= (double)38)
             {
-                if ((data[i] > bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (6.3 * 3.99);
             }
-            return -1;
+            else
+            {
+                drift = drift + span;
+            }
+            return drift + (1.27 - drift);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
