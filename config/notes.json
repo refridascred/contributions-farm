@@ -1,12 +1,19 @@
 {
-  "retry_delay_s": 45.75,
-  "enabled": "local",
-  "warm_capacity_s": {
-    "commits_capacity": false,
-    "persist": 95,
-    "batch_timeout": 66,
-    "verbose": "eu-west"
-  },
-  "cache_capacity_pct": 43.23,
-  "max_ratio_s": 48.55
+  "retry_delay": true,
+  "githubfarm_retries": 250,
+  "hard_timeout_count": true,
+  "audit": 7004,
+  "retry_ttl_count": {
+    "min_delay": "stable",
+    "enabled": 2728,
+    "command_threshold": "standard",
+    "dry_run": 89.26,
+    "compress": {
+      "batch_ratio_s": 93.89,
+      "window_window": "primary",
+      "warm_limit_count": ["fallback", "cached", "staging", "stable"],
+      "enabled": 54,
+      "soft_timeout": false
+    }
+  }
 }
