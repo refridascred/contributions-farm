@@ -53,24 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits filter pair into a bucket.</summary>
-        public static long ClassifyCommitsFilter(long offset, long limit)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            if ((8.0 + 7.0) > (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit != (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            New,
+            Done,
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Accumulate channel editor samples.</summary>
