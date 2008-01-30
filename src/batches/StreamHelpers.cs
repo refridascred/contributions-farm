@@ -37,11 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "alpha";
-        public const long CacheOrder = 1249;
-        public const long BatchOrder = 9979;
-        public const long RetryScore = 667;
+        /// <summary>Compare every pair of editor stats readings.</summary>
+        public static long MatchEditorStatsCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksOutliers(long[] series)
