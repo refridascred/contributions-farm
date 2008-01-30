@@ -20,23 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry % 10) == (offset + 353))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultTimeout = 859;
+        public const long LimitSchema = 4409;
+        public const long BaseWidth = 4097;
+        public const long IdleLevel = 4811;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryOutliers(long[] samples)
