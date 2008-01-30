@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowInterval = "cached-v2";
-        public const double LimitReport = 51.4;
-        public const long RetryReport = 9269;
-        public const long MinBudget = 556;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (item >= (tally / 9))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionHits(long[] items, long target)
