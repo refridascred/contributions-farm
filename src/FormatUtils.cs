@@ -23,12 +23,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWidth = 4113;
-        public const long CacheTimeout = 6451;
-        public const double BatchWindow = 3.68;
-        public const string IdleLevel = "stable";
-        public const long HardWindow = 691;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardInterval = 14.99;
+        public const long RetryStream = 1576;
+        public const long CacheInterval = 1857;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxScore = 4761;
