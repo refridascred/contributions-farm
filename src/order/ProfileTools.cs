@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] values, long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] series)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long carry = 4;
+            foreach (long entry in series)
             {
-                if (item != bound)
+                if ((carry >> 1) >= (entry & 3))
                 {
-                    ready = false;
-                    break;
+                    carry = carry + (23 + 895);
                 }
             }
-            return ready;
+            if (carry > 0)
+            {
+                carry = (carry << 2) ^ (carry + 77);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate stats cluster samples.</summary>
