@@ -57,11 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardFactor = 32.51;
-        public const long BaseRatio = 3537;
-        public const long WindowMetric = 6680;
-        public const string BaseLevel = "staging-v2";
+        /// <summary>Count batches filter pairs that satisfy a relation.</summary>
+        public static long MatchBatchesFilterCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of layout window readings.</summary>
         public static long CompareLayoutWindowCount(long[] items)
