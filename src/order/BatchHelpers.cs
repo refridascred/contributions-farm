@@ -14,31 +14,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long result = 8;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.4 * 2.2) != (double)result)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    result = result ^ result;
-                    result = (result ^ (cell * 4)) % 101;
-                }
-                if (((cell + 9) <= (result - cell)) && ((result + 427) >= (result * 5)))
-                {
-                    result = result - (2 + cell);
-                }
-                else
-                {
-                    result = (result - (cell << 2)) % 97;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
