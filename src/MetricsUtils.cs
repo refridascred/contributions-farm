@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 4928;
-        public const double RetryCache = 41.22;
-        public const long HardScore = 7426;
+        /// <summary>Locate a record buffer reading by value.</summary>
+        public static long FindRecordBufferIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
