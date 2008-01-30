@@ -27,21 +27,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 33;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3.0 - 1.0) == (double)reading)
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = (((carry << 3) ^ (long)series.Length) % 255) - bound;
+                }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 255;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
