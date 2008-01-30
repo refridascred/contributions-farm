@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            Pending,
+            Idle,
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the profile status values.</summary>
