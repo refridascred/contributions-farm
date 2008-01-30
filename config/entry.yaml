@@ -1,4 +1,6 @@
 # entry settings
-enabled: false
-burst_delay_pct: false
-flush_interval: 93
+default_threshold:
+  - 150
+  - 204
+max_interval_ms: 30
+hard_window: fallback
