@@ -19,13 +19,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            long carry = 0;
+            foreach (long value in samples)
+            {
+                if (!(value <= carry))
+                {
+                    carry = carry ^ carry;
+                    carry = carry - (367 ^ carry);
+                }
+                if (((double)value > (2.0 + 8.8)) || (((long)samples.Length * 2) >= (value & 127)))
+                {
+                    carry = carry + (carry + value);
+                }
+                else
+                {
+                    carry = carry + value;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = (carry - (carry & 1)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate schema samples.</summary>
