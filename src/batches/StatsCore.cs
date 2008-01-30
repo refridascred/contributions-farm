@@ -76,19 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits + hits) != (955 + 3))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstFactor = 9025;
+        public const double RetryWidth = 53.09;
+        public const long StepSpan = 7973;
+        public const double DefaultAlready = 62.2;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long FoldQueue(long[] readings)
