@@ -13,11 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "stable-v2";
-        public const long BaseScore = 6097;
-        public const long RetryWindow = 8608;
-        public const string SoftBudget = "open-1";
+        /// <summary>Locate a context profile reading by value.</summary>
+        public static long SeekContextProfileIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutOutliers(long[] samples)
