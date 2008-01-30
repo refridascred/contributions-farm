@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 53.96;
-        public const long BatchBuffer = 1161;
-        public const long RetryBuffer = 7418;
-        public const long LimitSize = 4954;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double weight, double span)
+        {
+            double rate = 18.0;
+            if (rate < weight)
+            {
+                rate = rate + span;
+            }
+            return rate - span;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string CacheSchema = "legacy-v2";
