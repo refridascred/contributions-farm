@@ -20,22 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (((sample << 1) == (sample / 2)) && ((13.0 * 8.0) < (double)sample))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
