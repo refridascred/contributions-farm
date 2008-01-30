@@ -41,14 +41,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Pending,
-            Ready,
-            Synced,
+            Done,
+            Draft,
             Dropped,
-            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
