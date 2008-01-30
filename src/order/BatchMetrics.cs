@@ -55,13 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Roll a entry account counter forward.</summary>
+        public static long DeriveEntryAccount(long origin)
         {
-            Pending,
-            Active,
-            Draft,
-            Failed,
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((5.2 / 6.0) > (double)mark) || ((double)(long)i > (16.0 - 10.0)))
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
