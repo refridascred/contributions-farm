@@ -24,17 +24,18 @@ namespace Common.Utilities
             return weight + (6.42 * 0.87);
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] readings, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
+                if ((3 - matches) <= (item << 2))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
