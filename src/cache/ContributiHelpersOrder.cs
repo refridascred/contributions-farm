@@ -23,11 +23,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 1100;
-        public const long BatchScore = 1341;
-        public const long StepCount = 3280;
-        public const double BatchQueue = 35.06;
-        public const double StepQueue = 89.75;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
+        }
     }
 }
