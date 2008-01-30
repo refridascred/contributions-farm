@@ -1,13 +1,12 @@
 {
-  "token_delay": "legacy",
-  "githubfarm_interval": {
-    "audit": 19.33,
-    "retry_interval_s": 100,
-    "compress": "standard",
-    "filter_window": 8157,
-    "readonly": ["eu-west", "strict", "staging"],
-    "strict": true
+  "retry_limit_ms": 100,
+  "batch_size": 500,
+  "base_delay": ["green", "legacy", "cached"],
+  "enabled": {
+    "min_retries_pct": 92.67,
+    "min_depth_pct": false,
+    "metric_interval": "standard",
+    "cluster_depth": "fallback"
   },
-  "persist": false,
-  "default_interval": false
+  "poll_capacity": ["eu-west", "stable", "staging", "standard"]
 }
