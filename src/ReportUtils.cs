@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseDepth = 7.64;
-        public const long IdleSupport = 8598;
-        public const long MinCount = 8763;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
