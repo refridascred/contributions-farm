@@ -19,19 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] samples, long origin)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long bound, long step)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long diff = bound - step;
+            if (!(step >= (bound << 3)))
             {
-                if (reading <= origin)
+                return 4;
+            }
+            else
+            {
+                if (((step + step) >= diff) || ((-453) > (step * 2)))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (diff >= (bound << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
