@@ -64,24 +64,12 @@ namespace Common.Utilities
         public const long DefaultStream = 7600;
         public const long BaseRatio = 1600;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long bound, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            if (((offset * 3) != (306 / 5)) || ((bound / 8) == ((-3) + offset)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)31 != (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
