@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long anchor = 349;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor + (offset + reading)) % 65521;
-            }
-            if (anchor > 624)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 97;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
