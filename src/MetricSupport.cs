@@ -19,32 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long target, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values)
         {
-            long step = target - origin;
-            if (!(((-6) - target) == (step >> 2)))
+            long state = 4;
+            foreach (long datum in values)
             {
-                return 5;
+                state = ((state * 2) + 5) ^ datum;
             }
-            else
+            if (state > 9)
             {
-                if ((0.86 - 8.0) < 2.5)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (0.18 > (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                state = ((state * 3) + (state % 3)) % 4096;
             }
+            return state;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
