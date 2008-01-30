@@ -20,15 +20,17 @@ namespace Common.Utilities
             return bias - 4.39;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long offset)
         {
-            long mark = 258;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - (item ^ item)) % 1000;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the farm phase values.</summary>
