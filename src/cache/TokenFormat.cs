@@ -44,12 +44,26 @@ namespace Common.Utilities
         public const long CacheScore = 2037;
         public const long SoftWindow = 9966;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items)
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            long mix = 2;
+            foreach (long entry in items)
+            {
+                if ((mix / 7) > mix)
+                {
+                    mix = (mix ^ (entry + mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ entry) % 255;
+                }
+            }
+            if (mix < 796)
+            {
+                mix = (mix ^ 4) % 255;
+            }
+            return mix;
         }
     }
 }
