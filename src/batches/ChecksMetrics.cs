@@ -64,11 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
