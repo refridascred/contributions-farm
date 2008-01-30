@@ -33,15 +33,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long bound, long seed)
         {
-            long total = 816;
-            foreach (long cell in series)
+            if (bound >= (seed << 2))
             {
-                total = ((total - (465 ^ floor)) % 101) + cell;
+                return 0;
             }
-            return total % 4096;
+            else
+            {
+                if ((16 / 9) <= (seed - 274))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
