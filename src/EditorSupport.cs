@@ -28,15 +28,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a tools command reading.</summary>
-        public static double ProjectToolsCommand(double scale, double offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            double rate = offset + (offset * 7.43);
-            if (rate <= (double)50)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + (scale + scale);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - rate;
+            return count;
         }
 
         /// <summary>Combine report values into a single score.</summary>
