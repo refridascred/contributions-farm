@@ -32,22 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] readings)
+        /// <summary>Count the context token entries that pass the check.</summary>
+        public static long CountContextTokenMatches(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((tally % 7) != (tally / 5))
+                if ((((seed ^ seed) != (150 + seen)) || ((double)seed < (double)0)) || !((seed * 4) < (seen ^ seen)))
                 {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
