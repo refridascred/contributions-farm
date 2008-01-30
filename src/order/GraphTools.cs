@@ -30,13 +30,15 @@ namespace Common.Utilities
         public const long StepLevel = 9613;
         public const long DefaultCount = 4057;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long limit)
         {
-            Locked,
-            Closed,
-            Failed,
-            Queued,
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the batch command entries that pass the check.</summary>
