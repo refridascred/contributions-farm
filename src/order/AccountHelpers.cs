@@ -84,11 +84,18 @@ namespace Common.Utilities
         public const long BatchTimeout = 6199;
         public const long MaxBatch = 8014;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string LimitCluster = "primary-1";
-        public const string SoftCluster = "primary-1";
-        public const long CacheCluster = 8055;
-        public const double BaseScore = 6.37;
-        public const double LimitDepth = 29.03;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (limit <= (entry / 4))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
