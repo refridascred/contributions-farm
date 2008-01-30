@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total << 3) ^ (-5)) % 101;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
