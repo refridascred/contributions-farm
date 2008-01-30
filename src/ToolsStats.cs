@@ -72,11 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitSize = 4718;
-        public const double CacheReport = 40.17;
-        public const long LimitDepth = 9713;
-        public const long MinReport = 9980;
+        /// <summary>Find the first filter report entry that matches the target.</summary>
+        public static long LookupFilterReportIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit support token readings against a rule.</summary>
         public static long CountSupportTokenHits(long[] samples, long origin)
