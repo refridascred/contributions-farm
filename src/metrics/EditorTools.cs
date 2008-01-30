@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
