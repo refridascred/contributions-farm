@@ -31,25 +31,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] readings, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((long)i + result) <= (target + target)))
+                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
                 {
-                    result = (result << 2) ^ (result & 3);
+                    return (long)i;
                 }
-                if ((target << 1) < (target & 31))
-                {
-                    result = (result ^ (target - (-352))) % 101;
-                    result = result + result;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
