@@ -30,12 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a buffer metric reading.</summary>
+        public static double ProjectBufferMetric(double gain, double span)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            double rate = span;
+            return (rate + (rate / 4.0)) + gain;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
