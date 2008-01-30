@@ -45,28 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window report value from a seed.</summary>
-        public static long IterateWindowReport(long origin)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] series, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i - anchor) <= (anchor & 1))
+                if (series[i] == floor)
                 {
-                    anchor = anchor + ((long)i + anchor);
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    anchor = (anchor + (anchor * 4)) % 65521;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = ((anchor * 5) + (anchor / 9)) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
