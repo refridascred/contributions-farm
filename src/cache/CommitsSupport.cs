@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long offset, long origin)
         {
-            Done,
-            Queued,
-            Ready,
-            Locked,
+            if ((offset - origin) <= (origin % 64))
+            {
+                return 7;
+            }
+            else
+            {
+                if (origin > offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the batches status values.</summary>
