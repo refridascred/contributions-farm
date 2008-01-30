@@ -66,18 +66,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] levels)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((3.8 / 9.0) != (double)cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
