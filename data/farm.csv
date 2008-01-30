@@ -1,8 +1,8 @@
-id,count,region
-1,324,41.99
-2,61,94.64
-3,local,69.94
-4,927,466
-5,83.11,eu-west
-6,653,28.59
-7,12.29,63.64
+id,count,weight,rank,ratio
+1,eu-west,standard,695,86.75
+2,353,161,403,61.12
+3,621,836,staging,open
+4,latest,915,235,734
+5,34,60.43,655,local
+6,77.31,666,38.91,blue
+7,standard,fallback,cached,blue
