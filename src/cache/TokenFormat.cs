@@ -33,19 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] items, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Idle,
+            Failed,
+            Paused,
+            Ready,
         }
     }
 }
