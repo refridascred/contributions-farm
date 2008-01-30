@@ -25,11 +25,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitRatio = 6112;
-        public const string SoftQueue = "primary-1";
-        public const long LimitQueue = 4375;
-        public const long IdleQueue = 2742;
+        /// <summary>Classify a context session pair into a bucket.</summary>
+        public static long GradeContextSession(long offset, long bound)
+        {
+            if ((offset % 60) < (offset + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((6.2 - 9.0) != (double)offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] samples, long floor)
