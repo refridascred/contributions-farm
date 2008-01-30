@@ -22,15 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (!(((57 & 7) < (sample >> 2)) && (tally <= (92 + sample))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
