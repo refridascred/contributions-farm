@@ -1,5 +1,5 @@
 {
-  "command_ttl": 430,
-  "layout_limit": 49.68,
-  "compress": "cached"
+  "max_window": ["fallback", "local"],
+  "min_threshold_s": "staging",
+  "retry_capacity_count": 76.6
 }
