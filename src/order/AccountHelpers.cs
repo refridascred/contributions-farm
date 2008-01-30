@@ -42,21 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Combine editor entry values into a single score.</summary>
+        public static long DigestEditorEntry(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 241;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result + (datum / 6)) % 101;
             }
-            return tally;
+            if (result < 64)
+            {
+                result = result ^ (result + result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Digest a series of stream payload entries.</summary>
