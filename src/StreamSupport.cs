@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a token channel sample.</summary>
-        public static long LookupTokenChannelIndex(long[] levels, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 41;
+            foreach (long cell in levels)
             {
-                if (levels[i] == bound)
+                if ((double)cell > 3.53)
                 {
-                    return (long)i;
+                    result = result + (cell << 2);
                 }
             }
-            return -1;
+            if (result > 30)
+            {
+                result = (result + (result - result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Grade a contributi filter value against two limits.</summary>
