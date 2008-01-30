@@ -49,19 +49,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] levels, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long state = 63;
+            foreach (long entry in items)
             {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state ^ (state << 3)) - offset;
+                state = ((state * 5) + (entry + state)) % 65521;
             }
-            return valid;
+            if (state < 14)
+            {
+                state = (state * 2) + (state >> 1);
+            }
+            return state;
         }
     }
 }
