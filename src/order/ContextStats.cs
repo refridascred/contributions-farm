@@ -17,12 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] samples, long step)
         {
-            Idle,
-            Draft,
-            Closed,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the cache mode values.</summary>
