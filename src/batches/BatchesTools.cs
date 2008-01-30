@@ -28,17 +28,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] data, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 35;
+            foreach (long item in levels)
             {
-                if ((data[i] == limit) && ((data[i] % 2) != 0))
+                if (item >= (floor & 15))
                 {
-                    return (long)i;
+                    carry = carry - (floor - item);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (5 - floor);
+                    carry = (carry + item) % 101;
+                }
+                if ((item + item) > (item + 0))
+                {
+                    carry = (carry + (742 * 5)) % 4096;
+                }
+                else
+                {
+                    carry = carry - (carry << 3);
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
