@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "primary-v2";
-        public const long HardContributi = 6126;
-        public const long BaseContributi = 1716;
-        public const long RetryRatio = 6607;
+        /// <summary>Grade a profile graph value against two limits.</summary>
+        public static long RankProfileGraph(long limit, long floor)
+        {
+            long slot = limit - floor;
+            if ((double)287 != (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) >= (2 - slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string RetryReport = "fallback-v2";
