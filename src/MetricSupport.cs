@@ -28,17 +28,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] readings, long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias3 = (double)(9 ^ 25);
+            for (int i = 0; i < 5; i++)
             {
-                if ((readings[i] < bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias3 = ((bias3 - (double)(long)i) - bias) - bias2;
             }
-            return -1;
+            return bias3 - 5.0;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
