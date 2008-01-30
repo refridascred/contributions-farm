@@ -48,26 +48,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] values, long step)
         {
-            long acc = 384;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading * 5) != (reading / 2))
+                if (values[i] >= step)
                 {
-                    acc = acc ^ (reading + acc);
-                }
-                else
-                {
-                    acc = (acc - reading) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc > 545)
-            {
-                acc = ((acc << 2) ^ (acc << 2)) % 1000;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Compare every pair of layout window readings.</summary>
