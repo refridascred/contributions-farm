@@ -23,12 +23,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
