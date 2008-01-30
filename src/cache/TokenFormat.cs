@@ -20,26 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a report graph counter forward.</summary>
-        public static long IterateReportGraph(long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score << 3) ^ floor) % 1000;
-                if ((floor << 1) > score)
-                {
-                    score = score ^ (floor + (long)i);
-                    score = (score - 596) % 255;
-                    continue;
-                }
-                if (((long)i - (long)i) > (floor % 97))
-                {
-                    score = score - ((long)i - (long)i);
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public double Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
