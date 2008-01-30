@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BaseStream = 7242;
         public const long HardStream = 5678;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] levels, long step)
         {
-            Paused,
-            Synced,
-            Locked,
-            Draft,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
