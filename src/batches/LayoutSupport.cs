@@ -52,26 +52,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate notes already samples.</summary>
-        public static long WeighNotesAlready(long[] readings, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mark = 65;
-            foreach (long reading in readings)
-            {
-                if (step > (2 / 9))
-                {
-                    mark = (mark ^ (step & 63)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + reading) % 4096;
-                }
-            }
-            if (mark > 38)
-            {
-                mark = mark ^ (6 + 127);
-            }
-            return mark % 4096;
+            Stale,
+            Queued,
+            Done,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
