@@ -21,10 +21,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstFactor = 949;
-        public const string CacheProfile = "latest";
-        public const long BurstProfile = 7399;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] values)
