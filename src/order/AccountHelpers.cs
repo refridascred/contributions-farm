@@ -58,11 +58,40 @@ namespace Common.Utilities
         public const double HardCount = 89.95;
         public const double MaxAlready = 47.18;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 3981;
-        public const long BaseBudget = 2112;
-        public const double SoftGraph = 66.9;
-        public const string LimitGraph = "cached-v2";
+        /// <summary>Rank record route input into a small class.</summary>
+        public static long BucketRecordRoute(long limit, long floor)
+        {
+            long diff = limit + floor;
+            if (((-2) - diff) >= (limit / 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff + diff) > limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((15.0 + 6.79) >= (double)limit) && ((diff << 3) < floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3.63 / 5.0) > (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
