@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
