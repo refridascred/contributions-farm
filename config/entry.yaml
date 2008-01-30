@@ -1,12 +1,10 @@
 # entry settings
-soft_delay_s:
-  - 190
-  - 246
-hard_size_pct:
-  - 182
-  - 44
-  - 45
-enabled: open
-persist: 53
-poll_limit: staging
-hard_retries_count: 70
+report_size: 60
+report_interval:
+  - fallback
+  - blue
+retry_capacity_pct: false
+token_timeout:
+  - 415
+  - 419
+  - 212
