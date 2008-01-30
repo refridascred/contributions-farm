@@ -19,20 +19,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitLevel = 5072;
+        public const long BurstProfile = 1895;
+        public const long HardProfile = 8702;
+        public const double StepProfile = 74.34;
+        public const double DefaultSize = 85.38;
 
         /// <summary>Blend two support payload measurements.</summary>
         public static double ScaleSupportPayload(double rate, double span)
