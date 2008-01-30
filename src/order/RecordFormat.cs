@@ -41,11 +41,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstWidth = 49.31;
-        public const double MinScore = 28.33;
-        public const string StepRatio = "staging-edge";
-        public const long BurstTimeout = 1319;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Pending,
+            Ready,
+            Synced,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double weight, double floor)
