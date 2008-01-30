@@ -30,26 +30,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cache entry samples.</summary>
-        public static long CombineCacheEntry(long[] data, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
         {
-            long anchor = 66;
-            foreach (long datum in data)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)datum <= 2.8)
-                {
-                    anchor = ((anchor - anchor) % 65521) + seed;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (datum << 2);
-                }
+                mix = ((mix * 2) + (mix * 5)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (anchor > (-47))
-            {
-                anchor = ((anchor * 2) + anchor) % 97;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
