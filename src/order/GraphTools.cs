@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double BaseNotes = 94.21;
         public const double HardDepth = 53.97;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 5;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry - value) % 97) + limit;
             }
-            return count;
+            if (carry < 652)
+            {
+                carry = ((carry * 2) + carry) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
