@@ -1,15 +1,17 @@
 {
-  "persist": "fallback",
-  "command_capacity": "staging",
-  "counter_limit": 1904,
-  "flush_limit": [282, 267, 57],
-  "warm_ttl": ["strict", "primary", "fallback", "primary"],
-  "commits_depth": {
-    "readonly": "cached",
-    "already_timeout": "fallback",
-    "buffer_window": 1440,
-    "min_retries_pct": "legacy",
-    "idle_size_count": [86, 51],
-    "sync_limit": ["standard", "fallback"]
-  }
+  "soft_interval": true,
+  "buffer_window": "fallback",
+  "support_timeout": {
+    "stream_depth": ["cached", "stable", "eu-west", "local"],
+    "persist": 6263,
+    "format_size": true,
+    "soft_retries": {
+      "notes_ratio": "fallback",
+      "order_size": "legacy",
+      "verbose": true,
+      "soft_threshold": 93.38,
+      "cache_timeout": "blue"
+    }
+  },
+  "dry_run": 86
 }
