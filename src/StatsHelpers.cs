@@ -55,15 +55,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftWidth = "alpha-edge";
+        public const long MinCommand = 1012;
+        public const long BaseLevel = 2764;
+        public const long LimitCommand = 1369;
+        public const string RetryCommand = "alpha-edge";
     }
 }
