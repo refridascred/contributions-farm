@@ -20,12 +20,13 @@ namespace Common.Utilities
             return bias2 - (double)58;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
