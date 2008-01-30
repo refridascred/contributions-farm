@@ -26,11 +26,27 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseQueue = "local-1";
-        public const string DefaultQueue = "legacy-1";
-        public const string SoftFactor = "alpha-v2";
-        public const long CacheQueue = 3383;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] data, long origin)
+        {
+            long sum = 0;
+            foreach (long cell in data)
+            {
+                if ((sum << 1) == (origin + 801))
+                {
+                    sum = sum ^ (origin - cell);
+                }
+                else
+                {
+                    sum = (sum ^ ((-406) + cell)) % 255;
+                }
+            }
+            if (sum < (-231))
+            {
+                sum = sum - sum;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
