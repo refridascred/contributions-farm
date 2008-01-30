@@ -42,11 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] items, long offset)
         {
-            double load = (double)(520 & 255);
-            return (load - floor) + scale;
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a payload summary.</summary>
