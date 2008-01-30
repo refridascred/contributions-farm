@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 92.43;
+        public const long MinCount = 2695;
+        public const double BaseSchema = 60.35;
+        public const long BurstSchema = 6062;
+        public const long RetryScore = 9924;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long SeriesContext(long bound)
