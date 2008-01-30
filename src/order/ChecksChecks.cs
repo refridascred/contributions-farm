@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long bound, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] levels, long bound)
         {
-            long bound2 = bound ^ floor;
-            if ((floor <= (434 * 3)) || ((bound & 31) <= bound2))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 2) > (bound / 3))
+                if ((bound - matches) > (sample + matches))
                 {
-                    return 6;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if (0 < (bound2 ^ 10))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every graph counter entry stays within the limit.</summary>
