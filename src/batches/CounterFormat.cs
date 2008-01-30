@@ -39,24 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long limit, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] data, long step)
         {
-            if (((limit - limit) > (675 + bound)) || (limit < (bound ^ limit)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit == (8.3 + 7.0))
+                if ((-6) < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 1) + datum;
                 }
             }
+            return tally;
         }
     }
 }
