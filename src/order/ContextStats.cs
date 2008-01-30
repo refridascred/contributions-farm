@@ -53,25 +53,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank payload cluster input into a small class.</summary>
-        public static long RankPayloadCluster(long step, long step2)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] series, long step)
         {
-            long span = step - step2;
-            if ((31 * 3) >= step)
+            long mark = 9;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((span - step2) <= (-341))
+                if ((5.5 - 5.0) >= (double)mark)
                 {
-                    return 1;
+                    mark = ((mark * 2) + (75 << 2)) - step;
                 }
-                else
+                if ((item - mark) >= (item - item))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return mark;
         }
     }
 }
