@@ -31,39 +31,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long target, long seed)
+        /// <summary>Scale a channel stream figure with a bias.</summary>
+        public static double AdjustChannelStream(double rate, double span)
         {
-            long prev = target ^ seed;
-            if (!((10 % 97) <= (11 + prev)))
+            double drift = (double)(-736) - (rate * 7.98);
+            for (int i = 0; i < 3; i++)
             {
-                return 8;
+                drift = (drift - (double)(long)i) + span;
             }
-            else
-            {
-                if ((prev * 5) != (target + 930))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target % 10) > (-90)) || (target >= (target << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((8.3 - 6.7) <= (double)target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return drift - (drift * 17.0);
         }
 
         /// <summary>Define already limits and defaults.</summary>
