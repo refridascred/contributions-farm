@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long RetryWindow = 8608;
         public const string SoftBudget = "open-1";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowDepth = 8689;
-        public const string StepLevel = "primary-v2";
-        public const long HardContext = 8839;
-        public const string BatchContext = "strict-1";
-        public const long WindowContext = 9313;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((value >> 1) > (seen * 3)) && ((value % 3) >= (value / 8)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double BlendBatch(double rate, double bias)
