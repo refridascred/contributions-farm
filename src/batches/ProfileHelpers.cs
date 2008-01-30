@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] samples, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            long mix = 69;
-            foreach (long entry in samples)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix ^ (mix * 3)) - seed;
-                if (8 <= (entry - entry))
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
