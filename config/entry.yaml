@@ -1,12 +1,12 @@
 # entry settings
-persist: eu-west
-base_ttl_s: false
-min_retries_s:
-  default_threshold_s: 9
-  stream_delay: primary
-  warm_ratio_s:
-    sync_delay_ms: 41.58
-    default_ttl_s: latest
-    batch_size_pct: 22.44
-    enabled: 8226
-    readonly: true
+soft_delay_s:
+  - 190
+  - 246
+hard_size_pct:
+  - 182
+  - 44
+  - 45
+enabled: open
+persist: 53
+poll_limit: staging
+hard_retries_count: 70
