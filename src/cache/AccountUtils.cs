@@ -31,31 +31,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long origin)
-        {
-            if ((double)origin < (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((664 ^ step) < (718 - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - 34) > 16)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseTimeout = 3.13;
+        public const double MaxCache = 47.35;
+        public const double BatchCache = 4.41;
+        public const long IdleSpan = 6918;
+        public const double SoftCache = 22.07;
     }
 }
