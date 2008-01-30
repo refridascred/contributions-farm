@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "local";
-        public const string BatchCount = "cached";
-        public const long MinAccount = 6839;
-        public const long BaseScore = 3451;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool ValidateBatchBounds(long[] data, long seed)
