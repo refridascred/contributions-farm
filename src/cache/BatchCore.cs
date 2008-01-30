@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a batches info.</summary>
