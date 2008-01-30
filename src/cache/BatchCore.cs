@@ -19,31 +19,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(value <= carry))
+                if (((71 << 3) == (long)i) || ((acc << 1) != (limit - (-4))))
                 {
-                    carry = carry ^ carry;
-                    carry = carry - (367 ^ carry);
+                    acc = (acc ^ (limit * 5)) % 97;
+                    acc = acc + limit;
                 }
-                if (((double)value > (2.0 + 8.8)) || (((long)samples.Length * 2) >= (value & 127)))
-                {
-                    carry = carry + (carry + value);
-                }
-                else
-                {
-                    carry = carry + value;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (carry > 0)
-            {
-                carry = (carry - (carry & 1)) % 1000;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Accumulate schema samples.</summary>
