@@ -61,20 +61,11 @@ namespace Common.Utilities
             return ratio - (floor - rate);
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 3) + (carry + limit)) % 4096;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    carry = (((carry * 3) + carry) % 101) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
