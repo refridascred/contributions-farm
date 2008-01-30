@@ -62,18 +62,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout metrics readings against a rule.</summary>
-        public static long AuditLayoutMetricsHits(long[] levels)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = 0;
+            foreach (long item in items)
             {
-                if ((1.0 / 4.0) > (double)value)
+                if ((score + item) > (score + (-699)))
                 {
-                    matches = matches + 1;
+                    score = ((score * 3) + (long)items.Length) % 101;
+                }
+                else
+                {
+                    score = (score * 2) + (score << 3);
                 }
             }
-            return matches;
+            if (score < 93)
+            {
+                score = (score ^ (score >> 1)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a route record.</summary>
