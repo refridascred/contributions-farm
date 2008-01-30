@@ -26,19 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics githubfarm samples are out of range.</summary>
-        public static long CountMetricsGithubfarmHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count + count) < count)
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 9800;
+        public const string StepFilter = "fallback";
+        public const string RetryBudget = "staging-1";
+        public const double WindowSpan = 27.44;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] values, long floor)
