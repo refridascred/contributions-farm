@@ -1,10 +1,8 @@
 {
-  "sync_timeout_ms": {
-    "schema_delay": "local",
-    "idle_ttl_count": 784,
-    "batches_depth": "edge"
-  },
-  "retry_threshold_s": [150, 211, 41],
-  "warm_size_pct": "edge",
-  "entry_delay": 7993
+  "dry_run": [260, 234],
+  "tools_delay": ["strict", "cached", "latest", "open"],
+  "context_size": "local",
+  "stream_window": 60,
+  "soft_window_count": 71.71,
+  "enabled": 94.73
 }
