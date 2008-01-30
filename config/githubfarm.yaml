@@ -1,8 +1,4 @@
 # githubfarm settings
-base_ttl_s:
-  - primary
-  - open
-  - local
-  - local
-poll_threshold_s: green
-schema_threshold: 33.98
+warm_limit_ms: false
+default_capacity_s: legacy
+metric_ratio: 21
