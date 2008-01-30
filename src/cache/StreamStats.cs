@@ -36,12 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double scale, double floor)
-        {
-            double weight = (double)(3 / 8);
-            return (weight + scale) + floor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 12.62;
+        public const long HardCounter = 5224;
+        public const long RetryCounter = 5786;
+        public const double IdleCounter = 56.15;
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] series, long seed)
