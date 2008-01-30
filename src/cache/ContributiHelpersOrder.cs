@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long seed, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if ((double)target >= (5.08 * 3.6))
             {
-                if ((99 >> 2) <= (cell & 255))
+                return 6;
+            }
+            else
+            {
+                if ((seed - target) >= seed)
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (target > (seed - 917))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + target) == (701 * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the token mode values.</summary>
