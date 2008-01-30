@@ -56,39 +56,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long seed)
-        {
-            long bound = origin + seed;
-            if ((origin + bound) >= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 3) <= (633 / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed + bound) <= (903 + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed < (bound + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 27.49;
+        public const double CacheRatio = 17.14;
+        public const double DefaultPayload = 25.76;
+        public const long BurstPayload = 5957;
+        public const double RetrySize = 33.97;
     }
 }
