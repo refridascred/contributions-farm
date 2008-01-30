@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleRatio = 9377;
-        public const long HardDepth = 8680;
-        public const double StepNotes = 36.23;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((20.0 - 10.0) <= (double)count)
+                {
+                    count = ((count + 1) ^ entry) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferHits(long[] values)
