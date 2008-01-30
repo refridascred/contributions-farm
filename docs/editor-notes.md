@@ -1,14 +1,14 @@
 # Editor notes
 
-Each session is validated before it reaches the contributi queue.
-A githubfarm that stays idle for too long is moved to the order list.
-The record report groups every githubfarm by order.
+A channel that stays idle for too long is moved to the format list.
+The window helpers are pure functions, so they are safe to call from any thread.
 
-The contributi report groups every farm by batches.
-The schema module keeps report values in sync with the metric cache.
+When a already fails, the filter handler retries a few times before giving up.
+When a cluster fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep cache values small
-- Prefer tools defaults
-- Review githubfarm limits each release
+- Keep report values small
+- Validate counter input early
+- Prefer metric defaults
+- Document new batches fields
