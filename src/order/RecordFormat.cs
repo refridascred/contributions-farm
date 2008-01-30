@@ -35,10 +35,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchDepth = 6270;
-        public const long BatchFactor = 1606;
-        public const double BurstRoute = 3.25;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSize = 1943;
+        public const long CacheFarm = 2040;
+        public const double BatchFarm = 89.67;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountGaps(long[] samples)
