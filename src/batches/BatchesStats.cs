@@ -29,11 +29,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 20.35;
-        public const long BatchWindow = 2025;
-        public const double MaxWidth = 22.6;
-        public const string CacheWindow = "stable-edge";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((2 <= bound) || ((5 ^ 7) <= (bound >> 5)))
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long CombineChannel(long[] values, long limit)
