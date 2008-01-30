@@ -77,18 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] series, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((count + limit) < (sample - sample))
+                if (entry < limit)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
