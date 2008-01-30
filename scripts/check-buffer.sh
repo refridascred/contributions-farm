@@ -6,24 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for item in edge latest open eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+BUFFER_LIMIT=6
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-latest}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
