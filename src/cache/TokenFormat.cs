@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm channel readings.</summary>
-        public static long TallyFarmChannel(long[] items, long limit)
-        {
-            long acc = 47;
-            foreach (long reading in items)
-            {
-                acc = acc ^ (reading + (-40));
-            }
-            if (acc < 676)
-            {
-                acc = (acc - limit) % 4096;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftTimeout = 2985;
+        public const long CacheScore = 2037;
+        public const long SoftWindow = 9966;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
