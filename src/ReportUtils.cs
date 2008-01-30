@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] series, long limit)
         {
-            Synced,
-            Active,
-            Ready,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
