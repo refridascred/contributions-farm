@@ -71,39 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long floor, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long delta = floor + origin;
-            if (9 > (floor % 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin + origin) > (6 * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin != (6.0 - 0.1)) || ((double)floor >= (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-44) / 3) >= delta)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
