@@ -56,22 +56,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] levels, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((2 & 63) > (75 - sample)) && (bound > (seen & 63)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
     }
 }
