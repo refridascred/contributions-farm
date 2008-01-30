@@ -20,10 +20,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRecord = 54.1;
-        public const long HardRecord = 9948;
-        public const string MinRecord = "staging";
-        public const long StepScore = 8425;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double bias, double span)
+        {
+            double drift = (double)8;
+            if (drift > span)
+            {
+                drift = (drift - span) - bias;
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift + span;
+        }
     }
 }
