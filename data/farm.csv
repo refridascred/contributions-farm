@@ -1,11 +1,6 @@
-id,state,region,ratio
-1,edge,293,263
-2,95.73,primary,latest
-3,5.11,fallback,81.39
-4,edge,local,417
-5,210,9.1,410
-6,latest,5,33.51
-7,304,115,62.77
-8,fallback,623,4.21
-9,66.36,blue,38.04
-10,731,fallback,558
+id,rank,ratio,weight,owner
+1,stable,355,eu-west,179
+2,169,fallback,green,723
+3,669,611,673,latest
+4,497,standard,77.49,25.19
+5,518,34.12,560,blue
