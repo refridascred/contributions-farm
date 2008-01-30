@@ -31,14 +31,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Failed,
-            Active,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseRatio = 58.69;
+        public const long DefaultMetric = 7817;
+        public const long BurstWidth = 170;
+        public const long BatchSize = 6823;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
