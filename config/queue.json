@@ -1,5 +1,10 @@
 {
-  "min_retries": [205, 466],
-  "format_capacity": "blue",
-  "poll_window": 30
+  "sync_timeout_ms": {
+    "schema_delay": "local",
+    "idle_ttl_count": 784,
+    "batches_depth": "edge"
+  },
+  "retry_threshold_s": [150, 211, 41],
+  "warm_size_pct": "edge",
+  "entry_delay": 7993
 }
