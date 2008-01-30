@@ -39,15 +39,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats batches series from a seed.</summary>
-        public static long StepStatsBatches(long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score * 5) + (long)i) % 1000;
+                if ((carry % 60) > (5 & 63))
+                {
+                    carry = carry + (bound + bound);
+                    continue;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
