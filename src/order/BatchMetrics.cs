@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const string RetryBudget = "staging-1";
         public const double WindowSpan = 27.44;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] items, long step)
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit cache graph readings against a rule.</summary>
