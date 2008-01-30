@@ -82,13 +82,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
+            Stale,
+            Idle,
+            Locked,
         }
     }
 }
