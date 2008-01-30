@@ -1,9 +1,8 @@
 # entry settings
-soft_size: 60
-dry_run: 30
+max_limit: 6022
+poll_limit_ms: 5266
 idle_threshold_ms:
-  editor_timeout: local
-  sync_window: true
-  audit: open
-  max_size_pct: 663
-  readonly: false
+  - 438
+  - 335
+  - 335
+  - 394
