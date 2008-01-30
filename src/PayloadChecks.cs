@@ -58,10 +58,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowSize = 4261;
-        public const long BaseSpan = 5946;
-        public const long BurstCommits = 8553;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportGaps(long[] data)
