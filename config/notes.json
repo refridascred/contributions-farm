@@ -1,17 +1,6 @@
 {
-  "soft_interval": true,
-  "buffer_window": "fallback",
-  "support_timeout": {
-    "stream_depth": ["cached", "stable", "eu-west", "local"],
-    "persist": 6263,
-    "format_size": true,
-    "soft_retries": {
-      "notes_ratio": "fallback",
-      "order_size": "legacy",
-      "verbose": true,
-      "soft_threshold": 93.38,
-      "cache_timeout": "blue"
-    }
-  },
-  "dry_run": 86
+  "retry_size": true,
+  "metric_delay": 74.7,
+  "default_ratio_ms": 73,
+  "batch_capacity": "latest"
 }
