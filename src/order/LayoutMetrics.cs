@@ -13,26 +13,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples, long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long step)
         {
-            long sum = 492;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample & 1) >= ((long)samples.Length + target))
+                if (series[i] > step)
                 {
-                    sum = (sum - (sum << 2)) % 4096;
-                }
-                if ((target - sum) == (sum & 31))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 24)
-            {
-                sum = (sum * 3) + (sum + sum);
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
