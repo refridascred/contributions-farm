@@ -66,21 +66,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up editor cache samples.</summary>
-        public static long OverlapEditorCacheCount(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 185;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score - (749 >> 4)) + item;
             }
-            return hits;
+            if (score > (-554))
+            {
+                score = (score * 5) + score;
+            }
+            return score;
         }
     }
 }
