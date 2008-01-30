@@ -20,22 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] items)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double weight = ratio - (offset * 0.87);
+            if (weight > (ratio - weight))
             {
-                if (!((value >> 4) > (seen & 255)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = weight + (double)313;
             }
-            return seen;
+            else
+            {
+                weight = weight + (offset * 4.4);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
