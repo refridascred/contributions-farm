@@ -1,6 +1,13 @@
 {
-  "poll_limit_pct": 63,
-  "order_depth": 41.09,
-  "soft_ratio_s": "stable",
-  "window_window": "stable"
+  "token_delay": "legacy",
+  "githubfarm_interval": {
+    "audit": 19.33,
+    "retry_interval_s": 100,
+    "compress": "standard",
+    "filter_window": 8157,
+    "readonly": ["eu-west", "strict", "staging"],
+    "strict": true
+  },
+  "persist": false,
+  "default_interval": false
 }
