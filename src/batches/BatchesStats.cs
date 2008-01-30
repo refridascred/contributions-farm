@@ -46,12 +46,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Retry,
-            Queued,
-            Done,
+            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Project the next checks already value.</summary>
