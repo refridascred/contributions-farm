@@ -23,13 +23,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
