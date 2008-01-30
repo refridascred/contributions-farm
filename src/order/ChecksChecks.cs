@@ -31,21 +31,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = floor;
+            if (scale < (3.5 * 5.48))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + rate;
             }
-            return hits;
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (scale / 3.0)) + (double)(long)i;
+            }
+            return scale - (double)571;
         }
     }
 }
