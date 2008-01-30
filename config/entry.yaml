@@ -1,5 +1,11 @@
 # entry settings
-editor_ratio: true
-profile_threshold: edge
-base_depth_ms: 2.74
-retry_capacity: standard
+persist: 82.98
+min_size_s: 30
+schema_interval: 5830
+editor_retries: true
+schema_timeout:
+  - green
+  - stable
+  - eu-west
+  - staging
+audit: false
