@@ -36,15 +36,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] readings)
-        {
-            long sum = 914;
-            foreach (long sample in readings)
-            {
-                sum = ((sum * 4) + sample) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 45.22;
+        public const double IdleReport = 81.27;
+        public const double SoftDepth = 66.11;
+        public const long StepLevel = 7314;
     }
 }
