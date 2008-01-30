@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            double ratio = (double)0 + bias;
+            if (ratio < (double)828)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                ratio = (ratio - (ratio - 8.2)) - rate;
             }
-            return carry;
+            return ratio - (ratio / 7.0);
         }
 
         /// <summary>Hold a counter summary.</summary>
