@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a filter buffer pair into a bucket.</summary>
-        public static long GradeFilterBuffer(long offset, long offset2)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] series)
         {
-            if (offset >= (offset2 >> 5))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 8) > 33)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((12.0 - 9.0) != (double)offset) && (offset > (offset << 3)))
+                    if ((series[i] - series[j]) == 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine notes context values into a single score.</summary>
