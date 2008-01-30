@@ -20,34 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of buffer filter readings.</summary>
-        public static long WeighBufferFilter(long[] levels, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] levels, long seed)
         {
-            long total = 122;
-            foreach (long datum in levels)
+            long score = -46;
+            foreach (long value in levels)
             {
-                if (!(((target + 0) >= (total >> 2)) && ((long)levels.Length < (total << 2))))
-                {
-                    total = (total ^ (total - datum)) % 65521;
-                }
-                if (((double)total != (6.0 + 6.5)) || ((double)391 < (double)datum))
-                {
-                    total = ((total * 5) + target) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (349 * 3)) % 97;
-                }
-                if (15.0 > (double)datum)
-                {
-                    break;
-                }
+                score = ((score << 2) ^ (score - seed)) % 1000;
+                score = (score + (value + score)) % 65521;
+                score = score - (value & 127);
             }
-            if (total < (-61))
+            if (score < 381)
             {
-                total = (total - target) % 97;
+                score = (score - (85 / 4)) % 65521;
             }
-            return total % 65521;
+            return score;
         }
 
         /// <summary>Hold a already stats.</summary>
