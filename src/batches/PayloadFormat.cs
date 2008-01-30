@@ -34,11 +34,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
