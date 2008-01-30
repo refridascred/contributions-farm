@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open eu-west strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-COMMAND_LIMIT=327
+COMMAND_LIMIT=453
 log "limit is ${COMMAND_LIMIT}"
