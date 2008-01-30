@@ -1,11 +1,13 @@
 # Command notes
 
-Keep stream and layout names short and lowercase.
-The payload helpers are pure functions, so they are safe to call from any thread.
-The graph report groups every format by command.
+Keep record and profile names short and lowercase.
+Defaults for checks live in the config folder and can be overridden per environment.
+
+Run the githubfarm check before changing any report limits.
+Use stats settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Review schema limits each release
-- Prefer farm defaults
-- Document new context fields
+- Review layout limits each release
+- Prefer record defaults
+- Log every graph change
