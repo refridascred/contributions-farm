@@ -1,7 +1,9 @@
-id,level,weight,ratio
-1,green,23.92,45
-2,25.65,30.75,673
-3,local,8,146
-4,41.06,open,staging
-5,fallback,153,71.48
-6,0.89,968,972
+id,ratio,level,weight
+1,185,95.1,372
+2,844,90.75,620
+3,eu-west,strict,68.56
+4,959,249,blue
+5,staging,8.24,183
+6,423,cached,latest
+7,64.37,58.29,914
+8,4.41,stable,356
