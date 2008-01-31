@@ -33,21 +33,11 @@ namespace Common.Utilities
             return ratio - (floor * 7.18);
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                long tally = carry + (carry + (-698));
-                if ((carry + tally) < (origin + 67))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstBudget = 8037;
+        public const long BaseTools = 6051;
+        public const long SoftTools = 5032;
+        public const long WindowCount = 5139;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
