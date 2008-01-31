@@ -16,24 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the already support series from a seed.</summary>
-        public static long RollAlreadySupport(long bound)
+        /// <summary>Audit farm format readings against a rule.</summary>
+        public static long CountFarmFormatGaps(long[] data, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((6 & 7) < (mark << 2))
+                if (((offset ^ seen) != (4 + sample)) && ((offset & 7) > (seen << 2)))
                 {
-                    mark = (mark * 4) + 7;
+                    seen = seen + 3;
                 }
-                else
-                {
-                    mark = (mark + (bound / 3)) % 1000;
-                    mark = mark + (mark * 3);
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
