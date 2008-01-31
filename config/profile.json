@@ -1,14 +1,5 @@
 {
-  "sync_interval_count": {
-    "cache_delay_pct": 5649,
-    "stream_interval": 1647,
-    "idle_delay_pct": "green",
-    "soft_capacity_pct": [469, 253, 210, 296],
-    "sync_interval": "green"
-  },
-  "warm_timeout": 30,
-  "flush_size_count": [22, 382, 476],
-  "enabled": true,
-  "channel_size": "primary",
-  "dry_run": [19, 345, 251]
+  "burst_limit_s": true,
+  "cache_interval_count": 1357,
+  "channel_ttl": true
 }
