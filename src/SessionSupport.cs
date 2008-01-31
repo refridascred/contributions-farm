@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long carry = 89;
-            foreach (long reading in samples)
-            {
-                if ((3.0 * 3.0) == (double)reading)
-                {
-                    carry = (carry ^ 74) % 1000;
-                }
-            }
-            return carry;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
