@@ -19,18 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] values, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long seed, long limit)
         {
-            long carry = 207;
-            foreach (long reading in values)
+            if ((double)2 >= (double)limit)
             {
-                if (!((offset / 2) == (18 * 2)))
+                return 7;
+            }
+            else
+            {
+                if ((0.13 + 4.4) > (double)limit)
                 {
-                    carry = carry ^ (reading ^ carry);
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Hold a farm options.</summary>
