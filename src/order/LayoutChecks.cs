@@ -28,12 +28,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchInterval = 9713;
-        public const long IdleLayout = 8180;
-        public const long StepSize = 1276;
-        public const double DefaultRatio = 81.88;
-        public const double BaseRatio = 44.13;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!!(count < (count * 2)))
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
