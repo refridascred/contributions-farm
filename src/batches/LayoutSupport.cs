@@ -25,11 +25,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double scale, double offset)
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            double weight = (double)(5 - 80);
+            if (weight >= 0.7)
+            {
+                weight = weight + (scale * 2.9);
+            }
+            else
+            {
+                weight = weight - (offset * 12.0);
+            }
+            return weight + (offset + scale);
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
