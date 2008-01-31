@@ -1,20 +1,14 @@
 # entry settings
-batch_ratio:
-  dry_run: 32.76
-  burst_limit_pct:
-    notes_capacity: standard
-    flush_delay_count: latest
-    commits_retries: true
-    retry_window:
-      - 212
-      - 89
-    graph_window: primary
-    stats_depth: stable
-  graph_threshold: stable
-  hard_ratio: green
-verbose:
-  format_ratio: primary
-  context_depth: false
-  readonly: 500
-  cache_retries_ms: false
-commits_interval: 26.65
+cache_interval: 93.64
+soft_size_s: open
+default_threshold: staging
+warm_delay_count:
+  - local
+  - green
+  - open
+  - stable
+enabled:
+  - strict
+  - green
+  - edge
+  - primary
