@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=391
-log "limit is ${RECORD_LIMIT}"
-
-for item in primary strict; do
+for item in blue staging; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-edge}"
 case "${mode}" in
-    open)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=336
+log "limit is ${RECORD_LIMIT}"
