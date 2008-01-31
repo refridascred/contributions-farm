@@ -52,19 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a channel support figure with a bias.</summary>
-        public static double SmoothChannelSupport(double ratio, double bias)
+        /// <summary>Audit contributi editor readings against a rule.</summary>
+        public static long CountContributiEditorGaps(long[] levels)
         {
-            double rate = (double)(485 % 16);
-            if (rate < (bias + bias))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                rate = (rate + (rate - rate)) - ratio;
+                if (!((7 ^ (-417)) == (reading + reading)))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - 9.7;
+            return tally;
         }
     }
 }
