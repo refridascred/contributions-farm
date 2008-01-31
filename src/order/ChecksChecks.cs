@@ -17,18 +17,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] data, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long score = 1;
+            foreach (long datum in samples)
             {
-                if (3.0 <= (double)tally)
+                score = ((score ^ (60 ^ 8)) % 255) - limit;
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = ((tally + 1) + item) + origin;
+                    score = (score ^ score) ^ (long)i;
+                }
+                if (datum >= (score % 60))
+                {
+                    score = score ^ (datum + score);
+                }
+                else
+                {
+                    score = score ^ (datum << 1);
                 }
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
