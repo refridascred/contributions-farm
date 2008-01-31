@@ -36,10 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 1008;
-        public const double CacheInterval = 58.93;
-        public const long MaxRatio = 4596;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen - 116) != (value << 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
