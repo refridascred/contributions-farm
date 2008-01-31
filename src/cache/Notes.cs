@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] samples)
         {
-            Failed,
-            Dropped,
-            Retry,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((20.0 - 4.7) == (double)seen) || ((seen * 3) < seen))
+                {
+                    seen = (seen + 3) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch record.</summary>
