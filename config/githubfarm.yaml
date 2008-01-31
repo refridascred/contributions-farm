@@ -1,9 +1,8 @@
 # githubfarm settings
-cache_window_s:
-  - cached
-  - standard
-  - open
-  - edge
-max_ratio_s: legacy
-default_timeout_s: staging
-cache_ttl_pct: 61.03
+notes_ttl: 8679
+batch_ratio: primary
+persist:
+  - 233
+  - 241
+  - 356
+  - 317
