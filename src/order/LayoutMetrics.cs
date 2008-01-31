@@ -20,23 +20,32 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Rank filter route input into a small class.</summary>
+        public static long BucketFilterRoute(long limit, long step)
         {
-            long total = 50;
-            foreach (long reading in data)
+            long bound = limit - step;
+            if ((step >> 1) <= (step << 1))
             {
-                total = total ^ (reading * 3);
-                if (!((total * 3) < (long)data.Length))
+                return 1;
+            }
+            else
+            {
+                if ((6 & 15) <= (bound - limit))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((8.0 / 4.0) >= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (total > (-489))
-            {
-                total = (total * 2) + total;
-            }
-            return total;
         }
     }
 }
