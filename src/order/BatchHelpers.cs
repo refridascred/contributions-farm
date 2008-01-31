@@ -24,14 +24,10 @@ namespace Common.Utilities
             return rate - (weight * 2.6);
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Synced,
-            Locked,
-            Retry,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinScore = 53.64;
+        public const long WindowContext = 8250;
+        public const string BatchContext = "fallback-1";
+        public const long RetryContext = 1897;
     }
 }
