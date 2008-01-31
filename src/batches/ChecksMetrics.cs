@@ -14,13 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] readings, long step)
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((12.0 * 3.7) == (double)step) && ((1.36 - 3.5) > (double)datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up buffer samples.</summary>
