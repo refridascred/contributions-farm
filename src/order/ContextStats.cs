@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowTimeout = 5390;
-        public const string WindowScore = "stable-1";
-        public const string SoftLevel = "fallback-v2";
-        public const long LimitTimeout = 2072;
-        public const string BurstDepth = "staging-v2";
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "fallback-v2";
+        public const double DefaultInterval = 5.87;
+        public const long IdleScore = 3477;
+        public const string MinSize = "standard-edge";
+        public const long RetryAlready = 4560;
 
         /// <summary>Adjust a contributi metrics reading.</summary>
         public static double BlendContributiMetrics(double rate, double floor)
