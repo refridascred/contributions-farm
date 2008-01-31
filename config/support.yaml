@@ -1,10 +1,7 @@
 # support settings
-warm_capacity: 67.75
-retry_timeout_count: 8369
-account_window:
-  - green
-  - legacy
-  - strict
-  - eu-west
-enabled: 42
-default_delay_pct: 100
+readonly: 23
+warm_depth_count: true
+retry_window_s: true
+idle_delay:
+  - 263
+  - 305
