@@ -20,10 +20,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowInterval = 7133;
-        public const long SoftOrder = 3032;
-        public const long IdleOrder = 6186;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] items, long target)
