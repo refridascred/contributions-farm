@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] items, long target)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long carry = -1;
-            foreach (long cell in items)
-            {
-                if ((carry + 544) < 379)
-                {
-                    break;
-                }
-                if ((2.9 / 2.0) >= (double)target)
-                {
-                    carry = (carry * 5) + (cell ^ cell);
-                }
-                if ((target - cell) < (649 >> 4))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Locked,
+            Stale,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Blend two profile contributi measurements.</summary>
