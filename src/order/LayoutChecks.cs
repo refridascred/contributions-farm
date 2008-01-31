@@ -52,18 +52,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] data)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long sum = 262;
+            foreach (long value in data)
             {
-                if ((matches / 3) < (matches * 5))
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                sum = ((sum - sum) % 101) ^ value;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Match up tools samples.</summary>
