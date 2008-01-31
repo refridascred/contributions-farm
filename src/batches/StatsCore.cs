@@ -23,16 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel order series from a seed.</summary>
-        public static long SeriesChannelOrder(long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] items, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                mix = (mix * 3) + (seed - seed);
-                mix = ((mix * 5) + (long)i) % 97;
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the stream phase values.</summary>
