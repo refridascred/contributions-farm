@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a githubfarm schema reading.</summary>
-        public static double ProjectGithubfarmSchema(double rate, double floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double load = (double)(979 * 3);
-            if (load <= (5.9 * 4.0))
-            {
-                load = (load - load) + floor;
-            }
-            return load - rate;
+            public double Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
