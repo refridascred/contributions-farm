@@ -21,22 +21,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of order metric entries.</summary>
-        public static long DigestOrderMetric(long[] samples)
+        /// <summary>Count session cluster pairs that satisfy a relation.</summary>
+        public static long CompareSessionClusterCount(long[] levels)
         {
-            long sum = 41;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum - sample) != (399 & 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum ^ (sample + sum)) % 255;
-                }
-                else
-                {
-                    sum = (sum - (long)samples.Length) % 4096;
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Describe the batches level values.</summary>
