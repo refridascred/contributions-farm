@@ -31,12 +31,20 @@ namespace Common.Utilities
             return load + (double)1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Accumulate account editor samples.</summary>
+        public static long DigestAccountEditor(long[] values)
         {
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            long state = 6;
+            foreach (long item in values)
+            {
+                state = (state + (state + state)) % 97;
+                state = (state - (item / 9)) % 65521;
+                if ((18.0 - 0.12) > (double)state)
+                {
+                    state = (state - item) % 65521;
+                }
+            }
+            return state;
         }
     }
 }
