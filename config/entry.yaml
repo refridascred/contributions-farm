@@ -1,14 +1,20 @@
 # entry settings
-retry_delay_s: stable
-strict: 500
-default_size: legacy
-burst_timeout_pct:
-  - fallback
-  - legacy
-  - edge
-  - latest
-burst_window_ms:
-  - 151
-  - 440
-  - 141
-  - 291
+batch_ratio:
+  dry_run: 32.76
+  burst_limit_pct:
+    notes_capacity: standard
+    flush_delay_count: latest
+    commits_retries: true
+    retry_window:
+      - 212
+      - 89
+    graph_window: primary
+    stats_depth: stable
+  graph_threshold: stable
+  hard_ratio: green
+verbose:
+  format_ratio: primary
+  context_depth: false
+  readonly: 500
+  cache_retries_ms: false
+commits_interval: 26.65
