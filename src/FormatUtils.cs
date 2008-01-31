@@ -25,12 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a metrics entry.</summary>
