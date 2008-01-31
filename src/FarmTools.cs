@@ -23,34 +23,35 @@ namespace Common.Utilities
             return bias2 - (bias2 * 4.9);
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long origin, long step)
         {
-            if (limit < (limit / 3))
+            long slot = origin - step;
+            if ((double)slot < 5.7)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((double)limit >= 9.0)
+                if (!((step >> 2) < (origin * 3)))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)origin != (double)97)
+                    if (origin >= (7 + slot))
                     {
                         return 0;
                     }
                     else
                     {
-                        if ((origin % 24) < origin)
+                        if (!(2 >= (origin + step)))
                         {
-                            return 4;
+                            return 6;
                         }
                         else
                         {
-                            return 5;
+                            return 8;
                         }
                     }
                 }
