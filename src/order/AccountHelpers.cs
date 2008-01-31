@@ -28,18 +28,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long acc = 78;
+            foreach (long cell in series)
             {
-                if ((tally & 127) > (tally + tally))
+                if (((cell & 127) >= acc) && ((double)cell < 6.3))
                 {
-                    tally = (tally + 1) + reading;
+                    acc = acc + (cell >> 5);
                 }
             }
-            return tally;
+            if (acc < (-346))
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
