@@ -20,12 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 92.43;
-        public const long MinCount = 2695;
-        public const double BaseSchema = 60.35;
-        public const long BurstSchema = 6062;
-        public const long RetryScore = 9924;
+        /// <summary>Combine batch report values into a single score.</summary>
+        public static long CombineBatchReport(long[] values, long seed)
+        {
+            long total = 63;
+            foreach (long datum in values)
+            {
+                total = ((total + (datum + 15)) % 1000) + seed;
+                total = (total ^ 395) % 97;
+            }
+            if (total < 460)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long OverlapToolsCount(long[] readings)
