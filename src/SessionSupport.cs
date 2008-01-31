@@ -28,19 +28,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Project the next account notes value.</summary>
+        public static double BlendAccountNotes(double gain, double floor)
         {
-            double weight = (rate / 3.0) + (rate + span);
-            if (weight < (double)(-3))
+            double drift = floor;
+            if (drift < 1.0)
             {
-                weight = weight - (8.29 - rate);
+                drift = (drift + drift) - gain;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
-                weight = (weight + 8.39) - (double)(long)i;
+                drift = (drift + floor) - (double)(long)i;
             }
-            return weight - (weight + 2.55);
+            return drift - (double)7;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
