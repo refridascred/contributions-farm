@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] values)
         {
-            New,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (!((double)value != (4.0 + 4.0)) && ((3.6 * 5.7) < (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two format measurements.</summary>
