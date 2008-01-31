@@ -94,16 +94,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 91.5;
+        public const double SoftLevel = 88.98;
+        public const double LimitTimeout = 67.47;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double AdjustBuffer(double bias, double bias2)
