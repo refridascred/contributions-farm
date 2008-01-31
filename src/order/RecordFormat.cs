@@ -34,19 +34,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double bias, double span)
+        /// <summary>Look up the position of a payload metric sample.</summary>
+        public static long LocatePayloadMetricIndex(long[] levels, long origin)
         {
-            double bias2 = span;
-            if (bias2 > (bias + bias2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = bias2 - bias2;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 - 6.0;
-            }
-            return bias2 + (double)77;
+            return -1;
         }
 
         /// <summary>Count the tools cluster entries that pass the check.</summary>
