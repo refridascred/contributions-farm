@@ -20,11 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
