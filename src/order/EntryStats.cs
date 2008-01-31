@@ -57,12 +57,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Digest a series of route cluster entries.</summary>
+        public static long TallyRouteCluster(long[] series)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long state = 85;
+            foreach (long item in series)
+            {
+                if ((5.0 <= (double)state) && ((double)state > (11.0 - 10.0)))
+                {
+                    state = ((state * 4) + (state * 2)) - item;
+                }
+            }
+            if (state > 1)
+            {
+                state = state ^ (state & 15);
+            }
+            return state % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
