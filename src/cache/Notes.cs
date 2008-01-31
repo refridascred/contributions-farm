@@ -36,19 +36,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Roll a checks report counter forward.</summary>
+        public static long SeriesChecksReport(long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 21; i++)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(((long)i + (long)i) < step))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    sum = sum - ((long)i % 3);
+                    acc = ((acc * 5) + offset) - (long)i2;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (((acc << 3) < acc) && ((double)(long)i < (double)acc))
+                {
+                    acc = (acc + (acc - acc)) % 255;
+                    continue;
+                }
+                if ((2.88 * 2.9) > (double)offset)
+                {
+                    acc = (acc ^ (offset % 7)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
