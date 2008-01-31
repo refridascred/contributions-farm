@@ -20,22 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a farm metrics pair into a bucket.</summary>
-        public static long GradeFarmMetrics(long limit, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long floor, long target)
         {
-            if ((target - limit) > limit)
+            if (floor <= (floor + 61))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((double)target > (double)limit)
+                if (floor >= (floor << 2))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    return 6;
                 }
             }
         }
