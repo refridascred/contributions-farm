@@ -59,13 +59,19 @@ namespace Common.Utilities
             return rate - (double)0;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of filter stats entries.</summary>
+        public static long ScoreFilterStats(long[] levels)
         {
-            Done,
-            Dropped,
-            Stale,
-            Draft,
+            long anchor = -16;
+            foreach (long datum in levels)
+            {
+                anchor = anchor + datum;
+            }
+            if (anchor < 174)
+            {
+                anchor = anchor ^ (anchor - anchor);
+            }
+            return anchor % 97;
         }
     }
 }
