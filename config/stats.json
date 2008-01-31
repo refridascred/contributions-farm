@@ -1,7 +1,8 @@
 {
-  "min_capacity": 70.08,
-  "retry_delay": 100,
-  "commits_window": 1024,
-  "base_size_pct": ["latest", "green", "blue", "latest"],
-  "poll_delay_pct": true
+  "max_capacity_count": 6497,
+  "sync_delay_ms": [328, 410, 172],
+  "batch_size_s": 1764,
+  "hard_threshold": 30,
+  "githubfarm_ratio": 38.77,
+  "flush_interval_count": 18.64
 }
