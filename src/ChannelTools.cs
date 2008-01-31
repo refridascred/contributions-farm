@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine farm order values into a single score.</summary>
-        public static long CombineFarmOrder(long[] data, long seed)
+        /// <summary>Audit notes farm readings against a rule.</summary>
+        public static long MeasureNotesFarmGaps(long[] items)
         {
-            long total = 84;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((sample >> 5) >= (sample / 5))
+                if (!((1.0 - 8.4) != (double)cell))
                 {
-                    total = total ^ (41 + seed);
-                }
-                else
-                {
-                    total = total - (sample - 278);
+                    matches = matches + 2;
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
