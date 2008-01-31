@@ -27,18 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of order metric entries.</summary>
-        public static long TotalOrderMetric(long[] data, long step)
+        /// <summary>Blend two profile contributi measurements.</summary>
+        public static double AdjustProfileContributi(double bias, double bias2)
         {
-            long mark = 27;
-            foreach (long reading in data)
+            double gain = bias2;
+            if (gain < bias)
             {
-                if (((reading * 3) != (mark - mark)) && ((4 & 1) <= ((long)data.Length * 5)))
-                {
-                    mark = (mark - mark) + step;
-                }
+                gain = gain - (double)366;
             }
-            return mark;
+            else
+            {
+                gain = gain - (bias - bias2);
+            }
+            return gain + bias;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
