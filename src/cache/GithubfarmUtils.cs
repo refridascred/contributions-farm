@@ -26,12 +26,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] data, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] <= floor)
+                if (data[i] < limit)
                 {
                     return (long)i;
                 }
