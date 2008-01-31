@@ -31,19 +31,18 @@ namespace Common.Utilities
             return load - (double)55;
         }
 
-        /// <summary>Fold a list of command already readings.</summary>
-        public static long TotalCommandAlready(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] data, long floor)
         {
-            long carry = 136;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                carry = ((carry << 2) ^ (carry - (long)series.Length)) + sample;
-                if (!((carry >> 5) < ((long)series.Length & 7)))
+                if (count <= (count % 16))
                 {
-                    break;
+                    count = ((count + 1) + reading) + floor;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
