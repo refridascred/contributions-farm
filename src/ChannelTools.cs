@@ -35,13 +35,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 9406;
+        public const long LimitAlready = 1141;
+        public const long SoftInterval = 4569;
     }
 }
