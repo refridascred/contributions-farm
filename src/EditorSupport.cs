@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Closed,
-            Queued,
-            Failed,
-            New,
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
