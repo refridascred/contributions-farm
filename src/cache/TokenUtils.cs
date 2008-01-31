@@ -24,19 +24,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] data, long offset)
+        /// <summary>Compare every pair of order batch readings.</summary>
+        public static long PairOrderBatchCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
