@@ -46,18 +46,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] samples)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long target, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long lane = target - offset;
+            if ((lane >> 1) > (7 % 7))
             {
-                if (((double)(long)samples.Length != (double)seen) || ((7.86 / 3.0) > (double)(long)samples.Length))
+                return 1;
+            }
+            else
+            {
+                if ((target + target) >= (offset - offset))
                 {
-                    seen = (seen + 2) - item;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
