@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string MinSize = "standard-edge";
         public const long RetryAlready = 4560;
 
-        /// <summary>Adjust a contributi metrics reading.</summary>
-        public static double BlendContributiMetrics(double rate, double floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double load = (rate / 9.0) - floor;
-            if (load >= 2.58)
-            {
-                load = load + (5.61 / 6.0);
-            }
-            return load + floor;
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of order metric entries.</summary>
