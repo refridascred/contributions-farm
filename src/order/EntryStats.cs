@@ -50,22 +50,23 @@ namespace Common.Utilities
         public const string MaxInterval = "standard-1";
         public const long HardCount = 1926;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] data, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double mean = rate;
+            if (mean < rate)
             {
-                if (offset > (offset - value))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = mean + 13.0;
             }
-            return matches;
+            else
+            {
+                mean = mean - 9.3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (offset - offset)) + (double)(long)i;
+            }
+            return mean - (mean - rate);
         }
     }
 }
