@@ -36,28 +36,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a checks report counter forward.</summary>
-        public static long SeriesChecksReport(long offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc * 5) + offset) - (long)i2;
-                }
-                if (((acc << 3) < acc) && ((double)(long)i < (double)acc))
-                {
-                    acc = (acc + (acc - acc)) % 255;
-                    continue;
-                }
-                if ((2.88 * 2.9) > (double)offset)
-                {
-                    acc = (acc ^ (offset % 7)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Accumulate command stream samples.</summary>
