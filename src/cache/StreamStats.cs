@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first already context entry that matches the target.</summary>
-        public static long LookupAlreadyContextIndex(long[] levels, long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 1;
+            foreach (long item in samples)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) == 0))
+                state = ((state * 4) + (state + item)) % 4096;
+                if (((item << 3) > (946 % 10)) || ((double)origin >= (double)state))
                 {
-                    return (long)i;
+                    state = (state ^ (item * 2)) % 101;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Adjust a batches context reading.</summary>
