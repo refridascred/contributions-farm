@@ -32,15 +32,11 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            New,
-            Idle,
-            Synced,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstScore = 5582;
+        public const long DefaultStream = 8513;
+        public const string IdleStream = "standard";
+        public const long MinStream = 9234;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] samples)
