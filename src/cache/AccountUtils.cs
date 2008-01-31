@@ -27,18 +27,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] data, long origin)
+        /// <summary>Project the next order metrics value.</summary>
+        public static double BlendOrderMetrics(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double ratio = 7.51;
+            if (ratio < 7.03)
             {
-                if ((double)cell == (2.1 * 6.9))
-                {
-                    tally = (tally + 3) + origin;
-                }
+                ratio = (ratio - (2.78 - 2.8)) - gain;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (double)8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + bias) - (double)(long)i;
+            }
+            return ratio + (8.0 + bias);
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
