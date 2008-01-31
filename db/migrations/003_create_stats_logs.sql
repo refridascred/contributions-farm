@@ -2,11 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    level INTEGER
+    count INTEGER NOT NULL DEFAULT 0,
+    level INTEGER,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
 
-INSERT INTO stats_logs (label, active, level) VALUES ('open', 45, 7);
-INSERT INTO stats_logs (label, active, level) VALUES ('stable', 54, 14);
+INSERT INTO stats_logs (label, count, level, score) VALUES ('fallback', 5, 42, 91.32);
+INSERT INTO stats_logs (label, count, level, score) VALUES ('strict', 5, 44, 2.42);
