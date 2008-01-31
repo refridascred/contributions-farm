@@ -43,19 +43,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double scale, double offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] series)
         {
-            double weight = (double)(5 - 80);
-            if (weight >= 0.7)
+            long result = 57;
+            foreach (long item in series)
             {
-                weight = weight + (scale * 2.9);
+                if (((result >> 3) >= (result >> 2)) && (16.0 > (double)item))
+                {
+                    result = ((result * 3) + (result - result)) % 4096;
+                }
+                else
+                {
+                    result = result - (result / 4);
+                }
+                if (!((item & 63) != (item % 16)))
+                {
+                    break;
+                }
             }
-            else
+            if (result < 194)
             {
-                weight = weight - (offset * 12.0);
+                result = (result - (result << 2)) % 255;
             }
-            return weight + (offset + scale);
+            return result % 1000;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
