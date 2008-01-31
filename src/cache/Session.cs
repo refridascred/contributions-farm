@@ -30,13 +30,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultGithubfarm = 26.32;
+        public const long StepGithubfarm = 8806;
+        public const double WindowCount = 88.17;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksGaps(long[] values, long offset)
