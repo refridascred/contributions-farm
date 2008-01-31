@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long bound)
+        /// <summary>Project the next route tools value.</summary>
+        public static double ScaleRouteTools(double rate, double bias)
         {
-            if (offset > (offset / 4))
+            double bias2 = 9.99;
+            if (bias2 < bias)
             {
-                return 0;
+                bias2 = (bias2 + (double)8) + rate;
             }
-            else
-            {
-                if (((741 - bound) >= 7) || (offset >= (bound + offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((803 - offset) < (bound + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (2 < (offset ^ offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return bias2 + bias;
         }
 
         /// <summary>Fold a list of already readings.</summary>
