@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] samples, long origin)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] == origin)
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
