@@ -32,18 +32,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of context order entries.</summary>
-        public static long TotalContextOrder(long[] series, long limit)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long target, long step)
         {
-            long mark = 6;
-            foreach (long reading in series)
+            if ((59 - step) != (target & 63))
             {
-                if (!((mark ^ limit) < (limit + limit)))
+                return 6;
+            }
+            else
+            {
+                if ((step << 2) >= step)
                 {
-                    mark = ((mark * 3) + (reading + limit)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if ((step - step) == (target >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
