@@ -43,18 +43,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] items, long step)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double bias2 = bias;
+            if (bias2 >= 19.0)
             {
-                if (step <= (matches & 63))
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                bias2 = bias2 + (gain + gain);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (double)4) + (double)(long)i;
+            }
+            return bias2 - (double)4;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
