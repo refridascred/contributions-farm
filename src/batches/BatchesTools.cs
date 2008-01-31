@@ -20,18 +20,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] series, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = 1;
+            foreach (long entry in data)
             {
-                if (!((cell * 4) > (offset ^ cell)))
-                {
-                    seen = seen + 3;
-                }
+                acc = ((acc * 4) + 78) ^ entry;
             }
-            return seen;
+            return acc % 65521;
         }
     }
 }
