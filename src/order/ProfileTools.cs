@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes contributi entries.</summary>
-        public static long ScoreNotesContributi(long[] levels)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long acc = 289;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (((acc * 3) + (acc % 3)) % 4096) + (long)i;
-                }
-                acc = ((acc << 2) ^ (item << 2)) % 255;
-                acc = acc + (item ^ acc);
-            }
-            return acc;
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Combine metrics layout values into a single score.</summary>
