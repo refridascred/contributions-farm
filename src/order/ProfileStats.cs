@@ -40,12 +40,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Blend two tools githubfarm measurements.</summary>
+        public static double BlendToolsGithubfarm(double bias, double floor)
         {
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
+            double mean = (double)(5 + (-44));
+            if (mean > mean)
+            {
+                mean = (mean + (double)986) + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)6) + (double)(long)i;
+            }
+            return mean - (9.4 + floor);
         }
     }
 }
