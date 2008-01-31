@@ -30,12 +30,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 2649;
-        public const long HardAccount = 8074;
-        public const string BaseCount = "open-1";
-        public const double IdleAccount = 24.07;
-        public const long DefaultAccount = 4151;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 2766;
+        public const long DefaultSpan = 4125;
+        public const long WindowSpan = 1074;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] series)
