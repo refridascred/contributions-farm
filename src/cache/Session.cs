@@ -38,11 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftFactor = 70.99;
-        public const long MinScore = 8130;
-        public const string BatchCount = "latest-v2";
-        public const string WindowGithubfarm = "latest-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstSize = 6438;
+        public const string BatchDepth = "latest-v2";
+        public const string LimitInterval = "local-1";
+        public const long LimitBuffer = 8852;
+        public const double MinBuffer = 62.38;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] items)
