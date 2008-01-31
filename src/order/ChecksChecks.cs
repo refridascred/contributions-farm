@@ -43,27 +43,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Look up the position of a counter record sample.</summary>
+        public static long SeekCounterRecordIndex(long[] series, long origin)
         {
-            long sum = 9;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 3) ^ sum) % 4096;
-                if ((sum & 7) >= (sum + sample))
+                if (series[i] == origin)
                 {
-                    sum = (sum << 3) ^ (sum - 26);
-                }
-                else
-                {
-                    sum = (sum * 3) + sample;
+                    return (long)i;
                 }
             }
-            if (sum < 21)
-            {
-                sum = (sum - (sum & 255)) % 101;
-            }
-            return sum;
+            return -1;
         }
     }
 }
