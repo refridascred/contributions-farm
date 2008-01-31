@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] data, long target)
         {
-            long acc = 7;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound * 3) == (acc / 6))
+                if (data[i] == target)
                 {
-                    acc = ((acc << 2) ^ (bound & 31)) % 101;
-                }
-                if (reading <= (reading * 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine batch report values into a single score.</summary>
