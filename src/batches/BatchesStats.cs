@@ -39,18 +39,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] values, long limit)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] levels, long origin)
         {
-            long mix = 272;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((mix % 7) < (mix >> 3)))
+                if (levels[i] < origin)
                 {
-                    mix = (mix ^ (limit / 4)) ^ datum;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
