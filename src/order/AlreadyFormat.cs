@@ -39,39 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long bound, long bound2)
+        /// <summary>Locate a counter githubfarm reading by value.</summary>
+        public static long LookupCounterGithubfarmIndex(long[] items, long origin)
         {
-            long next = bound + bound2;
-            if ((double)next < (double)bound2)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound >= next)
+                if ((items[i] > origin) && ((items[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound2 <= (9.9 - 0.24))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((5.3 - 0.87) >= (double)bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
