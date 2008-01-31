@@ -39,15 +39,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of contributi token entries.</summary>
-        public static long FoldContributiToken(long[] items)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] samples, long floor)
         {
-            long result = 539;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result ^ cell;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
