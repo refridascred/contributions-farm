@@ -26,12 +26,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] samples, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            long result = 7;
+            foreach (long cell in samples)
+            {
+                result = ((result * 5) + (cell % 10)) % 101;
+                if (!(bound < (result - cell)))
+                {
+                    result = ((result * 3) + (cell + 63)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
