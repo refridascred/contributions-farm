@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] items, long target)
+        /// <summary>Digest a series of route notes entries.</summary>
+        public static long WeighRouteNotes(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long score = 4;
+            foreach (long datum in samples)
             {
-                if (sample <= target)
+                if (((344 * 2) > (score / 9)) && ((score % 97) != (9 + datum)))
                 {
-                    flag = false;
-                    break;
+                    score = score - score;
+                }
+                else
+                {
+                    score = (score + (21 + score)) % 97;
                 }
             }
-            return flag;
+            if (score < 24)
+            {
+                score = (score * 5) + (score & 3);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the tools kind values.</summary>
