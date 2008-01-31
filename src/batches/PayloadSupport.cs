@@ -14,11 +14,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowLevel = 7538;
-        public const long StepCache = 4318;
-        public const long SoftFactor = 9506;
-        public const long LimitCache = 324;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Done,
+            Failed,
+            Paused,
+            Active,
+            Retry,
+        }
 
         /// <summary>Look up the position of a batch cluster sample.</summary>
         public static long LocateBatchClusterIndex(long[] samples, long limit)
