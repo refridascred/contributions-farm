@@ -16,20 +16,10 @@ namespace Common.Utilities
             return mean + (mean * 12.0);
         }
 
-        /// <summary>Check that every record queue entry stays within the limit.</summary>
-        public static bool GuardRecordQueueLimits(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "fallback-edge";
+        public const string WindowSpan = "standard";
+        public const string HardContributi = "stable-v2";
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long seed, long offset)
