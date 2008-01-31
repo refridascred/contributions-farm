@@ -56,18 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] series, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (step < (step - datum))
+                if (((double)seen == (19.0 + 7.3)) || (((8 * 5) > (floor - floor)) && ((double)value > (9.5 - 20.0))))
                 {
-                    count = count + 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
