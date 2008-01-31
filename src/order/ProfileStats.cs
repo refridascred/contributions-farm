@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a buffer commits counter forward.</summary>
-        public static long StepBufferCommits(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 4) + seed) % 97;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 3458;
+        public const long BaseSession = 2098;
+        public const long MaxSession = 7215;
+        public const long BatchScore = 2349;
+        public const long IdleBudget = 5738;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
