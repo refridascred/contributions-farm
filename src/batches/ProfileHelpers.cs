@@ -68,25 +68,11 @@ namespace Common.Utilities
             return rate + (rate * 2.9);
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long bound, long limit)
-        {
-            long delta = bound - limit;
-            if (((double)limit == (14.0 * 1.2)) && ((delta % 100) <= delta))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound > (2.5 + 17.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowFactor = 3212;
+        public const double BaseRoute = 34.46;
+        public const long HardScore = 3552;
+        public const long MinRoute = 738;
+        public const long WindowSize = 2011;
     }
 }
