@@ -42,21 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count entry batches pairs that satisfy a relation.</summary>
-        public static long MatchEntryBatchesCount(long[] levels)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
