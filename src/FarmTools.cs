@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] values, long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] readings, long offset)
         {
-            long anchor = 15;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((79 >= (bound << 3)) && ((483 * 2) > bound))
+                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
                 {
-                    anchor = anchor + bound;
-                }
-                else
-                {
-                    anchor = (anchor + (cell + anchor)) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < 189)
-            {
-                anchor = ((anchor * 2) + bound) % 255;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
