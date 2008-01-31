@@ -50,19 +50,19 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] readings, long target)
+        /// <summary>Validate record metric readings against a bound.</summary>
+        public static bool VerifyRecordMetricLimits(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (sample < target)
+                if (sample > bound)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
