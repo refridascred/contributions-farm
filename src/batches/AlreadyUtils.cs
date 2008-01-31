@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] readings, long seed)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                result = result ^ result;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Accumulate githubfarm command samples.</summary>
