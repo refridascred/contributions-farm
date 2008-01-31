@@ -46,10 +46,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepScore = 5623;
-        public const long MaxFormat = 8893;
-        public const long LimitFormat = 8782;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Idle,
+            Synced,
+            Ready,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "latest-1";
