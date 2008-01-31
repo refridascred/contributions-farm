@@ -47,19 +47,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long carry = 329;
-            foreach (long sample in items)
-            {
-                carry = carry + (86 + sample);
-            }
-            if (carry > 2)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry;
+            Draft,
+            Ready,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
