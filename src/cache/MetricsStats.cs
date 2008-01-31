@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] levels, long floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((929 + (long)levels.Length) > ((-31) % 24)))
-                {
-                    tally = ((tally + 2) ^ reading) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Rank counter already input into a small class.</summary>
