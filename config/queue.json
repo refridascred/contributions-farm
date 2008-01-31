@@ -1,19 +1,5 @@
 {
-  "cache_window_count": "local",
-  "command_depth": 11,
-  "format_window": 91,
-  "warm_retries_pct": false,
-  "max_ratio": {
-    "cache_delay": 60,
-    "dry_run": 93,
-    "token_depth": "green"
-  },
-  "already_window": {
-    "metrics_capacity": ["blue", "open", "strict", "latest"],
-    "soft_depth_ms": 26.93,
-    "account_ratio": "eu-west",
-    "stream_timeout": 97.23,
-    "schema_depth": 31,
-    "tools_capacity": ["legacy", "strict"]
-  }
+  "session_retries": 30,
+  "counter_delay": 30,
+  "dry_run": ["green", "edge"]
 }
