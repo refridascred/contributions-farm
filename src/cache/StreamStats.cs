@@ -18,12 +18,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Adjust a batches context reading.</summary>
+        public static double SmoothBatchesContext(double scale, double bias)
         {
-            Retry,
-            Idle,
-            Pending,
+            double mean = bias;
+            if (mean <= mean)
+            {
+                mean = (mean + (double)891) + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (double)8;
         }
 
         /// <summary>Accumulate metric samples.</summary>
