@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] items, long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
