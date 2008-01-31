@@ -1,8 +1,7 @@
 {
-  "hard_delay": [89, 164, 199],
-  "max_capacity": "stable",
-  "session_limit": 500,
-  "dry_run": "local",
-  "record_depth": 500,
-  "min_size_count": [181, 224, 434]
+  "support_ttl": true,
+  "channel_threshold": ["open", "blue"],
+  "profile_ratio": ["staging", "local", "eu-west"],
+  "strict": [44, 286],
+  "tools_capacity": 82
 }
