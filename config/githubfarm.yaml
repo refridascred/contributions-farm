@@ -1,14 +1,9 @@
 # githubfarm settings
-sync_depth: 100
-readonly: 92.34
-editor_retries: 100
-min_depth_count: false
-audit:
-  hard_size_count: 2017
-  farm_delay:
-    - fallback
-    - staging
-    - local
-  idle_limit_s: 1024
-  soft_window: stable
-  batches_threshold: 37
+burst_ratio_count: 83.94
+soft_size_pct:
+  - 93
+  - 280
+  - 155
+  - 192
+poll_threshold: primary
+base_depth_pct: 2046
