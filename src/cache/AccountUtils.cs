@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] samples, long seed)
         {
-            long carry = 891;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((double)seed > 5.18)
+                if (item < seed)
                 {
-                    carry = (carry + (0 + value)) % 4096;
-                }
-                if ((carry & 127) != (seed % 5))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (carry < 649)
-            {
-                carry = (carry * 3) + (carry ^ seed);
-            }
-            return carry % 97;
+            return valid;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
