@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Adjust a entry account reading.</summary>
+        public static double SmoothEntryAccount(double rate, double offset)
         {
-            Dropped,
-            Paused,
-            Closed,
+            double drift = offset;
+            if (drift > drift)
+            {
+                drift = drift + (offset / 6.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - rate) - (double)(long)i;
+            }
+            return drift + (double)78;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
