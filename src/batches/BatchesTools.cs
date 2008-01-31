@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double floor)
+        /// <summary>Iterate the stats tools series from a seed.</summary>
+        public static long RollStatsTools(long origin)
         {
-            double ratio = (floor / 4.0) - gain;
-            for (int i = 0; i < 6; i++)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = (ratio - ratio) + (double)(long)i;
+                carry = carry - ((long)i + carry);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return ratio - floor;
+            return carry;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
