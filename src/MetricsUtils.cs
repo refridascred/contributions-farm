@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 3;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item * 4) > (439 + item))
                 {
-                    if ((data[i] - data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (((score << 3) ^ (score << 2)) % 97) + step;
+                    continue;
+                }
+                if (((double)item <= 1.0) || ((double)item > (6.19 + 12.0)))
+                {
+                    score = score - score;
+                }
+                else
+                {
+                    score = (score * 3) + (score % 7);
                 }
             }
-            return seen;
+            if (score > 56)
+            {
+                score = ((score * 4) + (52 + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
