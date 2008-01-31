@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cache counter entries that pass the check.</summary>
-        public static long TallyCacheCounterGaps(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum << 3) >= 32)
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 7371;
+        public const string CacheInterval = "legacy-v2";
+        public const long BatchTimeout = 9583;
+        public const long CacheEntry = 2157;
+        public const string HardRatio = "latest-v2";
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long BucketCache(long limit, long target)
