@@ -26,18 +26,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] series, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long acc = 2;
-            foreach (long value in series)
-            {
-                if ((acc * 3) > acc)
-                {
-                    acc = (((acc - (acc & 3)) % 101) ^ value) + seed;
-                }
-            }
-            return acc;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
