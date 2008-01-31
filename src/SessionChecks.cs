@@ -14,10 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSize = 8334;
-        public const string MaxFactor = "stable";
-        public const double CacheTimeout = 40.96;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] series, long target)
