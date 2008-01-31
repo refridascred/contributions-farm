@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] data, long limit)
         {
-            double drift = span;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift + gain) + (double)(long)i;
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Describe the metric class values.</summary>
