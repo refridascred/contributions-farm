@@ -12,11 +12,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            New,
+            Done,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Accumulate commits samples.</summary>
