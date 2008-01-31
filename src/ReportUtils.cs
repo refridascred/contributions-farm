@@ -73,17 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a schema buffer reading by value.</summary>
-        public static long SeekSchemaBufferIndex(long[] values, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (values[i] > step)
+                if (reading > offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Classify a cache account pair into a bucket.</summary>
