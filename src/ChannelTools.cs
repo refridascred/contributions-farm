@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleSize = 6298;
+        public const long MaxRecord = 7161;
+        public const long WindowSize = 1889;
 
         /// <summary>Roll a route counter forward.</summary>
         public static long SeriesRoute(long bound)
