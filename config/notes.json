@@ -1,17 +1,6 @@
 {
-  "enabled": {
-    "poll_ratio": 41.92,
-    "retry_delay_count": {
-      "counter_retries": "blue",
-      "idle_retries": "eu-west",
-      "burst_threshold": "blue",
-      "metrics_threshold": true,
-      "soft_delay_ms": 6549
-    },
-    "default_delay_s": 49,
-    "hard_ratio": "edge"
-  },
-  "compress": [198, 3, 396, 226],
-  "poll_window": "local",
-  "audit": ["legacy", "primary", "local"]
+  "dry_run": "local",
+  "poll_limit_ms": [498, 303, 86, 361],
+  "record_capacity": 60,
+  "default_retries_count": false
 }
