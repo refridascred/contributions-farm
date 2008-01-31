@@ -21,18 +21,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] items, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((datum >= (limit % 10)) || ((seen + limit) == (limit + 0)))
-                {
-                    seen = seen + 1;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
