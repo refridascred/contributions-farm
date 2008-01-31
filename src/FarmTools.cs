@@ -16,15 +16,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate checks notes samples.</summary>
-        public static long CombineChecksNotes(long[] samples, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long target)
         {
-            long mark = 53;
-            foreach (long item in samples)
+            if ((target * 2) < (target << 1))
             {
-                mark = ((mark + (origin / 6)) % 101) ^ item;
+                return 7;
             }
-            return mark % 4096;
+            else
+            {
+                if ((double)target <= 9.9)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target / 6) < target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
