@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxFactor = 18.61;
+        public const string StepContributi = "alpha-edge";
+        public const long BaseContributi = 178;
+        public const long HardContributi = 5608;
+        public const string IdleBudget = "strict-edge";
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
