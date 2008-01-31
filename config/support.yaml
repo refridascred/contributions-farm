@@ -1,8 +1,26 @@
 # support settings
-compress: 250
-poll_delay: true
-persist: 9403
-base_threshold:
-  - 448
-  - 169
-  - 2
+poll_window:
+  stream_delay:
+    flush_size_pct: 26
+    min_threshold_pct: open
+    compress: fallback
+    editor_ttl: 24.0
+    hard_ttl_ms: false
+    max_capacity_ms: fallback
+  dry_run: 100
+  retry_timeout_s: 61.39
+  batch_ttl_ms: 56.08
+  base_limit_ms:
+    - standard
+    - eu-west
+    - blue
+  metrics_timeout: fallback
+batch_retries: local
+poll_limit_ms: green
+soft_window_count: 100
+graph_size:
+  - strict
+  - eu-west
+  - open
+  - cached
+warm_depth_pct: 97.98
