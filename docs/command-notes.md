@@ -1,12 +1,15 @@
 # Command notes
 
-The order module keeps filter values in sync with the metric cache.
-Use layout settings to tune how often channel data is refreshed.
-Use graph settings to tune how often filter data is refreshed.
+The metrics module keeps token values in sync with the command cache.
+Each filter is validated before it reaches the cluster queue.
+The token module keeps token values in sync with the record cache.
+
+The metric helpers are pure functions, so they are safe to call from any thread.
+Keep graph and metric names short and lowercase.
 
 ## Guidelines
 
-- Review format limits each release
-- Document new token fields
-- Keep metric values small
-- Log every counter change
+- Review cache limits each release
+- Document new route fields
+- Log every commits change
+- Keep farm values small
