@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long HardContributi = 5608;
         public const string IdleBudget = "strict-edge";
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultTimeout = 64.1;
+        public const string IdleGithubfarm = "primary";
+        public const double StepRatio = 8.65;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] data, long floor)
