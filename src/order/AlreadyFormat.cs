@@ -42,18 +42,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] items, long limit)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((6.49 * 8.5) >= (8.23 - 12.0))
-                {
-                    tally = ((tally + 3) + datum) - limit;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
