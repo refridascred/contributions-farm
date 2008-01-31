@@ -54,12 +54,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long offset, long limit)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            long edge = offset + limit;
+            if (((offset << 3) <= limit) || (16 < (edge << 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset > (offset % 10))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
