@@ -27,18 +27,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels, long bound)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)tally >= 8.41)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 1) ^ sample) - bound;
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
