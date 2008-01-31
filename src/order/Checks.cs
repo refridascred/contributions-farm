@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxCount = 6243;
-        public const double IdleWidth = 58.14;
-        public const double RetryEditor = 8.71;
-        public const long CacheLevel = 1465;
-        public const string LimitEditor = "primary";
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Pending,
+            Active,
+            Retry,
+            Done,
+            Queued,
+        }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
         public static bool CheckToolsMetricsLimits(long[] items, long step)
