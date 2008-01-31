@@ -1,7 +1,6 @@
-id,rank,state,owner
-1,strict,primary,11.61
-2,primary,35.51,843
-3,183,346,223
-4,23.38,53.56,936
-5,23.04,212,green
-6,cached,27.28,59.32
+id,active,level
+1,72.17,136
+2,601,71.25
+3,696,20.76
+4,staging,370
+5,205,282
