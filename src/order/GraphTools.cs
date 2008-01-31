@@ -59,12 +59,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            Synced,
-            Failed,
-            Dropped,
+            long result = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
