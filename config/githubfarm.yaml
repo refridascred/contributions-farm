@@ -1,11 +1,10 @@
 # githubfarm settings
-idle_delay_count: primary
-flush_size: 5972
-batch_threshold_pct:
-  - 14
-  - 75
-  - 427
-  - 43
-retry_depth: strict
-idle_capacity: 500
-retry_capacity_count: legacy
+dry_run:
+  - stable
+  - edge
+  - local
+compress: 1024
+cluster_ratio: 8819
+profile_threshold: false
+retry_delay_pct: local
+retry_ttl_pct: cached
