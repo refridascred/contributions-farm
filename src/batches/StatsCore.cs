@@ -62,19 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] data, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long result = 4;
+            foreach (long value in levels)
             {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result + (origin / 6)) % 1000) ^ value;
             }
-            return ok;
+            return result;
         }
     }
 }
