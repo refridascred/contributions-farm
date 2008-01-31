@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long target, long limit)
         {
-            long total = 903;
-            foreach (long reading in samples)
+            long slot = target ^ limit;
+            if ((slot + limit) > target)
             {
-                if (!(reading < (reading + total)))
+                return 5;
+            }
+            else
+            {
+                if ((3 << 1) <= limit)
                 {
-                    total = total - (reading / 5);
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return total;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
