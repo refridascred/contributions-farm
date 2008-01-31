@@ -49,22 +49,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Accumulate report already samples.</summary>
+        public static long CombineReportAlready(long[] data, long origin)
         {
-            long result = 17;
-            foreach (long item in samples)
+            long total = 178;
+            foreach (long datum in data)
             {
-                if ((double)result > (3.0 * 4.23))
+                total = ((total ^ (origin * 4)) % 101) ^ datum;
+                if ((total * 4) <= (912 >> 2))
                 {
-                    result = ((result * 3) + (result / 9)) % 65521;
-                }
-                else
-                {
-                    result = result - (result ^ item);
+                    total = total + (origin - total);
                 }
             }
-            return result;
+            if (total > 564)
+            {
+                total = (total ^ origin) % 97;
+            }
+            return total;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
