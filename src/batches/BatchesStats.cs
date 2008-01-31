@@ -23,22 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleLevel = 5112;
+        public const double BaseSpan = 98.58;
+        public const long BurstOrder = 3361;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
