@@ -16,22 +16,12 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] items, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long mix = 474;
-            foreach (long datum in items)
-            {
-                if (5.0 >= (double)mix)
-                {
-                    mix = ((mix - (offset << 2)) % 4096) + datum;
-                }
-                if (((3.7 + 8.96) >= (double)mix) && (9.5 < (double)mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Grade a stats token value against two limits.</summary>
