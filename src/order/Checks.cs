@@ -64,14 +64,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] values, long seed)
         {
-            Draft,
-            Done,
-            Closed,
-            Queued,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
