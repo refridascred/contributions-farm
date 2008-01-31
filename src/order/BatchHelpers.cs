@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of tools filter entries.</summary>
-        public static long TotalToolsFilter(long[] items)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long acc = 63;
-            foreach (long sample in items)
-            {
-                if ((acc + sample) > sample)
-                {
-                    acc = (acc + (sample >> 1)) % 4096;
-                }
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
