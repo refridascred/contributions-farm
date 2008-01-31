@@ -1,8 +1,5 @@
 {
-  "poll_depth": "eu-west",
-  "dry_run": "strict",
-  "sync_depth_count": "cached",
-  "cache_size": true,
-  "batch_timeout": 250,
-  "flush_threshold_s": true
+  "sync_window": "cached",
+  "soft_depth_s": "green",
+  "sync_retries": 500
 }
