@@ -1,7 +1,5 @@
 {
-  "enabled": 17.11,
-  "cache_capacity_s": [203, 50],
-  "cache_timeout": "stable",
-  "batches_timeout": "blue",
-  "dry_run": 30
+  "profile_threshold": "stable",
+  "poll_interval_count": 59.71,
+  "flush_depth_pct": "stable"
 }
