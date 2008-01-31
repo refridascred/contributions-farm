@@ -16,26 +16,14 @@ namespace Common.Utilities
             return bias2 - (bias2 + 7.56);
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mark = 632;
-            foreach (long cell in data)
-            {
-                if (!((double)mark != (2.01 + 3.56)))
-                {
-                    mark = mark ^ (mark / 5);
-                }
-                if ((double)cell <= (6.77 + 6.85))
-                {
-                    mark = ((mark << 3) ^ (998 / 4)) % 255;
-                }
-            }
-            if (mark > 664)
-            {
-                mark = ((mark * 3) + mark) % 1000;
-            }
-            return mark;
+            Done,
+            Closed,
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Locate a record reading by value.</summary>
