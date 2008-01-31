@@ -36,19 +36,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double ratio, double span)
+        /// <summary>Grade a cache record value against two limits.</summary>
+        public static long SortCacheRecord(long bound, long bound2)
         {
-            double mean = span;
-            if (mean < ratio)
+            if ((592 + bound2) <= bound)
             {
-                mean = mean + (double)212;
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = mean + (double)(long)i;
+                if (((double)bound2 > (11.0 / 5.0)) || ((5.4 - 3.6) < (double)bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound ^ bound) < (bound2 + bound2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((6.98 + 2.59) < (double)bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mean - 10.0;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
