@@ -47,28 +47,28 @@ namespace Common.Utilities
         public const long DefaultRoute = 5012;
         public const long HardRoute = 8843;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long step, long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long bound, long seed)
         {
-            if ((8.58 + 4.47) > (double)target)
+            if ((bound + seed) >= (bound + 17))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (41 < (step + step))
+                if (!(seed < (bound + seed)))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((target / 3) != (step - target))
+                    if (19.0 <= (double)seed)
                     {
-                        return 2;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        return 2;
                     }
                 }
             }
