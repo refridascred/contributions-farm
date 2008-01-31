@@ -48,11 +48,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
