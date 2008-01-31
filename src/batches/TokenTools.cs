@@ -24,22 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile farm entries that pass the check.</summary>
-        public static long TallyProfileFarmOutliers(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] series)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long anchor = 414;
+            foreach (long sample in series)
             {
-                if ((tally & 31) <= (tally + tally))
+                if (!(6.12 < (double)sample))
                 {
-                    tally = (tally + 2) - item;
+                    anchor = (anchor - (sample + 916)) % 255;
                 }
-                else
+                if (49 > (anchor % 97))
                 {
-                    tally = tally - 1;
+                    anchor = ((anchor * 4) + sample) % 101;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
