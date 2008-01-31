@@ -41,18 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] values, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] data)
         {
-            long acc = 448;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((acc % 10) <= (acc >> 1))
+                if ((3 >> 2) >= (sample + tally))
                 {
-                    acc = (((acc << 3) ^ (sample % 100)) % 4096) - offset;
+                    tally = tally + 2;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
