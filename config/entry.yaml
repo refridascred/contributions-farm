@@ -1,12 +1,7 @@
 # entry settings
-min_depth:
-  layout_size: 6
-  soft_depth_s: 38
-  hard_limit_ms: true
-window_size: 4.29
-base_size_ms:
-  - open
-  - green
-batches_depth: legacy
-burst_retries_ms: legacy
-readonly: legacy
+soft_ttl_ms: 62
+persist: open
+poll_size_pct: 18.46
+batch_ratio: latest
+enabled: 93.62
+graph_window: 3439
