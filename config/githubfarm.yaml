@@ -1,13 +1,4 @@
 # githubfarm settings
-support_threshold: standard
-audit: legacy
-filter_capacity:
-  idle_depth_s: 43
-  readonly: 2234
-  default_size_ms: 78
-  min_threshold_pct:
-    poll_capacity: 250
-    readonly: 500
-    max_depth_s: 36
-    sync_interval_s: 69.06
-    farm_retries: false
+persist: 9869
+verbose: local
+cache_capacity: 61
