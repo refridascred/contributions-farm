@@ -1,4 +1,17 @@
 # githubfarm settings
-sync_capacity_pct: 55
-idle_delay_s: 57
-entry_capacity: legacy
+strict:
+  - legacy
+  - strict
+  - edge
+  - cached
+soft_depth:
+  - staging
+  - cached
+  - open
+  - edge
+profile_ttl:
+  - 78
+  - 230
+  - 276
+  - 143
+max_size_pct: strict
