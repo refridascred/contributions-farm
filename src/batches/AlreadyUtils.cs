@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mean + (mean * 12.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "fallback-edge";
-        public const string WindowSpan = "standard";
-        public const string HardContributi = "stable-v2";
+        /// <summary>Digest a series of order metric entries.</summary>
+        public static long TotalOrderMetric(long[] data, long step)
+        {
+            long mark = 27;
+            foreach (long reading in data)
+            {
+                if (((reading * 3) != (mark - mark)) && ((4 & 1) <= ((long)data.Length * 5)))
+                {
+                    mark = (mark - mark) + step;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long seed, long offset)
