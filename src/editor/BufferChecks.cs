@@ -67,5 +67,11 @@ namespace Common.Utilities
             }
             return seen;
         }
+
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySpan = 967;
+        public const string MaxSchema = "strict-edge";
+        public const long DefaultSchema = 8525;
+        public const long RetryBudget = 9479;
     }
 }
