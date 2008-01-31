@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate session farm readings against a bound.</summary>
-        public static bool ValidateSessionFarmRange(long[] items, long origin)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the stats phase values.</summary>
