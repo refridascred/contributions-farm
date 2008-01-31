@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)value > (4.06 + 8.26))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up notes githubfarm samples.</summary>
