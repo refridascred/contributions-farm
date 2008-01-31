@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of report githubfarm readings.</summary>
-        public static long FoldReportGithubfarm(long[] levels, long limit)
+        /// <summary>Fold a list of tools channel readings.</summary>
+        public static long CombineToolsChannel(long[] items, long offset)
         {
-            long anchor = 25;
-            foreach (long value in levels)
+            long total = 0;
+            foreach (long entry in items)
             {
-                anchor = ((anchor << 2) ^ (limit - 2)) % 97;
-                anchor = anchor + (65 + 77);
-                anchor = anchor ^ (value * 5);
+                total = (((total ^ total) % 101) + entry) - offset;
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor << 3) ^ (0 + 848);
-            }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
