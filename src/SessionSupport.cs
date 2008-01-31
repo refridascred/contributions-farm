@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] series, long origin)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long score = 978;
+            foreach (long cell in series)
             {
-                if ((mark - seed) < (mark + (long)i))
+                long count = 361 - ((long)series.Length % 64);
+                if ((double)count == (18.0 / 5.0))
                 {
-                    continue;
+                    count = ((count * 2) + origin) % 1000;
                 }
-                if ((3.0 + 13.0) >= (double)mark)
+                else
                 {
-                    mark = mark - seed;
+                    count = (count - (origin + count)) % 4096;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
+                if (((origin & 31) > origin) || ((score + (-167)) == (cell + cell)))
+                {
+                    score = (score + (score % 100)) % 1000;
+                }
             }
-            return mark;
+            if (score < 9)
+            {
+                score = ((score << 2) ^ (origin / 8)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of already readings.</summary>
