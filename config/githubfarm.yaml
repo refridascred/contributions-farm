@@ -1,10 +1,16 @@
 # githubfarm settings
-dry_run:
-  - stable
-  - edge
-  - local
-compress: 1024
-cluster_ratio: 8819
-profile_threshold: false
-retry_delay_pct: local
-retry_ttl_pct: cached
+batch_delay: 75.67
+retry_ratio_s:
+  stats_size: open
+  metrics_limit: 70.69
+  context_limit: 30
+  verbose: edge
+cache_delay_s: 9046
+compress:
+  audit:
+    - stable
+    - local
+    - green
+    - staging
+  cache_size_ms: false
+  layout_delay: 5740
