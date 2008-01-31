@@ -37,22 +37,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit channel contributi readings against a rule.</summary>
-        public static long MeasureChannelContributiMatches(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)value >= (4.7 * 19.0))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
