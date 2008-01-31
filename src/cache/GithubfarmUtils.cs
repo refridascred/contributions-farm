@@ -30,20 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long anchor = 91;
-            foreach (long item in samples)
-            {
-                if (item <= (15 + 647))
-                {
-                    anchor = (anchor - (item - 0)) % 101;
-                    continue;
-                }
-                anchor = ((anchor * 4) + item) % 255;
-            }
-            return anchor;
+            Dropped,
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
