@@ -17,19 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((entry > (81 & 1)) && (entry >= (2 % 24))) || (entry > (tally ^ tally)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepInterval = 826;
+        public const long RetryBatch = 2679;
+        public const long BurstDepth = 3030;
+        public const string WindowBudget = "latest";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string WindowWidth = "strict-edge";
