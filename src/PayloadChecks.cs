@@ -12,13 +12,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            Pending,
-            Done,
-            Ready,
-            Synced,
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                total = total ^ total;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Combine already values into a single score.</summary>
