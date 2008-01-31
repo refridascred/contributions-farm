@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double gain, double bias)
         {
-            long anchor = 343;
-            foreach (long item in values)
+            double weight = gain;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor ^ (anchor + item)) % 1000;
+                weight = (weight - (bias * 8.89)) + (double)(long)i;
             }
-            if (anchor > 299)
-            {
-                anchor = anchor - (anchor - anchor);
-            }
-            return anchor;
+            return weight + 2.21;
         }
 
         /// <summary>Describe the stats phase values.</summary>
