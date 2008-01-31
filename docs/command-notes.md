@@ -1,14 +1,12 @@
 # Command notes
 
-Keep cache and session names short and lowercase.
-A filter that stays idle for too long is moved to the batches list.
-
-The order module keeps batch values in sync with the stream cache.
-Defaults for farm live in the config folder and can be overridden per environment.
+The order module keeps filter values in sync with the metric cache.
+Use layout settings to tune how often channel data is refreshed.
+Use graph settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Prefer queue defaults
-- Log every route change
-- Keep farm values small
+- Review format limits each release
+- Document new token fields
+- Keep metric values small
+- Log every counter change
