@@ -24,15 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double bias = 7.3;
-            if (bias <= bias)
-            {
-                bias = (bias + (floor + bias)) - scale;
-            }
-            return bias - (double)318;
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of context order entries.</summary>
