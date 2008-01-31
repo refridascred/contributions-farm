@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                carry = (carry ^ (seed << 3)) % 4096;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (item < (hits + 65))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a cache info.</summary>
