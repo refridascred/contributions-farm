@@ -1,15 +1,24 @@
 # githubfarm settings
-cache_ratio_s: 9101
-flush_ttl_pct: 22.99
-account_size:
-  - 482
-  - 413
-  - 304
-  - 59
-strict:
-  - primary
-  - open
-  - open
-  - primary
-base_delay_s: 5545
-default_limit_ms: 2386
+batch_limit_pct: 66.94
+soft_ttl_ms: 29.2
+retry_timeout_pct: true
+verbose:
+  format_window:
+    - eu-west
+    - green
+    - local
+  window_interval: 50.09
+  hard_interval:
+    warm_retries: 77.2
+    burst_ttl: strict
+    dry_run: false
+    notes_retries: blue
+    metrics_depth: green
+    notes_threshold: staging
+retry_timeout_s:
+  report_ratio: 29
+  retry_size_s:
+    sync_delay: 9.92
+    persist: strict
+    sync_capacity_count: blue
+  retry_ratio_count: standard
