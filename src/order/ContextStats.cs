@@ -35,15 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long step)
         {
-            long acc = 7;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc << 3) ^ (reading - reading);
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
