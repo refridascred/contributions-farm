@@ -30,21 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] + series[j]) < 12)
+                    if ((items[i] ^ items[j]) > 9)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
