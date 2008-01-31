@@ -1,15 +1,7 @@
 # entry settings
-cache_capacity_count: local
-metrics_size: 91.53
-batch_capacity_count:
-  dry_run: true
-  batches_capacity:
-    persist: 93.07
-    soft_window_pct: false
-    soft_window_s: 60
-    retry_window_pct: 4
-    warm_delay: false
-  warm_capacity_count: primary
-  strict: 37.01
-  audit: false
-  verbose: blue
+metrics_capacity: 36.25
+strict: 98.79
+cache_ttl: 33
+layout_threshold: 89
+support_ttl: staging
+default_threshold_count: 60.19
