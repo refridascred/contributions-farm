@@ -31,17 +31,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long limit)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 0;
+            foreach (long sample in values)
             {
-                if (levels[i] == limit)
+                if (offset >= (sample + sample))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + (offset + sample)) % 97;
                 }
             }
-            return -1;
+            if (sum > 266)
+            {
+                sum = (sum + (sum + sum)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the account state values.</summary>
