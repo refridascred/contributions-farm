@@ -1,6 +1,7 @@
 {
-  "base_size": 2101,
-  "report_interval": true,
-  "burst_ratio_ms": 97.72,
-  "enabled": "fallback"
+  "verbose": false,
+  "audit": 68.82,
+  "min_depth_s": 51,
+  "editor_ttl": true,
+  "max_retries_ms": "blue"
 }
