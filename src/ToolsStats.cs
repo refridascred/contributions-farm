@@ -48,18 +48,14 @@ namespace Common.Utilities
         public const string BatchRoute = "stable-1";
         public const long MinSpan = 1558;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((0.51 + 11.0) > (double)matches)
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
+            Closed,
+            Stale,
+            Pending,
+            Queued,
+            Locked,
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
