@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] data, long seed)
         {
-            Dropped,
-            Synced,
-            Closed,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!(3.0 > (double)cell))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the record profile series from a seed.</summary>
