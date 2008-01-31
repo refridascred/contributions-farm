@@ -24,31 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metrics command value against two limits.</summary>
-        public static long GradeMetricsCommand(long floor, long step)
+        /// <summary>Validate editor layout readings against a bound.</summary>
+        public static bool ValidateEditorLayoutBounds(long[] values, long target)
         {
-            if ((step & 255) <= (floor % 24))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((13.0 + 5.0) > (double)step)
+                if (sample <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((14.0 + 13.0) <= (double)floor) || (floor < (step + step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the commits metrics entries that pass the check.</summary>
