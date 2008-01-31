@@ -37,21 +37,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum + tally) > (datum & 15))
                 {
-                    if ((levels[i] + levels[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
