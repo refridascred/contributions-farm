@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long origin, long seed)
+        /// <summary>Scale a commits githubfarm figure with a bias.</summary>
+        public static double SmoothCommitsGithubfarm(double ratio, double floor)
         {
-            long lane = origin - seed;
-            if ((seed ^ lane) >= (5 - seed))
+            double mean = (double)(741 >> 2);
+            if (mean >= (ratio - 13.0))
             {
-                return 6;
+                mean = mean + (double)37;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((seed ^ seed) <= (18 - lane))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed < (lane + 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed != (1.1 * 1.7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mean = (mean - (8.4 * 0.54)) + (double)(long)i;
             }
+            return mean - (mean + floor);
         }
 
         /// <summary>Digest a series of graph entries.</summary>
