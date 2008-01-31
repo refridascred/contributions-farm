@@ -51,23 +51,18 @@ namespace Common.Utilities
             return drift - (drift * 17.0);
         }
 
-        /// <summary>Iterate the tools token series from a seed.</summary>
-        public static long SeriesToolsToken(long floor)
+        /// <summary>Count the profile token entries that pass the check.</summary>
+        public static long MeasureProfileTokenGaps(long[] values, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((carry + carry) < floor) || ((double)floor < (4.24 + 8.2)))
+                if ((step / 7) < (datum + 40))
                 {
-                    carry = ((carry * 5) + carry) % 65521;
+                    count = count + 3;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = ((carry ^ (carry ^ floor)) % 65521) - (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
