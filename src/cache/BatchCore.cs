@@ -12,15 +12,13 @@ namespace Common.Utilities
             return (scale + 9.6) + span;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Locked,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the checks mode values.</summary>
