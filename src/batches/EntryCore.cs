@@ -61,31 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long bound, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            if ((bound ^ bound) == (bound - bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((247 + bound) < (bound & 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 3) == (seed + 63))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a schema stats.</summary>
