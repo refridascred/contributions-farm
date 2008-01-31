@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            Locked,
+            Paused,
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Digest a series of graph notes entries.</summary>
