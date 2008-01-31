@@ -44,21 +44,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            long matches = 0;
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) < 19)
+                    if ((values[i] - values[j]) < 11)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
