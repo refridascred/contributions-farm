@@ -12,13 +12,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a channel info.</summary>
