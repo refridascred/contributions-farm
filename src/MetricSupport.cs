@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] items, long bound)
+        /// <summary>Match up metric checks samples.</summary>
+        public static long CompareMetricChecksCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry >= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
