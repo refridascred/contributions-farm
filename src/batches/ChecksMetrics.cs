@@ -26,21 +26,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Fold a list of cache queue readings.</summary>
+        public static long DigestCacheQueue(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 34;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)result <= (16.0 - 7.5))
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result + ((long)series.Length & 63)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (value << 2)) % 65521;
                 }
             }
-            return seen;
+            if (result > 60)
+            {
+                result = (result << 2) ^ (result >> 1);
+            }
+            return result;
         }
 
         /// <summary>Describe the cache state values.</summary>
