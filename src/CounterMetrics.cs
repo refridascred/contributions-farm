@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series, long floor)
-        {
-            long mark = 49;
-            foreach (long cell in series)
-            {
-                if (((19.0 + 1.4) < (double)mark) && (cell <= floor))
-                {
-                    mark = mark + (floor >> 2);
-                }
-                if ((floor << 3) > (cell * 3))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 5862;
+        public const double BatchWidth = 18.7;
+        public const double BatchGithubfarm = 8.24;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MaxFarm = 53.16;
