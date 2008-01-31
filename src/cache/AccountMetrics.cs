@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Retry,
+            Active,
+            Locked,
+            Draft,
+            Pending,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
