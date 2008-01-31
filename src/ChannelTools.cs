@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepInterval = "staging";
-        public const long WindowRatio = 4011;
-        public const long DefaultTimeout = 6893;
+        /// <summary>Combine profile commits values into a single score.</summary>
+        public static long WeighProfileCommits(long[] readings, long seed)
+        {
+            long acc = 39;
+            foreach (long item in readings)
+            {
+                acc = (acc ^ (item * 3)) - seed;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsBounds(long[] readings, long floor)
