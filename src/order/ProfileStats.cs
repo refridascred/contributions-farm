@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 3458;
-        public const long BaseSession = 2098;
-        public const long MaxSession = 7215;
-        public const long BatchScore = 2349;
-        public const long IdleBudget = 5738;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor << 3) ^ (56 - step)) % 97;
+                anchor = ((anchor * 2) + ((long)i % 5)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
