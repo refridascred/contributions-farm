@@ -1,14 +1,14 @@
 # entry settings
-cache_interval: 93.64
-soft_size_s: open
-default_threshold: staging
-warm_delay_count:
-  - local
-  - green
-  - open
-  - stable
-enabled:
-  - strict
-  - green
-  - edge
-  - primary
+audit: true
+queue_interval:
+  - 344
+  - 26
+  - 163
+poll_capacity:
+  - 303
+  - 243
+  - 31
+  - 410
+persist: primary
+flush_interval_ms: standard
+entry_threshold: true
