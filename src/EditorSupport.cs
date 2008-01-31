@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Active,
-            Synced,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleBudget = "primary-1";
+        public const double StepFilter = 24.28;
+        public const long BatchInterval = 9122;
+        public const long WindowFilter = 9976;
+        public const string LimitFilter = "open-1";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long RollFilter(long step)
