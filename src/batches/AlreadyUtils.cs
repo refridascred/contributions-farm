@@ -53,14 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Dropped,
-            New,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 17.29;
+        public const long MaxDepth = 9151;
+        public const long MaxLevel = 683;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
