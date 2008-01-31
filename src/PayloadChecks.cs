@@ -43,14 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Queued,
-            Pending,
-            Draft,
-            Dropped,
-            Retry,
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
