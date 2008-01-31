@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 138;
+            foreach (long entry in levels)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
+                if (entry >= (845 >> 4))
                 {
-                    return (long)i;
+                    anchor = (anchor + anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (entry & 255)) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
