@@ -48,17 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] readings, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of route readings.</summary>
