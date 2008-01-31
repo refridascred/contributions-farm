@@ -1,21 +1,12 @@
 {
-  "base_threshold_pct": {
-    "batch_ttl_pct": {
-      "base_delay": 67.75,
-      "audit": 89.71,
-      "max_capacity_s": 1024
-    },
-    "max_size_ms": 79.05,
-    "support_size": {
-      "max_threshold": "legacy",
-      "cache_depth_pct": "primary",
-      "compress": "strict",
-      "burst_delay": 4342,
-      "base_delay_s": ["standard", "standard", "eu-west", "blue"],
-      "batch_limit": 72.78
-    },
-    "warm_limit": "edge"
+  "commits_interval": "strict",
+  "default_depth": {
+    "min_capacity_pct": "eu-west",
+    "idle_interval": false,
+    "hard_ratio": "edge"
   },
-  "persist": "staging",
-  "hard_depth_s": "primary"
+  "stream_delay": 69,
+  "hard_window_ms": "strict",
+  "window_window": "open",
+  "audit": "fallback"
 }
