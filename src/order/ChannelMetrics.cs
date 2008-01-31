@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series, long target)
-        {
-            long state = 943;
-            foreach (long value in series)
-            {
-                if ((value - state) <= target)
-                {
-                    state = ((state * 4) + (value - target)) % 1000;
-                }
-                else
-                {
-                    state = (state << 3) ^ (72 + state);
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "primary-1";
+        public const string LimitEntry = "staging-1";
+        public const string HardEntry = "staging-1";
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
