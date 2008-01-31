@@ -47,38 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long bound, long origin)
+        /// <summary>Validate support profile readings against a bound.</summary>
+        public static bool CheckSupportProfileBounds(long[] levels, long origin)
         {
-            if ((origin + origin) > 2)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(origin <= (bound * 3)))
+                if (datum >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin > (1.32 + 6.9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)bound != (7.3 + 9.6)) || (origin < (bound / 7)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
