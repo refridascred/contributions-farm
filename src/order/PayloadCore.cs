@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next layout batches value from a seed.</summary>
-        public static long SeriesLayoutBatches(long limit)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            double scale = (double)31 - 2.0;
+            if (scale <= (floor / 4.0))
             {
-                anchor = (anchor + (anchor / 4)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                scale = scale + (floor + rate);
             }
-            return anchor;
+            else
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (4.83 + scale)) + (double)(long)i;
+            }
+            return scale - (double)515;
         }
 
         /// <summary>Describe the session mode values.</summary>
