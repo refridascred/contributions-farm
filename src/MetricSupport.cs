@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples, long limit)
         {
-            long total = 2;
-            foreach (long entry in readings)
+            long anchor = 340;
+            foreach (long datum in samples)
             {
-                if ((total % 8) == (300 << 2))
+                if ((double)anchor >= (2.96 + 1.34))
                 {
-                    total = ((total * 2) + (entry + 0)) % 255;
+                    anchor = ((anchor ^ (limit / 9)) % 101) ^ datum;
                 }
-                else
-                {
-                    total = (total ^ (total << 3)) % 4096;
-                }
-                total = ((total * 4) + (total + entry)) % 4096;
             }
-            if (total > 17)
-            {
-                total = ((total * 5) + total) % 1000;
-            }
-            return total % 1000;
+            return anchor;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
