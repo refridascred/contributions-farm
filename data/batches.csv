@@ -1,7 +1,6 @@
-id,state,ratio
-1,15.24,669
-2,70.24,local
-3,69.4,open
-4,472,84.82
-5,581,primary
-6,48.97,primary
+id,level,weight
+1,393,839
+2,local,745
+3,52.4,76.17
+4,87,legacy
+5,962,edge
