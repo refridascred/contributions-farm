@@ -22,18 +22,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long state = 660;
-            foreach (long item in items)
-            {
-                if ((15 % 100) == (item & 15))
-                {
-                    state = state ^ (76 / 8);
-                }
-            }
-            return state;
+            Queued,
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the stream class values.</summary>
