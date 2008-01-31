@@ -23,19 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] samples, long bound)
+        /// <summary>Locate a support editor reading by value.</summary>
+        public static long LocateSupportEditorIndex(long[] series, long floor)
         {
-            long carry = 77;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry ^ (carry / 2)) % 97) - cell;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 24)
-            {
-                carry = carry + bound;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
