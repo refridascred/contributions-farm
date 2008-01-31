@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the report kind values.</summary>
