@@ -14,18 +14,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many window batch samples are out of range.</summary>
-        public static long CountWindowBatchGaps(long[] series, long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits % 64) != (datum + 719))
-                {
-                    hits = (hits + 1) - limit;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
