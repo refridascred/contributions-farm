@@ -37,22 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] levels, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen >> 1) == (limit >> 5))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor * 5) + limit;
+                anchor = (anchor - (limit + anchor)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a account options.</summary>
