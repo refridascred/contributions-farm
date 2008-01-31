@@ -22,30 +22,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] series)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            long result = 57;
-            foreach (long item in series)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (((result >> 3) >= (result >> 2)) && (16.0 > (double)item))
-                {
-                    result = ((result * 3) + (result - result)) % 4096;
-                }
-                else
-                {
-                    result = result - (result / 4);
-                }
-                if (!((item & 63) != (item % 16)))
-                {
-                    break;
-                }
+                sum = (sum << 2) ^ (origin ^ origin);
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            if (result < 194)
-            {
-                result = (result - (result << 2)) % 255;
-            }
-            return result % 1000;
+            return sum;
         }
 
         /// <summary>Hold a format options.</summary>
