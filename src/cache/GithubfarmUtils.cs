@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long BaseBatches = 6693;
         public const long IdleInterval = 9726;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] items, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long carry = 668;
+            foreach (long value in data)
             {
-                if (value <= target)
+                carry = ((carry * 5) + value) % 1000;
+                if ((carry % 5) == (value + carry))
                 {
-                    flag = false;
-                    break;
+                    carry = (carry ^ value) % 101;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
