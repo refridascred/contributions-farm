@@ -1,22 +1,9 @@
 # githubfarm settings
-min_window: 99
-verbose: eu-west
-idle_ratio_s:
-  burst_interval_s:
-    record_threshold: open
-    retry_timeout_pct:
-      - 340
-      - 142
-      - 217
-    record_capacity: green
-    metric_interval:
-      - stable
-      - open
-      - green
-      - eu-west
-    soft_timeout: 58
-    idle_ttl_count: primary
-  retry_size_count: staging
-  soft_depth_pct: 92
-  audit: open
-  hard_retries_count: stable
+layout_delay: 500
+soft_depth_pct:
+  warm_timeout_s: 72
+  flush_size: false
+  farm_limit: 30
+  farm_retries: green
+idle_size_s: true
+burst_ratio: false
