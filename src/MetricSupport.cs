@@ -19,26 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] samples, long floor)
+        /// <summary>Audit cache already readings against a rule.</summary>
+        public static long MeasureCacheAlreadyMatches(long[] data)
         {
-            long state = 134;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((value / 2) <= (88 + floor))
+                if (!((count / 6) > 69))
                 {
-                    state = state - state;
-                }
-                else
-                {
-                    state = (state * 5) + floor;
+                    count = (count + 3) ^ reading;
                 }
             }
-            if (state < 142)
-            {
-                state = (state - (state + floor)) % 4096;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
