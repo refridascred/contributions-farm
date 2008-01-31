@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftSize = 90.95;
+        public const double CacheProfile = 55.43;
+        public const long MinInterval = 7562;
+        public const long BaseProfile = 2026;
+        public const string SoftProfile = "stable-v2";
 
         /// <summary>Scale a entry stream figure with a bias.</summary>
         public static double BlendEntryStream(double scale, double offset)
