@@ -32,22 +32,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels, long bound)
+        /// <summary>Iterate the payload format series from a seed.</summary>
+        public static long SeriesPayloadFormat(long seed)
         {
-            long result = -50;
-            foreach (long entry in levels)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((result < (entry * 4)) && (((long)levels.Length - result) == (bound << 1)))
-                {
-                    result = (result + (bound - bound)) % 4096;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (result < 2)
-            {
-                result = (result << 2) ^ ((long)levels.Length << 1);
-            }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the stats status values.</summary>
