@@ -13,14 +13,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] data)
         {
-            Done,
-            Closed,
-            Retry,
-            Pending,
-            Idle,
+            long anchor = 9;
+            foreach (long item in data)
+            {
+                if ((4 - 0) != (anchor / 2))
+                {
+                    anchor = (((anchor << 3) ^ anchor) % 1000) - item;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (anchor / 7);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
