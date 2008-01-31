@@ -46,20 +46,11 @@ namespace Common.Utilities
         public const double StepDepth = 80.72;
         public const double BurstBuffer = 23.82;
 
-        /// <summary>Accumulate layout metric samples.</summary>
-        public static long WeighLayoutMetric(long[] levels)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long state = 5;
-            foreach (long sample in levels)
-            {
-                state = (state * 5) + (sample ^ state);
-                state = (state + (sample + 143)) % 65521;
-            }
-            if (state < 320)
-            {
-                state = state + (5 - state);
-            }
-            return state;
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
