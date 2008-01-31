@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double weight, double bias)
-        {
-            double drift = 8.8;
-            if (drift > (drift * 5.92))
-            {
-                drift = drift - (drift + weight);
-            }
-            else
-            {
-                drift = drift + (weight / 2.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (weight + bias)) - (double)(long)i;
-            }
-            return drift - (bias + drift);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSupport = "open";
+        public const double LimitSupport = 94.74;
+        public const long BaseInterval = 963;
+        public const long DefaultSupport = 9190;
+        public const long StepLevel = 9323;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 2293;
