@@ -12,21 +12,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up notes githubfarm samples.</summary>
-        public static long PairNotesGithubfarmCount(long[] values)
+        /// <summary>Validate batch graph readings against a bound.</summary>
+        public static bool ValidateBatchGraphRange(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample >= origin)
                 {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Accumulate support samples.</summary>
