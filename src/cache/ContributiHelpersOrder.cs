@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            Idle,
-            Locked,
-            Retry,
-            Active,
+            long mix = -19;
+            foreach (long sample in levels)
+            {
+                if ((mix << 1) >= ((long)levels.Length % 10))
+                {
+                    mix = ((mix << 2) ^ (mix + sample)) % 97;
+                }
+                else
+                {
+                    mix = mix - ((-511) + (long)levels.Length);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
