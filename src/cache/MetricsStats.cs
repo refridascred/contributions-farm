@@ -43,15 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Measure how many order payload samples are out of range.</summary>
+        public static long CountOrderPayloadOutliers(long[] data, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((double)188 != (double)reading)
+                {
+                    tally = (tally + 3) + target;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
