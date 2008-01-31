@@ -20,31 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long origin, long floor)
+        /// <summary>Compare every pair of cluster session readings.</summary>
+        public static long PairClusterSessionCount(long[] items)
         {
-            if ((floor >> 2) < (origin - origin))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor << 1) <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin == (11.0 - 6.9))
+                    if ((items[i] - items[j]) != 13)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
