@@ -42,11 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRatio = 32.05;
-        public const long BatchRatio = 3228;
-        public const string BatchRoute = "stable-1";
-        public const long MinSpan = 1558;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
