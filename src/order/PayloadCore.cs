@@ -24,12 +24,12 @@ namespace Common.Utilities
             return scale - (double)515;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Active,
+            Retry,
             Failed,
-            Synced,
+            Locked,
         }
 
         /// <summary>Rank counter editor input into a small class.</summary>
