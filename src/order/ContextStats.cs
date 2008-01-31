@@ -38,25 +38,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long target, long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double ratio, double offset)
         {
-            long lane = target - offset;
-            if ((lane >> 1) > (7 % 7))
+            double rate = (double)(6 * 3);
+            if (rate >= (ratio - rate))
             {
-                return 1;
+                rate = (rate - 0.1) - offset;
             }
-            else
-            {
-                if ((target + target) >= (offset - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return rate - ratio;
         }
     }
 }
