@@ -1,12 +1,35 @@
 # githubfarm settings
-dry_run:
-  - 138
-  - 358
-  - 407
-batch_capacity_count: 60.77
-default_threshold_pct:
-  - 176
-  - 10
-  - 454
-poll_threshold_s: true
-batch_delay_pct: 87
+readonly:
+  soft_limit:
+    hard_window_s: 215
+    payload_capacity: true
+    base_ratio:
+      - 42
+      - 343
+      - 145
+      - 372
+  token_ratio: false
+  base_ratio_ms:
+    poll_delay_count: 515
+    format_delay: 250
+    max_window_s: 87
+    default_capacity_count: strict
+    counter_ratio: 16.42
+    sync_interval:
+      - 105
+      - 210
+  flush_retries_count:
+    - standard
+    - standard
+  min_ratio: 3521
+profile_window: latest
+default_ratio_s: 60
+min_depth_s:
+  - open
+  - primary
+  - green
+  - fallback
+stats_delay:
+  - 246
+  - 460
+  - 417
