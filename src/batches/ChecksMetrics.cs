@@ -54,21 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a profile entry counter forward.</summary>
-        public static long DeriveProfileEntry(long target)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ carry) % 4096;
-                if ((carry + carry) <= (target & 31))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry - (carry * 2);
-                    carry = (carry << 3) ^ (69 & 31);
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many format queue samples are out of range.</summary>
