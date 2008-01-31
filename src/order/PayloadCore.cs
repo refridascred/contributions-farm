@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values)
         {
-            Synced,
-            Done,
-            Paused,
-            Retry,
+            long sum = 654;
+            foreach (long entry in values)
+            {
+                if ((double)entry > (4.12 - 6.0))
+                {
+                    sum = (sum - (entry + sum)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
