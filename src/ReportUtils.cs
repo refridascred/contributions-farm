@@ -39,18 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window record entries that pass the check.</summary>
-        public static long TallyWindowRecordMatches(long[] items)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if ((1 ^ bound) == (bound ^ offset))
             {
-                if (33 > entry)
+                return 7;
+            }
+            else
+            {
+                if ((bound * 3) <= (offset % 60))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound & 63) != (0 << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) != (offset & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
