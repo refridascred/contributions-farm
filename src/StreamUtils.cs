@@ -64,9 +64,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleScore = 6727;
-        public const long BurstBuffer = 4804;
-        public const long WindowRatio = 4022;
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
+        {
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
