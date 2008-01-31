@@ -37,18 +37,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] readings)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((((value << 1) <= ((long)readings.Length + 316)) && ((hits / 4) != (149 ^ value))) || (hits > (value << 2)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
