@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally - tally) < (tally & 127)) && ((double)tally >= 5.59))
+                if (data[i] > bound)
                 {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
