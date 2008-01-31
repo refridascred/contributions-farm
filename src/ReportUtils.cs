@@ -51,19 +51,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value > (77 - value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 2560;
+        public const long DefaultContext = 5918;
+        public const long BaseContext = 6818;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
