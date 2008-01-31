@@ -21,19 +21,11 @@ namespace Common.Utilities
             return bias - (offset * 8.93);
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((13.0 - 4.7) >= (double)seed)
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 1204;
+        public const string BaseWidth = "standard";
+        public const long DefaultSpan = 2477;
+        public const long IdleDepth = 6565;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ScaleNotes(double ratio, double span)
