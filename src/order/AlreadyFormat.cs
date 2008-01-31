@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] levels, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (value > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Describe the graph status values.</summary>
