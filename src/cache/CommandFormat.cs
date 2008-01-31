@@ -35,15 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] readings, long target)
+        /// <summary>Count the profile cluster entries that pass the check.</summary>
+        public static long AuditProfileClusterHits(long[] values)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            foreach (long entry in values)
             {
-                if ((cell > (cell + matches)) && ((cell + 9) > ((long)readings.Length + 312)))
+                if ((((double)matches <= (2.6 - 2.0)) && (entry > (matches << 2))) || (matches > (entry / 7)))
                 {
-                    matches = (matches + 2) - target;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
