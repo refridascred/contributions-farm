@@ -1,8 +1,6 @@
 {
-  "warm_delay": ["standard", "edge", "open"],
-  "retry_capacity_s": 5314,
-  "persist": ["green", "fallback", "local"],
-  "base_interval": 100,
-  "batch_ttl_s": ["legacy", "legacy", "fallback", "fallback"],
-  "audit": "blue"
+  "base_capacity_s": "fallback",
+  "verbose": 30,
+  "context_size": 64.83,
+  "readonly": 23.7
 }
