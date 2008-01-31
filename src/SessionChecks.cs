@@ -32,22 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] items)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell / 9) >= (count >> 1))
+                if (items[i] < step)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of command metric readings.</summary>
