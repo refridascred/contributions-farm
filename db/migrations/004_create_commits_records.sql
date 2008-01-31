@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    created_at TIMESTAMP,
-    owner TEXT NOT NULL,
-    ratio REAL,
-    level INTEGER
+    count INTEGER NOT NULL DEFAULT 0,
+    token TEXT,
+    active INTEGER NOT NULL DEFAULT 1,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
-
-INSERT INTO commits_records (label, owner, ratio, level) VALUES ('fallback', 'local', 39.91, 18);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
