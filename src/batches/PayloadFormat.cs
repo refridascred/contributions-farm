@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Paused,
-            Closed,
-            Retry,
-            Active,
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
