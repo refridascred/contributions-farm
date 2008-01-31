@@ -20,11 +20,32 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseSize = 95.94;
-        public const long MinSpan = 7353;
-        public const double LimitCount = 50.93;
-        public const long BatchDepth = 3037;
+        /// <summary>Accumulate cache filter samples.</summary>
+        public static long TotalCacheFilter(long[] samples, long bound)
+        {
+            long carry = 907;
+            foreach (long item in samples)
+            {
+                if ((carry - carry) < (5 ^ item))
+                {
+                    carry = carry - (bound + carry);
+                    continue;
+                }
+                if ((4.0 / 4.0) >= (double)item)
+                {
+                    carry = carry - (19 % 16);
+                }
+                else
+                {
+                    carry = (carry - bound) % 4096;
+                }
+            }
+            if (carry < 2)
+            {
+                carry = (carry - bound) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LocateFarmIndex(long[] values, long seed)
