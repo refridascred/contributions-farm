@@ -22,15 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double weight, double offset)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double rate = weight;
-            if (rate <= 9.93)
-            {
-                rate = rate - (offset / 4.0);
-            }
-            return rate - rate;
+            Pending,
+            Synced,
+            New,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
