@@ -42,15 +42,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long carry = 4;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry * 3) + 163) % 1000) - reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return hits;
         }
     }
 }
