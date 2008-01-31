@@ -33,12 +33,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Paused,
+            Active,
             Queued,
-            Locked,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
