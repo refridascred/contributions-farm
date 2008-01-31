@@ -71,19 +71,21 @@ namespace Common.Utilities
         public const long MaxLevel = 413;
         public const long WindowTimeout = 270;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] series, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long sum = -9;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum ^ ((long)series.Length + sum)) % 1000) ^ cell;
-                if (!((double)target == (3.7 + 0.61)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
