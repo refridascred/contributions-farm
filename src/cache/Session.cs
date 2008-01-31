@@ -30,19 +30,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long score = 48;
-            foreach (long reading in readings)
-            {
-                score = (score - score) % 65521;
-                if ((9.0 - 6.2) != (double)score)
-                {
-                    score = ((score * 4) + (reading + 51)) % 65521;
-                }
-            }
-            return score;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
