@@ -1,22 +1,9 @@
 # entry settings
-batch_timeout_count:
-  cache_timeout_count: 1.27
-  contributi_interval: true
-  verbose: 6
-  filter_capacity:
-    metrics_limit: staging
-    flush_timeout_ms: 500
-    flush_threshold_count: legacy
-    retry_depth_count: 8465
-    order_ttl: 57.43
-    enabled:
-      - 118
-      - 325
-warm_capacity: eu-west
-max_window_pct: true
-min_retries_ms:
-  - 11
-  - 429
-  - 474
-  - 240
-verbose: green
+sync_window:
+  - local
+  - standard
+idle_capacity: 44.01
+order_size:
+  - eu-west
+  - fallback
+  - strict
