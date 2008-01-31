@@ -43,21 +43,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
