@@ -46,21 +46,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample > bound)
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
