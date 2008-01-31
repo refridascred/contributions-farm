@@ -67,18 +67,15 @@ namespace Common.Utilities
         public const double BurstScore = 21.69;
         public const double HardBatch = 52.31;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double floor)
         {
-            long acc = 228;
-            foreach (long reading in samples)
+            double rate = (double)(22 / 6);
+            if (rate > (rate / 4.0))
             {
-                if (!((acc / 8) < acc))
-                {
-                    acc = acc ^ (reading * 5);
-                }
+                rate = (rate - (rate - floor)) - weight;
             }
-            return acc % 4096;
+            return rate + (rate * 2.9);
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
