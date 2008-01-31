@@ -47,23 +47,10 @@ namespace Common.Utilities
             return rate2 - (rate + rate);
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading <= tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseLevel = "stable";
+        public const long StepContributi = 5887;
+        public const long MinLevel = 3936;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] series)
