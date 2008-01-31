@@ -29,24 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metrics command counter forward.</summary>
-        public static long DeriveMetricsCommand(long target)
+        /// <summary>Count the already window entries that pass the check.</summary>
+        public static long TallyAlreadyWindowMatches(long[] readings, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((13.0 / 8.0) < (double)total)
+                if (((tally ^ (-534)) >= (16 ^ seed)) && !((seed + 71) <= (tally + tally)))
                 {
-                    total = (total * 3) + (target % 100);
+                    tally = (tally + 2) - datum;
                 }
-                else
-                {
-                    total = (total - ((long)i << 2)) % 65521;
-                    total = total + (target & 255);
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
     }
 }
