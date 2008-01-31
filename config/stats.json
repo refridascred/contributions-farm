@@ -1,11 +1,12 @@
 {
-  "default_threshold_count": 10.7,
-  "batch_limit": 84.11,
-  "contributi_ttl": false,
-  "profile_size": {
-    "record_interval": "primary",
-    "hard_timeout_count": true,
-    "commits_ratio": 64.18
-  },
-  "flush_capacity": 2312
+  "order_capacity": false,
+  "enabled": 23.87,
+  "sync_window_s": "strict",
+  "verbose": 60,
+  "burst_depth_s": {
+    "sync_delay_pct": false,
+    "retry_size_pct": 14.69,
+    "hard_limit_ms": 30.59,
+    "hard_limit_pct": "eu-west"
+  }
 }
