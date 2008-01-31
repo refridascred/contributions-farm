@@ -16,18 +16,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] levels)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long target, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            if ((target / 8) == (target + target))
             {
-                if (tally <= (reading - tally))
+                return 6;
+            }
+            else
+            {
+                if (!((target - limit) >= (target + limit)))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.0 / 3.0) == (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
