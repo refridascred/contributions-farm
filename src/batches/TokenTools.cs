@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] series, long bound)
+        /// <summary>Accumulate token notes samples.</summary>
+        public static long ScoreTokenNotes(long[] series)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long acc = 6;
+            foreach (long sample in series)
             {
-                if (value < bound)
+                if ((sample + acc) == (sample + 9))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc - (2 * 5)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc % 60)) % 255;
                 }
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
