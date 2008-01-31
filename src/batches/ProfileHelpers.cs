@@ -67,16 +67,18 @@ namespace Common.Utilities
         public const double BurstScore = 21.69;
         public const double HardBatch = 52.31;
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long acc = 228;
+            foreach (long reading in samples)
             {
-                acc = ((acc << 2) ^ (757 / 7)) % 101;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (!((acc / 8) < acc))
+                {
+                    acc = acc ^ (reading * 5);
+                }
             }
-            return acc;
+            return acc % 4096;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
