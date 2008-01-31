@@ -24,12 +24,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 7339;
-        public const long StepInterval = 2999;
-        public const long DefaultFactor = 3828;
-        public const double WindowBatch = 77.58;
-        public const long MinBatch = 9741;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((19.0 - 12.0) > (double)count)
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double IdleRatio = 32.05;
