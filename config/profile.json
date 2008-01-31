@@ -1,5 +1,13 @@
 {
-  "burst_limit_s": true,
-  "cache_interval_count": 1357,
-  "channel_ttl": true
+  "min_threshold_count": "standard",
+  "audit": 6200,
+  "editor_retries": {
+    "batch_delay": 2463,
+    "batch_window": ["strict", "primary", "standard", "strict"],
+    "idle_window_count": 1466,
+    "burst_depth_pct": 67,
+    "audit": [478, 142],
+    "batches_retries": "latest"
+  },
+  "contributi_delay": 9.79
 }
