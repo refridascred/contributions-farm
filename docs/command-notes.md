@@ -1,15 +1,13 @@
 # Command notes
 
-Each profile is validated before it reaches the checks queue.
-Use context settings to tune how often stream data is refreshed.
-Run the account check before changing any account limits.
+Keep checks and record names short and lowercase.
+The support report groups every session by cluster.
 
-When a graph fails, the order handler retries a few times before giving up.
-Defaults for metric live in the config folder and can be overridden per environment.
-Each command is validated before it reaches the cache queue.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Keep already and batches names short and lowercase.
 
 ## Guidelines
 
-- Document new batch fields
-- Keep contributi values small
-- Validate notes input early
+- Review commits limits each release
+- Keep buffer values small
+- Document new session fields
