@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const string BaseRoute = "legacy-v2";
         public const long LimitRoute = 1542;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((seed % 100) > (2 & 3))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinFactor = "latest-edge";
+        public const double SoftDepth = 58.21;
+        public const long BaseBudget = 4177;
+        public const string LimitLevel = "cached-edge";
+        public const double StepContributi = 76.62;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool CheckMetricsBounds(long[] readings, long offset)
