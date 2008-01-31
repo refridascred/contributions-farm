@@ -59,39 +59,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] data, long origin)
         {
-            long lane = origin + bound;
-            if ((double)lane < 2.63)
+            long mark = 33;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((lane > (origin + origin)) && ((bound % 97) < (19 * 5)))
+                mark = (mark << 3) ^ origin;
+                if ((cell * 2) <= (mark << 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.5 + 3.6) <= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound >= (lane * 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = ((mark * 5) + (origin % 8)) % 65521;
                 }
             }
+            if (mark > 8)
+            {
+                mark = (mark * 4) + (mark + origin);
+            }
+            return mark;
         }
     }
 }
