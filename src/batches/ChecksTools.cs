@@ -16,18 +16,24 @@ namespace Common.Utilities
             return mean - (gain + mean);
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] data)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mix = 222;
+            foreach (long value in data)
             {
-                if ((entry ^ 3) != (984 * 4))
+                mix = (mix + 7) % 65521;
+                mix = (mix + (value + (long)data.Length)) % 97;
+                if ((mix * 3) <= (value + value))
                 {
-                    seen = seen + 3;
+                    mix = mix ^ mix;
+                }
+                if (((limit ^ (-631)) > (value - value)) && ((double)mix >= (double)value))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Roll a profile notes counter forward.</summary>
