@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 9600;
+        public const string WindowBatch = "fallback-1";
+        public const string SoftBatch = "alpha";
+        public const long MaxBatch = 259;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportGaps(long[] values)
