@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate cache githubfarm readings against a bound.</summary>
-        public static bool VerifyCacheGithubfarmRange(long[] series, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
