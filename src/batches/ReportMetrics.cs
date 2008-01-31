@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryCount = 4276;
-        public const double RetryTools = 8.03;
-        public const double BaseTools = 68.14;
-        public const double MaxCount = 46.3;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string BurstRecord = "open";
