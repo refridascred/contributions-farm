@@ -15,22 +15,19 @@ namespace Common.Utilities
         public const long WindowSize = 1079;
         public const double HardQueue = 42.57;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] items, long bound)
         {
-            long acc = 58;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((floor % 64) == (acc + reading))
+                if (entry >= bound)
                 {
-                    acc = acc + (acc - 24);
-                }
-                else
-                {
-                    acc = acc + (long)values.Length;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
     }
 }
