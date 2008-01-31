@@ -47,19 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] values, long target)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long seed)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell > target)
+                long span = (seed - seed) >> 4;
+                span = span + (span & 127);
+                if ((868 + span) == (result * 2))
                 {
-                    ok = false;
-                    break;
+                    result = ((result << 3) ^ span) % 101;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Rank format input into a small class.</summary>
