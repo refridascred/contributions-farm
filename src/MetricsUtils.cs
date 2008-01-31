@@ -80,13 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            Idle,
-            Ready,
-            Retry,
-            Queued,
+            long sum = 7;
+            foreach (long item in data)
+            {
+                if (((item - sum) <= item) || ((item - sum) >= (sum >> 2)))
+                {
+                    sum = (sum << 3) ^ (sum + sum);
+                }
+            }
+            if (sum < 24)
+            {
+                sum = sum + (sum - 480);
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
