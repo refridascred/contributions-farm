@@ -38,14 +38,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            Queued,
-            Idle,
-            Retry,
-            Pending,
-            Draft,
+            long sum = -29;
+            foreach (long sample in readings)
+            {
+                if ((double)sample <= (0.65 / 2.0))
+                {
+                    sum = sum - (-681);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
