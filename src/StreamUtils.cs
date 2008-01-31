@@ -23,22 +23,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long origin2)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long step, long seed)
         {
-            if (!((origin2 >> 2) < origin2))
+            if ((71 * 2) > step)
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (!((double)origin2 == (6.8 + 7.4)))
+                if ((step + step) >= (seed & 255))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    return 7;
                 }
             }
         }
