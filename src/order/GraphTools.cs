@@ -44,17 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi support reading by value.</summary>
-        public static long FindContributiSupportIndex(long[] items, long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (items[i] > offset)
+                if (datum <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
