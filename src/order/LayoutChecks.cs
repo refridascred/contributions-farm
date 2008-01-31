@@ -52,15 +52,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] data)
+        /// <summary>Validate account batch readings against a bound.</summary>
+        public static bool VerifyAccountBatchRange(long[] items, long floor)
         {
-            long sum = 262;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                sum = ((sum - sum) % 101) ^ value;
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Match up tools samples.</summary>
