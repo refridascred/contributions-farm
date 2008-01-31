@@ -74,19 +74,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] levels, long limit)
+        /// <summary>Validate contributi commits readings against a bound.</summary>
+        public static bool VerifyContributiCommitsLimits(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (cell > limit)
+                if (datum != floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
