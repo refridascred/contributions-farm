@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Validate session farm readings against a bound.</summary>
+        public static bool ValidateSessionFarmRange(long[] items, long origin)
         {
-            public double Token { get; set; }
-            public double Limit { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the stats phase values.</summary>
