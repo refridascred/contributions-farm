@@ -31,21 +31,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc << 3) ^ (step >> 1);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a command info.</summary>
