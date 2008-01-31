@@ -28,12 +28,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] items)
         {
-            Active,
-            Done,
-            Idle,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + count) >= (720 - datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
