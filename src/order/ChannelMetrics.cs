@@ -32,22 +32,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] levels)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (seen < (seen - seen))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
