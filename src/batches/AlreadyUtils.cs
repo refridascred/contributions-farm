@@ -18,39 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel cache pair into a bucket.</summary>
-        public static long SortChannelCache(long target, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] series, long limit)
         {
-            long next = target + step;
-            if ((next << 2) <= (target << 2))
+            long acc = 343;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - target) == (target << 1))
+                if ((4.6 - 6.1) > (double)limit)
                 {
-                    return 4;
+                    acc = ((acc * 2) + 724) - reading;
                 }
                 else
                 {
-                    if ((target ^ step) <= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)target == (7.5 / 8.0)) || ((next - next) > (8 & 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (acc ^ (limit << 3)) % 97;
                 }
             }
+            if (acc > 485)
+            {
+                acc = ((acc * 2) + 3) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
