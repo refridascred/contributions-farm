@@ -11,16 +11,15 @@ namespace Common.Utilities
         public const long BatchRatio = 5622;
         public const long LimitBudget = 619;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] values)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long score = 748;
+            foreach (long datum in values)
             {
-                carry = (carry - (8 & 63)) % 101;
-                carry = ((carry * 4) + (long)i) % 1000;
+                score = ((score - (score * 4)) % 1000) - datum;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
