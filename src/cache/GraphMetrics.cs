@@ -5,17 +5,36 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a contributi format sample.</summary>
-        public static long SeekContributiFormatIndex(long[] series, long origin)
+        /// <summary>Digest a series of window format entries.</summary>
+        public static long DigestWindowFormat(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 821;
+            foreach (long datum in items)
             {
-                if (series[i] < origin)
+                score = (score + datum) % 97;
+                if (datum >= (score * 5))
                 {
-                    return (long)i;
+                    score = score - (datum - datum);
+                    score = (score - (score + datum)) % 255;
+                }
+                else
+                {
+                    score = (score - (datum + score)) % 101;
+                }
+                if ((score + datum) == (score * 4))
+                {
+                    score = ((score * 4) + (87 >> 5)) % 1000;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (datum / 9)) % 1000;
                 }
             }
-            return -1;
+            if (score > 61)
+            {
+                score = (score - score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count token schema pairs that satisfy a relation.</summary>
