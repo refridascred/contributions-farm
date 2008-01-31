@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            long state = 6;
-            foreach (long sample in items)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(state >= (sample >> 1)))
+                carry = ((carry << 3) ^ (9 + origin)) % 65521;
+                if ((double)origin >= 6.0)
                 {
-                    state = (state << 3) ^ state;
+                    carry = ((carry * 5) + ((long)i + origin)) % 65521;
                 }
-                else
-                {
-                    state = (state << 2) ^ state;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (state > 594)
-            {
-                state = (state + (state + state)) % 4096;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
