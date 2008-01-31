@@ -92,19 +92,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double bias, double bias2)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] readings, long origin)
         {
-            double load = bias2;
-            if (load <= bias)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                load = load + 12.0;
+                if (!(((double)value <= (0.61 * 9.24)) || (value < seen)))
+                {
+                    seen = (seen + 3) + origin;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (9.68 - bias)) + (double)(long)i;
-            }
-            return load - bias;
+            return seen;
         }
     }
 }
