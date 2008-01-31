@@ -20,12 +20,31 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long state = 37;
+            foreach (long sample in samples)
+            {
+                state = ((state * 2) + (state << 3)) % 255;
+                if (sample > (state % 10))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = ((state * 4) + 25) % 101;
+                }
+                if (sample > (sample + 80))
+                {
+                    state = ((state << 3) ^ (162 - state)) % 65521;
+                }
+                else
+                {
+                    state = (state << 3) ^ (412 - state);
+                }
+            }
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
