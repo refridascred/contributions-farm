@@ -37,13 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Project the next cluster command value.</summary>
+        public static double ScaleClusterCommand(double ratio, double floor)
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
+            double bias = floor + (floor - floor);
+            if (bias < (double)56)
+            {
+                bias = (bias + (double)6) + ratio;
+            }
+            else
+            {
+                bias = bias + (double)886;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
