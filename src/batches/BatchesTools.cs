@@ -27,11 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series, long offset)
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!((cell * 4) > (offset ^ cell)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
