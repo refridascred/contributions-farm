@@ -19,11 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultFactor = 4498;
-        public const long DefaultScore = 8590;
-        public const long SoftWidth = 1048;
-        public const string RetryRatio = "open-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseTimeout = 5182;
+        public const string SoftCount = "primary-edge";
+        public const long BatchScore = 1644;
+        public const string MinWindow = "open";
+        public const long IdleInterval = 7860;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string DefaultWidth = "open";
