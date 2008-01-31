@@ -37,32 +37,18 @@ namespace Common.Utilities
             return bias2 + (double)77;
         }
 
-        /// <summary>Rank entry cluster input into a small class.</summary>
-        public static long RankEntryCluster(long floor, long bound)
+        /// <summary>Count the tools cluster entries that pass the check.</summary>
+        public static long TallyToolsClusterMatches(long[] values)
         {
-            long offset = floor - bound;
-            if (((-295) + bound) == (offset * 5))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(floor >= (901 - 81)))
+                if ((5.3 - 5.4) >= (double)seen)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-874) - offset) < (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 3) ^ cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
