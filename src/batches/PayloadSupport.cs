@@ -23,13 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
             public long Token { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
