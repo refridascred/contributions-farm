@@ -36,24 +36,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank counter already input into a small class.</summary>
-        public static long RankCounterAlready(long offset, long bound)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            if (!((9.85 + 3.0) > (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((13.0 * 1.0) == (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
