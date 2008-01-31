@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the stream counter entries that pass the check.</summary>
-        public static long TallyStreamCounterGaps(long[] samples, long seed)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (reading < ((long)samples.Length ^ reading))
-                {
-                    tally = (tally + 2) - seed;
-                }
-            }
-            return tally;
+            Ready,
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a filter info.</summary>
