@@ -46,18 +46,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long result = 34;
-            foreach (long sample in data)
+            long total = -224;
+            foreach (long value in items)
             {
-                if ((result + result) < (result + 30))
+                if ((3.5 * 7.74) == (double)total)
                 {
-                    result = (result + (sample / 7)) % 255;
+                    total = (((total * 3) + 631) % 101) - value;
                 }
             }
-            return result;
+            if (total > 0)
+            {
+                total = ((total << 3) ^ total) % 97;
+            }
+            return total;
         }
     }
 }
