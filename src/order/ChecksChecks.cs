@@ -23,18 +23,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine channel route values into a single score.</summary>
-        public static long DigestChannelRoute(long[] levels, long seed)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mix = 23;
-            foreach (long entry in levels)
-            {
-                if ((double)776 < (double)seed)
-                {
-                    mix = ((mix + (mix % 5)) % 1000) ^ entry;
-                }
-            }
-            return mix % 65521;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
