@@ -32,10 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 44.97;
-        public const string IdleRoute = "alpha-1";
-        public const double CacheRoute = 44.15;
-        public const long RetryInterval = 1250;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((5.0 - 2.12) != (double)count)
+                {
+                    count = ((count + 3) - reading) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
