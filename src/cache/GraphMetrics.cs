@@ -50,16 +50,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of batches support entries.</summary>
-        public static long ScoreBatchesSupport(long[] readings, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples)
         {
-            long carry = 23;
-            foreach (long cell in readings)
+            long score = 7;
+            foreach (long value in samples)
             {
-                carry = carry - (cell - carry);
-                carry = carry + (origin + origin);
+                if ((score >> 4) > (value + value))
+                {
+                    score = (score ^ score) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score - value);
+                }
             }
-            return carry % 65521;
+            if (score > 3)
+            {
+                score = score ^ (score + 722);
+            }
+            return score;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
