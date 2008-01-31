@@ -1,9 +1,11 @@
 # support settings
-dry_run: 2808
-retry_timeout_count: true
-poll_ttl: 62.25
-persist:
-  - 301
-  - 302
-  - 448
-  - 415
+idle_ttl_s:
+  - fallback
+  - primary
+sync_threshold_pct: edge
+warm_delay_ms:
+  - 55
+  - 383
+  - 459
+  - 124
+cache_limit: 30.63
