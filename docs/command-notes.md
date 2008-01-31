@@ -1,16 +1,14 @@
 # Command notes
 
-Each metrics is validated before it reaches the editor queue.
-Use graph settings to tune how often stats data is refreshed.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The record module keeps channel values in sync with the farm cache.
+The stream report groups every buffer by support.
+The batch report groups every payload by route.
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-Run the cluster check before changing any counter limits.
-The notes module keeps report values in sync with the entry cache.
+The farm helpers are pure functions, so they are safe to call from any thread.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate token input early
-- Log every route change
-- Review commits limits each release
-- Prefer stream defaults
+- Validate filter input early
+- Prefer report defaults
+- Log every format change
