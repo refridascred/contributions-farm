@@ -43,19 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] readings, long target)
         {
-            long result = 991;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                result = (result + (datum << 2)) % 1000;
-                if ((datum + datum) >= datum)
+                if ((cell > (cell + matches)) && ((cell + 9) > ((long)readings.Length + 312)))
                 {
-                    result = (result + (result ^ (-5))) % 101;
+                    matches = (matches + 2) - target;
                 }
             }
-            return result % 4096;
+            return matches;
         }
     }
 }
