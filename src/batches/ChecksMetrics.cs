@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 4119;
-        public const string SoftLevel = "legacy";
-        public const double RetryReport = 77.3;
-        public const long DefaultInterval = 3836;
+        /// <summary>Count the already record entries that pass the check.</summary>
+        public static long CountAlreadyRecordMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every tools checks entry stays within the limit.</summary>
         public static bool ValidateToolsChecksRange(long[] data, long bound)
