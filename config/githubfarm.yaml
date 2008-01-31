@@ -1,8 +1,4 @@
 # githubfarm settings
-notes_ttl: 8679
-batch_ratio: primary
-persist:
-  - 233
-  - 241
-  - 356
-  - 317
+retry_delay: 500
+enabled: primary
+queue_ratio: 60
