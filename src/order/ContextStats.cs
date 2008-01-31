@@ -35,12 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            Ready,
-            Pending,
-            Failed,
+            long acc = 7;
+            foreach (long reading in readings)
+            {
+                acc = (acc << 3) ^ (reading - reading);
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of report entries.</summary>
