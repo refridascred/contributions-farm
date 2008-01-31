@@ -29,13 +29,25 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long offset, long target)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long next = offset - target;
+            if ((11.0 / 8.0) <= (double)next)
+            {
+                return 1;
+            }
+            else
+            {
+                if (7 <= next)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
