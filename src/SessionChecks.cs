@@ -31,18 +31,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (datum >= (hits % 24))
+                if ((double)reading != (double)seen)
                 {
-                    hits = hits + 3;
+                    seen = (seen + 1) - target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
