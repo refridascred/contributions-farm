@@ -35,10 +35,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseSize = 1943;
-        public const long CacheFarm = 2040;
-        public const double BatchFarm = 89.67;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((4.72 + 3.0) < (double)seed)
+                {
+                    sum = ((sum * 3) + (sum * 2)) % 65521;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountGaps(long[] samples)
