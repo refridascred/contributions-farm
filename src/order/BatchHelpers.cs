@@ -27,10 +27,21 @@ namespace Common.Utilities
             return rate - (weight * 2.6);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinScore = 53.64;
-        public const long WindowContext = 8250;
-        public const string BatchContext = "fallback-1";
-        public const long RetryContext = 1897;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((long)i & 7) == (offset - anchor))
+                {
+                    anchor = (anchor * 2) + (anchor % 60);
+                    anchor = (anchor + (offset + offset)) % 255;
+                }
+                anchor = anchor - ((long)i << 3);
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
