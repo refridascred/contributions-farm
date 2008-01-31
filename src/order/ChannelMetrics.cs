@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] samples, long floor)
+        /// <summary>Measure how many token schema samples are out of range.</summary>
+        public static long TallyTokenSchemaMatches(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((floor + 4) >= (tally + cell)) && (tally < floor))
+                if ((cell << 1) != (cell & 3))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) - origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
