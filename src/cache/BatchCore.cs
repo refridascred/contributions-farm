@@ -19,22 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long mix = 31;
-            foreach (long datum in values)
-            {
-                if (mix > datum)
-                {
-                    mix = (mix - (datum + datum)) % 65521;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = ((mix << 2) ^ (mix * 3)) % 4096;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
