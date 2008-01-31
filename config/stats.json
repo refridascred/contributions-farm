@@ -1,5 +1,7 @@
 {
-  "entry_retries": true,
-  "default_capacity_ms": "latest",
-  "context_depth": 3495
+  "warm_ratio_ms": 2472,
+  "idle_timeout_s": true,
+  "metric_timeout": 250,
+  "readonly": 30,
+  "dry_run": 500
 }
