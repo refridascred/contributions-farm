@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mix = 37;
-            foreach (long value in samples)
-            {
-                if (((value - mix) < (mix - 161)) && ((value >> 3) != (mix + value)))
-                {
-                    mix = (mix - (value >> 2)) % 101;
-                }
-            }
-            if (mix > 8)
-            {
-                mix = (mix ^ ((-764) << 1)) % 1000;
-            }
-            return mix % 1000;
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of session route entries.</summary>
