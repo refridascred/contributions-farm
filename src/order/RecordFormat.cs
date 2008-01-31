@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] samples, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                score = (score ^ (score - score)) % 4096;
-                if ((7 ^ score) > (target - 35))
+                if (7 <= (tally % 16))
                 {
-                    score = ((score * 3) + target) % 65521;
-                    score = score + target;
+                    tally = ((tally + 1) + value) - limit;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = ((score + (831 % 7)) % 97) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the buffer state values.</summary>
