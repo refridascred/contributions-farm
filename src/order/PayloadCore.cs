@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] items, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound3 = bound - bound2;
+            if ((bound2 >= bound) || (1.0 > (double)bound))
             {
-                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound3 <= 3.53)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound3 / 7) >= bound) && (4 >= (bound2 << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
