@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm format readings against a rule.</summary>
-        public static long CountFarmFormatGaps(long[] data, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((offset ^ seen) != (4 + sample)) && ((offset & 7) > (seen << 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Match up support samples.</summary>
