@@ -45,23 +45,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long step)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((((long)i + mix) >= (mix - step)) && (((long)i + step) <= (mix >> 3))))
+                if (items[i] < offset)
                 {
-                    mix = ((mix << 2) ^ (mix / 6)) % 255;
+                    return (long)i;
                 }
-                if (!((double)mix < (1.0 + 6.6)))
-                {
-                    mix = (mix ^ step) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
