@@ -32,15 +32,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] data, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next editor value.</summary>
