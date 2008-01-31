@@ -44,39 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long floor, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            long delta = floor ^ origin;
-            if (floor <= origin)
+            long mix = 3;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor << 1) >= (delta * 5)) && ((floor / 2) != (delta - floor)))
+                if ((double)866 > (double)datum)
                 {
-                    return 4;
+                    mix = (mix << 3) ^ datum;
                 }
                 else
                 {
-                    if (((-473) + delta) < (delta + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor < delta)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = ((mix << 2) ^ mix) % 101;
                 }
             }
+            return mix;
         }
 
         /// <summary>Match up cache samples.</summary>
