@@ -1,6 +1,8 @@
 {
-  "cache_threshold": ["primary", "open", "strict", "strict"],
-  "queue_limit": true,
-  "dry_run": false,
-  "retry_depth_s": 70.41
+  "context_limit": [292, 218, 296, 325],
+  "channel_depth": false,
+  "default_depth": false,
+  "readonly": 500,
+  "cache_capacity_count": 58.75,
+  "batch_capacity": "edge"
 }
