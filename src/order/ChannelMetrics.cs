@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] values, long offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (entry < offset)
+                if (cell >= origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
