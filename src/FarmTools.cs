@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long target, long offset)
+        /// <summary>Count the account channel entries that pass the check.</summary>
+        public static long TallyAccountChannelGaps(long[] series)
         {
-            if ((target + target) > (target ^ target))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (0 <= (offset - (-985)))
+                if (((-442) * 3) >= (matches * 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (offset < (495 - 11))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 1) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
