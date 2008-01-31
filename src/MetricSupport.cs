@@ -33,19 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double bias, double span)
+        /// <summary>Roll a schema context counter forward.</summary>
+        public static long SeriesSchemaContext(long origin)
         {
-            double load = (double)8;
-            if (load > (load / 5.0))
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                load = (load - load) + span;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (4.6 + bias)) + (double)(long)i;
-            }
-            return load - (4.88 * 0.9);
+            return mix;
         }
     }
 }
