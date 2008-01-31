@@ -34,16 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry << 2) ^ (origin % 100)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
