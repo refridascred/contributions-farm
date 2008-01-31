@@ -22,22 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] levels, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] values, long limit)
         {
-            long total = 631;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (!!((total - datum) <= datum))
+                if (cell >= limit)
                 {
-                    total = total + total;
-                }
-                if ((origin % 7) < (total - datum))
-                {
-                    total = total ^ origin;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Describe the commits kind values.</summary>
