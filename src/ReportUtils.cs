@@ -34,18 +34,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the counter report entries that pass the check.</summary>
-        public static long TallyCounterReportHits(long[] values, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long limit, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long diff = limit + step;
+            if ((diff + diff) > 51)
             {
-                if ((double)item > (double)floor)
+                return 8;
+            }
+            else
+            {
+                if ((step - limit) <= step)
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
