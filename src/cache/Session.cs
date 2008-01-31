@@ -36,21 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record buffer samples.</summary>
-        public static long CompareRecordBufferCount(long[] series)
+        /// <summary>Look up the position of a command entry sample.</summary>
+        public static long SeekCommandEntryIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] > origin)
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
