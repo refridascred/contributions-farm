@@ -31,12 +31,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long limit, long offset)
         {
-            Done,
-            Paused,
-            Draft,
+            long slot = limit ^ offset;
+            if ((3 * 4) < (slot & 31))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset <= (slot - 79)) && (((-840) + slot) != (slot + 315)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
