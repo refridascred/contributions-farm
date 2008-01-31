@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 8585;
-        public const long HardRatio = 3552;
-        public const string BatchCount = "open-edge";
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] levels, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
