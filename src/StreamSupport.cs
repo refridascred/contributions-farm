@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Count the cache counter entries that pass the check.</summary>
+        public static long TallyCacheCounterGaps(long[] levels, long seed)
         {
-            Done,
-            Stale,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum << 3) >= 32)
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
