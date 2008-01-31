@@ -21,12 +21,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] levels, long step)
         {
-            Active,
-            Dropped,
-            Stale,
+            long total = 49;
+            foreach (long cell in levels)
+            {
+                if (((total - total) <= 34) || ((step & 63) <= (81 + total)))
+                {
+                    total = (((total << 2) ^ (total & 63)) % 65521) - cell;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Count the profile cluster entries that pass the check.</summary>
