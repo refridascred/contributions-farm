@@ -1,6 +1,8 @@
-id,state,score,owner
-1,33.83,492,legacy
-2,589,0.95,13.83
-3,26.89,259,421
-4,47.07,721,700
-5,602,primary,1.18
+id,label,active,count,rank
+1,83.9,33.77,stable,989
+2,713,59.61,95.75,open
+3,stable,local,staging,57.51
+4,edge,74.73,60.72,899
+5,86.83,stable,blue,80.11
+6,369,80.25,eu-west,24.09
+7,staging,primary,strict,primary
