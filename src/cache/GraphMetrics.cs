@@ -46,19 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support session readings against a bound.</summary>
-        public static bool GuardSupportSessionBounds(long[] data, long floor)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
