@@ -47,19 +47,22 @@ namespace Common.Utilities
             return rate2 - (rate + rate);
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] items, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (entry >= floor)
+                if (reading <= tally)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Accumulate batches samples.</summary>
