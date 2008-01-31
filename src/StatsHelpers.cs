@@ -43,17 +43,14 @@ namespace Common.Utilities
         public const long MaxLevel = 413;
         public const long WindowTimeout = 270;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] levels, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Pending,
+            Draft,
+            Retry,
+            Queued,
         }
     }
 }
