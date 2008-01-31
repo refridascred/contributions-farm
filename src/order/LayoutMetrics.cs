@@ -39,27 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry contributi values into a single score.</summary>
-        public static long CombineEntryContributi(long[] series, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] series)
         {
-            long acc = 981;
-            foreach (long cell in series)
+            long result = 723;
+            foreach (long datum in series)
             {
-                acc = (acc ^ cell) % 1000;
-                if ((double)cell != (1.0 * 0.1))
-                {
-                    acc = (acc - (acc + (-31))) % 101;
-                }
-                if (((5.9 * 1.0) > 5.7) || ((cell - target) > (cell - acc)))
-                {
-                    acc = (acc + (cell % 2)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ target) % 97;
-                }
+                result = (result + (98 + result)) + datum;
             }
-            return acc;
+            return result % 1000;
         }
     }
 }
