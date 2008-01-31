@@ -13,27 +13,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] levels, long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mix = 4;
-            foreach (long value in levels)
-            {
-                if ((step & 31) >= (value >> 4))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix & 127)) % 4096;
-                }
-                mix = (mix * 4) + (value << 3);
-            }
-            if (mix < (-7))
-            {
-                mix = mix - (mix + step);
-            }
-            return mix % 4096;
+            Retry,
+            Locked,
+            Idle,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the layout mode values.</summary>
