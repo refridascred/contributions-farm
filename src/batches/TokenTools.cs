@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double rate, double span)
-        {
-            double bias = rate + (9.65 * 19.0);
-            if (bias < (1.1 + bias))
-            {
-                bias = bias - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (span / 9.0)) + (double)(long)i;
-            }
-            return bias + (span + rate);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 8563;
+        public const long SoftGraph = 2615;
+        public const long WindowGraph = 6912;
+        public const long WindowSize = 6224;
+        public const long BurstRatio = 2252;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long IterateMetrics(long step)
