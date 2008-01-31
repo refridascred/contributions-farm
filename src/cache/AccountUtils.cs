@@ -32,18 +32,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series, long limit)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell > 4.42)
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitSpan = 9544;
+        public const string BaseToken = "primary-v2";
+        public const double WindowToken = 47.39;
+        public const long BurstToken = 8364;
     }
 }
