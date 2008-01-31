@@ -33,20 +33,10 @@ namespace Common.Utilities
             return rate - 7.3;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings)
-        {
-            long anchor = 977;
-            foreach (long cell in readings)
-            {
-                anchor = anchor - (anchor + cell);
-            }
-            if (anchor < 3)
-            {
-                anchor = anchor + (anchor % 60);
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "open-v2";
+        public const long HardLayout = 957;
+        public const long StepSpan = 4275;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
