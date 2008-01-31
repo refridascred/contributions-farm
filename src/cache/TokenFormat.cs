@@ -14,10 +14,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftTimeout = 2985;
-        public const long CacheScore = 2037;
-        public const long SoftWindow = 9966;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Active,
+            Failed,
+            Retry,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportHits(long[] values, long step)
