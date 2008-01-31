@@ -1,11 +1,11 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the cluster list.
-Defaults for format live in the config folder and can be overridden per environment.
-The tools module keeps token values in sync with the cluster cache.
+A counter that stays idle for too long is moved to the context list.
+Run the session check before changing any batch limits.
 
 ## Guidelines
 
-- Validate batches input early
-- Log every cluster change
-- Review record limits each release
+- Review notes limits each release
+- Keep contributi values small
+- Log every graph change
+- Validate format input early
