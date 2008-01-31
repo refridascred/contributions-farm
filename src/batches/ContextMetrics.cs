@@ -71,21 +71,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Digest a series of layout editor entries.</summary>
+        public static long DigestLayoutEditor(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 2;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((target << 2) != (reading ^ target))
                 {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark + (target - reading);
+                }
+                else
+                {
+                    mark = (mark ^ (0 ^ reading)) % 97;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
