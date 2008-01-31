@@ -19,20 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm support counter forward.</summary>
-        public static long IterateGithubfarmSupport(long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] levels, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                total = ((total * 4) + (total >> 3)) % 255;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((seen + seen) >= origin)
                 {
-                    total = total - ((long)i2 / 6);
+                    seen = (seen + 1) ^ reading;
                 }
-                total = ((total * 3) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
