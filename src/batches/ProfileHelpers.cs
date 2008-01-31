@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Classify a profile format pair into a bucket.</summary>
+        public static long GradeProfileFormat(long step, long target)
         {
-            Failed,
-            Locked,
-            Draft,
+            if ((step << 2) <= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((499 >> 5) < (target * 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Digest a series of farm checks entries.</summary>
