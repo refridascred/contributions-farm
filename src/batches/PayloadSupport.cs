@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxFactor = 18.61;
-        public const string StepContributi = "alpha-edge";
-        public const long BaseContributi = 178;
-        public const long HardContributi = 5608;
-        public const string IdleBudget = "strict-edge";
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowLevel = 7538;
