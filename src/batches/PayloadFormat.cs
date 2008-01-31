@@ -14,18 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the record notes entries that pass the check.</summary>
-        public static long AuditRecordNotesMatches(long[] series)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((((entry / 4) == (seen & 3)) || ((double)entry > (8.7 + 4.5))) && ((seen << 2) > (entry ^ 527)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
