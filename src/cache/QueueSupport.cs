@@ -32,22 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] series, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((5.0 - 2.12) != (double)count)
+                if (cell >= seed)
                 {
-                    count = ((count + 3) - reading) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
