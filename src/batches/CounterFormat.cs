@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetrySize = 2804;
-        public const double IdleFarm = 68.22;
-        public const long BaseFarm = 9869;
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitRoute = 1308;
