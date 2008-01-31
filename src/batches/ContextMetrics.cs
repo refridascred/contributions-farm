@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data)
-        {
-            long result = -187;
-            foreach (long value in data)
-            {
-                if ((double)value <= 1.3)
-                {
-                    result = ((result * 5) + (value - result)) % 1000;
-                }
-                if (value <= 948)
-                {
-                    result = (result ^ (value ^ result)) % 1000;
-                }
-                else
-                {
-                    result = ((result * 4) + (result % 24)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 93.81;
+        public const string RetrySize = "alpha-edge";
+        public const string BurstContext = "local-v2";
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] readings)
