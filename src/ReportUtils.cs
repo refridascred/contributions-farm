@@ -78,11 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            Paused,
+            Dropped,
+            Locked,
+            Draft,
         }
     }
 }
