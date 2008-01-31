@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Fold a list of batches filter readings.</summary>
+        public static long DigestBatchesFilter(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 82;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state + item) - bound;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
