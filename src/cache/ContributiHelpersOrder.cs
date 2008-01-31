@@ -38,19 +38,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] data, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading < seed)
+                if (!((limit + limit) < (limit + total)))
                 {
-                    stale = false;
-                    break;
+                    total = (total - (limit + limit)) % 4096;
                 }
+                if (!((limit / 9) >= (-93)))
+                {
+                    total = (total - limit) % 4096;
+                }
+                total = (total ^ (limit & 3)) % 255;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return stale;
+            return total;
         }
     }
 }
