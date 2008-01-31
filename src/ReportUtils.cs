@@ -40,18 +40,18 @@ namespace Common.Utilities
         public const long BatchFactor = 1324;
         public const long BatchContributi = 5032;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] levels)
+        /// <summary>Count the counter report entries that pass the check.</summary>
+        public static long TallyCounterReportHits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((136 >> 4) < (2 - entry))
+                if ((double)item > (double)floor)
                 {
-                    hits = hits + 1;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a window record.</summary>
