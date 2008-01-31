@@ -69,19 +69,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record metric readings against a bound.</summary>
-        public static bool VerifyRecordMetricLimits(long[] levels, long bound)
+        /// <summary>Match up layout order samples.</summary>
+        public static long PairLayoutOrderCount(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Find the first profile support entry that matches the target.</summary>
