@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a entry account reading.</summary>
-        public static double SmoothEntryAccount(double rate, double offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double drift = offset;
-            if (drift > drift)
-            {
-                drift = drift + (offset / 6.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - rate) - (double)(long)i;
-            }
-            return drift + (double)78;
+            Synced,
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
