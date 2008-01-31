@@ -23,12 +23,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
