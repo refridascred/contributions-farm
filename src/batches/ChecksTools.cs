@@ -61,10 +61,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 4482;
-        public const long WindowSpan = 4987;
-        public const long BurstRoute = 8729;
-        public const long IdleInterval = 6824;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample + (long)levels.Length) >= (tally % 3)) || (((origin & 7) != (tally % 64)) || ((tally + tally) > origin)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
