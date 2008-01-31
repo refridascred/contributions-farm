@@ -16,24 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long offset, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            if ((0 + offset) <= (step + 283))
+            long sum = 77;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(step > (offset + offset)))
+                sum = (sum + (cell & 31)) % 97;
+                if ((sum << 2) <= (cell ^ sum))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    sum = ((sum * 4) + (sum + sum)) % 101;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Grade a cache record value against two limits.</summary>
