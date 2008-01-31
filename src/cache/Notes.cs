@@ -13,23 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] data, long seed)
         {
-            double bias = offset;
-            if (bias < (double)114)
+            long count = 0;
+            foreach (long item in data)
             {
-                bias = (bias + bias) - gain;
+                if ((double)(long)data.Length != (5.69 + 6.5))
+                {
+                    count = ((count + 3) - item) - seed;
+                }
             }
-            else
-            {
-                bias = bias + (7.0 * 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (offset - 6.4)) + (double)(long)i;
-            }
-            return bias + bias;
+            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
