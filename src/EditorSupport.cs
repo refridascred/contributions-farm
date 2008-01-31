@@ -12,24 +12,13 @@ namespace Common.Utilities
             return ((mean + (mean / 7.0)) + rate) + bias;
         }
 
-        /// <summary>Classify a notes buffer pair into a bucket.</summary>
-        public static long RankNotesBuffer(long floor, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if (1.0 < (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(71 <= (origin << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Active,
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Look up the position of a farm filter sample.</summary>
