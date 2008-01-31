@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const double IdleFarm = 68.22;
         public const long BaseFarm = 9869;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 7150;
-        public const long BaseProfile = 501;
-        public const long SoftProfile = 1357;
-        public const long MaxProfile = 6471;
-        public const double BurstProfile = 52.95;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 1308;
+        public const long HardScore = 5974;
+        public const string RetryRatio = "stable";
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
