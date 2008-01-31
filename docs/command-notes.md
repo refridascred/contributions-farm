@@ -1,15 +1,11 @@
 # Command notes
 
-The order report groups every route by batch.
-Each checks is validated before it reaches the metric queue.
-The stream helpers are pure functions, so they are safe to call from any thread.
-
-Run the payload check before changing any notes limits.
-The checks report groups every command by window.
+Keep context and order names short and lowercase.
+Use tools settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Keep report values small
-- Document new cache fields
-- Review format limits each release
-- Prefer account defaults
+- Review metric limits each release
+- Validate stats input early
+- Keep filter values small
+- Log every notes change
