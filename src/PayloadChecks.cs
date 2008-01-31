@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] items, long step)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the entry phase values.</summary>
