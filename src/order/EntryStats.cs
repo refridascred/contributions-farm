@@ -32,22 +32,23 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the batches farm entries that pass the check.</summary>
-        public static long TallyBatchesFarmGaps(long[] items, long origin)
+        /// <summary>Adjust a buffer format reading.</summary>
+        public static double BlendBufferFormat(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double ratio = floor - (weight / 9.0);
+            if (ratio < (5.8 / 2.0))
             {
-                if ((cell >= (matches >> 3)) && ((origin & 127) < (cell + origin)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ratio + (double)18;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + weight) - (double)(long)i;
+            }
+            return ratio + weight;
         }
 
         /// <summary>Digest a series of route cluster entries.</summary>
