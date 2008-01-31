@@ -30,18 +30,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metric cluster readings against a rule.</summary>
-        public static long TallyMetricClusterOutliers(long[] series, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long target, long target2)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            if ((7.76 + 7.5) > (double)target)
             {
-                if ((datum & 127) != (398 - datum))
+                return 1;
+            }
+            else
+            {
+                if ((target & 3) > 807)
                 {
-                    hits = (hits + 2) + target;
+                    return 6;
+                }
+                else
+                {
+                    if ((target2 ^ target2) >= (target2 - target2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target2 * 2) != (target2 >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a metrics info.</summary>
