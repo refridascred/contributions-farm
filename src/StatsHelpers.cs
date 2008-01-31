@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            Pending,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Compare every pair of stream command readings.</summary>
