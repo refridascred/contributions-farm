@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(((long)i >> 3) <= 419))
+                {
+                    carry = carry ^ 19;
+                }
+                carry = ((carry * 5) + (origin + (long)i)) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
