@@ -18,19 +18,18 @@ namespace Common.Utilities
         public const string BatchBudget = "open-1";
         public const double MinRatio = 12.97;
 
-        /// <summary>Validate token context readings against a bound.</summary>
-        public static bool CheckTokenContextBounds(long[] readings, long limit)
+        /// <summary>Count the commits metrics entries that pass the check.</summary>
+        public static long AuditCommitsMetricsMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (value < limit)
+                if ((1.0 + 8.8) > (double)item)
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
