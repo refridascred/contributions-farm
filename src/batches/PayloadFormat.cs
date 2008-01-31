@@ -14,14 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Ready,
-            Draft,
-            Paused,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultNotes = 5.36;
+        public const long BaseScore = 683;
+        public const long DefaultInterval = 7776;
+        public const long MinNotes = 1283;
+        public const double StepRatio = 35.14;
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
