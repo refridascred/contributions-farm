@@ -1,9 +1,14 @@
 # support settings
-checks_window: 7258
-checks_ttl: 52.58
-default_threshold:
-  - cached
-  - eu-west
-  - primary
-  - stable
-soft_timeout: strict
+retry_retries_count: true
+enabled: 5554
+default_retries_pct: false
+metrics_retries:
+  hard_depth_s: local
+  cache_interval_count:
+    readonly: primary
+    soft_timeout_ms: open
+    hard_interval: 85
+    retry_threshold: 17.76
+  burst_delay_count: 53.12
+  route_threshold: 100
+  token_interval: strict
