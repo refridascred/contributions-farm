@@ -19,10 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "primary-1";
-        public const string LimitEntry = "staging-1";
-        public const string HardEntry = "staging-1";
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
