@@ -60,10 +60,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 2218;
-        public const long HardWidth = 2216;
-        public const long RetryRecord = 1633;
-        public const double CacheBudget = 89.91;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 8425;
+        public const long BurstBatches = 3525;
+        public const long DefaultBatches = 7789;
     }
 }
