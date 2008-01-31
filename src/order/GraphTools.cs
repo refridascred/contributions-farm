@@ -53,13 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] data, long seed)
         {
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
