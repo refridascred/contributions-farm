@@ -1,15 +1,7 @@
 {
-  "hard_ttl_count": "fallback",
-  "flush_window_ms": {
-    "poll_interval_s": "standard",
-    "profile_ttl": ["fallback", "blue", "green"],
-    "max_ttl": {
-      "flush_retries": 51.73,
-      "commits_delay": 60,
-      "retry_delay": 18,
-      "max_depth_ms": [458, 151, 41, 402],
-      "cache_timeout_ms": 89.9
-    }
-  },
-  "batch_retries_s": 80
+  "base_timeout_count": 66.14,
+  "burst_ttl": "latest",
+  "default_delay_count": 41.42,
+  "strict": "staging",
+  "default_ratio": 15
 }
