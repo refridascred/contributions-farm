@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultSize = "cached-edge";
-        public const double BurstSpan = 79.87;
-        public const double BaseMetric = 17.7;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueOutliers(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally >= (double)entry)
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a githubfarm support counter forward.</summary>
         public static long IterateGithubfarmSupport(long floor)
