@@ -42,18 +42,12 @@ namespace Common.Utilities
             return drift - (double)(-696);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] values)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((15.0 / 9.0) == (double)value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
