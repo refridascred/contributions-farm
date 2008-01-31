@@ -25,38 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a notes schema pair into a bucket.</summary>
-        public static long GradeNotesSchema(long floor, long offset)
-        {
-            if (!((285 / 7) <= (floor * 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + floor) <= (floor << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset & 255) > (floor - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset + offset) <= (2 * 4)) && ((floor - 37) >= (offset + floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBudget = 2923;
+        public const double DefaultFactor = 29.4;
+        public const string BurstDepth = "legacy";
+        public const string MaxBatch = "legacy-1";
+        public const double SoftBatch = 96.83;
     }
 }
