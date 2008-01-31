@@ -1,18 +1,11 @@
 # entry settings
-audit: latest
-checks_limit:
-  poll_window:
-    - 243
-    - 172
-  farm_window: 39
-  tools_size: 100
-  contributi_threshold:
-    - blue
-    - green
-    - primary
-    - stable
-  batch_capacity: 77.92
-  dry_run: 25
-default_threshold_s: 35.31
-flush_ratio: 14.84
-cache_timeout_ms: 25.55
+max_limit:
+  profile_threshold: standard
+  compress: 91
+  default_capacity_ms: 7859
+  cache_depth_s: 22.99
+support_depth: 60
+compress: 1024
+format_size: 98
+token_depth: 100
+min_delay_count: 91
