@@ -36,13 +36,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] items, long bound)
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((0 + tally) != (tally & 15)) && !((reading - bound) > (tally & 127)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
