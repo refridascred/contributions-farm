@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=117
+BUFFER_LIMIT=489
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-green}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    legacy)
         log "fast path"
         ;;
     *)
