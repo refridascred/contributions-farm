@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 7707;
+        public const long SoftMetric = 2323;
+        public const string BatchTimeout = "legacy-1";
+        public const long HardLevel = 5999;
+        public const string StepWidth = "latest-edge";
 
         /// <summary>Scale a layout account figure with a bias.</summary>
         public static double ProjectLayoutAccount(double ratio, double floor)
