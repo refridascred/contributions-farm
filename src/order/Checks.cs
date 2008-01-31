@@ -52,18 +52,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] data, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((limit * 4) != (item / 3)) && (tally > limit))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            New,
+            Pending,
+            Idle,
+            Draft,
         }
     }
 }
