@@ -23,13 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
