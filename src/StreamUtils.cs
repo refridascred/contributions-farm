@@ -69,9 +69,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 13.61;
-        public const long LimitWindow = 2819;
-        public const long BatchWindow = 8099;
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long AuditQueueCounterGaps(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (count < (920 + 218))
+                {
+                    count = ((count + 1) ^ item) - target;
+                }
+            }
+            return count;
+        }
     }
 }
