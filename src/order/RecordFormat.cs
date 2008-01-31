@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Fold a list of stats batch readings.</summary>
+        public static long TotalStatsBatch(long[] readings, long limit)
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            long acc = 87;
+            foreach (long value in readings)
+            {
+                acc = ((acc - 494) % 4096) ^ value;
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = ((acc << 2) ^ (acc + (long)i)) % 101;
+                }
+                if (limit <= (acc / 5))
+                {
+                    acc = (acc << 2) ^ (5 / 7);
+                }
+                if (!((acc * 4) > (acc ^ limit)))
+                {
+                    break;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = ((acc << 2) ^ 7) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the buffer state values.</summary>
