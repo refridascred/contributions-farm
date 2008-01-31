@@ -14,12 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultNotes = 5.36;
-        public const long BaseScore = 683;
-        public const long DefaultInterval = 7776;
-        public const long MinNotes = 1283;
-        public const double StepRatio = 35.14;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstWidth = 36.08;
+        public const long BatchTools = 558;
+        public const long HardTools = 1483;
+        public const long MaxTools = 7391;
+        public const long LimitRatio = 3039;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long RankQueue(long step, long step2)
