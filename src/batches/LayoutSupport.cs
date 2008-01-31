@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Active,
-            Locked,
-            Pending,
-            Idle,
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
