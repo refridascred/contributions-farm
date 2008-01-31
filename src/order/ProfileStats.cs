@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long limit)
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + acc) % 65521;
+                acc = acc - (long)i;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Project the next cache value.</summary>
