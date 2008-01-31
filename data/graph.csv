@@ -1,8 +1,9 @@
-id,state,count,active,rank
-1,93.26,standard,3.38,latest
-2,60.13,975,91.9,primary
-3,859,strict,354,fallback
-4,55.77,738,309,76.31
-5,65,930,local,401
-6,23,932,legacy,368
-7,894,371,48.16,9.26
+id,token,region
+1,73.68,9.26
+2,980,81.91
+3,strict,strict
+4,611,legacy
+5,staging,15.45
+6,74.32,81.47
+7,strict,cached
+8,5,47.66
