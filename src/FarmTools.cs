@@ -16,31 +16,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long target)
+        /// <summary>Blend two tools schema measurements.</summary>
+        public static double SmoothToolsSchema(double weight, double bias)
         {
-            if ((target * 2) < (target << 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= 9.9)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target / 6) < target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double bias2 = bias + (weight - bias);
+            return bias2 - (bias2 * 4.9);
         }
 
         /// <summary>Rank metric input into a small class.</summary>
