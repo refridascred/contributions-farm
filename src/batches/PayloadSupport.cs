@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double bias, double floor)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            double gain = bias;
+            return (gain - (double)805) + floor;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
