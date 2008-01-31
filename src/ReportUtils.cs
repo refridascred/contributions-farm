@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] readings, long bound)
+        /// <summary>Digest a series of notes batches entries.</summary>
+        public static long DigestNotesBatches(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 1;
+            foreach (long cell in series)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                result = ((result - (result - result)) % 255) - cell;
             }
-            return -1;
+            if (result > 524)
+            {
+                result = ((result * 5) + (result - 14)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
