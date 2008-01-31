@@ -13,22 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double weight, double bias)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            double rate = 7.5;
+            for (int i = 0; i < 6; i++)
             {
-                carry = carry + (carry - carry);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = ((carry << 3) ^ (carry ^ (long)i2)) % 1000;
-                    carry = (carry - carry) % 1000;
-                }
-                carry = carry - (carry + target);
-                carry = ((carry * 5) + (long)i) % 101;
+                rate = ((rate + weight) + (double)(long)i) - bias;
             }
-            return carry;
+            return rate - (weight * 2.6);
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
