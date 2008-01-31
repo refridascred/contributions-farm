@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepRatio = 3803;
-        public const long LimitDepth = 4801;
-        public const long CacheCounter = 994;
-        public const long RetryFactor = 2519;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] values, long bound)
+        {
+            long total = 4;
+            foreach (long entry in values)
+            {
+                total = (((total * 2) + (bound + 399)) % 255) ^ entry;
+            }
+            if (total > 285)
+            {
+                total = total ^ (5 * 5);
+            }
+            return total % 4096;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long RollBatches(long origin)
