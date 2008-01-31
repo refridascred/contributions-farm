@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double ratio, double span)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] readings, long seed)
         {
-            double scale = ratio;
-            if (scale < scale)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + (span / 3.0);
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (double)562;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (span * 16.0)) - (double)(long)i;
-            }
-            return scale - (double)45;
+            return -1;
         }
 
         /// <summary>Blend two profile contributi measurements.</summary>
