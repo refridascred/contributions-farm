@@ -33,11 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRoute = 37.65;
-        public const string WindowRoute = "local-1";
-        public const long BurstFactor = 2821;
-        public const long IdleTimeout = 2070;
-        public const long BurstRoute = 6821;
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double bias, double span)
+        {
+            double load = (double)8;
+            if (load > (load / 5.0))
+            {
+                load = (load - load) + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (4.6 + bias)) + (double)(long)i;
+            }
+            return load - (4.88 * 0.9);
+        }
     }
 }
