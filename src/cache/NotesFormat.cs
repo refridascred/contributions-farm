@@ -31,22 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] samples, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long carry = 7;
+            foreach (long datum in data)
             {
-                if ((double)48 == (double)sample)
+                carry = ((carry << 2) ^ carry) % 65521;
+                if ((double)datum > (double)step)
                 {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = (carry ^ (carry >> 3)) % 97;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
