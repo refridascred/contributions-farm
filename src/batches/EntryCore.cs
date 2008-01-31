@@ -69,13 +69,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Rank notes session input into a small class.</summary>
+        public static long BucketNotesSession(long offset, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
+            if ((12.0 - 5.51) < (double)offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step - step) < (step + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((offset >> 5) <= (offset + step)) || (offset >= (step + 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step * 2) > (offset << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
