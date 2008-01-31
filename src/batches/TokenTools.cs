@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double rate, double span)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            double bias = rate + (9.65 * 19.0);
+            if (bias < (1.1 + bias))
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (span / 9.0)) + (double)(long)i;
+            }
+            return bias + (span + rate);
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
