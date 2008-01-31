@@ -16,18 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] levels, long offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < (8 & 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + offset;
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
