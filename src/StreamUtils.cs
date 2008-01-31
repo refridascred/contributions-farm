@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Accumulate channel format samples.</summary>
+        public static long DigestChannelFormat(long[] data)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long acc = 1;
+            foreach (long sample in data)
             {
-                mix = (mix * 3) + (84 << 2);
-                mix = (mix - (mix * 5)) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
+                long edge = (acc + acc) >> 5;
+                if ((edge / 5) == (edge % 24))
+                {
+                    acc = (acc + (sample - acc)) % 1000;
+                }
+                if (((sample - sample) > 3) && ((double)acc <= (10.0 / 8.0)))
+                {
+                    acc = (acc ^ acc) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + sample)) % 255;
+                }
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Rank session input into a small class.</summary>
