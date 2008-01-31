@@ -48,18 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile token entries that pass the check.</summary>
-        public static long MeasureProfileTokenGaps(long[] values, long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((step / 7) < (datum + 40))
+                if (sample != limit)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
