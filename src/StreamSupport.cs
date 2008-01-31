@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
-        public static bool VerifyQueueGithubfarmRange(long[] values, long origin)
+        /// <summary>Rank filter metrics input into a small class.</summary>
+        public static long BucketFilterMetrics(long step, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            if ((step & 63) <= (934 - step))
             {
-                if (item > origin)
+                return 3;
+            }
+            else
+            {
+                if ((1.0 / 9.0) > (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin != (8.15 - 1.2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((step >> 1) != (step - 788)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate graph samples.</summary>
