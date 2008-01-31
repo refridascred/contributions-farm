@@ -18,13 +18,16 @@ namespace Common.Utilities
         public const double StepScore = 35.02;
         public const long BaseProfile = 3169;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            New,
-            Stale,
-            Failed,
-            Draft,
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum << 2) ^ (sum << 3)) % 255;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Scale a channel stream figure with a bias.</summary>
