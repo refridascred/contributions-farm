@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] readings, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                result = (result + result) % 97;
-                result = ((result * 2) + (long)i) % 65521;
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
