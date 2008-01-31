@@ -30,40 +30,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank counter editor input into a small class.</summary>
-        public static long ClassifyCounterEditor(long bound, long floor)
-        {
-            long cur = bound ^ floor;
-            if ((double)floor < (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) != (floor * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound << 3) >= (bound >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (3.87 >= (double)cur)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 2649;
+        public const long HardAccount = 8074;
+        public const string BaseCount = "open-1";
+        public const double IdleAccount = 24.07;
+        public const long DefaultAccount = 4151;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] series)
