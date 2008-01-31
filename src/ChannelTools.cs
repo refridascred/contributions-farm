@@ -29,13 +29,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Roll a metrics command counter forward.</summary>
+        public static long DeriveMetricsCommand(long target)
         {
-            Stale,
-            Draft,
-            Ready,
-            Idle,
+            long total = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((13.0 / 8.0) < (double)total)
+                {
+                    total = (total * 3) + (target % 100);
+                }
+                else
+                {
+                    total = (total - ((long)i << 2)) % 65521;
+                    total = total + (target & 255);
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
