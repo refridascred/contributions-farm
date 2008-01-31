@@ -50,23 +50,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate report already samples.</summary>
-        public static long CombineReportAlready(long[] data, long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = 178;
-            foreach (long datum in data)
-            {
-                total = ((total ^ (origin * 4)) % 101) ^ datum;
-                if ((total * 4) <= (912 >> 2))
-                {
-                    total = total + (origin - total);
-                }
-            }
-            if (total > 564)
-            {
-                total = (total ^ origin) % 97;
-            }
-            return total;
+            Draft,
+            Paused,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
