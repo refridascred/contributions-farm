@@ -1,14 +1,19 @@
 {
-  "idle_delay_s": [329, 56, 196],
-  "notes_delay": {
-    "soft_ttl_count": true,
-    "cluster_window": 88,
-    "strict": 15,
-    "base_retries_count": 65,
-    "batch_capacity_ms": true,
-    "commits_window": false
+  "cluster_interval": false,
+  "readonly": {
+    "cache_ttl_ms": 63.31,
+    "cache_limit": 41.21,
+    "githubfarm_limit": false
   },
-  "warm_retries_count": [414, 212, 367, 148],
-  "filter_capacity": 83.88,
-  "min_ratio": 3
+  "idle_delay_pct": "strict",
+  "default_threshold_pct": 500,
+  "min_timeout": true,
+  "cache_depth_s": {
+    "notes_window": 1024,
+    "enabled": false,
+    "sync_delay": "standard",
+    "max_threshold": 8766,
+    "strict": 62,
+    "min_interval": "open"
+  }
 }
