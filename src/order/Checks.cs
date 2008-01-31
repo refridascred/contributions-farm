@@ -27,12 +27,20 @@ namespace Common.Utilities
         public const long CacheLevel = 1465;
         public const string LimitEditor = "primary";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinSpan = 6883;
-        public const string RetrySize = "strict-v2";
-        public const long MaxSize = 8087;
-        public const long SoftCache = 116;
-        public const long RetryBudget = 1073;
+        /// <summary>Validate tools metrics readings against a bound.</summary>
+        public static bool CheckToolsMetricsLimits(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] values)
