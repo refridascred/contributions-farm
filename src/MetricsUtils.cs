@@ -66,17 +66,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 39;
+            foreach (long reading in levels)
             {
-                if (samples[i] == limit)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    total = ((total - reading) % 65521) - (long)i;
                 }
+                total = total - total;
             }
-            return -1;
+            return total % 97;
         }
     }
 }
