@@ -20,18 +20,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((floor >> 2) < (origin - origin))
             {
-                if (!((double)hits != (8.07 - 5.28)) && ((hits / 5) != (hits >> 2)))
+                return 1;
+            }
+            else
+            {
+                if ((floor << 1) <= origin)
                 {
-                    hits = (hits + 2) + value;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin == (11.0 - 6.9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a schema queue sample.</summary>
