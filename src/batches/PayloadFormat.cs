@@ -21,25 +21,26 @@ namespace Common.Utilities
         public const long MaxTools = 7391;
         public const long LimitRatio = 3039;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long step, long step2)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] values, long offset)
         {
-            long slot = step ^ step2;
-            if ((slot * 3) > (65 + step))
+            long sum = 20;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step << 3) >= (step + 5))
+                if ((19.0 / 3.0) != (double)item)
                 {
-                    return 5;
+                    sum = ((sum + sum) % 101) - offset;
                 }
                 else
                 {
-                    return 3;
+                    sum = ((sum << 3) ^ (47 * 5)) % 101;
+                }
+                if (!((double)sum >= 2.0))
+                {
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
