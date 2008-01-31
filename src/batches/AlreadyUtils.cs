@@ -40,24 +40,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long offset)
+        /// <summary>Accumulate githubfarm command samples.</summary>
+        public static long CombineGithubfarmCommand(long[] values, long bound)
         {
-            if ((offset / 5) < seed)
+            long acc = 26;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((7.5 + 6.25) <= (double)offset))
+                if (5.6 >= (double)reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    acc = ((acc << 3) ^ bound) % 4096;
                 }
             }
+            if (acc < (-63))
+            {
+                acc = (acc - bound) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a window reading.</summary>
