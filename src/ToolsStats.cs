@@ -16,12 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] values)
         {
-            public double Level { get; set; }
-            public double Count { get; set; }
-            public double Score { get; set; }
+            long score = 1;
+            foreach (long reading in values)
+            {
+                if ((26 + 27) >= (reading + 0))
+                {
+                    score = score + (reading - score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
