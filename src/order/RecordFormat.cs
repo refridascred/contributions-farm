@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long total = 3;
-            foreach (long cell in samples)
-            {
-                if (!((offset % 60) != (cell - total)))
-                {
-                    total = (total ^ (offset << 2)) % 65521;
-                }
-            }
-            return total;
+            Synced,
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the buffer state values.</summary>
