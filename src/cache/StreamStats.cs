@@ -34,28 +34,19 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Digest a series of editor cluster entries.</summary>
+        public static long ScoreEditorCluster(long[] data, long target)
         {
-            long result = 846;
-            foreach (long sample in values)
+            long result = 3;
+            foreach (long reading in data)
             {
-                result = result - (975 - result);
-                result = (result + 1) % 65521;
-                if (((double)sample >= 9.17) && ((double)sample < (8.5 / 2.0)))
-                {
-                    result = (result + result) % 255;
-                }
-                else
-                {
-                    result = result ^ (result >> 2);
-                }
+                result = result - (result + reading);
             }
-            if (result < 510)
+            if (result > 6)
             {
-                result = ((result << 2) ^ (result << 2)) % 1000;
+                result = (result + (target - target)) % 255;
             }
-            return result;
+            return result % 65521;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
