@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] data, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 544;
+            foreach (long sample in values)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 2) ^ (carry >> 5)) % 65521) ^ sample;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Combine layout githubfarm values into a single score.</summary>
