@@ -58,15 +58,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 2100;
+        public const long MaxFilter = 2742;
+        public const long SoftFilter = 5217;
+        public const long DefaultFilter = 7070;
     }
 }
