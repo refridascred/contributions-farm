@@ -1,12 +1,14 @@
 # Command notes
 
-Each command is validated before it reaches the graph queue.
-Each support is validated before it reaches the metric queue.
-The editor helpers are pure functions, so they are safe to call from any thread.
+The tools report groups every entry by window.
+When a buffer fails, the metrics handler retries a few times before giving up.
+
+The filter report groups every buffer by session.
+Keep layout and report names short and lowercase.
+Use notes settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer token defaults
-- Keep schema values small
-- Document new route fields
+- Validate buffer input early
+- Review schema limits each release
+- Log every token change
