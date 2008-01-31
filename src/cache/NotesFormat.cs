@@ -31,18 +31,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] samples, long limit)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long limit, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if (!((limit / 2) < (748 - 30)))
             {
-                if ((limit % 97) == (entry & 63))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (8.26 * 7.2))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit <= (2.8 + 4.79))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
