@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double gain, double bias)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public double Count { get; set; }
+            double bias2 = gain + (bias / 3.0);
+            if (bias2 < (bias * 15.0))
+            {
+                bias2 = bias2 - (gain / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (gain - gain)) - (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Describe the buffer state values.</summary>
