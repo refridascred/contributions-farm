@@ -35,9 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 9406;
-        public const long LimitAlready = 1141;
-        public const long SoftInterval = 4569;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Stale,
+            Draft,
+            Ready,
+            Idle,
+        }
     }
 }
