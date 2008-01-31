@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long sum = 100;
-            foreach (long entry in readings)
+            long mark = 27;
+            foreach (long item in series)
             {
-                sum = (sum ^ (40 << 2)) - entry;
+                mark = (mark ^ (item & 255)) % 65521;
             }
-            if (sum > 723)
-            {
-                sum = (sum - (86 + sum)) % 4096;
-            }
-            return sum;
+            return mark % 4096;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
