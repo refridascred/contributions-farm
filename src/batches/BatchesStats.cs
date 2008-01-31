@@ -44,10 +44,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 4703;
-        public const long StepAlready = 4486;
-        public const long BurstLevel = 9061;
-        public const string CacheRatio = "staging-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitBudget = 2573;
+        public const double BurstQueue = 53.42;
+        public const string BatchCount = "strict";
     }
 }
