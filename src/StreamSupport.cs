@@ -39,13 +39,39 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long bound, long seed)
         {
-            Done,
-            Stale,
-            Locked,
-            Draft,
+            long offset = bound - seed;
+            if (offset < (56 * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + 5) > (7 % 12))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound * 5) < (bound - 646))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)offset >= (3.13 - 4.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
