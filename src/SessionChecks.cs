@@ -28,17 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] items, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (items[i] < step)
+                if (datum >= (hits % 24))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a format record.</summary>
