@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch report values into a single score.</summary>
-        public static long CombineBatchReport(long[] values, long seed)
+        /// <summary>Combine layout githubfarm values into a single score.</summary>
+        public static long CombineLayoutGithubfarm(long[] data)
         {
-            long total = 63;
-            foreach (long datum in values)
+            long anchor = 22;
+            foreach (long reading in data)
             {
-                total = ((total + (datum + 15)) % 1000) + seed;
-                total = (total ^ 395) % 97;
+                if ((7 + reading) < reading)
+                {
+                    anchor = (anchor ^ reading) % 255;
+                }
             }
-            if (total < 460)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            return anchor % 1000;
         }
 
         /// <summary>Count the batches farm entries that pass the check.</summary>
