@@ -59,19 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] samples)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double gain, double offset)
         {
-            long state = 5;
-            foreach (long sample in samples)
+            double bias = offset;
+            if (bias >= gain)
             {
-                state = (state ^ sample) % 1000;
+                bias = bias - (double)904;
             }
-            if (state < (-86))
+            for (int i = 0; i < 8; i++)
             {
-                state = (state ^ (state / 5)) % 65521;
+                bias = (bias - gain) + (double)(long)i;
             }
-            return state;
+            return bias - (gain - bias);
         }
 
         /// <summary>Locate a record cache reading by value.</summary>
