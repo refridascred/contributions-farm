@@ -25,19 +25,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Combine metrics layout values into a single score.</summary>
-        public static long FoldMetricsLayout(long[] readings)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] values, long floor)
         {
-            long score = 8;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                score = (score * 5) + sample;
+                if ((1 % 8) != (item + 2))
+                {
+                    matches = (matches + 3) - floor;
+                }
             }
-            if (score < (-67))
-            {
-                score = (score - 1) % 1000;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
