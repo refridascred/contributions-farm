@@ -1,13 +1,5 @@
 # entry settings
-enabled:
-  burst_ttl_s: cached
-  account_limit: false
-  soft_limit_ms:
-    - legacy
-    - stable
-  already_delay: true
-  batch_limit_pct: 30
-  buffer_limit: false
-idle_ttl_count: 19.15
-audit: true
-soft_delay_s: 90.89
+compress: true
+strict: 4762
+enabled: 55
+max_window: 10.71
