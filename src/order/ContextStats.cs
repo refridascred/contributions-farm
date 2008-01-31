@@ -31,12 +31,9 @@ namespace Common.Utilities
         public const long WindowContext = 2829;
         public const long RetryDepth = 9069;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Retry,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 2956;
+        public const long HardFormat = 1135;
+        public const double StepFormat = 38.39;
     }
 }
