@@ -15,18 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit graph filter readings against a rule.</summary>
-        public static long CountGraphFilterGaps(long[] readings)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((35 >> 2) >= entry)
+                if (datum < offset)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
