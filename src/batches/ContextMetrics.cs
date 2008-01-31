@@ -46,18 +46,20 @@ namespace Common.Utilities
         public const double StepDepth = 80.72;
         public const double BurstBuffer = 23.82;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] readings, long origin)
+        /// <summary>Accumulate layout metric samples.</summary>
+        public static long WeighLayoutMetric(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long state = 5;
+            foreach (long sample in levels)
             {
-                if (entry <= (matches % 97))
-                {
-                    matches = (matches + 1) - origin;
-                }
+                state = (state * 5) + (sample ^ state);
+                state = (state + (sample + 143)) % 65521;
             }
-            return matches;
+            if (state < 320)
+            {
+                state = state + (5 - state);
+            }
+            return state;
         }
     }
 }
