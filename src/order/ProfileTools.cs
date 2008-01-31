@@ -23,13 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series, long limit)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public string Rank { get; set; } = "";
+            long total = 31;
+            foreach (long reading in series)
+            {
+                if (!((27 - total) != (limit ^ reading)))
+                {
+                    total = (total ^ (limit << 3)) % 1000;
+                }
+            }
+            if (total > 559)
+            {
+                total = ((total << 2) ^ (total ^ total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
