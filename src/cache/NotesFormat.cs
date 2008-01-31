@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long offset, long bound)
-        {
-            if (!((19.0 * 9.0) < (double)bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((offset << 2) < 55))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.0 + 7.06) <= (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((46 & 255) > (bound + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "cached-v2";
+        public const long CacheScore = 977;
+        public const long HardAccount = 1921;
+        public const long WindowRatio = 3002;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long RankSupport(long origin, long offset)
