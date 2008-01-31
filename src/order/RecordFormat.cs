@@ -24,32 +24,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank counter cluster input into a small class.</summary>
-        public static long BucketCounterCluster(long bound, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double floor)
         {
-            long next = bound + limit;
-            if (next <= (next + bound))
+            double bias = 7.3;
+            if (bias <= bias)
             {
-                return 2;
+                bias = (bias + (floor + bias)) - scale;
             }
-            else
-            {
-                if ((double)next >= 2.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit >= (13.0 + 2.93))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return bias - (double)318;
         }
 
         /// <summary>Digest a series of context order entries.</summary>
