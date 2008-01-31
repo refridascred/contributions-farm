@@ -16,11 +16,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftScore = 81.47;
-        public const string DefaultDepth = "strict-edge";
-        public const long RetryStream = 9940;
-        public const long BurstStream = 1962;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Idle,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Rank counter cluster input into a small class.</summary>
         public static long BucketCounterCluster(long bound, long limit)
