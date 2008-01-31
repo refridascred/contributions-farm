@@ -47,21 +47,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 329;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = carry + (86 + sample);
             }
-            return tally;
+            if (carry > 2)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
