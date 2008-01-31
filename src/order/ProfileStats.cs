@@ -13,17 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                anchor = (anchor + anchor) % 97;
-                anchor = (anchor ^ (-142)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((reading >= (matches * 5)) || ((13.0 + 1.0) > (double)reading))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the commits status values.</summary>
