@@ -62,12 +62,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
