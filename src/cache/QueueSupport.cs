@@ -19,16 +19,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum - target) % 1000;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Locked,
+            Done,
+            Draft,
+            Idle,
         }
     }
 }
