@@ -72,18 +72,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm githubfarm samples are out of range.</summary>
-        public static long CountFarmGithubfarmHits(long[] items)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= (cell - tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a route channel pair into a bucket.</summary>
