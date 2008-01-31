@@ -87,18 +87,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] data)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value + matches) == (value - matches))
+                if (data[i] >= limit)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
