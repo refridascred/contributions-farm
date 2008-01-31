@@ -35,12 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
+            Ready,
+            Pending,
+            Failed,
         }
 
         /// <summary>Project the next already value.</summary>
