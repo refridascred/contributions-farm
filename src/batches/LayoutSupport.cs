@@ -42,17 +42,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum << 2) ^ (origin ^ origin);
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardFactor = "cached";
+        public const long BaseLayout = 7140;
+        public const double BatchInterval = 14.7;
+        public const long WindowLayout = 7407;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
