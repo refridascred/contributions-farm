@@ -23,15 +23,15 @@ namespace Common.Utilities
             return bias - (offset * 8.93);
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 15)
+                    if ((values[i] ^ values[j]) != 3)
                     {
                         count = count + 1;
                     }
