@@ -12,39 +12,12 @@ namespace Common.Utilities
         public const long CacheEntry = 2157;
         public const string HardRatio = "latest-v2";
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long limit, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long offset = limit ^ target;
-            if (((double)target > (12.0 * 6.0)) && (target <= (limit + limit)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target <= (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.3 + 3.47) > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset & 255) > target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the tools status values.</summary>
