@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 5862;
-        public const double BatchWidth = 18.7;
-        public const double BatchGithubfarm = 8.24;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Paused,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
