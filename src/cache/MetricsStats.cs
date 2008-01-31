@@ -56,12 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            Locked,
-            Idle,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
