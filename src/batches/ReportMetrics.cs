@@ -13,16 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "open";
+        public const double BurstTimeout = 10.69;
+        public const long CacheWidth = 6698;
+        public const long MinRecord = 6854;
+        public const double BatchRecord = 31.02;
 
         /// <summary>Iterate the record profile series from a seed.</summary>
         public static long SeriesRecordProfile(long seed)
