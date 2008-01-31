@@ -33,15 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Dropped,
-            Failed,
-            Locked,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 49.2;
+        public const long StepMetric = 3832;
+        public const long LimitMetric = 9399;
+        public const double BatchFactor = 2.72;
+        public const long CacheBudget = 6002;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelRange(long[] levels, long floor)
