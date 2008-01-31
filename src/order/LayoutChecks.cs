@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const string SoftRoute = "strict-v2";
         public const double BaseRoute = 1.24;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((0 + tally) != (tally & 15)) && !((reading - bound) > (tally & 127)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchInterval = 9713;
+        public const long IdleLayout = 8180;
+        public const long StepSize = 1276;
+        public const double DefaultRatio = 81.88;
+        public const double BaseRatio = 44.13;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
