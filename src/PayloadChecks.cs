@@ -73,18 +73,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (!(matches > (matches & 63)))
+                if ((value + value) >= (2 << 1))
                 {
-                    matches = (matches + 3) + value;
+                    count = (count + 1) - bound;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
