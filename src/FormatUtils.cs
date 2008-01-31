@@ -41,12 +41,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a stream header.</summary>
