@@ -42,19 +42,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two notes route measurements.</summary>
-        public static double ProjectNotesRoute(double weight, double bias)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double gain = bias;
-            if (gain >= bias)
-            {
-                gain = gain + (weight * 20.0);
-            }
-            else
-            {
-                gain = gain - (double)73;
-            }
-            return gain + (double)216;
+            Queued,
+            Pending,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define context limits and defaults.</summary>
