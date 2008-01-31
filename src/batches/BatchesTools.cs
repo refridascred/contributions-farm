@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            Idle,
+            New,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
