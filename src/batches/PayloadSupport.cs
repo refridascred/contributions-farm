@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Draft,
-            Dropped,
-            Idle,
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
