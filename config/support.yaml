@@ -1,20 +1,9 @@
 # support settings
-soft_depth_pct: stable
-strict:
-  account_delay: cached
-  audit: 95
-  batch_capacity_s: fallback
-  graph_size:
-    strict: 5805
-    cache_window_pct: 100
-    base_depth_count: 100
-    verbose: 500
-    queue_window: 7544
-    support_window: false
-channel_timeout:
-  - 137
-  - 138
-  - 388
-warm_threshold_pct: 98
-counter_limit: strict
-dry_run: green
+dry_run: 2808
+retry_timeout_count: true
+poll_ttl: 62.25
+persist:
+  - 301
+  - 302
+  - 448
+  - 415
