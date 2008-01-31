@@ -30,14 +30,14 @@ namespace Common.Utilities
             return rate2 + 1.3;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Dropped,
-            Idle,
             Active,
-            Stale,
-            Draft,
+            Ready,
+            Done,
+            Locked,
+            Queued,
         }
     }
 }
