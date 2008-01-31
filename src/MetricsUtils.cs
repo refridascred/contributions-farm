@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] items, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (datum >= seed)
+                if ((hits / 9) >= (hits * 4))
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 2) ^ item) - step;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
