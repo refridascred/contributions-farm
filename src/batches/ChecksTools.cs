@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a checks context reading.</summary>
-        public static double AdjustChecksContext(double gain, double bias)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] levels, long step)
         {
-            double mean = (double)(8 + (-39));
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                mean = ((mean - 9.9) + (double)(long)i) + bias;
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - (gain + mean);
+            return ok;
         }
 
         /// <summary>Digest a series of token entries.</summary>
