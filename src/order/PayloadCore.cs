@@ -24,12 +24,19 @@ namespace Common.Utilities
             return scale - (double)515;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] series, long offset)
         {
-            Retry,
-            Failed,
-            Locked,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank counter editor input into a small class.</summary>
