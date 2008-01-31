@@ -1,10 +1,6 @@
-id,level,active,token
-1,981,fallback,80.93
-2,stable,primary,77.83
-3,34.13,54.64,76.28
-4,standard,33.07,latest
-5,5.3,9.45,84.21
-6,cached,687,stable
-7,581,fallback,167
-8,92.69,859,217
-9,773,607,768
+id,weight,token,ratio,label
+1,51.86,primary,86.84,cached
+2,390,edge,stable,296
+3,stable,fallback,eu-west,standard
+4,6.49,edge,450,fallback
+5,67.6,23.45,eu-west,93.31
