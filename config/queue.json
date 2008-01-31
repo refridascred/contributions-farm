@@ -1,7 +1,19 @@
 {
-  "soft_ratio": 4288,
-  "enabled": false,
-  "metrics_retries": [418, 181, 282],
-  "burst_retries_count": true,
-  "batch_threshold": ["cached", "eu-west"]
+  "default_capacity": {
+    "min_window_pct": 34,
+    "retry_size_pct": "legacy",
+    "max_delay_s": "strict",
+    "warm_ttl": ["primary", "green"],
+    "tools_depth": "latest",
+    "window_limit": 30
+  },
+  "batch_window": 250,
+  "editor_interval": 63.25,
+  "default_delay_count": {
+    "payload_size": 44,
+    "max_delay": 79,
+    "compress": ["open", "primary", "cached", "latest"],
+    "base_window_pct": "staging",
+    "strict": "stable"
+  }
 }
