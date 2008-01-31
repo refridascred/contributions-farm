@@ -80,21 +80,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count contributi farm pairs that satisfy a relation.</summary>
-        public static long MatchContributiFarmCount(long[] data)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (target >= (target << 2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (611 < (limit + target))
                 {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
