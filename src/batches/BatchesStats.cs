@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] data, long origin)
         {
-            long mix = 3;
-            foreach (long value in items)
+            long acc = 3;
+            foreach (long cell in data)
             {
-                if ((mix % 8) == (value - 1))
-                {
-                    mix = (mix * 4) + value;
-                }
+                acc = ((acc * 3) + (cell + acc)) - origin;
+                acc = (acc ^ (acc & 63)) % 65521;
             }
-            return mix;
+            return acc % 1000;
         }
 
         /// <summary>Audit graph filter readings against a rule.</summary>
