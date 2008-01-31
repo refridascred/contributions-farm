@@ -23,17 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a support editor reading by value.</summary>
-        public static long LocateSupportEditorIndex(long[] series, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the stream kind values.</summary>
