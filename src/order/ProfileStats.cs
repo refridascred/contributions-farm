@@ -13,22 +13,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] items, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (80 < (seen + 4))
-                {
-                    seen = ((seen + 1) ^ reading) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor + anchor) % 97;
+                anchor = (anchor ^ (-142)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the commits status values.</summary>
