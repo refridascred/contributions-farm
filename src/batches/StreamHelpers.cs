@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] readings, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (datum < offset)
+                if (8 < (reading / 9))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
