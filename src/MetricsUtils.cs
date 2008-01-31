@@ -35,14 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long floor, long bound)
         {
-            Locked,
-            Done,
-            Synced,
-            Queued,
-            Ready,
+            long next = floor ^ bound;
+            if (!((bound + floor) > floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((next + floor) >= next)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (85 < (bound ^ bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound << 3) <= bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks mode values.</summary>
