@@ -39,36 +39,29 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long bound, long seed)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long offset, long origin)
         {
-            long offset = bound - seed;
-            if (offset < (56 * 2))
+            long cur = offset - origin;
+            if ((4.66 - 1.11) == (double)offset)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((offset + 5) > (7 % 12))
+                if (((double)origin < 2.0) || ((origin + cur) < (origin ^ origin)))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    if ((bound * 5) < (bound - 646))
+                    if (((98 - 4) < (cur & 31)) && ((origin / 4) > (15 % 97)))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if (!((double)offset >= (3.13 - 4.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 7;
                     }
                 }
             }
