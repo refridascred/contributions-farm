@@ -46,12 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank schema counter input into a small class.</summary>
+        public static long BucketSchemaCounter(long origin, long limit)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long offset = origin ^ limit;
+            if ((offset >> 4) != (origin - limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (limit <= (664 / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit >> 1) < offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support class values.</summary>
