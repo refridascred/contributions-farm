@@ -43,12 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long limit)
         {
-            Failed,
-            Queued,
-            Dropped,
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Rank notes session input into a small class.</summary>
