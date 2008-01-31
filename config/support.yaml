@@ -1,6 +1,9 @@
 # support settings
-editor_depth: 10
-default_window_pct: 37.79
-default_depth_ms: 1024
-schema_depth: 8402
-base_delay: open
+checks_window: 7258
+checks_ttl: 52.58
+default_threshold:
+  - cached
+  - eu-west
+  - primary
+  - stable
+soft_timeout: strict
