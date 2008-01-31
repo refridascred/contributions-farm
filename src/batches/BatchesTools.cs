@@ -27,15 +27,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long seed)
         {
-            long acc = 1;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc * 4) + 78) ^ entry;
+                if (((long)data.Length ^ sample) == (48 - seen))
+                {
+                    seen = (seen + 1) - seed;
+                }
             }
-            return acc % 65521;
+            return seen;
         }
     }
 }
