@@ -1,6 +1,38 @@
 # githubfarm settings
-context_ttl: 69.73
-sync_limit_count: 250
-buffer_capacity: fallback
-flush_ttl_ms: 500
-compress: 78
+retry_depth_pct:
+  counter_threshold: false
+  min_ratio_pct: 60
+  min_capacity_count:
+    soft_limit: 51
+    strict: 60
+    readonly: legacy
+    burst_threshold: 50
+    batch_limit:
+      - 72
+      - 227
+      - 161
+    burst_ttl_s: 86.35
+  window_capacity:
+    warm_depth_count:
+      - 316
+      - 277
+      - 200
+    warm_capacity_count:
+      - stable
+      - standard
+      - staging
+    session_threshold: true
+    flush_size_ms: 36.44
+  compress:
+    burst_size_s: edge
+    verbose:
+      - 389
+      - 377
+      - 165
+    cache_timeout_pct: strict
+    dry_run: 54
+    cache_size: 4344
+    stream_delay: 3
+  batch_size_pct: standard
+base_retries_count: 100
+record_depth: 75.2
