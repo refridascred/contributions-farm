@@ -41,18 +41,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((0 >> 4) <= (item - (long)samples.Length))
+                if ((reading * 4) <= (14 - 234))
                 {
-                    tally = tally + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
