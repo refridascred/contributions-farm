@@ -30,13 +30,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Pending,
-            New,
-            Retry,
-            Synced,
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
