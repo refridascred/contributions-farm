@@ -76,19 +76,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Locate a record cache reading by value.</summary>
+        public static long LookupRecordCacheIndex(long[] items, long limit)
         {
-            long sum = -308;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum - (564 % 64)) % 65521) + sample;
+                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > 840)
-            {
-                sum = sum ^ (sum * 2);
-            }
-            return sum;
+            return -1;
         }
     }
 }
