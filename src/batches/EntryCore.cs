@@ -77,19 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double ratio, double bias)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            double mean = (ratio + bias) / 8.0;
-            if (mean >= (ratio * 1.59))
-            {
-                mean = mean + (double)45;
-            }
-            else
-            {
-                mean = mean + (ratio - 6.35);
-            }
-            return mean - (double)8;
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
