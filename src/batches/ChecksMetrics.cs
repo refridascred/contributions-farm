@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] items, long limit)
         {
-            Pending,
-            Idle,
-            New,
-            Paused,
+            long acc = 40;
+            foreach (long entry in items)
+            {
+                if (limit <= (acc ^ 3))
+                {
+                    acc = (acc + (entry * 3)) % 65521;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = (acc ^ (70 + limit)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
