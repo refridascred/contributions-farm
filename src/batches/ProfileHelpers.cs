@@ -26,24 +26,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long floor)
+        /// <summary>Digest a series of farm checks entries.</summary>
+        public static long CombineFarmChecks(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long mark = 22;
+            foreach (long sample in values)
             {
-                if ((floor * 4) <= floor)
-                {
-                    anchor = (anchor - 66) % 97;
-                    break;
-                }
-                else
-                {
-                    anchor = anchor ^ (2 << 3);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                mark = ((mark - ((long)values.Length >> 2)) % 4096) - sample;
             }
-            return anchor;
+            if (mark < 4)
+            {
+                mark = (mark - mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a contributi options.</summary>
