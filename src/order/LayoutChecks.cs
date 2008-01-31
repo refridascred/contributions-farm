@@ -83,24 +83,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long mix = -80;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + (mix >> 3)) % 65521;
-                mix = (mix << 2) ^ reading;
-                if (((double)mix > (double)reading) && ((double)mix >= 3.13))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (mix * 2)) % 1000;
-                }
-                if ((1.6 + 4.0) <= (double)mix)
-                {
-                    break;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
