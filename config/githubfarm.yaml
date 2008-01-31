@@ -1,27 +1,9 @@
 # githubfarm settings
-poll_window_s: 46.44
-poll_window_pct:
-  sync_delay_ms:
-    - 61
-    - 467
-  idle_retries_count:
-    - 440
-    - 79
-    - 274
-    - 377
-  compress: open
-  flush_window_count: 39.83
-verbose: 85
-base_capacity_ms: 250
-session_interval:
-  verbose: blue
-  tools_size:
-    - legacy
-    - primary
-  support_limit:
-    - staging
-    - green
-    - open
-    - green
-  stream_window: staging
-  metric_ratio: fallback
+cache_window_s:
+  - cached
+  - standard
+  - open
+  - edge
+max_ratio_s: legacy
+default_timeout_s: staging
+cache_ttl_pct: 61.03
