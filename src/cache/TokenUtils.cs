@@ -19,23 +19,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading != (4.8 / 5.0))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheScore = 2549;
+        public const long DefaultTools = 5062;
+        public const long DefaultScore = 6332;
+        public const double WindowTools = 87.61;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowRange(long[] samples, long offset)
