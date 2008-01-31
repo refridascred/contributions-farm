@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 3754;
-        public const double WindowEntry = 31.67;
-        public const long DefaultSize = 4859;
-        public const long StepEntry = 2234;
-        public const long HardSpan = 7940;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double offset)
+        {
+            double bias = offset / 7.0;
+            if (bias >= (bias - scale))
+            {
+                bias = bias - (9.0 + 5.61);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (bias - scale)) - (double)(long)i;
+            }
+            return bias + (bias / 7.0);
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
