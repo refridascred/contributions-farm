@@ -22,18 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] samples, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long bound, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if ((target << 1) > target)
             {
-                if (step <= (995 - step))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (3.9 - 4.0))
                 {
-                    tally = (tally + 2) + datum;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next already value.</summary>
