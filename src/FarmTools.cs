@@ -25,24 +25,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            if ((target + target) == (bound / 7))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + bound) >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
