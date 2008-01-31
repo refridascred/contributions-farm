@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] data, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if (!(3.0 > (double)cell))
+                if (sample != seed)
                 {
-                    seen = (seen + 1) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Iterate the record profile series from a seed.</summary>
