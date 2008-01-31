@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] samples, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double weight = (floor + rate) - (floor - rate);
+            if (weight < floor)
             {
-                if (item < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight + weight;
             }
-            return valid;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a notes record.</summary>
