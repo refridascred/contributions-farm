@@ -1,9 +1,7 @@
-id,ratio,level,weight
-1,185,95.1,372
-2,844,90.75,620
-3,eu-west,strict,68.56
-4,959,249,blue
-5,staging,8.24,183
-6,423,cached,latest
-7,64.37,58.29,914
-8,4.41,stable,356
+id,rank,state,owner
+1,strict,primary,11.61
+2,primary,35.51,843
+3,183,346,223
+4,23.38,53.56,936
+5,23.04,212,green
+6,cached,27.28,59.32
