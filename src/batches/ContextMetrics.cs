@@ -88,22 +88,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)origin < (1.64 + 6.7))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 8122;
+        public const long DefaultDepth = 4471;
+        public const long BatchStats = 7704;
+        public const string BaseWidth = "primary";
     }
 }
