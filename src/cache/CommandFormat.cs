@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a notes session reading.</summary>
-        public static double AdjustNotesSession(double rate, double span)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double gain = (double)80 - rate;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain - 8.2) - (double)(long)i) - span;
-            }
-            return gain - 5.2;
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
