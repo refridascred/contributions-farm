@@ -20,12 +20,22 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell + hits) > hits) && !(((long)readings.Length >> 4) != (5 / 3)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
