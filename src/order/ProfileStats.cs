@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 2837;
+        public const double IdleRatio = 4.43;
+        public const string MaxBatch = "legacy-edge";
+        public const long LimitBatch = 6488;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionLimits(long[] items, long target)
