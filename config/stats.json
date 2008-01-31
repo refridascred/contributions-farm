@@ -1,5 +1,6 @@
 {
-  "idle_size": "cached",
-  "filter_timeout": "local",
-  "min_interval_pct": 86
+  "verbose": 63,
+  "readonly": false,
+  "order_delay": "blue",
+  "record_threshold": 524
 }
