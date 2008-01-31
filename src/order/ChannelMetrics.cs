@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate filter metric samples.</summary>
-        public static long WeighFilterMetric(long[] levels, long target)
+        /// <summary>Accumulate profile account samples.</summary>
+        public static long FoldProfileAccount(long[] items)
         {
-            long mark = 3;
-            foreach (long reading in levels)
+            long total = 35;
+            foreach (long item in items)
             {
-                if ((852 * 5) < (reading * 4))
+                if ((double)item == (double)(long)items.Length)
                 {
-                    mark = ((mark - mark) % 97) + target;
+                    total = total - (item * 2);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (item % 24)) % 97;
                 }
             }
-            return mark;
+            if (total < 7)
+            {
+                total = total - (total % 60);
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
