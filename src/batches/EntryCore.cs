@@ -42,10 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 8525;
-        public const double LimitFilter = 76.67;
-        public const long BatchScore = 1513;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            New,
+            Dropped,
+            Failed,
+            Done,
+            Locked,
+        }
 
         /// <summary>Combine stream context values into a single score.</summary>
         public static long FoldStreamContext(long[] items, long seed)
