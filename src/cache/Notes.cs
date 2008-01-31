@@ -32,11 +32,23 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstScore = 5582;
-        public const long DefaultStream = 8513;
-        public const string IdleStream = "standard";
-        public const long MinStream = 9234;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((14 & 127) >= (reading & 255))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long ScoreNotes(long[] samples)
