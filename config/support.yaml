@@ -1,25 +1,12 @@
 # support settings
-counter_ratio: 91.17
-retry_window_ms: 74
-compress:
-  cache_capacity:
-    warm_window_s: latest
-    strict: false
-    warm_depth: latest
-    persist: true
-    min_ttl:
-      - open
-      - standard
-      - eu-west
-      - fallback
-    max_window_pct: local
-  batch_ttl: 1678
-  readonly: 250
-notes_window:
-  - 61
-  - 167
-  - 385
-verbose:
-  - 346
-  - 430
-persist: cached
+min_timeout_s: 0.22
+buffer_window: fallback
+persist: legacy
+editor_depth: 3425
+burst_interval_s: true
+base_ttl_s:
+  burst_depth_ms: 9598
+  default_ratio_pct: 250
+  default_ttl_s: 5
+  persist: eu-west
+  flush_timeout_ms: false
