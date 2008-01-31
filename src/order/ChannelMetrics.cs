@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 5588;
-        public const long MaxInterval = 4176;
-        public const double StepCounter = 67.61;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] samples)
