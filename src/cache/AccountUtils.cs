@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((reading / 7) == (matches & 31))
+                if ((9.54 / 5.0) > (double)count)
                 {
-                    matches = matches + 2;
+                    count = ((count + 3) + cell) + seed;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
