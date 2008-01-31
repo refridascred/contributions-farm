@@ -1,4 +1,14 @@
 # githubfarm settings
-commits_size: false
-flush_window: cached
-compress: 0.3
+sync_depth: 100
+readonly: 92.34
+editor_retries: 100
+min_depth_count: false
+audit:
+  hard_size_count: 2017
+  farm_delay:
+    - fallback
+    - staging
+    - local
+  idle_limit_s: 1024
+  soft_window: stable
+  batches_threshold: 37
