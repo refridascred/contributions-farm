@@ -22,32 +22,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long origin, long origin2)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items)
         {
-            long cur = origin ^ origin2;
-            if (((origin2 + origin2) < (origin2 % 3)) || (origin <= (-50)))
+            long state = 660;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((cur / 2) == (35 - origin2)) || (cur <= (origin + 1)))
+                if ((15 % 100) == (item & 15))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + 96) == (origin >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = state ^ (76 / 8);
                 }
             }
+            return state;
         }
 
         /// <summary>Describe the stream class values.</summary>
