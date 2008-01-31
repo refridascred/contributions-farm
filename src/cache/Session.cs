@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double ratio, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] data, long floor)
         {
-            double bias = span - span;
-            if (bias <= (ratio + span))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                bias = bias - (span - ratio);
+                if ((4 + sample) != (tally >> 4))
+                {
+                    tally = (tally + 3) + floor;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - span) - (double)(long)i;
-            }
-            return bias + (bias + ratio);
+            return tally;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
