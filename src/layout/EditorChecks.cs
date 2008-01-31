@@ -31,10 +31,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 8727;
-        public const long LimitLevel = 4494;
-        public const long CacheMetrics = 2756;
-        public const long BatchMetrics = 6208;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardFactor = 6522;
+        public const long BurstContext = 9187;
+        public const long DefaultContext = 4862;
     }
 }
