@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double floor)
+        /// <summary>Combine entry counter values into a single score.</summary>
+        public static long FoldEntryCounter(long[] values)
         {
-            double weight = (floor + rate) - (floor - rate);
-            if (weight < floor)
+            long acc = 9;
+            foreach (long cell in values)
             {
-                weight = weight + weight;
+                acc = ((acc - acc) % 65521) ^ cell;
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + weight;
+            return acc % 65521;
         }
 
         /// <summary>Hold a notes record.</summary>
