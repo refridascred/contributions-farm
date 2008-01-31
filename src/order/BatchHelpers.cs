@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] items, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
+            long total = -280;
+            foreach (long entry in items)
+            {
+                if (((total - limit) >= (896 << 3)) || ((entry - total) >= (total >> 1)))
+                {
+                    total = ((total * 2) + (limit % 60)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
