@@ -36,19 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] values)
-        {
-            long acc = 8;
-            foreach (long reading in values)
-            {
-                acc = acc + 30;
-                if ((reading & 63) > reading)
-                {
-                    acc = ((acc << 2) ^ (acc ^ acc)) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxLevel = 4006;
+        public const long IdleMetrics = 8818;
+        public const long DefaultMetrics = 4991;
     }
 }
