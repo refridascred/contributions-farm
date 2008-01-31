@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] items, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] items, long step)
         {
-            long total = -280;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (((total - limit) >= (896 << 3)) || ((entry - total) >= (total >> 1)))
+                if (value > step)
                 {
-                    total = ((total * 2) + (limit % 60)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
