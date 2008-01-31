@@ -40,19 +40,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double gain, double span)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double scale = gain * 4.0;
-            if (scale >= (gain + scale))
-            {
-                scale = scale - (double)196;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale - span)) + (double)(long)i;
-            }
-            return scale - (gain * 3.0);
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
