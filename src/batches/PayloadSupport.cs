@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
