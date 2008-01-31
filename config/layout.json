@@ -1,11 +1,7 @@
 {
-  "hard_window_pct": true,
-  "route_threshold": 6206,
-  "soft_window_s": {
-    "batch_ttl_ms": 11,
-    "max_depth_ms": 9331,
-    "stream_capacity": 80.66,
-    "graph_threshold": "cached"
-  },
-  "burst_threshold_ms": false
+  "editor_interval": 100,
+  "flush_timeout_pct": false,
+  "already_ttl": [485, 257, 387, 188],
+  "order_delay": ["blue", "blue", "cached"],
+  "payload_limit": [113, 268, 98]
 }
