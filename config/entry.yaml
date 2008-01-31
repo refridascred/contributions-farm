@@ -1,5 +1,15 @@
 # entry settings
-burst_limit_s: 46.96
-editor_depth: 58
-sync_limit_pct: false
-order_window: standard
+idle_interval: true
+context_window:
+  retry_capacity_ms: true
+  cache_window_pct: open
+  readonly:
+    metrics_capacity: 33
+    session_depth: false
+    hard_window_ms: 3685
+    max_timeout: eu-west
+    session_ttl: 68.52
+  window_interval: false
+  burst_retries_pct: edge
+  warm_capacity_count: true
+persist: true
