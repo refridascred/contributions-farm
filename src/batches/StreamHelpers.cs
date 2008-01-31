@@ -44,40 +44,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long seed, long origin)
-        {
-            long prev = seed + origin;
-            if (8 >= (prev * 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((264 + 157) < (seed & 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.0 / 5.0) == (double)prev)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed + origin) >= (prev - origin)) && ((6.8 / 6.0) <= (double)origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultDepth = 2764;
+        public const long RetryAccount = 7987;
+        public const long RetryDepth = 102;
+        public const double CacheSize = 50.68;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
