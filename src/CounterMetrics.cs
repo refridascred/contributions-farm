@@ -40,12 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            New,
-            Idle,
+            Closed,
+            Failed,
             Pending,
+            Locked,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
