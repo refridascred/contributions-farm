@@ -19,13 +19,38 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Classify a route batch pair into a bucket.</summary>
+        public static long GradeRouteBatch(long seed, long target)
         {
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            if ((double)seed == (1.0 * 20.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((8.24 - 5.9) != (double)target) && ((target ^ target) > (target * 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)878 != (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed <= (329 * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream class values.</summary>
