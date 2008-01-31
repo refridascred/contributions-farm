@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 4883;
-        public const double CacheRatio = 14.09;
-        public const long BurstChannel = 1975;
-        public const long LimitInterval = 6860;
-        public const string BatchSize = "staging-1";
+        /// <summary>Locate a context editor reading by value.</summary>
+        public static long FindContextEditorIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] series)
