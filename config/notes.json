@@ -1,20 +1,8 @@
 {
-  "context_ttl": 40.17,
-  "burst_delay": "staging",
-  "cache_interval_ms": 28.88,
-  "poll_ratio_pct": {
-    "sync_depth_ms": [337, 338],
-    "cache_ttl_pct": {
-      "sync_window": 100,
-      "soft_interval_pct": false,
-      "batch_interval": "blue"
-    },
-    "retry_depth_count": {
-      "base_window_s": 70,
-      "dry_run": 8652,
-      "audit": [263, 460, 43, 32],
-      "buffer_ratio": 500,
-      "filter_ratio": "latest"
-    }
-  }
+  "soft_depth_pct": 97.97,
+  "counter_size": "open",
+  "channel_ttl": [446, 483, 372, 433],
+  "persist": "staging",
+  "window_limit": false,
+  "batch_threshold_pct": true
 }
