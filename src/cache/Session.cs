@@ -35,15 +35,18 @@ namespace Common.Utilities
         public const long StepGithubfarm = 8806;
         public const double WindowCount = 88.17;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] values, long offset)
+        /// <summary>Match up record buffer samples.</summary>
+        public static long CompareRecordBufferCount(long[] series)
         {
             long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)values.Length <= 9)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 2) ^ datum) - offset;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
