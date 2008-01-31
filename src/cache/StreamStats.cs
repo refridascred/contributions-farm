@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 12.62;
-        public const long HardCounter = 5224;
-        public const long RetryCounter = 5786;
-        public const double IdleCounter = 56.15;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample * 4) != (541 + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportBounds(long[] series, long seed)
