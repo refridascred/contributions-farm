@@ -40,11 +40,18 @@ namespace Common.Utilities
         public const long IdleCount = 9827;
         public const string DefaultCache = "cached";
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] levels)
         {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((value & 1) > (tally << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
