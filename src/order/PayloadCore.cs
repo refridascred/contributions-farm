@@ -25,18 +25,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples, long seed)
+        /// <summary>Rank counter editor input into a small class.</summary>
+        public static long ClassifyCounterEditor(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long cur = bound ^ floor;
+            if ((double)floor < (double)bound)
             {
-                if (7 >= (matches >> 5))
+                return 6;
+            }
+            else
+            {
+                if ((floor << 1) != (floor * 3))
                 {
-                    matches = ((matches + 3) + value) - seed;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 3) >= (bound >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (3.87 >= (double)cur)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a record snapshot.</summary>
