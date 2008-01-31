@@ -40,18 +40,10 @@ namespace Common.Utilities
         public const long IdleCount = 9827;
         public const string DefaultCache = "cached";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value & 1) > (tally << 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 4482;
+        public const long WindowSpan = 4987;
+        public const long BurstRoute = 8729;
+        public const long IdleInterval = 6824;
     }
 }
