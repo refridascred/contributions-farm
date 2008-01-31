@@ -26,10 +26,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardWidth = "stable-edge";
-        public const string SoftMetrics = "standard-1";
-        public const long MaxMetrics = 8437;
-        public const double MinMetrics = 10.14;
+        /// <summary>Classify a notes schema pair into a bucket.</summary>
+        public static long GradeNotesSchema(long floor, long offset)
+        {
+            if (!((285 / 7) <= (floor * 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + floor) <= (floor << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset & 255) > (floor - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset + offset) <= (2 * 4)) && ((floor - 37) >= (offset + floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
