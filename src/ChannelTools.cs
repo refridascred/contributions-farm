@@ -29,18 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already window entries that pass the check.</summary>
-        public static long TallyAlreadyWindowMatches(long[] readings, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = 28;
+            foreach (long reading in readings)
             {
-                if (((tally ^ (-534)) >= (16 ^ seed)) && !((seed + 71) <= (tally + tally)))
-                {
-                    tally = (tally + 2) - datum;
-                }
+                acc = ((((acc * 2) + (acc / 4)) % 1000) ^ reading) + target;
             }
-            return tally;
+            return acc;
         }
     }
 }
