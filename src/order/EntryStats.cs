@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Fold a list of record profile readings.</summary>
+        public static long CombineRecordProfile(long[] items, long bound)
         {
-            Idle,
-            New,
-            Draft,
-            Failed,
-            Stale,
+            long state = 6;
+            foreach (long datum in items)
+            {
+                state = (((state - (16 * 4)) % 4096) - datum) + bound;
+            }
+            if (state > (-4))
+            {
+                state = (state << 3) ^ (state + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Combine batch report values into a single score.</summary>
