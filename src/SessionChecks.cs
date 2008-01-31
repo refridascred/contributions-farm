@@ -19,12 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
