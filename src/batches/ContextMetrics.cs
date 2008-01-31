@@ -37,19 +37,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double bias)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long offset, long origin)
         {
-            double scale2 = scale;
-            if (scale2 >= scale2)
+            if (!((origin & 127) == (origin + offset)))
             {
-                scale2 = (scale2 - scale2) + bias;
+                return 3;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale2 = (scale2 + scale) - (double)(long)i;
+                if ((double)origin >= (9.91 / 4.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin << 2) < (35 + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return scale2 + scale2;
         }
 
         /// <summary>Match up cache samples.</summary>
