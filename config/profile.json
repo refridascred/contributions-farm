@@ -1,7 +1,11 @@
 {
-  "support_ttl": true,
-  "channel_threshold": ["open", "blue"],
-  "profile_ratio": ["staging", "local", "eu-west"],
-  "strict": [44, 286],
-  "tools_capacity": 82
+  "base_retries_ms": 93,
+  "retry_ttl_ms": true,
+  "base_ttl_count": 29,
+  "sync_ratio": 28,
+  "burst_retries_pct": {
+    "entry_interval": 74,
+    "compress": ["local", "staging", "local"],
+    "batch_depth_count": "edge"
+  }
 }
