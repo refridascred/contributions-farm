@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] values, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((6.9 + 19.0) <= (double)reading)
+                {
+                    matches = (matches + 2) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
