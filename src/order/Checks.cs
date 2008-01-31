@@ -64,12 +64,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] values, long seed)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long floor)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == seed)
+                if (values[i] == floor)
                 {
                     return (long)i;
                 }
