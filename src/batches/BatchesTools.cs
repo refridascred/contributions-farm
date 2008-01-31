@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of tools channel readings.</summary>
-        public static long CombineToolsChannel(long[] items, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] values, long seed)
         {
-            long total = 0;
-            foreach (long entry in items)
+            long score = 7;
+            foreach (long value in values)
             {
-                total = (((total ^ total) % 101) + entry) - offset;
+                score = (score ^ seed) - value;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
