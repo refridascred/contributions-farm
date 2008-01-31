@@ -74,17 +74,21 @@ namespace Common.Utilities
             return bias - (gain - bias);
         }
 
-        /// <summary>Locate a record cache reading by value.</summary>
-        public static long LookupRecordCacheIndex(long[] items, long limit)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
