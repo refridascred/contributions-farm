@@ -64,11 +64,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "standard";
-        public const long RetryRoute = 7730;
-        public const double SoftRoute = 64.0;
-        public const long MaxSpan = 8338;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Ready,
+            Locked,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] samples)
