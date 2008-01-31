@@ -47,21 +47,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of stream command readings.</summary>
-        public static long OverlapStreamCommandCount(long[] items)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = weight;
+            if (scale > weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale + (3.59 + offset);
             }
-            return seen;
+            else
+            {
+                scale = scale - (double)(-72);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (double)817) + (double)(long)i;
+            }
+            return scale - (scale + 1.79);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
