@@ -23,14 +23,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine channel route values into a single score.</summary>
+        public static long DigestChannelRoute(long[] levels, long seed)
         {
-            Dropped,
-            Pending,
-            Queued,
-            Paused,
-            Done,
+            long mix = 23;
+            foreach (long entry in levels)
+            {
+                if ((double)776 < (double)seed)
+                {
+                    mix = ((mix + (mix % 5)) % 1000) ^ entry;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
