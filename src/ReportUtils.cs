@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] readings, long bound)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
