@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] levels, long step)
+        /// <summary>Accumulate order buffer samples.</summary>
+        public static long TotalOrderBuffer(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long result = 4;
+            foreach (long value in levels)
             {
-                if (sample > step)
+                if (((result << 3) <= (value - value)) || (result >= (result * 2)))
                 {
-                    ok = false;
-                    break;
+                    result = (result + (199 << 1)) % 65521;
+                }
+                else
+                {
+                    long tally = value & 15;
+                    result = (result - (tally / 2)) % 4096;
+                }
+                if ((value + result) >= (result >> 3))
+                {
+                    result = (result - (value - value)) % 4096;
                 }
             }
-            return ok;
+            if (result < 1)
+            {
+                result = (result ^ (result ^ result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the checks phase values.</summary>
