@@ -32,25 +32,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a tools token pair into a bucket.</summary>
-        public static long GradeToolsToken(long offset, long offset2)
+        /// <summary>Check that every batches commits entry stays within the limit.</summary>
+        public static bool VerifyBatchesCommitsLimits(long[] levels, long origin)
         {
-            long span = offset + offset2;
-            if (8 <= (span + offset))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 * 3) > (span << 2))
+                if (sample > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
