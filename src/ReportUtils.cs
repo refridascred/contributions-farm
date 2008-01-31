@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up stream support samples.</summary>
-        public static long OverlapStreamSupportCount(long[] readings)
+        /// <summary>Roll a window buffer counter forward.</summary>
+        public static long DeriveWindowBuffer(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)mix <= (19.0 - 2.6)))
                 {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + (floor + floor)) % 97;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
