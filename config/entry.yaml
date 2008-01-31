@@ -1,15 +1,18 @@
 # entry settings
-idle_interval: true
-context_window:
-  retry_capacity_ms: true
-  cache_window_pct: open
-  readonly:
-    metrics_capacity: 33
-    session_depth: false
-    hard_window_ms: 3685
-    max_timeout: eu-west
-    session_ttl: 68.52
-  window_interval: false
-  burst_retries_pct: edge
-  warm_capacity_count: true
-persist: true
+audit: latest
+checks_limit:
+  poll_window:
+    - 243
+    - 172
+  farm_window: 39
+  tools_size: 100
+  contributi_threshold:
+    - blue
+    - green
+    - primary
+    - stable
+  batch_capacity: 77.92
+  dry_run: 25
+default_threshold_s: 35.31
+flush_ratio: 14.84
+cache_timeout_ms: 25.55
