@@ -51,24 +51,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank support filter input into a small class.</summary>
-        public static long RankSupportFilter(long floor, long floor2)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] values, long origin)
         {
-            if (floor2 >= 652)
+            long mix = 5;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor == (8.3 + 2.0))
+                mix = ((mix * 2) + (115 / 3)) - origin;
+                if ((2.3 * 10.0) <= (double)mix)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    mix = ((mix << 3) ^ (sample << 1)) % 255;
                 }
             }
+            return mix;
         }
 
         /// <summary>Project the next schema value.</summary>
