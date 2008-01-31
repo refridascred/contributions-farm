@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "latest-v2";
+        public const string MaxReport = "stable-v2";
+        public const string SoftReport = "primary-edge";
+        public const long HardDepth = 5478;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleWidth = 5001;
