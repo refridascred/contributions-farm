@@ -1,24 +1,7 @@
 # entry settings
-soft_timeout_pct: standard
-base_timeout_pct:
-  - staging
-  - staging
-  - primary
-flush_ratio_count: 1515
-burst_size_s: 60
-metrics_ttl:
-  - cached
-  - edge
+persist: 36.76
+metrics_capacity:
   - standard
-  - blue
-max_window:
-  batch_window_ms:
-    base_delay_count: 67.76
-    burst_threshold: eu-west
-    contributi_capacity: staging
-    hard_threshold_pct:
-      - latest
-      - blue
-    cache_window: 3082
-  poll_capacity_count: 7238
-  audit: 79.3
+  - strict
+sync_ratio_pct: 100
+cluster_ttl: legacy
