@@ -1,20 +1,25 @@
 # entry settings
-readonly: 30
-min_delay:
-  max_timeout_ms: 9166
-  readonly:
-    order_delay: strict
+cache_window_ms: eu-west
+verbose:
+  account_depth: 695
+  min_timeout_ms: true
+  strict: 9190
+  route_window: strict
+  order_timeout: 59.94
+soft_retries_ms:
+  base_depth:
+    - 189
+    - 176
+    - 46
+  warm_size_s: staging
+  flush_delay_count:
     retry_timeout:
-      - legacy
-      - eu-west
-      - fallback
-      - stable
-    enabled: 29
-    flush_size_pct: local
-  hard_capacity_ms:
-    - 489
-    - 315
-  checks_window: open
-  sync_capacity_count: 500
-  token_size: open
-support_ttl: open
+      - 283
+      - 440
+    soft_limit: latest
+    default_depth_pct: local
+    sync_depth_pct: edge
+    report_interval: primary
+    hard_depth: 60
+  batch_capacity: 8138
+strict: 5641
