@@ -44,17 +44,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a session report reading by value.</summary>
-        public static long LocateSessionReportIndex(long[] items, long floor)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
