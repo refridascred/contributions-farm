@@ -34,18 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] samples)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 4) != (541 + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a buffer record.</summary>
