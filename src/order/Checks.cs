@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a stats payload reading by value.</summary>
-        public static long LocateStatsPayloadIndex(long[] samples, long seed)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = bias;
+            if (mean >= (weight - 5.63))
             {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean - weight);
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
