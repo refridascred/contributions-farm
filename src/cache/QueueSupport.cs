@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] series)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (!(((tally * 2) <= (3 >> 4)) && ((entry & 63) != (tally % 97))))
+                if (value != floor)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
