@@ -32,18 +32,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen & 127) > 3)
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Synced,
+            Failed,
+            Active,
         }
     }
 }
