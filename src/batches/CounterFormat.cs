@@ -22,10 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 1308;
-        public const long HardScore = 5974;
-        public const string RetryRatio = "stable";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 232;
+        public const double CacheWindow = 69.5;
+        public const double DefaultRatio = 33.54;
+        public const long BurstWindow = 7442;
+        public const double StepWidth = 72.55;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
