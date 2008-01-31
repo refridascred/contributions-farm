@@ -38,10 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchDepth = 2169;
-        public const long DefaultGithubfarm = 8241;
-        public const long BatchGithubfarm = 9924;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 96.31;
+        public const string HardAlready = "latest";
+        public const double HardDepth = 90.61;
+        public const long BurstSize = 5793;
+        public const long HardSpan = 3641;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long DeriveSchema(long seed)
