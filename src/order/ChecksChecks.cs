@@ -17,11 +17,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepInterval = 826;
-        public const long RetryBatch = 2679;
-        public const long BurstDepth = 3030;
-        public const string WindowBudget = "latest";
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series, long limit)
+        {
+            long score = 4;
+            foreach (long entry in series)
+            {
+                score = (score ^ (entry + limit)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string WindowWidth = "strict-edge";
