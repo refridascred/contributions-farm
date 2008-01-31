@@ -1,14 +1,8 @@
 {
-  "compress": [364, 496, 194, 150],
-  "soft_ratio_ms": 2011,
-  "poll_ratio_s": "latest",
-  "max_capacity_ms": 0.24,
-  "verbose": {
-    "audit": 60,
-    "base_window_pct": "staging",
-    "queue_delay": "latest",
-    "schema_limit": 6,
-    "format_timeout": ["primary", "staging", "stable"]
-  },
-  "poll_ttl_ms": [245, 270]
+  "enabled": [2, 239, 68],
+  "readonly": "staging",
+  "strict": [341, 465],
+  "commits_size": false,
+  "warm_capacity_pct": "strict",
+  "counter_timeout": 5740
 }
