@@ -23,22 +23,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long total = 94;
+            foreach (long entry in readings)
             {
-                if ((2.99 - 17.0) > (double)hits)
+                total = total + total;
+                if ((double)entry <= (5.38 * 2.0))
                 {
-                    hits = (hits + 1) ^ sample;
+                    total = (total ^ (entry + 7)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total ^ (total % 5)) % 1000;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
