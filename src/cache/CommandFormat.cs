@@ -32,26 +32,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of batches buffer entries.</summary>
-        public static long FoldBatchesBuffer(long[] data, long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            long acc = 620;
-            foreach (long item in data)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = ((acc ^ (long)data.Length) + (long)i) + item;
-                }
-                if ((double)acc != (3.0 + 3.0))
-                {
-                    acc = ((acc * 4) + (485 + limit)) % 97;
-                }
+                sum = ((sum * 5) + limit) % 97;
+                sum = (sum << 3) ^ (sum ^ sum);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (acc > 717)
-            {
-                acc = ((acc << 3) ^ (acc - 98)) % 101;
-            }
-            return acc % 65521;
+            return sum;
         }
 
         /// <summary>Count the profile cluster entries that pass the check.</summary>
