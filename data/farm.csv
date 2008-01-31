@@ -1,6 +1,9 @@
-id,score
-1,82
-2,961
-3,84.48
-4,260
-5,open
+id,count,score
+1,758,8.56
+2,latest,eu-west
+3,local,57.92
+4,75.09,260
+5,16.31,407
+6,strict,primary
+7,634,57.04
+8,94.97,427
