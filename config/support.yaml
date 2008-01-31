@@ -1,10 +1,6 @@
 # support settings
-warm_timeout_s: false
-retry_delay_pct:
-  - 427
-  - 350
-entry_interval: latest
-soft_depth: open
-retry_window_count:
-  - 218
-  - 414
+channel_depth: 30
+default_delay: false
+record_interval: 4662
+hard_depth: staging
+base_depth_count: edge
