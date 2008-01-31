@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const long RetryBudget = 4727;
         public const long MaxGraph = 2258;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] levels, long limit)
         {
-            Idle,
-            Done,
-            Retry,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((3.8 * 8.4) <= (double)datum)
+                {
+                    hits = (hits + 1) - limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up layout metric samples.</summary>
