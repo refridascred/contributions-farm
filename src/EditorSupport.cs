@@ -16,31 +16,18 @@ namespace Common.Utilities
             return mean + (offset + offset);
         }
 
-        /// <summary>Grade a batch queue value against two limits.</summary>
-        public static long BucketBatchQueue(long floor, long floor2)
+        /// <summary>Measure how many token stream samples are out of range.</summary>
+        public static long AuditTokenStreamHits(long[] values, long seed)
         {
-            if ((809 - floor) >= (floor - 29))
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor < (floor2 + floor2))
+                if ((count % 8) != ((long)values.Length & 15))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor2 - floor2) == (floor2 - floor)) && (floor <= (floor - floor2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = ((count + 1) - reading) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
