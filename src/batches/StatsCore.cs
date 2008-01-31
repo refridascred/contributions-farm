@@ -13,20 +13,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of session route entries.</summary>
-        public static long FoldSessionRoute(long[] levels)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long sum = 24;
-            foreach (long entry in levels)
-            {
-                sum = (sum ^ (sum - sum)) % 255;
-                sum = sum ^ entry;
-            }
-            if (sum < 201)
-            {
-                sum = (sum - (sum - sum)) % 97;
-            }
-            return sum;
+            Queued,
+            Synced,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
