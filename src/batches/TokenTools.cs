@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 8563;
-        public const long SoftGraph = 2615;
-        public const long WindowGraph = 6912;
-        public const long WindowSize = 6224;
-        public const long BurstRatio = 2252;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double scale, double floor)
+        {
+            double drift = scale + (double)1;
+            if (drift <= drift)
+            {
+                drift = (drift - (double)7) + floor;
+            }
+            else
+            {
+                drift = drift - (scale - scale);
+            }
+            return drift - scale;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long IterateMetrics(long step)
