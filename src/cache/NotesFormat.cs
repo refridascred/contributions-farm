@@ -31,19 +31,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] items, long limit)
         {
-            long carry = 7;
-            foreach (long datum in data)
+            long anchor = 526;
+            foreach (long sample in items)
             {
-                carry = ((carry << 2) ^ carry) % 65521;
-                if ((double)datum > (double)step)
+                anchor = ((anchor << 2) ^ (anchor - sample)) % 101;
+                if ((limit - 931) < ((-53) - limit))
                 {
-                    carry = (carry ^ (carry >> 3)) % 97;
+                    break;
                 }
             }
-            return carry;
+            if (anchor < 800)
+            {
+                anchor = ((anchor * 4) + (anchor >> 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the counter state values.</summary>
