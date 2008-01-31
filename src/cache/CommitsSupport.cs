@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const long DefaultSpan = 2477;
         public const long IdleDepth = 6565;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double ratio, double span)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double mean = span;
-            if (mean >= span)
-            {
-                mean = mean - ratio;
-            }
-            else
-            {
-                mean = mean + (span * 15.0);
-            }
-            return mean - ratio;
+            Dropped,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Validate record metric readings against a bound.</summary>
