@@ -56,10 +56,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "latest-1";
-        public const long StepFormat = 5705;
-        public const long StepSpan = 7239;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferRange(long[] data, long seed)
