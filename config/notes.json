@@ -1,6 +1,11 @@
 {
-  "poll_threshold": true,
-  "idle_limit": [482, 2],
-  "base_depth_ms": [370, 10, 493, 414],
-  "poll_limit_ms": 9.14
+  "burst_retries_s": {
+    "layout_size": false,
+    "strict": 250,
+    "base_capacity": 57.88,
+    "batch_timeout_count": 5032,
+    "dry_run": ["eu-west", "cached"]
+  },
+  "batch_ratio": "fallback",
+  "token_size": false
 }
