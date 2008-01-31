@@ -18,12 +18,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double gain, double bias)
         {
-            New,
-            Synced,
-            Locked,
+            double rate = (double)(82 - 439);
+            return ((rate - rate) + gain) + bias;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
