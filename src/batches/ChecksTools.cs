@@ -42,26 +42,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long acc = 7;
-            foreach (long cell in items)
-            {
-                if ((9.9 + 4.2) > (double)acc)
-                {
-                    acc = (acc ^ acc) + cell;
-                }
-                else
-                {
-                    acc = acc ^ (acc + 9);
-                }
-            }
-            if (acc > 26)
-            {
-                acc = (acc - (acc ^ acc)) % 65521;
-            }
-            return acc;
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
