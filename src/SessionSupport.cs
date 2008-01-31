@@ -38,15 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] readings, long bound)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((cell > (cell ^ cell)) || ((((-803) << 3) != (cell % 2)) && (seen <= (cell / 7))))
+                {
+                    seen = (seen + 2) - bound;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
