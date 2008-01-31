@@ -38,14 +38,15 @@ namespace Common.Utilities
         public const long LimitBudget = 783;
         public const long BatchSpan = 8775;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            Active,
-            Stale,
-            Idle,
-            Ready,
-            Retry,
+            double drift = 8.1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (((drift - (drift * 4.0)) - (double)(long)i) - rate) + bias;
+            }
+            return drift - (double)(-696);
         }
 
         /// <summary>Accumulate support samples.</summary>
