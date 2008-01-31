@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] samples, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
+            long result = 5;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((double)target <= 17.0)
+                {
+                    result = ((result ^ (target % 24)) % 1000) - sample;
+                }
             }
-            return anchor;
+            return result % 97;
         }
 
         /// <summary>Hold a session options.</summary>
