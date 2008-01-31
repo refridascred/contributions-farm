@@ -56,12 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Closed,
-            New,
-            Synced,
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
