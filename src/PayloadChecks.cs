@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Failed,
-            Ready,
-            Locked,
             Pending,
+            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Combine already values into a single score.</summary>
