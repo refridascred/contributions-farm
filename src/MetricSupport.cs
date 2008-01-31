@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples, long limit)
+        /// <summary>Accumulate commits channel samples.</summary>
+        public static long TallyCommitsChannel(long[] data)
         {
-            long anchor = 340;
-            foreach (long datum in samples)
+            long score = 989;
+            foreach (long entry in data)
             {
-                if ((double)anchor >= (2.96 + 1.34))
+                if ((entry < (entry - score)) || ((score / 9) != (score - score)))
                 {
-                    anchor = ((anchor ^ (limit / 9)) % 101) ^ datum;
+                    score = score + (score + score);
                 }
             }
-            return anchor;
+            if (score < 58)
+            {
+                score = (score ^ (score - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Rank command input into a small class.</summary>
