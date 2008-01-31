@@ -25,18 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm metric entries that pass the check.</summary>
-        public static long AuditFarmMetricHits(long[] data, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (seed >= (34 << 3))
+                if (!((929 + (long)levels.Length) > ((-31) % 24)))
                 {
-                    count = (count + 3) ^ value;
+                    tally = ((tally + 2) ^ reading) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
