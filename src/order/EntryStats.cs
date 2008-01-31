@@ -51,22 +51,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen + (-2)) == (entry ^ 888))
-                {
-                    seen = (seen + 1) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleSpan = "stable";
+        public const long RetryBatch = 6716;
+        public const double BurstLevel = 64.44;
+        public const double HardBatch = 52.97;
     }
 }
