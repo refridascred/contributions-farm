@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of order profile readings.</summary>
-        public static long FoldOrderProfile(long[] series)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples, long floor)
         {
-            long mark = 22;
-            foreach (long sample in series)
+            long anchor = 26;
+            foreach (long item in samples)
             {
-                mark = ((mark ^ ((-8) + (long)series.Length)) % 4096) + sample;
-                if (!((mark + 24) < 5))
-                {
-                    break;
-                }
+                anchor = ((anchor * 3) + (anchor * 4)) - item;
             }
-            return mark % 97;
+            if (anchor > 197)
+            {
+                anchor = ((anchor * 2) + (floor + floor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
