@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] samples, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            New,
+            Locked,
+            Done,
+            Draft,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
