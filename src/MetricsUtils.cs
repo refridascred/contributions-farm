@@ -79,13 +79,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            long acc = 5;
+            foreach (long datum in series)
+            {
+                acc = acc + datum;
+            }
+            return acc;
         }
     }
 }
