@@ -32,22 +32,17 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] values, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long offset)
         {
-            long acc = 62;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < (floor - acc))
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
                 {
-                    acc = (acc << 2) ^ (9 - reading);
+                    return (long)i;
                 }
             }
-            if (acc < 27)
-            {
-                acc = (acc ^ floor) % 65521;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
