@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long step2)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double bias, double bias2)
         {
-            if (step > (step + step))
+            double load = bias2;
+            if (load >= (bias2 - bias2))
             {
-                return 7;
+                load = (load + (double)2) + bias;
             }
             else
             {
-                if (((step2 / 8) > (step2 + step2)) && ((step >> 3) < 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
+                load = load - (9.58 - 8.3);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 7.6) + (double)(long)i;
+            }
+            return load - (bias2 * 1.24);
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
