@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum - (origin + sum)) % 101;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 91;
+        public const long BatchCount = 1985;
+        public const long RetryGraph = 2859;
+        public const long HardBudget = 1359;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryLevel = 2642;
