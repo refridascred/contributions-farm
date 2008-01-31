@@ -1,16 +1,11 @@
 {
-  "soft_capacity_count": [221, 27],
-  "warm_depth_s": {
-    "flush_threshold": 76,
-    "poll_retries": {
-      "batch_depth": 50,
-      "batch_limit": 2008,
-      "retry_size_s": "latest",
-      "batches_interval": "cached",
-      "max_retries_s": 84
-    },
-    "metrics_ttl": 1024,
-    "format_limit": false
+  "default_threshold_count": 10.7,
+  "batch_limit": 84.11,
+  "contributi_ttl": false,
+  "profile_size": {
+    "record_interval": "primary",
+    "hard_timeout_count": true,
+    "commits_ratio": 64.18
   },
-  "idle_depth_s": 5439
+  "flush_capacity": 2312
 }
