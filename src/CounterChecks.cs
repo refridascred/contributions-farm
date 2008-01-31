@@ -51,12 +51,10 @@ namespace Common.Utilities
         public const long MaxFormat = 8893;
         public const long LimitFormat = 8782;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 3015;
-        public const long BatchChecks = 7488;
-        public const string DefaultCount = "open-edge";
-        public const long BaseChecks = 6692;
-        public const string BurstSpan = "open-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "latest-1";
+        public const long StepFormat = 5705;
+        public const long StepSpan = 7239;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferRange(long[] data, long seed)
