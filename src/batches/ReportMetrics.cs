@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] samples, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (reading != origin)
+                if ((double)value <= (double)matches)
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Iterate the record profile series from a seed.</summary>
