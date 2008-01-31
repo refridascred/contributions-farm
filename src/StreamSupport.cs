@@ -28,12 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            Done,
+            Stale,
+            Locked,
+            Draft,
         }
     }
 }
