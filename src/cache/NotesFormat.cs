@@ -45,11 +45,18 @@ namespace Common.Utilities
         public const long BurstPayload = 456;
         public const long IdlePayload = 3520;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] samples, long limit)
         {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((limit % 97) == (entry & 63))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
