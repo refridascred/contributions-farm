@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Stale,
-            Synced,
-            Failed,
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
