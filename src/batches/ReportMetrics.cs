@@ -20,18 +20,15 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] data, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((item + item) >= (seen % 97))
-                {
-                    seen = (seen + 1) - target;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Iterate the record profile series from a seed.</summary>
