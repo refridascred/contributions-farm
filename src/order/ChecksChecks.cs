@@ -55,39 +55,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long target, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
         {
-            long diff = target + floor;
-            if (((diff % 2) != (target % 2)) || (862 < (diff >> 3)))
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((0 / 2) <= (floor + diff)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 5;
+                    total = (total - 389) + (long)i2;
                 }
-                else
-                {
-                    if (((target >> 2) <= (target ^ floor)) && (816 <= (target % 60)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((diff + diff) > (diff & 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
+            return total;
         }
     }
 }
