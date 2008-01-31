@@ -41,19 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches commits entry stays within the limit.</summary>
-        public static bool VerifyBatchesCommitsLimits(long[] levels, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long result = 991;
+            foreach (long datum in values)
             {
-                if (sample > origin)
+                result = (result + (datum << 2)) % 1000;
+                if ((datum + datum) >= datum)
                 {
-                    ready = false;
-                    break;
+                    result = (result + (result ^ (-5))) % 101;
                 }
             }
-            return ready;
+            return result % 4096;
         }
     }
 }
