@@ -48,18 +48,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values, long offset)
+        /// <summary>Validate command contributi readings against a bound.</summary>
+        public static bool GuardCommandContributiLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (((3.8 - 4.0) > (double)matches) || ((value & 15) > 69))
+                if (cell < step)
                 {
-                    matches = (matches + 1) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
