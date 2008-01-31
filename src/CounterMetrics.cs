@@ -40,10 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardWidth = 8699;
-        public const string BurstToken = "local-1";
-        public const long DefaultFactor = 3033;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (count > (count + bound))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] series)
