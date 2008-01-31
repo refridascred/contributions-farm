@@ -17,14 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] items, long limit)
         {
-            Pending,
-            Draft,
-            Active,
-            Dropped,
-            Stale,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
