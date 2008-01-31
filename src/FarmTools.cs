@@ -34,10 +34,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitDepth = 8685;
-        public const long BaseWidth = 5938;
-        public const long BatchLayout = 3185;
-        public const double IdleLayout = 2.23;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
     }
 }
