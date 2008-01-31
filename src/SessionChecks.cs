@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] values)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long target)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((3.0 + 8.6) > (double)datum)
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - target;
                 }
             }
             return count;
