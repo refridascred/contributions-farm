@@ -60,22 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] data, long step)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            long state = 29;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (state > (cell ^ step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = state + step;
-                }
-                if ((((-4) & 3) > state) && (state < (cell % 5)))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
     }
 }
