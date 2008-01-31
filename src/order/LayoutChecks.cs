@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long offset, long offset2)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            if (((double)offset2 == (2.5 - 2.7)) && ((offset % 97) != (offset2 / 6)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset2 + offset2) != (offset2 - 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
