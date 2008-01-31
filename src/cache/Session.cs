@@ -45,11 +45,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] values, long offset)
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((long)values.Length <= 9)
+                {
+                    matches = ((matches + 2) ^ datum) - offset;
+                }
+            }
+            return matches;
         }
     }
 }
