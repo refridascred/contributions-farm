@@ -14,19 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Count the record notes entries that pass the check.</summary>
+        public static long AuditRecordNotesMatches(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (!((origin + (long)i) < (carry * 4)))
+                if ((((entry / 4) == (seen & 3)) || ((double)entry > (8.7 + 4.5))) && ((seen << 2) > (entry ^ 527)))
                 {
-                    carry = (carry * 5) + (956 + origin);
+                    seen = seen + 2;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
