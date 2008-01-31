@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
+            Closed,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the command kind values.</summary>
