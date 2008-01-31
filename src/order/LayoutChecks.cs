@@ -21,20 +21,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultSize = 5086;
+        public const string SoftRoute = "strict-v2";
+        public const double BaseRoute = 1.24;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountHits(long[] items, long bound)
