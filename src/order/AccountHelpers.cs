@@ -24,20 +24,12 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale2);
         }
 
-        /// <summary>Check that every graph tools entry stays within the limit.</summary>
-        public static bool CheckGraphToolsLimits(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "strict-edge";
+        public const long IdleSize = 6942;
+        public const long DefaultLevel = 3410;
+        public const string MinMetrics = "latest-v2";
+        public const string LimitRatio = "latest-edge";
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TallyMetric(long[] series)
