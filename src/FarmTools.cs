@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a order stream sample.</summary>
-        public static long FindOrderStreamIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] samples, long origin)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] == seed)
+                if (samples[i] == origin)
                 {
                     return (long)i;
                 }
