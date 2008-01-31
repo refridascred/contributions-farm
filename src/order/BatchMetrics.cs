@@ -49,12 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream metrics entry that matches the target.</summary>
-        public static long FindStreamMetricsIndex(long[] items, long step)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
