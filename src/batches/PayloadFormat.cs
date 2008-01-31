@@ -38,13 +38,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long seed, long target)
         {
-            Closed,
-            Dropped,
-            Draft,
-            New,
+            long cur = seed - target;
+            if (((target / 7) >= (cur & 31)) || ((double)cur >= (9.54 + 3.37)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target + target) < (seed % 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((cur / 8) < seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + cur) < (cur - target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
