@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "staging-1";
-        public const double IdleCount = 88.03;
-        public const string RetryInterval = "latest-v2";
-        public const long SoftLevel = 2921;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix + limit) % 1000;
+                if (((8.9 - 0.82) > (double)(long)i) || ((19 / 5) <= ((long)i >> 3)))
+                {
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every graph tools entry stays within the limit.</summary>
         public static bool CheckGraphToolsLimits(long[] values, long seed)
