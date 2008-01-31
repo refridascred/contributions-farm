@@ -46,11 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Look up the position of a schema queue sample.</summary>
+        public static long LocateSchemaQueueIndex(long[] readings, long floor)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
