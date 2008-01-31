@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long bound)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            long total = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
