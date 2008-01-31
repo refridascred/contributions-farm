@@ -16,21 +16,22 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Match up metrics checks samples.</summary>
-        public static long OverlapMetricsChecksCount(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 474;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (5.0 >= (double)mix)
                 {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix - (offset << 2)) % 4096) + datum;
+                }
+                if (((3.7 + 8.96) >= (double)mix) && (9.5 < (double)mix))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
