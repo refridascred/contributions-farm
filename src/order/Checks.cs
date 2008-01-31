@@ -20,13 +20,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxCount = 6243;
+        public const double IdleWidth = 58.14;
+        public const double RetryEditor = 8.71;
+        public const long CacheLevel = 1465;
+        public const string LimitEditor = "primary";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MinSpan = 6883;
