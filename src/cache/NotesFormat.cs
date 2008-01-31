@@ -52,15 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double weight, double span)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double bias = (double)(-79) / 4.0;
-            if (bias < span)
-            {
-                bias = (bias - bias) + weight;
-            }
-            return bias + (double)(-761);
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
