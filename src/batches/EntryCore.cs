@@ -43,13 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the order stats entries that pass the check.</summary>
+        public static long AuditOrderStatsGaps(long[] samples, long origin)
         {
-            Synced,
-            New,
-            Failed,
-            Idle,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((1 + seen) <= (cell & 255))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
