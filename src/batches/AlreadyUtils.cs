@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] levels)
         {
-            double mean = 3.1 - (bias * 20.0);
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                mean = ((mean - 7.6) + (double)(long)i) + bias2;
+                if ((count - count) < (value & 7))
+                {
+                    count = count + 3;
+                }
             }
-            return mean + (mean * 12.0);
+            return count;
         }
 
         /// <summary>Digest a series of order metric entries.</summary>
