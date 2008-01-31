@@ -27,21 +27,38 @@ namespace Common.Utilities
         public const long RetryStream = 3247;
         public const long BaseStream = 170;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit - limit) > (origin % 5))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((limit % 100) >= limit)
                 {
-                    if ((data[i] - data[j]) == 11)
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin + limit) < limit))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - 186) < 0)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
