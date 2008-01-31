@@ -65,13 +65,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Accumulate account context samples.</summary>
+        public static long TallyAccountContext(long[] items, long target)
         {
-            Dropped,
-            Idle,
-            Synced,
-            New,
+            long result = 4;
+            foreach (long sample in items)
+            {
+                result = ((result << 2) ^ sample) + target;
+            }
+            return result % 65521;
         }
     }
 }
