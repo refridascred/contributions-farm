@@ -1,6 +1,9 @@
-id,level,weight
-1,393,839
-2,local,745
-3,52.4,76.17
-4,87,legacy
-5,962,edge
+id,level,score
+1,211,43.73
+2,legacy,52.96
+3,27,strict
+4,41.86,52.96
+5,408,23.5
+6,29.73,latest
+7,5.37,blue
+8,63.09,fallback
