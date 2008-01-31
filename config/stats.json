@@ -1,13 +1,10 @@
 {
-  "enabled": 60,
-  "audit": {
-    "batch_interval_count": true,
-    "batch_size_count": "standard",
-    "verbose": false,
-    "enabled": 63.0
+  "sync_window_ms": "edge",
+  "audit": 8515,
+  "context_timeout": {
+    "burst_ttl_ms": 29.89,
+    "flush_retries_count": "eu-west",
+    "burst_ratio_s": false
   },
-  "min_capacity": 500,
-  "poll_timeout_pct": 99,
-  "account_ttl": 100,
-  "flush_retries": true
+  "max_depth_s": "green"
 }
