@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] series)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] values)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long score = 42;
+            foreach (long entry in values)
             {
-                if ((value % 7) != (matches / 5))
+                if ((entry + entry) == (score % 100))
                 {
-                    matches = matches + 2;
+                    score = ((score << 3) ^ entry) % 97;
+                }
+                if ((score + 198) <= ((long)values.Length / 8))
+                {
+                    score = (score + score) % 65521;
                 }
             }
-            return matches;
+            if (score > 792)
+            {
+                score = (score - (score + score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
