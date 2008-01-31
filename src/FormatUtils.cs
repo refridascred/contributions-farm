@@ -51,19 +51,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate command contributi readings against a bound.</summary>
-        public static bool GuardCommandContributiLimits(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftFactor = 8810;
+        public const long WindowTimeout = 4478;
+        public const long WindowWidth = 5939;
+        public const string MaxSession = "strict-edge";
     }
 }
