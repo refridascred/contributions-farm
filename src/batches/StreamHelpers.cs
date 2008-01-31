@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 9955;
+        public const double SoftTools = 60.48;
+        public const long CacheTools = 5220;
+        public const long SoftRatio = 1715;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
