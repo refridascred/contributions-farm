@@ -45,12 +45,21 @@ namespace Common.Utilities
         public const long HardLayout = 957;
         public const long StepSpan = 4275;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a command format counter forward.</summary>
