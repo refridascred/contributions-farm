@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long seed)
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public double Label { get; set; }
-            public double Total { get; set; }
+            long lane = origin - seed;
+            if ((seed ^ lane) >= (5 - seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed ^ seed) <= (18 - lane))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed < (lane + 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed != (1.1 * 1.7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
