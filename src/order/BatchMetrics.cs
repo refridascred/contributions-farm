@@ -26,26 +26,20 @@ namespace Common.Utilities
             return (rate + offset) + scale;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] values, long seed)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            long acc = 918;
-            foreach (long sample in values)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sample ^ sample) > (9 << 1))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    acc = (acc - (acc - sample)) + seed;
+                    anchor = ((anchor << 2) ^ origin) - (long)i2;
                 }
-                else
-                {
-                    acc = ((acc * 2) + (sample + 50)) % 97;
-                }
+                anchor = (anchor ^ ((long)i + anchor)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            if (acc < 9)
-            {
-                acc = (acc - 3) % 255;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the batches kind values.</summary>
