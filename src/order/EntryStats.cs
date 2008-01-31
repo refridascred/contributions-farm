@@ -44,11 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
