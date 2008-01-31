@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] items, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series)
         {
-            long acc = 40;
-            foreach (long entry in items)
+            long result = 283;
+            foreach (long entry in series)
             {
-                if (limit <= (acc ^ 3))
+                if (((double)result >= (9.0 - 20.0)) && ((double)entry != (double)251))
                 {
-                    acc = (acc + (entry * 3)) % 65521;
+                    result = (result - (entry * 5)) % 4096;
                 }
             }
-            if (acc > 1)
+            if (result > 380)
             {
-                acc = (acc ^ (70 + limit)) % 97;
+                result = (result + (34 * 3)) % 4096;
             }
-            return acc;
+            return result % 1000;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
