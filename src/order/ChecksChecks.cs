@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a graph account counter forward.</summary>
-        public static long RollGraphAccount(long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long seed, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            if (((69 >> 3) < seed) || ((seed / 5) <= (7 & 1)))
             {
-                carry = carry ^ (long)i;
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (((seed - target) >= target) || (((-5) >> 5) < seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target >= (6 + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target <= seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the layout mode values.</summary>
