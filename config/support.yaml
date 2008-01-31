@@ -1,24 +1,14 @@
 # support settings
-min_timeout_count: legacy
-warm_delay:
-  githubfarm_capacity:
-    - blue
-    - strict
-    - stable
-    - legacy
-  strict: green
-  soft_threshold_s: fallback
-verbose: true
-soft_retries_pct:
-  - 327
-  - 96
-  - 492
-  - 455
-retry_ttl_pct:
-  max_interval_ms:
-    - 479
-    - 365
-    - 216
-    - 136
-  audit: eu-west
-  support_ttl: 79.04
+retry_delay_s: false
+verbose: 38.23
+hard_depth_count:
+  window_timeout: 3975
+  warm_limit_ms: primary
+  cache_delay_s: 92.93
+  batch_capacity_pct: 60
+  verbose:
+    - staging
+    - primary
+    - open
+  burst_capacity_count: blue
+metrics_capacity: 250
