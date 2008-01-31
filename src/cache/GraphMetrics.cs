@@ -5,36 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of window format entries.</summary>
-        public static long DigestWindowFormat(long[] items)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            long score = 821;
-            foreach (long datum in items)
+            long state = -448;
+            foreach (long datum in levels)
             {
-                score = (score + datum) % 97;
-                if (datum >= (score * 5))
-                {
-                    score = score - (datum - datum);
-                    score = (score - (score + datum)) % 255;
-                }
-                else
-                {
-                    score = (score - (datum + score)) % 101;
-                }
-                if ((score + datum) == (score * 4))
-                {
-                    score = ((score * 4) + (87 >> 5)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (datum / 9)) % 1000;
-                }
+                state = ((state - 4) % 65521) ^ datum;
             }
-            if (score > 61)
+            if (state < 4)
             {
-                score = (score - score) % 101;
+                state = (state - (state * 5)) % 101;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Adjust a tools reading.</summary>
