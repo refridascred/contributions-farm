@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Combine entry notes values into a single score.</summary>
+        public static long WeighEntryNotes(long[] series, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long sum = 2;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                double weight = (double)sum;
+                if (weight >= (double)item)
+                {
+                    sum = (sum + bound) % 65521;
+                }
+                if ((4.35 / 8.0) <= (double)sum)
+                {
+                    sum = (sum - (bound + sum)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (item >> 1)) % 101;
+                }
             }
-            return anchor;
+            if (sum > 6)
+            {
+                sum = ((sum * 5) + (sum - sum)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
