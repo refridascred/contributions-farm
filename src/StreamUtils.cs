@@ -41,16 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor - (target / 3)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Ready,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the cache kind values.</summary>
