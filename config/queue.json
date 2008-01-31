@@ -1,11 +1,13 @@
 {
-  "enabled": ["eu-west", "strict", "eu-west", "primary"],
-  "burst_threshold_count": {
-    "idle_depth": 81.65,
-    "batches_depth": 94,
-    "schema_threshold": 70.68,
-    "channel_threshold": 1024,
-    "default_delay": "cached"
+  "default_size_pct": true,
+  "base_delay_pct": 3541,
+  "max_size_pct": {
+    "channel_ttl": 71.9,
+    "idle_window_count": "blue",
+    "idle_capacity_count": 5.18,
+    "max_interval": 1024
   },
-  "persist": 35
+  "batch_ttl_ms": true,
+  "cluster_delay": ["eu-west", "green"],
+  "retry_timeout_s": false
 }
