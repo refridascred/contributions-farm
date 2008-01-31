@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the account channel entries that pass the check.</summary>
-        public static long TallyAccountChannelGaps(long[] series)
+        /// <summary>Look up the position of a order stream sample.</summary>
+        public static long FindOrderStreamIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-442) * 3) >= (matches * 3))
+                if (samples[i] == seed)
                 {
-                    matches = (matches + 1) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
