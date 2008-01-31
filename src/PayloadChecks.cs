@@ -40,19 +40,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((limit >= datum) && ((double)datum >= (13.0 - 19.0))) || (datum <= (limit % 10)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleSize = 5236;
+        public const string HardSpan = "staging-v2";
+        public const double MaxRoute = 38.84;
+        public const long DefaultRoute = 5012;
+        public const long HardRoute = 8843;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long step, long target)
