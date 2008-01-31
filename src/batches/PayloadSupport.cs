@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 88.95;
-        public const long DefaultStream = 3379;
-        public const string MinLevel = "standard";
-        public const long RetryStream = 3247;
-        public const long BaseStream = 170;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Draft,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
