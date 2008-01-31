@@ -1,12 +1,10 @@
 # Command notes
 
-The account report groups every command by report.
-The format module keeps payload values in sync with the filter cache.
-Each notes is validated before it reaches the token queue.
+The profile helpers are pure functions, so they are safe to call from any thread.
+When a window fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new cluster fields
-- Log every editor change
-- Review support limits each release
-- Validate buffer input early
+- Prefer entry defaults
+- Keep already values small
+- Review route limits each release
