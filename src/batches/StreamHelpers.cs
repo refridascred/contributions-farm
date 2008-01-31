@@ -39,11 +39,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultDepth = 2764;
-        public const long RetryAccount = 7987;
-        public const long RetryDepth = 102;
-        public const double CacheSize = 50.68;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public double Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] series, long offset)
